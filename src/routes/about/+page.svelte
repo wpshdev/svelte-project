@@ -1,6 +1,3 @@
-<script>
-    import Header from "../Header.svelte";
-</script>
 <main>
-    <h1>ABOUT</h1>
+    <h2>This is about page body</h2>
 </main>

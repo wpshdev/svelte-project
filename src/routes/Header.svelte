@@ -1,5 +1,5 @@
 <script>
-    import "./style.scss";
+    import "../styles/style.scss";
+    import 'bootstrap/dist/css/bootstrap.min.css';    
 </script>
-
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>    
+<h1> This is the header</h1>
