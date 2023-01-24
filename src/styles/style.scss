@@ -1,9 +1,119 @@
-main{
+input,textarea{
+    padding: 10px;
+}
+input:focus{
+    box-shadow: none;
+}
+.btn-whiteborder{
+    background-color: transparent !important;
+    padding: 0.6rem 3rem !important;
+    color: #fff !important;
+    border: 1px solid !important;
+    text-decoration: none !important;
+    border-radius: 5rem !important;
+    font-size: 1.2rem !important;
+    background: linear-gradient(to left, transparent 50%, white 50%) !important;
+    background-size: 200% 100% !important;
+    background-position: right bottom !important;
+    transition: all .7s ease-out !important;
+}
+.btn-whiteborder:hover{
+        background-position: left bottom !important;
+        color: #000 !important;
+}
+header{
+    height: 120px;
+    padding: 0px !important;
+    display: flex;
+    justify-content: space-between;
+    nav{
+        ul{
+            background-color: rgba(0,0,0,0.6);
+            padding: 0px 10px;
+            border-bottom: 5px solid #00ADEE;
+            margin-top: 30px;
+        }
+        li{
+            display: inline-block;
+            padding: 15px 20px;
+        }
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover{
+            color: #fff;
+        }
+    }
+}
+.container{
+    width: 100%;
+    margin: auto;
+}
+.logo{
+    img{
+        height: 100px;
+        margin-left: 20px;
+        margin-top: 10px
+    }
+}
+.aerialvideo{
+    background: url("src/lib/img/slide1.jpg");
+    min-height: 100vh;
+    .text-block{
+        position: absolute;
+        color: #fff;
+        bottom: 5rem;
+        left: 5rem;
+        padding: 3rem;
+        background-color: rgba(0,0,0,0.4);
+    }
     h1{
         font-size: 4rem;
+        font-weight: 700;
     }
+}
+.about-1{
+    background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
+    min-height: 100vh;
+    background-position: bottom;
+    background-size: cover;
+}
+.about-2{
+    margin: 100px auto;
+    h1,h3{
+        text-align: center;
+    }
+    .about-2_paragraph{
+        -webkit-columns: 40px 2;
+        -moz-columns: 60px 2;
+        columns: 60px 2;
+    }
+}
+.about-3{
+    margin: 100px auto;
     p{
-        font-weight: 900;
-        font-size: 30px
+        text-align: center;
     }
+}
+.contact-1{
+    background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
+    min-height: 100vh;
+    background-position: bottom;
+    background-size: cover;
+    padding-top: 150px;
+    .contact-form{
+        background-color: rgba(0,0,0,0.6);
+        padding: 50px 20px;
+        color: #fff;
+        text-align: center;
+        input, textarea{
+            margin-bottom: 15px;
+        }
+    }
+}
+footer{
+    background:#262626;
+    color: #fff;
+    padding: 50px 0;
 }
