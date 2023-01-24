@@ -1,3 +1,6 @@
+<script>
+    export const prerender = true;
+</script>
 <main>
     <slot>
 
@@ -9,4 +12,4 @@
 
 <style>
     
-</style>
+</style>    
