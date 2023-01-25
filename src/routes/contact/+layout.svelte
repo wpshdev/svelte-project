@@ -1,8 +1,6 @@
 <header>
+    
 </header>
-<script>
-    export const prerender = true;
-</script>
 <main>
     <slot>
 
@@ -12,5 +10,4 @@
     header{
         position: fixed;
     }
-</style>
 </style>
