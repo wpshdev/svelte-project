@@ -1,8 +1,5 @@
 <header>
 </header>
-<script>
-    export const prerender = true;
-</script>
 <main>
     <slot>
 

@@ -21,3 +21,24 @@
     <p>Ready to make your dreams a reality? We invite you to connect with us and have a conversation about your project.</p>
     <p>Together we can build your dream home with the utmost care.</p>
 </Container>
+
+<style lang="scss">
+    .about-1{
+        background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
+        min-height: 100vh;
+        background-position: bottom;
+        background-size: cover;
+    }
+    .about-2{
+        margin: 100px auto;
+        h1,h3{
+            text-align: center;
+        }
+    }
+    .about-3{
+        margin: 100px auto;
+        p{
+            text-align: center;
+        }
+    }    
+</style>
