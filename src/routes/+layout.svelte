@@ -4,7 +4,7 @@ import Footer from "./Footer.svelte";
 import Header from "./Header.svelte";
 </script>
 
-<header class="container-fluid">
+<header class="container-fluid position-fixed">
     <Header />
 </header>
 <main>
@@ -15,9 +15,3 @@ import Header from "./Header.svelte";
 <footer>
     <Footer />
 </footer>
-
-<style>
-    header{
-        position: fixed;
-    }
-</style>

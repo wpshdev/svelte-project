@@ -4,6 +4,11 @@ input,textarea{
 input:focus{
     box-shadow: none;
 }
+.two-columns{
+    -webkit-columns: 40px 2;
+    -moz-columns: 60px 2;
+    columns: 60px 2;
+}
 .btn-whiteborder{
     background-color: transparent !important;
     padding: 0.6rem 3rem !important;
@@ -84,11 +89,6 @@ header{
     h1,h3{
         text-align: center;
     }
-    .about-2_paragraph{
-        -webkit-columns: 40px 2;
-        -moz-columns: 60px 2;
-        columns: 60px 2;
-    }
 }
 .about-3{
     margin: 100px auto;
@@ -109,6 +109,21 @@ header{
         input, textarea{
             margin-bottom: 15px;
         }
+    }
+}
+.blog-1{
+    background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
+    min-height: 50vh;
+    background-position: bottom;
+    background-size: cover;
+    padding-top: 200px;
+    h1{
+        background-color: rgba(0,0,0,0.6);
+        color: #fff;
+        padding: 1rem 3rem;
+        display: inline;
+        font-size: 3rem;
+        font-weight: 900;
     }
 }
 footer{
