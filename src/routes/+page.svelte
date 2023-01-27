@@ -8,7 +8,10 @@
 	import firstImg from "$lib/img/gal-img1.png";
 	import scndImg from "$lib/img/gal-img2.jpg";
 	import thirdImg from "$lib/img/gal-img3.jpg";		
-	import stairs from "$lib/img/stairs.jpg";	
+	import stairs from "$lib/img/stairs.jpg";
+	import livingRoom from "$lib/img/living-room.jpg";		
+	import lvThropy from "$lib/img/lvThropy.jpg";		
+	import Testimonial from "./Testimonial.svelte";
 </script>
 <svelte:head>
 	<title>Home</title>
@@ -134,6 +137,11 @@
 						<Col>
 							<p>We can talk about the strength of our team, and how we successfully manage teams of Stonemasons, Ironworkers and Woodworkers.</p>
 							<p>Together we built a Traditional Old World style European Castle with durable natural materials, fused with modern materials. A Colorado Castle built with natural stone to withstand the elements. A true asset of heritage and culture, Built with the team at ULFBUILT.</p>
+							<div class="sticky-content2__texts__cta">
+								<h4>Tell us about your project</h4>
+								<p>We want to know about you and building your dream home</p>
+								<a href="/" class="btn">Talk to Us</a>
+							</div>
 						</Col>									
 					</Row>
 				</div>			
@@ -142,10 +150,18 @@
 	</Container>
 </section>
 
+<section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})">
+</section>
+
+<Testimonial testimonial="This is pinnacle Colorado Castle. From the rough cut local stone that covers the interior and exterior walls, to the curved torched wood and wrought iron staircases, this is a traditional castle." />
+
+<section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})">
+</section>
+
+<Testimonial testimonial="Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature." />
+
 <style lang="scss">
-	section{
-		margin: 3.75rem 0;
-	}	
+
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
@@ -343,21 +359,8 @@
 				width: 100%;
 			}
 		}
-		&--top-text{
-			z-index: -4;
-			// margin-bottom:50rem;
-			height: 50rem;			
-			p{
-				line-height: 2rem;
-			}
-		}
 		&--first-img{
 			z-index: -2;
-		}
-		&--canvass{
-			z-index: -3;
-			height: 80rem;
-			width: 100%;
 		}
 		&--scnd-img{
 			z-index: -1;
@@ -365,16 +368,6 @@
 		&--third-img{
 			z-index: 1;
 		}	
-
-		&__left_img{
-			position: sticky;
-			top: 20%;
-			margin-bottom: 0rem;
-			z-index: 0;
-			img{
-				width: 100%;
-			}
-		}
 		&__texts{
 			position: sticky;
 			top: 20%;
@@ -390,7 +383,40 @@
 			p{
 				line-height: 2;
 			}
+
+			&__cta{
+				border: 1px solid #ACA7A7;
+				padding: 1.5rem;
+				text-align: center;
+				h4{
+					font-size: 1.2rem;
+					font-weight: 400;
+					color: #00ADEE;
+					margin-bottom: 1rem;					
+				}	
+				a{
+					padding: 1rem 1.8rem;
+					background: #00adee;
+					color: #fff;
+					text-decoration: none;
+					margin-bottom: -20%;		
+					border-radius: 0;			
+				}			
+			}
 		}			
 	}	
 
+	.living-room{
+		height: 30vw;		
+	}
+	
+	.section--bannerOnly{
+		background-image: var(--lrbg);
+		background-size: cover;
+	}
+
+	.lv-thropy{
+		height: 45vw;
+	}
+	
 </style>
