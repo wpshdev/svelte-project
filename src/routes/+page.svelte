@@ -4,6 +4,7 @@
     import topImg from "$lib/img/top-img.jpg";
     import bottomImg from "$lib/img/bottom-img.jpg";	
 	import banner from "$lib/img/slide1.jpg";
+	import galImg from "$lib/img/gal-img.jpg";	
 	import firstImg from "$lib/img/gal-img1.png";
 	import scndImg from "$lib/img/gal-img2.jpg";
 	import thirdImg from "$lib/img/gal-img3.jpg";		
@@ -68,6 +69,8 @@
 				<div class="sticky-content__img sticky-content--first-img">
 					<img src="{firstImg}" alt="gallery">
 				</div>
+				<div class="sticky-content__img sticky-content--canvass">
+				</div>				
 				<div class="sticky-content__img sticky-content--scnd-img">
 					<img src="{scndImg}" alt="gallery">					
 				</div>
@@ -77,12 +80,12 @@
 			</Col>
 			<Col md="7">
 				<div class="sticky-content__left_img">
-					<img src="{scndImg}" alt="gallery">	
+					<img src="{galImg}" alt="gallery">	
 				</div>
 				<div class="sticky-content__texts">
 					<Row>
 						<Col>
-							<h2>Jagdschloss Vail</h2>
+							<h3 class="text-center">Jagdschloss Vail</h3>
 						</Col>
 					</Row>
 					<Row>
@@ -219,10 +222,13 @@
 		&__heading{
 			margin-top: 4%;
 			background: #fff;
+			font-weight: 300;
+			letter-spacing: .5rem;
+			margin-bottom: 3rem;			
 		}
 		&__img{
 			background: #fff;
-			margin-bottom: 50rem;
+			// margin-bottom: 50rem;
 			position: sticky;
 			top: 20%;			
 			img{
@@ -230,12 +236,20 @@
 			}
 		}
 		&--top-text{
-			z-index: -3;
-			margin-bottom:50rem;
+			z-index: -4;
+			// margin-bottom:50rem;
+			height: 50rem;			
+			p{
+				line-height: 2rem;
+			}
 		}
 		&--first-img{
 			z-index: -2;
-			margin-bottom: 50rem;
+		}
+		&--canvass{
+			z-index: -3;
+			height: 80rem;
+			width: 100%;
 		}
 		&--scnd-img{
 			z-index: -1;
@@ -249,6 +263,9 @@
 			top: 20%;
 			margin-bottom: 0rem;
 			z-index: 0;
+			img{
+				width: 100%;
+			}
 		}
 		&__texts{
 			position: sticky;
@@ -256,7 +273,16 @@
 			margin-top: 80rem;
 			z-index: 2;
 			background-color: #fff;
-			height: 650px;
+			height: 45rem;
+			h3{
+				font-size: 2rem;
+				font-weight: 300;
+				color: #00ADEE;
+				margin-bottom: 3rem;				
+			}
+			p{
+				line-height: 2;
+			}
 		}			
 	}
 </style>
