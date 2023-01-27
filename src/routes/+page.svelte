@@ -8,6 +8,7 @@
 	import firstImg from "$lib/img/gal-img1.png";
 	import scndImg from "$lib/img/gal-img2.jpg";
 	import thirdImg from "$lib/img/gal-img3.jpg";		
+	import stairs from "$lib/img/stairs.jpg";	
 </script>
 <svelte:head>
 	<title>Home</title>
@@ -102,7 +103,49 @@
 	</Container>
 </section>
 
+<section class="sticky-content2">
+	<img src="{stairs}" alt="stairs" class="sticky-content2__bg">
+	<Container>
+		<Row>
+			<Col md="5">
+				<div class="sticky-content2__img sticky-content2--first-img">
+					<img src="{firstImg}" alt="gallery">
+				</div>			
+				<div class="sticky-content2__img sticky-content2--scnd-img">
+					<img src="{scndImg}" alt="gallery">					
+				</div>
+				<div class="sticky-content2__img sticky-content2--third-img">
+					<img src="{thirdImg}" alt="gallery">					
+				</div>	
+			</Col>
+			<Col md="7">
+				<div class="sticky-content2__texts">
+					<Row>
+						<Col>
+							<h3>Hand Hewn Wood Beams</h3>
+						</Col>
+					</Row>
+					<Row>
+						<Col>							
+							<p>We love solid, exposed hand hewn wood beams. Old-world building styles makes for strong and remarkable ceiling lines and lifted roofs. </p>
+							<p>Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature. On this project, our team worked with the Owner’s Architect to build this incredible home.</p>
+							<p>I can elaborate about how we schedule, and the frequency of meetings, and how we load photos and walk-throughs and aerial drone video for owners positioned around the world.</p>
+						</Col>
+						<Col>
+							<p>We can talk about the strength of our team, and how we successfully manage teams of Stonemasons, Ironworkers and Woodworkers.</p>
+							<p>Together we built a Traditional Old World style European Castle with durable natural materials, fused with modern materials. A Colorado Castle built with natural stone to withstand the elements. A true asset of heritage and culture, Built with the team at ULFBUILT.</p>
+						</Col>									
+					</Row>
+				</div>			
+			</Col>			
+		</Row>
+	</Container>
+</section>
+
 <style lang="scss">
+	section{
+		margin: 3.75rem 0;
+	}	
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
@@ -285,4 +328,69 @@
 			}
 		}			
 	}
+
+	.sticky-content2{
+		&__bg{
+			width: 100%;
+			margin-bottom:7rem;
+		}
+		&__img{
+			background: #fff;
+			margin-bottom: 10rem;
+			position: sticky;
+			top: 20%;			
+			img{
+				width: 100%;
+			}
+		}
+		&--top-text{
+			z-index: -4;
+			// margin-bottom:50rem;
+			height: 50rem;			
+			p{
+				line-height: 2rem;
+			}
+		}
+		&--first-img{
+			z-index: -2;
+		}
+		&--canvass{
+			z-index: -3;
+			height: 80rem;
+			width: 100%;
+		}
+		&--scnd-img{
+			z-index: -1;
+		}		
+		&--third-img{
+			z-index: 1;
+		}	
+
+		&__left_img{
+			position: sticky;
+			top: 20%;
+			margin-bottom: 0rem;
+			z-index: 0;
+			img{
+				width: 100%;
+			}
+		}
+		&__texts{
+			position: sticky;
+			top: 20%;
+			z-index: 2;
+			background-color: #fff;
+			height: 45rem;
+			h3{
+				font-size: 2rem;
+				font-weight: 300;
+				color: #00ADEE;
+				margin-bottom: 3rem;				
+			}
+			p{
+				line-height: 2;
+			}
+		}			
+	}	
+
 </style>
