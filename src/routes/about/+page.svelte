@@ -5,8 +5,8 @@
 	<title>About Us</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<section class="about-1"></section>
-<section class="about-2">
+<div class="about-1"></div>
+<div class="container about-2">
     <h1>ABOUT ULFBUILT</h1>
     <h3>WE ARE VAIL GENERAL CONTRACTORS</h3>
     <div class="two-columns">
@@ -16,7 +16,7 @@
     <p>We love the opportunity to work in tandem with our clients. Whether you envision an ultra-modern home or a rustic mountain lodge, we have the knowledge, dedication, and communication to see your dream to fruition.</p>
     <p>Thank you for visiting our website, and be sure to check out our portfolio of Vail Custom Homes. If you are ready to learn more about how we can build your vision, please reach out and connect with us, we would love to hear from you.</p>
     </div>
-</section>
+</div>
 <section class="about-3">
     <p>Ready to make your dreams a reality? We invite you to connect with us and have a conversation about your project.</p>
     <p>Together we can build your dream home with the utmost care.</p>

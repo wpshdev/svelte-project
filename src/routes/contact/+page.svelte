@@ -8,7 +8,7 @@
 	<title>Contact us</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<section class="contact-1 container-fluid">
+<div class="contact-1 container-fluid">
     <Container>
         <Row>
             <Col md="4"></Col>
@@ -38,7 +38,7 @@
             <Col md="4"></Col>
         </Row>
     </Container>
-</section>
+</div>
 <style lang="scss">
 .contact-1{
     background: url("$lib/img/ULFBUILT-TEAM-1.jpg");
