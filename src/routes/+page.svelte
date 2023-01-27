@@ -20,7 +20,7 @@
 					<div class="homebanner__content__text">
 						<h1>We Build Serene Dreams</h1>
 					</div>
-					<a href="#" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
+					<a href="/" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
 				</div>
 			</Col>
 		</Row>
@@ -34,7 +34,7 @@
 				<div class="gallery__container">
 					<figure class="gallery__container__figure gallery__container--first-img">
 						<div class="gallery__container__figure__overlay">
-							<a href="#" class="gallery__container__overlay__link">
+							<a href="/" class="gallery__container__overlay__link">
 								<span>4</span>
 								<p>New Construction</p>
 							</a>
@@ -56,11 +56,19 @@
 <section class="sticky-content">
 	<Container>
 		<Row>
+			<Col md="12" class="position-sticky top-0">
+				<h2 class="sticky-content__heading text-center">Jagdschloss Vail</h2>
+			</Col>
 			<Col md="5">
+				<div class="sticky-content__img sticky-content--top-text">
+					<p>"This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. </p>
+					<p>Its traditional design is further enhanced by a mountain lion sculpture that guards the property. </p>
+					<p>	Inside, you'll find reclaimed wood cabinetry in the kitchen and unique details like rough-cut granite countertops, seamlessly blending light and dark stone for a cohesive old-world mountain home aesthetic."</p>
+				</div>
 				<div class="sticky-content__img sticky-content--first-img">
 					<img src="{firstImg}" alt="gallery">
 				</div>
-				<div class="sticky-content__img sticky-content--second-img">
+				<div class="sticky-content__img sticky-content--scnd-img">
 					<img src="{scndImg}" alt="gallery">					
 				</div>
 				<div class="sticky-content__img sticky-content--third-img">
@@ -68,6 +76,9 @@
 				</div>								
 			</Col>
 			<Col md="7">
+				<div class="sticky-content__left_img">
+					<img src="{scndImg}" alt="gallery">	
+				</div>
 				<div class="sticky-content__texts">
 					<Row>
 						<Col>
@@ -202,27 +213,50 @@
 	}
 
 	.sticky-content{
+		div{
+			background-color: #fff;
+		}
+		&__heading{
+			margin-top: 4%;
+			background: #fff;
+		}
 		&__img{
-			margin-bottom: 5rem;
+			background: #fff;
+			margin-bottom: 50rem;
 			position: sticky;
 			top: 20%;			
 			img{
 				width: 100%;
 			}
 		}
+		&--top-text{
+			z-index: -3;
+			margin-bottom:50rem;
+		}
 		&--first-img{
 			z-index: -2;
+			margin-bottom: 50rem;
 		}
 		&--scnd-img{
 			z-index: -1;
 		}		
-		&--scnd-img{
+		&--third-img{
 			z-index: 1;
 		}	
 
+		&__left_img{
+			position: sticky;
+			top: 20%;
+			margin-bottom: 0rem;
+			z-index: 0;
+		}
 		&__texts{
 			position: sticky;
 			top: 20%;
+			margin-top: 80rem;
+			z-index: 2;
+			background-color: #fff;
+			height: 650px;
 		}			
 	}
 </style>
