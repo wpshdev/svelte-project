@@ -57,7 +57,7 @@
 <section class="sticky-content">
 	<Container>
 		<Row>
-			<Col md="12" class="position-sticky top-0">
+			<Col md="12">
 				<h2 class="sticky-content__heading text-center">Jagdschloss Vail</h2>
 			</Col>
 			<Col md="5">
@@ -228,7 +228,7 @@
 		}
 		&__img{
 			background: #fff;
-			// margin-bottom: 50rem;
+			margin-bottom: 5rem;
 			position: sticky;
 			top: 20%;			
 			img{
