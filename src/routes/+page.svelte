@@ -12,6 +12,16 @@
 	import livingRoom from "$lib/img/living-room.jpg";		
 	import lvThropy from "$lib/img/lvThropy.jpg";		
 	import Testimonial from "./Testimonial.svelte";
+	import Carousel from "./Carousel.svelte";
+
+	let image_collections = [
+	"https://source.unsplash.com/uFdRfAkM1DM",
+	"https://source.unsplash.com/RQOABS5RH0M",
+	"https://source.unsplash.com/YhPYgb8ZCBw",	
+	"https://source.unsplash.com/E5lK_COkD2E"
+	];	
+
+	// console.log(image_collections);	
 </script>
 <svelte:head>
 	<title>Home</title>
@@ -159,6 +169,16 @@
 </section>
 
 <Testimonial testimonial="Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature." />
+
+<section class="carousel">
+	<Container>
+		<Row>
+			<Col>
+				<Carousel images={image_collections}/>			
+			</Col>
+		</Row>
+	</Container>
+</section>
 
 <style lang="scss">
 
