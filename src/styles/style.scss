@@ -57,47 +57,11 @@ header{
         }
     }
 }
-.container{
-    width: 100%;
-    margin: auto;
-}
 .logo{
     img{
         height: 100px;
         margin-left: 20px;
         margin-top: 10px
-    }
-}
-.aerialvideo{
-    background: url("src/lib/img/slide1.jpg");
-    min-height: 100vh;
-    .text-block{
-        position: absolute;
-        color: #fff;
-        bottom: 5rem;
-        left: 5rem;
-        padding: 3rem;
-        background-color: rgba(0,0,0,0.4);
-    }
-    h1{
-        font-size: 4rem;
-        font-weight: 700;
-    }
-}
-
-.contact-1{
-    background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
-    min-height: 100vh;
-    background-position: bottom;
-    background-size: cover;
-    padding-top: 150px;
-    .contact-form{
-        background-color: rgba(0,0,0,0.6);
-        padding: 50px 20px;
-        color: #fff;
-        input, textarea{
-            margin-bottom: 15px;
-        }
     }
 }
 .blog-1{
@@ -119,5 +83,8 @@ footer{
     background:#262626;
     color: #fff;
     padding: 50px 0;
+    a{
+        color: #fff;
+        text-decoration: none;
+    }
 }
-

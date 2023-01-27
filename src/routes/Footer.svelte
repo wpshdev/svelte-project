@@ -28,10 +28,10 @@
         <Col md="3">
             <h4>QUICK LINKS</h4>
             <ul>
-                <li>Home</li>
-                <li>Blog</li>
-                <li>Contact</li>
-                <li>Privacy Policy</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blogs">Blogs</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
                 <li>Sitemap</li>
             </ul>
         </Col>

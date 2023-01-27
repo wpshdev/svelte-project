@@ -8,11 +8,11 @@
 	<title>Contact us</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<section class="contact-1">
+<section class="contact-1 container-fluid">
     <Container>
         <Row>
             <Col md="4"></Col>
-            <Col md="4" class="contact-form">
+            <div class="contact-form col-md-4">
                 <h2>GET IN TOUCH WITH US</h2>
                 <p>We are here to provide you with more info, and answer any questions you may have.</p>
                 <Form method="post">
@@ -34,8 +34,22 @@
                     </FormGroup>
                     <Button {color}>Send</Button>
                 </Form>
-            </Col>
+            </div>
             <Col md="4"></Col>
         </Row>
     </Container>
 </section>
+<style lang="scss">
+.contact-1{
+    background: url("$lib/img/ULFBUILT-TEAM-1.jpg");
+    min-height: 100vh;
+    background-position: bottom;
+    background-size: cover;
+    padding-top: 150px;
+    .contact-form{
+        background-color: rgba(0,0,0,0.6);
+        padding: 50px 20px;
+        color: #fff;
+    }
+}
+</style>
