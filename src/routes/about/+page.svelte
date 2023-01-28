@@ -23,7 +23,7 @@
 </section>
 <style lang="scss">
 .about-1{
-    background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
+    background: url("$lib/img/ULFBUILT-TEAM-1.jpg");
     min-height: 100vh;
     background-position: bottom;
     background-size: cover;
