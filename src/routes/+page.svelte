@@ -13,6 +13,8 @@
 	import lvThropy from "$lib/img/lvThropy.jpg";		
 	import Testimonial from "./Testimonial.svelte";
 	import Carousel from "./Carousel.svelte";
+    import { Form, FormGroup, Input, Label } from 'sveltestrap';
+    import { Button } from 'sveltestrap';
 
 	let image_collections = [
 	"https://source.unsplash.com/uFdRfAkM1DM",
@@ -126,12 +128,12 @@
 				<div class="sticky-content2__img sticky-content2--first-img">
 					<img src="{firstImg}" alt="gallery">
 				</div>			
-				<div class="sticky-content2__img sticky-content--canvass">
+				<div class="sticky-content2__img sticky-content2--canvass">
 				</div>					
 				<div class="sticky-content2__img sticky-content2--scnd-img">
 					<img src="{scndImg}" alt="gallery">					
 				</div>
-				<div class="sticky-content2__img sticky-content--canvass">
+				<div class="sticky-content2__img sticky-content2--canvass">
 				</div>					
 				<div class="sticky-content2__img sticky-content2--third-img">
 					<img src="{thirdImg}" alt="gallery">					
@@ -182,6 +184,39 @@
 			<Col>
 				<Carousel images={image_collections}/>			
 			</Col>
+		</Row>
+	</Container>
+</section>
+
+<Testimonial testimonial="Together we built a Traditional Old World style European Castle with durable natural materials, fused with modern materials. A true asset of heritage and culture, Built with the team at ULFBUILT." />
+
+<section class="contact-form">
+	<Container>
+		<Row>
+			<Col md="6">
+				<p>Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature. On this project, our team worked with the Owner’s Architect to build this incredible home.</p>
+				<p>I can elaborate about how we schedule, and the frequency of meetings, and how we load photos and walk-throughs and aerial drone video for owners positioned around the world. But most importantly, I want to share why we think exposed beams are such an important part of a beautiful luxury home.</p>
+				<p>The natural patterns in wood are unique and striking, adding beauty and texture to any space. And because wood is a natural material, it breathes, which means it helps keep your home comfortable and healthy. When you choose Vail Valley house remodeler ULFBUILT, you’re getting a team of experts with years of experience in creating beautiful homes with exposed beams.</p>
+				<p>We’ll work with you every step of the way to make sure your home is everything you dream it can be.</p>
+			</Col>
+			<Col md="6" class="contact-form__form">
+				<h2>Get in touch with us</h2>
+                <Form method="post" class="">
+                    <FormGroup>
+                        <Input placeholder="Full Name" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Input type="email" placeholder="Email" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Input type="tel" placeholder="Phone Number" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Input type="textarea" id="yourMessage" placeholder="Tell us about your project.." />
+                    </FormGroup>
+                    <Button>Send Email</Button>
+                </Form>				
+			</Col>			
 		</Row>
 	</Container>
 </section>
@@ -464,5 +499,16 @@
 	.lv-thropy{
 		height: 45vw;
 	}
-	
+	:global(.contact-form__form){
+		padding: 2rem;
+		margin: 0 auto;
+		max-width: 400px;
+		}
+	// .contact-form{
+	// 	&__form{
+	// 	padding: 2rem;
+	// 	margin: 0 auto;
+	// 	max-width: 400px;
+	// 	}
+	// }
 </style>
