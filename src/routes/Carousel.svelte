@@ -27,7 +27,7 @@
       <div class="card-body">
             <div class="is-center">
                 {#each images as image, i}
-                <img class="img-fluid {active_item == i ? 'rounded' : 'img-thumbnail'}" on:click={() => changeSlide(i)} style="height:30px; width:30px; cursor:pointer" src={image} alt="">
+                    <img class="img-fluid {active_item == i ? 'rounded' : 'img-thumbnail'}" on:click={() => changeSlide(i)} style="height:30px; width:30px; cursor:pointer" src={image} alt="">
                 {/each}
             </div>
       </div>

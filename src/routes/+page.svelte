@@ -88,6 +88,8 @@
 				<div class="sticky-content__img sticky-content--scnd-img">
 					<img src="{scndImg}" alt="gallery">					
 				</div>
+				<div class="sticky-content__img sticky-content--canvass">
+				</div>					
 				<div class="sticky-content__img sticky-content--third-img">
 					<img src="{thirdImg}" alt="gallery">					
 				</div>								
@@ -124,9 +126,13 @@
 				<div class="sticky-content2__img sticky-content2--first-img">
 					<img src="{firstImg}" alt="gallery">
 				</div>			
+				<div class="sticky-content2__img sticky-content--canvass">
+				</div>					
 				<div class="sticky-content2__img sticky-content2--scnd-img">
 					<img src="{scndImg}" alt="gallery">					
 				</div>
+				<div class="sticky-content2__img sticky-content--canvass">
+				</div>					
 				<div class="sticky-content2__img sticky-content2--third-img">
 					<img src="{thirdImg}" alt="gallery">					
 				</div>	
@@ -225,24 +231,32 @@
 				margin-bottom: 0;
 				position: relative;
 				overflow: hidden;
+				img{
+					transition: 0.3s;
+				}
 				&:hover{
 					.gallery__container__figure__overlay{
-						left: 0;
-						bottom: 0;
+						opacity: 1;
 						background-color: rgba(0, 0, 0, 0.15);
+					}
+					img{
+						transform: scale(1.2);
+						transition: 0.3s
 					}
 				}				
 				&__overlay{
 					position: absolute;
-					left: -100%;
-					bottom: -100%;
 					transition: 0.5s;
 					height: 100%;
 					width: 100%;
 					display: flex;
+					opacity: 0;
 					align-items: center;
 					justify-content: center;
 					text-align: center;
+					top: 0;
+					z-index: 2;
+					left: 0;
 					a{
 						color: #fff;
 						text-decoration: unset;
@@ -361,6 +375,9 @@
 			}
 			p{
 				line-height: 2;
+				@media(min-width:768px){
+					margin-left: 1rem;
+				}
 			}
 		}			
 	}
@@ -387,13 +404,21 @@
 		}		
 		&--third-img{
 			z-index: 1;
-		}	
+		}
+		&--canvass{
+			z-index: -3;
+			height: 50rem;
+			width: 100%;
+		}		
 		&__texts{
 			position: sticky;
 			top: 20%;
 			z-index: 2;
 			background-color: #fff;
 			height: 45rem;
+			@media(min-width:768px){
+					margin-left: 1rem;
+				}			
 			h3{
 				font-size: 2rem;
 				font-weight: 300;
@@ -402,6 +427,7 @@
 			}
 			p{
 				line-height: 2;
+				
 			}
 
 			&__cta{
