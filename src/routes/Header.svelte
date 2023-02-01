@@ -1,9 +1,9 @@
 <script>
-    import "../styles/style.scss";
     import 'bootstrap/dist/css/bootstrap.min.css';
     import { page } from '$app/stores';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
+    import "../styles/style.scss";		
 </script>
 <div class="logo">
 	<a href="/">

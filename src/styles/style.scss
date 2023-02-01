@@ -1,14 +1,21 @@
 *{
     font-family: 'Roboto', open sans;
 }
-input,textarea{
-    padding: 10px;
+input,textarea, .form-control{
+    padding: 0.8rem;
+    border-radius: 0;
 }
 input:focus{
     box-shadow: none;
 }
 section{
     margin: 3.75rem 0;
+}
+.btn{
+    background-color: #00ADEE;
+    border-radius: 0;
+    border: unset;
+    padding: 1rem 2.5rem;
 }	
 .two-columns{
     -webkit-columns: 40px 2;
@@ -63,12 +70,28 @@ header{
         font-weight: 900;
     }
 }
-footer{
+
+.footer{
+    font-weight: 300;
     background:#262626;
     color: #fff;
-    padding: 50px 0;
+    padding: 3rem;
+    margin: 0;
     a{
         color: #fff;
-        text-decoration: none;
+    }
+    h4{
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+    ul{
+        list-style: none;      
+        padding-left: 0;      
+        li{
+            padding-left: 0;
+            line-height: 2;
+        }
     }
 }

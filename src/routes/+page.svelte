@@ -10,7 +10,8 @@
 	import thirdImg from "$lib/img/gal-img3.jpg";		
 	import stairs from "$lib/img/stairs.jpg";
 	import livingRoom from "$lib/img/living-room.jpg";		
-	import lvThropy from "$lib/img/lvThropy.jpg";		
+	import lvThropy from "$lib/img/lvThropy.jpg";	
+	import panther from "$lib/img/panther.png";	
 	import Testimonial from "./Testimonial.svelte";
 	import Carousel from "./Carousel.svelte";
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
@@ -199,24 +200,48 @@
 				<p>The natural patterns in wood are unique and striking, adding beauty and texture to any space. And because wood is a natural material, it breathes, which means it helps keep your home comfortable and healthy. When you choose Vail Valley house remodeler ULFBUILT, you’re getting a team of experts with years of experience in creating beautiful homes with exposed beams.</p>
 				<p>We’ll work with you every step of the way to make sure your home is everything you dream it can be.</p>
 			</Col>
-			<Col md="6" class="contact-form__form">
-				<h2>Get in touch with us</h2>
-                <Form method="post" class="">
-                    <FormGroup>
-                        <Input placeholder="Full Name" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Input type="email" placeholder="Email" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Input type="tel" placeholder="Phone Number" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Input type="textarea" id="yourMessage" placeholder="Tell us about your project.." />
-                    </FormGroup>
-                    <Button>Send Email</Button>
-                </Form>				
+			<Col md="6">
+				<div class="contact-form__form">
+					<h2>Get in touch with us</h2>
+					<Form method="post" class="">
+						<FormGroup>
+							<Input placeholder="Full Name" />
+						</FormGroup>
+						<FormGroup>
+							<Input type="email" placeholder="Email" />
+						</FormGroup>
+						<FormGroup>
+							<Input type="tel" placeholder="Phone Number" />
+						</FormGroup>
+						<FormGroup>
+							<Input type="textarea" id="yourMessage" placeholder="Tell us about your project.." rows="5" />
+						</FormGroup>
+						<Button>Send Email</Button>
+					</Form>		
+				</div>		
 			</Col>			
+		</Row>
+	</Container>
+</section>
+
+<section class="img-section">
+	<Container>
+		<Row>
+			<Col>
+				<img src="{panther}" alt="">
+			</Col>
+		</Row>
+	</Container>
+</section>
+
+<section class="home-cta">
+	<Container>
+		<Row>
+			<Col class="text-center">
+				<h2>Tell us about your project</h2>
+				<p>We want to know about yo and building your dream home</p>
+				<a href="#" class="btn button">Talk to Us</a>
+			</Col>
 		</Row>
 	</Container>
 </section>
@@ -499,11 +524,36 @@
 	.lv-thropy{
 		height: 45vw;
 	}
-	:global(.contact-form__form){
+
+	.contact-form{
+		&__form{
 		padding: 2rem;
 		margin: 0 auto;
-		max-width: 400px;
+		max-width: 500px;
+		text-align: center;
+			h2{
+				font-weight: 300;
+				margin-bottom: 2rem;
+				text-transform: uppercase;
+			}
 		}
+	}
+
+	.img-section{
+		margin: 5rem 0;
+	}
+	
+	.home-cta{
+		margin: 10rem 0;
+		h2{
+			color: #00ADEE;
+		}
+		.btn{
+			margin-top: 3rem;
+			color: #fff;
+			padding: 0.8rem 4rem;
+		}
+	}
 	// .contact-form{
 	// 	&__form{
 	// 	padding: 2rem;
