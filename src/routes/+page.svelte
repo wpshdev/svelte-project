@@ -1,4 +1,7 @@
-<script>
+<script lang="ts">
+	export let data;
+	console.log(data);
+
 	import { Col, Container, Row } from "sveltestrap";
     import leftImg from "$lib/img/left-img.png";
     import topImg from "$lib/img/top-img.jpg";
@@ -24,7 +27,7 @@
 	"https://source.unsplash.com/E5lK_COkD2E"
 	];	
 
-	// console.log(image_collections);	
+// console.log(image_collections);	
 </script>
 <svelte:head>
 	<title>Home</title>
