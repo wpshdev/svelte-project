@@ -1,20 +1,41 @@
 <script lang="ts">
     import {Container} from 'sveltestrap';
+    import { onMount } from 'svelte';
+    let about = [];
+    let abouttitle=""
+    let abouttext=""
+    let aboutheading=""
+    let aboutsubheading=""
+    let aboutimage=""
+    onMount(async()=>{
+        const response = await fetch('https://strapi.ulfbuilt.com:1337/api/about-us/', {
+        method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer  ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072',
+            },
+        })
+        about = await response.json()
+        abouttitle = about.data.attributes.Title
+        aboutimage = about.data.attributes.featuredimage
+        abouttext = about.data.attributes.about
+        aboutheading = about.data.attributes.AboutHeading
+        aboutsubheading = about.data.attributes.Aboutsubheading
+        console.log(about)
+    })
+    // export let data;
+    // console.log(data["data"]["attributes"]["Title"]);
 </script>
 <svelte:head>
-	<title>About Us</title>
+	<title>{abouttitle}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <div class="about-1"></div>
 <div class="container about-2">
-    <h1>ABOUT ULFBUILT</h1>
-    <h3>WE ARE VAIL GENERAL CONTRACTORS</h3>
+    <h1>{aboutheading}{aboutimage}</h1>
+    <h3>{aboutsubheading}</h3>
     <div class="two-columns">
-    <p>With over 15 years of dedication, ULFBUILT has established itself as premier vail general contractors. Exceptional spaces with acute attention to detail, coupled with superior execution are made possible by a simple core value: We treat your project as if it were our own.</p>
-    <p>The ULFBUILT team is our greatest strength. We care for each other and celebrate together as a family. Through years of experience, we have forged meaningful relationships with the best general contractors, subcontractors, and suppliers who we are proud to be affiliated with. Thus, we focus internally on our coordination and collaboration, all the while maintaining healthy communication with you, which together creates peace of mind throughout the course of your project.</p>
-    <p>Our commitment to sustainability centers around energy and water efficiency. Whether your project is a home or business, our efforts to reach high levels of sustainability are grounded in a practical, seasoned approach.</p>
-    <p>We love the opportunity to work in tandem with our clients. Whether you envision an ultra-modern home or a rustic mountain lodge, we have the knowledge, dedication, and communication to see your dream to fruition.</p>
-    <p>Thank you for visiting our website, and be sure to check out our portfolio of Vail Custom Homes. If you are ready to learn more about how we can build your vision, please reach out and connect with us, we would love to hear from you.</p>
+    {@html abouttext}
     </div>
 </div>
 <section class="about-3">
