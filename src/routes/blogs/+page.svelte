@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Col, Container, Row } from 'sveltestrap';
-    import logo from '$lib/img/logo.svg';
     export let data;
     let blogs = data.data;
     let url = "https://strapi.ulfbuilt.com:1337";
@@ -18,7 +17,7 @@
     <Row>
         {#each blogs as blog}
         <Col md="4">
-            <a href="/blog" class="text-decoration-none text-black">
+            <a href="/blog/{blog.id}" class="text-decoration-none text-black">
                 <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="w-100">
                 <h4 class="text-center">{blog.attributes.title}</h4>
                 <p class="text-center">{blog.attributes.shorttext}</p>
