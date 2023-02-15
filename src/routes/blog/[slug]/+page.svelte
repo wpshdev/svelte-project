@@ -20,3 +20,20 @@
         {@html content}
     </div>
 </Container>
+<style lang="scss">
+    .blog-1{
+    background: url("src/lib/img/ULFBUILT-TEAM-1.jpg");
+    min-height: 50vh;
+    background-position: bottom;
+    background-size: cover;
+    padding-top: 200px;
+    h1{
+        background-color: rgba(0,0,0,0.6);
+        color: #fff;
+        padding: 1rem 3rem;
+        display: inline;
+        font-size: 3rem;
+        font-weight: 900;
+    }
+}
+</style>
