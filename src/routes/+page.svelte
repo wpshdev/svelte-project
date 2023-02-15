@@ -1,16 +1,17 @@
 <script lang="ts">
 	export let data;
-	console.log(data);
-
+	let domain = "https://strapi.ulfbuilt.com:1337";
+	let portfolio = data.data.attributes;
 	import { Col, Container, Row } from "sveltestrap";
     import leftImg from "$lib/img/left-img.png";
     import topImg from "$lib/img/top-img.jpg";
     import bottomImg from "$lib/img/bottom-img.jpg";	
-	import banner from "$lib/img/slide1.jpg";
-	import galImg from "$lib/img/gal-img.jpg";	
-	import firstImg from "$lib/img/gal-img1.png";
-	import scndImg from "$lib/img/gal-img2.jpg";
-	import thirdImg from "$lib/img/gal-img3.jpg";		
+	// import banner from "$lib/img/slide1.jpg";
+	let banner = domain + portfolio.Banner.background.data.attributes.url;
+	let galImg = domain + portfolio.twoColumns.image.data.attributes.url;
+	let firstImg = domain + portfolio.fixedParalax.Images.data[0].attributes.url;
+	let scndImg = domain + portfolio.fixedParalax.Images.data[1].attributes.url;
+	let thirdImg = domain + portfolio.fixedParalax.Images.data[2].attributes.url;	
 	import stairs from "$lib/img/stairs.jpg";
 	import livingRoom from "$lib/img/living-room.jpg";		
 	import lvThropy from "$lib/img/lvThropy.jpg";	
@@ -26,8 +27,8 @@
 	"https://source.unsplash.com/YhPYgb8ZCBw",	
 	"https://source.unsplash.com/E5lK_COkD2E"
 	];	
-
-// console.log(image_collections);	
+	// console.log(data.data.attributes.Banner.background.data.attributes.url);
+	// console.log(data);	
 </script>
 <svelte:head>
 	<title>Home</title>
@@ -39,9 +40,9 @@
 			<Col sm={{ size: 7, offset: -5 }}>
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
-						<h1>We Build Serene Dreams</h1>
+						<h1>{portfolio.Banner.heading}</h1>
 					</div>
-					<a href="/" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
+					<a href="{portfolio.Banner}" class="homebanner__content__btn homebanner__content--btn">{portfolio.Banner.buttonText}</a>
 				</div>
 			</Col>
 		</Row>
@@ -78,13 +79,11 @@
 	<Container>
 		<Row>
 			<Col md="12">
-				<h2 class="sticky-content__heading text-center">Jagdschloss Vail</h2>
+				<h2 class="sticky-content__heading text-center">{portfolio.twoColumns.heading}</h2>
 			</Col>
 			<Col md="5">
-				<div class="sticky-content__img sticky-content--top-text">
-					<p>"This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. </p>
-					<p>Its traditional design is further enhanced by a mountain lion sculpture that guards the property. </p>
-					<p>	Inside, you'll find reclaimed wood cabinetry in the kitchen and unique details like rough-cut granite countertops, seamlessly blending light and dark stone for a cohesive old-world mountain home aesthetic."</p>
+				<div class="sticky-content__img sticky-content--top-text" >
+					{portfolio.twoColumns.content}
 				</div>
 				<div class="sticky-content__img sticky-content--first-img">
 					<img src="{firstImg}" alt="gallery">
