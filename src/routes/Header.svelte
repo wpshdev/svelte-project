@@ -22,7 +22,7 @@
 			<a href="/contact">Contact us</a>
 		</li>
 		<li aria-current={$page.url.pathname === '/blogs' ? 'page' : undefined}>
-			<a href="/blogs">Blog</a>
+			<a href="/blog">Blog</a>
 		</li>
 	</ul>
 </nav>
