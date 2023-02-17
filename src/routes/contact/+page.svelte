@@ -46,9 +46,11 @@
     background-position: bottom;
     background-size: cover;
     padding-top: 150px;
+
     .contact-form{
         background-color: rgba(0,0,0,0.6);
         padding: 50px 20px;
+        margin:50px 0px;
         color: #fff;
     }
 }
