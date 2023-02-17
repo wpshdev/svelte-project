@@ -73,7 +73,12 @@
                 color: #fff;
                 padding: 0.8rem;
                 h2{
-                    font-size: 1.4rem;
+                    font-size: 1.2rem;
+                    font-weight: 300;
+                    margin-bottom: 0;
+                }
+                span{
+                    font-weight: 300;
                 }
             }   
         }

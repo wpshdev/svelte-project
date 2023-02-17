@@ -24,7 +24,6 @@
             </Col>
             <Col>
                 <div class="member__img" style="--banner: url({domain}/{member.memberPhoto.data.attributes.url})">
-
                 </div>
             </Col>
         </Row>
@@ -33,6 +32,12 @@
 
 <style lang="scss">
     .member{
+        &__info{
+            padding: 0 3rem;
+            p{
+                line-height: 2;
+            }
+        }
         &__img{
             background-image: var(--banner);
             background-size: cover;
