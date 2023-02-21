@@ -2,11 +2,14 @@
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
-	let portfolio =  data.data.attributes;
+	let portfolio =  data.portfolio.data.attributes; 
+    let properties = data.properties.data;
+    console.log(properties);
+    // console.log(data);
 	// console.log(data.data.attributes.Banner.background.data.attributes.url);
 </script>
 <svelte:head>
-	<title>Our Team</title>
+	<title>{portfolio.title}</title>
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
@@ -20,14 +23,13 @@
 			</Col>
 		</Row>
         <Row>
-            {#each portfolio.team_members.data as member}
+            {#each properties as property}
                 <Col md="4">
-                    <div class="our-team__member">
-                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                        <a href="/our-team/{member.attributes.slug}">
-                            <div class="our-team__member_caption">
-                                <h2>{member.attributes.name}</h2>
-                                <span>{member.attributes.position}</span>
+                    <div class="portfolio__property">
+                        <img src="{domain}{property.attributes.featuredImage.data.attributes.url}" alt="member">
+                        <a href="/portfolio/{property.attributes.slug}">
+                            <div class="portfolio__property__caption">
+                                <h2>{property.attributes.title}</h2>
                             </div>                        
                         </a>
                     </div>
@@ -44,7 +46,7 @@
                 max-width: 100%;
                 height: auto;
             }      
-        &__member{
+        &__property{
             position: relative;
             margin-top: 1.5rem;
             &:hover{
@@ -63,7 +65,7 @@
                 top: 0;
                 transition: 0.3s;
             }            
-            &_caption{
+            &__caption{
                 position: absolute;
                 bottom: 0;
                 text-align: left;

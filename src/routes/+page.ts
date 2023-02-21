@@ -6,3 +6,20 @@ export async function load() {
     // console.log(response.json());
     return response.json();
 }                                                                     
+
+// async function submitForm() {
+//     const res = await fetch('https://strapi.ulfbuilt.com:1337/api/contact?populate=deep', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             title,
+//             content,
+//             createdAt: Date.now()
+//         })
+//     }).then((res) => {
+//             res.json();
+//             open = false;
+//     });
+// }
