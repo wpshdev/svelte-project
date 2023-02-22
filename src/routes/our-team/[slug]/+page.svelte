@@ -34,9 +34,6 @@
     .member{
         &__info{
             padding: 0 3rem;
-            p{
-                line-height: 2;
-            }
         }
         &__img{
             background-image: var(--banner);
