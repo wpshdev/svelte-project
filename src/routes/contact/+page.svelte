@@ -38,7 +38,28 @@
         if(json.error){
             result = json.error.message
         }else{
+            result = 'Processing...'
+
+
+
+        const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
+		const res2 = await fetch(url2, {
+			method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer  ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' },
+            body: JSON.stringify({
+                "to": "parth@wpsuperheroes.com",
+                "subject": name + "wants to contact you",
+                "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
+            })
+		})
+		const json2 = await res2.json()
+        if(json2.error){
+            result = json2.error.message
+        }else{
             result = 'Thank you for contacting us. We will reach you soon.'
+        }
+
+
         }
 	}
 </script>
@@ -64,19 +85,19 @@
                 <Form method="post">
                     <FormGroup>
                         <Label for="yourName">Your Name</Label>
-                        <Input placeholder="Your Name" />
+                        <Input placeholder="Your Name" bind:value={name} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="yourEmail">Your Email</Label>
-                        <Input type="email" placeholder="Your Email" />
+                        <Input type="email" placeholder="Your Email" bind:value={email} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="yourSubject">Your Subject</Label>
-                        <Input placeholder="Your Subject" />
+                        <Input placeholder="Your Subject" bind:value={subject} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="yourMessage">Your Message</Label>
-                        <Input type="textarea" id="yourMessage" placeholder="Your Message"/>
+                        <Input type="textarea" id="yourMessage" placeholder="Your Message" bind:value={message}/>
                     </FormGroup>
                     <Button type="button" {color} on:click={doContact}>Send</Button>
                 </Form>

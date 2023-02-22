@@ -26,7 +26,7 @@
 	"https://source.unsplash.com/E5lK_COkD2E"
 	];	
 
-	console.log(data);	
+	console.log(data);
 </script>
 <svelte:head>
 	<title>Home</title>
