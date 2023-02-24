@@ -11,7 +11,7 @@
 	<title>{title} - Blog</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<section class="blog-1 text-center" style="background-image:url({url+data.data[0].attributes.featuredimage.data.attributes.url})">
+<section class="blog-1 text-center" style="background-image:url({url}{data.data[0].attributes.featuredimage.data.attributes.url})">
     <Container>
         <h1>{title}</h1>
     </Container>
