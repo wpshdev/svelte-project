@@ -30,7 +30,7 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
-
+<!-- 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 	<script type="text/javascript">
@@ -46,7 +46,7 @@ anime.timeline({loop: false})
     delay: (el, i) => 150 * (i+1)
   })
 });
-	</script>
+	</script> -->
 </svelte:head>
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
