@@ -36,8 +36,8 @@
 	<script type="text/javascript">
 $(window).bind("load", function() {
 	var textWrapper = document.querySelector('.ml3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-anime.timeline({loop: false})
+	textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+	anime.timeline({loop: false})
   .add({
     targets: '.ml3 .letter',
     opacity: [0,1],
@@ -265,10 +265,7 @@ anime.timeline({loop: false})
 </section>
 
 <style lang="scss">
-.ml3 {
-  font-weight: 900;
-  font-size: 3.5em;
-}
+
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
