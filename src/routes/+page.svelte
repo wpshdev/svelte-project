@@ -35,16 +35,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 	<script type="text/javascript">
 $(window).bind("load", function() {
-	if ($(this).scrollTop()>0){
-        $('header').fadeOut();
-     }
-    else{
-      $('header').fadeIn();
-     }
-
 	var textWrapper = document.querySelector('.ml3');
-	textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-	anime.timeline({loop: false})
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+anime.timeline({loop: false})
   .add({
     targets: '.ml3 .letter',
     opacity: [0,1],
@@ -61,11 +54,7 @@ $(window).bind("load", function() {
 			<Col sm={{ size: 7, offset: -5 }}>
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
-						<h1 class="ml3">
-							<span class="text-wrapper">
-								<span class="letters">We Build Serene Dreams</span>
-							  </span>
-						</h1>
+						<h1 class="ml3">We Build Serene Dreams</h1>
 					</div>
 					<a href="/" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
 				</div>
@@ -276,7 +265,6 @@ $(window).bind("load", function() {
 </section>
 
 <style lang="scss">
-
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
