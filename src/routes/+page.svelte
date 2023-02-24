@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let data;
-
 	import { Col, Container, Row } from "sveltestrap";
     import leftImg from "$lib/img/left-img.png";
     import topImg from "$lib/img/top-img.jpg";
@@ -31,6 +30,23 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	<script type="text/javascript">
+$(window).bind("load", function() {
+	var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2550,
+    delay: (el, i) => 150 * (i+1)
+  })
+});
+	</script>
 </svelte:head>
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
@@ -38,7 +54,7 @@
 			<Col sm={{ size: 7, offset: -5 }}>
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
-						<h1>We Build Serene Dreams</h1>
+						<h1 class="ml3">We Build Serene Dreams</h1>
 					</div>
 					<a href="/" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
 				</div>
@@ -249,7 +265,10 @@
 </section>
 
 <style lang="scss">
-
+.ml3 {
+  font-weight: 900;
+  font-size: 3.5em;
+}
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
