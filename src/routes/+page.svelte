@@ -30,30 +30,6 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-	<script type="text/javascript">
-$(window).bind("load", function() {
-	if ($(this).scrollTop()>0){
-        $('header').fadeOut();
-     }
-    else{
-      $('header').fadeIn();
-     }
-
-	var textWrapper = document.querySelector('.ml3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-anime.timeline({loop: false})
-  .add({
-    targets: '.ml3 .letter',
-    opacity: [0,1],
-    easing: "easeInOutQuad",
-    duration: 2550,
-    delay: (el, i) => 150 * (i+1)
-  })
-});
-	</script>
 </svelte:head>
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
