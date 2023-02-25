@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 export async function load(params) {
     const url = 'https://strapi.ulfbuilt.com:1337/api/blogs?filters[slug][$eq]='+params.params.slug+'&populate=deep';
     const response = await fetch(url, {
