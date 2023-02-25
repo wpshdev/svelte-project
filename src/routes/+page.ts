@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 export async function load() {
     try{
     const url = 'https://strapi.ulfbuilt.com:1337/api/portfolio?populate=*';

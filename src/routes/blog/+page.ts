@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 export async function load() {
     const url = 'https://strapi.ulfbuilt.com:1337/api/blogs?populate=*';
     const response = await fetch(url, {
