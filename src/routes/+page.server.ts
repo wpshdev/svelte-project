@@ -1,3 +1,4 @@
+export const prerender = true;
 export async function load() {
     // const url = 'https://strapi.ulfbuilt.com:1337/api/portfolio?populate=deep';
     // const response = await fetch(url, {
