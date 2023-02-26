@@ -5,7 +5,10 @@ const config: UserConfig = {
 	plugins: [sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
+	},
+	build:{
+		sourcemap: true // Config vite to generate sourcemap when bundling.
+	},
 };
 
 export default config;
