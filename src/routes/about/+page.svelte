@@ -11,7 +11,7 @@
     let url = "https://strapi.ulfbuilt.com:1337/uploads/";
 </script>
 <svelte:head>
-	<title>{abouttitle}</title>
+	<title>{abouttitle} - changes</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <div class="about-1" style="background-image: url({url+aboutimage})"></div>
