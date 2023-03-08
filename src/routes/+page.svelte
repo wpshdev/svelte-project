@@ -17,7 +17,11 @@
 	import Carousel from "../components/Carousel.svelte";
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
-
+	import { fade, fly } from 'svelte/transition';
+	import { onMount } from "svelte";
+	import Animate from "$lib/Animate.svelte";
+	import TextTransition from "$lib/TextTransition.svelte";
+	
 	let image_collections = [
 	"https://source.unsplash.com/uFdRfAkM1DM",
 	"https://source.unsplash.com/RQOABS5RH0M",
@@ -25,8 +29,39 @@
 	"https://source.unsplash.com/E5lK_COkD2E"
 	];	
 
+	function typewriter(node, { speed = 1 }) {
+		const valid = (
+			node.childNodes.length === 1 &&
+			node.childNodes[0].nodeType === Node.TEXT_NODE
+		);
+		if (!valid) {
+			throw new Error(`This transition only works on elements with a single text node child`);
+		}
+
+		let text = node.textContent;
+		const splitText = text.split("");
+		const duration = text.length;
+		node.textContent = "";
+		
+		for(let i = 0; i < splitText.length; i++){
+			node.innerHTML += splitText[i] == " " ? " " : "<span in:fade style='transition:"+i+"00' >" + splitText[i] + "</span>";
+		}
+	}	
+
+
+
+	function onTick(){
+
+	}
+
+	// function complete(){
+	// 	clearInterval(timer);
+	// 	timer = null;
+	// }
+
 	// console.log(data);
 </script>
+
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
@@ -54,35 +89,59 @@ anime.timeline({loop: false})
 			<Col sm={{ size: 7, offset: -5 }}>
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
-						<h1 class="ml3">We Build Serene Dreams</h1>
+						<Animate section=".homebanner">
+						<h1 class="ml3"><TextTransition text="We Build Serene Dreams"  transitionDelay=150/></h1>
+						</Animate>
 					</div>
-					<a href="/" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
+					<Animate section=".homebanner">
+						<a href="/" class="homebanner__content__btn homebanner__content--btn" in:fade={{
+							delay: 3500,
+							y: 200							
+						}}>Learn what makes us different</a>
+					</Animate>						
 				</div>
 			</Col>
 		</Row>
 	</Container>
 </section>
-
 <section class="gallery">
 	<Container>
 		<Row>
 			<Col md="12">
 				<div class="gallery__container">
-					<figure class="gallery__container__figure gallery__container--first-img">
-						<div class="gallery__container__figure__overlay">
-							<a href="/" class="gallery__container__overlay__link">
-								<span>4</span>
-								<p>New Construction</p>
-							</a>
-						</div>
-						<img src="{leftImg}" alt="Mountain Top">
-					</figure>
-					<figure class="gallery__container__figure gallery__container--top-img">
-						<img src="{topImg}"  alt="Mountain Top Interior">
-					</figure>
-					<figure class="gallery__container__figure gallery__container--bottom-img">
-						<img src="{bottomImg}"  alt="Lakehouse">
-					</figure>	
+					<Animate section=".gallery">					
+						<figure class="gallery__container__figure gallery__container--first-img" in:fly={{
+							delay: 100,
+							duration: 2000,
+							x: -900							
+						}}>
+							<div class="gallery__container__figure__overlay">
+								<a href="/" class="gallery__container__overlay__link">
+									<span>4</span>
+									<p>New Construction</p>
+								</a>
+							</div>
+							<img src="{leftImg}" alt="Mountain Top">
+						</figure>
+					</Animate>
+					<Animate section=".gallery">
+						<figure class="gallery__container__figure gallery__container--top-img" in:fly={{
+							delay: 500,
+							duration: 2000,
+							x: 900							
+						}} >
+							<img src="{topImg}"  alt="Mountain Top Interior">
+						</figure>
+					</Animate>
+					<Animate section=".gallery">
+						<figure class="gallery__container__figure gallery__container--bottom-img" in:fly={{
+							delay: 1100,
+							duration: 2000,
+							x: 900							
+						}} >
+							<img src="{bottomImg}"  alt="Lakehouse">
+						</figure>	
+					</Animate>
 				</div>							
 			</Col>
 		</Row>
@@ -93,7 +152,12 @@ anime.timeline({loop: false})
 	<Container>
 		<Row>
 			<Col md="12">
-				<h2 class="sticky-content__heading text-center">Jagdschloss Vail</h2>
+				
+				<h2 class="sticky-content__heading text-center">
+					<Animate section=".sticky-content">
+						<h1 class="ml3"><TextTransition text="Jagdschloss Vail"  transitionDelay=150/></h1>
+					</Animate>					
+				</h2>
 			</Col>
 			<Col md="5">
 				<div class="sticky-content__img sticky-content--top-text">
@@ -276,7 +340,7 @@ anime.timeline({loop: false})
 		&__content{
 			position: absolute;
     		bottom: 20%;
-			max-width: 800px;
+			max-width: 750px;
 			&__text{
 				h1{
 					color:#fff;
@@ -294,6 +358,7 @@ anime.timeline({loop: false})
 					color: #fff;
 					font-family: 'Times New Roman', Times, serif;
 					text-transform:lowercase;
+					display: inline-block;
 			}			
 		}
 	}

@@ -5,6 +5,7 @@
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
 </script>
+
 <div class="logo">
 	<a href="/">
 		<img src={logo} alt="ULFBUILT" />

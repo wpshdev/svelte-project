@@ -1,0 +1,22 @@
+<script lang="ts" >
+	import { onMount } from "svelte";
+	export let section;
+	let y;
+	let animate = false;
+	let position;
+
+	onMount(() => {
+		position = document.querySelector(section);
+    	let rect = position.getBoundingClientRect();
+		position = rect.y;	
+		console.log(position);
+		if(y >= position || y < position + 200){
+			animate = true;
+		}			
+	});    
+	console.log(position);
+</script>
+<svelte:window bind:scrollY={y} />	
+{#if y >= position-500}
+    <slot></slot>
+{/if}
