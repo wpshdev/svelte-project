@@ -29,37 +29,6 @@
 	"https://source.unsplash.com/E5lK_COkD2E"
 	];	
 
-	function typewriter(node, { speed = 1 }) {
-		const valid = (
-			node.childNodes.length === 1 &&
-			node.childNodes[0].nodeType === Node.TEXT_NODE
-		);
-		if (!valid) {
-			throw new Error(`This transition only works on elements with a single text node child`);
-		}
-
-		let text = node.textContent;
-		const splitText = text.split("");
-		const duration = text.length;
-		node.textContent = "";
-		
-		for(let i = 0; i < splitText.length; i++){
-			node.innerHTML += splitText[i] == " " ? " " : "<span in:fade style='transition:"+i+"00' >" + splitText[i] + "</span>";
-		}
-	}	
-
-
-
-	function onTick(){
-
-	}
-
-	// function complete(){
-	// 	clearInterval(timer);
-	// 	timer = null;
-	// }
-
-	// console.log(data);
 </script>
 
 <svelte:head>
