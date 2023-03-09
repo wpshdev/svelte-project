@@ -13,11 +13,11 @@
 </div>
 <nav>
 	<ul>
-		<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-			<a href="/">Home</a>
+		<li aria-current={$page.url.pathname === '/page/sample-page' ? 'page' : undefined}>
+			<a href="/page/sample-page">Home</a>
 		</li>
 		<li aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}>
-			<a href="/">Portfolio</a>
+			<a href="/portfolio">Portfolio</a>
 		</li>		
 		<li aria-current={$page.url.pathname === '/our-team' ? 'page' : undefined}>
 			<a href="/our-team">Our Team</a>

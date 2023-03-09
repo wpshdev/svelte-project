@@ -3,7 +3,6 @@
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let page =  data.data[0].attributes;
-	console.log(data);
 </script>
 <svelte:head>
 	<title>{page.title}</title>

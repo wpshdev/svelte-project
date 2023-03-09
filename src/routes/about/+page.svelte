@@ -2,7 +2,6 @@
     import {Container} from 'sveltestrap';
     import { onMount } from 'svelte';
     export let data;
-    console.log(data);
     let abouttitle = data.data.attributes.Title
     let aboutimage = data.data.attributes.featuredimage.data.attributes.formats.medium.hash+data.data.attributes.featuredimage.data.attributes.ext
     let abouttext = data.data.attributes.about
