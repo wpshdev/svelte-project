@@ -5,7 +5,6 @@
     export let transitionDelay;
 
     const splitText = text.split("");		
-    console.log(splitText);
   </script>
 
     {#each splitText as letter, i}

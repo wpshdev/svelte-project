@@ -2,21 +2,19 @@
 	import { onMount } from "svelte";
 	export let section;
 	let y;
-	let animate = false;
 	let position;
-
+	let pY = 0;
 	onMount(() => {
 		position = document.querySelector(section);
     	let rect = position.getBoundingClientRect();
-		position = rect.y;	
-		console.log(position);
-		if(y >= position || y < position + 200){
-			animate = true;
-		}			
-	});    
-	console.log(position);
+		position = rect.y;		
+	});
+	function enableAnimation(val){
+		pY = val > pY ? val : pY;
+		return pY;
+	}
 </script>
 <svelte:window bind:scrollY={y} />	
-{#if y >= position-500}
+{#if enableAnimation(y) > position - 500}
     <slot></slot>
 {/if}
