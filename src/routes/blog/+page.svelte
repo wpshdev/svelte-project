@@ -4,6 +4,11 @@
     let blogs = data.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     console.log(data);
+    let searchTerm="";
+    $: searchBlogs = blogs.filter(( blog: { title: string | string[]; } )=>{
+        return blog.attributes.title.includes(searchTerm);
+    });
+    $: console.log(searchBlogs);
     // let title = data.data[0].attributes.title;
 </script>
 <svelte:head>
@@ -12,13 +17,18 @@
 </svelte:head>
 <Container>
     <Row>
+        <Col md="12"><input type="text" placeholder="search" bind:value={searchTerm}></Col>
         <Col md="12"><h1 class="text-center">BLOG</h1></Col>
     </Row>
     <Row>
-        {#each blogs as blog}
+        {#each searchBlogs as blog}
         <Col md="4">
             <a href="/blog/{blog.attributes.slug}" class="text-decoration-none text-black">
+                {#if blog.attributes.featuredimage.data.attributes.formats == null}
+                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="w-100">
+                {:else}
                 <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="w-100">
+                {/if}
                 <h4 class="text-center">{blog.attributes.title}</h4>
                 <p class="text-center">{blog.attributes.shorttext}</p>
             </a>
