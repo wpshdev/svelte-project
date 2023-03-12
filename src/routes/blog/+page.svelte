@@ -17,8 +17,8 @@
 </svelte:head>
 <Container>
     <Row>
-        <Col md="12"><input type="text" placeholder="search" bind:value={searchTerm}></Col>
         <Col md="12"><h1 class="text-center">BLOG</h1></Col>
+        <Col md="12"><input type="text" placeholder="search" bind:value={searchTerm}></Col>
     </Row>
     <Row>
         {#each searchBlogs as blog}
