@@ -5,7 +5,7 @@
     let url = "https://strapi.ulfbuilt.com:1337";
     console.log(data);
     let searchTerm="";
-    $: searchBlogs = blogs.filter(( blog: { title: string | string[]; } )=>{
+    $: searchBlogs = blogs.filter(( blog: {[x: string]: any; title: string | string[]; } )=>{
         return blog.attributes.title.includes(searchTerm);
     });
     $: console.log(searchBlogs);
@@ -25,9 +25,9 @@
         <Col md="4">
             <a href="/blog/{blog.attributes.slug}" class="text-decoration-none text-black">
                 {#if blog.attributes.featuredimage.data.attributes.formats == null}
-                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="w-100">
+                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                 {:else}
-                <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="w-100">
+                <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
                 {/if}
                 <h4 class="text-center">{blog.attributes.title}</h4>
                 <p class="text-center">{blog.attributes.shorttext}</p>
@@ -36,3 +36,11 @@
         {/each}
     </Row>
 </Container>
+<style lang="scss">
+    .blog-img{
+        min-height: 300px;
+        max-height: 300px;
+        object-fit:cover;
+        -o-object-fit: cover;
+    }
+</style>
