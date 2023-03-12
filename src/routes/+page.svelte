@@ -34,23 +34,6 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
-<!-- 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-	<script type="text/javascript">
-$(window).bind("load", function() {
-	var textWrapper = document.querySelector('.ml3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-anime.timeline({loop: false})
-  .add({
-    targets: '.ml3 .letter',
-    opacity: [0,1],
-    easing: "easeInOutQuad",
-    duration: 2550,
-    delay: (el, i) => 150 * (i+1)
-  })
-});
-	</script> -->
 </svelte:head>
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
@@ -121,11 +104,12 @@ anime.timeline({loop: false})
 	<Container>
 		<Row>
 			<Col md="12">
-				
 				<h2 class="sticky-content__heading text-center">
-					<Animate section=".sticky-content">
-						<h1 class="ml3"><TextTransition text="Jagdschloss Vail"  transitionDelay=150/></h1>
-					</Animate>					
+					<h1 class="ml3">
+						<Animate section=".sticky-content">
+							<TextTransition text="Jagdschloss Vail"  transitionDelay=150/>
+						</Animate>
+					</h1>				
 				</h2>
 			</Col>
 			<Col md="5">
