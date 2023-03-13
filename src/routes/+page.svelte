@@ -157,7 +157,11 @@
 </section>
 
 <section class="sticky-content2">
-	<img src="{stairs}" alt="stairs" class="sticky-content2__bg">
+	<Animate section=".sticky-content2">
+		<img src="{stairs}" alt="stairs" class="sticky-content2__bg" in:fade={{
+			duration: 1500
+		}}>
+	</Animate>
 	<Container>
 		<Row>
 			<Col md="5">
@@ -203,10 +207,8 @@
 		</Row>
 	</Container>
 </section>
-
 <section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})">
 </section>
-
 <Testimonial testimonial="This is pinnacle Colorado Castle. From the rough cut local stone that covers the interior and exterior walls, to the curved torched wood and wrought iron staircases, this is a traditional castle." />
 
 <section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})">
