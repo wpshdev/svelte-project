@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
+    import LazyImage from "$lib/LazyImage.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
     let properties = data.properties.data;
@@ -26,7 +27,7 @@
             {#each properties as property}
                 <Col md="4">
                     <div class="portfolio__property">
-                        <img src="{domain}{property.attributes.featuredImage.data.attributes.url}" alt="member">
+                        <LazyImage src="{domain}{property.attributes.featuredImage.data.attributes.url}" alt="member" className="portfolio__property__img"/>
                         <a href="/portfolio/{property.attributes.slug}">
                             <div class="portfolio__property__caption">
                                 <h2>{property.attributes.title}</h2>
@@ -42,10 +43,10 @@
 <style lang="scss">
     .portfolio{
         img{
-                width: 100%;
-                max-width: 100%;
-                height: auto;
-            }      
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }      
         &__property{
             position: relative;
             margin-top: 1.5rem;

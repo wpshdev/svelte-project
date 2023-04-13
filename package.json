@@ -44,6 +44,7 @@
 		"bootstrap": "^5.2.3",
 		"nodemailer": "^6.9.1",
 		"nodemailer-smtp-transport": "^2.7.4",
+		"sharp": "^0.32.0",
 		"sveltestrap": "^5.10.0"
 	}
 }

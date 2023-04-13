@@ -21,13 +21,14 @@
 	import { onMount } from "svelte";
 	import Animate from "$lib/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
-	
-	let image_collections = [
-	"https://source.unsplash.com/uFdRfAkM1DM",
-	"https://source.unsplash.com/RQOABS5RH0M",
-	"https://source.unsplash.com/YhPYgb8ZCBw",	
-	"https://source.unsplash.com/E5lK_COkD2E"
-	];	
+	import ImageSlider from '$lib/ImageSlider.svelte';
+
+    const images = [
+        "https://source.unsplash.com/uFdRfAkM1DM",
+        "https://source.unsplash.com/RQOABS5RH0M",
+        "https://source.unsplash.com/YhPYgb8ZCBw",	
+        "https://source.unsplash.com/E5lK_COkD2E"
+    ];
 
 </script>
 
@@ -42,13 +43,14 @@
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
 						<Animate section=".homebanner">
-						<h1 class="ml3"><TextTransition text="We Build Serene Dreams"  transitionDelay=150/></h1>
+						<h1 class="ml3"><TextTransition text="We Build Serene Dreams"  transitionDelay=600/></h1>
 						</Animate>
 					</div>
 					<Animate section=".homebanner">
-						<a href="/" class="homebanner__content__btn homebanner__content--btn" in:fade={{
+						<a href="/" class="homebanner__content__btn homebanner__content--btn" in:fly={{
 							delay: 3500,
-							y: 200							
+							duration: 2000,
+							y: 50							
 						}}>Learn what makes us different</a>
 					</Animate>						
 				</div>
@@ -163,7 +165,7 @@
 		}}>
 	</Animate>
 	<Container>
-		<Row>
+		<Row>	
 			<Col md="5">
 				<div class="sticky-content2__img sticky-content2--first-img">
 					<img src="{firstImg}" alt="gallery">
@@ -220,7 +222,7 @@
 	<Container>
 		<Row>
 			<Col>
-				<Carousel images={image_collections}/>			
+				<ImageSlider {images} />  	
 			</Col>
 		</Row>
 	</Container>

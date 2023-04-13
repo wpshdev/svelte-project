@@ -8,18 +8,32 @@
     let aboutheading = data.data.attributes.AboutHeading
     let aboutsubheading = data.data.attributes.Aboutsubheading
     let url = "https://strapi.ulfbuilt.com:1337/uploads/";
+    
+    import ImageSlider from '$lib/ImageSlider.svelte';
+
+    const images = [
+        "https://source.unsplash.com/uFdRfAkM1DM",
+        "https://source.unsplash.com/RQOABS5RH0M",
+        "https://source.unsplash.com/YhPYgb8ZCBw",	
+        "https://source.unsplash.com/E5lK_COkD2E"
+    ];
 </script>
+
+
 <svelte:head>
 	<title>{abouttitle} - changes</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+
 <div class="about-1" style="background-image: url({url+aboutimage})"></div>
 <div class="container about-2">
+    <ImageSlider {images} />        
     <h1>{aboutheading}</h1>
     <h3>{aboutsubheading}</h3>
     <div class="two-columns">
     {@html abouttext}
     </div>
+    
 </div>
 <section class="about-3">
     <p>Ready to make your dreams a reality? We invite you to connect with us and have a conversation about your project.</p>
