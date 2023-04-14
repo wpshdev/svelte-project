@@ -13,23 +13,17 @@
 </div>
 <nav>
 	<ul>
-		<li aria-current={$page.url.pathname === '/page/sample-page' ? 'page' : undefined}>
-			<a href="/page/sample-page">Home</a>
-		</li>
 		<li aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}>
-			<a href="/portfolio">Portfolio</a>
-		</li>		
-		<li aria-current={$page.url.pathname === '/our-team' ? 'page' : undefined}>
-			<a href="/our-team">Our Team</a>
-		</li>		
+			<a href="/portfolio">PORTFOLIO</a>
+		</li>	
 		<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-			<a href="/about">About</a>
+			<a href="/about">ABOUT US</a>
+		</li>
+		<li aria-current={$page.url.pathname === '/our-team' ? 'page' : undefined}>
+			<a href="/our-team">OUR TEAM</a>
 		</li>
 		<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
-			<a href="/contact">Contact us</a>
-		</li>
-		<li aria-current={$page.url.pathname === '/blogs' ? 'page' : undefined}>
-			<a href="/blog">Blog</a>
+			<a href="/contact">CONTACT US</a>
 		</li>
 	</ul>
 </nav>
