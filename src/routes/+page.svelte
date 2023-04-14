@@ -47,7 +47,7 @@
 						</Animate>
 					</div>
 					<Animate section=".homebanner">
-						<a href="/" class="homebanner__content__btn homebanner__content--btn" in:fly={{
+						<a href="/" class="homebanner__content__btn homebanner__content--btn btn btn-inverted" in:fly={{
 							delay: 3500,
 							duration: 2000,
 							y: 50							
