@@ -4,7 +4,7 @@
     import leftImg from "$lib/img/left-img.png";
     import topImg from "$lib/img/top-img.jpg";
     import bottomImg from "$lib/img/bottom-img.jpg";	
-	import banner from "$lib/img/slide1.jpg";
+	import banner from "$lib/img/first-section.svg";
 	import galImg from "$lib/img/gal-img.jpg";	
 	import firstImg from "$lib/img/gal-img1.png";
 	import scndImg from "$lib/img/gal-img2.jpg";
