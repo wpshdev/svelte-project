@@ -1,7 +1,7 @@
 @import 'vars';
 
 *{
-    font-family: 'Roboto', open sans;
+    font-family: $primary-font;
 }
 input,textarea, .form-control{
     padding: 0.8rem;
