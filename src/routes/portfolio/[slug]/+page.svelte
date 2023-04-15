@@ -1,11 +1,10 @@
 <script lang="ts">
 	export let data;
-
 	import { Col, Container, Row } from "sveltestrap";
     import leftImg from "$lib/img/left-img.png";
     import topImg from "$lib/img/top-img.jpg";
     import bottomImg from "$lib/img/bottom-img.jpg";	
-	import banner from "$lib/img/slide1.jpg";
+	import banner from "$lib/img/first-section.svg";
 	import galImg from "$lib/img/gal-img.jpg";	
 	import firstImg from "$lib/img/gal-img1.png";
 	import scndImg from "$lib/img/gal-img2.jpg";
@@ -14,33 +13,47 @@
 	import livingRoom from "$lib/img/living-room.jpg";		
 	import lvThropy from "$lib/img/lvThropy.jpg";	
 	import panther from "$lib/img/panther.png";	
-	import Testimonial from "../../../components/Testimonial.svelte";
-	import Carousel from "../../../components/Carousel.svelte";
+	import Testimonial from "../components/Testimonial.svelte";
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
+	import { fade, fly } from 'svelte/transition';
+	import { onMount } from "svelte";
+	import Animate from "$lib/Animate.svelte";
+	import TextTransition from "$lib/TextTransition.svelte";
+	import ImageSlider from '$lib/ImageSlider.svelte';
 
-	let image_collections = [
-	"https://source.unsplash.com/uFdRfAkM1DM",
-	"https://source.unsplash.com/RQOABS5RH0M",
-	"https://source.unsplash.com/YhPYgb8ZCBw",	
-	"https://source.unsplash.com/E5lK_COkD2E"
-	];	
+    
+	const images = [
+        "https://source.unsplash.com/uFdRfAkM1DM",
+        "https://source.unsplash.com/RQOABS5RH0M",
+        "https://source.unsplash.com/YhPYgb8ZCBw",	
+        "https://source.unsplash.com/E5lK_COkD2E"
+    ];
 
-	console.log(data);	
 </script>
+
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
 		<Row>
 			<Col sm={{ size: 7, offset: -5 }}>
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
-						<h1>We Build Serene Dreams</h1>
+						<Animate section=".homebanner">
+							<h1 class="ml3"><TextTransition text="Build Exelence"  transitionDelay=600/></h1>
+						</Animate>
 					</div>
-					<a href="/" class="homebanner__content__btn homebanner__content--btn">Learn what makes us different</a>
+					<Animate section=".homebanner">
+						<a href="/" class="homebanner__content__btn homebanner__content--btn btn btn-inverted" in:fly={{
+							delay: 3500,
+							duration: 2000,
+							y: 50							
+						}}>Learn what makes us different</a>
+					</Animate>						
 				</div>
 			</Col>
 		</Row>
@@ -52,21 +65,39 @@
 		<Row>
 			<Col md="12">
 				<div class="gallery__container">
-					<figure class="gallery__container__figure gallery__container--first-img">
-						<div class="gallery__container__figure__overlay">
-							<a href="/" class="gallery__container__overlay__link">
-								<span>4</span>
-								<p>New Construction</p>
-							</a>
-						</div>
-						<img src="{leftImg}" alt="Mountain Top">
-					</figure>
-					<figure class="gallery__container__figure gallery__container--top-img">
-						<img src="{topImg}"  alt="Mountain Top Interior">
-					</figure>
-					<figure class="gallery__container__figure gallery__container--bottom-img">
-						<img src="{bottomImg}"  alt="Lakehouse">
-					</figure>	
+					<Animate section=".gallery">					
+						<figure class="gallery__container__figure gallery__container--first-img" in:fly={{
+							delay: 100,
+							duration: 2000,
+							x: -900							
+						}}>
+							<div class="gallery__container__figure__overlay">
+								<a href="/" class="gallery__container__overlay__link">
+									<span>4</span>
+									<p>New Construction</p>
+								</a>
+							</div>
+							<img src="{leftImg}" alt="Mountain Top">
+						</figure>
+					</Animate>
+					<Animate section=".gallery">
+						<figure class="gallery__container__figure gallery__container--top-img" in:fly={{
+							delay: 500,
+							duration: 2000,
+							x: 900							
+						}} >
+							<img src="{topImg}"  alt="Mountain Top Interior">
+						</figure>
+					</Animate>
+					<Animate section=".gallery">
+						<figure class="gallery__container__figure gallery__container--bottom-img" in:fly={{
+							delay: 1100,
+							duration: 2000,
+							x: 900							
+						}} >
+							<img src="{bottomImg}"  alt="Lakehouse">
+						</figure>	
+					</Animate>
 				</div>							
 			</Col>
 		</Row>
@@ -77,7 +108,13 @@
 	<Container>
 		<Row>
 			<Col md="12">
-				<h2 class="sticky-content__heading text-center">Jagdschloss Vail</h2>
+				<h2 class="sticky-content__heading text-center">
+					<h1 class="ml3">
+						<Animate section=".sticky-content">
+							<TextTransition text="Jagdschloss Vail"  transitionDelay=150/>
+						</Animate>
+					</h1>				
+				</h2>
 			</Col>
 			<Col md="5">
 				<div class="sticky-content__img sticky-content--top-text">
@@ -124,9 +161,13 @@
 </section>
 
 <section class="sticky-content2">
-	<img src="{stairs}" alt="stairs" class="sticky-content2__bg">
+	<Animate section=".sticky-content2">
+		<img src="{stairs}" alt="stairs" class="sticky-content2__bg" in:fade={{
+			duration: 1500
+		}}>
+	</Animate>
 	<Container>
-		<Row>
+		<Row>	
 			<Col md="5">
 				<div class="sticky-content2__img sticky-content2--first-img">
 					<img src="{firstImg}" alt="gallery">
@@ -170,10 +211,8 @@
 		</Row>
 	</Container>
 </section>
-
 <section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})">
 </section>
-
 <Testimonial testimonial="This is pinnacle Colorado Castle. From the rough cut local stone that covers the interior and exterior walls, to the curved torched wood and wrought iron staircases, this is a traditional castle." />
 
 <section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})">
@@ -185,7 +224,7 @@
 	<Container>
 		<Row>
 			<Col>
-				<Carousel images={image_collections}/>			
+				<ImageSlider {images} />  	
 			</Col>
 		</Row>
 	</Container>
@@ -249,7 +288,6 @@
 </section>
 
 <style lang="scss">
-
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
@@ -261,7 +299,7 @@
 		&__content{
 			position: absolute;
     		bottom: 20%;
-			max-width: 800px;
+			max-width: 750px;
 			&__text{
 				h1{
 					color:#fff;
@@ -279,6 +317,7 @@
 					color: #fff;
 					font-family: 'Times New Roman', Times, serif;
 					text-transform:lowercase;
+					display: inline-block;
 			}			
 		}
 	}

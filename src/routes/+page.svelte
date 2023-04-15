@@ -14,7 +14,7 @@
 	import lvThropy from "$lib/img/lvThropy.jpg";	
 	import panther from "$lib/img/panther.png";	
 	import Testimonial from "../components/Testimonial.svelte";
-	import Carousel from "../components/Carousel.svelte";
+	// import Carousel from "../components/Carousel.svelte";
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
 	import { fade, fly } from 'svelte/transition';
@@ -22,6 +22,7 @@
 	import Animate from "$lib/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
 	import ImageSlider from '$lib/ImageSlider.svelte';
+	import Carousel from "$lib/Carousel.svelte";
 
     const images = [
         "https://source.unsplash.com/uFdRfAkM1DM",
@@ -36,6 +37,7 @@
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
 		<Row>
@@ -58,6 +60,13 @@
 		</Row>
 	</Container>
 </section>
+<Container>
+	<Row>
+		<Col md="12">
+	<Carousel {images} />
+</Col>
+</Row>
+</Container>
 <section class="gallery">
 	<Container>
 		<Row>
