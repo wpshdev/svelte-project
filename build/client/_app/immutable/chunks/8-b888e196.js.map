@@ -1,1 +1,0 @@
-{"version":3,"file":"8-b888e196.js","sources":["../../../../../generated/nodes/8.js"],"sourcesContent":["export { default as component } from \"../../../src/routes/+page.svelte\";\nexport const has_server_load = true;"],"names":["has_server_load"],"mappings":"uEACY,MAACA,EAAkB"}

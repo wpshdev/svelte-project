@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Form, FormGroup, Input, Label } from 'sveltestrap';    
-    import { Col, Container, Row } from 'sveltestrap';    
+    import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
     export let data;
     let title = data.data[0].attributes.title;
     let content = data.data[0].attributes.blogtext;
