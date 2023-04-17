@@ -32,7 +32,7 @@ function updateProgress(index) {
 </script>
 <svelte:head>
     <!-- Flickity JavaScript -->
-    <script src="flickity.pkgd.min.js"></script>    
+    <script src="flickity/flickity.pkgd.min.js"></script>    
     <!-- Flickity CSS -->
     <link rel="stylesheet" href="flickity/flickity.min.css" />
 </svelte:head>
