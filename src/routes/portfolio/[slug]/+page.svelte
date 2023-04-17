@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
     import leftImg from "$lib/img/left-img.png";
@@ -602,4 +602,4 @@
 	// 	max-width: 400px;
 	// 	}
 	// }
-</style>
+</style> -->
