@@ -6,21 +6,17 @@
     let blogs = data.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     // console.log(data);
-    
     let searchTerm="";
     $: searchBlogs = blogs.filter(( blog: {[x: string]: any; title: string | string[]; } )=>{
         return blog.attributes.title.includes(searchTerm);
     });
     $: console.log(searchBlogs);
-
     let title = data.data[0].attributes.title;
-
 //     let items = blogs;
 //   let currentPage = 1;
 //   let pageSize = 1;
 //   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
 // $: console.log(paginatedBlogs);
-
 // var items = 3;
 </script>
 <svelte:head>
