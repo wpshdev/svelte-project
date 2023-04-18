@@ -23,13 +23,22 @@
 	import TextTransition from "$lib/TextTransition.svelte";
 	import ImageSlider from '$lib/ImageSlider.svelte';
 	import Carousel from "$lib/Carousel.svelte";
+	import modern from "$lib/img/modern.svg";
+	import mountain from "$lib/img/mountain.svg";
+	import traditional from "$lib/img/traditional.svg";		
 
     const images = [
-        "https://source.unsplash.com/uFdRfAkM1DM",
-        "https://source.unsplash.com/RQOABS5RH0M",
-        "https://source.unsplash.com/YhPYgb8ZCBw",	
-        "https://source.unsplash.com/E5lK_COkD2E"
+        modern,
+        mountain,
+        traditional
     ];
+	console.log(modern);
+
+	let activeTab = 'modern';
+
+	function handleTabClick(category) {
+		activeTab = category;
+	}	
 
 </script>
 
@@ -41,243 +50,156 @@
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
 		<Row>
-			<Col sm={{ size: 7, offset: -5 }}>
+			<Col sm={{ size: 12 }}>
 				<div class="homebanner__content">
 					<div class="homebanner__content__text">
 						<Animate section=".homebanner">
-						<h1 class="ml3"><TextTransition text="We Build Serene Dreams"  transitionDelay=600/></h1>
+						<h1 class="ml3"><TextTransition text="Building Excellence"  transitionDelay=600/></h1>
 						</Animate>
 					</div>
 					<Animate section=".homebanner">
-						<a href="/" class="homebanner__content__btn homebanner__content--btn btn btn-inverted" in:fly={{
+						<p class="homebanner__content__paragraph" in:fly={{
 							delay: 3500,
 							duration: 2000,
 							y: 50							
-						}}>Learn what makes us different</a>
+						}}>Home Builder and Remodeler in Vail, Colorado</p>
 					</Animate>						
 				</div>
 			</Col>
 		</Row>
 	</Container>
 </section>
-<Container>
-	<Row>
-		<Col md="12">
-	<Carousel {images} />
-</Col>
-</Row>
-</Container>
-<section class="gallery">
+<section class="loc-gallery">
 	<Container>
 		<Row>
-			<Col md="12">
-				<div class="gallery__container">
-					<Animate section=".gallery">					
-						<figure class="gallery__container__figure gallery__container--first-img" in:fly={{
-							delay: 100,
-							duration: 2000,
-							x: -900							
-						}}>
-							<div class="gallery__container__figure__overlay">
-								<a href="/" class="gallery__container__overlay__link">
-									<span>4</span>
-									<p>New Construction</p>
-								</a>
+			<Col class="text-center">
+				<div class="loc-gallery__cwrapper">
+					<h2>Home Builder in Vail, Colorado</h2>
+					<p>Building trust important.</p>
+					<div class="loc-gallery__cwrapper__btns">
+						<a href="#" class="btn btn-primary">
+							Find Location
+						</a>
+						<a href="#" class="btn btn-inverted">
+							Explore Our Gallery
+						</a>
+					</div>
+				</div>
+			</Col>
+		</Row>
+	</Container>
+</section>
+<section class="categories">
+	<Container>
+		<Row>
+			<Col class="text-center">
+				<h2>what are you looking for?</h2>
+				<div class="categories__tabs">
+					<div class="categories__tabs__heading">
+						<ul>
+						  <li>
+							<span
+							  data-category="modern"
+							  class:active="{activeTab === 'modern'}"
+							  on:click="{() => handleTabClick('modern')}">
+							  Modern
+							</span>
+						  </li>
+						  <li>
+							<span
+							  data-category="mountain"
+							  class:active="{activeTab === 'mountain'}"
+							  on:click="{() => handleTabClick('mountain')}">
+							  Mountain
+							</span>
+						  </li>
+						  <li>
+							<span
+							  data-category="traditional"
+							  class:active="{activeTab === 'traditional'}"
+							  on:click="{() => handleTabClick('traditional')}">
+							  Traditional
+							</span>
+						  </li>
+						  <li>
+							<span
+							  data-category="commercial"
+							  class:active="{activeTab === 'commercial'}"
+							  on:click="{() => handleTabClick('commercial')}">
+							  Commercial
+							</span>
+						  </li>
+						</ul>
+					  </div>
+					<div class="categories__tabs__gallery">
+						<div 
+							id="modern"
+							class="categories__tabs__gallery__imgs"
+							class:active="{activeTab === 'modern'}" 						
+							>						
+							<div>
+								<img src="{modern}" alt="modern">
 							</div>
-							<img src="{leftImg}" alt="Mountain Top">
-						</figure>
-					</Animate>
-					<Animate section=".gallery">
-						<figure class="gallery__container__figure gallery__container--top-img" in:fly={{
-							delay: 500,
-							duration: 2000,
-							x: 900							
-						}} >
-							<img src="{topImg}"  alt="Mountain Top Interior">
-						</figure>
-					</Animate>
-					<Animate section=".gallery">
-						<figure class="gallery__container__figure gallery__container--bottom-img" in:fly={{
-							delay: 1100,
-							duration: 2000,
-							x: 900							
-						}} >
-							<img src="{bottomImg}"  alt="Lakehouse">
-						</figure>	
-					</Animate>
-				</div>							
-			</Col>
-		</Row>
-	</Container>
-</section>
-
-<section class="sticky-content">
-	<Container>
-		<Row>
-			<Col md="12">
-				<h2 class="sticky-content__heading text-center">
-					<h1 class="ml3">
-						<Animate section=".sticky-content">
-							<TextTransition text="Jagdschloss Vail"  transitionDelay=150/>
-						</Animate>
-					</h1>				
-				</h2>
-			</Col>
-			<Col md="5">
-				<div class="sticky-content__img sticky-content--top-text">
-					<p>"This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. </p>
-					<p>Its traditional design is further enhanced by a mountain lion sculpture that guards the property. </p>
-					<p>	Inside, you'll find reclaimed wood cabinetry in the kitchen and unique details like rough-cut granite countertops, seamlessly blending light and dark stone for a cohesive old-world mountain home aesthetic."</p>
-				</div>
-				<div class="sticky-content__img sticky-content--first-img">
-					<img src="{firstImg}" alt="gallery">
-				</div>
-				<div class="sticky-content__img sticky-content--canvass">
-				</div>				
-				<div class="sticky-content__img sticky-content--scnd-img">
-					<img src="{scndImg}" alt="gallery">					
-				</div>
-				<div class="sticky-content__img sticky-content--canvass">
-				</div>					
-				<div class="sticky-content__img sticky-content--third-img">
-					<img src="{thirdImg}" alt="gallery">					
-				</div>								
-			</Col>
-			<Col md="7">
-				<div class="sticky-content__left_img">
-					<img src="{galImg}" alt="gallery">	
-				</div>
-				<div class="sticky-content__texts">
-					<Row>
-						<Col>
-							<h3 class="text-center">Jagdschloss Vail</h3>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<p>Notice intricate details like reclaimed wood kitchen cabinetry, covering the stainless appliances. The rough finished edges on the slab granite countertops, tie together the dark granite with the light natural stone. Grain matching countertops and thoughtful stonework are built throughout this old world style mountain house.						</p>
-						</Col>
-						<Col>
-							<p>Notice intricate details like reclaimed wood kitchen cabinetry, covering the stainless appliances. The rough finished edges on the slab granite countertops, tie together the dark granite with the light natural stone. Grain matching countertops and thoughtful stonework are built throughout this old world style mountain house.						</p>
-						</Col>					
-					</Row>
-				</div>
-			</Col>			
-		</Row>
-	</Container>
-</section>
-
-<section class="sticky-content2">
-	<Animate section=".sticky-content2">
-		<img src="{stairs}" alt="stairs" class="sticky-content2__bg" in:fade={{
-			duration: 1500
-		}}>
-	</Animate>
-	<Container>
-		<Row>	
-			<Col md="5">
-				<div class="sticky-content2__img sticky-content2--first-img">
-					<img src="{firstImg}" alt="gallery">
-				</div>			
-				<div class="sticky-content2__img sticky-content2--canvass">
-				</div>					
-				<div class="sticky-content2__img sticky-content2--scnd-img">
-					<img src="{scndImg}" alt="gallery">					
-				</div>
-				<div class="sticky-content2__img sticky-content2--canvass">
-				</div>					
-				<div class="sticky-content2__img sticky-content2--third-img">
-					<img src="{thirdImg}" alt="gallery">					
-				</div>	
-			</Col>
-			<Col md="7">
-				<div class="sticky-content2__texts">
-					<Row>
-						<Col>
-							<h3>Hand Hewn Wood Beams</h3>
-						</Col>
-					</Row>
-					<Row>
-						<Col>							
-							<p>We love solid, exposed hand hewn wood beams. Old-world building styles makes for strong and remarkable ceiling lines and lifted roofs. </p>
-							<p>Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature. On this project, our team worked with the Owner’s Architect to build this incredible home.</p>
-							<p>I can elaborate about how we schedule, and the frequency of meetings, and how we load photos and walk-throughs and aerial drone video for owners positioned around the world.</p>
-						</Col>
-						<Col>
-							<p>We can talk about the strength of our team, and how we successfully manage teams of Stonemasons, Ironworkers and Woodworkers.</p>
-							<p>Together we built a Traditional Old World style European Castle with durable natural materials, fused with modern materials. A Colorado Castle built with natural stone to withstand the elements. A true asset of heritage and culture, Built with the team at ULFBUILT.</p>
-							<div class="sticky-content2__texts__cta">
-								<h4>Tell us about your project</h4>
-								<p>We want to know about you and building your dream home</p>
-								<a href="/" class="btn">Talk to Us</a>
+							<div>
+								<img src="{modern}" alt="modern">
 							</div>
-						</Col>									
-					</Row>
-				</div>			
-			</Col>			
-		</Row>
-	</Container>
-</section>
-<section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})">
-</section>
-<Testimonial testimonial="This is pinnacle Colorado Castle. From the rough cut local stone that covers the interior and exterior walls, to the curved torched wood and wrought iron staircases, this is a traditional castle." />
-
-<section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})">
-</section>
-
-<Testimonial testimonial="Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature." />
-
-<section class="carousel">
-	<Container>
-		<Row>
-			<Col>
-				<ImageSlider {images} />  	
+							<div>
+								<img src="{modern}" alt="modern">
+							</div>																				
+						</div>
+						<div 
+							id="mountain"
+							class="categories__tabs__gallery__imgs"
+							class:active="{activeTab === 'mountain'}"						
+							>						
+							<div>
+								<img src="{mountain}" alt="modern">
+							</div>
+							<div>
+								<img src="{mountain}" alt="modern">
+							</div>
+							<div>
+								<img src="{mountain}" alt="modern">
+							</div>																				
+						</div>
+						<div 
+							id="traditional"
+							class="categories__tabs__gallery__imgs"
+							class:active="{activeTab === 'traditional'}">						
+							<div>
+								<img src="{traditional}" alt="modern">
+							</div>
+							<div>
+								<img src="{traditional}" alt="modern">
+							</div>
+							<div>
+								<img src="{traditional}" alt="modern">
+							</div>																				
+						</div>
+						<div 
+							id="commercial"
+							class="categories__tabs__gallery__imgs"
+							class:active="{activeTab === 'commercial'}">						
+							<div>
+								<img src="{modern}" alt="modern">
+							</div>
+							<div>
+								<img src="{mountain}" alt="modern">
+							</div>
+							<div>
+								<img src="{traditional}" alt="modern">
+							</div>																					
+						</div>																		
+					</div>					
+				</div>
 			</Col>
 		</Row>
 	</Container>
 </section>
-
-<Testimonial testimonial="Together we built a Traditional Old World style European Castle with durable natural materials, fused with modern materials. A true asset of heritage and culture, Built with the team at ULFBUILT." />
-
-<section class="contact-form">
+<section class="featured-projects">
 	<Container>
 		<Row>
-			<Col md="6">
-				<p>Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature. On this project, our team worked with the Owner’s Architect to build this incredible home.</p>
-				<p>I can elaborate about how we schedule, and the frequency of meetings, and how we load photos and walk-throughs and aerial drone video for owners positioned around the world. But most importantly, I want to share why we think exposed beams are such an important part of a beautiful luxury home.</p>
-				<p>The natural patterns in wood are unique and striking, adding beauty and texture to any space. And because wood is a natural material, it breathes, which means it helps keep your home comfortable and healthy. When you choose Vail Valley house remodeler ULFBUILT, you’re getting a team of experts with years of experience in creating beautiful homes with exposed beams.</p>
-				<p>We’ll work with you every step of the way to make sure your home is everything you dream it can be.</p>
-			</Col>
-			<Col md="6">
-				<div class="contact-form__form">
-					<h2>Get in touch with us</h2>
-					<Form method="post" class="">
-						<FormGroup>
-							<Input placeholder="Full Name" />
-						</FormGroup>
-						<FormGroup>
-							<Input type="email" placeholder="Email" />
-						</FormGroup>
-						<FormGroup>
-							<Input type="tel" placeholder="Phone Number" />
-						</FormGroup>
-						<FormGroup>
-							<Input type="textarea" id="yourMessage" placeholder="Tell us about your project.." rows="5" />
-						</FormGroup>
-						<Button>Send Email</Button>
-					</Form>		
-				</div>		
-			</Col>			
-		</Row>
-	</Container>
-</section>
-
-<section class="img-section">
-	<Container>
-		<Row>
-			<Col>
-				<img src="{panther}" alt="">
-			</Col>
+			<Carousel {images} />
 		</Row>
 	</Container>
 </section>
@@ -303,30 +225,109 @@
 		background-size: cover;
 		padding-top: 9rem;		
 		margin: 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;		
 		&__content{
-			position: absolute;
-    		bottom: 20%;
-			max-width: 750px;
 			&__text{
 				h1{
 					color:#fff;
-					text-transform: uppercase;
-					font-family: 'Roboto';
-					font-weight: 900;
+					font-weight: 400;
 					font-size: 5rem;		
-					margin-bottom: 2rem;			
+					margin-bottom: 2rem;	
+					span{
+						font-family: $primary-font;
+					}		
 				}
+			}
+			&__paragraph{
+				color: #fff;
+				font-size: 1.5rem;				
 			}
 			&__btn{
 					border: 1px solid #fff;
 					padding: 1.5rem 4rem;					
 					text-decoration: none;
 					color: #fff;
-					font-family: 'Times New Roman', Times, serif;
+					font-family: $secondary-font;
 					text-transform:lowercase;
 					display: inline-block;
 			}			
 		}
+	}
+
+	.loc-gallery{
+		&__cwrapper{
+			h2{
+				font-size: 3rem;
+				font-family: $secondary-font;
+				margin-bottom: 1rem;
+				color: $secondary-color;
+			}
+			&__btns{
+				margin: 2rem 0;
+				.btn-primary{
+					margin-right: 1.5rem;
+				}
+			}
+		}
+	}
+
+	.categories{
+		h2{
+			margin-bottom: 3rem;
+			font-size: 3rem;			
+		}
+		&__tabs{
+			&__heading{
+				ul{
+					display: flex;
+					flex-wrap: wrap;
+					margin-bottom: 2rem;
+					li{
+						list-style: none;
+						width: 25%;		
+						span{				
+							font-family: $secondary-font;
+							font-size: 2rem;
+							color: #D8D7D7;
+							text-transform: uppercase;
+							margin-bottom: 2em;
+							border-bottom: 3px solid #D8D7D7;
+							font-weight: 500;
+							cursor: pointer;
+							&.active{
+								color: $primary-color;
+								border-bottom-color: $primary-color;
+							}
+						}
+					}
+				}
+			}
+			&__gallery{
+				&__imgs{
+					display: none;
+					&.active{
+						display: flex;
+					}
+					div{
+						width: 33.33%;
+						margin: 0 1rem;
+						&:first-child{
+							margin-left: 0;
+						}
+						&:last-child{
+							margin-right: 0;
+						}						
+					}
+				}
+			}
+		}
+	}
+
+	.featured-projects{
+		margin: 10rem 0;
 	}
 
 	.gallery{
