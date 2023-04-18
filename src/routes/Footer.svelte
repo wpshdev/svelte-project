@@ -35,11 +35,11 @@ function scrollToTop() {
             <Col md="3">
                 <div class="footer__widget1 footer--widget">
                     <div class="footer__widget1_item1 footer__widget--item">
-                        <img src="FooterLogo.svg" alt="FooterLogo" width="130" height="130">
+                        <img src="FooterLogo.svg" alt="FooterLogo" width="80" height="80">
                     </div>
                     <div class="footer__widget1_item2 footer__widget--item">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur. Viverra scelerisque nec est pharetra cras curabitur elementum. Lobortis in congue.                        
+                            Custom Homebuilder and<br>Condo Remodeler in Vail<br>Valley and Eagle County.
                         </p>
                     </div>                
                 </div>    
@@ -53,7 +53,7 @@ function scrollToTop() {
                         <div>970-926-7600</div>
                     </div>
                     <div class="footer__widget1_item2 footer__widget--item">
-                        <div>275 Main Street, C-105
+                        <div>275 Main Street, C-105<br>
                             Edwards, CO 81632</div>
                     </div>                
                 </div>                    
@@ -160,14 +160,16 @@ function scrollToTop() {
         &__widget{
             &__heading{
                 h4{
-                    border-bottom: 0.5px solid #D8D7D7;
-                    padding-bottom: 0.5rem;
+                    border-bottom: 0.5px solid #EFEFEF;
+                    padding-bottom: 1rem;
+                    width: 70%;
+                    text-transform: uppercase;
                 }
             }
             &--item{
                 margin-bottom: 1rem;
                 text-align: left;
-                text-transform: uppercase;
+                line-height: 1.7;
                 img{
                     width: auto;
                 }
@@ -176,9 +178,11 @@ function scrollToTop() {
                     font-weight: 300;
                     font-size: 0.8rem;
                     text-transform: none;
+                    color:#ACA7A7;
                 }
                 a{
                     text-decoration: unset;
+                    color:#EFEFEF;
                 }
             }
         }

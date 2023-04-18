@@ -1,6 +1,6 @@
 <script>
 import { onMount } from 'svelte';
-// import Flickity from 'flickity/flickity.pkgd.min.js';
+import { Col } from "sveltestrap";
 
 let flickityInstance;
 export let images = [];
@@ -36,37 +36,70 @@ function updateProgress(index) {
     <!-- Flickity CSS -->
     <link rel="stylesheet" href="flickity/flickity.min.css" />
 </svelte:head>
-  
-<div class="slider-container">
-  {#each images as image}
-    <div class="slider-container__carousel-cell">
-      <img src={image} alt="Slider image" />
+
+  <Col md="3">
+    <div class="slider-caption">
+      <div class="slider-caption__heading">
+        <span>Our Home</span>
+        <h2>Featured<br>Projects</h2>
+      </div>
+      <div class="progress-ring-container">
+        <svg class="progress-ring" width="110" height="49">
+          <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
+          <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
+          <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
+          <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
+        </svg>
+      </div>  
     </div>
-  {/each}
-</div>
-<div class="progress-ring-container">
-  <svg class="progress-ring" width="110" height="54">
-    <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="50" fill="white" />
-    <rect class="progress-ring__border" x="2" y="2" width="106" height="50" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="red" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
-    <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="27" font-size="18" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
-    <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="27" font-size="18" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
-  </svg>
-</div>
+  </Col>	
+  <Col md=9>
+    <div class="slider-container">
+      {#each images as image}
+        <div class="slider-container__carousel-cell">
+          <img src={image} alt="Slider image" />
+        </div>
+      {/each}
+    </div>
+    <div class="slider-btn">
+      <a href="#" class="btn btn-primary">Explore Our Gallery</a>
+    </div>    
+  </Col>
+
   
   
 
 <style lang="scss">
+
+.slider-caption{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;  
+  &__heading{
+    margin-bottom: 1rem;
+    width: 100%;
+    span{
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: $primary-color;
+    }
+    h2{
+      font-size: 3rem;
+    }
+  }
+}
+
 .slider-container {
   width: 100%;
   overflow: hidden;
   position: relative;
 
   &__carousel-cell {
-    width: 33%;
+    width: 40%;
     height: auto;
-    padding: 0 2rem;
+    padding: 0 0.5rem;
     box-sizing: border-box;
-
     img {
       display: block;
       width: 100%;
@@ -74,12 +107,20 @@ function updateProgress(index) {
     }
   }
 }
+.slider-btn{
+  margin: 2rem 5rem 0;
+  text-align: right;
+}
 
 .progress-ring-container {
+  margin-top: 1rem;
   position: relative;
   bottom: 10px;
   left: 10px;
   z-index: 1;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  border-radius: 2rem;  
 }
 
 .progress-ring {
