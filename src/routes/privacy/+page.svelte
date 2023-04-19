@@ -18,15 +18,3 @@
         {@html data.data.attributes.Content}
     </Container>
 </section>
-<style type="scss">
-    .cover{
-        height: 500px;
-        background-repeat:no-repeat;
-        background-size: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color:#fff;
-    }
-</style>
