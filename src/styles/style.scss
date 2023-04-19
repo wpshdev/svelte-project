@@ -74,13 +74,13 @@ img{
 .input-icon-phone{
     background-position: -30px -60px;
 }
-.input-user:focus + .input-icon-user, .input-user:hover + .input-icon-user {
+.input-user:focus + .input-icon-user{
     background-position: 0px 0px;
 }​
-.input-email:focus + .input-icon-email, .input-email:hover + .input-icon-email {
+.input-email:focus + .input-icon-email{
     background-position: 0px -30px;
 }
-.input-phone:focus + .input-icon-phone, .input-phone:hover + .input-icon-phone {
+.input-phone:focus + .input-icon-phone{
     background-position: 0px -60px;
 }​
 .btn{
