@@ -26,6 +26,7 @@
 	import modern from "$lib/img/modern.svg";
 	import mountain from "$lib/img/mountain.svg";
 	import traditional from "$lib/img/traditional.svg";		
+	import tr from "$lib/img/tr.svg";		
 
     const images = [
         modern,
@@ -204,7 +205,7 @@
 	</Container>
 </section>
 
-<section class="tnr">
+<section class="tnr" style="--tp-banner: url({tr})">
 	<Container>
 		<Row>
 			<Col>
@@ -340,6 +341,44 @@
 						}						
 					}
 				}
+			}
+		}
+	}
+
+	.tnr{
+		background-image: var(--tp-banner);
+		height: 40vw;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		background-position: center;
+		background-size: cover;
+		position: relative;
+		&::before{
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);			
+			z-index: 1;
+		}
+		.tnr__wrapper{
+			z-index: 2;
+			position: relative;
+			color: #fff;
+			span{
+				font-size: 1.5rem;
+			}
+			h2{
+				font-family: $primary-font;
+				font-size: 3rem;
+				margin: 1rem 0 2rem;
+				text-transform: uppercase;
+			}
+			.btn{
+				background-color: #1E2D39;
 			}
 		}
 	}
