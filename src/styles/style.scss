@@ -131,6 +131,22 @@ header{
     margin-right: calc(50% - 50vw);
   }
 
+.contact-form{
+    padding: 4rem 2rem;
+    border:2px solid #D8D7D7;
+    form{
+        max-width: 400px;
+        margin: auto;
+    }
+}
+.contact-img{
+    height: 400px;
+    background-size: cover;
+}
+.contact-box{
+    margin-top: -10rem;
+    margin-bottom: 7rem;
+}
 .story{
     .accordion{
         .accordion-button{
