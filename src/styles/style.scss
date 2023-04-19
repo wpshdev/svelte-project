@@ -34,6 +34,10 @@ img{
     background-color: $primary-color;
     color: #fff;  
 }
+.btn-primary{
+    background-color: $secondary-color;
+    color: #fff;  
+}
 .btn-inverted{
     background-color: transparent;
     border: 1px solid $primary-color;
