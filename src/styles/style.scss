@@ -99,6 +99,11 @@ img{
     background-color: $primary-color;
     color: #fff;  
 }
+.btn-secondary{
+    background-color: $secondary-color;
+    border: 1px solid $secondary-color;
+    color: #fff;  
+}
 .btn-inverted{
     background-color: transparent;
     border: 1px solid $primary-color;
