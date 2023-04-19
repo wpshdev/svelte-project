@@ -26,14 +26,14 @@
 	import modern from "$lib/img/modern.svg";
 	import mountain from "$lib/img/mountain.svg";
 	import traditional from "$lib/img/traditional.svg";		
-	import tr from "$lib/img/tr.svg";		
+	import tr from "$lib/img/tnr.svg";		
 
     const images = [
         modern,
         mountain,
         traditional
     ];
-	console.log(modern);
+	console.log(tr);
 
 	let activeTab = 'modern';
 
