@@ -1,1 +1,0 @@
-{"version":3,"file":"9-acb2f7f0.js","sources":["../../../../../generated/nodes/9.js"],"sourcesContent":["export { default as component } from \"../../../src/routes/about/+page.svelte\";\nexport const has_server_load = true;"],"names":["has_server_load"],"mappings":"6EACY,MAACA,EAAkB"}

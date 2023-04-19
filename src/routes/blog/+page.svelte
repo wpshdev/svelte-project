@@ -1,24 +1,22 @@
 <script lang="ts">
     import { Col, Container, Row } from 'sveltestrap';
-    import { paginate, LightPaginationNav } from 'svelte-paginate';
+    //import { paginate, LightPaginationNav } from 'svelte-paginate';
 
     export let data;
     let blogs = data.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     // console.log(data);
-    
-    // let searchTerm="";
-    // $: searchBlogs = blogs.filter(( blog: {[x: string]: any; title: string | string[]; } )=>{
-    //     return blog.attributes.title.includes(searchTerm);
-    // });
-    // $: console.log(searchBlogs);
-
-    // let title = data.data[0].attributes.title;
-let items = blogs;
-  let currentPage = 1;
-  let pageSize = 1;
-  $: paginatedBlogs = paginate({ items, pageSize, currentPage });
-$: console.log(paginatedBlogs);
+    let searchTerm="";
+    $: searchBlogs = blogs.filter(( blog: {[x: string]: any; title: string | string[]; } )=>{
+        return blog.attributes.title.includes(searchTerm);
+    });
+    $: console.log(searchBlogs);
+    let title = data.data[0].attributes.title;
+//     let items = blogs;
+//   let currentPage = 1;
+//   let pageSize = 1;
+//   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
+// $: console.log(paginatedBlogs);
 // var items = 3;
 </script>
 <svelte:head>
@@ -28,10 +26,10 @@ $: console.log(paginatedBlogs);
 <Container>
     <Row>
         <Col md="12"><h1 class="text-center">BLOG</h1></Col>
-        <!-- <Col md="12"><input type="text" placeholder="search" bind:value={searchTerm}></Col> -->
+        <Col md="12"><input type="text" placeholder="search" bind:value={searchTerm}></Col>
     </Row>
     <Row>
-        {#each paginatedBlogs as blog}
+        {#each searchBlogs as blog}
         <Col md="4">
             <a href="/blog/{blog.attributes.slug}" class="text-decoration-none text-black">
                 {#if blog.attributes.featuredimage.data.attributes.formats == null}
@@ -44,14 +42,14 @@ $: console.log(paginatedBlogs);
             </a>
         </Col>
         {/each}
-<LightPaginationNav
+<!-- <LightPaginationNav
   totalItems="{items.length}"
   pageSize="{pageSize}"
   currentPage="{currentPage}"
   limit="{1}"
   showStepOptions="{true}"
   on:setPage="{(e) => currentPage = e.detail.page}"
-/>
+/> -->
     </Row>
 </Container>
 <style lang="scss">
