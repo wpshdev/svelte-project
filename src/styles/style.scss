@@ -130,3 +130,25 @@ header{
 .featured-projects .row{
     margin-right: calc(50% - 50vw);
   }
+
+.story{
+    .accordion{
+        .accordion-button{
+            box-shadow: none;
+        }
+        .accordion-item{
+            .accordion-collapse{
+                border-bottom: 1px solid #ACA7A7;
+                border-radius: unset;                
+            }
+            .accordion-body{
+                margin-left: 2rem;
+                padding: 0rem 1rem;
+            }
+        }
+        .accordion-item, .accordion-button{
+            background-color: transparent;
+            border: none;
+        }
+    }
+}

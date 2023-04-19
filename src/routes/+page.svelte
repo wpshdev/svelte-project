@@ -1,18 +1,7 @@
 <script lang="ts">
 	export let data;
-	import { Col, Container, Row } from "sveltestrap";
-    import leftImg from "$lib/img/left-img.png";
-    import topImg from "$lib/img/top-img.jpg";
-    import bottomImg from "$lib/img/bottom-img.jpg";	
+	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	import banner from "$lib/img/first-section.svg";
-	import galImg from "$lib/img/gal-img.jpg";	
-	import firstImg from "$lib/img/gal-img1.png";
-	import scndImg from "$lib/img/gal-img2.jpg";
-	import thirdImg from "$lib/img/gal-img3.jpg";		
-	import stairs from "$lib/img/stairs.jpg";
-	import livingRoom from "$lib/img/living-room.jpg";		
-	import lvThropy from "$lib/img/lvThropy.jpg";	
-	import panther from "$lib/img/panther.png";	
 	import Testimonial from "../components/Testimonial.svelte";
 	// import Carousel from "../components/Carousel.svelte";
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
@@ -27,6 +16,11 @@
 	import mountain from "$lib/img/mountain.svg";
 	import traditional from "$lib/img/traditional.svg";		
 	import tr from "$lib/img/tnr.svg";		
+	import reputationImg from "$lib/img/reputation.svg";		
+	import lroom from "$lib/img/ProcessLroom.svg";
+	import stair from "$lib/img/ProcessStair.svg";
+	import insight from "$lib/img/insight.svg";
+
 
     const images = [
         modern,
@@ -223,13 +217,121 @@
 	</Container>
 </section>
 
+<section class="reputation">
+	<Container>
+		<Row>
+			<Col md="8" class="">
+				<div class="reputation__content">
+					<div class="reputation__content__wrapper">
+						<span>Our Home</span>
+						<h2>Reputation is everything to us</h2>
+						<p>
+							Quality is our priority. And our process is just as important as the result. Our work speaks for itself.						
+						</p>
+						<a href="#" class="btn btn-primary">View Collection</a>
+					</div>
+				</div>
+			</Col>
+			<Col md="4" class="my-auto">
+				<img src="{reputationImg}" alt="reputation">
+			</Col>
+		</Row>
+	</Container>
+</section>
+
+<section class="process">
+	<Container>
+		<Row>
+			<Col md="6">
+				<div class="process__top-image">
+					<img src="{lroom}" alt="Living Room">
+				</div>
+			</Col>
+		</Row>
+		<Row>
+			<Col md="8" class="">
+				<div class="process__content">
+					<div class="process__content__wrapper">
+						<span>Our Process</span>
+						<h2>We want to be the best 
+							not the biggest</h2>
+						<p>
+							Our process is different. Working with us mean working with personal attention and closely listening to you. From Start to Finish, we view our relationship with you like a good marriage.
+						</p>
+						<p>
+							Our project management is efficient and effective. We keep the personal touch and care about you while maintaining your goals. We treat your project like it's ours.						
+						</p>
+						<a href="#" class="btn btn-primary">View Collection</a>
+					</div>
+				</div>
+			</Col>
+			<Col md="4" class="my-auto">
+				<img src="{stair}" alt="Stair">
+			</Col>
+		</Row>
+	</Container>
+</section>
+
+<section class="story">
+	<Container>
+		<Row>
+			<Col md="8" class="">
+				<div class="story__content">
+					<div class="story__content__wrapper">
+						<span>Our Story</span>
+						<h2>Transform and Renew</h2>
+						<p>
+							When you hiring pros to come in and reimagine your space, you would be surprised at what is possible. Remodeling and thinking outside your box is our specialty.						
+						</p>
+						<Accordion>
+							<AccordionItem active>
+								<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
+								<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
+							  </AccordionItem>							
+						</Accordion>						
+					</div>
+				</div>
+			</Col>
+			<Col md="4" class="my-auto">
+				<img src="{reputationImg}" alt="story">
+			</Col>
+		</Row>
+	</Container>
+</section>
+
+<section class="insight">
+	<Container>
+		<Row>
+			<Col>
+				<span class="insight__pre-heading">Our Insight</span>
+			</Col>
+		</Row>
+		<Row>
+			<Col md="6" class="">
+				<img src="{insight}" alt="Stair">
+			</Col>
+			<Col md="6" class="my-auto">
+				<div class="insight__content">
+					<div class="insight__content__wrapper">
+						<div class="insight__content__wrapper__pre-heading">Vail, Colorado | January 28 • 2 minutes read</div>
+						<h2>Thinking out of the Box</h2>
+						<p>
+							We craft custom homes that look and feel like only you could live there. And we do it by working hand-in-hand with you throughout the entire experience. We craft custom homes that look and feel like only you could live there.
+						</p>
+						<a href="#" class="btn btn-primary">Read Article</a> <a href="#" class="btn btn-inverted">Meet with Us</a>
+					</div>
+				</div>				
+			</Col>
+		</Row>
+	</Container>
+</section>
+
 <section class="home-cta">
 	<Container>
 		<Row>
 			<Col class="text-center">
 				<h2>Tell us about your project</h2>
 				<p>We want to know about yo and building your dream home</p>
-				<a href="#" class="btn button">Talk to Us</a>
 			</Col>
 		</Row>
 	</Container>
@@ -387,236 +489,177 @@
 		margin: 10rem 0;
 	}
 
-	.gallery{
-		&__container{
-			display: grid;
-			grid-template-columns: repeat(2, 2fr);
-			grid-template-rows: repeat(2, 20vw);
-			grid-gap: 1.5rem;		
-			&__figure{
-				margin-bottom: 0;
-				position: relative;
-				overflow: hidden;
-				img{
-					transition: 0.3s;
+	.reputation{
+		margin: 7rem 0 3.75rem;
+		&__content{
+			height: 35vw;
+			display: flex;
+			align-items: center;
+			position: relative;
+			&:after{
+				position: absolute;
+				background: #E5EEF2;
+				width: 130%;
+				content: "";
+				height: 100%;				
+			}
+			&__wrapper{
+				max-width: 29rem;
+				z-index: 2;
+				padding-left: 4rem;
+				span{
+					color: $primary-color;
+					margin-bottom: 1rem;
 				}
-				&:hover{
-					.gallery__container__figure__overlay{
-						opacity: 1;
-						background-color: rgba(0, 0, 0, 0.15);
-					}
-					img{
-						transform: scale(1.2);
-						transition: 0.3s
-					}
-				}				
-				&__overlay{
-					position: absolute;
-					transition: 0.5s;
-					height: 100%;
-					width: 100%;
-					display: flex;
-					opacity: 0;
-					align-items: center;
-					justify-content: center;
-					text-align: center;
-					top: 0;
-					z-index: 2;
-					left: 0;
-					a{
-						color: #fff;
-						text-decoration: unset;
-						span{
-							font-size: 4rem;
-						}
-						p{
-							font-size:1.2rem;	
-							text-transform: uppercase;		
-							position: relative;
-							&:after{
-								margin: 0 auto;
-								content: "";
-								height: 5px;
-								background: #E977C9;
-								width: 50%;
-								position: absolute;
-								bottom: -1rem;
-								left: 0;
-								right: 0;								
-							}			
-						}
-					}		
+				h2{
+					margin: 1rem 0 2rem;
+					font-size: 3rem;
 				}
-				img{
-					width: 100%;
-					height: 100%;
-					object-fit: cover;					
+				p{
+					line-height: 2rem;
+					margin-bottom: 2rem;
 				}
-			}	
-			&--first-img{
-				grid-column-start: 1;
-				grid-column-end: 1;
-				grid-row-start: 1;
-				grid-row-end: 3;				
-			}
-			&--top-img{
-				grid-column-start: 2;
-				grid-column-end: 2;
-				grid-row-start: 1;
-				grid-row-end: 1;			
-			}
-			&--bottom-img{
-				grid-column-start: 2;
-				grid-column-end: 2;
-				grid-row-start: 2;
-				grid-row-end: 2;				
-			}
+			}		
 		}
-	}
-
-	.sticky-content{
-		div{
-			background-color: #fff;
-		}
-		&__heading{
-			margin-top: 4%;
-			background: #fff;
-			font-weight: 300;
-			letter-spacing: .5rem;
-			margin-bottom: 3rem;			
-		}
-		&__img{
-			background: #fff;
-			margin-bottom: 5rem;
-			position: sticky;
-			top: 20%;			
-			img{
-				width: 100%;
-			}
-		}
-		&--top-text{
-			z-index: -4;
-			// margin-bottom:50rem;
-			height: 50rem;			
-			p{
-				line-height: 2rem;
-			}
-		}
-		&--first-img{
-			z-index: -2;
-		}
-		&--canvass{
-			z-index: -3;
-			height: 80rem;
-			width: 100%;
-		}
-		&--scnd-img{
-			z-index: -1;
+		img{
+			position: relative;
+			z-index: 5;
 		}		
-		&--third-img{
-			z-index: 1;
-		}	
-
-		&__left_img{
-			position: sticky;
-			top: 20%;
-			margin-bottom: 0rem;
-			z-index: 0;
-			img{
-				width: 100%;
-			}
-		}
-		&__texts{
-			position: sticky;
-			top: 20%;
-			margin-top: 80rem;
-			z-index: 2;
-			background-color: #fff;
-			height: 45rem;
-			h3{
-				font-size: 2rem;
-				font-weight: 300;
-				color: #00ADEE;
-				margin-bottom: 3rem;				
-			}
-			p{
-				line-height: 2;
-				@media(min-width:768px){
-					margin-left: 1rem;
-				}
-			}
-		}			
-	}
-
-	.sticky-content2{
-		&__bg{
-			width: 100%;
-			margin-bottom:7rem;
-		}
-		&__img{
-			background: #fff;
-			margin-bottom: 10rem;
-			position: sticky;
-			top: 20%;			
-			img{
-				width: 100%;
-			}
-		}
-		&--first-img{
-			z-index: -2;
-		}
-		&--scnd-img{
-			z-index: -1;
-		}		
-		&--third-img{
-			z-index: 1;
-		}
-		&--canvass{
-			z-index: -3;
-			height: 50rem;
-			width: 100%;
-		}		
-		&__texts{
-			position: sticky;
-			top: 20%;
-			z-index: 2;
-			background-color: #fff;
-			height: 45rem;
-			@media(min-width:768px){
-					margin-left: 1rem;
-				}			
-			h3{
-				font-size: 2rem;
-				font-weight: 300;
-				color: #00ADEE;
-				margin-bottom: 3rem;				
-			}
-			p{
-				line-height: 2;
-				
-			}
-
-			&__cta{
-				border: 1px solid #ACA7A7;
-				padding: 1.5rem;
-				text-align: center;
-				h4{
-					font-size: 1.2rem;
-					font-weight: 400;
-					color: #00ADEE;
-					margin-bottom: 1rem;					
-				}	
-				a{
-					padding: 1rem 1.8rem;
-					background: #00adee;
-					color: #fff;
-					text-decoration: none;
-					margin-bottom: -20%;		
-					border-radius: 0;			
-				}			
-			}
-		}			
 	}	
+
+	.process{
+		margin: 7rem 0;
+		&__top-image{
+			text-align: right;
+    		margin-bottom: -3rem;		
+			img{
+				max-width: 25rem;
+			}
+		}
+		&__content{
+			height: 40vw;
+			display: flex;
+			align-items: center;
+			position: relative;
+			&:after{
+				position: absolute;
+				background: #F2F2F2;
+				width: 130%;
+				content: "";
+				height: 100%;				
+			}
+			&__wrapper{
+				max-width: 40rem;
+				z-index: 2;
+				padding-left: 4rem;
+				span{
+					color: $primary-color;
+					margin-bottom: 1rem;
+				}
+				h2{
+					margin: 1rem 0 2rem;
+					font-size: 3rem;
+				}
+				p{
+					line-height: 2rem;
+					margin-bottom: 2rem;
+				}
+			}		
+		}
+		img{
+			position: relative;
+			z-index: 5;
+		}		
+
+	}	
+
+	.story{
+		margin: 7rem 0 3.75rem;
+		&__content{
+			height: 35vw;
+			display: flex;
+			align-items: center;
+			position: relative;
+			&:after{
+				position: absolute;
+				background: #E5EEF2;
+				width: 130%;
+				content: "";
+				height: 100%;				
+			}
+			&__wrapper{
+				max-width: 43rem;
+				z-index: 2;
+				padding-left: 4rem;
+				span{
+					color: $primary-color;
+					margin-bottom: 1rem;
+				}
+				h2{
+					margin: 1rem 0 2rem;
+					font-size: 3rem;
+				}
+				p{
+					line-height: 2rem;
+					margin-bottom: 2rem;
+				}
+				.accordion{
+					.accordion-item{
+						background-color: transparent;
+					}
+					h4{
+						color: #000;
+					}
+					span{
+						font-family: 'Raleway';
+						font-style: normal;
+						font-weight: 600;
+						font-size: 2rem;
+						color: #ACA7A7;
+						margin-right: 1rem;
+					}
+				}
+			}		
+		}
+		img{
+			position: relative;
+			z-index: 5;
+		}		
+	}	
+
+	.insight{
+		background-color: #F2F2F2;
+		padding: 4rem 0;
+		&__pre-heading{
+			color: $primary-color;
+			margin-bottom: 2rem;
+			display: block;
+		}
+		&__content{
+			&__wrapper{
+				padding-left: 4rem;				
+				span{
+					color: $primary-color;
+					margin-bottom: 1rem;
+				}
+				h2{
+					margin: 1rem 0 2rem;	
+					font-size: 3rem;
+				}
+				p{
+					line-height: 2rem;
+					margin-bottom: 2rem;
+				}		
+				.btn-primary{
+					margin-right: 1rem;
+				}		
+				.btn-inverted{
+					background-color: #fff;
+				}
+			}
+		}
+	}
+
 
 	.living-room{
 		height: 30vw;		
