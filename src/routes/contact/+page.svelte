@@ -56,8 +56,6 @@
         }else{
             result = 'Thank you for contacting us. We will reach you soon.'
         }
-
-
         }
 	}
 </script>
@@ -66,8 +64,8 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <div class="cover" style="background-image: url({url}{data.data.attributes.featuredimage.data.attributes.formats.large.url});">
-    <h2>{data.data.attributes.title}</h2>
-    <p>{data.data.attributes.Subheading}</p>
+    <h2 class="pfont">{data.data.attributes.title}</h2>
+    <p class="pfont">{data.data.attributes.Subheading}</p>
 </div>
 <section>
     <Container>
@@ -86,20 +84,25 @@
         </Row>
     </Container>
 </section>
-<section class="contact-1 container-fluid">
+<div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.formats.large.url});">
+</div>
+<div class="contact-box container-fluid">
     <Container>
         <Row>
-            <Col sm="12" md={{ size: 4, offset: 4 }} class="contact-form">
-                <h2 class="text-center pb-3">Leave us a message</h2>
+            <Col sm="12" md={{ size: 6, offset: 3 }} class="contact-form sbc wtc border-radius">
+                <h2 class="text-center pb-4">Leave us a message</h2>
                 <Form method="post">
-                    <FormGroup>
-                        <Input class="input input-icon" placeholder="Full Name" bind:value={name} />
+                    <FormGroup class="input-icon-box">
+                        <Input class="input-user" placeholder="Full Name" bind:value={name} />
+                        <div class="input-icon input-icon-user"></div>
                     </FormGroup>
-                    <FormGroup>
-                        <Input type="email" placeholder="Email" bind:value={email} />
+                    <FormGroup class="input-icon-box">
+                        <Input class="input-email" placeholder="Email address" bind:value={email} />
+                        <div class="input-icon input-icon-email"></div>
                     </FormGroup>
-                    <FormGroup>
-                        <Input placeholder="Phone Number" bind:value={subject} />
+                    <FormGroup class="input-icon-box">
+                        <Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
+                        <div class="input-icon input-icon-phone"></div>
                     </FormGroup>
                     <FormGroup>
                         <Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
@@ -110,4 +113,4 @@
             </Col>
         </Row>
     </Container>
-</section>
+</div>
