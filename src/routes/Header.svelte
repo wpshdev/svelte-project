@@ -4,26 +4,51 @@
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
+	import {
+	  Collapse,
+	  Navbar,
+	  NavbarToggler,
+	  NavbarBrand,
+	  Nav,
+	  NavItem,
+	  NavLink,
+	  Dropdown,
+	  DropdownToggle,
+	  DropdownMenu,
+	  DropdownItem
+	} from 'sveltestrap';
+  
+	let isOpen = false;
+  
+	function handleUpdate(event) {
+	  isOpen = event.detail.isOpen;
+	}	
 </script>
-
-<div class="logo">
-	<a href="/">
-		<img src={logo} alt="ULFBUILT" />
-	</a>
-</div>
-<nav>
-	<ul>
-		<li aria-current={$page.url.pathname === '/portfolio' ? 'page' : undefined}>
-			<a href="/portfolio">PORTFOLIO</a>
-		</li>	
-		<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-			<a href="/about">ABOUT US</a>
-		</li>
-		<li aria-current={$page.url.pathname === '/our-team' ? 'page' : undefined}>
-			<a href="/our-team">OUR TEAM</a>
-		</li>
-		<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
-			<a href="/contact">CONTACT US</a>
-		</li>
-	</ul>
-</nav>
+  
+  <Navbar expand="md">
+	<NavbarBrand href="/">
+		<a href="/">
+			<img src={logo} alt="ULFBUILT" />
+		</a>	
+	</NavbarBrand>
+	<NavbarToggler on:click={() => (isOpen = !isOpen)} />
+	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
+	  <Nav class="ms-auto" navbar>
+		<NavItem>
+		  <NavLink href="#">PORTFOLIO</NavLink>
+		</NavItem>
+		<Dropdown nav inNavbar>
+			<DropdownToggle nav caret>ABOUT US</DropdownToggle>
+			<DropdownMenu end>
+			  <DropdownItem>PORTFOLIO</DropdownItem>
+			  <DropdownItem>ABOUT US</DropdownItem>		
+			  <DropdownItem>OUR TEAM</DropdownItem>
+			  <DropdownItem>CONTACT US</DropdownItem>				
+			</DropdownMenu>
+		  </Dropdown>		
+		<NavItem>
+			<NavLink href="#">OUR TEAM</NavLink>
+		</NavItem>		  		
+	  </Nav>
+	</Collapse>
+  </Navbar>

@@ -9,7 +9,7 @@
     
     <div class="z10">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
-            <header class="container-fluid" class:changeBG={yaxis >= 250}>
+            <header class="container-fluid d-block" class:changeBG={yaxis >= 250}>
                 <Header />
             </header>
         </Headroom>

@@ -16,10 +16,11 @@
 	import mountain from "$lib/img/mountain.svg";
 	import traditional from "$lib/img/traditional.svg";		
 	import tr from "$lib/img/tnr.svg";		
-	import reputationImg from "$lib/img/reputation.svg";		
-	import lroom from "$lib/img/ProcessLroom.svg";
-	import stair from "$lib/img/ProcessStair.svg";
-	import insight from "$lib/img/insight.svg";
+	import reputationImg from "$lib/img/Reputation.svg";		
+	import lroom from "$lib/img/Process-Lroom.svg";
+	import stair from "$lib/img/Process-Stair.svg";
+	import insight from "$lib/img/Insight.svg";
+	import ctabg from "$lib/img/CTA-BG.svg";
 
 
     const images = [
@@ -27,7 +28,6 @@
         mountain,
         traditional
     ];
-	console.log(tr);
 
 	let activeTab = 'modern';
 
@@ -326,12 +326,17 @@
 	</Container>
 </section>
 
-<section class="home-cta">
+<section class="home-cta" style="--cta-banner: url({ctabg})">
 	<Container>
 		<Row>
 			<Col class="text-center">
-				<h2>Tell us about your project</h2>
-				<p>We want to know about yo and building your dream home</p>
+				<div class="home-cta__container">
+					<div class="home-cta__wrapper">
+						<h2>Tell us about your project</h2>
+						<p>We want to know about yo and building your dream home</p>
+						<a href="#" class="btn btn-primary">Connect with Us</a>
+					</div>
+				</div>
 			</Col>
 		</Row>
 	</Container>
@@ -630,6 +635,7 @@
 	.insight{
 		background-color: #F2F2F2;
 		padding: 4rem 0;
+		margin-bottom: 0;
 		&__pre-heading{
 			color: $primary-color;
 			margin-bottom: 2rem;
@@ -693,14 +699,23 @@
 	}
 	
 	.home-cta{
-		margin: 10rem 0;
+		margin: 0;
+		background-image: var(--cta-banner);
+		background-size: cover;
+		
+		&__container{
+			height: 40vw;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 		h2{
-			color: #00ADEE;
+			color: #000;
 		}
 		.btn{
-			margin-top: 3rem;
+			margin-top: 1rem;
 			color: #fff;
-			padding: 0.8rem 4rem;
 		}
 	}
 	// .contact-form{
