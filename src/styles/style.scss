@@ -1,14 +1,44 @@
 @import 'vars';
-
 *{
     font-family: $primary-font;
 }
 h1, h2, h3, h4, h5, h6{
     font-family: $secondary-font;
 }
+.pfont{
+    font-family: $primary-font;
+}
+.sfont{
+    font-family: $secondary-font;
+}
+.ptc{
+    // ptc - primary-text-color, stc - secondary
+    color:$primary-color;
+}
+.stc{
+    color:$secondary-color;
+}
+.wtc{
+    color:$white-color;
+}
+.pbc{
+    // pbc - primary-background-color, sbc - secondary
+    background-color:$primary-color;
+}
+.sbc{
+    background-color:$secondary-color;
+}
+.border-radius{
+    border-radius: 10px;
+}
+.flex-vcenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 input,textarea, .form-control{
     padding: 0.8rem;
-    border-radius: 0;
+    border-radius: 7px;
 }
 input:focus{
     box-shadow: none;
@@ -18,6 +48,37 @@ section{
 }
 img{
     width: 100%;
+}
+.input-icon-box{
+    position: relative;
+}
+.input-icon-box input{
+    padding-left:50px;
+}
+.input-icon{
+    background-image: url(/src/lib/img/contact-icon.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+    background-size: 60px;
+}
+.input-email:focus ~ .input-icon-email{
+    background-position: 0px -30px;
+}
+.input-phone:focus ~ .input-icon-phone{
+    background-position: 0px -60px;
+}
+.input-icon-user{
+    background-position: -30px 0px;
+}
+.input-icon-email{
+    background-position: -30px -30px;
+}
+.input-icon-phone{
+    background-position: -30px -60px;
 }
 .btn{
     background-color: $primary-color;
@@ -29,7 +90,12 @@ img{
     border: 1px solid $primary-color;
     box-shadow: 0px 3px 4px rgba(140, 133, 133, 0.25);
     border-radius: 2rem;    
-}	
+}
+.input-user:focus ~ .input-icon-user{
+    background-position: 0px 0px;
+}​
+​
+	
 .btn-primary{
     background-color: $primary-color;
     color: #fff;  
@@ -44,6 +110,7 @@ img{
     border: 1px solid $primary-color;
     color: $primary-color;
 }
+
 .two-columns{
     -webkit-columns: 40px 2;
     -moz-columns: 60px 2;
@@ -54,14 +121,19 @@ img{
 }
 header.container-fluid{
     padding: 20px 20px;
-    animation: 0.5s ease-out 0s 1 slideInFromTop;
+    animation: 1.3s ease-out 0s 1 slideInFromTop;
 }
 @keyframes slideInFromTop {
     0% {
       transform: translateY(-100%);
+      opacity: 0;
+    }
+    50%{
+        opacity: 0;
     }
     100% {
       transform: translateY(0);
+      opacity: 1;
     }
 }
 header{
@@ -115,21 +187,19 @@ header{
         }
     }
 }
-.contact-1{
-    min-height: 100vh;
-    background-position: bottom;
+.cover{
+    height: 500px;
+    background-repeat:no-repeat;
     background-size: cover;
-    padding-top: 150px;
-    .contact-form{
-        background-color: rgba(0,0,0,0.6);
-        padding: 30px 30px;
-        margin:20px 0px;
-        color: #fff;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:#fff;
 }
 .featured-projects .row{
     margin-right: calc(50% - 50vw);
-  }
+}
 
 .contact-form{
     padding: 4rem 2rem;
@@ -147,6 +217,7 @@ header{
     margin-top: -10rem;
     margin-bottom: 7rem;
 }
+
 .story{
     .accordion{
         .accordion-button{

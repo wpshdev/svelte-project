@@ -1,1 +1,0 @@
-{"version":3,"file":"13-136399c1.js","sources":["../../../../../generated/nodes/13.js"],"sourcesContent":["export { default as component } from \"../../../src/routes/our-team/+page.svelte\";\nexport const has_server_load = true;"],"names":["has_server_load"],"mappings":"gFACY,MAACA,EAAkB"}

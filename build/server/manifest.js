@@ -1,16 +1,117 @@
 const manifest = {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","fonts/Roboto-Black.woff","fonts/Roboto-BlackItalic.woff","fonts/Roboto-Bold.woff","fonts/Roboto-BoldItalic.woff","fonts/Roboto-Italic.woff","fonts/Roboto-Light.woff","fonts/Roboto-LightItalic.woff","fonts/Roboto-Medium.woff","fonts/Roboto-MediumItalic.woff","fonts/Roboto-Regular.woff","fonts/Roboto-Thin.woff","fonts/Roboto-ThinItalic.woff","left-quote.png","right-quote.png"]),
-	mimeTypes: {".png":"image/png",".woff":"font/woff"},
+	assets: new Set(["favicon.png","flickity/flickity.min.css","flickity/flickity.pkgd.min.js","fonts/Roboto-Black.woff","fonts/Roboto-BlackItalic.woff","fonts/Roboto-Bold.woff","fonts/Roboto-BoldItalic.woff","fonts/Roboto-Italic.woff","fonts/Roboto-Light.woff","fonts/Roboto-LightItalic.woff","fonts/Roboto-Medium.woff","fonts/Roboto-MediumItalic.woff","fonts/Roboto-Regular.woff","fonts/Roboto-Thin.woff","fonts/Roboto-ThinItalic.woff","left-quote.png","right-quote.png"]),
+	mimeTypes: {".png":"image/png",".css":"text/css",".js":"application/javascript",".woff":"font/woff"},
 	_: {
-		entry: {"file":"_app/immutable/start-e3df4280.js","imports":["_app/immutable/start-e3df4280.js","_app/immutable/chunks/index-873074d4.js","_app/immutable/chunks/singletons-e394dc95.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":{"file":"_app/immutable/entry/start.f53aedae.js","imports":["_app/immutable/entry/start.f53aedae.js","_app/immutable/chunks/index.eb34a208.js","_app/immutable/chunks/singletons.e646621c.js","_app/immutable/chunks/index.709ed9a3.js"],"stylesheets":[],"fonts":[]},"app":{"file":"_app/immutable/entry/app.4150ae78.js","imports":["_app/immutable/entry/app.4150ae78.js","_app/immutable/chunks/index.eb34a208.js"],"stylesheets":[],"fonts":[]}},
 		nodes: [
-			() => import('./chunks/0-ef9d566e.js'),
-			() => import('./chunks/1-10a14bd9.js')
+			() => import('./chunks/0-7d8cd0ce.js'),
+			() => import('./chunks/1-c7ad7023.js'),
+			() => import('./chunks/2-8834697f.js'),
+			() => import('./chunks/3-7e37ca6c.js'),
+			() => import('./chunks/4-a99c8b23.js'),
+			() => import('./chunks/5-7dbbd49b.js'),
+			() => import('./chunks/6-b2d0f1db.js'),
+			() => import('./chunks/7-44d568be.js'),
+			() => import('./chunks/8-2ce76472.js'),
+			() => import('./chunks/9-bb271db9.js'),
+			() => import('./chunks/10-6e17122f.js'),
+			() => import('./chunks/11-91b0df02.js'),
+			() => import('./chunks/12-7aacc764.js'),
+			() => import('./chunks/13-ff6aef5e.js'),
+			() => import('./chunks/14-ae305962.js'),
+			() => import('./chunks/15-7e50c39e.js'),
+			() => import('./chunks/16-fc87e099.js'),
+			() => import('./chunks/17-2287fad9.js'),
+			() => import('./chunks/18-91e4f651.js'),
+			() => import('./chunks/19-d728f89e.js')
 		],
 		routes: [
-			
+			{
+				id: "/",
+				pattern: /^\/$/,
+				params: [],
+				page: { layouts: [0], errors: [1], leaf: 8 },
+				endpoint: null
+			},
+			{
+				id: "/about",
+				pattern: /^\/about\/?$/,
+				params: [],
+				page: { layouts: [0], errors: [1], leaf: 9 },
+				endpoint: null
+			},
+			{
+				id: "/blog",
+				pattern: /^\/blog\/?$/,
+				params: [],
+				page: { layouts: [0,2], errors: [1,,], leaf: 10 },
+				endpoint: null
+			},
+			{
+				id: "/blog/[slug]",
+				pattern: /^\/blog\/([^/]+?)\/?$/,
+				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0,2], errors: [1,,], leaf: 11 },
+				endpoint: null
+			},
+			{
+				id: "/contact",
+				pattern: /^\/contact\/?$/,
+				params: [],
+				page: { layouts: [0,3], errors: [1,,], leaf: 12 },
+				endpoint: null
+			},
+			{
+				id: "/our-team",
+				pattern: /^\/our-team\/?$/,
+				params: [],
+				page: { layouts: [0], errors: [1], leaf: 13 },
+				endpoint: null
+			},
+			{
+				id: "/our-team/[slug]",
+				pattern: /^\/our-team\/([^/]+?)\/?$/,
+				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0], errors: [1], leaf: 14 },
+				endpoint: null
+			},
+			{
+				id: "/page",
+				pattern: /^\/page\/?$/,
+				params: [],
+				page: { layouts: [0,4], errors: [1,,], leaf: 15 },
+				endpoint: null
+			},
+			{
+				id: "/page/[slug]",
+				pattern: /^\/page\/([^/]+?)\/?$/,
+				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0,4,5], errors: [1,,,], leaf: 16 },
+				endpoint: null
+			},
+			{
+				id: "/portfolio",
+				pattern: /^\/portfolio\/?$/,
+				params: [],
+				page: { layouts: [0,6], errors: [1,,], leaf: 17 },
+				endpoint: null
+			},
+			{
+				id: "/portfolio/[slug]",
+				pattern: /^\/portfolio\/([^/]+?)\/?$/,
+				params: [{"name":"slug","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0,6], errors: [1,,], leaf: 18 },
+				endpoint: null
+			},
+			{
+				id: "/privacy",
+				pattern: /^\/privacy\/?$/,
+				params: [],
+				page: { layouts: [0,7], errors: [1,,], leaf: 19 },
+				endpoint: null
+			}
 		],
 		matchers: async () => {
 			
@@ -19,7 +120,7 @@ const manifest = {
 	}
 };
 
-const prerendered = new Set(["/","/__data.json","/about","/about/__data.json","/blog","/blog/__data.json","/contact","/contact/__data.json","/our-team","/our-team/__data.json","/page","/page/__data.json","/portfolio","/portfolio/__data.json","/privacy","/privacy/__data.json","/page/sample-page","/page/sample-page/__data.json","/blog/experiencing-life-at-oak-creek","/blog/experiencing-life-at-oak-creek/__data.json","/our-team/ulf-lindroth","/our-team/ulf-lindroth/__data.json","/our-team/verity-eisenman","/our-team/verity-eisenman/__data.json","/our-team/niclas-kullberger","/our-team/niclas-kullberger/__data.json","/our-team/magnus-nilsson","/our-team/magnus-nilsson/__data.json","/our-team/justin-wohlrabe","/our-team/justin-wohlrabe/__data.json","/our-team/saul-morales","/our-team/saul-morales/__data.json","/our-team/eric-bontrager","/our-team/eric-bontrager/__data.json","/our-team/victor-holguin","/our-team/victor-holguin/__data.json","/our-team/kevin-berga","/our-team/kevin-berga/__data.json","/our-team/frederico","/our-team/frederico/__data.json","/our-team/a-1","/our-team/a-1/__data.json","/our-team/matt-borde","/our-team/matt-borde/__data.json","/our-team/austin-murray","/our-team/austin-murray/__data.json","/portfolio/null","/portfolio/null/__data.json"]);
+const prerendered = new Set([]);
 
 export { manifest, prerendered };
 //# sourceMappingURL=manifest.js.map

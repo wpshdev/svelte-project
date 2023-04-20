@@ -86,13 +86,16 @@ function scrollToTop() {
                         <h4>QUICK LINKS</h4>
                     </div>
                     <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="#">About Us</a></div>
+                        <div><a href="/about/">About Us</a></div>
                     </div>
                     <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="#">Blog</a></div>
+                        <div><a href="/blog/">Blog</a></div>
                     </div>   
                     <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="#">Contact</a></div>
+                        <div><a href="/contact/">Contact</a></div>
+                    </div>
+                    <div class="footer__widget4_item4 footer__widget--item">
+                        <div><a href="/privacy/">Privacy Policy</a></div>
                     </div>   
                     <div class="footer__widget4_item4 footer__widget--item">
                         <div><a href="#">What our client say</a></div>

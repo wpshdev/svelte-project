@@ -1,4 +1,4 @@
-import type { PageLoad } from './$types';
+// import type { PageLoad } from './$types';
 export const load: PageLoad = async ({ params, fetch }) => {
     const url = 'https://strapi.ulfbuilt.com:1337/api/blogs?filters[slug][$eq]=' + params.slug + '&populate=deep';
     const response = await fetch(url, {

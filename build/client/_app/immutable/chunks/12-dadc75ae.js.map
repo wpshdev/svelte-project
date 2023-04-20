@@ -1,1 +1,0 @@
-{"version":3,"file":"12-dadc75ae.js","sources":["../../../../../generated/nodes/12.js"],"sourcesContent":["export { default as component } from \"../../../src/routes/contact/+page.svelte\";\nexport const has_server_load = true;"],"names":["has_server_load"],"mappings":"+EACY,MAACA,EAAkB"}
