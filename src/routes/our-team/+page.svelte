@@ -3,26 +3,54 @@
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
-	// console.log(data.data.attributes.Banner.background.data.attributes.url);
-	console.log(ourTeam);	
+	console.log(ourTeam);
+    let scroll = -1900;
+	let speed = 1;
 </script>
 <svelte:head>
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
-
 </svelte:head>
+<h1 style="position:fixed;left:100px;bottom:100px;z-index:100;">{scroll}</h1>
 
+<div class="cover" style="background-image: url({domain}{data.data.attributes.Cover.data.attributes.formats.large.url});">
+    <h2 class="pfont">{data.data.attributes.title}</h2>
+    <p class="pfont">{data.data.attributes.Subheading}</p>
+</div>
 <section class="our-team">
 	<Container>
 		<Row>
 			<Col md="8" class="mx-auto text-center">
-                <h1>{ourTeam.title}</h1>
-                {@html ourTeam.content}
+                <h1 class="stc">{ourTeam.SecondSectionTitle}</h1>
+                <p class="pb-5">{@html ourTeam.SecondSectionPara}</p>
+                <img alt="Team Philosophy" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}">
 			</Col>
 		</Row>
+	</Container>
+</section>
+<section class="owner">
+    <Container>
+        <div class="imgdiv"><img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
+        <div class="tm-box wtc px-5 py-3">
+            <h2 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h2>
+            <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>
+        </div></div>
+        <div class="owner-quote"><h2 class="wtc line-height-2">{@html ourTeam.ownerquote}</h2></div>
+    </Container>
+</section>
+<section class="team-members">
+<Container>
+    <Row>
+        <div class="col-md-5">
+            <div class="col" style:transform={`translate3d(0, ${(scroll-1500) * 0.5}px, 0)`}>
+                <h4 class="pfont pt-5 ptc">{ourTeam.title}</h4>
+                <h2 class="sfont stc line-height-2">{ourTeam.para1}</h2>
+            </div>
+        </div>
+        <div class="col-md-7">
         <Row>
             {#each ourTeam.team_members.data as member}
-                <Col md="4">
+                <Col md="6">
                     <div class="our-team__member">
                         <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
                         <a href="/our-team/{member.attributes.slug}">
@@ -35,9 +63,10 @@
                 </Col>                    
             {/each}                                          
         </Row>
-	</Container>
+    </div>
+</Row>
+</Container>
 </section>
-
 <style lang="scss">
     .our-team{
         img{
@@ -85,3 +114,4 @@
 
     }
 </style>
+<svelte:window bind:scrollY={scroll} />
