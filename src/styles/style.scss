@@ -151,13 +151,19 @@ header{
         li{
             display: inline-block;
             padding: 0px 20px;
-        }
-        a{
-            color: #fff;
-            text-decoration: none;
+            a.nav-link{
+                color: #fff;
+                text-decoration: none;
+            }            
         }
         a:hover{
             color: #fff;
+        }
+        .dropdown-menu{
+            background: transparent;
+            border: none;
+            left: 0.8rem;
+            padding: 1.25rem;            
         }
     }
 }
@@ -200,7 +206,9 @@ header{
     flex-direction: column;
     color:#fff;
 }
-.featured-projects .row{
+
+// offset slider
+.featured-projects .row, .portfolio-gallery__slider{
     margin-right: calc(50% - 50vw);
 }
 
