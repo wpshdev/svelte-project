@@ -67,6 +67,44 @@
 </Row>
 </Container>
 </section>
+<section>
+    <Container>
+        <Row>
+            <Col md="12">
+               <h2 class="text-center">{ourTeam.para2}</h2>
+            </Col>
+        </Row>
+    </Container>
+</section>
+<section class="team-members-2">
+    <Container>
+        <Row>
+            <div class="col-md-7">
+            <Row>
+                {#each ourTeam.team_member_2.data as member}
+                    <Col md="6">
+                        <div class="our-team__member">
+                            <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                            <a href="/our-team/{member.attributes.slug}">
+                                <div class="our-team__member_caption">
+                                    <h2>{member.attributes.name}</h2>
+                                    <span>{member.attributes.position}</span>
+                                </div>                        
+                            </a>
+                        </div>
+                    </Col>                    
+                {/each}                                          
+            </Row>
+            </div>
+            <div class="col-md-5">
+                <div class="col" style:transform={`translate3d(0, ${(0) * 0.5}px, 0)`}>
+                    <h4 class="pfont pt-5 ptc">{ourTeam.title}</h4>
+                    <h2 class="sfont stc line-height-2">{ourTeam.para3}</h2>
+                </div>
+            </div>
+    </Row>
+    </Container>
+    </section>
 <style lang="scss">
     .our-team{
         img{
