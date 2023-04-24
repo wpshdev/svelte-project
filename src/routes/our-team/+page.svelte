@@ -4,14 +4,11 @@
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
 	console.log(ourTeam);
-    let scroll = -1900;
-	let speed = 1;
 </script>
 <svelte:head>
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<h1 style="position:fixed;left:100px;bottom:100px;z-index:100;">{scroll}</h1>
 
 <div class="cover" style="background-image: url({domain}{data.data.attributes.Cover.data.attributes.formats.large.url});">
     <h2 class="pfont">{data.data.attributes.title}</h2>
@@ -41,13 +38,13 @@
 <section class="team-members">
 <Container>
     <Row>
-        <div class="col-md-5">
-            <div class="col" style:transform={`translate3d(0, ${(scroll-1500) * 0.5}px, 0)`}>
+        <Col md="5">
+            <div class="team-members__description">
                 <h4 class="pfont pt-5 ptc">{ourTeam.title}</h4>
                 <h2 class="sfont stc line-height-2">{ourTeam.para1}</h2>
             </div>
-        </div>
-        <div class="col-md-7">
+        </Col>
+        <Col md="7">
         <Row>
             {#each ourTeam.team_members.data as member}
                 <Col md="6">
@@ -63,7 +60,7 @@
                 </Col>                    
             {/each}                                          
         </Row>
-    </div>
+    </Col>
 </Row>
 </Container>
 </section>
@@ -76,35 +73,6 @@
         </Row>
     </Container>
 </section>
-<section class="team-members-2">
-    <Container>
-        <Row>
-            <div class="col-md-7">
-            <Row>
-                {#each ourTeam.team_member_2.data as member}
-                    <Col md="6">
-                        <div class="our-team__member">
-                            <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                            <a href="/our-team/{member.attributes.slug}">
-                                <div class="our-team__member_caption">
-                                    <h2>{member.attributes.name}</h2>
-                                    <span>{member.attributes.position}</span>
-                                </div>                        
-                            </a>
-                        </div>
-                    </Col>                    
-                {/each}                                          
-            </Row>
-            </div>
-            <div class="col-md-5">
-                <div class="col" style:transform={`translate3d(0, ${(0) * 0.5}px, 0)`}>
-                    <h4 class="pfont pt-5 ptc">{ourTeam.title}</h4>
-                    <h2 class="sfont stc line-height-2">{ourTeam.para3}</h2>
-                </div>
-            </div>
-    </Row>
-    </Container>
-    </section>
 <style lang="scss">
     .our-team{
         img{
@@ -149,7 +117,11 @@
                 }
             }   
         }
-
+    }
+    .team-members{
+        &__description{
+            position: sticky;
+            top:50px;
+        }
     }
 </style>
-<svelte:window bind:scrollY={scroll} />

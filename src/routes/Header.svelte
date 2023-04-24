@@ -28,7 +28,7 @@
   <Navbar expand="md">
 	<NavbarBrand href="/">
 		<a href="/">
-			<img src={logo} alt="ULFBUILT" />
+			<img src={logo} alt="ULFBUILT" class="logo" />
 		</a>	
 	</NavbarBrand>
 	<NavbarToggler on:click={() => (isOpen = !isOpen)} />
@@ -38,16 +38,16 @@
 		  <NavLink href="#">PORTFOLIO</NavLink>
 		</NavItem>
 		<Dropdown nav inNavbar>
-			<DropdownToggle nav caret>ABOUT US</DropdownToggle>
+			<DropdownToggle nav caret href="about">ABOUT US</DropdownToggle>
 			<DropdownMenu end>
-			  <DropdownItem>PORTFOLIO</DropdownItem>
-			  <DropdownItem>ABOUT US</DropdownItem>		
-			  <DropdownItem>OUR TEAM</DropdownItem>
-			  <DropdownItem>CONTACT US</DropdownItem>				
+			  <DropdownItem href="portfolio">PORTFOLIO</DropdownItem>
+			  <DropdownItem href="about">ABOUT US</DropdownItem>		
+			  <DropdownItem href="our-team">OUR TEAM</DropdownItem>
+			  <DropdownItem href="contact">CONTACT US</DropdownItem>				
 			</DropdownMenu>
 		  </Dropdown>		
 		<NavItem>
-			<NavLink href="#">OUR TEAM</NavLink>
+			<NavLink href="/our-team/">OUR TEAM</NavLink>
 		</NavItem>		  		
 	  </Nav>
 	</Collapse>
