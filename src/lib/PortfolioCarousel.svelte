@@ -69,7 +69,7 @@
         <div class="progress-ring-container">
           <svg class="progress-ring" width="110" height="110">
             <circle class="progress-ring__bg" cx="55" cy="55" r="50" fill="white" />
-            <circle class="progress-ring__border" cx="55" cy="55" r="50" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="314" stroke-dashoffset="{314 * (1 - progressPercentage / 100)}" />
+            <circle class="progress-ring__border" cx="55" cy="55" r="50" fill="transparent" transform="rotate(-90 55 55)" stroke-width="4" stroke="#00ADEE" stroke-dasharray="314" stroke-dashoffset="{314 * (1 - progressPercentage / 100)}" />
             <text class="progress-ring__arrow progress-ring__arrow--left" x="55" y="55" font-size="16" text-anchor="middle" dominant-baseline="central">&darr;</text>
           </svg>
         </div>  
