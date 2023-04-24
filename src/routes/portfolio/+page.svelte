@@ -2,15 +2,15 @@
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
     import LazyImage from "$lib/LazyImage.svelte";
-	let domain = "https://strapi.ulfbuilt.com:1337";
-	let portfolio =  data.portfolio.data.attributes; 
-    let properties = data.properties.data;
-    console.log(properties);
+	// let domain = "https://strapi.ulfbuilt.com:1337";
+	// let portfolio =  data.portfolio.data.attributes; 
+    // let properties = data.properties.data;
+    // console.log(properties);
     // console.log(data);
 	// console.log(data.data.attributes.Banner.background.data.attributes.url);
 </script>
 <svelte:head>
-	<title>{portfolio.title}</title>
+	<title>Portfolio</title>
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
@@ -19,24 +19,9 @@
 	<Container>
 		<Row>
 			<Col md="8" class="mx-auto text-center">
-                <h1>{portfolio.title}</h1>
-                {@html portfolio.content}
+
 			</Col>
 		</Row>
-        <Row>
-            {#each properties as property}
-                <Col md="4">
-                    <div class="portfolio__property">
-                        <LazyImage src="{domain}{property.attributes.featuredImage.data.attributes.url}" alt="member" className="portfolio__property__img"/>
-                        <a href="/portfolio/{property.attributes.slug}">
-                            <div class="portfolio__property__caption">
-                                <h2>{property.attributes.title}</h2>
-                            </div>                        
-                        </a>
-                    </div>
-                </Col>                    
-            {/each}                                          
-        </Row>
 	</Container>
 </section>
 
