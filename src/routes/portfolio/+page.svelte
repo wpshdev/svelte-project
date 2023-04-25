@@ -2,31 +2,80 @@
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
     import LazyImage from "$lib/LazyImage.svelte";
-	// let domain = "https://strapi.ulfbuilt.com:1337";
-	// let portfolio =  data.portfolio.data.attributes; 
+    import Masonry from "$lib/components/Masonry.svelte";
+	let domain = "https://strapi.ulfbuilt.com:1337";
+	let portfolio =  data.portfolio.data.attributes; 
+   
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
 	// console.log(data.data.attributes.Banner.background.data.attributes.url);
 </script>
 <svelte:head>
-	<title>Portfolio</title>
+	<title>{portfolio.title}</title>
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
 
-<section class="portfolio">
+<section class="portfolio" style="--banner:url({domain}{portfolio.featuredImage.data.attributes.url})">
 	<Container>
 		<Row>
 			<Col md="8" class="mx-auto text-center">
-
+                <div class="portfolio__banner-content">
+                    <h1>{portfolio.title}</h1>
+                    <p>{portfolio.subTitle}</p>
+                </div>
 			</Col>
 		</Row>
 	</Container>
 </section>
+<section class="portfolio-masonry">
+    <Container>
+        <Row>
+            <Col class="text-center">
+                <h2>{portfolio.masonryGallery.masonryHeading}</h2>
+                <p>{portfolio.masonryGallery.masonrySubheading}</p>
+                <Masonry items={portfolio.masonryGallery.masonryItems.data} />
+            </Col>
+        </Row>
+    </Container>
+</section>
 
 <style lang="scss">
     .portfolio{
+		background-image: var(--banner);
+		background-size: cover;
+        margin-top: 0;
+		min-height: 40vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        &:after{
+            content: "";
+            background-color: rgba(0,0,0,0.5);
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 0;
+        }
+        &__banner-content{
+            z-index: 1;
+            position: relative;
+            h1{
+                color: #fff;
+                font-size: 3rem;
+                font-family: $primary-font;
+                font-weight: 300;
+                letter-spacing: 0.2rem;
+            }
+            p{
+                color: #fff;
+                letter-spacing: 0.1rem;                
+            }
+        }
         img{
             width: 100%;
             max-width: 100%;
@@ -70,5 +119,15 @@
             }   
         }
 
+    }
+    .portfolio-masonry{
+        h2{
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        p{
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
     }
 </style>
