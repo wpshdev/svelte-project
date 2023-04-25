@@ -19,7 +19,7 @@
 	import reputationImg from "$lib/img/Reputation.svg";		
 	import lroom from "$lib/img/Process-Lroom.svg";
 	import stair from "$lib/img/Process-Stair.svg";
-	import insight from "$lib/img/Insight.svg";
+	import insight from "$lib/img/insight.svg";
 	import ctabg from "$lib/img/CTA-BG.svg";
 
 
