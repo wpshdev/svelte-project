@@ -80,5 +80,6 @@
         height: 100%;
         padding: 3rem;
     }
-    
+    .blogsection7 img { transition: all 0.5s ease-in-out; }
+    .blogsection7 img:hover { transform: scale(1.1); }
 </style>
