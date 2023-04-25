@@ -24,9 +24,8 @@
 <Container>
         {#each paginatedBlogs as blog,i (blog.id)}
         <Row>
-            <Col md="7" style="padding:0;">
+            <Col md="7" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
                 <div class="blogsection7">
-            <!-- <a href="/blog/{blog.attributes.slug}" class="text-decoration-none text-black"> -->
                 {#if blog.attributes.featuredimage.data != null}
                     {#if blog.attributes.featuredimage.data.attributes.formats != null}
                         <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
@@ -81,4 +80,5 @@
         height: 100%;
         padding: 3rem;
     }
+    
 </style>
