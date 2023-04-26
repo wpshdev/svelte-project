@@ -3,7 +3,7 @@
 	import { Col, Container, Row } from "sveltestrap";
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
-	import Animate from "$lib/Animate.svelte";
+	import Animate from "$lib/components/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
 
 	import PortfolioCarousel from "$lib/PortfolioCarousel.svelte";
