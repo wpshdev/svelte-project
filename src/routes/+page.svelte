@@ -8,7 +8,7 @@
     import { Button } from 'sveltestrap';
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
-	import Animate from "$lib/Animate.svelte";
+	import Animate from "$lib/components/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
 	import ImageSlider from '$lib/ImageSlider.svelte';
 	import Carousel from "$lib/Carousel.svelte";
@@ -19,8 +19,8 @@
 	import reputationImg from "$lib/img/Reputation.svg";		
 	import lroom from "$lib/img/Process-Lroom.svg";
 	import stair from "$lib/img/Process-Stair.svg";
-	import insight from "$lib/img/Insight.svg";
-	import ctabg from "$lib/img/CTA-BG.svg";
+	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
+	import Cta from "$lib/components/layout/Cta.svelte";
 
 
     const images = [
@@ -299,48 +299,9 @@
 	</Container>
 </section>
 
-<section class="insight">
-	<Container>
-		<Row>
-			<Col>
-				<span class="insight__pre-heading">Our Insight</span>
-			</Col>
-		</Row>
-		<Row>
-			<Col md="6" class="">
-				<img src="{insight}" alt="Stair">
-			</Col>
-			<Col md="6" class="my-auto">
-				<div class="insight__content">
-					<div class="insight__content__wrapper">
-						<div class="insight__content__wrapper__pre-heading">Vail, Colorado | January 28 • 2 minutes read</div>
-						<h2>Thinking out of the Box</h2>
-						<p>
-							We craft custom homes that look and feel like only you could live there. And we do it by working hand-in-hand with you throughout the entire experience. We craft custom homes that look and feel like only you could live there.
-						</p>
-						<a href="#" class="btn btn-primary">Read Article</a> <a href="#" class="btn btn-inverted">Meet with Us</a>
-					</div>
-				</div>				
-			</Col>
-		</Row>
-	</Container>
-</section>
+<ArticleSection />
 
-<section class="home-cta" style="--cta-banner: url({ctabg})">
-	<Container>
-		<Row>
-			<Col class="text-center">
-				<div class="home-cta__container">
-					<div class="home-cta__wrapper">
-						<h2>Tell us about your project</h2>
-						<p>We want to know about yo and building your dream home</p>
-						<a href="#" class="btn btn-primary">Connect with Us</a>
-					</div>
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section>
+<Cta />
 
 <style lang="scss">
 	.homebanner{
@@ -698,26 +659,6 @@
 		margin: 5rem 0;
 	}
 	
-	.home-cta{
-		margin: 0;
-		background-image: var(--cta-banner);
-		background-size: cover;
-		
-		&__container{
-			height: 40vw;
-			width: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		h2{
-			color: #000;
-		}
-		.btn{
-			margin-top: 1rem;
-			color: #fff;
-		}
-	}
 	// .contact-form{
 	// 	&__form{
 	// 	padding: 2rem;

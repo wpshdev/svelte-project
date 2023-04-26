@@ -3,6 +3,8 @@
 	export let data;
     import LazyImage from "$lib/LazyImage.svelte";
     import Masonry from "$lib/components/Masonry.svelte";
+	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
+	import Cta from "$lib/components/layout/Cta.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
    
@@ -35,12 +37,30 @@
             <Col class="text-center">
                 <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data} />
+                <Masonry items={portfolio.masonryGallery.masonryItems.data}  />
             </Col>
         </Row>
     </Container>
 </section>
+<section class="portfolio-cta">
+    <Container>
+        <Row>
+            <Col class="text-center ">
+                <div class="portfolio-cta__content">
+                    <span>{portfolio.ourApproachPreHeading}</span>
+                    <h2>{@html portfolio.ourApproachHeading}</h2>                 
+                </div>
+                <div class="portfolio-cta__btns">
+                    <a href="{portfolio.ourApproachLeftBtnUrl}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle}</a>
+                    <a href="{portfolio.ourApproachRightBtnUrl}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle}</a>
+                </div>                   
+            </Col>
+        </Row>
+    </Container>
+</section>
+<ArticleSection />
 
+<Cta />
 <style lang="scss">
     .portfolio{
 		background-image: var(--banner);
@@ -128,6 +148,33 @@
         p{
             max-width: 1100px;
             margin: 0 auto 3rem;
+        }
+    }
+    .portfolio-cta{
+        min-height: 40vw;
+        min-width: 40vw;        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;        
+        &__content{
+            span{
+                color: $primary-color;
+            }
+            h2{
+                font-size: 3rem;
+            }
+        }
+        &__btns{
+            margin: 2rem 0;
+
+            .btn-secondary{
+                margin-right: 1.5rem;
+            }
+            .btn-inverted{
+                border-color: $secondary-color;
+                color: $secondary-color;
+            }
         }
     }
 </style>

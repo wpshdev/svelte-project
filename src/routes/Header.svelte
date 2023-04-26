@@ -35,7 +35,7 @@
 	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
 	  <Nav class="ms-auto" navbar>
 		<NavItem>
-		  <NavLink href="#">PORTFOLIO</NavLink>
+		  <NavLink data-sveltekit-preload-data="tap" href="/portfolio">PORTFOLIO</NavLink>
 		</NavItem>
 		<Dropdown nav inNavbar>
 			<DropdownToggle nav caret>ABOUT US</DropdownToggle>
