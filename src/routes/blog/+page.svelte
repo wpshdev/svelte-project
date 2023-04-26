@@ -1,62 +1,85 @@
 <script lang="ts">
     import { Col, Container, Row } from 'sveltestrap';
-    //import { paginate, LightPaginationNav } from 'svelte-paginate';
-
+    import { paginate, LightPaginationNav } from 'svelte-paginate';
     export let data;
-    let blogs = data.data;
+    import blogempty from "$lib/img/blog-empty.svg";
+    let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
-    // console.log(data);
-    let searchTerm="";
-    $: searchBlogs = blogs.filter(( blog: {[x: string]: any; title: string | string[]; } )=>{
-        return blog.attributes.title.includes(searchTerm);
-    });
-    $: console.log(searchBlogs);
-    let title = data.data[0].attributes.title;
-//     let items = blogs;
-//   let currentPage = 1;
-//   let pageSize = 1;
-//   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
-// $: console.log(paginatedBlogs);
-// var items = 3;
+    console.log(data);
+    let title = data.page.data.attributes.title;
+    let items = blogs;
+  let currentPage = 1;
+  let pageSize = 5;
+  $: paginatedBlogs = paginate({ items, pageSize, currentPage });
 </script>
 <svelte:head>
-	<title>News/Blogs</title>
+	<title>{title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+<div class="cover" style="background-image: url({url}{data.page.data.attributes.Cover.data[0].attributes.formats.large.url});">
+    <h2 class="pfont">{data.page.data.attributes.title}</h2>
+    <p class="pfont">{data.page.data.attributes.Subheading}</p>
+</div>
+<section>
 <Container>
-    <Row>
-        <Col md="12"><h1 class="text-center">BLOG</h1></Col>
-        <Col md="12"><input type="text" placeholder="search" bind:value={searchTerm}></Col>
-    </Row>
-    <Row>
-        {#each searchBlogs as blog}
-        <Col md="4">
-            <a href="/blog/{blog.attributes.slug}" class="text-decoration-none text-black">
-                {#if blog.attributes.featuredimage.data.attributes.formats == null}
-                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
+        {#each paginatedBlogs as blog,i (blog.id)}
+        <Row>
+            <Col md="7" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
+                <div class="blogsection7">
+                {#if blog.attributes.featuredimage.data != null}
+                    {#if blog.attributes.featuredimage.data.attributes.formats != null}
+                        <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
+                    {:else}
+                        <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                    {/if}
                 {:else}
-                <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
+                    <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
                 {/if}
-                <h4 class="text-center">{blog.attributes.title}</h4>
-                <p class="text-center">{blog.attributes.shorttext}</p>
-            </a>
-        </Col>
+                </div>
+            </Col>
+            <Col md="5" style="padding:20px 0;">
+                <div class="blogsection5">
+                    <div>
+                        <h2>{blog.attributes.title}</h2>
+                        <p>{blog.attributes.shorttext}</p>
+                    </div>
+                    <a class="btn btn-secondary" href="/blog/{blog.attributes.slug}">Read More</a>
+                </div>
+            </Col>
+            <!-- </a> -->
+        
+    </Row>
+    <div style="padding: 20px;"></div>
         {/each}
-<!-- <LightPaginationNav
+<LightPaginationNav
   totalItems="{items.length}"
   pageSize="{pageSize}"
   currentPage="{currentPage}"
   limit="{1}"
   showStepOptions="{true}"
   on:setPage="{(e) => currentPage = e.detail.page}"
-/> -->
-    </Row>
+/>
 </Container>
+</section>
 <style lang="scss">
     .blog-img{
-        min-height: 300px;
-        max-height: 300px;
+        min-height: 400px;
+        max-height: 400px;
         object-fit:cover;
         -o-object-fit: cover;
     }
+    .blogsection7{
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .blogsection5{
+        background-color: #e9ebef;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: 3rem;
+    }
+    .blogsection7 img { transition: all 0.5s ease-in-out; }
+    .blogsection7 img:hover { transform: scale(1.1); }
 </style>
