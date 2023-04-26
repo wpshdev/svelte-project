@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
+    import { LazyImage } from 'svelte-lazy-image';
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
@@ -17,10 +18,10 @@
 <section class="our-team">
 	<Container>
 		<Row>
-			<Col md="8" class="mx-auto text-center">
+			<Col md="10" class="mx-auto text-center">
                 <h1 class="stc">{ourTeam.SecondSectionTitle}</h1>
                 <p class="pb-5">{@html ourTeam.SecondSectionPara}</p>
-                <img alt="Team Philosophy" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}">
+                <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy" class="easein-img"/>
 			</Col>
 		</Row>
 	</Container>
@@ -123,5 +124,8 @@
             position: sticky;
             top:50px;
         }
+    }
+    section{
+        margin: 8rem 0;
     }
 </style>

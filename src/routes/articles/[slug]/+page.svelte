@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
     export let data;
+    console.log(data);
     let title = data.page.data[0].attributes.title;
     let content = data.page.data[0].attributes.blogtext;
     const url = 'https://strapi.ulfbuilt.com:1337';
@@ -28,8 +29,11 @@
     <Container>
         <h2 class="text-center">Related Articles</h2>
         <Row>
+            {#each data.blogs.data as blog,i (blog.id)}
             <Col md="4">
+                {blog.attributes.title}
             </Col>
+            {/each}
         </Row>
     </Container>
 </section>

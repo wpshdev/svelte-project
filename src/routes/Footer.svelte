@@ -89,7 +89,7 @@ function scrollToTop() {
                         <div><a href="/about/">About Us</a></div>
                     </div>
                     <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="/blog/">Blog</a></div>
+                        <div><a href="/articles/">Articles & Press</a></div>
                     </div>   
                     <div class="footer__widget4_item4 footer__widget--item">
                         <div><a href="/contact/">Contact</a></div>
