@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	import insight from "$lib/img/Insight.svg";        
+	import insight from "$lib/img/insight.svg";        
 </script>
 <section class="insight">
 	<Container>
