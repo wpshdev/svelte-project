@@ -1,5 +1,13 @@
 <script lang="ts">
 import { fly, fade } from "svelte/transition";
+import { MasonryGrid } from "@egjs/svelte-grid";
+
+const gap = 10;
+const defaultDirection = "end";
+const align = "end";
+const column = 2;
+const columnSize = 0;
+const columnSizeRatio = 0;
 import axios from "axios";
 export let id;
 let projects;
@@ -30,38 +38,79 @@ $: if (id) {
 </script>
 
     {#if projects}
+        <MasonryGrid
+        class="container"
+        {defaultDirection}
+        {gap}
+        {align}
+        {column}
+        {columnSize}
+        {columnSizeRatio}
+    >       
          {#each projects.data as project, index}				
-             <div class="masonry-items" in:fade out:fade>
-                 <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">
+             <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
+                <a href="/portfolio/{project.attributes.slug}">      
+                    <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
+                    <div class="masonry-items__text">
+                        <span>{index + 1}</span>
+                        {project.attributes.title}
+                    </div>
+                </a>
              </div>						
-         {/each}														
+         {/each}
+        </MasonryGrid>         														
     {:else}
-        <!-- <div class="col text-center"><span>Loading...</span></div> -->
+        <div class="col text-center">Loading...</div>
     {/if}         
 
 <style lang="scss">
+    .container {
+    overflow: hidden;
+    }    
     .loading{
         width: 100%;
-        span{
-            margin: 0 auto;
-        }
+        text-align: center;
     }
     .masonry-items{
-        // width: 50%;
-        // margin-bottom: 2rem;
-        // break-inside: avoid;
-        margin: 0;
-        display: inline-block;
-        margin-bottom: 0px;
-        width: 100%;        
-        &:nth-child(1){
-            // margin-top: 4rem;
+        width: 50%;   
+        overflow: hidden;
+        position: absolute;
+        color: white;
+        text-align: center;  
+        img{
+            transition: 0.5s;
+        }         
+        &:hover{
+            img{
+                transition: 0.5s;
+                scale: 1.2;
+            }
+        }
+        &:nth-child(2){
+            padding-top: 4rem;
+            // top: 50px !important;
         }
         &:nth-child(odd){
             // padding-right: 1rem;
         }
         &:nth-child(even){
             // padding-left: 1rem;
+        }
+        &__text{
+            background-color: $secondary-color;
+            color: #fff;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 2;
+            bottom: 1rem;
+            left: 0;
+            width: 65%;
+            text-align: left;
+            span{
+                color: $primary-color;
+                font-size: 1.2rem;
+                margin: 0 0.8rem 0;
+            }
         }
     }
 </style>

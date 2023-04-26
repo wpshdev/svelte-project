@@ -33,9 +33,9 @@ function handleTabClick(category) {
         </div>
         <div class="masonry__tabs__gallery">
             {#key activeTab}
-            <div  id="modern" class="masonry__tabs__gallery__imgs" data-test={activeTab} transition:fade >
-                <MasonryCard id={activeTab}/>
-            </div>			
+                <div  id="modern" class="masonry__tabs__gallery__imgs" data-test={activeTab} transition:fade >
+                    <MasonryCard id={activeTab}/>
+                </div>			
             {/key}								
         </div>					
     </div>
@@ -44,6 +44,7 @@ function handleTabClick(category) {
 
 <style lang="scss">
 	.masonry{
+        min-height: 30vw;
 		h2{
 			margin-bottom: 3rem;
 			font-size: 3rem;			
@@ -94,11 +95,11 @@ function handleTabClick(category) {
             }
 			&__gallery{
 				&__imgs{
-					display: flex;
-                    flex-wrap: wrap;
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    grid-gap: 2rem;
+					// display: flex;
+                    // flex-wrap: wrap;
+                    // display: grid;
+                    // grid-template-columns: repeat(2, 1fr);
+                    // grid-gap: 2rem;
 					div{
 						width: 33.33%;
 						margin: 0 1rem;
