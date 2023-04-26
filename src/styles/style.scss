@@ -342,10 +342,10 @@ header{
 .mx-10{
     margin:5rem 0;
 }
-.easein-img { 
+.easein-img img { 
     -webkit-transition: -webkit-transform 1.5s ease-out;
     transition: -webkit-transform 1.5s ease-out;
     transition: transform 1.5s ease-out;
     transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;
 }
-.easein-img:hover { transform: scale(1.1); }
+.easein-img img:hover { transform: scale(1.1); }
