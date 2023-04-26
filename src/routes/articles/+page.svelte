@@ -40,6 +40,7 @@
             <Col md="5" style="padding:20px 0;">
                 <div class="blogsection5">
                     <div>
+                        <span>Vail, Colorado | {blog.attributes.createdAt}</span>
                         <h2>{blog.attributes.title}</h2>
                         <p>{blog.attributes.shorttext}</p>
                     </div>

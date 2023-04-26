@@ -16,11 +16,8 @@
     let twitter = data.data.attributes.twitter;
     let youtube = data.data.attributes.youtube;
     let houzz = data.data.attributes.youtube;
-    let name = ''
-    let email = ''
-    let subject = ''
-    let message = ''
-    let result = ''
+    let name = '', email = '', subject = '', message = '', result = ''
+    let scroll
     async function doContact () {
         const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
 		const res = await fetch(url, {
@@ -63,6 +60,7 @@
 	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+<svelte:window bind:scrollY={scroll} />
 <div class="cover" style="background-image: url({url}{data.data.attributes.featuredimage.data.attributes.formats.large.url});">
     <h2 class="pfont">{data.data.attributes.title}</h2>
     <p class="pfont">{data.data.attributes.Subheading}</p>
