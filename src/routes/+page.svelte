@@ -23,6 +23,7 @@
 	import Cta from "$lib/components/layout/Cta.svelte";
 
 
+
     const images = [
         modern,
         mountain,
@@ -41,7 +42,6 @@
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-
 <section class="homebanner" style="--banner: url({banner})">
 	<Container>
 		<Row>
@@ -315,7 +315,7 @@
 		text-align: center;
 		display: flex;
 		justify-content: center;
-		align-items: center;		
+		align-items: center;
 		&__content{
 			&__text{
 				h1{

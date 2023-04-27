@@ -7,6 +7,9 @@
 h1, h2, h3, h4, h5, h6{
     font-family: $secondary-font;
 }
+.logo{
+    height: 3.5rem;
+}
 .pfont{
     font-family: $primary-font;
 }
@@ -29,6 +32,9 @@ h1, h2, h3, h4, h5, h6{
 }
 .sbc{
     background-color:$secondary-color;
+}
+.line-height-2{
+    line-height: 1.5;
 }
 .border-radius{
     border-radius: 10px;
@@ -82,6 +88,9 @@ img{
 .input-icon-phone{
     background-position: -30px -60px;
 }
+.input-user:focus ~ .input-icon-user{
+    background-position: 0px 0px;
+}
 .btn{
     background-color: $primary-color;
     border-radius: 0;
@@ -95,9 +104,7 @@ img{
 }
 .input-user:focus ~ .input-icon-user{
     background-position: 0px 0px;
-}​
-​
-	
+}​	
 .btn-primary{
     background-color: $primary-color;
     color: #fff;  
@@ -106,13 +113,13 @@ img{
     background-color: $secondary-color;
     border: 1px solid $secondary-color;
     color: #fff;  
+    width: fit-content;
 }
 .btn-inverted{
     background-color: transparent;
     border: 1px solid $primary-color;
     color: $primary-color;
 }
-
 .two-columns{
     -webkit-columns: 40px 2;
     -moz-columns: 60px 2;
@@ -122,7 +129,7 @@ img{
     z-index: 10;
 }
 header.container-fluid{
-    padding: 20px 20px;
+    padding: 5px 5px 5px 25px;
     animation: 1.3s ease-out 0s 1 slideInFromTop;
 }
 @keyframes slideInFromTop {
@@ -208,7 +215,7 @@ header{
 
 // offset slider
 .featured-projects .row, .portfolio-gallery__slider{
-    margin-right: calc(51% - 50vw);
+    margin-right: calc(50% - 50vw);
 }
 // offset slider
 .portfolio-gallery__slider{
@@ -253,4 +260,51 @@ header{
             border: none;
         }
     }
+}
+.owner{
+    .container{
+    padding: 0px;
+    position:relative;
+        .imgdiv{
+            position: relative;
+            max-width: 50%;
+            z-index: 5;
+            overflow: hidden;
+        }
+        .tm-box{
+            position: absolute;
+            z-index: 6;
+            bottom:2rem;
+            width: 95%;
+            background-color: #1E2D39;
+        }
+        .owner-quote{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #3A6D81;
+            height: calc(100% - 60px);
+            width: 50%;
+            margin-top: 30px;
+            margin-left: 50%;
+            padding: 50px;
+            text-align: center;
+            top: 0px;
+        }
+    }
+}
+.team-members{
+    position: relative;
+ .col-md-5{
+    position: relative;
+    
+ }   
+}
+.order-1{
+    order:1;
+}
+.pagination-nav{
+    background: none !important;
+    box-shadow: none !important;
 }
