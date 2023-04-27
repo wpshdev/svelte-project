@@ -1,4 +1,6 @@
 @import 'vars';
+@import 'flickity/css/flickity.css';
+
 *{
     font-family: $primary-font;
 }
@@ -208,6 +210,11 @@ header{
 .featured-projects .row, .portfolio-gallery__slider{
     margin-right: calc(51% - 50vw);
 }
+// offset slider
+.portfolio-gallery__slider{
+    margin-left: calc(51% - 50vw);
+}
+
 
 .contact-form{
     padding: 4rem 2rem;
