@@ -22,7 +22,9 @@
 			<Col md="10" class="mx-auto text-center">
                 <h1 class="stc">{ourTeam.SecondSectionTitle}</h1>
                 <p class="pb-5">{@html ourTeam.SecondSectionPara}</p>
-                <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy" class="easein-img"/>
+                <div class="easein-img">
+                    <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
+                </div>
 			</Col>
 		</Row>
 	</Container>
