@@ -347,7 +347,7 @@ header{
     box-shadow: none !important;
 }
 .mx-10{
-    margin:5rem 0;
+    margin:5rem auto;
 }
 .easein-img img { 
     -webkit-transition: -webkit-transform 1.5s ease-out;
@@ -356,3 +356,6 @@ header{
     transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;
 }
 .easein-img img:hover { transform: scale(1.1); }
+.align-self-center{
+    align-self: center;
+}
