@@ -5,7 +5,6 @@
     let abouttitle = data.data.attributes.Title
     let aboutimage = data.data.attributes.featuredimage.data.attributes.formats.medium.hash+data.data.attributes.featuredimage.data.attributes.ext
     let abouttext = data.data.attributes.about
-    let aboutheading = data.data.attributes.AboutHeading
     let aboutsubheading = data.data.attributes.Aboutsubheading
     let url = "https://strapi.ulfbuilt.com:1337/uploads/";
 </script>
@@ -15,11 +14,11 @@
 	<title>{abouttitle} - changes</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-
-<div class="about-1" style="background-image: url({url+aboutimage})"></div>
-<div class="container about-2">     
-    <h1>{aboutheading}</h1>
-    <h3>{aboutsubheading}</h3>
+<div class="cover" style="background-image: url({url}{aboutimage});">
+    <h2 class="pfont">{abouttitle}</h2>
+    <p class="pfont">{aboutsubheading}</p>
+</div>
+<div class="container about-2">
     <div class="two-columns">
     {@html abouttext}
     </div>
