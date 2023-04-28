@@ -5,10 +5,13 @@
 	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
-
 	import PortfolioCarousel from "$lib/PortfolioCarousel.svelte";
-    
-	console.log(data.data[0].attributes.images.data);
+	import livingRoom from "$lib/img/living-room.jpg";		
+	import lvThropy from "$lib/img/lvThropy.jpg";	
+	import firePlace from "$lib/img/firePlace.jpg";
+    import Testimonial from "../../../components/Testimonial.svelte";
+	import vailWood from "$lib/img/VailWood.jpg";
+ 	console.log(data.data[0].attributes.images.data);
 	const images = data.data[0].attributes.images.data;
 
 </script>
@@ -83,6 +86,64 @@
 		</Row>
 	</Container>
 </section>
+<section class="fireplace section--bannerOnly" style="--lrbg: url({firePlace})"></section>
+<Testimonial testimonial="The opulent fireplace was the centerpiece of the grand living room, radiating warmth and elegance throughout the sprawling mansion." />
+<section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})"></section>
+<Testimonial testimonial="The living room's grandeur was accentuated by its expansive windows, which offered an unobstructed view of the snow-capped mountainscape, while the expensive home decors added a touch of elegance and sophistication to the already magnificent space" />
+<section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})"></section>
+<Testimonial testimonial="Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature." />
+
+<section class="portfolio-cta">
+    <Container>
+        <Row>
+            <Col class="text-center ">
+                <div class="portfolio-cta__content">
+                    <h2>Experience Living your Dreams</h2>       
+					<p>
+						This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property. 						
+					</p>          
+                </div>
+                <div class="portfolio-cta__btns">
+                    <a href="#" class="btn btn-secondary">Talk to Us</a>
+                    <a href="#" class="btn btn-inverted">Back to Portfolio</a>
+                </div>                   
+            </Col>
+        </Row>
+    </Container>
+</section>
+
+<section class="related">
+	<Container>
+		<Row>
+			<Col md="12">
+				<h2>Experience Living Your Dreams</h2>
+			</Col>
+			<Col md="6">
+				<div class="related__article">
+					<a href="#">
+						<img src="{vailWood}" alt="vail">
+						<div class="related__article__text">
+							<span>01</span>
+							Vail Wood Beams
+						</div>
+					</a>
+				</div>
+			</Col>
+			<Col md="6">
+				<div class="related__article">
+					<a href="#">
+						<img src="{vailWood}" alt="vail">
+						<div class="related__article__text">
+							<span>02</span>
+							Cordillera Sunsets
+						</div>
+					</a>
+				</div>
+			</Col>		
+		</Row>
+	</Container>
+</section>
+
 <style lang="scss">
 
 .portfolio-gallery{
@@ -90,6 +151,7 @@
     margin-top: 0;
 	background-color: #EFEFF0;
 	margin-bottom: 0;
+	overflow-x: hidden;
   &__content{
     span{
       color: $primary-color;
@@ -140,6 +202,94 @@
 				line-height: 2;
 			}
 		}
+	}
+}
+
+.fireplace{
+	height: 45vw;
+}
+
+.living-room{
+	height: 45vw;		
+}
+	
+.section--bannerOnly{
+	background-image: var(--lrbg);
+	background-size: cover;
+	background-position: center;
+}
+.lv-thropy{
+	height: 45vw;
+}
+
+.portfolio-cta{
+	min-height: 40vw;
+	min-width: 40vw;        
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;      
+	&__content{
+		h2{
+			font-size: 3rem;
+			margin-bottom: 2rem;
+		}
+		p{
+			max-width: 45rem;
+			margin: 0 auto;
+			line-height: 2;
+		}  			
+	}
+	&__btns{
+		margin: 2rem 0;
+
+		.btn-secondary{
+			margin-right: 1.5rem;
+		}
+		.btn-inverted{
+			border-color: $secondary-color;
+			color: $secondary-color;
+		}
+	}
+}
+
+.related{
+	background-color: #E5EEF2;
+	padding: 5rem 0;
+	margin-bottom: 0;
+	h2{
+		text-align: center;
+		font-size: 3rem;
+		margin-bottom: 2rem;
+	}
+	&__article{
+		overflow: hidden;
+		position: relative;
+        img{
+            transition: 0.5s;
+        }         
+        &:hover{
+            img{
+                transition: 0.5s;
+                scale: 1.2;
+            }
+        }
+        &__text{
+            background-color: $secondary-color;
+            color: #fff;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 2;
+            bottom: 1rem;
+            left: 0;
+            width: 65%;
+            text-align: left;
+            span{
+                color: $primary-color;
+                font-size: 1.2rem;
+                margin: 0 0.8rem 0;
+            }
+        }	
 	}
 }
 

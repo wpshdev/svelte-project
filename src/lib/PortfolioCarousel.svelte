@@ -2,14 +2,9 @@
   import { onMount } from 'svelte';
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
   import { Col } from "sveltestrap";
-  import Flickity from "flickity";
-
-
-  let controller;
-  let scene;
+  
+  gsap.registerPlugin(ScrollTrigger);
 
   onMount(() => {
     const container = document.querySelector('.slider-container');
@@ -30,156 +25,13 @@ gsap.registerPlugin(ScrollTrigger);
     });
   });
 
-  // let Flickity;
-  // let flickityInstance;
-  // let sliderContainer;
-  // let y = 0;
   export let images = [];
   let progressPercentage = 0;
-  // // Add a new variable to keep track of the accumulated deltaY
-  // let accumulatedDeltaY = 0;
-  // let isHovering = false;
   const domain = "https://strapi.ulfbuilt.com:1337";
-  // Define the threshold for deltaY
-  const deltaYThreshold = 400; // Adjust this value as needed
-
-  // console.log(ScrollMagic);
-
-
-// onMount(async () => {
-//   setTimeout(() => {
-//     flickityInstance = new Flickity('.slider-container', {
-//       cellAlign: 'left',
-//       contain: true,
-//       wrapAround: false,
-//       prevNextButtons: false,
-//       pageDots: false,
-//       autoPlay: false,
-//       groupCells: 1,
-//       draggable: true,
-//       on: {
-//         change: updateProgress,
-//       },
-//     });
-
-//     // Add event listener to control the slider with mouse scroll
-//     // sliderContainer.addEventListener('wheel', handleScroll, { passive: false });
-//   }, 600);
-  
-//     // let lastScroll = 0;
-//     // window.addEventListener('scroll', onScroll, false);
-
-//     // function onScroll() {
-//     //   if (!isHovering) return;
-
-//     //   flickityInstance.isFreeScrolling = true;
-//     //   flickityInstance.startAnimation();
-//     //   let diff = window.scrollY - lastScroll;
-//     //   lastScroll = window.scrollY;
-
-//     //   flickityInstance.velocity += diff * -0.2;
-//     //   flickityInstance.x += flickityInstance.velocity;
-//     //   flickityInstance.velocity *= 1 - 0.03;
-
-//     //   let previousX = flickityInstance.x;
-//     //   flickityInstance.positionSlider();
-//     //   flickityInstance.selectedIndex = flickityInstance.dragEndRestingSelect()
-//     //   flickityInstance.updateSelectedSlide()
-//     //   flickityInstance.settle(previousX);
-//     // }
-
-//     // return () => {
-//     //   window.removeEventListener('scroll', onScroll, false);
-//     // };
-
-// });
-
-  let elementRef;
-  // let elementYPosition = 0;
-
-  // function updateElementPosition() {
-  //   const rect = elementRef.getBoundingClientRect();
-  //   elementYPosition = rect.top + window.scrollY;
-  //   console.log(elementYPosition);
-  // }
-
-  // let updateOnScroll;
-  // function handleWheel(event) {
-  //   // console.log(event);
-  // }
-
-// onMount(() => {
-//   const scrollContainer = document.querySelector(".slider-container");
-//   const sliderContainer = document.querySelector(".portfolio-gallery");
-
-//   const totalImages = scrollContainer.childElementCount;
-//   const containerWidth = scrollContainer.clientWidth;
-  
-
-
-  
-//   const updateProgress = () => {
-//     const currentScroll = scrollContainer.scrollLeft;
-//     const maxScroll = scrollContainer.scrollWidth - containerWidth;
-//     progressPercentage = (currentScroll / maxScroll) * (totalImages - 1) / (totalImages - 1) * 100;
-//     progressBar.setAttribute("stroke-dashoffset", 314 * (1 - progressPercentage / 100));
-//   };
-//   const progressBar = document.querySelector(".progress-ring");
-
-
-//   sliderContainer.addEventListener("wheel", (evt) => {
-//     const atFirstSlide = scrollContainer.scrollLeft === 0;
-//     const atLastSlide = scrollContainer.scrollLeft + scrollContainer.clientWidth === scrollContainer.scrollWidth;
-//     const scrollingUp = evt.deltaY < 0;
-//     const scrollingDown = evt.deltaY > 0;
-//     let rect = progressBar.getBoundingClientRect();	
-//     console.log(rect.bottom);
-//     console.log(handleScroll());
-//     if ((!atFirstSlide && rect.bottom < handleScroll() || !scrollingUp) && (!atLastSlide || !scrollingDown)) {
-//       evt.preventDefault(); // Prevent default scrolling behavior to enable horizontal scrolling
-//       scrollContainer.scrollLeft += evt.deltaY;
-//       updateProgress();
-//     }
-//   });
-// });
-// $: slideStyle = `transform: translateY(-${currentIndex * 100}%)`;
-
-
-// function updateProgress(index) {
-//     console.log(index);
-//     const totalSlides = images.length;
-//     let imageNum = totalSlides - index == 1 ? index  + 1 : index;
-//     progressPercentage = ((imageNum ) / totalSlides) * 100;
-// }
-
-//   // Handle mouse scroll
-// function handleScroll(event) {
-//     event.preventDefault();
-//     event.stopPropagation();
-//     // Accumulate deltaY
-//     accumulatedDeltaY += Math.abs(event.deltaY);
-    
-//     // Check if the accumulated deltaY is greater than or equal to the deltaYThreshold
-//     if (accumulatedDeltaY >= deltaYThreshold) {
-//       if (event.deltaY < 0) {
-//         flickityInstance.previous(false); // Disable wrap-around for previous
-//       } else {
-//         flickityInstance.next(false); // Disable wrap-around for next
-//       }
-//       // Reset accumulated deltaY
-//       accumulatedDeltaY = 0;
-//     }
-// }
-
-// function handleScroll() {
-//     const scrollBottom = y + window.innerHeight;
-//     const documentHeight = document.documentElement.scrollHeight; 
-//     return scrollBottom;
-// }
+ 
 
 </script>
 
-<!-- <svelte:window bind:scrollY={y} on:scroll={handleScroll} on:wheel={handleWheel}/>	 -->
   <Col>
     <div class="slider-container">
       {#each images as image}
@@ -189,7 +41,7 @@ gsap.registerPlugin(ScrollTrigger);
       {/each}
     </div>
   </Col>
-  <Col>
+  <!-- <Col>
     <div class="slider-btn">
       <div class="slider-caption">
         <div class="progress-ring-container">
@@ -201,67 +53,34 @@ gsap.registerPlugin(ScrollTrigger);
         </div>  
       </div>
     </div>    
-  </Col>
+  </Col> -->
 
   
   
 
 <style lang="scss">
 
-.slider-caption{
-  // height: 100%;
-  // display: flex;
-  // align-items: center;
-  // flex-wrap: wrap;  
-  // &__heading{
-  //   margin-bottom: 1rem;
-  //   width: 100%;
-  //   span{
-  //     font-size: 1.5rem;
-  //     margin-bottom: 2rem;
-  //     color: $primary-color;
-  //   }
-  //   h2{
-  //     font-size: 3rem;
-  //   }
-  // }
-}
-
 body {
     overflow-x: hidden;
-  }
-
-/* Hide scrollbar for Chrome, Safari, and Opera */
-::-webkit-scrollbar {
-  display: none;
 }
+  
+.slider-container {
+  display: flex;
+  width: 150vw;
+  position: relative;
+  padding-top: 2rem;
 
-/* Hide scrollbar for Internet Explorer and Edge */
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-/* Enable scrolling for all browsers */
-body {
-  overflow-y: scroll;
-}  
-  .slider-container {
-    display: flex;
-    width: 150vw;
-    position: relative;
-    padding-top: 2rem;
-    // overflow-x: hidden;
-  }
-  .slider-container__carousel-cell {
+  &__carousel-cell {
     width: 50vw;
     flex-shrink: 0;
     padding: 4rem 0.5rem 0;
+    img {
+      width: 100%;
+      height: auto;
+    }  
   }
-  img {
-    width: 100%;
-    height: auto;
-  }
+}
+
 
 // .slider-container {
 //   overflow-x: hidden;
