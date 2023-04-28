@@ -1,19 +1,49 @@
 <script>
-  import { onMount, tick } from 'svelte';
+  import { onMount } from 'svelte';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
   import { Col } from "sveltestrap";
   import Flickity from "flickity";
+
+
+  let controller;
+  let scene;
+
+  onMount(() => {
+    const container = document.querySelector('.slider-container');
+
+    ScrollTrigger.create({
+      trigger: '.slider-container',
+      start: 'top top',
+      end: () => container.scrollWidth - window.innerWidth,
+      pin: true,
+      scrub: 0.5,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        gsap.to(container, {
+          x: -container.scrollWidth * progress,
+          duration: 0.01,
+        });
+      },
+    });
+  });
+
   // let Flickity;
-  let flickityInstance;
-  let sliderContainer;
-  let y = 0;
+  // let flickityInstance;
+  // let sliderContainer;
+  // let y = 0;
   export let images = [];
   let progressPercentage = 0;
-  // Add a new variable to keep track of the accumulated deltaY
-  let accumulatedDeltaY = 0;
-  let isHovering = false;
+  // // Add a new variable to keep track of the accumulated deltaY
+  // let accumulatedDeltaY = 0;
+  // let isHovering = false;
   const domain = "https://strapi.ulfbuilt.com:1337";
   // Define the threshold for deltaY
   const deltaYThreshold = 400; // Adjust this value as needed
+
+  // console.log(ScrollMagic);
 
 
 // onMount(async () => {
@@ -65,59 +95,53 @@
 // });
 
   let elementRef;
-  let elementYPosition = 0;
+  // let elementYPosition = 0;
 
-  function updateElementPosition() {
-    const rect = elementRef.getBoundingClientRect();
-    elementYPosition = rect.top + window.scrollY;
-    console.log(elementYPosition);
-  }
+  // function updateElementPosition() {
+  //   const rect = elementRef.getBoundingClientRect();
+  //   elementYPosition = rect.top + window.scrollY;
+  //   console.log(elementYPosition);
+  // }
 
-  let updateOnScroll;
-  function handleWheel(event) {
-    // console.log(event);
-  }
+  // let updateOnScroll;
+  // function handleWheel(event) {
+  //   // console.log(event);
+  // }
 
-onMount(() => {
-  const scrollContainer = document.querySelector(".slider-container");
-  const sliderContainer = document.querySelector(".portfolio-gallery");
+// onMount(() => {
+//   const scrollContainer = document.querySelector(".slider-container");
+//   const sliderContainer = document.querySelector(".portfolio-gallery");
 
-  const totalImages = scrollContainer.childElementCount;
-  const containerWidth = scrollContainer.clientWidth;
+//   const totalImages = scrollContainer.childElementCount;
+//   const containerWidth = scrollContainer.clientWidth;
   
 
 
   
-  const updateProgress = () => {
-    const currentScroll = scrollContainer.scrollLeft;
-    const maxScroll = scrollContainer.scrollWidth - containerWidth;
-    progressPercentage = (currentScroll / maxScroll) * (totalImages - 1) / (totalImages - 1) * 100;
-    progressBar.setAttribute("stroke-dashoffset", 314 * (1 - progressPercentage / 100));
-  };
-  const progressBar = document.querySelector(".progress-ring__border");
+//   const updateProgress = () => {
+//     const currentScroll = scrollContainer.scrollLeft;
+//     const maxScroll = scrollContainer.scrollWidth - containerWidth;
+//     progressPercentage = (currentScroll / maxScroll) * (totalImages - 1) / (totalImages - 1) * 100;
+//     progressBar.setAttribute("stroke-dashoffset", 314 * (1 - progressPercentage / 100));
+//   };
+//   const progressBar = document.querySelector(".progress-ring");
 
 
-  sliderContainer.addEventListener("wheel", (evt) => {
-    const atFirstSlide = scrollContainer.scrollLeft === 0;
-    const atLastSlide = scrollContainer.scrollLeft + scrollContainer.clientWidth === scrollContainer.scrollWidth;
-    const scrollingUp = evt.deltaY < 0;
-    const scrollingDown = evt.deltaY > 0;
-    
-    let rect = progressBar.getBoundingClientRect();	
-    // console.log(scrollingUp)
-    console.log(handleScroll());
-    // if ((!atFirstSlide || !scrollingUp) && (!atLastSlide || !scrollingDown)) {
-      // console.log(progressPercentage);
-    if(scrollingUp && progressPercentage ==0 ){
-      return;
-    }
-    if((handleScroll()-400 > rect.y && progressPercentage < 100  && !scrollingUp) || (handleScroll() > rect.y && scrollingUp && progressPercentage <= 100)){
-      evt.preventDefault(); // Prevent default scrolling behavior to enable horizontal scrolling
-      scrollContainer.scrollLeft += evt.deltaY;
-      updateProgress();
-    }
-  });
-});
+//   sliderContainer.addEventListener("wheel", (evt) => {
+//     const atFirstSlide = scrollContainer.scrollLeft === 0;
+//     const atLastSlide = scrollContainer.scrollLeft + scrollContainer.clientWidth === scrollContainer.scrollWidth;
+//     const scrollingUp = evt.deltaY < 0;
+//     const scrollingDown = evt.deltaY > 0;
+//     let rect = progressBar.getBoundingClientRect();	
+//     console.log(rect.bottom);
+//     console.log(handleScroll());
+//     if ((!atFirstSlide && rect.bottom < handleScroll() || !scrollingUp) && (!atLastSlide || !scrollingDown)) {
+//       evt.preventDefault(); // Prevent default scrolling behavior to enable horizontal scrolling
+//       scrollContainer.scrollLeft += evt.deltaY;
+//       updateProgress();
+//     }
+//   });
+// });
 // $: slideStyle = `transform: translateY(-${currentIndex * 100}%)`;
 
 
@@ -147,23 +171,20 @@ onMount(() => {
 //     }
 // }
 
-function handleScroll() {
-    const scrollBottom = y + window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight; 
-    return scrollBottom;
-}
+// function handleScroll() {
+//     const scrollBottom = y + window.innerHeight;
+//     const documentHeight = document.documentElement.scrollHeight; 
+//     return scrollBottom;
+// }
 
 </script>
 
-<svelte:window bind:scrollY={y} on:scroll={handleScroll} on:wheel={handleWheel}/>	
+<!-- <svelte:window bind:scrollY={y} on:scroll={handleScroll} on:wheel={handleWheel}/>	 -->
   <Col>
-    <div class="slider-container"   >
-    <div class="slider-container__carousel-cell empty-cell">
-
-    </div>     
+    <div class="slider-container">
       {#each images as image}
         <div class="slider-container__carousel-cell">
-          <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : "" }" />
+          <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />
         </div>
       {/each}
     </div>
@@ -172,7 +193,7 @@ function handleScroll() {
     <div class="slider-btn">
       <div class="slider-caption">
         <div class="progress-ring-container">
-          <svg class="progress-ring" width="110" height="110" bind:this="{elementRef}"  >
+          <svg class="progress-ring" width="110" height="110"  >
             <circle class="progress-ring__bg" cx="55" cy="55" r="50" fill="#495763" />
             <circle class="progress-ring__border" cx="53" cy="53" r="50" fill="transparent" stroke-width="6" stroke="#00ADEE" stroke-dasharray="314" stroke-dashoffset="{314 * (1 - progressPercentage / 100)}" />
             <text class="progress-ring__arrow progress-ring__arrow--left" x="55" y="51" font-size="40" text-anchor="middle" fill="white" dominant-baseline="central">←</text>
@@ -206,32 +227,68 @@ function handleScroll() {
   // }
 }
 
-.slider-container {
-  overflow-x: hidden;
-  display: flex;  
-
-  &__carousel-cell {
-    &.empty-cell{
-      height: 100%;
-      min-width: 25vw;
-      min-width: none;
-    }
-    width: 70%;
-    height: auto;
-    padding: 0 0.5rem;
-    box-sizing: border-box;
-    min-width: 50vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+body {
+    overflow-x: hidden;
   }
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  display: none;
 }
+
+/* Hide scrollbar for Internet Explorer and Edge */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Enable scrolling for all browsers */
+body {
+  overflow-y: scroll;
+}  
+  .slider-container {
+    display: flex;
+    width: 150vw;
+    position: relative;
+    padding-top: 2rem;
+    // overflow-x: hidden;
+  }
+  .slider-container__carousel-cell {
+    width: 50vw;
+    flex-shrink: 0;
+    padding: 4rem 0.5rem 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+// .slider-container {
+//   overflow-x: hidden;
+//   display: flex;  
+
+//   &__carousel-cell {
+//     &.empty-cell{
+//       height: 100%;
+//       min-width: 25vw;
+//       min-width: none;
+//     }
+//     width: 70%;
+//     height: auto;
+//     padding: 0 0.5rem;
+//     box-sizing: border-box;
+//     min-width: 50vw;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+    
+//     img {
+//       display: block;
+//       width: 100%;
+//       height: auto;
+//     }
+//   }
+// }
 .slider-btn{
   margin: 0;
   margin-right: calc(52% - 50vw);
