@@ -142,7 +142,7 @@ function scrollToTop() {
 
 <style lang="scss">
     .pre-footer{
-        background-color: $primary-color;
+        background-color: #ACA7A7;
         margin: 0;
         padding: 1rem 0;
         &__btt{

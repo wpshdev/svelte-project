@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
+    import { Form, FormGroup, Input, Button } from 'sveltestrap';
+
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
@@ -10,9 +12,53 @@
 	import lvThropy from "$lib/img/lvThropy.jpg";	
 	import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "../../../components/Testimonial.svelte";
-	import vailWood from "$lib/img/VailWood.jpg";
- 	console.log(data.data[0].attributes.images.data);
-	const images = data.data[0].attributes.images.data;
+	import contactBG from "$lib/img/ContactBG.jpg";
+	const domain = "https://strapi.ulfbuilt.com:1337"
+ 	const portfolio = data.portfolio;
+	const rPortfolios = data.rPortfolios;
+	console.log(rPortfolios);
+	const images = portfolio.data[0].attributes.images.data;
+
+
+	let name = '', email = '', subject = '', message = '', result = ''
+
+    async function doContact () {
+        const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
+		const res = await fetch(url, {
+			method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer  ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' },
+			body: JSON.stringify({
+                data:{
+                "name": name,
+                "email": email,
+                "subject": subject,
+                "message": message
+                }
+			})
+		})
+		const json = await res.json()
+        if(json.error){
+            result = json.error.message
+        }else{
+            result = 'Processing...'
+        const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
+		const res2 = await fetch(url2, {
+			method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer  ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' },
+            body: JSON.stringify({
+                "to": "parth@wpsuperheroes.com",
+                "subject": "* Website * " + name + " Subject : " + subject,
+                "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
+            })
+		})
+		const json2 = await res2.json()
+        if(json2.error){
+            result = json2.error.message
+        }else{
+            result = "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner."
+        }
+        }
+	}
 
 </script>
 
@@ -91,7 +137,7 @@
 <section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})"></section>
 <Testimonial testimonial="The living room's grandeur was accentuated by its expansive windows, which offered an unobstructed view of the snow-capped mountainscape, while the expensive home decors added a touch of elegance and sophistication to the already magnificent space" />
 <section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})"></section>
-<Testimonial testimonial="Lifting and opening the architecture of a home with natural elements like finished logs and exposed beams is our builder signature." />
+<Testimonial testimonial="Lifting and opening the architecture of a home with natural elements" />
 
 <section class="portfolio-cta">
     <Container>
@@ -117,19 +163,21 @@
 		<Row>
 			<Col md="12">
 				<h2>Experience Living Your Dreams</h2>
-			</Col>
-			<Col md="6">
-				<div class="related__article">
-					<a href="#">
-						<img src="{vailWood}" alt="vail">
-						<div class="related__article__text">
-							<span>01</span>
-							Vail Wood Beams
-						</div>
-					</a>
-				</div>
-			</Col>
-			<Col md="6">
+			</Col>			
+			{#each rPortfolios as rPortfolio, index}
+				<Col md="6">
+					<div class="related__article">
+						<a href="#">
+							<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="vail">
+							<div class="related__article__text">
+								<span>0{index+1}</span>
+								Vail Wood Beams
+							</div>
+						</a>
+					</div>
+				</Col>
+			{/each}
+			<!-- <Col md="6">
 				<div class="related__article">
 					<a href="#">
 						<img src="{vailWood}" alt="vail">
@@ -139,7 +187,45 @@
 						</div>
 					</a>
 				</div>
-			</Col>		
+			</Col>		 -->
+		</Row>
+	</Container>
+</section>
+
+<section class="contact" style="--contactBG: url({contactBG})">
+	<Container>
+		<Row>
+			<Col md="6">
+				<div class="contact__content">
+					<div class="contact__content__wrapper">
+						<h2>Ready to Start<br> your Dream Project?</h2>
+						<p>Let's discuss it!</p>
+					</div>
+				</div>
+			</Col>
+			<Col md="6">
+				<div class="contact__form">
+					<Form method="post">
+						<FormGroup class="input-icon-box">
+							<Input class="input-user" placeholder="Full Name" bind:value={name} />
+							<div class="input-icon input-icon-user"></div>
+						</FormGroup>
+						<FormGroup class="input-icon-box">
+							<Input class="input-email" placeholder="Email address" bind:value={email} />
+							<div class="input-icon input-icon-email"></div>
+						</FormGroup>
+						<FormGroup class="input-icon-box">
+							<Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
+							<div class="input-icon input-icon-phone"></div>
+						</FormGroup>
+						<FormGroup>
+							<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
+						</FormGroup>
+						<Button type="btn is-primary"  on:click={doContact}>Send</Button>
+					</Form>
+				</div>
+                {result}
+			</Col>			
 		</Row>
 	</Container>
 </section>
@@ -147,7 +233,7 @@
 <style lang="scss">
 
 .portfolio-gallery{
-    padding-top: 10vw;
+    padding: 10vw 0;
     margin-top: 0;
 	background-color: #EFEFF0;
 	margin-bottom: 0;
@@ -267,6 +353,7 @@
 		position: relative;
         img{
             transition: 0.5s;
+			object-fit: cover;
         }         
         &:hover{
             img{
@@ -292,5 +379,29 @@
         }	
 	}
 }
+
+.contact{
+	padding: 10rem 0;
+	background-image: var(--contactBG);
+	background-size: cover;
+	margin: 0;
+	&__content{
+		display: flex;
+		height: 100%;
+		align-items: end;		
+		&__wrapper{
+			h2{
+				font-size: 3rem;
+				margin-bottom: 2rem;
+			}	
+		}
+	}
+	&__form{
+		:global(#yourMessage){
+			height: 15rem;
+		}
+	}
+}
+
 
 </style>
