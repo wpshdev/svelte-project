@@ -2,7 +2,7 @@
     export let data;
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
-    const color = 'primary';
+    const color = 'white';
     import { Col, Container, Row } from 'sveltestrap';
     const url = "https://strapi.ulfbuilt.com:1337/";
     console.log(data);
@@ -16,11 +16,8 @@
     let twitter = data.data.attributes.twitter;
     let youtube = data.data.attributes.youtube;
     let houzz = data.data.attributes.youtube;
-    let name = ''
-    let email = ''
-    let subject = ''
-    let message = ''
-    let result = ''
+    let name = '', email = '', subject = '', message = '', result = ''
+    let scroll
     async function doContact () {
         const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
 		const res = await fetch(url, {
@@ -54,7 +51,7 @@
         if(json2.error){
             result = json2.error.message
         }else{
-            result = 'Thank you for contacting us. We will reach you soon.'
+            result = "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner."
         }
         }
 	}
@@ -63,20 +60,30 @@
 	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+<svelte:window bind:scrollY={scroll} />
 <div class="cover" style="background-image: url({url}{data.data.attributes.featuredimage.data.attributes.formats.large.url});">
     <h2 class="pfont">{data.data.attributes.title}</h2>
     <p class="pfont">{data.data.attributes.Subheading}</p>
 </div>
-<section>
+<section class="mx-10">
+    <Container class="mb-5">
+        <Row>
+            <Col md="12">
+                <h2 class="text-center">Let's get started...</h2>
+                <h4 class="text-center pfont">- <span class="ptc"><i>Ulf Lindroth</i></span></h4>
+                <p class="two-columns">{@html data.data.attributes.Subheading2}</p>
+            </Col>
+        </Row>
+    </Container>
     <Container>
         <Row>
             <Col md="4" class="flex-vcenter">
-                <h6 class="ptc pfont">OUR OFFICE</h6>
-                <h4 class="stc pb-4">{office_address}</h4>
-                <h6 class="ptc pfont">MAILING ADDRESS</h6>
-                <h4 class="stc pb-4">{mailing_address}</h4>
-                <h6 class="ptc pfont">PHONE</h6>
-                <h4 class="stc pb-4">{phone}</h4>
+                <h4 class="ptc pfont">OUR OFFICE</h4>
+                <h4 class="stc pb-5">{@html office_address}</h4>
+                <h4 class="ptc pfont">MAILING ADDRESS</h4>
+                <h4 class="stc pb-5">{@html mailing_address}</h4>
+                <h4 class="ptc pfont">PHONE</h4>
+                <h4 class="stc pb-5">{@html phone}</h4>
             </Col>
             <Col md="8">
                 <iframe title="ULF BUILT" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -89,8 +96,8 @@
 <div class="contact-box container-fluid">
     <Container>
         <Row>
-            <Col sm="12" md={{ size: 6, offset: 3 }} class="contact-form sbc wtc border-radius">
-                <h2 class="text-center pb-4">Leave us a message</h2>
+            <Col sm="12" md={{ size: 6, offset: 3 }} class="contact-form tbc wtc border-radius">
+                <h2 class="text-center pb-4">Connect with Us</h2>
                 <Form method="post">
                     <FormGroup class="input-icon-box">
                         <Input class="input-user" placeholder="Full Name" bind:value={name} />

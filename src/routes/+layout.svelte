@@ -22,13 +22,4 @@
     <footer>
         <Footer />
     </footer>
-<style type="scss">
-    .z10{
-        z-index: 10;
-        position: relative;
-    }
-    .changeBG{
-        background:#1E2D39;
-    }
-</style>
 <svelte:window bind:scrollY={yaxis} />

@@ -25,7 +25,7 @@
         {#each paginatedBlogs as blog,i (blog.id)}
         <Row>
             <Col md="7" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
-                <div class="blogsection7">
+                <div class="blogsection7 easein-img">
                 {#if blog.attributes.featuredimage.data != null}
                     {#if blog.attributes.featuredimage.data.attributes.formats != null}
                         <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
@@ -40,10 +40,11 @@
             <Col md="5" style="padding:20px 0;">
                 <div class="blogsection5">
                     <div>
+                        <span>Vail, Colorado | 09 Apr 2023 · 2 min read</span>
                         <h2>{blog.attributes.title}</h2>
                         <p>{blog.attributes.shorttext}</p>
                     </div>
-                    <a class="btn btn-secondary" href="/blog/{blog.attributes.slug}">Read More</a>
+                    <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read More</a>
                 </div>
             </Col>
             <!-- </a> -->
@@ -80,6 +81,4 @@
         height: 100%;
         padding: 3rem;
     }
-    .blogsection7 img { transition: all 0.5s ease-in-out; }
-    .blogsection7 img:hover { transform: scale(1.1); }
 </style>

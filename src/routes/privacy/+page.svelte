@@ -13,7 +13,7 @@
     <p>{data.data.attributes.Subheading}</p>
 </div>
 <section>
-    <Container>
+    <Container class="mw-1000">
         <h1 class="text-center">PRIVACY POLICY</h1>
         {@html data.data.attributes.Content}
     </Container>
