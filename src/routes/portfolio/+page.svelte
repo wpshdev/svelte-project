@@ -5,6 +5,7 @@
     import Masonry from "$lib/components/Masonry.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
+	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
    
@@ -19,18 +20,7 @@
 
 </svelte:head>
 
-<section class="portfolio" style="--banner:url({domain}{portfolio.featuredImage.data.attributes.url})">
-	<Container>
-		<Row>
-			<Col md="8" class="mx-auto text-center">
-                <div class="portfolio__banner-content">
-                    <h1>{portfolio.title}</h1>
-                    <p>{portfolio.subTitle}</p>
-                </div>
-			</Col>
-		</Row>
-	</Container>
-</section>
+<PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}"/>
 <section class="portfolio-masonry">
     <Container>
         <Row>

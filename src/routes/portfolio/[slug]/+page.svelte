@@ -16,7 +16,7 @@
 	const domain = "https://strapi.ulfbuilt.com:1337"
  	const portfolio = data.portfolio;
 	const rPortfolios = data.rPortfolios;
-	console.log(rPortfolios);
+	console.log(portfolio);
 	const images = portfolio.data[0].attributes.images.data;
 
 
@@ -63,7 +63,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>{portfolio.data[0].attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 

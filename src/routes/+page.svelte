@@ -21,6 +21,7 @@
 	import stair from "$lib/img/Process-Stair.svg";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
+	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 
 
 
@@ -42,7 +43,7 @@
 	<title>Home</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<section class="homebanner" style="--banner: url({banner})">
+<!-- <section class="homebanner" style="--banner: url({banner})">
 	<Container>
 		<Row>
 			<Col sm={{ size: 12 }}>
@@ -63,7 +64,8 @@
 			</Col>
 		</Row>
 	</Container>
-</section>
+</section> -->
+<PageBanner title="Building Excellence" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{banner}"  extraClass="homebanner" />
 <section class="loc-gallery">
 	<Container>
 		<Row>
