@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { random } from 'gsap';
 
 export async function load() {
     const url = 'https://strapi.ulfbuilt.com:1337/api/portfolio-page?populate=deep,5';

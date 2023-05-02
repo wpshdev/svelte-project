@@ -75,14 +75,13 @@ body {
   display: flex;
   width: 150vw;
   position: relative;
-  padding-top: 2rem;
-  height: 40vw;
+  height: 100vh;
 
   &__carousel-cell {
     width: 50vw;
     flex-shrink: 0;
-    height: 32vw;
-    margin: 4rem 0.5rem 0;
+    height: 70vh;
+    margin: 15vh 0.5rem 15vh;
     overflow: hidden;      
     transition: 0.5s; 
     position: relative;
