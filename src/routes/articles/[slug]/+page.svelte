@@ -13,10 +13,10 @@
 	<title>{title} - Article</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<div class="cover" style="background:#1E2D39;">
+<div class="cover" style="background:#E5EEF2;">
     <div class="covertitle">
         <p class="pfont ptc mb-1">Article</p>
-        <h2 class="pfont mb-4">{title}</h2>
+        <h2 class="pfont stc mb-4">{title}</h2>
     </div>
     <div class="coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
 </div>

@@ -40,6 +40,12 @@ h1, h2, h3, h4, h5, h6{
 .tbc{
     background-color:#1E2D39;
 }
+.blue-color-background{
+    background-color:#E5EEF2;
+}
+.silver-color-background{
+    background-color:#F2F2F2;
+}
 .line-height-2{
     line-height: 1.5;
 }
@@ -356,4 +362,18 @@ header{
 .easein-img img:hover { transform: scale(1.1); }
 .align-self-center{
     align-self: center;
+}
+.text-right{
+    text-align: right;
+}
+.service-box1{
+    border-top: 2px solid $secondary-color;
+    border-right: 2px solid $secondary-color;
+}
+.service-box2{
+    border-bottom: 2px solid $secondary-color;
+}
+.service-box6{
+    border-left: 2px solid $secondary-color;
+    border-bottom: 2px solid $secondary-color;
 }

@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Col, Container, Row } from 'sveltestrap';
-// import { onMount } from 'svelte';
 
 let showButton = false;
 

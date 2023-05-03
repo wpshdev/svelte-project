@@ -96,15 +96,45 @@
 <section>
     <Container>
         <Row>
+            <Col md=12><h2 class="text-center mb-5">{@html about.Section6heading}</h2></Col>
             <Col md=1></Col>
-            <Col md=4 class="align-self-center">
-                <h2 class="mb-4">{@html about.Section6heading}</h2>
-                <p>{@html about.Section6text}</p>
+            <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
+                <h2 class="mb-4 text-right">{@html about.Section6subheading}</h2>
+                <p class="text-right">{@html about.Section6text}</p>
+            </Col>
+            <Col md=5 style="margin-left:-30px;">
+                <div style:transform={`translate3d(0, ${(scroll * -0.1)+400}px, 0)`}>
+                <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
+                </div>
             </Col>
             <Col md=1></Col>
+        </Row>
+    </Container>
+    <Container class="mx-10">
+        <Row>
+            <Col md=1></Col>
             <Col md=5>
-                <div style:transform={`translate3d(0, ${(scroll * -0.1)+350}px, 0)`}>
-                <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
+                <div style:transform={`translate3d(0, ${(scroll * -0.1)+450}px, 0)`}>
+                <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
+                </div>
+            </Col>
+            <Col md=5 class="align-self-center silver-color-background p-5" style="margin-left:-30px;min-height: 440px;">
+                <h2 class="mb-4">{@html about.Section7heading}</h2>
+                <p>{@html about.Section7text}</p>
+            </Col>
+            <Col md=1></Col>
+        </Row>
+    </Container>
+    <Container class="mx-10">
+        <Row>
+            <Col md=1></Col>
+            <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
+                <h2 class="mb-4 text-right">{@html about.Section8heading}</h2>
+                <p class="text-right">{@html about.Section8text}</p>
+            </Col>
+            <Col md=5 style="margin-left:-30px;">
+                <div style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`}>
+                <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
                 </div>
             </Col>
             <Col md=1></Col>
