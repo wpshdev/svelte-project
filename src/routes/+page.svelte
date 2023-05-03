@@ -455,6 +455,7 @@
 
 	.featured-projects{
 		margin: 10rem 0;
+		overflow: hidden;
 	}
 
 	.reputation{

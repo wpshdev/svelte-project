@@ -12,7 +12,7 @@
 					<div class="home-cta__wrapper">
 						<h2>Tell us about your project</h2>
 						<p>We want to know about yo and building your dream home</p>
-						<a href="#" class="btn btn-primary">Connect with Us</a>
+						<a href="#" class="btn btn-secondary">Connect with Us</a>
 					</div>
 				</div>
 			</Col>
