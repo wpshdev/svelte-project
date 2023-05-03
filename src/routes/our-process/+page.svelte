@@ -1,29 +1,35 @@
 <script lang="ts">
+    import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import topBanner from "$lib/img/processBanner.jpg";
 	import { Col, Container, Row } from "sveltestrap";
-    const domain = "https://strapi.ulfbuilt.com:1337/";
+    const domain = "https://strapi.ulfbuilt.com:1337";
+    export let data;
+    const processData = data.data.attributes;
+    console.log(processData);
 </script>
 
-<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{topBanner}" />
+<svelte:head>
+	<title>{processData.section1heading}</title>
+	<meta name="description" content="ULF BUILT" />
+</svelte:head>
+
+<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
     <Container>
         <Row>
             <Col class="md-12 text-center">
                 <div class="our-process__heading">
-                    <h2>Our Process</h2>
-                    <p>
-                        We want to make sure you know what to expect ahead of time<br><span>— the timeline, the choices, your responsibilities and ours.</span>                    
-                    </p>
+                    <h2>{processData.section1heading}</h2>
+                    {@html processData.section1text}
                 </div>
             </Col>
         </Row>
         <Row>
             <Col class="md-12">
-                <img src="{topBanner}" alt=""/>
+                <img src="{domain}{processData.section2image.data.attributes.url}" alt="{processData.section2image.data.attributes.alternativeText}"/>
                 <div class="our-process__paragraph mx-auto">
-                    <p>Here’s an <strong>overview to understand our process</strong> so you can make smart decisions and enjoy yourself along your build journey . Our team is going to be <strong>right here with you,</strong> from your team meetings <strong>to the final day —and beyond.</strong></p>
-                    <p>Along with our people, this page gives you a preview of each step, plus <strong>helpful tips and important reminders</strong> so you’re prepared and confident at every stage. You’ve got this. We’ve got you. <strong>Watch with confidence</strong> as your project is <strong>finished on-track and to your specifications.</strong></p>
+                    {@html processData.section2text}
                 </div>
             </Col>            
         </Row>
@@ -35,53 +41,179 @@
         <Row>
             <Col md="{{ size: '6', offset: 3 }}" class="text-center">
                 <h3>
-                    Our  building process
-                    can be broken down into two main phases:
-                    pre-construction and construction.                    
+                    {processData.section3heading}                  
                 </h3>
             </Col>
         </Row>
     </Container>
 </section>
-<section class="phase1-img" style="--phs1: url({topBanner})"></section> 
-<section class="phase1">
+<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.url})"></section> 
+<section class="phase">
     <Container>
-        <Row class="text-center phase1__row">
+        <Row class="text-center phase__row">
             <Col md="2">
                 <span class="num">1</span>
             </Col>
             <Col md="10">
-                <div class="phase1__heading"><h3>Phase 1: Pre-Construction</h3></div>
+                <div class="phase__heading"><h3>{processData.section3phase1mainheading}</h3></div>
             </Col>
         </Row>
     </Container>
     <Container>
-        <div class="phase1__grid">
-            <div class="phase1__grid__item">
-                <span>Step One</span>
-                <h4>Design & Planning</h4>
-                <p>
-                    During this phase, the client and the builder work together to develop a design and plan for the home, including the selection of materials, finishes, and fixtures.                    
-                </p>
+        <div class="phase__grid">
+            <div class="phase__grid__item">
+                <span>{processData.section4heading}</span>
+                <h4>{processData.section4subheading}</h4>
+                {@html processData.section4text}
             </div>
-            <div class="phase1__grid__item">
-                <p>Renovations are our specialty. We listen to your style, your  design challenges, and we discuss construction planning, budgeting, and timeline.</p>
-                <p>We measure and photograph every inch of your space to ensure complete accuracy while also noting structural elements that might affect construction. Utilizing a perfectly scaled computer plan of your home, we design concepts for your consideration—complete with floor plans, elevations, and 3D sketches.</p>
+            <div class="phase__grid__item">
+                {@html processData.section4righttext}
             </div>     
-            <div class="phase1__grid__item">
-                <span>Step Two</span>
-                <h4>Site Preparation</h4>
-                <p>
-                    The site is prepared for construction, which can include clearing and grading the land, setting up temporary utilities, and preparing the foundation.
-                </p>
+            <div class="phase__grid__item">
+                <span>{processData.section5heading}</span>
+                <h4>{processData.section5subheading}</h4>
+                {@html processData.section5text }
             </div>  
-            <div class="phase1__grid__item">
-                <p>Renovations are our specialty. We listen to your style, your  design challenges, and we discuss construction planning, budgeting, and timeline.</p>
-                <p>We measure and photograph every inch of your space to ensure complete accuracy while also noting structural elements that might affect construction. Utilizing a perfectly scaled computer plan of your home, we design concepts for your consideration—complete with floor plans, elevations, and 3D sketches.</p>
-            </div>                                  
-        </div>
+            <div class="phase__grid__item">
+              {@html processData.section5righttext}
+            </div>                                 
+        </div>      
     </Container>
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.url})">
+        </div>     
+    <Container>
+        <div class="phase__grid scnd-row">
+            <div class="phase__grid__item">
+                <span>{processData.section7heading}</span>
+                <h4>{processData.section7subheading}</h4>
+                {@html processData.section7text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section7righttext}
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section8heading}</span>
+                <h4>{processData.section8subheading}</h4>
+                {@html processData.section8text}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section8righttext}
+            </div>                                 
+        </div>      
+    </Container>          
 </section>
+<section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.url})">
+</section>
+<secton class="phase-banner-paragraph">
+    <Container>
+        <Row>
+            <Col>
+                <div>
+                    {@html processData.section9text}
+                </div>
+            </Col>
+        </Row>
+    </Container>
+</secton>
+
+<section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.url})"></section> 
+
+<section class="phase">
+    <Container>
+        <Row class="text-center phase__row">
+            <Col md="10">
+                <div class="phase__heading"><h3>{processData.section10phase2heading}</h3></div>
+            </Col>            
+            <Col md="2">
+                <span class="num">2</span>
+            </Col>
+        </Row>
+    </Container>
+    <Container>
+        <div class="phase__grid">
+            <div class="phase__grid__item">
+                <span>{processData.section11heading}</span>
+                <h4>{processData.section11subheading}</h4>
+                {@html processData.section11text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section11righttext}
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section12heading}</span>
+                <h4>{processData.section12subheading}</h4>
+                {@html processData.section12text}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section11text}
+            </div>  
+            <div class="phase__grid__item">
+                <span>{processData.section13heading}</span>
+                <h4>{processData.section13subheading}</h4>
+                {@html processData.section13righttext}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section12text}
+            </div>                                            
+        </div>      
+    </Container>
+        <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
+        </div>     
+    <Container>
+        <div class="phase__grid scnd-row">
+            <div class="phase__grid__item">
+                <span>{processData.section15heading}</span>
+                <h4>{processData.section15subheading}</h4>
+                {@html processData.section15text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section15righttext }
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section16heading}</span>
+                <h4>{processData.section16subheading}</h4>
+                {@html processData.section16text}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section16righttext }
+            </div>         
+            <div class="phase__grid__item">
+                <span>{processData.section17heading}</span>
+                <h4>{processData.section17subheading}</h4>
+                {@html processData.section17text}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section17righttext }
+            </div>                                       
+        </div>      
+    </Container>    
+    <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.url})">
+    </div>             
+    <Container>
+        <div class="phase__grid scnd-row">
+            <div class="phase__grid__item">
+                <span>{processData.section19heading}</span>
+                <h4>{processData.section19subheading}</h4>
+                {@html processData.section19text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section19righttext }
+            </div>                                           
+        </div>      
+    </Container>     
+</section>
+<secton class="phase-banner-paragraph">
+    <Container>
+        <Row>
+            <Col>
+                <div>
+                    {@html processData.section20text }
+                </div>
+            </Col>
+        </Row>
+    </Container>
+</secton>
+<Cta />
 <style lang="scss">
     .our-process{
         &__heading{
@@ -117,11 +249,22 @@
         background-size: cover;
         height: 90vh;
     }
-    .phase1{
-        :global(.phase1__row){
-            margin-top: -12rem;
+    .phase2-img{
+        background-image: var(--phs2);
+        background-size: cover;
+        height: 90vh;
+    }    
+    .phase{
+        margin-bottom: 0;
+        h3{
+            font-weight: 400;
+        }
+        :global(.phase__row){
+            margin-top: -12.3rem;
             justify-content: center;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         .num{
             font-size: 10rem;
@@ -142,25 +285,61 @@
         }
         &__grid{
             display: grid;
-            grid-template-columns: repeat(2, 1fr);            
+            grid-template-columns: repeat(2, 1fr);     
+            margin-top: -6.5rem;       
             &__item{
-                padding: 4rem;
+                padding: 6rem 4rem;
                 &:nth-child(odd){
+                    padding-left: 8vw;
+                    line-height: 2;
+                    font-style: italic;                    
                     span{
                         color: $primary-color;
+                        font-style: normal;
                     }
                     h4{
                         margin: 2rem 0;
-                    }
-                    p{
-                        line-height: 2;
-                        font-style: italic;
+                        font-style: normal;
                     }
                 }
                 &:nth-child(even){
                     padding-top: 20vh;
                     background-color: #F2E8DD;
                 }
+            }         
+            &.scnd-row{
+                margin-top: 0;
+            }   
+        }    
+        &__banner{
+                background-image: var(--phs1Banner);
+                background-size: cover;
+                height: 90vh;
+                &.banner2{
+                    background-image: var(--phs2Banner1)
+                }
+                &.banner3{
+                    background-image: var(--phs2Banner2)
+                }                
+        }           
+    }
+    .phase-banner-separator{
+        background-image: var(--phsSeparator);
+        background-size: cover;
+        height: 90vh;       
+        margin: 0; 
+    }
+    .phase-banner-paragraph{
+        display: block;
+        margin-top: 0;
+        background-color: #F2F2F2;
+        div{
+            padding: 3rem 0;
+            text-align: center;
+            max-width: 70rem;
+            margin: 0 auto;
+            p{
+                line-height: 2;
             }
         }
     }
