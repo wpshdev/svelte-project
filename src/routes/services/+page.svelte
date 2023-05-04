@@ -1,6 +1,7 @@
 <script lang="ts">
     export let data;
     import {Container, Row, Col} from 'sveltestrap';
+    import Cta from '$lib/components/layout/Cta.svelte';
     console.log(data);
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.data.attributes
@@ -68,21 +69,57 @@
         </Row>
     </Container>
 </section>
-<section>
+<section class="mx-10">
     <Container>
         <h1 class="text-center mb-5 py-3">{page.section2mainheading}</h1>
-            <Row>
-                <Col md="2"></Col>
-                <Col md="4" style="display:flex;flex-direction:column;justify-content:center;">
-                    <h3 class="text-right">{@html page.section2heading}</h3>
-                    <p class="text-right">{@html page.section2text}</p>
+            <Row noGutters class="mw-1000 justify-content-center">
+                <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
+                    <h4 class="text-right pfont px-5 py-3" style="font-weight: 400;text-transform:uppercase;">{@html page.section2heading}</h4>
+                    <p class="text-right px-5 py-3 blue-color-background">{@html page.section2text}</p>
                 </Col>
-                <Col md="5">
-                    <img src="{url}{page.section2image.data .attributes.formats.medium.url}" alt="" class="blog-img w-100">
+                <Col md="6">
+                    <img src="{url}{page.section2image.data.attributes.formats.medium.url}" alt="{page.section2heading}" class="w-100">
                 </Col>
             </Row>
     </Container>
 </section>
+<section class="mx-10">
+    <Container>
+        <Row noGutters class="mw-1000 justify-content-center">
+            <Col md="6">
+                <img src="{url}{page.section3image.data.attributes.formats.medium.url}" alt="{page.section3heading}" class="w-100">
+            </Col>
+            <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
+                <h4 class="px-5 py-3 pfont" style="font-weight: 400;text-transform:uppercase;">{@html page.section3heading}</h4>
+                <p class="px-5 py-3 blue-color-background">{@html page.section3text}</p>
+            </Col>
+        </Row>
+    </Container>
+</section>
+<section class="mx-10">
+    <Container>
+            <Row noGutters class="mw-1000 justify-content-center">
+                <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
+                    <h4 class="text-right pfont px-5 py-3" style="font-weight: 400;text-transform:uppercase;">{@html page.section4heading}</h4>
+                    <p class="text-right px-5 py-3 blue-color-background">{@html page.section4text}</p>
+                </Col>
+                <Col md="6">
+                    <img src="{url}{page.section4image.data.attributes.formats.medium.url}" alt="{page.section4heading}" class="w-100">
+                </Col>
+            </Row>
+    </Container>
+</section>
+<section class="height-100vh">
+    <img src="{url}{page.section5image.data.attributes.formats.medium.url}" alt="{page.title}" class="w-100">
+</section>
+<section>
+    <Container>
+        <h1 class="text-center mb-3 py-3">{page.section6heading}</h1>
+        <p class="mb-2 py-3 two-columns">{@html page.section6text}</p>
+        <div class="text-right"><a class="btn btn-secondary" href="/contact">{page.section6btn}</a></div>
+    </Container>
+</section>
+<Cta/>
 <style lang="scss">
     .service-box{
             padding: 3rem;

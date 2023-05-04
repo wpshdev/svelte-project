@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
+    import Cta from '$lib/components/layout/Cta.svelte';
     export let data;
     console.log(data);
     let title = data.page.data[0].attributes.title;
@@ -45,6 +46,7 @@
         </Row>
     </Container>
 </section>
+<Cta/>
 <style lang="scss">
     .blog-1{
     min-height: 50vh;

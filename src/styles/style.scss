@@ -79,6 +79,9 @@ img{
         border:2px solid #D8D7D7;
     }
 }
+.justify-content-center{
+    justify-content: center;
+}
 .z10{
     z-index: 10;
     position: relative;
@@ -352,6 +355,10 @@ header{
 }
 .mx-10{
     margin:5rem auto;
+}
+.height-100vh{
+    max-height:100vh;
+    overflow: hidden;
 }
 .easein-img img { 
     -webkit-transition: -webkit-transform 1.5s ease-out;
