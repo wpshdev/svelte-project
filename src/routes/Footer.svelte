@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
 import axios from "axios";
 
+
 const domain = "https://strapi.ulfbuilt.com:1337"
 let promise = fetchCta();
 async function fetchCta(){

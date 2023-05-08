@@ -40,6 +40,12 @@ h1, h2, h3, h4, h5, h6{
 .tbc{
     background-color:#1E2D39;
 }
+.blue-color-background{
+    background-color:#E5EEF2;
+}
+.silver-color-background{
+    background-color:#F2F2F2;
+}
 .line-height-2{
     line-height: 1.5;
 }
@@ -72,6 +78,9 @@ img{
         margin: auto;
         border:2px solid #D8D7D7;
     }
+}
+.justify-content-center{
+    justify-content: center;
 }
 .z10{
     z-index: 10;
@@ -347,6 +356,10 @@ header{
 .mx-10{
     margin:5rem auto;
 }
+.height-100vh{
+    max-height:100vh;
+    overflow: hidden;
+}
 .easein-img img { 
     -webkit-transition: -webkit-transform 1.5s ease-out;
     transition: -webkit-transform 1.5s ease-out;
@@ -414,4 +427,17 @@ header{
             }
         }
     }
+.text-right{
+    text-align: right;
+}
+.service-box1{
+    border-top: 2px solid $secondary-color;
+    border-right: 2px solid $secondary-color;
+}
+.service-box2{
+    border-bottom: 2px solid $secondary-color;
+}
+.service-box6{
+    border-left: 2px solid $secondary-color;
+    border-bottom: 2px solid $secondary-color;
 }

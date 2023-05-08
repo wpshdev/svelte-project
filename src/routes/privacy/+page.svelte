@@ -1,6 +1,7 @@
 <script lang="ts">
     export let data;
     import {Container} from 'sveltestrap';
+    import Cta from '$lib/components/layout/Cta.svelte';
     console.log(data);
     const url = "https://strapi.ulfbuilt.com:1337/";
 </script>
@@ -18,3 +19,4 @@
         {@html data.data.attributes.Content}
     </Container>
 </section>
+<Cta/>
