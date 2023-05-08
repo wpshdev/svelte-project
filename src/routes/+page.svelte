@@ -22,21 +22,27 @@
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
+	import MasonryCard from "$lib/components/MasonryCard.svelte";
+	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
 	
 	const domain = "https://strapi.ulfbuilt.com:1337";
 	const home = data.data.attributes;
-	console.log(home);
+	let propCount = 3;
+	let listener = {};
+	
     const images = [
         modern,
         mountain,
         traditional
     ];
 
-	let activeTab = 'modern';
+	let activeTab = home.categories.data[0].id;
 
 	function handleTabClick(category) {
 		activeTab = category;
-	}	
+	}
+
+	$: listener = {propCount , activeTab};
 
 </script>
 
@@ -88,102 +94,35 @@
 		<Row>
 			<Col class="text-center">
 				<h2>what are you looking for?</h2>
+				<p class="text-center view-all">
+					{#if propCount === 3} 
+						<span on:click="{() => propCount = 999}">View All Projects</span>
+					{:else}
+						<span on:click="{() => propCount = 3}">View Less Projects</span>
+					{/if}
+				</p>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
 						<ul>
-						  <li>
-							<span
-							  data-category="modern"
-							  class:active="{activeTab === 'modern'}"
-							  on:click="{() => handleTabClick('modern')}">
-							  Modern
-							</span>
-						  </li>
-						  <li>
-							<span
-							  data-category="mountain"
-							  class:active="{activeTab === 'mountain'}"
-							  on:click="{() => handleTabClick('mountain')}">
-							  Mountain
-							</span>
-						  </li>
-						  <li>
-							<span
-							  data-category="traditional"
-							  class:active="{activeTab === 'traditional'}"
-							  on:click="{() => handleTabClick('traditional')}">
-							  Traditional
-							</span>
-						  </li>
-						  <li>
-							<span
-							  data-category="commercial"
-							  class:active="{activeTab === 'commercial'}"
-							  on:click="{() => handleTabClick('commercial')}">
-							  Commercial
-							</span>
-						  </li>
+							{#each home.categories.data as heading}
+								<li>
+									<!-- svelte-ignore a11y-click-events-have-key-events -->
+									<span
+									data-category="{heading.id}"
+									class:active="{activeTab === heading.id}"
+									on:click="{() => handleTabClick(heading.id)}">
+									{heading.attributes.Title}
+									</span>
+								</li>
+							{/each}
 						</ul>
 					  </div>
 					<div class="categories__tabs__gallery">
-						<div 
-							id="modern"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'modern'}" 						
-							>						
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>																				
-						</div>
-						<div 
-							id="mountain"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'mountain'}"						
-							>						
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>																				
-						</div>
-						<div 
-							id="traditional"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'traditional'}">						
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>																				
-						</div>
-						<div 
-							id="commercial"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'commercial'}">						
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>																					
-						</div>																		
+						{#key listener }
+							<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
+								<MasonryCardGrid id={activeTab} {propCount}/>
+							</div>			
+						{/key}																		
 					</div>					
 				</div>
 			</Col>
@@ -369,6 +308,14 @@
 		h2{
 			margin-bottom: 3rem;
 			font-size: 3rem;			
+		}
+		.view-all{
+			span{
+				color: $secondary-color;
+				&:hover{
+					cursor: pointer;
+				}
+			}
 		}
 		&__tabs{
 			&__heading{
