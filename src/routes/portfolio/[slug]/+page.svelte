@@ -167,11 +167,11 @@
 			{#each rPortfolios as rPortfolio, index}
 				<Col md="6">
 					<div class="related__article">
-						<a href="#">
-							<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="vail">
+						<a href="{rPortfolio.attributes.slug}">
+							<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 							<div class="related__article__text">
 								<span>0{index+1}</span>
-								Vail Wood Beams
+								{rPortfolio.attributes.title}
 							</div>
 						</a>
 					</div>

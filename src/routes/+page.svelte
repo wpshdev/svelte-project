@@ -22,25 +22,32 @@
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-
-
-
+	import MasonryCard from "$lib/components/MasonryCard.svelte";
+	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
+	
+	const domain = "https://strapi.ulfbuilt.com:1337";
+	const home = data.data.attributes;
+	let propCount = 3;
+	let listener = {};
+	
     const images = [
         modern,
         mountain,
         traditional
     ];
 
-	let activeTab = 'modern';
+	let activeTab = home.categories.data[0].id;
 
 	function handleTabClick(category) {
 		activeTab = category;
-	}	
+	}
+
+	$: listener = {propCount , activeTab};
 
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>{home.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <!-- <section class="homebanner" style="--banner: url({banner})">
@@ -65,128 +72,57 @@
 		</Row>
 	</Container>
 </section> -->
-<PageBanner title="Building Excellence" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{banner}"  extraClass="homebanner" />
+<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{banner}"  extraClass="homebanner" />
 <section class="loc-gallery">
 	<Container>
 		<Row>
 			<Col class="text-center">
 				<div class="loc-gallery__cwrapper">
-					<h2>Home Builder in Vail, Colorado</h2>
-					<p>Building trust important.</p>
-					<div class="loc-gallery__cwrapper__btns">
-						<a href="#" class="btn btn-primary">
-							Find Location
-						</a>
-						<a href="#" class="btn btn-inverted">
-							Explore Our Gallery
-						</a>
-					</div>
+					<h2>{home.homeBuilderHeading}</h2>
+					<div class="h3">{@html home.homeBuilderSubHeading}</div>
+					{@html home.homeBuilderParagraph}
 				</div>
 			</Col>
 		</Row>
 	</Container>
 </section>
+
+<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"></section>
+
 <section class="categories">
 	<Container>
 		<Row>
 			<Col class="text-center">
 				<h2>what are you looking for?</h2>
+				<p class="text-center view-all">
+					{#if propCount === 3} 
+						<span on:click="{() => propCount = 999}">View All Projects</span>
+					{:else}
+						<span on:click="{() => propCount = 3}">View Less Projects</span>
+					{/if}
+				</p>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
 						<ul>
-						  <li>
-							<span
-							  data-category="modern"
-							  class:active="{activeTab === 'modern'}"
-							  on:click="{() => handleTabClick('modern')}">
-							  Modern
-							</span>
-						  </li>
-						  <li>
-							<span
-							  data-category="mountain"
-							  class:active="{activeTab === 'mountain'}"
-							  on:click="{() => handleTabClick('mountain')}">
-							  Mountain
-							</span>
-						  </li>
-						  <li>
-							<span
-							  data-category="traditional"
-							  class:active="{activeTab === 'traditional'}"
-							  on:click="{() => handleTabClick('traditional')}">
-							  Traditional
-							</span>
-						  </li>
-						  <li>
-							<span
-							  data-category="commercial"
-							  class:active="{activeTab === 'commercial'}"
-							  on:click="{() => handleTabClick('commercial')}">
-							  Commercial
-							</span>
-						  </li>
+							{#each home.categories.data as heading}
+								<li>
+									<!-- svelte-ignore a11y-click-events-have-key-events -->
+									<span
+									data-category="{heading.id}"
+									class:active="{activeTab === heading.id}"
+									on:click="{() => handleTabClick(heading.id)}">
+									{heading.attributes.Title}
+									</span>
+								</li>
+							{/each}
 						</ul>
 					  </div>
 					<div class="categories__tabs__gallery">
-						<div 
-							id="modern"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'modern'}" 						
-							>						
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>																				
-						</div>
-						<div 
-							id="mountain"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'mountain'}"						
-							>						
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>																				
-						</div>
-						<div 
-							id="traditional"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'traditional'}">						
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>																				
-						</div>
-						<div 
-							id="commercial"
-							class="categories__tabs__gallery__imgs"
-							class:active="{activeTab === 'commercial'}">						
-							<div>
-								<img src="{modern}" alt="modern">
-							</div>
-							<div>
-								<img src="{mountain}" alt="modern">
-							</div>
-							<div>
-								<img src="{traditional}" alt="modern">
-							</div>																					
-						</div>																		
+						{#key listener }
+							<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
+								<MasonryCardGrid id={activeTab} {propCount}/>
+							</div>			
+						{/key}																		
 					</div>					
 				</div>
 			</Col>
@@ -207,10 +143,10 @@
 			<Col>
 				<div class="tnr__wrapper">
 					<div class="tnr__wrapper__captions">
-						<span>Sustainability</span>
-						<h2>Transform & Renew</h2>
-						<a href="#" class="btn btn-secondary">
-							More About this Initiative
+						<span>{home.midBanner.paragraph}</span>
+						<h2>{home.midBanner.heading}</h2>
+						<a href="{home.midBanner.btnUrl}" class="btn btn-secondary">
+							{home.midBanner.btnTitle}
 						</a>
 					</div>
 				</div>
@@ -225,17 +161,15 @@
 			<Col md="8" class="">
 				<div class="reputation__content">
 					<div class="reputation__content__wrapper">
-						<span>Our Home</span>
-						<h2>Reputation is everything to us</h2>
-						<p>
-							Quality is our priority. And our process is just as important as the result. Our work speaks for itself.						
-						</p>
-						<a href="#" class="btn btn-primary">View Collection</a>
+						<span>{home.reputation.preHeading}</span>
+						<h2>{home.reputation.heading}</h2>
+						<p>{@html home.reputation.content}</p>
+						<a href="{home.reputation.btnUrl}" class="btn btn-primary">{home.reputation.btnTitle}</a>
 					</div>
 				</div>
 			</Col>
 			<Col md="4" class="my-auto">
-				<img src="{reputationImg}" alt="reputation">
+				<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}">
 			</Col>
 		</Row>
 	</Container>
@@ -246,7 +180,7 @@
 		<Row>
 			<Col md="6">
 				<div class="process__top-image">
-					<img src="{lroom}" alt="Living Room">
+					<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}">
 				</div>
 			</Col>
 		</Row>
@@ -254,21 +188,15 @@
 			<Col md="8" class="">
 				<div class="process__content">
 					<div class="process__content__wrapper">
-						<span>Our Process</span>
-						<h2>We want to be the best 
-							not the biggest</h2>
-						<p>
-							Our process is different. Working with us mean working with personal attention and closely listening to you. From Start to Finish, we view our relationship with you like a good marriage.
-						</p>
-						<p>
-							Our project management is efficient and effective. We keep the personal touch and care about you while maintaining your goals. We treat your project like it's ours.						
-						</p>
-						<a href="#" class="btn btn-primary">View Collection</a>
+						<span>{home.ourProcessPreHeading}</span>
+						<h2>{home.ourProcessHeading}</h2>
+						{@html home.ourProcessParagraph}
+						<a href="{home.ourProcessButtonUrl}" class="btn btn-primary">{ home.ourProcessButtonTitle }</a>
 					</div>
 				</div>
 			</Col>
 			<Col md="4" class="my-auto">
-				<img src="{stair}" alt="Stair">
+				<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 			</Col>
 		</Row>
 	</Container>
@@ -280,22 +208,20 @@
 			<Col md="8" class="">
 				<div class="story__content">
 					<div class="story__content__wrapper">
-						<span>Our Story</span>
-						<h2>Transform and Renew</h2>
-						<p>
-							When you hiring pros to come in and reimagine your space, you would be surprised at what is possible. Remodeling and thinking outside your box is our specialty.						
-						</p>
-						<Accordion>
+						<span>{home.ourStoryHeading}</span>
+						<h2>{home.ourStoryPreHeading}</h2>
+						{@html home.ourStoryParagraph}
+						<!-- <Accordion>
 							<AccordionItem active>
 								<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
 								<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
 							  </AccordionItem>							
-						</Accordion>						
+						</Accordion>						 -->
 					</div>
 				</div>
 			</Col>
 			<Col md="4" class="my-auto">
-				<img src="{reputationImg}" alt="story">
+				<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 			</Col>
 		</Row>
 	</Container>
@@ -353,6 +279,21 @@
 				font-family: $secondary-font;
 				margin-bottom: 1rem;
 				color: $secondary-color;
+				margin-bottom: 3rem;
+			}
+			.h3{
+				text-transform: uppercase;
+				margin-bottom: 2rem;
+				font-size: 2.5rem;
+				span{
+					color: $primary-color;
+				}
+			}
+			p{
+				max-width: 36rem;
+				margin: 0 auto;
+				text-align: left;
+				margin-bottom: 2rem;
 			}
 			&__btns{
 				margin: 2rem 0;
@@ -367,6 +308,14 @@
 		h2{
 			margin-bottom: 3rem;
 			font-size: 3rem;			
+		}
+		.view-all{
+			span{
+				color: $secondary-color;
+				&:hover{
+					cursor: pointer;
+				}
+			}
 		}
 		&__tabs{
 			&__heading{
@@ -638,6 +587,7 @@
 	.section--bannerOnly{
 		background-image: var(--lrbg);
 		background-size: cover;
+		height: 90vh;
 	}
 
 	.lv-thropy{

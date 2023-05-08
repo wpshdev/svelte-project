@@ -1,33 +1,57 @@
 <script lang="ts">
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	import insight from "$lib/img/insight.svg";        
+	import { onMount } from "svelte";
+	import axios from "axios";
+
+	const domain = "https://strapi.ulfbuilt.com:1337"
+	let promise = fetchCta();
+	async function fetchCta(){
+		const url = 'https://strapi.ulfbuilt.com:1337/api/global-article-cta?populate=deep,2';
+		const headers = {
+			Authorization: 'Bearer ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072'
+		};
+
+		try {
+			const response = await axios.get(url, { headers });
+			return response.data.data.attributes;
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	onMount(() => {
+		promise = fetchCta();
+	});	
+	
 </script>
-<section class="insight">
-	<Container>
-		<Row>
-			<Col>
-				<span class="insight__pre-heading">Our Insight</span>
-			</Col>
-		</Row>
-		<Row>
-			<Col md="6" class="">
-				<img src="{insight}" alt="Stair">
-			</Col>
-			<Col md="6" class="my-auto">
-				<div class="insight__content">
-					<div class="insight__content__wrapper">
-						<div class="insight__content__wrapper__pre-heading">Vail, Colorado | January 28 • 2 minutes read</div>
-						<h2>Thinking out of the Box</h2>
-						<p>
-							We craft custom homes that look and feel like only you could live there. And we do it by working hand-in-hand with you throughout the entire experience. We craft custom homes that look and feel like only you could live there.
-						</p>
-						<a href="#" class="btn btn-primary">Read Article</a> <a href="#" class="btn btn-inverted">Meet with Us</a>
-					</div>
-				</div>				
-			</Col>
-		</Row>
-	</Container>
-</section>
+{#await promise}
+{:then insight} 
+	<section class="insight">
+		<Container>
+			<Row>
+				<Col>
+					<span class="insight__pre-heading">{insight.leftPreHeading}</span>
+				</Col>
+			</Row>
+			<Row>
+				<Col md="6" class="">
+					<img src="{domain}{insight.image.data.attributes.url}" alt="Stair">
+				</Col>
+				<Col md="6" class="my-auto">
+					<div class="insight__content">
+						<div class="insight__content__wrapper">
+							<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading}</div>
+							<h2>{insight.Heading}</h2>
+							{@html insight.paragprah}
+							<a href="{insight.leftBtnUrl}" class="btn btn-primary">{insight.leftBtnTitle}</a> <a href="{insight.rightBtnUrl}" class="btn btn-inverted">{insight.rightBtnTitle}</a>
+						</div>
+					</div>				
+				</Col>
+			</Row>
+		</Container>
+	</section>
+{/await}
+
 
 <style lang="scss">
 	.insight{

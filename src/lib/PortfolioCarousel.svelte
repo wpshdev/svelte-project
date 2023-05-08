@@ -36,8 +36,7 @@
     <div class="slider-container">
       {#each images as image}
         <div class="slider-container__carousel-cell">
-          <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />
-          
+          <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
           <a href="{domain}{image.attributes.url}" class="download" download>
             <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="27.501" cy="27.5" r="27.5" fill="#1E2D39"/>
@@ -78,8 +77,8 @@ body {
   height: 100vh;
 
   &__carousel-cell {
-    width: 50vw;
     flex-shrink: 0;
+    width: auto;
     height: 70vh;
     margin: 15vh 0.5rem 15vh;
     overflow: hidden;      
@@ -99,7 +98,7 @@ body {
       width: 100%;
       transition: 0.5s;
 			object-fit: cover;
-      height: auto;
+      height: 70vh;
       &:hover{
         transition: 0.5s;
         scale: 1.2;        
