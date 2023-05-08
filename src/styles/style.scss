@@ -357,3 +357,61 @@ header{
 .align-self-center{
     align-self: center;
 }
+
+.pre-footer{
+    background-color: #ACA7A7;
+    margin: 0;
+    padding: 1rem 0;
+    &__btt{
+        text-align: center;
+        cursor: pointer;
+        svg{
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        span{
+            color: #fff;
+            display: block;
+            letter-spacing: 0.1rem;
+        }
+    }
+}
+.footer{
+    &__widget{
+        &__heading{
+            h4{
+                border-bottom: 0.5px solid #EFEFEF;
+                padding-bottom: 1rem;
+                width: 70%;
+                text-transform: uppercase;
+            }
+        }
+        &--item{
+            margin-bottom: 1rem;
+            text-align: left;
+            line-height: 1.7;
+            img{
+                width: auto;
+            }
+            p{
+                line-height: 2rem;
+                font-weight: 300;
+                font-size: 0.8rem;
+                text-transform: none;
+                color:#ACA7A7;
+            }
+            a{
+                text-decoration: unset;
+                color:#EFEFEF;
+            }
+        }
+    }
+    &__post-footer{
+        &__social{
+            margin: 2rem 0 1rem;
+            &__icon{
+                margin-right: 1rem;
+            }
+        }
+    }
+}

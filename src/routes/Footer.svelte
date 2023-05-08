@@ -1,18 +1,32 @@
 <script lang="ts">
 import { Col, Container, Row } from 'sveltestrap';
-// import { onMount } from 'svelte';
+import { onMount } from "svelte";
+import axios from "axios";
 
-let showButton = false;
+const domain = "https://strapi.ulfbuilt.com:1337"
+let promise = fetchCta();
+async function fetchCta(){
+    const url = 'https://strapi.ulfbuilt.com:1337/api/footer?populate=deep,3';
+    const headers = {
+        Authorization: 'Bearer ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072'
+    };
+
+    try {
+        const response = await axios.get(url, { headers });
+        return response.data.data.attributes.widget;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+onMount(() => {
+    promise = fetchCta();
+});	
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// onMount(() => {
-//   window.addEventListener('scroll', () => {
-//     showButton = window.scrollY > 300;
-//   });
-// });    
 </script>
 
 <section class="pre-footer">
@@ -32,77 +46,26 @@ function scrollToTop() {
 <footer class="footer">
     <Container>
         <Row>
-            <Col md="3">
-                <div class="footer__widget1 footer--widget">
-                    <div class="footer__widget1_item1 footer__widget--item">
-                        <img src="FooterLogo.svg" alt="FooterLogo" width="80" height="80">
-                    </div>
-                    <div class="footer__widget1_item2 footer__widget--item">
-                        <p>
-                            Custom Homebuilder and<br>Condo Remodeler in Vail<br>Valley and Eagle County.
-                        </p>
-                    </div>                
-                </div>    
-            </Col>
-            <Col md="3">
-                <div class="footer__widget2 footer--widget">
-                    <div class="footer__widget__heading">
-                        <h4>ULFBUILT</h4>
-                    </div>
-                    <div class="footer__widget2_item2 footer__widget--item">
-                        <div>970-926-7600</div>
-                    </div>
-                    <div class="footer__widget1_item2 footer__widget--item">
-                        <div>275 Main Street, C-105<br>
-                            Edwards, CO 81632</div>
-                    </div>                
-                </div>                    
-            </Col>
-            <Col md="3">                                                                                 
-                <div class="footer__widget3 footer--widget">
-                    <div class="footer__widget__heading">
-                        <h4>LOCATIONS</h4>
-                    </div>
-                    <div class="footer__widget3_item3 footer__widget--item">
-                        <div><a href="#">Vail</a></div>
-                    </div>
-                    <div class="footer__widget3_item3 footer__widget--item">
-                        <div><a href="#">Beaver Creek</a></div>
-                    </div>   
-                    <div class="footer__widget3_item3 footer__widget--item">
-                        <div><a href="#">Edwards</a></div>
-                    </div>   
-                    <div class="footer__widget3_item3 footer__widget--item">
-                        <div><a href="#">Eagle</a></div>
-                    </div>   
-                    <div class="footer__widget3_item3 footer__widget--item">
-                        <div><a href="#">Gypsum</a></div>
-                    </div>                 
-                </div>                  
-            </Col>
-            <Col md="3">
-                <div class="footer__widget3 footer--widget">
-                    <div class="footer__widget__heading">
-                        <h4>QUICK LINKS</h4>
-                    </div>
-                    <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="/about/">About Us</a></div>
-                    </div>
-                    <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="/articles/">Articles & Press</a></div>
-                    </div>   
-                    <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="/contact/">Contact</a></div>
-                    </div>
-                    <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="/privacy/">Privacy Policy</a></div>
-                    </div>   
-                    <div class="footer__widget4_item4 footer__widget--item">
-                        <div><a href="#">What our client say</a></div>
-                    </div>                     
-                </div>  
-            </Col>
-        </Row>
+            {#await promise}
+            {:then widgets}     
+                {#each widgets as widget, index}
+                    <Col>
+                        <div class="footer__widget1 footer--widget">
+                            {#if widget.title }
+                                <div class="footer__widget__heading">
+                                    <h4>{widget.title}</h4>
+                                </div>
+                            {/if}
+                            {#each widget.item as item}
+                                <div class="footer__widget footer__widget--item">
+                                    {@html item.item}
+                                </div>                            
+                            {/each}
+                        </div>                  
+                    </Col>
+                {/each}
+            {/await}
+        </Row>        
         <Row>
             <Col>
                 <div class="footer__post-footer">
@@ -141,61 +104,5 @@ function scrollToTop() {
 </footer>
 
 <style lang="scss">
-    .pre-footer{
-        background-color: #ACA7A7;
-        margin: 0;
-        padding: 1rem 0;
-        &__btt{
-            text-align: center;
-            cursor: pointer;
-            svg{
-                display: inline-block;
-                margin-bottom: 0.5rem;
-            }
-            span{
-                color: #fff;
-                display: block;
-                letter-spacing: 0.1rem;
-            }
-        }
-    }
-    .footer{
-        &__widget{
-            &__heading{
-                h4{
-                    border-bottom: 0.5px solid #EFEFEF;
-                    padding-bottom: 1rem;
-                    width: 70%;
-                    text-transform: uppercase;
-                }
-            }
-            &--item{
-                margin-bottom: 1rem;
-                text-align: left;
-                line-height: 1.7;
-                img{
-                    width: auto;
-                }
-                p{
-                    line-height: 2rem;
-                    font-weight: 300;
-                    font-size: 0.8rem;
-                    text-transform: none;
-                    color:#ACA7A7;
-                }
-                a{
-                    text-decoration: unset;
-                    color:#EFEFEF;
-                }
-            }
-        }
-        &__post-footer{
-            &__social{
-                margin: 2rem 0 1rem;
-                &__icon{
-                    margin-right: 1rem;
-                }
-            }
-        }
-    }
+
 </style>
