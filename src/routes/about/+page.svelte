@@ -1,7 +1,9 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
     import { onMount } from 'svelte';
+	import { contenteditable_truthy_values } from 'svelte/internal';
     export let data;
+    console.log(data);
     let abouttitle = data.data.attributes.Title
     let aboutimage = data.data.attributes.featuredimage.data.attributes.formats.large.url
     let aboutsubheading = data.data.attributes.Aboutsubheading
@@ -76,31 +78,71 @@
         </Row>
     </Container>
 </section>
-<section>
-    <div style="max-height: 600px;">
-        <img src="{url+about.Section4image.data.attributes.formats.large.url}" alt="{about.Section3heading}" class="w-100" style="object-fit: fill;">
+<section class="mx-8">
+    <!-- style:width={`${80+(scroll/100)}vw`} -->
+    <div style="width:80vw;margin:auto;min-width:80vw;max-width:100vw;">
+        {#if about.Section4image.data}
+        <img src="{url+about.Section4image.data.attributes.formats.large.url}" alt="{about.Section3heading}">
+        {/if}
+        <p class="text-center"><i>{about.Section4text}</i></p>
     </div>
 </section>
-<section class="about-3">
-    <p>Ready to make your dreams a reality? We invite you to connect with us and have a conversation about your project.</p>
-    <p>Together we can build your dream home with the utmost care.</p>
+<section class="mw-1000 mx-8">
+    <Container>
+        <h2 class="mb-5 text-center">{about.Section5heading}</h2>
+        <p class="text-left">{@html about.Section5text}</p>
+    </Container>
+</section>
+<section>
+    <Container>
+        <Row>
+            <Col md=12><h2 class="text-center mb-5">{@html about.Section6heading}</h2></Col>
+            <Col md=1></Col>
+            <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
+                <h2 class="mb-4 text-right">{@html about.Section6subheading}</h2>
+                <p class="text-right">{@html about.Section6text}</p>
+            </Col>
+            <Col md=5 style="margin-left:-30px;">
+                <div style:transform={`translate3d(0, ${(scroll * -0.1)+400}px, 0)`}>
+                <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
+                </div>
+            </Col>
+            <Col md=1></Col>
+        </Row>
+    </Container>
+    <Container class="mx-10">
+        <Row>
+            <Col md=1></Col>
+            <Col md=5>
+                <div style:transform={`translate3d(0, ${(scroll * -0.1)+450}px, 0)`}>
+                <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
+                </div>
+            </Col>
+            <Col md=5 class="align-self-center silver-color-background p-5" style="margin-left:-30px;min-height: 440px;">
+                <h2 class="mb-4">{@html about.Section7heading}</h2>
+                <p>{@html about.Section7text}</p>
+            </Col>
+            <Col md=1></Col>
+        </Row>
+    </Container>
+    <Container class="mx-10">
+        <Row>
+            <Col md=1></Col>
+            <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
+                <h2 class="mb-4 text-right">{@html about.Section8heading}</h2>
+                <p class="text-right">{@html about.Section8text}</p>
+            </Col>
+            <Col md=5 style="margin-left:-30px;">
+                <div style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`}>
+                <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
+                </div>
+            </Col>
+            <Col md=1></Col>
+        </Row>
+    </Container>
 </section>
 <style lang="scss">
-.about-1{
-    min-height: 100vh;
-    background-position: bottom;
-    background-size: cover;
-}
-.about-2{
-    margin: 100px auto;
-    h1,h3{
-        text-align: center;
-    }
-}
-.about-3{
-    margin: 100px auto;
-    p{
-        text-align: center;
-    }
+.mx-8{
+    margin:8rem auto;
 }
 </style>

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Col, Container, Row } from 'sveltestrap';
     import { paginate, LightPaginationNav } from 'svelte-paginate';
+    import Cta from '$lib/components/layout/Cta.svelte';
     export let data;
     import blogempty from "$lib/img/blog-empty.svg";
     let blogs = data.blogs.data;
@@ -62,6 +63,7 @@
 />
 </Container>
 </section>
+<Cta/>
 <style lang="scss">
     .blog-img{
         min-height: 400px;
