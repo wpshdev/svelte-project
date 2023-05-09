@@ -1,12 +1,12 @@
 <script>
-  import { onMount } from 'svelte';
+  import { afterUpdate, onMount, tick } from 'svelte';
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
   import { Col } from "sveltestrap";
   
-  gsap.registerPlugin(ScrollTrigger);
 
-  onMount(() => {
+  async function initScrollAnimations() {
+    await tick();
     const container = document.querySelector('.slider-container');
 
     ScrollTrigger.create({
@@ -23,7 +23,16 @@
         });
       },
     });
-  });
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  onMount(() => {
+  initScrollAnimations();
+});
+
+afterUpdate(() => {
+  initScrollAnimations();
+});
 
   export let images = [];
   let progressPercentage = 0;

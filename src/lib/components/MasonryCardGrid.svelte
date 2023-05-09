@@ -55,10 +55,10 @@
                     <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
                         <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}">      
                             <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
-                            <div class="masonry-items__text">
+                            <!-- <div class="masonry-items__text">
                                 <span>{index + 1}</span>
                                 {project.attributes.title}
-                            </div>
+                            </div> -->
                         </a>
                     </div>	                    
                  {/if}				
@@ -83,6 +83,9 @@
             color: white;
             text-align: center;  
             height: 60vh;
+            @include media-max(sm){
+                height: 35vh;
+            }
             a{
                 display: block;
                 height: 100%;
@@ -108,10 +111,14 @@
                 left: 0;
                 width: 75%;
                 text-align: left;
+             
                 span{
                     color: $primary-color;
                     font-size: 1.2rem;
                     margin: 0 0.8rem 0;
+                    @include media-max(sm){
+                        font-size: 0.8rem;
+                    }                       
                 }
             }
         }

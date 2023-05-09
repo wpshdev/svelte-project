@@ -4,6 +4,7 @@
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
+	
 	import {
 	  Collapse,
 	  Navbar,

@@ -1,11 +1,18 @@
 <script>
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
+// import Flickity from "flickity";
 
 let flickityInstance;
-export let images = [];
+export let preHeading; 
+export let heading; 
+export let btnTitle;
+export let btnUrl;
+export let featuredProjects;
 
+console.log(featuredProjects);
 onMount(() => {
+  
   flickityInstance = new Flickity('.slider-container', {
     cellAlign: 'left',
     contain: true,
@@ -19,12 +26,14 @@ onMount(() => {
       change: updateProgress,
     },
   });
+
 });
+const domain = "https://strapi.ulfbuilt.com:1337"
 
 let progressPercentage = 0;
 
 function updateProgress(index) {
-  const totalSlides = images.length;
+  const totalSlides = featuredProjects.data.length;
   let imageNum = totalSlides - index == 1 ? index  + 1 : index;
   progressPercentage = ((imageNum ) / totalSlides) * 100;
   console.log(imageNum);
@@ -34,14 +43,14 @@ function updateProgress(index) {
     <!-- Flickity JavaScript -->
     <script src="flickity/flickity.pkgd.min.js"></script>    
     <!-- Flickity CSS -->
-    <link rel="stylesheet" href="flickity/flickity.min.css" />
+    <!-- <link rel="stylesheet" href="flickity/flickity.min.css" /> -->
 </svelte:head>
 
   <Col md="3">
     <div class="slider-caption">
       <div class="slider-caption__heading">
-        <span>Our Home</span>
-        <h2>Featured<br>Projects</h2>
+        <span>{preHeading}</span>
+        <h2>{@html heading}</h2>
       </div>
       <div class="progress-ring-container">
         <svg class="progress-ring" width="110" height="49">
@@ -55,14 +64,14 @@ function updateProgress(index) {
   </Col>	
   <Col md=9>
     <div class="slider-container">
-      {#each images as image}
+      {#each featuredProjects.data as project}
         <div class="slider-container__carousel-cell">
-          <img src={image} alt="Slider image" />
+          <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
         </div>
       {/each}
     </div>
     <div class="slider-btn">
-      <a href="#" class="btn btn-primary">Explore Our Gallery</a>
+      <a href="{btnUrl}" class="btn btn-primary">{btnTitle}</a>
     </div>    
   </Col>
 
@@ -79,13 +88,16 @@ function updateProgress(index) {
   &__heading{
     margin-bottom: 1rem;
     width: 100%;
+    @include media-max(sm){
+        text-align: center;
+    }    
     span{
       font-size: 1.5rem;
       margin-bottom: 2rem;
       color: $primary-color;
     }
     h2{
-      font-size: 3rem;
+
     }
   }
 }
@@ -97,13 +109,22 @@ function updateProgress(index) {
 
   &__carousel-cell {
     width: 40%;
+    @include media-max(sm){
+      width: 80%;
+    }      
     height: auto;
     padding: 0 0.5rem;
     box-sizing: border-box;
+    height: 70vh;
+    overflow: hidden;
+    @include media-max(sm){
+      height: 50vh;
+    }     
     img {
       display: block;
-      width: 100%;
-      height: auto;
+      width: auto;
+      object-fit: cover;
+      height: 100%;
     }
   }
 }
