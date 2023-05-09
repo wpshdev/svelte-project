@@ -46,6 +46,7 @@
 		"egjs": "^2.2.0",
 		"flickity": "^3.0.0",
 		"gsap": "^3.11.5",
+		"include-media": "^2.0.0",
 		"nodemailer": "^6.9.1",
 		"nodemailer-smtp-transport": "^2.4.2",
 		"sharp": "^0.32.0",

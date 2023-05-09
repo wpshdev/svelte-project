@@ -1,7 +1,7 @@
 @import 'vars';
 @import 'mixins';
 @import 'flickity/css/flickity.css';
-
+@import '../breakpoints/breakpoints.scss';
 *{
     font-family: $primary-font;
 }
@@ -284,9 +284,9 @@ header{
 }
 .cover{
     background-repeat:no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
-    background-position: 0px -50px;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -294,7 +294,11 @@ header{
     color:#fff;
     height: 500px;
 }
-
+@media screen and (max-width: 768px) {
+    .cover{
+        height: 20rem;
+    }
+}
 // offset slider
 .featured-projects .row, .portfolio-gallery__slider{
     margin-right: calc(50% - 50vw);
@@ -382,7 +386,6 @@ header{
     position: relative;
  .col-md-5{
     position: relative;
-    
  }   
 }
 .order-1{
@@ -409,7 +412,6 @@ header{
 .align-self-center{
     align-self: center;
 }
-
 .pre-footer{
     background-color: #ACA7A7;
     margin: 0;
@@ -471,10 +473,41 @@ header{
 .text-right{
     text-align: right;
 }
-.service-box1{
-    border-top: 2px solid $secondary-color;
-    border-right: 2px solid $secondary-color;
+.service-b{
+    .col-md-4{
+        display: flex;
+    }
+    .col-md-4:nth-child(1){
+        background-image: url("/src/lib/img/Box1.svg");
+        background-size: 100%;
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+    .col-md-4:nth-child(2){
+        background-image: url("/src/lib/img/Box2.svg");
+        background-size: 100%;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+    }
+    .col-md-4:nth-child(3){
+        background-image: url("/src/lib/img/Box4.svg");
+        background-size: 100%;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+    }
+    .col-md-4:nth-child(6){
+        background-image: url("/src/lib/img/Box3.svg");
+        background-size: 100%;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+    }
+    @include media('<=tablet'){
+        .col-12{
+            background: none !important;
+        }
+    }
 }
+<<<<<<< Updated upstream
 .service-box2{
     border-bottom: 2px solid $secondary-color;
 }
@@ -482,3 +515,10 @@ header{
     border-left: 2px solid $secondary-color;
     border-bottom: 2px solid $secondary-color;
 }
+=======
+@include media('<=tablet'){
+    .service-box{
+        padding: 1rem !important;
+    }
+}
+>>>>>>> Stashed changes

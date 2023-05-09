@@ -5,13 +5,11 @@
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
 	console.log(ourTeam);
-    let scroll
 </script>
 <svelte:head>
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<svelte:window bind:scrollY={scroll} />
 <div class="cover" style="background-image: url({domain}{data.data.attributes.Cover.data.attributes.formats.large.url});">
     <h2 class="pfont">{data.data.attributes.title}</h2>
     <p class="pfont">{data.data.attributes.Subheading}</p>
@@ -22,7 +20,7 @@
 			<Col md="10" class="mx-auto text-center">
                 <h1 class="stc">{ourTeam.SecondSectionTitle}</h1>
                 <p class="pb-5">{@html ourTeam.SecondSectionPara}</p>
-                <div class="easein-img">
+                <div>
                     <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
                 </div>
 			</Col>
@@ -31,7 +29,7 @@
 </section>
 <section class="owner">
     <Container>
-        <div class="imgdiv" style:transform={`translate3d(0, ${(scroll * -0.1)+100}px, 0)`}>
+        <div class="imgdiv">
             <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
         <div class="tm-box wtc px-5 py-3">
             <h2 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h2>
@@ -80,7 +78,11 @@
     </Container>
 </section>
 <style lang="scss">
+    section{
+        margin: 10rem 0;
+    }
     .our-team{
+        margin-top: 5rem;
         img{
                 width: 100%;
                 max-width: 100%;
@@ -129,8 +131,5 @@
             position: sticky;
             top:50px;
         }
-    }
-    section{
-        margin: 10rem 0;
     }
 </style>

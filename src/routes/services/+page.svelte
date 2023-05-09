@@ -14,11 +14,11 @@
     <h2>{page.Title}</h2>
     <p>{page.Subheading}</p>
 </div>
-<section>
+<section class="service-b">
     <Container>
         <h1 class="text-center mb-5 py-3">{page.section1heading}</h1>
         <Row>
-            <Col md=4 class="service-box1">
+            <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
                     <div class="service-icon">{page.section1item1icon}</div><h4>{page.section1item1heading}</h4>
@@ -26,7 +26,7 @@
                     <p>{page.section1item1text}</p>
                 </div>
             </Col>
-            <Col md=4 class="service-box2">
+            <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
                     <div class="service-icon">{page.section1item2icon}</div><h4>{page.section1item2heading}</h4>
@@ -34,7 +34,7 @@
                     <p>{page.section1item2text}</p>
                 </div>
             </Col>
-            <Col md=4>
+            <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
                     <div class="service-icon">{page.section1item3icon}</div><h4>{page.section1item3heading}</h4>
@@ -42,7 +42,7 @@
                     <p>{page.section1item3text}</p>
                 </div>
             </Col>
-            <Col md=4>
+            <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
                     <div class="service-icon">{page.section1item4icon}</div><h4>{page.section1item4heading}</h4>
@@ -50,7 +50,7 @@
                     <p>{page.section1item4text}</p>
                 </div>
             </Col>
-            <Col md=4>
+            <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
                     <div class="service-icon">{page.section1item5icon}</div><h4>{page.section1item5heading}</h4>
@@ -58,7 +58,7 @@
                     <p>{page.section1item5text}</p>
                 </div>
             </Col>
-            <Col md=4 class="service-box6">
+            <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
                     <div class="service-icon">{page.section1item6icon}</div><h4>{page.section1item6heading}</h4>
