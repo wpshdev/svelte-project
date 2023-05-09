@@ -500,14 +500,4 @@ header{
         background-position: left bottom;
         background-repeat: no-repeat;
     }
-    @include media('<=tablet'){
-        .col-12{
-            background: none !important;
-        }
-    }
-}
-@include media('<=tablet'){
-    .service-box{
-        padding: 1rem !important;
-    }
 }
