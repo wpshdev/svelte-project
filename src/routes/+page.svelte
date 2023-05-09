@@ -29,7 +29,10 @@
 	const home = data.data.attributes;
 	let propCount = 3;
 	let listener = {};
-	
+	let featuredData = {
+
+	}
+	console.log(home)
     const images = [
         modern,
         mountain,
@@ -43,6 +46,8 @@
 	}
 
 	$: listener = {propCount , activeTab};
+
+	console.log(home.featuredProjects);
 
 </script>
 
@@ -132,7 +137,13 @@
 <section class="featured-projects">
 	<Container>
 		<Row>
-			<Carousel {images} />
+			<Carousel 
+			preHeading={home.featuredProjectsPreHeading} 
+			heading={home.featuredProjectsHeading} 
+			btnTitle={home.featurePropertyBtnTitle}
+			btnUrl={home.featuredPropertyBtnUrl}
+			featuredProjects={home.featuredProjects}
+	 />
 		</Row>
 	</Container>
 </section>
@@ -211,6 +222,7 @@
 						<span>{home.ourStoryHeading}</span>
 						<h2>{home.ourStoryPreHeading}</h2>
 						{@html home.ourStoryParagraph}
+						
 						<!-- <Accordion>
 							<AccordionItem active>
 								<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
@@ -275,7 +287,6 @@
 	.loc-gallery{
 		&__cwrapper{
 			h2{
-				font-size: 3rem;
 				font-family: $secondary-font;
 				margin-bottom: 1rem;
 				color: $secondary-color;
@@ -285,6 +296,9 @@
 				text-transform: uppercase;
 				margin-bottom: 2rem;
 				font-size: 2.5rem;
+				@include media-max(sm){
+					font-size: 2rem;
+				}
 				span{
 					color: $primary-color;
 				}
@@ -307,7 +321,6 @@
 	.categories{
 		h2{
 			margin-bottom: 3rem;
-			font-size: 3rem;			
 		}
 		.view-all{
 			span{
@@ -323,9 +336,21 @@
 					display: flex;
 					flex-wrap: wrap;
 					margin-bottom: 2rem;
+					padding-left: 0;					
+					@include media-max(xs){
+						flex-wrap: nowrap;
+						padding: 1rem 0
+					}						
+					@include media-max(sm){
+						overflow-x: scroll;
+					}					
 					li{
 						list-style: none;
-						width: 25%;		
+						width: 25%;
+						@include media-max(sm){
+							width: 10rem;
+							padding: 0 1rem;
+						}		
 						span{				
 							font-family: $secondary-font;
 							font-size: 2rem;
@@ -335,6 +360,9 @@
 							border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
+							@include media-max(sm){
+								font-size: 1.2rem;
+							}
 							&.active{
 								color: $primary-color;
 								border-bottom-color: $primary-color;
@@ -373,6 +401,9 @@
 		background-position: center;
 		background-size: cover;
 		position: relative;
+		@include media-max(sm){
+			height: 60vh;
+		}
 		&::before{
 			content: "";
 			position: absolute;
@@ -392,7 +423,6 @@
 			}
 			h2{
 				font-family: $primary-font;
-				font-size: 3rem;
 				margin: 1rem 0 2rem;
 				text-transform: uppercase;
 			}
@@ -419,7 +449,10 @@
 				background: #E5EEF2;
 				width: 130%;
 				content: "";
-				height: 100%;				
+				height: 100%;		
+				@include media-max(sm){
+					content: none;
+				}		
 			}
 			&__wrapper{
 				max-width: 29rem;
@@ -465,6 +498,9 @@
 				width: 130%;
 				content: "";
 				height: 100%;				
+				@include media-max(sm){
+					content: none;
+				}					
 			}
 			&__wrapper{
 				max-width: 40rem;
@@ -503,7 +539,10 @@
 				background: #E5EEF2;
 				width: 130%;
 				content: "";
-				height: 100%;				
+				height: 100%;		
+				@include media-max(sm){
+					content: none;
+				}							
 			}
 			&__wrapper{
 				max-width: 43rem;
@@ -588,6 +627,9 @@
 		background-image: var(--lrbg);
 		background-size: cover;
 		height: 90vh;
+		@include media-max(sm){
+			height: 40vh;
+		}
 	}
 
 	.lv-thropy{

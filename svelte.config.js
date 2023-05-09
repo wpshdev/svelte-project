@@ -12,7 +12,10 @@ const config = {
 	// for more information about preprocessors
 	preprocess: preprocess({
 		scss: {
-			prependData: `@import '${sassPath}_vars.scss';`
+			prependData: `
+				@import '${sassPath}_mixins.scss';
+				@import '${sassPath}_vars.scss';
+			`
 		}
 	}),
 

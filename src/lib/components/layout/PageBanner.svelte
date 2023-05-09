@@ -25,7 +25,7 @@
 							duration: 2000,
 							y: 50							
 						}}>{subTitle}</p>
-					</Animate>						
+					</Animate>		
 				</div>
 			</Col>
 		</Row>
@@ -65,6 +65,9 @@
 					font-weight: 400;
 					font-size: 5rem;		
 					margin-bottom: 2rem;	
+					@include media-max(sm) {
+						font-size: 3rem;
+					}
 					span{
 						font-family: $primary-font;
 					}		
@@ -72,7 +75,10 @@
 			}
 			&__paragraph{
 				color: #fff;
-				font-size: 1.5rem;				
+				font-size: 1.5rem;	
+				@include media-max(sm) {
+					font-size: 1.2rem;
+				}							
 			}
 			&__btn{
 					border: 1px solid #fff;
