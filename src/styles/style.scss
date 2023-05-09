@@ -507,18 +507,8 @@ header{
         }
     }
 }
-<<<<<<< Updated upstream
-.service-box2{
-    border-bottom: 2px solid $secondary-color;
-}
-.service-box6{
-    border-left: 2px solid $secondary-color;
-    border-bottom: 2px solid $secondary-color;
-}
-=======
 @include media('<=tablet'){
     .service-box{
         padding: 1rem !important;
     }
 }
->>>>>>> Stashed changes
