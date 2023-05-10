@@ -3,7 +3,7 @@
     import { MasonryGrid } from "@egjs/svelte-grid";
     
     
-    const gap = 10;
+    const gap = 0;
     const defaultDirection = "end";
     const align = "end";
     const column = 3;
@@ -84,11 +84,13 @@
             text-align: center;  
             height: 60vh;
             @include media-max(sm){
-                height: 35vh;
+                height: 30vh;
             }
             a{
                 display: block;
                 height: 100%;
+                width: 98%;
+                overflow: hidden;
                 img{
                     transition: 0.5s;
                     height: 100%;

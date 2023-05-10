@@ -78,21 +78,6 @@
 				</Dropdown>						
 			{/if}
 		{/each} 
-		<!-- <NavItem>
-		  <NavLink data-sveltekit-preload-data="tap" href="/portfolio">PORTFOLIO</NavLink>
-		</NavItem>
-		<Dropdown nav inNavbar>
-			<DropdownToggle nav caret href="about">ABOUT US</DropdownToggle>
-			<DropdownMenu end>
-			  <DropdownItem href="portfolio">PORTFOLIO</DropdownItem>
-			  <DropdownItem href="about">ABOUT US</DropdownItem>		
-			  <DropdownItem href="our-team">OUR TEAM</DropdownItem>
-			  <DropdownItem href="contact">CONTACT US</DropdownItem>				
-			</DropdownMenu>
-		  </Dropdown>		
-		<NavItem>
-			<NavLink href="/our-team/">OUR TEAM</NavLink>
-		</NavItem>		  		 -->
 	  </Nav>
 	</Collapse>
   </Navbar>

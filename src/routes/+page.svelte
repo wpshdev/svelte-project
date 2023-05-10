@@ -32,7 +32,6 @@
 	let featuredData = {
 
 	}
-	console.log(home)
     const images = [
         modern,
         mountain,
@@ -47,10 +46,23 @@
 
 	$: listener = {propCount , activeTab};
 
-	console.log(home.featuredProjects);
+	let innerWidth;
+
+	onMount(()=>{
+		innerWidth = window.innerWidth;
+	})
+
+	$: {
+		if(innerWidth){
+			
+		}
+	}
+	
 
 </script>
-
+<svelte:window 
+	bind:innerWidth
+  />
 <svelte:head>
 	<title>{home.title}</title>
 	<meta name="description" content="ULF BUILT" />
@@ -99,13 +111,6 @@
 		<Row>
 			<Col class="text-center">
 				<h2>what are you looking for?</h2>
-				<p class="text-center view-all">
-					{#if propCount === 3} 
-						<span on:click="{() => propCount = 999}">View All Projects</span>
-					{:else}
-						<span on:click="{() => propCount = 3}">View Less Projects</span>
-					{/if}
-				</p>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
 						<ul>
@@ -121,7 +126,14 @@
 								</li>
 							{/each}
 						</ul>
-					  </div>
+					</div>
+					<p class="text-center view-all">
+						{#if propCount === 3} 
+							<span on:click="{() => propCount = 999}">View All Projects</span>
+						{:else}
+							<span on:click="{() => propCount = 3}">View Less Projects</span>
+						{/if}
+					</p>					
 					<div class="categories__tabs__gallery">
 						{#key listener }
 							<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
@@ -175,7 +187,7 @@
 						<span>{home.reputation.preHeading}</span>
 						<h2>{home.reputation.heading}</h2>
 						<p>{@html home.reputation.content}</p>
-						<a href="{home.reputation.btnUrl}" class="btn btn-primary">{home.reputation.btnTitle}</a>
+						<a href="{home.reputation.btnUrl}" class="btn btn-secondary">{home.reputation.btnTitle}</a>
 					</div>
 				</div>
 			</Col>
@@ -202,12 +214,14 @@
 						<span>{home.ourProcessPreHeading}</span>
 						<h2>{home.ourProcessHeading}</h2>
 						{@html home.ourProcessParagraph}
-						<a href="{home.ourProcessButtonUrl}" class="btn btn-primary">{ home.ourProcessButtonTitle }</a>
+						<a href="{home.ourProcessButtonUrl}" class="btn btn-secondary">{ home.ourProcessButtonTitle }</a>
 					</div>
 				</div>
 			</Col>
-			<Col md="4" class="my-auto">
-				<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+			<Col md="4" class="my-auto ">
+				<div class="process__bottom">
+					<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+				</div>
 			</Col>
 		</Row>
 	</Container>
@@ -219,8 +233,8 @@
 			<Col md="8" class="">
 				<div class="story__content">
 					<div class="story__content__wrapper">
-						<span>{home.ourStoryHeading}</span>
-						<h2>{home.ourStoryPreHeading}</h2>
+						<span>{home.ourStoryPreHeading}</span>
+						<h2>{home.ourStoryHeading}</h2>
 						{@html home.ourStoryParagraph}
 						
 						<!-- <Accordion>
@@ -283,7 +297,14 @@
 			}			
 		}
 	}
-
+	:global(.loc-gallery p){
+		@include media-max(sm){
+			text-align: left;
+		}	
+	}
+	:global(.loc-gallery .h3 span){
+		color: $primary-color;
+	}	
 	.loc-gallery{
 		&__cwrapper{
 			h2{
@@ -307,7 +328,7 @@
 				max-width: 36rem;
 				margin: 0 auto;
 				text-align: left;
-				margin-bottom: 2rem;
+				margin-bottom: 2rem;							
 			}
 			&__btns{
 				margin: 2rem 0;
@@ -320,9 +341,10 @@
 
 	.categories{
 		h2{
-			margin-bottom: 3rem;
+			margin-bottom: 2rem;
 		}
 		.view-all{
+			margin-bottom: 2rem;
 			span{
 				color: $secondary-color;
 				&:hover{
@@ -402,7 +424,9 @@
 		background-size: cover;
 		position: relative;
 		@include media-max(sm){
-			height: 60vh;
+			height: 80vh;
+			align-items: end;
+			padding-bottom: 2rem;
 		}
 		&::before{
 			content: "";
@@ -416,7 +440,7 @@
 		}
 		.tnr__wrapper{
 			z-index: 2;
-			position: relative;
+			position: relative;     
 			color: #fff;
 			span{
 				font-size: 1.5rem;
@@ -428,7 +452,7 @@
 			}
 			.btn{
 				background-color: #1E2D39;
-			}
+			}				
 		}
 	}
 
@@ -439,36 +463,55 @@
 
 	.reputation{
 		margin: 7rem 0 3.75rem;
+		@include media-max(sm){
+			margin: 0;
+			padding: 1.5rem 0;
+		}			
 		&__content{
 			height: 35vw;
 			display: flex;
 			align-items: center;
 			position: relative;
+			@include media-max(sm){
+				height: auto;
+			}				
 			&:after{
 				position: absolute;
 				background: #E5EEF2;
 				width: 130%;
+				top: -5vh;
 				content: "";
-				height: 100%;		
+				height: 100vh;		
 				@include media-max(sm){
-					content: none;
+					width: 100vw;
+					margin-left: calc(50% - 50vw);
+					// margin-right: calc(50% - 50vw);					
 				}		
 			}
 			&__wrapper{
 				max-width: 29rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(sm){
+					padding-left: 0;
+					margin-bottom: 2rem;
+				}						
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					font-size: 3rem;
 				}
 				p{
 					line-height: 2rem;
 					margin-bottom: 2rem;
+				}
+				.btn{
+					@include media-max(sm){
+						margin: 0 auto;
+						display: inherit;
+					}
 				}
 			}		
 		}
@@ -479,12 +522,19 @@
 	}	
 
 	.process{
-		margin: 7rem 0;
+		margin: 7rem 0;		
 		&__top-image{
 			text-align: right;
     		margin-bottom: -3rem;		
+			@include media-max(sm){
+				text-align: left;
+				margin-bottom: 0;	
+			}				
 			img{
 				max-width: 25rem;
+				@include media-max(sm){
+					max-width: 70vw;
+				}			
 			}
 		}
 		&__content{
@@ -492,6 +542,10 @@
 			display: flex;
 			align-items: center;
 			position: relative;
+			@include media-max(sm){
+				height: auto;
+				margin-top: 3rem;
+			}			
 			&:after{
 				position: absolute;
 				background: #F2F2F2;
@@ -499,26 +553,46 @@
 				content: "";
 				height: 100%;				
 				@include media-max(sm){
-					content: none;
-				}					
+					width: 100vw;
+					margin-left: calc(50% - 50vw);
+					height: 150%;	
+				}
 			}
 			&__wrapper{
 				max-width: 40rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(sm){
+					padding-left: 0;
+				}					
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					font-size: 3rem;
 				}
 				p{
 					line-height: 2rem;
 					margin-bottom: 2rem;
 				}
+				.btn{
+					@include media-max(sm){
+						display: inherit;
+						margin: 3rem auto;
+					}							
+				}
 			}		
+		}
+		&__bottom{	
+			@include media-max(sm){
+				text-align: right;
+			}							
+			img{
+				@include media-max(sm){
+					max-width: 70vw;
+				}			
+			}			
 		}
 		img{
 			position: relative;
@@ -534,6 +608,9 @@
 			display: flex;
 			align-items: center;
 			position: relative;
+			@include media-max(sm){
+				height: auto;
+			}   						
 			&:after{
 				position: absolute;
 				background: #E5EEF2;
@@ -541,20 +618,25 @@
 				content: "";
 				height: 100%;		
 				@include media-max(sm){
-					content: none;
-				}							
+					top: -10vw;
+					width: 100vw;
+					margin-left: calc(50% - 50vw);
+					height: 160%;	
+				}  						
 			}
 			&__wrapper{
 				max-width: 43rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(sm){
+					padding: 0;
+				}  				
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					font-size: 3rem;
 				}
 				p{
 					line-height: 2rem;

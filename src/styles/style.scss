@@ -10,17 +10,23 @@ h1, h2, h3, h4, h5, h6{
 
 }
 
-h1{
+h1,.h1{
+    font-size: 4rem;
     @include media-max(sm){
         font-size: 3rem;
     }
 }
-
-h2{
+h2,.h2{
     font-size: 3rem;
     @include media-max(sm){
         font-size: 2.5rem;
     }
+}
+h3,.h3{
+    font-size: 2rem;
+    @include media-max(sm){
+        font-size: 1.8rem;
+    }    
 }
 .logo{
     height: 3.5rem;
@@ -148,6 +154,10 @@ img{
     border: 1px solid $primary-color;
     box-shadow: 0px 3px 4px rgba(140, 133, 133, 0.25);
     border-radius: 2rem;    
+    @include media-max(sm){
+        padding: 0.7rem 1.4rem;
+        font-size: 1rem;
+    }
 }
 .input-user:focus ~ .input-icon-user{
     background-position: 0px 0px;
@@ -164,8 +174,8 @@ img{
 }
 .btn-inverted{
     background-color: transparent;
-    border: 1px solid $primary-color;
-    color: $primary-color;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
 }
 .btn-white{
     background-color: white;
@@ -205,6 +215,9 @@ header{
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    &.container-fluid{
+        padding-left: 5px;
+    }
     nav{
         ul{
             margin-bottom: 0px;
@@ -219,6 +232,17 @@ header{
         }
     }
     nav{
+        .navbar-toggler{
+            &.btn.btn-secondary{
+                border: none;
+                background-color: unset;
+                box-shadow: none;
+                padding-right: 0; 
+                .navbar-toggler-icon{
+                    background-image: url(/src/lib/img/Menu.svg);
+                }
+            }
+        }
         .nav-item{
             min-width: 12rem;
             text-align: center;   
@@ -261,7 +285,7 @@ header{
     font-weight: 300;
     background:#262626;
     color: #fff;
-    padding: 3rem;
+    padding: 3rem 0;
     margin: 0;
     a{
         color: #fff;
