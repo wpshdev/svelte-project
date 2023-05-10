@@ -50,7 +50,7 @@ function scrollToTop() {
             {#await promise}
             {:then widgets}     
                 {#each widgets as widget, index}
-                    <Col>
+                    <Col class="footer__col">
                         <div class="footer__widget1 footer--widget">
                             {#if widget.title }
                                 <div class="footer__widget__heading">
@@ -105,5 +105,13 @@ function scrollToTop() {
 </footer>
 
 <style lang="scss">
-
+    :global(.col.footer__col){
+        @include media-max(sm){
+            flex: 100%;
+            margin-bottom: 2rem;
+            h4{
+                max-width: 20rem;
+            }
+        }
+    }
 </style>

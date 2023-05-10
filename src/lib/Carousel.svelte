@@ -10,8 +10,10 @@ export let btnTitle;
 export let btnUrl;
 export let featuredProjects;
 
-console.log(featuredProjects);
-onMount(() => {
+let innerWidth;
+
+onMount(()=>{
+  innerWidth = window.innerWidth;
   
   flickityInstance = new Flickity('.slider-container', {
     cellAlign: 'left',
@@ -36,8 +38,17 @@ function updateProgress(index) {
   const totalSlides = featuredProjects.data.length;
   let imageNum = totalSlides - index == 1 ? index  + 1 : index;
   progressPercentage = ((imageNum ) / totalSlides) * 100;
-  console.log(imageNum);
 }
+
+
+
+
+$: {
+  if(innerWidth){
+    
+  }
+}
+
 </script>
 <svelte:head>
     <!-- Flickity JavaScript -->
@@ -45,21 +56,25 @@ function updateProgress(index) {
     <!-- Flickity CSS -->
     <!-- <link rel="stylesheet" href="flickity/flickity.min.css" /> -->
 </svelte:head>
-
+<svelte:window 
+	bind:innerWidth
+  />
   <Col md="3">
     <div class="slider-caption">
       <div class="slider-caption__heading">
         <span>{preHeading}</span>
         <h2>{@html heading}</h2>
       </div>
-      <div class="progress-ring-container">
-        <svg class="progress-ring" width="110" height="49">
-          <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
-          <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
-          <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
-          <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
-        </svg>
-      </div>  
+      {#if innerWidth > 767}
+        <div class="progress-ring-container">
+          <svg class="progress-ring" width="110" height="49">
+            <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
+            <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
+            <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
+            <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
+          </svg>
+        </div> 
+      {/if}
     </div>
   </Col>	
   <Col md=9>
@@ -70,9 +85,22 @@ function updateProgress(index) {
         </div>
       {/each}
     </div>
+    {#if innerWidth < 767}
+      <div class="text-center">
+        <div class="progress-ring-container">
+          <svg class="progress-ring" width="110" height="49">
+            <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
+            <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
+            <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
+            <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
+          </svg>
+        </div> 
+      </div>
+    {/if}       
     <div class="slider-btn">
-      <a href="{btnUrl}" class="btn btn-primary">{btnTitle}</a>
+      <a href="{btnUrl}" class="btn btn-secondary">{btnTitle}</a>
     </div>    
+ 
   </Col>
 
   
@@ -131,6 +159,10 @@ function updateProgress(index) {
 .slider-btn{
   margin: 2rem 5rem 0;
   text-align: right;
+  @include media-max(sm){
+    text-align: center;
+    margin: 2rem 0 0;
+  }
 }
 
 .progress-ring-container {
@@ -142,6 +174,10 @@ function updateProgress(index) {
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   display: inline-block;
   border-radius: 2rem;  
+  @include media-max(sm){
+    margin-top: 3rem;
+    left: 0;
+  }
 }
 
 .progress-ring {

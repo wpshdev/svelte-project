@@ -43,7 +43,9 @@
 							<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading}</div>
 							<h2>{insight.Heading}</h2>
 							{@html insight.paragprah}
-							<a href="{insight.leftBtnUrl}" class="btn btn-primary">{insight.leftBtnTitle}</a> <a href="{insight.rightBtnUrl}" class="btn btn-inverted">{insight.rightBtnTitle}</a>
+							<div class="insight__content__wrapper__btns">
+								<a href="{insight.leftBtnUrl}" class="btn btn-secondary">{insight.leftBtnTitle}</a> <a href="{insight.rightBtnUrl}" class="btn btn-inverted">{insight.rightBtnTitle}</a>
+							</div>
 						</div>
 					</div>				
 				</Col>
@@ -58,26 +60,42 @@
 		background-color: #F2F2F2;
 		padding: 4rem 0;
 		margin-bottom: 0;
+
 		&__pre-heading{
 			color: $primary-color;
 			margin-bottom: 2rem;
-			display: block;
+			display: block;			
 		}
 		&__content{
 			&__wrapper{
-				padding-left: 4rem;				
+				padding-left: 4rem;		
+				@include media-max(sm){
+					padding: 0;
+				}					
+				&__pre-heading{
+					color: $secondary-color;
+					font-weight: 500;
+					@include media-max(sm){
+						padding: 1rem 0 0;
+					}						
+				}	
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
+				
 				}
 				h2{
 					margin: 1rem 0 2rem;	
-					font-size: 3rem;
 				}
 				p{
 					line-height: 2rem;
 					margin-bottom: 2rem;
+					
 				}		
+				&__btns{
+					text-align: center;
+				
+				}
 				.btn-primary{
 					margin-right: 1rem;
 				}		

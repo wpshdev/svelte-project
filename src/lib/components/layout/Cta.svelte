@@ -50,7 +50,7 @@
 		background-size: cover;
 		
 		&__container{
-			height: 40vw;
+			height: 70vh;
 			width: 100%;
 			display: flex;
 			align-items: center;
@@ -58,6 +58,10 @@
 		}
 		h2{
 			color: #000;
+			margin-bottom: 2rem;
+			@include media-max(sm){
+				font-size: 2rem;
+			}
 		}
 		.btn{
 			margin-top: 1rem;
