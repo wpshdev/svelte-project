@@ -86,6 +86,18 @@ input:focus{
 }
 section{
     margin: 3.75rem 0;
+    @include media-max(lg){
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    @include media-max(md){
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    @include media-max(sm){
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 img{
     width: 100%;
@@ -94,6 +106,8 @@ img{
     max-width: 1000px;
     margin:auto;
     hr{
+        
+        opacity: 1;
         max-width: 80%;
         margin: auto;
         border:2px solid #D8D7D7;
@@ -189,6 +203,10 @@ img{
     -webkit-columns: 40px 2;
     -moz-columns: 60px 2;
     columns: 60px 2;
+    @include media-max(sm){
+        columns:1;
+        text-align: center;
+    }
 }
 #headroom{
     z-index: 10;
@@ -244,12 +262,12 @@ header{
             }
         }
         .nav-item{
-            min-width: 12rem;
+            min-width: 10rem;
             text-align: center;   
             a{
                 text-transform: uppercase;
                 &:hover{
-                    color: $secondary-color;
+                    color: $white-color;
                 }
             }         
         }
@@ -308,7 +326,6 @@ header{
 .cover{
     background-repeat:no-repeat;
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     display: flex;
     justify-content: center;
@@ -316,10 +333,17 @@ header{
     flex-direction: column;
     color:#fff;
     height: 500px;
-}
-@media screen and (max-width: 768px) {
-    .cover{
+    @include media-max(sm){
         height: 20rem;
+        padding:0 1rem;
+    }
+    h2{
+        @include media-max(sm){
+            padding-top: 4rem;
+        }
+    }
+    p{
+        text-align: center;
     }
 }
 // offset slider
@@ -372,44 +396,6 @@ header{
             border: none;
         }
     }
-}
-.tm-box{
-    position: absolute;
-    z-index: 6;
-    bottom:2rem;
-    width: 95%;
-    background-color: #1E2D39;
-}
-.owner{
-    .container{
-    padding: 0px;
-    position:relative;
-        .imgdiv{
-            position: relative;
-            max-width: 50%;
-            z-index: 5;
-            overflow: hidden;
-        }
-        .owner-quote{
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #3A6D81;
-            height: calc(100% - 60px);
-            width: 100%;
-            margin-top: 30px;
-            padding: 50px 50px 50px 50%;
-            text-align: center;
-            top: 0px;
-        }
-    }
-}
-.team-members{
-    position: relative;
- .col-md-5{
-    position: relative;
- }   
 }
 .order-1{
     order:1;
