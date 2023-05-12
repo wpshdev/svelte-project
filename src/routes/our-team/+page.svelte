@@ -5,13 +5,11 @@
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
 	console.log(ourTeam);
-    let scroll
 </script>
 <svelte:head>
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<svelte:window bind:scrollY={scroll} />
 <div class="cover" style="background-image: url({domain}{data.data.attributes.Cover.data.attributes.formats.large.url});">
     <h2 class="pfont">{data.data.attributes.title}</h2>
     <p class="pfont">{data.data.attributes.Subheading}</p>
@@ -19,10 +17,10 @@
 <section class="our-team">
 	<Container>
 		<Row>
-			<Col md="10" class="mx-auto text-center">
-                <h1 class="stc">{ourTeam.SecondSectionTitle}</h1>
-                <p class="pb-5">{@html ourTeam.SecondSectionPara}</p>
-                <div class="easein-img">
+			<Col md="10" class="mx-auto">
+                <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
+                <p class="pb-5 two-columns">{@html ourTeam.content}</p>
+                <div>
                     <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
                 </div>
 			</Col>
@@ -31,25 +29,25 @@
 </section>
 <section class="owner">
     <Container>
-        <div class="imgdiv" style:transform={`translate3d(0, ${(scroll * -0.1)+100}px, 0)`}>
-            <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
-        <div class="tm-box wtc px-5 py-3">
-            <h2 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h2>
-            <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>
-        </div></div>
-        <div class="owner-quote"><h2 class="wtc line-height-2">{@html ourTeam.ownerquote}</h2></div>
+        <Row noGutters>
+            <Col md=6 class="tm-img">
+                <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
+            <div class="tm-box wtc">
+                <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h3>
+                <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>
+            </div>
+            </Col>
+            <Col md=6 class="owner-quote-container">
+            <div class="owner-quote"><h3 class="stc line-height-2 text-center">{@html ourTeam.ownerquote}</h3></div>
+            </Col>
+        </Row>
     </Container>
 </section>
 <section class="team-members">
 <Container>
     <Row>
-        <h1 class="sfont ptc mb-5 text-center">{ourTeam.title}</h1>
-        <Col md="5" style="-webkit-transform-style: preserve-3d;">
-            <div class="team-members__description">
-                <h2 class="sfont stc line-height-2">{ourTeam.para1}</h2>
-            </div>
-        </Col>
-        <Col md="7">
+        <h2 class="sfont ptc mb-5 text-center">{ourTeam.title}</h2>
+        <Col md={{ size: 8, offset: 2 }}>
         <Row>
             {#each ourTeam.team_members.data as member}
                 <Col md="6">
@@ -79,8 +77,13 @@
         </Row>
     </Container>
 </section>
+
 <style lang="scss">
+    section{
+        margin: 10rem 0;
+    }
     .our-team{
+        margin-top: 5rem;
         img{
                 width: 100%;
                 max-width: 100%;
@@ -124,13 +127,37 @@
             }   
         }
     }
-    .team-members{
-        &__description{
-            position: sticky;
-            top:50px;
+    :global(.tm-img){
+        position: relative;
+    }
+.tm-box{
+    position: absolute;
+    z-index: 6;
+    bottom:2rem;
+    background-color: #1E2D39;
+    padding: 1rem 2rem;
+    h3,h4{
+        margin-bottom: 0;
+        font-weight: 400;
+    }
+}
+:global(.owner-quote-container){
+    padding: 2rem 0;
+    @include media-max(sm){
+        padding: 0;
+    }
+}
+.owner-quote{
+    background-color: #E3CEB5;
+    height: 100%;
+    display: flex;
+    h3{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        @include media-max(sm){
+            padding: 2rem 1rem;
         }
     }
-    section{
-        margin: 10rem 0;
-    }
+}
 </style>

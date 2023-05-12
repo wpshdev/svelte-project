@@ -6,17 +6,22 @@
     const url = "https://strapi.ulfbuilt.com:1337/";
 </script>
 <svelte:head>
-	<title>Privacy Policy</title>
+	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <div class="cover" style="background-image: url({url}{data.data.attributes.Cover.data.attributes.formats.large.url});">
-    <h2>{data.data.attributes.Heading}</h2>
+    <h2>{data.data.attributes.title}</h2>
     <p>{data.data.attributes.Subheading}</p>
 </div>
 <section>
     <Container class="mw-1000">
-        <h1 class="text-center">PRIVACY POLICY</h1>
+        <h2 class="text-center mb-5">{data.data.attributes.Heading}</h2>
         {@html data.data.attributes.Content}
     </Container>
 </section>
 <Cta/>
+<style lang="scss">
+:global(p){
+    line-height: 1.7rem !important;
+}
+</style>

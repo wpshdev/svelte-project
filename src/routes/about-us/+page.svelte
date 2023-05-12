@@ -20,7 +20,7 @@
     <h2 class="pfont">{abouttitle}</h2>
     <p class="pfont">{aboutsubheading}</p>
 </div>
-<section class="mw-1000 text-center mx-10">
+<section class="mw-1000 text-center">
         <h1>{@html about.AboutHeading}</h1>
         <p>{@html about.abouttext}</p>
 </section>
@@ -34,7 +34,8 @@
             </Col>
             <Col md=1></Col>
             <Col md=5>
-                <div style:transform={`translate3d(0, ${(scroll * -0.1)+50}px, 0)`}>
+                <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+50}px, 0)`} -->
+                <div>
                 <img src="{url+about.Section1image.data.attributes.formats.large.url}" alt="{about.Section1heading}" class="w-100">
                 </div>
             </Col>
@@ -47,7 +48,7 @@
         <Row>
             <Col md=1></Col>
             <Col md=5>
-                <div style:transform={`translate3d(0, ${(scroll * -0.15)+200}px, 0)`}>
+                <div>
                 <img src="{url+about.Section2image.data.attributes.formats.large.url}" alt="{about.Section2heading}" class="w-100">
                 </div>
             </Col>
@@ -70,7 +71,7 @@
             </Col>
             <Col md=1></Col>
             <Col md=5>
-                <div style:transform={`translate3d(0, ${(scroll * -0.1)+220}px, 0)`}>
+                <div>
                 <img src="{url+about.Section3image.data.attributes.formats.large.url}" alt="{about.Section3heading}" class="w-100">
                 </div>
             </Col>
@@ -103,7 +104,8 @@
                 <p class="text-right">{@html about.Section6text}</p>
             </Col>
             <Col md=5 style="margin-left:-30px;">
-                <div style:transform={`translate3d(0, ${(scroll * -0.1)+400}px, 0)`}>
+                <div>
+                    <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
                 <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
                 </div>
             </Col>
@@ -114,8 +116,9 @@
         <Row>
             <Col md=1></Col>
             <Col md=5>
-                <div style:transform={`translate3d(0, ${(scroll * -0.1)+450}px, 0)`}>
-                <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
+                <div>
+                    <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
+                    <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
                 </div>
             </Col>
             <Col md=5 class="align-self-center silver-color-background p-5" style="margin-left:-30px;min-height: 440px;">
@@ -133,7 +136,8 @@
                 <p class="text-right">{@html about.Section8text}</p>
             </Col>
             <Col md=5 style="margin-left:-30px;">
-                <div style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`}>
+                <div>
+                    <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
                 <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
                 </div>
             </Col>
@@ -144,5 +148,19 @@
 <style lang="scss">
 .mx-8{
     margin:8rem auto;
+}
+section{
+    margin:8rem auto;
+}
+.service-box1 div{
+    border-top: 2px solid $secondary-color;
+    border-right: 2px solid $secondary-color;
+}
+.service-box2{
+    border-bottom: 2px solid $secondary-color;
+}
+.service-box6{
+    border-left: 2px solid $secondary-color;
+    border-bottom: 2px solid $secondary-color;
 }
 </style>
