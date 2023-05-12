@@ -639,7 +639,7 @@
 				h2{
 					margin: 1rem 0 2rem;
 				}
-				p{
+				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
 				}
