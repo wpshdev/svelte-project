@@ -52,88 +52,89 @@
 
 <Cta />
 <style lang="scss">
-    .portfolio{
-		background-image: var(--banner);
-		background-size: cover;
-        margin-top: 0;
-		min-height: 40vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        &:after{
-            content: "";
-            background-color: rgba(0,0,0,0.5);
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            z-index: 0;
-        }
-        &__banner-content{
-            z-index: 1;
-            position: relative;
-            h1{
-                color: #fff;
-                font-size: 3rem;
-                font-family: $primary-font;
-                font-weight: 300;
-                letter-spacing: 0.2rem;
-            }
-            p{
-                color: #fff;
-                letter-spacing: 0.1rem;                
-            }
-        }
-        img{
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-        }      
-        &__property{
-            position: relative;
-            margin-top: 1.5rem;
-            &:hover{
-                a{
-                    opacity: 1;
-                    background-color: rgb(8, 161, 216, 0.3);
-                    transition: 0.3s;
-                }
-            }
-            a{
-                opacity: 0;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-                transition: 0.3s;
-            }            
-            &__caption{
-                position: absolute;
-                bottom: 0;
-                text-align: left;
-                width: 100%;
-                opacity: 1;
-                color: #fff;
-                padding: 0.8rem;
-                h2{
-                    font-size: 1.2rem;
-                    font-weight: 300;
-                    margin-bottom: 0;
-                }
-                span{
-                    font-weight: 300;
-                }
-            }   
-        }
+    // .portfolio{
+	// 	background-image: var(--banner);
+	// 	background-size: cover;
+    //     margin-top: 0;
+	// 	min-height: 40vw;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     position: relative;
+    //     &:after{
+    //         content: "";
+    //         background-color: rgba(0,0,0,0.5);
+    //         left: 0;
+    //         top: 0;
+    //         height: 100%;
+    //         width: 100%;
+    //         position: absolute;
+    //         z-index: 0;
+    //     }
+    //     &__banner-content{
+    //         z-index: 1;
+    //         position: relative;
+    //         h1{
+    //             color: #fff;
+    //             font-family: $primary-font;
+    //             font-weight: 300;
+    //             letter-spacing: 0.2rem;
+    //         }
+    //         p{
+    //             color: #fff;
+    //             letter-spacing: 0.1rem;                
+    //         }
+    //     }
+    //     img{
+    //         width: 100%;
+    //         max-width: 100%;
+    //         height: auto;
+    //     }      
+    //     &__property{
+    //         position: relative;
+    //         margin-top: 1.5rem;
+    //         &:hover{
+    //             a{
+    //                 opacity: 1;
+    //                 background-color: rgb(8, 161, 216, 0.3);
+    //                 transition: 0.3s;
+    //             }
+    //         }
+    //         a{
+    //             opacity: 0;
+    //             position: absolute;
+    //             width: 100%;
+    //             height: 100%;
+    //             left: 0;
+    //             top: 0;
+    //             transition: 0.3s;
+    //         }            
+    //         &__caption{
+    //             position: absolute;
+    //             bottom: 0;
+    //             text-align: left;
+    //             width: 100%;
+    //             opacity: 1;
+    //             color: #fff;
+    //             padding: 0.8rem;
+    //             h2{
+    //                 font-size: 1.2rem;
+    //                 font-weight: 300;
+    //                 margin-bottom: 0;
+    //             }
+    //             span{
+    //                 font-weight: 300;
+    //             }
+    //         }   
+    //     }
 
-    }
+    // }
     .portfolio-masonry{
         h2{
-            font-size: 3rem;
             margin-bottom: 1.5rem;
+            @include media-max(sm){
+                display: none;
+            }
         }
         p{
             max-width: 1100px;
@@ -152,14 +153,18 @@
                 color: $primary-color;
             }
             h2{
-                font-size: 3rem;
             }
         }
         &__btns{
             margin: 2rem 0;
-
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             .btn-secondary{
                 margin-right: 1.5rem;
+                @include media-max(sm){
+                    margin: 0 0 1rem;
+                }
             }
             .btn-inverted{
                 border-color: $secondary-color;

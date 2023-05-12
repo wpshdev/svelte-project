@@ -3,10 +3,10 @@ import { fly, fade } from "svelte/transition";
 import { MasonryGrid } from "@egjs/svelte-grid";
 
 
-const gap = 10;
+const gap = 0;
 const defaultDirection = "end";
 const align = "end";
-const column = 2;
+const column = 0;
 const columnSize = 0;
 const columnSizeRatio = 0;
 import axios from "axios";
@@ -78,9 +78,25 @@ $: if (id) {
         position: absolute;
         color: white;
         text-align: center;  
-        img{
-            transition: 0.5s;
-        }         
+        padding-top: 0.8rem;
+        @include media-max(sm){
+            width: 100%;
+            padding-top: 1rem;
+        }
+        a{
+            display: block;
+            height: 100%;
+            width: 98%;
+            overflow: hidden;
+            @include media-max(sm){
+                width: 100%;
+            }               
+            img{
+                transition: 0.5s;
+                height: 100%;
+                object-fit: cover;
+            }   
+        }           
         &:hover{
             img{
                 transition: 0.5s;
@@ -89,7 +105,10 @@ $: if (id) {
         }
         &:nth-child(2){
             padding-top: 4rem;
-            // top: 50px !important;
+            // top: 50px !important;    
+            @include media-max(sm){
+                padding-top: 1rem;
+            }       
         }
         &:nth-child(odd){
             // padding-right: 1rem;
@@ -107,10 +126,20 @@ $: if (id) {
             left: 0;
             width: 65%;
             text-align: left;
+            @include media-max(sm){
+                margin: 0;
+                // font-size: 0.6rem;
+                width: 90%;
+                bottom: 0.5rem
+            } 
             span{
                 color: $primary-color;
                 font-size: 1.2rem;
                 margin: 0 0.8rem 0;
+                @include media-max(sm){
+                    margin: 0;
+                    // font-size: 0.6rem;
+                }                
             }
         }
     }

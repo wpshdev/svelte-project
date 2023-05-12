@@ -2,7 +2,6 @@
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	import banner from "$lib/img/first-section.svg";
-	import Testimonial from "../components/Testimonial.svelte";
 	// import Carousel from "../components/Carousel.svelte";
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
@@ -485,7 +484,8 @@
 				@include media-max(sm){
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
-					// margin-right: calc(50% - 50vw);					
+					// margin-right: calc(50% - 50vw);			
+					height: 160%;		
 				}		
 			}
 			&__wrapper{

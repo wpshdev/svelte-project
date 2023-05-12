@@ -55,32 +55,37 @@ function handleTabClick(category) {
 					display: flex;
 					flex-wrap: wrap;
 					margin-bottom: 2rem;
+					padding-left: 0;					
+					@include media-max(lg){
+						flex-wrap: nowrap;
+						padding: 1rem 0;
+						overflow-x: scroll;
+					}										
 					li{
 						list-style: none;
-						width: 25%;		
-                        position: relative;
-                        &:not(:last-child):after{
-                            content: "";
-                            position: absolute;
-                            right: 0;
-                            top: -0.5rem;
-                            height: 4rem;
-                            background: #D8D7D7;
-                            width: 3px;
-                        }
-                        &:last-child:after{
-                            content: none;
-                        }                        
+						width: 25%;
+						@include media-max(sm){
+							width: 10rem;
+							padding: 0 1rem;
+						}		
 						span{				
 							font-family: $secondary-font;
 							font-size: 2rem;
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;
+							border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
+							@include media-max(lg){
+								font-size: 1.5rem;
+							}															
+							@include media-max(md){
+								font-size: 1.2rem;
+							}
 							&.active{
-								color: $secondary-color;
+								color: $primary-color;
+								border-bottom-color: $primary-color;
 							}
 						}
 					}
