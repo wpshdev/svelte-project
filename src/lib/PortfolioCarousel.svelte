@@ -6,7 +6,7 @@
   
 
   async function initScrollAnimations() {
-    await tick();
+    // await tick();
     const container = document.querySelector('.slider-container');
 
     ScrollTrigger.create({
@@ -33,6 +33,13 @@
 afterUpdate(() => {
   initScrollAnimations();
 });
+let innerWidth;
+
+$: {
+  if(innerWidth > 767){
+    // initScrollAnimations();    
+  }
+}
 
   export let images = [];
   let progressPercentage = 0;
@@ -40,6 +47,10 @@ afterUpdate(() => {
  
 
 </script>
+
+<svelte:window 
+	bind:innerWidth
+  />
 
   <Col>
     <div class="slider-container">
@@ -84,15 +95,22 @@ body {
   width: 150vw;
   position: relative;
   height: 100vh;
+  
 
   &__carousel-cell {
     flex-shrink: 0;
     width: auto;
     height: 70vh;
     margin: 15vh 0.5rem 15vh;
+    @include media-max(sm){
+      margin: 30vh 0.5rem 30vh;
+    }      
     overflow: hidden;      
     transition: 0.5s; 
     position: relative;
+    @include media-max(sm){
+        height: 40vh;
+    }    
     &:hover{
       img{
 
@@ -108,6 +126,9 @@ body {
       transition: 0.5s;
 			object-fit: cover;
       height: 70vh;
+      @include media-max(sm){
+        height: 40vh;
+      }
       &:hover{
         transition: 0.5s;
         scale: 1.2;        

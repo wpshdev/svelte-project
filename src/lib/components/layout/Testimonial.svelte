@@ -18,11 +18,15 @@
 <style lang="scss">
 	.testimonial{
 		padding: 3rem 0;
+
 		p{
 			font-size: 1.3rem;
     		font-weight: 300;		
 			position: relative;
 			padding: 0 3rem;
+			@include media-max(sm){
+				padding: 0;
+			}			
 			// &:before{
 			// 	content: url("/left-quote.png");
 			// 	vertical-align: top;

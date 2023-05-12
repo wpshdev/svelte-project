@@ -36,7 +36,7 @@
 	.banner{
 		background-image: var(--banner);
 		background-size: cover;
-		min-height: 100vh;
+		min-height: 60vh;
 		background-position: bottom;
 		background-size: cover;
 		padding-top: 9rem;		
@@ -46,6 +46,9 @@
 		justify-content: center;
 		align-items: center;
         position: relative;
+		&.homebanner{
+			height: 100vh;
+		}
         &:after{
             content: "";
             background-color: rgba(0,0,0,0.5);

@@ -11,7 +11,7 @@
 	import livingRoom from "$lib/img/living-room.jpg";		
 	import lvThropy from "$lib/img/lvThropy.jpg";	
 	import firePlace from "$lib/img/firePlace.jpg";
-    import Testimonial from "../../../components/Testimonial.svelte";
+    import Testimonial from "$lib/components/layout/Testimonial.svelte";
 	import contactBG from "$lib/img/ContactBG.jpg";
 	const domain = "https://strapi.ulfbuilt.com:1337"
  	const portfolio = data.portfolio;
@@ -73,7 +73,7 @@
 			<Col class="text-center">
 				<div class="portfolio-gallery__content">
 					<span>Project</span>
-					<h1>Modern Mountain White</h1>
+					<h1 class="h2">Modern Mountain White</h1>
 					<p>
 						The Modern Mountain White Brown home offers a spacious and stylish major house remodel.
 						Notice the lines of sight from different positions of the photographer,
@@ -165,7 +165,7 @@
 				<h2>Experience Living Your Dreams</h2>
 			</Col>			
 			{#each rPortfolios as rPortfolio, index}
-				<Col md="6">
+				<Col>
 					<div class="related__article">
 						<a href="{rPortfolio.attributes.slug}">
 							<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
@@ -238,12 +238,14 @@
 	background-color: #EFEFF0;
 	margin-bottom: 0;
 	overflow-x: hidden;
+	@include media-max(sm){
+		padding: 20vh 0 0;
+	}	
   &__content{
     span{
       color: $primary-color;
     }
     h1{
-      font-size: 3rem;
 	  margin: 1rem 0;
     }
 	p{
@@ -264,17 +266,32 @@
 	&__content{
 		background-color: #E5EEF2;
 		padding: 2rem;
+		@include media-max(sm){
+			padding: 2rem 0.5rem;
+		}		
 		&__heading{
 			margin-bottom:3rem;
+			@include media-max(sm){
+				margin-bottom:1.5rem;
+			}				
 			div{
 				display: inline-block;
 				&:first-child{
 					margin-right: 3rem;
+					@include media-max(sm){
+						margin-right: 0.5rem;
+					}						
 				}
 				i{
 					margin-right: 1rem;
+					@include media-max(sm){
+						margin-right: 0rem;
+					}						
 					svg{
 						height: 2rem;
+						@include media-max(sm){
+							height: 1.5rem;
+						}							
 					}
 				}
 			}
@@ -286,6 +303,15 @@
 				width: 50%;
 				padding: 0 3rem;
 				line-height: 2;
+				@include media-max(sm){
+					width: 100%;
+					padding: 0;
+				}
+				&:last-child{
+					@include media-max(sm){
+						margin-bottom: 0;
+					}						
+				}
 			}
 		}
 	}
@@ -317,7 +343,6 @@
 	position: relative;      
 	&__content{
 		h2{
-			font-size: 3rem;
 			margin-bottom: 2rem;
 		}
 		p{
@@ -328,9 +353,13 @@
 	}
 	&__btns{
 		margin: 2rem 0;
-
+		display: flex;
+		justify-content: center;
 		.btn-secondary{
 			margin-right: 1.5rem;
+			@include media-max(sm){
+				margin-right: 0.5rem;
+			}			
 		}
 		.btn-inverted{
 			border-color: $secondary-color;
@@ -345,7 +374,6 @@
 	margin-bottom: 0;
 	h2{
 		text-align: center;
-		font-size: 3rem;
 		margin-bottom: 2rem;
 	}
 	&__article{
@@ -371,10 +399,20 @@
             left: 0;
             width: 65%;
             text-align: left;
+            @include media-max(sm){
+                margin: 0;
+                font-size: 0.6rem;
+                width: 90%;
+                bottom: 0.5rem
+            } 			
             span{
                 color: $primary-color;
                 font-size: 1.2rem;
                 margin: 0 0.8rem 0;
+                @include media-max(sm){
+                    margin: 0;
+                    font-size: 0.6rem;
+                }                
             }
         }	
 	}
@@ -391,7 +429,6 @@
 		align-items: end;		
 		&__wrapper{
 			h2{
-				font-size: 3rem;
 				margin-bottom: 2rem;
 			}	
 		}
