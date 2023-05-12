@@ -478,11 +478,12 @@
 				position: absolute;
 				background: #E5EEF2;
 				width: 130%;
-				top: -5vh;
+				top: 0;
 				content: "";
-				height: 100vh;		
+				height: 100%;		
 				@include media-max(sm){
 					width: 100vw;
+					top: -5vh;
 					margin-left: calc(50% - 50vw);
 					// margin-right: calc(50% - 50vw);			
 					height: 160%;		
