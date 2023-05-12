@@ -39,7 +39,6 @@
 		min-height: 60vh;
 		background-position: bottom;
 		background-size: cover;
-		padding-top: 9rem;		
 		margin: 0;
 		text-align: center;
 		display: flex;

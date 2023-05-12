@@ -4,14 +4,17 @@
     import Footer from "./Footer.svelte";
     import Header from "./Header.svelte";
 	import { redirect } from "@sveltejs/kit";
+	import { Container } from "sveltestrap";
     let yaxis: any;
     export let data;
     </script>
     
     <div class="z10">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
-            <header class="container-fluid d-block" class:changeBG={yaxis >= 250}>
-                <Header menu={data} />
+            <header class="d-block" class:changeBG={yaxis >= 250}>
+                <Container>
+                    <Header menu={data} />
+                </Container>
             </header>
         </Headroom>
     </div>

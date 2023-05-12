@@ -51,10 +51,10 @@
 <section class="phase">
     <Container>
         <Row class="text-center phase__row">
-            <Col md="2">
+            <Col xs="2">
                 <span class="num">1</span>
             </Col>
-            <Col md="10">
+            <Col xs="10">
                 <div class="phase__heading"><h3>{processData.section3phase1mainheading}</h3></div>
             </Col>
         </Row>
@@ -121,10 +121,10 @@
 <section class="phase">
     <Container>
         <Row class="text-center phase__row">
-            <Col md="10">
+            <Col xs="10">
                 <div class="phase__heading"><h3>{processData.section10phase2heading}</h3></div>
             </Col>            
-            <Col md="2">
+            <Col xs="2">
                 <span class="num">2</span>
             </Col>
         </Row>
@@ -218,6 +218,9 @@
     .our-process{
         &__heading{
             margin-bottom: 7vh;
+            :global(p span){
+                color: $primary-color;
+            }
             h2{
                 font-size: 3rem;
                 margin-bottom: 1rem;
@@ -235,6 +238,11 @@
             margin-top: -5rem;
             z-index: 2;
             position: relative;
+            @include media-max(sm){
+                width: 85vw;
+                font-size: 1.3rem;
+                padding: 3rem 1.5rem;
+            }
             p:last-child{
                 margin-bottom: 0;
             }
@@ -243,21 +251,35 @@
     .phase-heading{
         background-color: #F2F2F2;
         padding: 3rem 0;
+        h3{
+            @include media-max(sm){
+                font-size: 1.2rem;
+            }
+        }
     }
     .phase1-img{
         background-image: var(--phs1);
         background-size: cover;
         height: 90vh;
+        @include media-max(sm){
+            height: 40vh;
+        }          
     }
     .phase2-img{
         background-image: var(--phs2);
         background-size: cover;
         height: 90vh;
+        @include media-max(sm){
+            height: 40vh;
+        }          
     }    
     .phase{
         margin-bottom: 0;
         h3{
             font-weight: 400;
+            @include media-max(sm){
+                font-size: 1.2rem;
+            }            
         }
         :global(.phase__row){
             margin-top: -12.3rem;
@@ -265,11 +287,17 @@
             align-items: center;
             position: relative;
             z-index: 1;
+            @include media-max(sm){
+                margin-top: -8.8rem;
+            }               
         }
         .num{
             font-size: 10rem;
             font-family: $secondary-font;
             color: $secondary-color;
+            @include media-max(sm){
+                font-size: 6rem;
+            }              
         }
         &__heading{
             background-color: $secondary-color;
@@ -287,12 +315,22 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
             margin-top: -6.5rem;       
+            @include media-max(sm){
+                grid-template-columns: repeat(1, 1fr);   
+                margin-top: 0;  
+            }            
             &__item{
                 padding: 6rem 4rem;
+                @include media-max(sm){
+                    padding: 1rem 0;
+                }
                 &:nth-child(odd){
                     padding-left: 8vw;
                     line-height: 2;
-                    font-style: italic;                    
+                    font-style: italic;      
+                    @include media-max(sm){
+                        padding: 3rem 1rem;
+                    }                                  
                     span{
                         color: $primary-color;
                         font-style: normal;
@@ -303,8 +341,17 @@
                     }
                 }
                 &:nth-child(even){
-                    padding-top: 20vh;
-                    background-color: #F2E8DD;
+                    padding-top: 8.5vw;
+                    background-color: #F2F2F2;
+
+                    :global(p:last-child){
+                        margin-bottom: 0;                        
+                    }
+                    @include media-max(sm){
+                        padding: 3rem 1.5rem;
+                        margin-left: calc(50% - 50vw);
+                        margin-right: calc(50% - 50vw);                        
+                    }                    
                 }
             }         
             &.scnd-row{
@@ -320,7 +367,10 @@
                 }
                 &.banner3{
                     background-image: var(--phs2Banner2)
-                }                
+                }            
+                @include media-max(sm){
+                    height: 40vh;
+                }                    
         }           
     }
     .phase-banner-separator{
@@ -328,6 +378,9 @@
         background-size: cover;
         height: 90vh;       
         margin: 0; 
+        @include media-max(sm){
+            height: 40vh;
+        }
     }
     .phase-banner-paragraph{
         display: block;
