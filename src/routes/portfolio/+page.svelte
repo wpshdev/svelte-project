@@ -157,9 +157,12 @@
         }
         &__btns{
             margin: 2rem 0;
-            display: flex;
+            @include media-max(sm){
+                display: flex;
             flex-direction: column;
             align-items: center;
+            }
+
             .btn-secondary{
                 margin-right: 1.5rem;
                 @include media-max(sm){
