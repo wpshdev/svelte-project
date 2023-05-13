@@ -10,7 +10,7 @@
 	import Animate from "$lib/components/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
 	import ImageSlider from '$lib/ImageSlider.svelte';
-	import Carousel from "$lib/Carousel.svelte";
+	import Carousel from "$lib/components/layout/Carousel.svelte";
 	import modern from "$lib/img/modern.svg";
 	import mountain from "$lib/img/mountain.svg";
 	import traditional from "$lib/img/traditional.svg";		
@@ -65,7 +65,9 @@
 <svelte:head>
 	<title>{home.title}</title>
 	<meta name="description" content="ULF BUILT" />
+	<script src="flickity/flickity.pkgd.min.js" defer></script>    
 </svelte:head>
+
 <!-- <section class="homebanner" style="--banner: url({banner})">
 	<Container>
 		<Row>

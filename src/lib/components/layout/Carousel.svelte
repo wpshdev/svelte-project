@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	import { browser } from '$app/environment';
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
 // import Flickity from "flickity";
@@ -12,7 +13,7 @@ export let featuredProjects;
 
 let innerWidth;
 
-onMount(()=>{
+onMount(() => {
   innerWidth = window.innerWidth;
   
   flickityInstance = new Flickity('.slider-container', {
@@ -28,8 +29,10 @@ onMount(()=>{
       change: updateProgress,
     },
   });
+})
 
-});
+
+
 const domain = "https://strapi.ulfbuilt.com:1337"
 
 let progressPercentage = 0;
@@ -50,12 +53,6 @@ $: {
 }
 
 </script>
-<svelte:head>
-    <!-- Flickity JavaScript -->
-    <script src="flickity/flickity.pkgd.min.js"></script>    
-    <!-- Flickity CSS -->
-    <!-- <link rel="stylesheet" href="flickity/flickity.min.css" /> -->
-</svelte:head>
 <svelte:window 
 	bind:innerWidth
   />
