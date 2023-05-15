@@ -75,7 +75,6 @@ window.addEventListener("scroll", (e) => {
 <svelte:head>
 	<title>{home.title}</title>
 	<meta name="description" content="ULF BUILT" />
-	<script src="flickity/flickity.pkgd.min.js" defer></script>    
 </svelte:head>
 
 <!-- <section class="homebanner" style="--banner: url({banner})">

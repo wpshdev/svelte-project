@@ -7,7 +7,7 @@
 	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
 	import TextTransition from "$lib/TextTransition.svelte";
-	import PortfolioCarousel from "$lib/PortfolioCarousel.svelte";
+	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
 	import livingRoom from "$lib/img/living-room.jpg";		
 	import lvThropy from "$lib/img/lvThropy.jpg";	
 	import firePlace from "$lib/img/firePlace.jpg";
