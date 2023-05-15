@@ -145,40 +145,23 @@
 }
 
 @font-face {
-font-family: 'Shippori Mincho';
-font-style: normal;
-font-weight: 400;
-src: local('Shippori Mincho Regular'), url('/fonts/ShipporiMincho-Regular.woff') format('woff');
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Cormorant-Regular.woff2') format('woff');
 }
-
+    
 
 @font-face {
-font-family: 'Shippori Mincho';
-font-style: normal;
-font-weight: 300;
-src: local('Shippori Mincho Medium'), url('/fonts/ShipporiMincho-Medium.woff') format('woff');
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/fonts/Cormorant-SemiBold.woff2') format('woff2');
 }
 
-
 @font-face {
-font-family: 'Shippori Mincho';
-font-style: normal;
-font-weight: 600;
-src: local('Shippori Mincho SemiBold'), url('/fonts/ShipporiMincho-SemiBold.woff') format('woff');
-}
-
-
-@font-face {
-font-family: 'Shippori Mincho';
-font-style: normal;
-font-weight: 700;
-src: local('Shippori Mincho Bold'), url('/fonts/ShipporiMincho-Bold.woff') format('woff');
-}
-
-
-@font-face {
-font-family: 'Shippori Mincho';
-font-style: normal;
-font-weight: 900;
-src: local('Shippori Mincho ExtraBold'), url('/fonts/ShipporiMincho-ExtraBold.woff') format('woff');
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/Cormorant-Bold.woff2') format('woff2');
 }

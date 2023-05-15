@@ -3,10 +3,11 @@
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
   import { Col } from "sveltestrap";
-  
+	import { browser } from '$app/environment';
+
+  gsap.registerPlugin(ScrollTrigger);
 
   async function initScrollAnimations() {
-    // await tick();
     const container = document.querySelector('.slider-container');
 
     ScrollTrigger.create({
@@ -23,15 +24,18 @@
         });
       },
     });
-    gsap.registerPlugin(ScrollTrigger);
   }
 
-  onMount(() => {
-  initScrollAnimations();
-});
+  onMount(async() => {
+    await tick();
+    initScrollAnimations();
+  });
+
+
 
 afterUpdate(() => {
-  initScrollAnimations();
+  ScrollTrigger.refresh();
+  // initScrollAnimations();
 });
 let innerWidth;
 
