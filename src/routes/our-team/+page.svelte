@@ -19,7 +19,7 @@
 		<Row>
 			<Col md="10" class="mx-auto">
                 <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
-                <p class="pb-5 two-columns">{@html ourTeam.content}</p>
+                <p class="two-columns">{@html ourTeam.content}</p>
                 <div>
                     <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
                 </div>
@@ -136,6 +136,11 @@
     bottom:2rem;
     background-color: #1E2D39;
     padding: 1rem 2rem;
+    @include media-max(sm){
+        position: relative;
+        text-align: center;
+        bottom: 0;
+    }
     h3,h4{
         margin-bottom: 0;
         font-weight: 400;

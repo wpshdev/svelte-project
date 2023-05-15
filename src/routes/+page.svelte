@@ -23,7 +23,19 @@
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import MasonryCard from "$lib/components/MasonryCard.svelte";
 	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
-	
+	import gsap from 'gsap';
+	onMount(() => {
+		
+window.addEventListener("scroll", (e) => {
+    let scroll = window.scrollY;
+	const element = document.querySelector<HTMLElement>(".section--bannerOnly");
+	let elementY = element?.getBoundingClientRect();
+	let elementt = e.clientY - window.innerHeight / 2;
+    console.log(elementt);
+});
+
+	});
+	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
 	const home = data.data.attributes;
 	let propCount = 3;
@@ -59,9 +71,7 @@
 	
 
 </script>
-<svelte:window 
-	bind:innerWidth
-  />
+<svelte:window bind:scrollY={y} />
 <svelte:head>
 	<title>{home.title}</title>
 	<meta name="description" content="ULF BUILT" />
@@ -90,12 +100,12 @@
 		</Row>
 	</Container>
 </section> -->
-<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{banner}"  extraClass="homebanner" />
+<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{banner}" extraClass="homebanner" />
 <section class="loc-gallery">
 	<Container>
 		<Row>
 			<Col class="text-center">
-				<div class="loc-gallery__cwrapper">
+				<div class="loc-gallery__cwrapper" style:transform={`translateY(${(y * 0.6)-1100}px)`}>
 					<h2>{home.homeBuilderHeading}</h2>
 					<div class="h3">{@html home.homeBuilderSubHeading}</div>
 					{@html home.homeBuilderParagraph}
@@ -307,6 +317,7 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
+		margin:80rem 0;
 		&__cwrapper{
 			h2{
 				font-family: $secondary-font;
@@ -712,6 +723,8 @@
 		background-image: var(--lrbg);
 		background-size: cover;
 		height: 90vh;
+		width: 90vw;
+    	margin: auto;
 		@include media-max(sm){
 			height: 40vh;
 		}

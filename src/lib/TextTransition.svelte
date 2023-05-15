@@ -3,7 +3,7 @@
     import { fade, fly } from 'svelte/transition';     
     export let text;
     export let transitionDelay;
-    import {sineInOut} from 'svelte/easing';
+    import {expoInOut, quadInOut, sineInOut} from 'svelte/easing';
 
 
     const splitText = text.split("");		
@@ -14,11 +14,11 @@
     {#each splitText as letter, i}
         {#if letter != " "}
             <span in:fly={{ 
-                delay: i * 200,
-                y: -20,
+                delay: i * 100,
+                y: -50,
                 x: 0,
-                easing: sineInOut,
-                duration: 2000,
+                easing: quadInOut,
+                duration: 700,
                 }} style="display: inline-block;">{letter}</span>
         {:else}
             &nbsp;
