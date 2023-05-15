@@ -16,7 +16,7 @@
 </div>
 <section class="service-b">
     <Container>
-        <h1 class="text-center mb-5 py-3">{page.section1heading}</h1>
+        <h2 class="text-center mb-5 py-3">{page.section1heading}</h2>
         <Row>
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
@@ -71,7 +71,7 @@
 </section>
 <section class="mx-10">
     <Container>
-        <h1 class="text-center mb-5 py-3">{page.section2mainheading}</h1>
+        <h2 class="text-center mb-5 py-3">{page.section2mainheading}</h2>
             <Row noGutters class="mw-1000 justify-content-center">
                 <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
                     <h4 class="text-right pfont px-5 py-3" style="font-weight: 400;text-transform:uppercase;">{@html page.section2heading}</h4>
@@ -114,7 +114,7 @@
 </section>
 <section>
     <Container>
-        <h1 class="text-center mb-3 py-3">{page.section6heading}</h1>
+        <h2 class="text-center mb-3 py-3">{page.section6heading}</h2>
         <p class="mb-2 py-3 two-columns">{@html page.section6text}</p>
         <div class="text-right"><a class="btn btn-secondary" href="/contact">{page.section6btn}</a></div>
     </Container>

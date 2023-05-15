@@ -2,22 +2,14 @@
     export let data;
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
-    const color = 'white';
+    const color = "white";
     import { Col, Container, Row } from 'sveltestrap';
     const url = "https://strapi.ulfbuilt.com:1337/";
     console.log(data);
-    let featuredimage = data.data.attributes.featuredimage.data.attributes.url;
     let phone = data.data.attributes.phone;
-    let fax = data.data.attributes.fax;
     let office_address = data.data.attributes.office_address;
     let mailing_address = data.data.attributes.mailing_address;
-    let map_url = data.data.attributes.map_url;
-    let facebook = data.data.attributes.facebook;
-    let twitter = data.data.attributes.twitter;
-    let youtube = data.data.attributes.youtube;
-    let houzz = data.data.attributes.youtube;
     let name = '', email = '', subject = '', message = '', result = ''
-    let scroll
     async function doContact () {
         const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
 		const res = await fetch(url, {
@@ -60,7 +52,6 @@
 	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<svelte:window bind:scrollY={scroll} />
 <div class="cover" style="background-image: url({url}{data.data.attributes.featuredimage.data.attributes.formats.large.url});">
     <h2 class="pfont">{data.data.attributes.title}</h2>
     <p class="pfont">{data.data.attributes.Subheading}</p>

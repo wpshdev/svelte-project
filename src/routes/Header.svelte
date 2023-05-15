@@ -16,7 +16,10 @@
 	  Dropdown,
 	  DropdownToggle,
 	  DropdownMenu,
-	  DropdownItem
+	  DropdownItem,
+
+	  Container
+
 	} from 'sveltestrap';
 	export let menu;
 	import axios from 'axios';
@@ -68,10 +71,11 @@
   	});	
 
 </script>
+
 <svelte:window 
 	bind:innerWidth
   />
-
+<Container>
   <Navbar expand="md">
 	<NavbarBrand href="/">
 		<a href="/">
@@ -154,3 +158,4 @@
 	</div>
 
   </Navbar>
+</Container>

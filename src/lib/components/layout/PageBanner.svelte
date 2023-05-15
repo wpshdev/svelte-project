@@ -16,13 +16,13 @@
 				<div class="banner__content">
 					<div class="banner__content__text">
 						<Animate section=".banner">
-						<h1 class="ml3"><TextTransition text="{title}"  transitionDelay=600/></h1>
+						<h1 class="ml3"><TextTransition text="{title}"  transitionDelay=200/></h1>
 						</Animate>
 					</div>
 					<Animate section=".banner">
 						<p class="banner__content__paragraph" in:fly={{
-							delay: 3500,
-							duration: 2000,
+							delay: 500,
+							duration: 500,
 							y: 50							
 						}}>{subTitle}</p>
 					</Animate>		

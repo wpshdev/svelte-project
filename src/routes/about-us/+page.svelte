@@ -21,7 +21,7 @@
     <p class="pfont">{aboutsubheading}</p>
 </div>
 <section class="mw-1000 text-center">
-        <h1>{@html about.AboutHeading}</h1>
+        <h2>{@html about.AboutHeading}</h2>
         <p>{@html about.abouttext}</p>
 </section>
 <section>
@@ -29,7 +29,7 @@
         <Row>
             <Col md=1></Col>
             <Col md=4 class="align-self-center">
-                <h2 class="mb-4">{@html about.Section1heading}</h2>
+                <h3 class="mb-4">{@html about.Section1heading}</h3>
                 <p>{@html about.Section1text}</p>
             </Col>
             <Col md=1></Col>
@@ -54,7 +54,7 @@
             </Col>
             <Col md=1></Col>
             <Col md=4 class="align-self-center">
-                <h2 class="mb-4">{@html about.Section2heading}</h2>
+                <h3 class="mb-4">{@html about.Section2heading}</h3>
                 <p>{@html about.Section2text}</p>
             </Col>
             <Col md=1></Col>
@@ -66,7 +66,7 @@
         <Row>
             <Col md=1></Col>
             <Col md=4 class="align-self-center">
-                <h2 class="mb-4">{@html about.Section3heading}</h2>
+                <h3 class="mb-4">{@html about.Section3heading}</h3>
                 <p>{@html about.Section3text}</p>
             </Col>
             <Col md=1></Col>
@@ -100,7 +100,7 @@
             <Col md=12><h2 class="text-center mb-5">{@html about.Section6heading}</h2></Col>
             <Col md=1></Col>
             <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
-                <h2 class="mb-4 text-right">{@html about.Section6subheading}</h2>
+                <h3 class="mb-4 text-right">{@html about.Section6subheading}</h3>
                 <p class="text-right">{@html about.Section6text}</p>
             </Col>
             <Col md=5 style="margin-left:-30px;">
@@ -122,7 +122,7 @@
                 </div>
             </Col>
             <Col md=5 class="align-self-center silver-color-background p-5" style="margin-left:-30px;min-height: 440px;">
-                <h2 class="mb-4">{@html about.Section7heading}</h2>
+                <h3 class="mb-4">{@html about.Section7heading}</h3>
                 <p>{@html about.Section7text}</p>
             </Col>
             <Col md=1></Col>
@@ -132,7 +132,7 @@
         <Row>
             <Col md=1></Col>
             <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
-                <h2 class="mb-4 text-right">{@html about.Section8heading}</h2>
+                <h3 class="mb-4 text-right">{@html about.Section8heading}</h3>
                 <p class="text-right">{@html about.Section8text}</p>
             </Col>
             <Col md=5 style="margin-left:-30px;">

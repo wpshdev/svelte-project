@@ -7,7 +7,6 @@
 h1, h2, h3, h4, h5, h6{
     font-family: $secondary-font;
     font-weight: 600;
-
 }
 
 h1,.h1{
@@ -20,6 +19,7 @@ h2,.h2{
     font-size: 4rem;
     @include media-max(sm){
         font-size: 3.5rem;
+
     }
 }
 h3,.h3{
@@ -507,6 +507,7 @@ header{
         padding:0 1rem;
     }
     h2{
+        font-weight: 400;
         @include media-max(sm){
             padding-top: 4rem;
         }
@@ -539,6 +540,10 @@ header{
 .contact-box{
     margin-top: -10rem;
     margin-bottom: 7rem;
+    @include media-max(xs){
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
     button{
         display: flex;
         margin: auto;
@@ -568,6 +573,11 @@ header{
 }
 .order-1{
     order:1;
+}
+.order-2{
+    @include media-max(sm){
+    order:2;
+    }
 }
 .pagination-nav{
     background: none !important;
