@@ -284,13 +284,20 @@ header{
         }
     }
     nav{
+        .navbar-brand{
+            a{
+                img{
+                    width: auto;
+                }
+            }
+        }
         .hamburger{
             order: 3;
             margin-top: 1rem;
             &.open{
                 position: absolute;
-                top: 3rem;
-                right: 1rem;
+                top: 1rem;
+                right: 30vw;
                 span{
                     background-color: transparent;
                     &:before{
@@ -345,6 +352,8 @@ header{
             }
         }
         .mobile-nav:not(.open){
+            // left: 100vw;
+            // transition: 1s;
             .navbar-collapse{
                 display: none;
             }
@@ -352,13 +361,14 @@ header{
         }
         .open.mobile-nav{
             top: 0;
-            left: 0;
+            left: 25vw;
             background: #E5EEF2;
             width: 100vw;
             height: 100vh;
             position: fixed;    
-            padding-top: 10rem;        
-            padding-left: 20vw;
+            padding-top: 5rem;        
+            padding-left: 10vw;
+            // transition: 1s;
             @include media-max(sm){
                 display: block;
             } 
