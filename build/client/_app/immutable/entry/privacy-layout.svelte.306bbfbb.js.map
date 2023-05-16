@@ -1,1 +1,0 @@
-{"version":3,"file":"privacy-layout.svelte.306bbfbb.js","sources":["../../../../../../src/routes/privacy/+layout.svelte"],"sourcesContent":["<header>\n</header>\n<main>\n    <slot>\n\n    </slot>\n</main>"],"names":["insert_hydration","target","header","anchor","main"],"mappings":"6XAAAA,EACQC,EAAAC,EAAAC,CAAA,WACRH,EAIMC,EAAAG,EAAAD,CAAA"}
