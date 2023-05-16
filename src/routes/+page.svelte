@@ -25,14 +25,14 @@
 	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
 	import gsap from 'gsap';
 	onMount(() => {
-		
-window.addEventListener("scroll", (e) => {
-    let scroll = window.scrollY;
-	const element = document.querySelector<HTMLElement>(".section--bannerOnly");
-	let elementY = element?.getBoundingClientRect();
-	let elementt = e.clientY - window.innerHeight / 2;
-    console.log(elementt);
-});
+
+// window.addEventListener("scroll", (e) => {
+//     let scroll = window.scrollY;
+// 	const element = document.querySelector<HTMLElement>(".section--bannerOnly");
+// 	let elementY = element?.getBoundingClientRect();
+// 	let elementt = e.clientY - window.innerHeight / 2;
+//     console.log(elementt);
+// });
 
 	});
 	let y=0;
@@ -69,6 +69,8 @@ window.addEventListener("scroll", (e) => {
 		}
 	}
 	
+	let height;
+	console.log(height);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -100,95 +102,164 @@ window.addEventListener("scroll", (e) => {
 	</Container>
 </section> -->
 <PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{banner}" extraClass="homebanner" />
-<section class="loc-gallery">
-	<Container>
-		<Row>
-			<Col class="text-center">
-				<div class="loc-gallery__cwrapper" style:transform={`translateY(${(y * 0.6)-1100}px)`}>
-					<h2>{home.homeBuilderHeading}</h2>
-					<div class="h3">{@html home.homeBuilderSubHeading}</div>
-					{@html home.homeBuilderParagraph}
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section>
 
-<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"></section>
-
-<section class="categories">
-	<Container>
-		<Row>
-			<Col class="text-center">
-				<h2>what are you looking for?</h2>
-				<div class="categories__tabs">
-					<div class="categories__tabs__heading">
-						<ul>
-							{#each home.categories.data as heading}
-								<li>
-									<!-- svelte-ignore a11y-click-events-have-key-events -->
-									<span
-									data-category="{heading.id}"
-									class:active="{activeTab === heading.id}"
-									on:click="{() => handleTabClick(heading.id)}">
-									{heading.attributes.Title}
-									</span>
-								</li>
-							{/each}
-						</ul>
+<section class="loc-gallery" >
+	<Animate section=".loc-gallery">
+		<Container>
+			<Row>
+				<Col class="text-center">
+					<div class="loc-gallery__cwrapper" in:fly={{
+							delay: 500,
+							duration: 2000,
+							y: 50								
+					}} >
+						<h2 in:fly={{
+							delay: 1000,
+							duration: 2000,
+							y: 50								
+					}}>{home.homeBuilderHeading}</h2>
+						<div class="h3" in:fly={{
+							delay: 1500,
+							duration: 2000,
+							y: 50								
+					}}>{@html home.homeBuilderSubHeading}</div>
+					<div in:fly={{
+						delay: 2000,
+						duration: 2000,
+						y: 50								
+					}} >
+						{@html home.homeBuilderParagraph}
 					</div>
-					<p class="text-center view-all">
-						{#if propCount === 3} 
-							<span on:click="{() => propCount = 999}">View All Projects</span>
-						{:else}
-							<span on:click="{() => propCount = 3}">View Less Projects</span>
-						{/if}
-					</p>					
-					<div class="categories__tabs__gallery">
-						{#key listener }
-							<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
-								<MasonryCardGrid id={activeTab} {propCount}/>
-							</div>			
-						{/key}																		
-					</div>					
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section>
-<section class="featured-projects">
-	<Container>
-		<Row>
-			<Carousel 
-			preHeading={home.featuredProjectsPreHeading} 
-			heading={home.featuredProjectsHeading} 
-			btnTitle={home.featurePropertyBtnTitle}
-			btnUrl={home.featuredPropertyBtnUrl}
-			featuredProjects={home.featuredProjects}
-	 />
-		</Row>
-	</Container>
-</section>
-
-<section class="tnr" style="--tp-banner: url({tr})">
-	<Container>
-		<Row>
-			<Col>
-				<div class="tnr__wrapper">
-					<div class="tnr__wrapper__captions">
-						<span>{home.midBanner.paragraph}</span>
-						<h2>{home.midBanner.heading}</h2>
-						<a href="{home.midBanner.btnUrl}" class="btn btn-secondary">
-							{home.midBanner.btnTitle}
-						</a>
 					</div>
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section>
+				</Col>
+			</Row>
+		</Container>
+	</Animate>
+</section>	
 
-<section class="reputation">
+
+<Animate>
+
+<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})" in:fly={{
+	delay: 2500,
+	duration: 2000,
+	y: 50								
+}} ></section>
+
+</Animate>
+<Animate >
+<section class="categories" in:fly={{
+	delay: 3000,
+	duration: 2000,
+	y: 50								
+}}>
+		<Container>
+			<Row>
+				<Col class="text-center">
+						<h2 in:fly={{
+							delay: 3000,
+							duration: 2000,
+							y: 50								
+					}} >what are you looking for?</h2>
+					<div class="categories__tabs">
+						<div class="categories__tabs__heading">
+							<ul in:fly={{
+								delay: 3500,
+								duration: 2000,
+								y: 50								
+						}}>
+								{#each home.categories.data as heading}
+									<li>
+										<!-- svelte-ignore a11y-click-events-have-key-events -->
+										<span
+										data-category="{heading.id}"
+										class:active="{activeTab === heading.id}"
+										on:click="{() => handleTabClick(heading.id)}">
+										{heading.attributes.Title}
+										</span>
+									</li>
+								{/each}
+							</ul>
+						</div>
+						<p class="text-center view-all" in:fly={{
+							delay: 4000,
+							duration: 2000,
+							y: 50								
+					}}>
+							{#if propCount === 3} 
+								<span on:click="{() => propCount = 999}">View All Projects</span>
+							{:else}
+								<span on:click="{() => propCount = 3}">View Less Projects</span>
+							{/if}
+						</p>					
+						<div class="categories__tabs__gallery" in:fly={{
+							delay: 4500,
+							duration: 2000,
+							y: 50								
+					}}>
+							{#key listener }
+								<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
+									<MasonryCardGrid id={activeTab} {propCount}/>
+								</div>			
+							{/key}																		
+						</div>					
+					</div>
+				</Col>
+			</Row>
+		</Container>
+</section>
+</Animate>
+<section class="featured-projects">	
+	<Animate>
+		<div in:fly={{
+			delay: 2000,
+			duration: 2000,
+			y: 50
+			}}
+		>			
+		<Container>
+			<Row>
+				<Carousel 
+				preHeading={home.featuredProjectsPreHeading} 
+				heading={home.featuredProjectsHeading} 
+				btnTitle={home.featurePropertyBtnTitle}
+				btnUrl={home.featuredPropertyBtnUrl}
+				featuredProjects={home.featuredProjects}
+		/>
+			</Row>
+		</Container>
+		</div>		
+	</Animate>
+</section>
+<Animate>
+	<section class="tnr" style="--tp-banner: url({tr})" in:fly={{
+		delay: 500,
+		duration: 2000,
+		y: 50								
+}} > 
+		<Container>
+			<Row>
+				<Col>
+					<div class="tnr__wrapper">
+						<div class="tnr__wrapper__captions">
+							<span>{home.midBanner.paragraph}</span>
+							<h2>{home.midBanner.heading}</h2>
+							<a href="{home.midBanner.btnUrl}" class="btn btn-secondary">
+								{home.midBanner.btnTitle}
+							</a>
+						</div>
+					</div>
+				</Col>
+			</Row>
+		</Container>
+	</section>
+</Animate>
+<Animate>
+<section class="reputation" in:fly={{
+	delay: 500,
+	duration: 2000,
+	y: 50								
+}} >
 	<Container>
 		<Row>
 			<Col md="8" class="">
@@ -207,8 +278,13 @@ window.addEventListener("scroll", (e) => {
 		</Row>
 	</Container>
 </section>
-
-<section class="process">
+</Animate>
+<Animate>
+<section class="process" in:fly={{
+	delay: 500,
+	duration: 2000,
+	y: 50								
+}} >
 	<Container>
 		<Row>
 			<Col md="6">
@@ -236,8 +312,13 @@ window.addEventListener("scroll", (e) => {
 		</Row>
 	</Container>
 </section>
-
-<section class="story">
+</Animate>
+<Animate>
+<section class="story" in:fly={{
+	delay: 500,
+	duration: 2000,
+	y: 50								
+}} >
 	<Container>
 		<Row>
 			<Col md="8" class="">
@@ -262,11 +343,13 @@ window.addEventListener("scroll", (e) => {
 		</Row>
 	</Container>
 </section>
-
+</Animate>
+<Animate>	
 <ArticleSection />
-
+</Animate>
+<Animate>
 <Cta />
-
+</Animate>
 <style lang="scss">
 	.homebanner{
 		background-image: var(--banner);
@@ -316,7 +399,7 @@ window.addEventListener("scroll", (e) => {
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		margin:80rem 0;
+		// margin:80rem 0;
 		&__cwrapper{
 			h2{
 				font-family: $secondary-font;
@@ -351,6 +434,7 @@ window.addEventListener("scroll", (e) => {
 	}
 
 	.categories{
+		margin-top: 0;
 		h2{
 			margin-bottom: 2rem;
 		}
@@ -723,7 +807,7 @@ window.addEventListener("scroll", (e) => {
 		background-size: cover;
 		height: 90vh;
 		width: 90vw;
-    	margin: auto;
+    	margin: 0 auto 3.75rem auto;
 		@include media-max(sm){
 			height: 40vh;
 		}
