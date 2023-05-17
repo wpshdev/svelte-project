@@ -2,9 +2,6 @@
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	import banner from "$lib/img/first-section.svg";
-	// import Carousel from "../components/Carousel.svelte";
-    import { Form, FormGroup, Input, Label } from 'sveltestrap';
-    import { Button } from 'sveltestrap';
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
@@ -14,16 +11,15 @@
 	import modern from "$lib/img/modern.svg";
 	import mountain from "$lib/img/mountain.svg";
 	import traditional from "$lib/img/traditional.svg";		
-	import tr from "$lib/img/tnr.svg";		
-	import reputationImg from "$lib/img/Reputation.svg";		
-	import lroom from "$lib/img/Process-Lroom.svg";
-	import stair from "$lib/img/Process-Stair.svg";
+	import tr from "$lib/img/tnr.svg";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import MasonryCard from "$lib/components/MasonryCard.svelte";
 	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
 	import gsap from 'gsap';
+	// import { lazyload } from '$lib/lazyload.js'
+
 	onMount(() => {
 
 // window.addEventListener("scroll", (e) => {
@@ -43,11 +39,6 @@
 	let featuredData = {
 
 	}
-    const images = [
-        modern,
-        mountain,
-        traditional
-    ];
 
 	let activeTab = home.categories.data[0].id;
 
@@ -70,7 +61,7 @@
 	}
 	
 	let height;
-	console.log(height);
+	// console.log(home.topBanner.background.data.attributes.url);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -101,7 +92,10 @@
 		</Row>
 	</Container>
 </section> -->
-<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{banner}" extraClass="homebanner" />
+
+<!-- <img use:lazyload="{home.topBanner.background.data.attributes.url}" > -->
+
+<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
 	<Animate section=".loc-gallery">
@@ -289,7 +283,7 @@
 		<Row>
 			<Col md="6">
 				<div class="process__top-image">
-					<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}">
+					<Image src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 				</div>
 			</Col>
 		</Row>
