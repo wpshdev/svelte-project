@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let data;
-	console.log(data);
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	// import banner from "$lib/img/first-section.svg";
 	import { fade, fly } from 'svelte/transition';
