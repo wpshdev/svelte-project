@@ -79,7 +79,7 @@
   <Navbar expand="md">
 	<NavbarBrand href="/">
 		<a href="/">
-			<img src={logo} alt="ULFBUILT" class="logo" />
+			<img src={logo} alt="ULFBUILT" class="logo"  width="80" height="80" />
 		</a>	
 	</NavbarBrand>
 	{#if !isOpen}
@@ -122,7 +122,7 @@
 					<span class="icon"></span>		
 				</div>
 				<a href="/" class="mobile-menu-logo">
-					<img src={logo} alt="ULFBUILT" class="logo" />
+					<img src={logo} alt="ULFBUILT" class="logo" width="80" height="80" />
 				</a>				
 				
 				<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>

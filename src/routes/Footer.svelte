@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
 import axios from "axios";
 import Animate from "$lib/components/Animate.svelte"
-
+import { fly } from "svelte/transition";
 const domain = "https://strapi.ulfbuilt.com:1337"
 let promise = fetchCta();
 async function fetchCta(){
@@ -30,7 +30,7 @@ function scrollToTop() {
 
 </script>
 <Animate>
-    <section class="pre-footer" in:fade={{delay:500, duration: 2000}}>
+    <section class="pre-footer" in:fly={{delay:500, duration: 2000}}>
         <Container>
             <Row>
                 <Col>
@@ -44,7 +44,7 @@ function scrollToTop() {
             </Row>
         </Container>
     </section>
-    <footer class="footer" in:fade={{delay:1000, duration: 2000}}>
+    <footer class="footer" in:fly={{delay:1000, duration: 2000}}>
         <Container>
             <Row>
                 {#await promise}
