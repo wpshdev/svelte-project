@@ -11,6 +11,7 @@
 			isVisible = true;
 			observer.disconnect();
 		  }
+		  console.log(element);
 		});
 	  });
   

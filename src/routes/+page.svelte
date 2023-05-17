@@ -61,7 +61,7 @@
 	}
 	
 	let height;
-	// console.log(home.topBanner.background.data.attributes.url);
+	console.log(home.ourProcessTopImage.data[0].attributes.url);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -283,7 +283,7 @@
 		<Row>
 			<Col md="6">
 				<div class="process__top-image">
-					<Image src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+					<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 				</div>
 			</Col>
 		</Row>
@@ -339,10 +339,10 @@
 </section>
 </Animate>
 <Animate>	
-<ArticleSection />
+	<ArticleSection />
 </Animate>
 <Animate>
-<Cta />
+	<Cta />
 </Animate>
 <style lang="scss">
 	.homebanner{
