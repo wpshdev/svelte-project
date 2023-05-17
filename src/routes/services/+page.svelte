@@ -9,6 +9,7 @@
 <svelte:head>
 	<title>{page.Title}</title>
 	<meta name="description" content="ULF BUILT" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
 <div class="cover" style="background-image: url({url}{page.Cover.data[0].attributes.formats.large.url});">
     <h2>{page.Title}</h2>
@@ -21,7 +22,7 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{page.section1item1icon}</div><h4>{page.section1item1heading}</h4>
+                    <div class="service-icon">{@html page.section1item1icon}</div><h4>{page.section1item1heading}</h4>
                     </div>
                     <p>{page.section1item1text}</p>
                 </div>
@@ -29,7 +30,7 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{page.section1item2icon}</div><h4>{page.section1item2heading}</h4>
+                    <div class="service-icon">{@html page.section1item2icon}</div><h4>{page.section1item2heading}</h4>
                     </div>
                     <p>{page.section1item2text}</p>
                 </div>
@@ -37,7 +38,7 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{page.section1item3icon}</div><h4>{page.section1item3heading}</h4>
+                    <div class="service-icon">{@html page.section1item3icon}</div><h4>{page.section1item3heading}</h4>
                     </div>
                     <p>{page.section1item3text}</p>
                 </div>
@@ -45,7 +46,7 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{page.section1item4icon}</div><h4>{page.section1item4heading}</h4>
+                    <div class="service-icon">{@html page.section1item4icon}</div><h4>{page.section1item4heading}</h4>
                     </div>
                     <p>{page.section1item4text}</p>
                 </div>
@@ -53,7 +54,7 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{page.section1item5icon}</div><h4>{page.section1item5heading}</h4>
+                    <div class="service-icon">{@html page.section1item5icon}</div><h4>{page.section1item5heading}</h4>
                     </div>
                     <p>{page.section1item5text}</p>
                 </div>
@@ -61,7 +62,7 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{page.section1item6icon}</div><h4>{page.section1item6heading}</h4>
+                    <div class="service-icon">{@html page.section1item6icon}</div><h4>{page.section1item6heading}</h4>
                     </div>
                     <p>{page.section1item6text}</p>
                 </div>
@@ -85,13 +86,13 @@
 </section>
 <section class="mx-10">
     <Container>
-        <Row noGutters class="mw-1000 justify-content-center">
+        <Row noGutters class="mw-1000 justify-content-center flex-md-row flex-column-reverse">
             <Col md="6">
                 <img src="{url}{page.section3image.data.attributes.formats.medium.url}" alt="{page.section3heading}" class="w-100">
             </Col>
             <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
-                <h4 class="px-5 py-3 pfont" style="font-weight: 400;text-transform:uppercase;">{@html page.section3heading}</h4>
-                <p class="px-5 py-3 blue-color-background">{@html page.section3text}</p>
+                <h4 class="px-5 txt-center py-3 pfont" style="font-weight: 400;text-transform:uppercase;">{@html page.section3heading}</h4>
+                <p class="px-5 txt-center py-3 blue-color-background">{@html page.section3text}</p>
             </Col>
         </Row>
     </Container>
@@ -122,21 +123,37 @@
 <Cta/>
 <style lang="scss">
     .service-box{
-            padding: 3rem;
+        padding: 3rem;
         .service-box-inner{
             display: flex;
             margin-bottom: 20px;
         }
-        .service-icon{
+        .service-icon {
             background-color: $secondary-color;
-            padding: 20px;
+            padding: 10px 20px;
             color: #fff;
             box-shadow: 3px 3px 3px #aaa;
-            border-radius: 10px;
+            border-radius: 10px; 
+            font-size: 30px;  
         }
         h4{
             align-self: center;
             padding-left: 20px;
         }
     }
+    @include media-max(sm){ 
+        .text-right, .txt-center {text-align: center;}
+        .service-box {padding: 1rem 1rem;}
+        // .service-b .col-md-4:nth-child(3) {background-image: unset;}
+    }
+    @include media-max(md) { 
+        .service-box {
+            padding: 1rem 0rem;
+            padding-left: 10px;
+        }
+        .service-box h4 {
+            align-self: center;
+            padding-left: 9px;
+        }
+    }    
 </style>

@@ -242,6 +242,7 @@
                 width: 85vw;
                 font-size: 1.3rem;
                 padding: 3rem 1.5rem;
+                margin-top: -2rem;
             }
             p:last-child{
                 margin-bottom: 0;
@@ -311,10 +312,18 @@
                 margin-bottom: 0;
             }
         }
+        @include media-max(sm){
+            &__heading{
+                margin-bottom: 2rem;
+            }
+        }
         &__grid{
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
-            margin-top: -6.5rem;       
+            margin-top: -6.5rem; 
+            @include media-max(md){
+                margin-top: -3.5rem;
+            }      
             @include media-max(sm){
                 grid-template-columns: repeat(1, 1fr);   
                 margin-top: 0;  
@@ -329,7 +338,7 @@
                     line-height: 2;
                     font-style: italic;      
                     @include media-max(sm){
-                        padding: 3rem 1rem;
+                        padding: 2rem 1rem;
                     }                                  
                     span{
                         color: $primary-color;
@@ -353,11 +362,22 @@
                         margin-right: calc(50% - 50vw);                        
                     }                    
                 }
-            }         
+                
+            }  
+            @include media-max(sm){
+                &__item{
+                    padding: 6rem 1rem;
+                } 
+                }       
             &.scnd-row{
                 margin-top: 0;
             }   
-        }    
+        }
+        @include media-max(sm){
+            &__grid{
+                display: unset;
+            } 
+        }   
         &__banner{
                 background-image: var(--phs1Banner);
                 background-size: cover;
@@ -394,6 +414,11 @@
             p{
                 line-height: 2;
             }
+        }
+    }
+    @include media-max(sm){
+        .phase1-img, .phase__banner, .phase2-img, .phase-banner-separator {
+            height: 30vh;
         }
     }
 </style>

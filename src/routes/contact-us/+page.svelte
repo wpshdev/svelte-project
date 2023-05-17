@@ -112,3 +112,9 @@
         </Row>
     </Container>
 </div>
+
+<style lang="scss">
+    @include media-max(sm) { 
+        .contact-img {height: 300px;}
+    }
+</style>

@@ -5,7 +5,7 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const filePath = dirname(fileURLToPath(import.meta.url))
-const sassPath = `${filePath}/src/styles/`
+const sassPath = `D:/svelte/svelte-project/src/styles/`
 
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
