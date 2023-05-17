@@ -8,27 +8,28 @@
     export let subTitle;
     export let extraClass;
 </script>
-<Animate>
-	<section class="banner {extraClass}" style="--banner: url({banner})">
-		<Container>
-			<Row>
-				<Col >
-					<div class="banner__content">
-							<div class="banner__content__text">
-								<h1 class="ml3"><TextTransition text="{title}"  transitionDelay=200/></h1>
-							</div>
 
-							<p class="banner__content__paragraph" in:fly={{
-								delay: 500,
-								duration: 500,
-								y: 50							
-							}}>{subTitle}</p>	
-					</div>
-				</Col>
-			</Row>
-		</Container>
-	</section>
-</Animate>	
+<section class="banner {extraClass}" style="--banner: url({banner})">
+	<Container>
+		<Row>
+			<Col >
+				<div class="banner__content">
+					<Animate>
+						<div class="banner__content__text">
+							<h1 class="ml3"><TextTransition text="{title}"  transitionDelay=200/></h1>
+						</div>
+
+						<p class="banner__content__paragraph" in:fly={{
+							delay: 500,
+							duration: 500,
+							y: 50							
+						}}>{subTitle}</p>
+					</Animate>		
+				</div>
+			</Col>
+		</Row>
+	</Container>
+</section>
 
 <style lang="scss">
 	.banner{
