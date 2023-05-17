@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let data;
+	console.log(data);
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	// import banner from "$lib/img/first-section.svg";
 	import { fade, fly } from 'svelte/transition';
@@ -95,7 +96,7 @@
 
 <!-- <img use:lazyload="{home.topBanner.background.data.attributes.url}" > -->
 
-<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.url}" extraClass="homebanner" />
+<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.formats.large.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
 	<Animate section=".loc-gallery">
