@@ -29,8 +29,9 @@ function scrollToTop() {
 }
 
 </script>
-<Animate>
-    <section class="pre-footer" in:fly={{delay:500, duration: 2000}}>
+
+<section class="pre-footer" in:fly={{delay:500, duration: 2000}}>
+    <Animate>
         <Container>
             <Row>
                 <Col>
@@ -43,8 +44,10 @@ function scrollToTop() {
                 </Col>
             </Row>
         </Container>
-    </section>
-    <footer class="footer" in:fly={{delay:1000, duration: 2000}}>
+    </Animate>
+</section>
+<footer class="footer" in:fly={{delay:1000, duration: 2000}}>
+    <Animate>
         <Container>
             <Row>
                 {#await promise}
@@ -102,9 +105,8 @@ function scrollToTop() {
                 </Col>
             </Row>
         </Container>
-    </footer>
-    
-</Animate>
+    </Animate>
+</footer>
 
 <style lang="scss">
     :global(.col.footer__col){

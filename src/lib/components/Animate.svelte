@@ -11,7 +11,6 @@
 			isVisible = true;
 			observer.disconnect();
 		  }
-		  console.log(element);
 		});
 	  });
   
@@ -25,6 +24,10 @@
   
   <div bind:this={element}>
 	{#if isVisible}
-	  <slot></slot>
+		<slot></slot>
 	{/if}
   </div>
+
+<style lang="scss">
+
+</style>

@@ -98,7 +98,7 @@
 <PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
-	<Animate section=".loc-gallery">
+	<Animate >
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -128,25 +128,21 @@
 				</Col>
 			</Row>
 		</Container>
-	</Animate>
+	</Animate>	
 </section>	
 
 
+
 <Animate>
-
-<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})" in:fly={{
-	delay: 2500,
-	duration: 2000,
-	y: 50								
+	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"  in:fly={{
+		delay: 500,
+		duration: 2000,
+		y: 50								
 }} ></section>
-
 </Animate>
-<Animate >
-<section class="categories" in:fly={{
-	delay: 3000,
-	duration: 2000,
-	y: 50								
-}}>
+
+<section class="categories" >
+	<Animate >
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -201,16 +197,20 @@
 				</Col>
 			</Row>
 		</Container>
+	</Animate>		
 </section>
-</Animate>
+
+
+
 <section class="featured-projects">	
 	<Animate>
 		<div in:fly={{
-			delay: 2000,
+			delay: 500,
 			duration: 2000,
 			y: 50
 			}}
 		>			
+
 		<Container>
 			<Row>
 				<Carousel 
@@ -222,20 +222,26 @@
 		/>
 			</Row>
 		</Container>
-		</div>		
-	</Animate>
+		</div>
+	</Animate>		
 </section>
-<Animate>
-	<section class="tnr" style="--tp-banner: url({tr})" in:fly={{
-		delay: 500,
-		duration: 2000,
-		y: 50								
-}} > 
-		<Container>
-			<Row>
-				<Col>
-					<div class="tnr__wrapper">
-						<div class="tnr__wrapper__captions">
+
+
+<section class="tnr" style="--tp-banner: url({tr})" > 
+	<Container>
+		<Row>
+			<Col>
+				<Animate>
+					<div class="tnr__wrapper" in:fly={{
+						delay: 500,
+						duration: 2000,
+						y: 50								
+				}} >
+						<div class="tnr__wrapper__captions" in:fly={{
+							delay: 500,
+							duration: 2000,
+							y: 50								
+					}} >
 							<span>{home.midBanner.paragraph}</span>
 							<h2>{home.midBanner.heading}</h2>
 							<a href="{home.midBanner.btnUrl}" class="btn btn-secondary">
@@ -243,108 +249,152 @@
 							</a>
 						</div>
 					</div>
+				</Animate>
+			</Col>
+		</Row>
+	</Container>
+</section>
+
+
+
+<section class="reputation" >
+	<Animate>
+		<Container>
+			<Row>
+				<Col md="8" class="">
+					<div class="reputation__content" in:fly={{
+						delay: 500,
+						duration: 2000,
+						y: 50								
+				}} >
+						<div class="reputation__content__wrapper">
+							<span>{home.reputation.preHeading}</span>
+							<h2>{home.reputation.heading}</h2>
+							<p>{@html home.reputation.content}</p>
+							<a href="{home.reputation.btnUrl}" class="btn btn-secondary">{home.reputation.btnTitle}</a>
+						</div>
+					</div>
+				</Col>
+				<Col md="4" class="my-auto" >
+					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
+						delay: 500,
+						duration: 2000,
+						y: 50								
+				}} >
 				</Col>
 			</Row>
 		</Container>
-	</section>
-</Animate>
-<Animate>
-<section class="reputation" in:fly={{
-	delay: 500,
-	duration: 2000,
-	y: 50								
-}} >
-	<Container>
-		<Row>
-			<Col md="8" class="">
-				<div class="reputation__content">
-					<div class="reputation__content__wrapper">
-						<span>{home.reputation.preHeading}</span>
-						<h2>{home.reputation.heading}</h2>
-						<p>{@html home.reputation.content}</p>
-						<a href="{home.reputation.btnUrl}" class="btn btn-secondary">{home.reputation.btnTitle}</a>
-					</div>
-				</div>
-			</Col>
-			<Col md="4" class="my-auto">
-				<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}">
-			</Col>
-		</Row>
-	</Container>
+	</Animate>
 </section>
-</Animate>
-<Animate>
-<section class="process" in:fly={{
-	delay: 500,
-	duration: 2000,
-	y: 50								
-}} >
-	<Container>
-		<Row>
-			<Col md="6">
-				<div class="process__top-image">
-					<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
-				</div>
-			</Col>
-		</Row>
-		<Row>
-			<Col md="8" class="">
-				<div class="process__content">
-					<div class="process__content__wrapper">
-						<span>{home.ourProcessPreHeading}</span>
-						<h2>{home.ourProcessHeading}</h2>
-						{@html home.ourProcessParagraph}
-						<a href="{home.ourProcessButtonUrl}" class="btn btn-secondary">{ home.ourProcessButtonTitle }</a>
+
+<section class="process">
+	<Animate>
+		<Container>
+			<Row>
+				<Col md="6">
+					<div class="process__top-image" in:fly={{
+						delay: 500,
+						duration: 2000,
+						y: 50								
+				}} >
+						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					</div>
-				</div>
-			</Col>
-			<Col md="4" class="my-auto ">
-				<div class="process__bottom">
-					<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section>
-</Animate>
-<Animate>
-<section class="story" in:fly={{
-	delay: 500,
-	duration: 2000,
-	y: 50								
-}} >
-	<Container>
-		<Row>
-			<Col md="8" class="">
-				<div class="story__content">
-					<div class="story__content__wrapper">
-						<span>{home.ourStoryPreHeading}</span>
-						<h2>{home.ourStoryHeading}</h2>
-						{@html home.ourStoryParagraph}
-						
-						<!-- <Accordion>
-							<AccordionItem active>
-								<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
-								<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
-							  </AccordionItem>							
-						</Accordion>						 -->
+				</Col>
+			</Row>
+			<Row>
+				<Col md="8" class="">
+					<div class="process__content">
+						<div class="process__content__wrapper" in:fly={{
+							delay: 1000,
+							duration: 2000,
+							y: 50								
+					}} >
+							<span>{home.ourProcessPreHeading}</span>
+							<h2>{home.ourProcessHeading}</h2>
+							{@html home.ourProcessParagraph}
+							<a href="{home.ourProcessButtonUrl}" class="btn btn-secondary">{ home.ourProcessButtonTitle }</a>
+						</div>
 					</div>
-				</div>
-			</Col>
-			<Col md="4" class="my-auto">
-				<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
-			</Col>
-		</Row>
-	</Container>
+				</Col>
+				<Col md="4" class="my-auto ">
+					<div class="process__bottom" in:fly={{
+						delay: 1500,
+						duration: 2000,
+						y: 50								
+				}} >
+						<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+					</div>
+				</Col>
+			</Row>
+		</Container>
+	</Animate>
 </section>
-</Animate>
-<Animate>	
-	<ArticleSection />
-</Animate>
-<Animate>
-	<Cta />
-</Animate>
+
+
+<section class="story" >
+	<Animate>
+		<Container>
+			<Row>
+				<Col md="8" class="">
+					<div class="story__content">
+						<div class="story__content__wrapper" in:fly={{
+							delay: 500,
+							duration: 2000,
+							y: 50								
+					}} >
+							<span>{home.ourStoryPreHeading}</span>
+							<h2>{home.ourStoryHeading}</h2>
+							{@html home.ourStoryParagraph}
+							
+							<!-- <Accordion>
+								<AccordionItem active>
+									<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
+									<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
+								</AccordionItem>							
+							</Accordion>						 -->
+						</div>
+					</div>
+				</Col>
+				<Col md="4" class="my-auto">
+					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
+						delay: 500,
+						duration: 2000,
+						y: 50								
+				}} >
+				</Col>
+			</Row>
+		</Container>
+	</Animate>	
+</section>
+
+<section class="m-0">
+	<Animate>	
+		<div in:fly={{
+			delay: 500,
+			duration: 2000,
+			y: 50								
+	}} >
+		<ArticleSection />
+		</div>
+	</Animate>
+</section>
+
+<section class="m-0">
+	<Animate>
+		<div in:fly={{
+			delay: 500,
+			duration: 2000,
+			y: 50								
+	}} >
+			<Cta />
+		</div>
+	</Animate>
+</section>
+
 <style lang="scss">
+	section{
+		min-height: 20vh;
+	}
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
