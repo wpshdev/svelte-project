@@ -22,7 +22,9 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{@html page.section1item1icon}</div><h4>{page.section1item1heading}</h4>
+                    <div class="service-icon">
+                        <img src="{url}{page.section1item1icon.data.attributes.formats.medium.url}" alt="{page.section1item1heading}">
+                        </div><h4>{page.section1item1heading}</h4>
                     </div>
                     <p>{page.section1item1text}</p>
                 </div>
@@ -30,7 +32,9 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{@html page.section1item2icon}</div><h4>{page.section1item2heading}</h4>
+                    <div class="service-icon">
+                        <img src="{url}{page.section1item2icon.data.attributes.formats.medium.url}" alt="{page.section1item2heading}">
+                        </div><h4>{page.section1item2heading}</h4>
                     </div>
                     <p>{page.section1item2text}</p>
                 </div>
@@ -38,7 +42,9 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{@html page.section1item3icon}</div><h4>{page.section1item3heading}</h4>
+                    <div class="service-icon">
+                        <img src="{url}{page.section1item3icon.data.attributes.formats.medium.url}" alt="{page.section1item3heading}">
+                        </div><h4>{page.section1item3heading}</h4>
                     </div>
                     <p>{page.section1item3text}</p>
                 </div>
@@ -46,7 +52,9 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{@html page.section1item4icon}</div><h4>{page.section1item4heading}</h4>
+                    <div class="service-icon">
+                        <img src="{url}{page.section1item4icon.data.attributes.formats.medium.url}" alt="{page.section1item4heading}">
+                        </div><h4>{page.section1item4heading}</h4>
                     </div>
                     <p>{page.section1item4text}</p>
                 </div>
@@ -54,7 +62,9 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{@html page.section1item5icon}</div><h4>{page.section1item5heading}</h4>
+                    <div class="service-icon">
+                        <img src="{url}{page.section1item5icon.data.attributes.formats.medium.url}" alt="{page.section1item5heading}">
+                        </div><h4>{page.section1item5heading}</h4>
                     </div>
                     <p>{page.section1item5text}</p>
                 </div>
@@ -62,7 +72,9 @@
             <Col md=4 sm=6 xs=12>
                 <div class="service-box">
                     <div class="service-box-inner">
-                    <div class="service-icon">{@html page.section1item6icon}</div><h4>{page.section1item6heading}</h4>
+                    <div class="service-icon">
+                        <img src="{url}{page.section1item6icon.data.attributes.formats.medium.url}" alt="{page.section1item6heading}">
+                        </div><h4>{page.section1item6heading}</h4>
                     </div>
                     <p>{page.section1item6text}</p>
                 </div>
@@ -128,13 +140,19 @@
             display: flex;
             margin-bottom: 20px;
         }
-        .service-icon {
-            background-color: $secondary-color;
+        .service-icon img{
+            width: auto;
+            background-color: #263A63;
             padding: 10px 20px;
-            color: #fff;
             box-shadow: 3px 3px 3px #aaa;
-            border-radius: 10px; 
-            font-size: 30px;  
+            border-radius: 10px;
+            max-height: 5rem;
+            min-height: 5rem; 
+            @include media-max(md){ 
+                padding: 8px 10px;
+                max-height: 4rem;
+                min-height: 4rem;
+            }
         }
         h4{
             align-self: center;
