@@ -2,7 +2,7 @@
     export let data;
     import {Container, Row, Col} from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
-    console.log(data);
+    import Animate from "$lib/components/Animate.svelte"
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.data.attributes
 </script>
