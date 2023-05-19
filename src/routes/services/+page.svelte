@@ -20,61 +20,67 @@
         <h2 class="text-center mb-5 py-3">{page.section1heading}</h2>
         <Row>
             <Col md=4 sm=6 xs=12>
-                <div class="service-box">
-                    <div class="service-box-inner">
-                    <div class="service-icon">
-                        <img src="{url}{page.section1item1icon.data.attributes.formats.medium.url}" alt="{page.section1item1heading}">
-                        </div><h4>{page.section1item1heading}</h4>
+                <div class="service-b__service-box">
+                    <div class="service-b__service-box__service-box-inner">
+                        <div class="service-b__service-box__service-box-inner__service-icon">
+                            <img src="{url}{page.section1item1icon.data.attributes.formats.medium.url}" alt="{page.section1item1heading}">
+                        </div>
+                        <h4>{page.section1item1heading}</h4>
                     </div>
                     <p>{page.section1item1text}</p>
                 </div>
             </Col>
             <Col md=4 sm=6 xs=12>
-                <div class="service-box">
-                    <div class="service-box-inner">
-                    <div class="service-icon">
-                        <img src="{url}{page.section1item2icon.data.attributes.formats.medium.url}" alt="{page.section1item2heading}">
-                        </div><h4>{page.section1item2heading}</h4>
+                <div class="service-b__service-box">
+                    <div class="service-b__service-box__service-box-inner">
+                        <div class="service-b__service-box__service-box-inner__service-icon">
+                            <img src="{url}{page.section1item2icon.data.attributes.formats.medium.url}" alt="{page.section1item2heading}">
+                        </div>
+                        <h4>{page.section1item2heading}</h4>
                     </div>
                     <p>{page.section1item2text}</p>
                 </div>
             </Col>
             <Col md=4 sm=6 xs=12>
-                <div class="service-box">
-                    <div class="service-box-inner">
-                    <div class="service-icon">
-                        <img src="{url}{page.section1item3icon.data.attributes.formats.medium.url}" alt="{page.section1item3heading}">
-                        </div><h4>{page.section1item3heading}</h4>
+                <div class="service-b__service-box">
+                    <div class="service-b__service-box__service-box-inner">
+                        <div class="service-b__service-box__service-box-inner__service-icon">
+                            <img src="{url}{page.section1item3icon.data.attributes.formats.medium.url}" alt="{page.section1item3heading}">
+                        </div>
+                        <h4>{page.section1item3heading}</h4>
                     </div>
                     <p>{page.section1item3text}</p>
                 </div>
             </Col>
             <Col md=4 sm=6 xs=12>
-                <div class="service-box">
-                    <div class="service-box-inner">
-                    <div class="service-icon">
-                        <img src="{url}{page.section1item4icon.data.attributes.formats.medium.url}" alt="{page.section1item4heading}">
-                        </div><h4>{page.section1item4heading}</h4>
+                <div class="service-b__service-box">
+                    <div class="service-b__service-box__service-box-inner">
+                        <div class="service-b__service-box__service-box-inner__service-icon">
+                            <img src="{url}{page.section1item4icon.data.attributes.formats.medium.url}" alt="{page.section1item4heading}">
+                        </div>
+                        <h4>{page.section1item4heading}</h4>
                     </div>
                     <p>{page.section1item4text}</p>
                 </div>
             </Col>
             <Col md=4 sm=6 xs=12>
-                <div class="service-box">
-                    <div class="service-box-inner">
-                    <div class="service-icon">
-                        <img src="{url}{page.section1item5icon.data.attributes.formats.medium.url}" alt="{page.section1item5heading}">
-                        </div><h4>{page.section1item5heading}</h4>
+                <div class="service-b__service-box">
+                    <div class="service-b__service-box__service-box-inner">
+                        <div class="service-b__service-box__service-box-inner__service-icon">
+                            <img src="{url}{page.section1item5icon.data.attributes.formats.medium.url}" alt="{page.section1item5heading}">
+                        </div>
+                        <h4>{page.section1item5heading}</h4>
                     </div>
                     <p>{page.section1item5text}</p>
                 </div>
             </Col>
             <Col md=4 sm=6 xs=12>
-                <div class="service-box">
-                    <div class="service-box-inner">
-                    <div class="service-icon">
-                        <img src="{url}{page.section1item6icon.data.attributes.formats.medium.url}" alt="{page.section1item6heading}">
-                        </div><h4>{page.section1item6heading}</h4>
+                <div class="service-b__service-box">
+                    <div class="service-b__service-box__service-box-inner">
+                        <div class="service-b__service-box__service-box-inner__service-icon">
+                            <img src="{url}{page.section1item6icon.data.attributes.formats.medium.url}" alt="{page.section1item6heading}">
+                        </div>
+                        <h4>{page.section1item6heading}</h4>
                     </div>
                     <p>{page.section1item6text}</p>
                 </div>
@@ -82,12 +88,12 @@
         </Row>
     </Container>
 </section>
-<section class="mx-10">
+<section class="mx-10 sets-us-apart">
     <Container>
         <h2 class="text-center mb-5 py-3">{page.section2mainheading}</h2>
             <Row noGutters class="mw-1000 justify-content-center">
-                <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
-                    <h4 class="text-right pfont px-5 py-3" style="font-weight: 400;text-transform:uppercase;">{@html page.section2heading}</h4>
+                <Col md="5" class="sets-us-apart__content">
+                    <h4 class="text-right pfont px-5 py-3">{@html page.section2heading}</h4>
                     <p class="text-right px-5 py-3 blue-color-background">{@html page.section2text}</p>
                 </Col>
                 <Col md="6">
@@ -96,24 +102,24 @@
             </Row>
     </Container>
 </section>
-<section class="mx-10">
+<section class="mx-10 sets-us-apart">
     <Container>
         <Row noGutters class="mw-1000 justify-content-center flex-md-row flex-column-reverse">
             <Col md="6">
                 <img src="{url}{page.section3image.data.attributes.formats.medium.url}" alt="{page.section3heading}" class="w-100">
             </Col>
-            <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
-                <h4 class="px-5 txt-center py-3 pfont" style="font-weight: 400;text-transform:uppercase;">{@html page.section3heading}</h4>
+            <Col md="5" class="sets-us-apart__content">
+                <h4 class="px-5 txt-center py-3 pfont">{@html page.section3heading}</h4>
                 <p class="px-5 txt-center py-3 blue-color-background">{@html page.section3text}</p>
             </Col>
         </Row>
     </Container>
 </section>
-<section class="mx-10">
+<section class="mx-10 sets-us-apart">
     <Container>
             <Row noGutters class="mw-1000 justify-content-center">
-                <Col md="5" style="display:flex;flex-direction:column;justify-content:center;">
-                    <h4 class="text-right pfont px-5 py-3" style="font-weight: 400;text-transform:uppercase;">{@html page.section4heading}</h4>
+                <Col md="5" class="sets-us-apart__content">
+                    <h4 class="text-right pfont px-5 py-3">{@html page.section4heading}</h4>
                     <p class="text-right px-5 py-3 blue-color-background">{@html page.section4text}</p>
                 </Col>
                 <Col md="6">
@@ -134,44 +140,61 @@
 </section>
 <Cta/>
 <style lang="scss">
-    .service-box{
-        padding: 3rem;
-        .service-box-inner{
-            display: flex;
-            margin-bottom: 20px;
-        }
-        .service-icon img{
-            width: auto;
-            background-color: #263A63;
-            padding: 10px 20px;
-            box-shadow: 3px 3px 3px #aaa;
-            border-radius: 10px;
-            max-height: 5rem;
-            min-height: 5rem; 
+    .service-b{
+        &__service-box{
+            padding: 3rem;
             @include media-max(md){ 
-                padding: 8px 10px;
-                max-height: 4rem;
-                min-height: 4rem;
+                padding: 1rem 0rem;
+                padding-left: 10px;
             }
+            @include media-max(sm){
+                padding: 1rem 1rem;
+            }
+            &__service-box-inner{
+                display: flex;
+                margin-bottom: 20px;
+                &__service-icon{
+                    img{
+                        width: auto;
+                        background-color: #263A63;
+                        padding: 10px 20px;
+                        box-shadow: 3px 3px 3px #aaa;
+                        border-radius: 10px;
+                        max-height: 5rem;
+                        min-height: 5rem; 
+                        @include media-max(md){ 
+                            padding: 8px 10px;
+                            max-height: 4rem;
+                            min-height: 4rem;
+                        }
+                    }
+                }
+                h4{
+                    align-self: center;
+                    padding-left: 20px;
+                    @include media-max(md){
+                        align-self: center;
+                        padding-left: 9px;
+                    }
+                }
+            } 
         }
+    } 
+    :global(.sets-us-apart__content){
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
         h4{
-            align-self: center;
-            padding-left: 20px;
+            font-weight: 400;
+            text-transform:uppercase;
         }
     }
     @include media-max(sm){ 
-        .text-right, .txt-center {text-align: center;}
-        .service-box {padding: 1rem 1rem;}
-        // .service-b .col-md-4:nth-child(3) {background-image: unset;}
-    }
-    @include media-max(md) { 
-        .service-box {
-            padding: 1rem 0rem;
-            padding-left: 10px;
+        .text-right, .txt-center{
+            text-align: center;
         }
-        .service-box h4 {
-            align-self: center;
-            padding-left: 9px;
+        :global(.service-b .col-md-4:nth-child(3)) {
+            background-image: unset;
         }
-    }    
+    } 
 </style>
