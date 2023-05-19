@@ -12,5 +12,6 @@ export async function load() {
       } else {
         console.log("Response from server");
       }    
+
     return response.data;
 }                                                                     
