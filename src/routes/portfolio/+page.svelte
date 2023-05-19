@@ -20,6 +20,8 @@
 
 </svelte:head>
 
+
+
 <PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}"/>
 <section class="portfolio-masonry">
     <Container>

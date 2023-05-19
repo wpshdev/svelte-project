@@ -1,20 +1,33 @@
-<script lang="ts" >
-	import { onMount } from "svelte";
-	export let section;
-	let y;
-	let position;
-	let pY = 0;
+<script>
+	import { onMount } from 'svelte';
+	
+	let element;
+	let isVisible = false;
+  
 	onMount(() => {
-		position = document.querySelector(section);
-    	let rect = position.getBoundingClientRect();
-		position = rect.y;		
+	  const observer = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+		  if (entry.isIntersecting) {
+			isVisible = true;
+			observer.disconnect();
+		  }
+		});
+	  });
+  
+	  observer.observe(element);
+  
+	  return () => {
+		observer.disconnect();
+	  };
 	});
-	function enableAnimation(val){
-		pY = val > pY ? val : pY;
-		return pY;
-	}
-</script>
-<svelte:window bind:scrollY={y} />	
-{#if enableAnimation(y) > position - 500}
-    <slot></slot>
-{/if}
+  </script>
+  
+  <div bind:this={element}>
+	{#if isVisible}
+		<slot></slot>
+	{/if}
+  </div>
+
+<style lang="scss">
+
+</style>
