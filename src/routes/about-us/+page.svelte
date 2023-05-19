@@ -36,7 +36,7 @@
             <Col md=5>
                 <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+50}px, 0)`} -->
                 <div>
-                <img src="{url+about.Section1image.data.attributes.formats.large.url}" alt="{about.Section1heading}" class="w-100">
+                    <img src="{url+about.Section1image.data.attributes.formats.large.url}" alt="{about.Section1heading}" class="w-100">
                 </div>
             </Col>
             <Col md=1></Col>
@@ -49,7 +49,7 @@
             <Col md=1></Col>
             <Col md=5>
                 <div>
-                <img src="{url+about.Section2image.data.attributes.formats.large.url}" alt="{about.Section2heading}" class="w-100">
+                    <img src="{url+about.Section2image.data.attributes.formats.large.url}" alt="{about.Section2heading}" class="w-100">
                 </div>
             </Col>
             <Col md=1></Col>
@@ -72,16 +72,16 @@
             <Col md=1></Col>
             <Col md=5>
                 <div>
-                <img src="{url+about.Section3image.data.attributes.formats.large.url}" alt="{about.Section3heading}" class="w-100">
+                    <img src="{url+about.Section3image.data.attributes.formats.large.url}" alt="{about.Section3heading}" class="w-100">
                 </div>
             </Col>
             <Col md=1></Col>
         </Row>
     </Container>
 </section>
-<section class="mx-8 pd-0">
+<section class="mx-8 remodel">
     <!-- style:width={`${80+(scroll/100)}vw`} -->
-    <div class="s4image">
+    <div class="remodel__bgimage">
         {#if about.Section4image.data}
         <img src="{url+about.Section4image.data.attributes.formats.large.url}" alt="{about.Section3heading}">
         {/if}
@@ -94,21 +94,21 @@
         <p class="text-left">{@html about.Section5text}</p>
     </Container>
 </section>
-<section>
+<section class="sets-parts">
     <Container>
         <Row>
             <Col md=12><h2 class="text-center mb-5">{@html about.Section6heading}</h2></Col>
         </Row>
         <Row class="flex-md-row flex-column-reverse">    
             <Col md=1></Col>
-            <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
+            <Col md=5 class="align-self-center blue-color-background sets-parts__content p-5">
                 <h3 class="mb-4 text-right">{@html about.Section6subheading}</h3>
                 <p class="text-right">{@html about.Section6text}</p>
             </Col>
             <Col md=5>
-                <div class="mr-l">
+                <div class="sets-parts__mr-l">
                     <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
-                <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
+                    <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
                 </div>
             </Col>
             <Col md=1></Col>
@@ -118,12 +118,12 @@
         <Row>
             <Col md=1></Col>
             <Col md=5 style="z-index: 1;">
-                <div class="mr-r">
+                <div class="sets-parts__mr-r">
                     <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                     <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
                 </div>
             </Col>
-            <Col md=5 class="align-self-center silver-color-background p-5" style="margin-left:-30px;min-height: 440px;">
+            <Col md=5 class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
                 <h3 class="mb-4 rp-fontsize">{@html about.Section7heading}</h3>
                 <p>{@html about.Section7text}</p>
             </Col>
@@ -133,14 +133,14 @@
     <Container class="mx-10">
         <Row class="flex-md-row flex-column-reverse">
             <Col md=1></Col>
-            <Col md=5 class="align-self-center blue-color-background p-5" style="min-height: 440px;">
+            <Col md=5 class="align-self-center blue-color-background sets-parts__content p-5">
                 <h3 class="mb-4 text-right">{@html about.Section8heading}</h3>
                 <p class="text-right">{@html about.Section8text}</p>
             </Col>
             <Col md=5>
-                <div class="mr-l">
+                <div class="sets-parts__mr-l">
                     <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
-                <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
+                    <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
                 </div>
             </Col>
             <Col md=1></Col>
@@ -148,43 +148,68 @@
     </Container>
 </section>
 <style lang="scss">
-.mx-8{margin:8rem auto;}
-section{margin:4rem auto;}
-.service-box1 div{
-    border-top: 2px solid $secondary-color;
-    border-right: 2px solid $secondary-color;
-}
-.service-box2{
-    border-bottom: 2px solid $secondary-color;
-}
-.service-box6{
-    border-left: 2px solid $secondary-color;
-    border-bottom: 2px solid $secondary-color;
-}
-.s4image {
-    width:80vw;
-    margin:auto;
-    min-width:80vw;
-    max-width:100vw;
-}
-.mr-l {margin-left: -30px;}
-.mr-r {margin-right: 0;}
-@include media-max(md) {
-    .mr-r {margin-right: 18px;}
-    .mr-l {margin-left: -12px;}
-}
-@include media-max(xs){ 
-    .pd-0 {padding: 0;}
-    .s4image {
-        width:100vw;
-        margin:auto;
-        min-width:80vw;
-        max-width:100vw;
+    $darkgrey-color: #3E3636;    
+    .about-heading h2, h3 {
+        color:$secondary-color;
     }
-}
-@include media-max(sm){ 
-    .mr-t {margin-top: 1.5rem;}
-    .mr-l {margin-left: -30px;}
-    .mr-r {margin-right: 0;}
-}
+    .mw-1000 h2{
+        color:$darkgrey-color;
+    }
+    .mx-8{
+        margin:8rem auto;
+    }
+    section{
+        margin:4rem auto;
+    }
+    .remodel {
+        &__bgimage {
+            width:80vw;
+            margin:auto;
+            min-width:80vw;
+            max-width:100vw;
+            @include media-max(xs){ 
+                width:100vw;
+                margin:auto;
+                min-width:80vw;
+                max-width:100vw;
+            }
+        }
+        @include media-max(xs){
+            padding: 0;
+        }
+    }
+    .sets-parts{
+        h2{
+            color:$darkgrey-color;
+        }
+        :global(.sets-parts__content) {
+            min-height: 440px;
+        }
+        :global(.sets-parts__mrl-30){
+            margin-left: -30px;
+        }
+        &__mr-l{
+            margin-left: -30px;
+            @include media-max(md) {
+                margin-left: -12px;
+            }
+            @include media-max(sm){ 
+                margin-left: -30px;
+            }
+        }
+        &__mr-r{
+            margin-right: 0;
+            @include media-max(md) {
+                margin-right: 18px;
+            }
+            @include media-max(sm){
+                margin-right: 0;
+            }
+        }
+    } 
+    @include media-max(sm){ 
+        .mr-t {
+            margin-top: 1.5rem;
+        }
+    }
 </style>
