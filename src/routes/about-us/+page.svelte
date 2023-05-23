@@ -85,13 +85,16 @@
         {#if about.Section4image.data}
         <img src="{url+about.Section4image.data.attributes.formats.large.url}" alt="{about.Section3heading}">
         {/if}
-        <p class="text-center"><i>{about.Section4text}</i></p>
+        <p class="text-center pt-3"><i><b>{about.Section4text}</b></i></p>
     </div>
 </section>
 <section class="mw-1000 mx-8">
     <Container>
-        <h2 class="mb-5 text-center">{about.Section5heading}</h2>
-        <p class="text-left">{@html about.Section5text}</p>
+        <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
+        <p class="text-left">{@html about.Section5text}</p> -->
+        {#if about.Section5image.data}
+        <img src="{url+about.Section5image.data.attributes.formats.large.url}" alt="{about.Section5heading}">
+        {/if}
     </Container>
 </section>
 <section class="sets-parts">
@@ -153,20 +156,23 @@
         color:$secondary-color;
     }
     .mw-1000 h2{
-        color:$darkgrey-color;
+        color:#263A63;
     }
     .mx-8{
         margin:8rem auto;
+        @include media-max(sm){
+            margin:4rem auto;
+        }
     }
     section{
         margin:4rem auto;
     }
     .remodel {
         &__bgimage {
-            width:80vw;
+            width:100%;
             margin:auto;
-            min-width:80vw;
-            max-width:100vw;
+            min-width:100%;
+            max-width:100%;
             @include media-max(xs){ 
                 width:100vw;
                 margin:auto;

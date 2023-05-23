@@ -62,7 +62,7 @@
             <Col md="12">
                 <h2 class="text-center">Let's get started...</h2>
                 <h4 class="text-center pfont">- <span class="ptc"><i>Ulf Lindroth</i></span></h4>
-                <p class="two-columns">{@html data.data.attributes.Subheading2}</p>
+                <p class="two-columns pt-3">{@html data.data.attributes.Subheading2}</p>
             </Col>
         </Row>
     </Container>
@@ -103,7 +103,7 @@
                         <div class="input-icon input-icon-phone"></div>
                     </FormGroup>
                     <FormGroup>
-                        <Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
+                        <Input type="textarea" id="yourMessage" placeholder="Tell us about your project..." bind:value={message}/>
                     </FormGroup>
                     <Button type="button" {color} on:click={doContact}>Send</Button>
                 </Form>
