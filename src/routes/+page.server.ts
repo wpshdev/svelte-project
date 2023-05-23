@@ -1,3 +1,4 @@
+export const prerender = true;
 // import axios from "$lib/axios";
 import axios from "axios";
 
