@@ -1,6 +1,7 @@
 @import 'vars';
-@import 'mixins';
+@import 'mixins.scss';
 @import 'flickity/css/flickity.css';
+
 *{
     font-family: $primary-font;
 }
