@@ -23,7 +23,8 @@ const config: UserConfig = {
 	},	
 	
 	build:{
-		sourcemap: true // Config vite to generate sourcemap when bundling.
+		sourcemap: true, // Config vite to generate sourcemap when bundling.
+		minify: true
 	},
 };
 

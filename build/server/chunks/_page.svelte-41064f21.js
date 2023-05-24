@@ -1,0 +1,25 @@
+import { L, d, z, P, W, T, I, p, N } from './index-87618b6e.js';
+import { E as E$1, M, R as R$1 } from './Row-0fc34542.js';
+
+const y=L((e,o,s,b)=>{let n,r=T(o,["placeholder","src","alt","options"]),{placeholder:i}=o,{src:v}=o,{alt:u}=o,{options:w={root:null,rootMargin:"0px 0px 0px 0px",threshold:0}}=o,g,p$1;return o.placeholder===void 0&&s.placeholder&&i!==void 0&&s.placeholder(i),o.src===void 0&&s.src&&v!==void 0&&s.src(v),o.alt===void 0&&s.alt&&u!==void 0&&s.alt(u),o.options===void 0&&s.options&&w!==void 0&&s.options(w),p$1=i,n=o.class||"",`<img${I([{src:p(p$1)},{alt:p(u)},N(r),{class:"svelte-lazy-image "+d(n,!0)}],{classes:""})}${P("this",g,0)}>`});const R={code:"section.svelte-1n12jwi.svelte-1n12jwi{margin:10rem 0}.our-team.svelte-1n12jwi.svelte-1n12jwi{margin-top:5rem}.our-team__member.svelte-1n12jwi.svelte-1n12jwi{position:relative;margin-top:1.5rem}.tm-img{position:relative}.tm-box.svelte-1n12jwi.svelte-1n12jwi{position:absolute;z-index:6;bottom:2rem;background-color:#1E2D39;padding:1rem 2rem}@media(max-width: 767px){.tm-box.svelte-1n12jwi.svelte-1n12jwi{position:relative;text-align:center;bottom:0}}.tm-box.svelte-1n12jwi h3.svelte-1n12jwi,.tm-box.svelte-1n12jwi h4.svelte-1n12jwi{margin-bottom:0;font-weight:400}.owner-quote-container{padding:2rem 0}@media(max-width: 767px){.owner-quote-container{padding:0}}.owner-quote.svelte-1n12jwi.svelte-1n12jwi{background-color:#E3CEB5;height:100%;display:flex}.owner-quote.svelte-1n12jwi h3.svelte-1n12jwi{display:flex;justify-content:center;flex-direction:column}@media(max-width: 767px){.owner-quote.svelte-1n12jwi h3.svelte-1n12jwi{padding:2rem 1rem}}",map:null};let m="https://strapi.ulfbuilt.com:1337";const E=L((e,o,s,b)=>{let{data:n}=o,r=n.data.attributes;return console.log(r),o.data===void 0&&s.data&&n!==void 0&&s.data(n),e.css.add(R),`${e.head+=`<!-- HEAD_svelte-1gs2fsz_START -->${e.title="<title>Our Team</title>",""}<meta name="description" content="ULF BUILT"><!-- HEAD_svelte-1gs2fsz_END -->`,""}
+<div class="cover" style="${"background-image: url("+d(m,!0)+d(n.data.attributes.Cover.data.attributes.formats.large.url,!0)+");"}"><h2 class="pfont">${d(n.data.attributes.title)}</h2>
+    <p class="pfont">${d(n.data.attributes.Subheading)}</p></div>
+<section class="our-team svelte-1n12jwi">${z(E$1,"Container").$$render(e,{},{},{default:()=>`${z(M,"Row").$$render(e,{},{},{default:()=>`${z(R$1,"Col").$$render(e,{md:"10",class:"mx-auto"},{},{default:()=>`<h2 class="stc pb-4 text-center">${d(r.SecondSectionTitle)}</h2>
+                <p class="two-columns"><!-- HTML_TAG_START -->${r.content}<!-- HTML_TAG_END --></p>
+                <div>${z(y,"LazyImage").$$render(e,{src:m+r.SecondSectionImage.data.attributes.formats.large.url,placeholder:m+r.SecondSectionImage.data.attributes.formats.small.url,alt:"Team Philosophy"},{},{})}</div>`})}`})}`})}</section>
+<section class="owner svelte-1n12jwi">${z(E$1,"Container").$$render(e,{},{},{default:()=>`${z(M,"Row").$$render(e,{noGutters:!0},{},{default:()=>`${z(R$1,"Col").$$render(e,{md:"6",class:"tm-img"},{},{default:()=>`<img${P("alt",r.team_member_owner.data.attributes.name,0)} src="${d(m,!0)+d(r.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url,!0)}">
+            <div class="tm-box wtc svelte-1n12jwi"><h3 class="pfont svelte-1n12jwi">${d(r.team_member_owner.data.attributes.name)}</h3>
+                <h4 class="pfont svelte-1n12jwi">${d(r.team_member_owner.data.attributes.position)}</h4></div>`})}
+            ${z(R$1,"Col").$$render(e,{md:"6",class:"owner-quote-container"},{},{default:()=>`<div class="owner-quote svelte-1n12jwi"><h3 class="stc line-height-2 text-center svelte-1n12jwi"><!-- HTML_TAG_START -->${r.ownerquote}<!-- HTML_TAG_END --></h3></div>`})}`})}`})}</section>
+<section class="team-members svelte-1n12jwi">${z(E$1,"Container").$$render(e,{},{},{default:()=>`${z(M,"Row").$$render(e,{},{},{default:()=>`<h2 class="sfont ptc mb-5 text-center">${d(r.title)}</h2>
+        ${z(R$1,"Col").$$render(e,{md:{size:8,offset:2}},{},{default:()=>`${z(M,"Row").$$render(e,{},{},{default:()=>`${W(r.team_members.data,i=>`${z(R$1,"Col").$$render(e,{md:"6"},{},{default:()=>`<a href="${"/our-team/"+d(i.attributes.slug,!0)}"><div class="our-team__member svelte-1n12jwi"><img src="${d(m,!0)+d(i.attributes.memberPhoto.data.attributes.url,!0)}" alt="member">
+                        <div class="tm-box wtc px-5 py-3 svelte-1n12jwi" style="bottom: 1rem;">
+                            <h5 class="pfont">${d(i.attributes.name)}</h5>
+                            <span class="pfont gtc">${d(i.attributes.position)}</span></div>
+                    </div></a>
+                `})}`)}`})}`})}`})}`})}</section>
+<section class="svelte-1n12jwi">${z(E$1,"Container").$$render(e,{},{},{default:()=>`${z(M,"Row").$$render(e,{},{},{default:()=>`${z(R$1,"Col").$$render(e,{md:"12"},{},{default:()=>`<h2 class="text-center">${d(r.para2)}</h2>`})}`})}`})}
+</section>`});
+
+export { E as default };
+//# sourceMappingURL=_page.svelte-41064f21.js.map
