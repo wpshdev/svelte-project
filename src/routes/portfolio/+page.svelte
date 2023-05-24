@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
-    import LazyImage from "$lib/LazyImage.svelte";
+    // import LazyImage from "$lib/LazyImage.svelte";
     import Masonry from "$lib/components/Masonry.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
@@ -19,6 +19,8 @@
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
+
+
 
 <PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}"/>
 <section class="portfolio-masonry">
@@ -141,6 +143,9 @@
             margin: 0 auto 3rem;
         }
     }
+    .btn.btn-secondary {
+        margin-bottom: 15px;
+    }
     .portfolio-cta{
         min-height: 40vw;
         min-width: 40vw;        
@@ -152,17 +157,14 @@
             span{
                 color: $primary-color;
             }
-            h2{
-            }
         }
         &__btns{
             margin: 2rem 0;
             @include media-max(sm){
                 display: flex;
-            flex-direction: column;
-            align-items: center;
+                flex-direction: column;
+                align-items: center;
             }
-
             .btn-secondary{
                 margin-right: 1.5rem;
                 @include media-max(sm){
@@ -173,6 +175,6 @@
                 border-color: $secondary-color;
                 color: $secondary-color;
             }
-        }
+        } 
     }
 </style>

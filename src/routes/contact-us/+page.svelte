@@ -1,9 +1,8 @@
 <script lang="ts">
     export let data;
-    import { Form, FormGroup, Input, Label } from 'sveltestrap';
+    import { Form, FormGroup, Input, Col, Container, Row } from 'sveltestrap';
     import { Button } from 'sveltestrap';
     const color = "white";
-    import { Col, Container, Row } from 'sveltestrap';
     const url = "https://strapi.ulfbuilt.com:1337/";
     console.log(data);
     let phone = data.data.attributes.phone;
@@ -62,7 +61,7 @@
             <Col md="12">
                 <h2 class="text-center">Let's get started...</h2>
                 <h4 class="text-center pfont">- <span class="ptc"><i>Ulf Lindroth</i></span></h4>
-                <p class="two-columns">{@html data.data.attributes.Subheading2}</p>
+                <p class="two-columns pt-3">{@html data.data.attributes.Subheading2}</p>
             </Col>
         </Row>
     </Container>
@@ -103,7 +102,7 @@
                         <div class="input-icon input-icon-phone"></div>
                     </FormGroup>
                     <FormGroup>
-                        <Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
+                        <Input type="textarea" id="yourMessage" placeholder="Tell us about your project..." bind:value={message}/>
                     </FormGroup>
                     <Button type="button" {color} on:click={doContact}>Send</Button>
                 </Form>
@@ -112,3 +111,9 @@
         </Row>
     </Container>
 </div>
+
+<style lang="scss">
+    @include media-max(sm) { 
+        .contact-img {height: 300px;}
+    }
+</style>

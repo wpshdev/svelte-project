@@ -22,9 +22,27 @@
     <p class="pfont">{data.page.data.attributes.Subheading}</p>
 </div>
 <section>
+    <Container>
+        <Row>
+            <ul class="cat-list">
+                <li>
+                    <a href="/"> CATEGORY</a>|
+                    <a href="/"> DATE ADDED</a>
+                </li>
+            </ul>
+        </Row>
+    </Container>
+</section>
+<section class="mw-1000 mx-8 text-center article-section">
+    <Container>
+        <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading}</h2>
+        <p class="text-left">{@html data.page.data.attributes.section2description}</p>
+    </Container>
+</section>
+<section>
 <Container>
         {#each paginatedBlogs as blog,i (blog.id)}
-        <Row>
+        <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''}">
             <Col md="7" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
                 <div class="blogsection7 easein-img">
                 {#if blog.attributes.featuredimage.data != null}
@@ -45,7 +63,7 @@
                         <h2>{blog.attributes.title}</h2>
                         <p>{blog.attributes.shorttext}</p>
                     </div>
-                    <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read More</a>
+                    <a class="btn mt-3 btn-secondary" href="/articles/{blog.attributes.slug}">Read More</a>
                 </div>
             </Col>
             <!-- </a> -->
@@ -83,4 +101,23 @@
         height: 100%;
         padding: 3rem;
     }
+    .article-section {
+        padding: 0 0 4rem 0;
+        @include media-max(sm){
+            padding: 0 0 0 0;
+    }
+    }
+    .cat-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li a {
+            padding: 1rem 1rem;
+            text-decoration: none;
+        }
+    }
+    h2, .h2 {
+    font-size: 3rem;
+    }
+
 </style>

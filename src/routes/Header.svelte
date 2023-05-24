@@ -1,10 +1,10 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.min.css';
-    import { page } from '$app/stores';
+    // import { page } from '$app/stores';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
-	
+	import Animate from "$lib/components/Animate.svelte";
 	import {
 	  Collapse,
 	  Navbar,
@@ -78,9 +78,11 @@
 <Container>
   <Navbar expand="md">
 	<NavbarBrand href="/">
-		<a href="/">
-			<img src={logo} alt="ULFBUILT" class="logo" />
-		</a>	
+		<Animate>
+			<a href="/" in:fly>
+				<img src={logo} alt="ULFBUILT" class="logo"  width="80" height="80" />
+			</a>	
+		</Animate>
 	</NavbarBrand>
 	{#if !isOpen}
 		<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
@@ -122,7 +124,7 @@
 					<span class="icon"></span>		
 				</div>
 				<a href="/" class="mobile-menu-logo">
-					<img src={logo} alt="ULFBUILT" class="logo" />
+					<img src={logo} alt="ULFBUILT" class="logo" width="80" height="80" />
 				</a>				
 				
 				<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
@@ -147,7 +149,6 @@
 				</Collapse>
 				<div class="bottom-menu-content">
 					<a href="mailto:contact@ulfbuilt.com" class="mail">contact@ulfbuilt.com</a>
-
 					<div class="bottom-menu-content__social">
 						<span class="icon">
 							<a href="#">
