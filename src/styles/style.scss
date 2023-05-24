@@ -690,4 +690,9 @@ header{
         background-position: left bottom;
         background-repeat: no-repeat;
     }
+    @include media-max(sm){
+        .col-md-4:nth-child(2){
+            background-image: unset;
+        }
+    }
 }
