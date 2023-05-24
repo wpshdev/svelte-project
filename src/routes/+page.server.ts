@@ -1,5 +1,5 @@
-// import axios from "$lib/axios";
-import axios from "axios";
+import axios from "$lib/axios";
+// import axios from "axios";
 
 
 export async function load() {
