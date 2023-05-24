@@ -1,7 +1,7 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
-    import { onMount } from 'svelte';
-	import { contenteditable_truthy_values } from 'svelte/internal';
+    // import { onMount } from 'svelte';
+	// import { contenteditable_truthy_values } from 'svelte/internal';
     export let data;
     console.log(data);
     let abouttitle = data.data.attributes.Title

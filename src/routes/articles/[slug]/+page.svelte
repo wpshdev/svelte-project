@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
+    import { Col, Container, Row } from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
     export let data;
     console.log(data);

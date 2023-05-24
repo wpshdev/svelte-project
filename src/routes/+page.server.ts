@@ -1,4 +1,7 @@
-import axios from "$lib/axios";
+export const prerender = true;
+// import axios from "$lib/axios";
+import axios from "axios";
+
 
 export async function load() {
     const url = 'https://strapi.ulfbuilt.com:1337/api/home-page?populate=deep,3';
@@ -8,11 +11,11 @@ export async function load() {
     }    
     const response = await axios.get(url, { headers });
     console.log(response);
-    if (response.fromCache) {
-        console.log("Response from cache");
-      } else {
-        console.log("Response from server");
-      }    
+    // if (response.fromCache) {
+    //     console.log("Response from cache");
+    //   } else {
+    //     console.log("Response from server");
+    //   }    
 
     return response.data;
 }                                                                     
