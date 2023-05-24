@@ -81,6 +81,9 @@
 <style lang="scss">
     section{
         margin: 10rem 0;
+            @include media-max(sm){
+                margin: 5rem 0;
+            }
     }
     .our-team{
         margin-top: 5rem;
