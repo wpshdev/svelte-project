@@ -5,7 +5,7 @@
     import Header from "./Header.svelte";
 	// import { redirect } from "@sveltejs/kit";
 	import { Container } from "sveltestrap";
-    let yaxis : any;
+    let yaxis = 0;
     export let data;
     </script>
     <svelte:head>
