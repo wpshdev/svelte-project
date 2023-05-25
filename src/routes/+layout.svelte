@@ -14,6 +14,7 @@
     export let data;
     </script>
     <svelte:head>
+        <link rel="preconnect" href="https://strapi.ulfbuilt.com:1337/">
         <script src="/flickity/flickity.pkgd.min.js" async></script>    
     </svelte:head>    
     <div class="z10">
