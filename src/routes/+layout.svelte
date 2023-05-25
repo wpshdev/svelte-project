@@ -3,7 +3,7 @@
     const onPin = () => console.log("pin");
     import Footer from "./Footer.svelte";
     import Header from "./Header.svelte";
-	// import { redirect } from "@sveltejs/kit";
+	import { redirect } from "@sveltejs/kit";
 	import { Container } from "sveltestrap";
     let yaxis: any;
     export let data;
