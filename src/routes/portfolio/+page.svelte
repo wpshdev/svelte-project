@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
-    import LazyImage from "$lib/LazyImage.svelte";
+    // import LazyImage from "$lib/LazyImage.svelte";
     import Masonry from "$lib/components/Masonry.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
