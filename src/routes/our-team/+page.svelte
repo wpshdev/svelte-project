@@ -78,6 +78,13 @@
         </Row>
     </Container>
 </section>
+<section class="ourteam5">
+    <Container>
+        <h4>{ourTeam.para2}</h4>
+        <h4>{ourTeam.para3}</h4>
+        <h4>{ourTeam.para4}</h4>
+    </Container>
+</section>
 <Contactform/>
 <style lang="scss">
     section{
@@ -167,6 +174,20 @@
         @include media-max(sm){
             padding: 2rem 1rem;
         }
+    }
+}
+.ourteam5{
+    text-align: center;
+    max-width: 960px;
+    margin-left:auto;
+    margin-right: auto;
+    h4{
+        font-family: $primary-font;
+        font-weight: 400;
+        padding-bottom: 2rem;
+    }
+    h4:last-child{
+        text-align: right;
     }
 }
 </style>
