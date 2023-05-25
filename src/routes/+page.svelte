@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let data;
-	import { Col, Container, Row } from "sveltestrap";
+	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	// import banner from "$lib/img/first-section.svg";
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";

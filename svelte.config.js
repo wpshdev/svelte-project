@@ -1,21 +1,32 @@
 // import adapter from '@sveltejs/adapter-auto';
-import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import adapter from '@sveltejs/adapter-node';
+import preprocess from 'svelte-preprocess';
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-/** @type {import('@sveltejs/kit').Config} */
+const filePath = dirname(fileURLToPath(import.meta.url))
+const sassPath = `D:/svelte/svelte-project/src/styles/`
+
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+	preprocess: preprocess({
+		scss: {
+			prependData: `
+				@import '${sassPath}_mixins.scss';
+				@import '${sassPath}_vars.scss';
+			`
+		}
+	}),
 
 	kit: {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
 			fallback: null,
-			precompress: false,
+			precompress: true,
 			strict: true			
-		})
+		}),	
 	}
 };
 

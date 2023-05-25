@@ -27,3 +27,7 @@
 		<slot></slot>
 	{/if}
   </div>
+
+<style lang="scss">
+
+</style>
