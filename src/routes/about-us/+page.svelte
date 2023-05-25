@@ -1,7 +1,8 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
-    import { onMount } from 'svelte';
-	import { contenteditable_truthy_values } from 'svelte/internal';
+    // import { onMount } from 'svelte';
+	// import { contenteditable_truthy_values } from 'svelte/internal';
+    import Contactform from '$lib/components/layout/Contactform.svelte';
     export let data;
     console.log(data);
     let abouttitle = data.data.attributes.Title
@@ -12,7 +13,7 @@
     let scroll: number
 </script>
 <svelte:head>
-	<title>{abouttitle} - changes</title>
+	<title>{abouttitle}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
@@ -150,13 +151,28 @@
         </Row>
     </Container>
 </section>
+<section class="talktous">
+    <Container>
+        <h2>Home Builder in Vail Valley, Colorado</h2>
+        <p>We build and remodel custom homes in Vail, Beaver Creek and the Central Rockies of Colorado.</p>
+        <div class="talktous__btns">
+            <a href="#" class="btn btn-secondary">Talk to Us</a>
+            <a href="#" class="btn btn-inverted">Explore our Gallery</a>
+        </div>
+    </Container>
+</section>
+<Contactform/>
 <style lang="scss">
     $darkgrey-color: #3E3636;    
-    .about-heading h2, h3 {
-        color:$secondary-color;
+    .about-heading{
+        h2, h3 {
+            color:$secondary-color;
+        }
     }
-    .mw-1000 h2{
-        color:#263A63;
+    .mw-1000{
+        h2{
+            color:#263A63;
+        }
     }
     .mx-8{
         margin:8rem auto;
@@ -165,7 +181,7 @@
         }
     }
     section{
-        margin:4rem auto;
+        margin:8rem auto;
     }
     .remodel {
         &__bgimage {
@@ -216,6 +232,14 @@
     @include media-max(sm){ 
         .mr-t {
             margin-top: 1.5rem;
+        }
+    }
+    .talktous{
+        text-align: center;
+        &__btns{
+            a:nth-child(1){
+                margin: 1rem;
+            }
         }
     }
 </style>

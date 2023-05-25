@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
     import { LazyImage } from 'svelte-lazy-image';
+    import Contactform from "$lib/components/layout/Contactform.svelte";
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
@@ -77,7 +78,7 @@
         </Row>
     </Container>
 </section>
-
+<Contactform/>
 <style lang="scss">
     section{
         margin: 10rem 0;

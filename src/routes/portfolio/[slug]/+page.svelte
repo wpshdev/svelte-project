@@ -1,17 +1,18 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
-    import { Form, FormGroup, Input, Button } from 'sveltestrap';
+    // import { Form, FormGroup, Input, Button } from 'sveltestrap';
 	// import { fade, fly } from 'svelte/transition';
 	// import { onMount } from "svelte";
 	// import Animate from "$lib/components/Animate.svelte";
 	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
-	// import livingRoom from "$lib/img/living-room.jpg";		
-	// import lvThropy from "$lib/img/lvThropy.jpg";	
+	import Contactform from "$lib/components/layout/Contactform.svelte";
+	// import livingRoom from "$lib/img/living-room.jpg";
+	// import lvThropy from "$lib/img/lvThropy.jpg";
 	// import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
-	import contactBG from "$lib/img/ContactBG.jpg";
+	// import contactBG from "$lib/img/ContactBG.jpg";
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	
  	const portfolio = data.portfolio.data[0].attributes;
@@ -180,7 +181,7 @@
 	</Container>
 </section>
 
-<section class="contact" style="--contactBG: url({contactBG})">
+<!-- <section class="contact" style="--contactBG: url({contactBG})">
 	<Container>
 		<Row>
 			<Col md="6">
@@ -216,8 +217,8 @@
 			</Col>			
 		</Row>
 	</Container>
-</section>
-
+</section> -->
+<Contactform/>
 <style lang="scss">
 
 .portfolio-gallery{
@@ -396,27 +397,27 @@
 	}
 }
 
-.contact{
-	padding: 10rem 0;
-	background-image: var(--contactBG);
-	background-size: cover;
-	margin: 0;
-	&__content{
-		display: flex;
-		height: 100%;
-		align-items: end;		
-		&__wrapper{
-			h2{
-				margin-bottom: 2rem;
-			}	
-		}
-	}
-	&__form{
-		:global(#yourMessage){
-			height: 15rem;
-		}
-	}
-}
+// .contact{
+// 	padding: 10rem 0;
+// 	background-image: var(--contactBG);
+// 	background-size: cover;
+// 	margin: 0;
+// 	&__content{
+// 		display: flex;
+// 		height: 100%;
+// 		align-items: end;		
+// 		&__wrapper{
+// 			h2{
+// 				margin-bottom: 2rem;
+// 			}	
+// 		}
+// 	}
+// 	&__form{
+// 		:global(#yourMessage){
+// 			height: 15rem;
+// 		}
+// 	}
+// }
 
 
 </style>
