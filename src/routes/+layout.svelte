@@ -5,6 +5,7 @@
     import Header from "./Header.svelte";
 	import { redirect } from "@sveltejs/kit";
     import {page} from '$app/stores'
+	import { Container } from "sveltestrap";    
     // let isHomePage = false;
     function isHome(url) {
         return url === "/" ? false : true;
