@@ -1,7 +1,7 @@
 <script lang="ts">
     import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
-    // import topBanner from "$lib/img/processBanner.jpg";
+    import topBanner from "$lib/img/processBanner.jpg";
 	import { Col, Container, Row } from "sveltestrap";
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;

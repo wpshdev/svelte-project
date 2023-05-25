@@ -2,14 +2,15 @@
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
-	// import { fade, fly } from 'svelte/transition';
-	// import { onMount } from "svelte";
-	// import Animate from "$lib/components/Animate.svelte";
-	// import TextTransition from "$lib/TextTransition.svelte";
+
+	import { fade, fly } from 'svelte/transition';
+	import { onMount } from "svelte";
+	import Animate from "$lib/components/Animate.svelte";
+	import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
-	// import livingRoom from "$lib/img/living-room.jpg";		
-	// import lvThropy from "$lib/img/lvThropy.jpg";	
-	// import firePlace from "$lib/img/firePlace.jpg";
+	import livingRoom from "$lib/img/living-room.jpg";		
+	import lvThropy from "$lib/img/lvThropy.jpg";	
+	import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
 	import contactBG from "$lib/img/ContactBG.jpg";
 	const domain = "https://strapi.ulfbuilt.com:1337"

@@ -1,8 +1,9 @@
 <script lang="ts">
     export let data;
-    import { Form, FormGroup, Input, Col, Container, Row } from 'sveltestrap';
+    import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
     const color = "white";
+    import { Col, Container, Row } from 'sveltestrap';
     const url = "https://strapi.ulfbuilt.com:1337/";
     console.log(data);
     let phone = data.data.attributes.phone;
