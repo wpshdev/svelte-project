@@ -41,7 +41,7 @@
         <Row>
             <Col md="{{ size: '6', offset: 3 }}" class="text-center">
                 <h3>
-                    {processData.section3heading}                  
+                    {@html processData.section3heading}                  
                 </h3>
             </Col>
         </Row>
@@ -145,15 +145,15 @@
                 {@html processData.section12text}
             </div>  
             <div class="phase__grid__item">
-                {@html processData.section11text}
+                {@html processData.section12righttext}
             </div>  
             <div class="phase__grid__item">
                 <span>{processData.section13heading}</span>
                 <h4>{processData.section13subheading}</h4>
-                {@html processData.section13righttext}
+                {@html processData.section13text}
             </div>  
             <div class="phase__grid__item">
-                {@html processData.section12text}
+                {@html processData.section13righttext}
             </div>                                            
         </div>      
     </Container>
@@ -224,6 +224,7 @@
             h2{
                 font-size: 3rem;
                 margin-bottom: 1rem;
+                color:$secondary-color;
             }
             p{
                 span{
@@ -253,9 +254,14 @@
         background-color: #F2F2F2;
         padding: 3rem 0;
         h3{
+            color: #3E3636;
             @include media-max(sm){
                 font-size: 1.2rem;
             }
+            :global(span){
+                color: $secondary-color;
+                font-family: $secondary-font;
+            } 
         }
     }
     .phase1-img{
@@ -280,7 +286,8 @@
             font-weight: 400;
             @include media-max(sm){
                 font-size: 1.2rem;
-            }            
+            }
+
         }
         :global(.phase__row){
             margin-top: -12.3rem;
@@ -293,11 +300,15 @@
             }               
         }
         .num{
-            font-size: 10rem;
+            font-size: 18rem;
+            display: inline-block;
+            line-height: 20rem;
             font-family: $secondary-font;
             color: $secondary-color;
+            margin-top: -4rem;
             @include media-max(sm){
-                font-size: 6rem;
+                font-size: 10rem;
+                line-height: 15rem;
             }              
         }
         &__heading{
