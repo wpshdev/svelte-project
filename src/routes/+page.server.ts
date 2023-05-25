@@ -1,4 +1,5 @@
 import axios from "$lib/axios";
+// import axios from "axios";
 
 export async function load() {
     const url = 'https://strapi.ulfbuilt.com:1337/api/home-page?populate=deep,3';
