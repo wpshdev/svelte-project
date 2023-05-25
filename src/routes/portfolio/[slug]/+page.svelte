@@ -2,22 +2,22 @@
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
-
-	import { fade, fly } from 'svelte/transition';
-	import { onMount } from "svelte";
-	import Animate from "$lib/components/Animate.svelte";
-	import TextTransition from "$lib/TextTransition.svelte";
+	// import { fade, fly } from 'svelte/transition';
+	// import { onMount } from "svelte";
+	// import Animate from "$lib/components/Animate.svelte";
+	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
-	import livingRoom from "$lib/img/living-room.jpg";		
-	import lvThropy from "$lib/img/lvThropy.jpg";	
-	import firePlace from "$lib/img/firePlace.jpg";
+	// import livingRoom from "$lib/img/living-room.jpg";		
+	// import lvThropy from "$lib/img/lvThropy.jpg";	
+	// import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
 	import contactBG from "$lib/img/ContactBG.jpg";
 	const domain = "https://strapi.ulfbuilt.com:1337"
- 	const portfolio = data.portfolio;
+	
+ 	const portfolio = data.portfolio.data[0].attributes;
 	const rPortfolios = data.rPortfolios;
 	console.log(portfolio);
-	const images = portfolio.data[0].attributes.images.data;
+	const images = portfolio.images.data;
 
 
 	let name = '', email = '', subject = '', message = '', result = ''
@@ -59,11 +59,11 @@
         }
         }
 	}
-
+	// console.log()
 </script>
 
 <svelte:head>
-	<title>{portfolio.data[0].attributes.title}</title>
+	<title>{portfolio.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
@@ -73,12 +73,8 @@
 			<Col class="text-center">
 				<div class="portfolio-gallery__content">
 					<span>Project</span>
-					<h1 class="h2">Modern Mountain White</h1>
-					<p>
-						The Modern Mountain White Brown home offers a spacious and stylish major house remodel.
-						Notice the lines of sight from different positions of the photographer,
-						and how rooms are separated yet easily accessible with interesting angles.						
-					</p>
+					<h1 class="h2">{portfolio.title}</h1>
+					{@html portfolio.content ? portfolio.content : ""}
 				</div>
 			</Col>
 		</Row>
@@ -87,10 +83,11 @@
 		</Row>		
 	</Container>
 </section>
+{#if portfolio.isFeatured}
 <section class="about-property">
 	<Container>
 		<Row>
-			<Col><h2>About this Property</h2></Col>
+			<Col><h2>{portfolio.projectDetailHeading}</h2></Col>
 		</Row>
 		<Row>
 			<Col md="12">
@@ -103,7 +100,7 @@
 								</svg>
 							</i>
 							<span>
-								Colorado
+								{portfolio.projectDetailLocation}
 							</span>
 						</div>
 						<div>
@@ -113,17 +110,12 @@
 								</svg>									
 							</i>
 							<span>
-								12 Month Build
+								{portfolio.projectDetailTimeframe}
 							</span>
 						</div>
 					</div>
 					<div class="about-property__content__paragraph">
-						<p>
-							The Modern Mountain White Brown home offers a spacious and stylish major house remodel. Notice the lines of sight from different positions of the photographer, and how rooms are separated yet easily accessible with interesting angles.							
-						</p>
-						<p>
-							The Modern Mountain White Brown home offers a spacious and stylish major house remodel. Notice the lines of sight from different positions of the photographer, and how rooms are separated yet easily accessible with interesting angles.							
-						</p>
+						{@html portfolio.projectDetails}
 					</div>
 				</div>
 
@@ -132,26 +124,22 @@
 		</Row>
 	</Container>
 </section>
-<section class="fireplace section--bannerOnly" style="--lrbg: url({firePlace})"></section>
-<Testimonial testimonial="The opulent fireplace was the centerpiece of the grand living room, radiating warmth and elegance throughout the sprawling mansion." />
-<section class="living-room section--bannerOnly" style="--lrbg: url({livingRoom})"></section>
-<Testimonial testimonial="The living room's grandeur was accentuated by its expansive windows, which offered an unobstructed view of the snow-capped mountainscape, while the expensive home decors added a touch of elegance and sophistication to the already magnificent space" />
-<section class="lv-thropy section--bannerOnly" style="--lrbg: url({lvThropy})"></section>
-<Testimonial testimonial="Lifting and opening the architecture of a home with natural elements" />
-
+{#each portfolio.bannerQuote as bannerQuote}
+<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
+<Testimonial testimonial="{bannerQuote.quote}" />
+{/each}
+{/if}
 <section class="portfolio-cta">
     <Container>
         <Row>
             <Col class="text-center ">
                 <div class="portfolio-cta__content">
-                    <h2>Experience Living your Dreams</h2>       
-					<p>
-						This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property. 						
-					</p>          
+                    <h2>{portfolio.ctaHeading}</h2>       
+					{@html portfolio.content}         
                 </div>
                 <div class="portfolio-cta__btns">
-                    <a href="#" class="btn btn-secondary">Talk to Us</a>
-                    <a href="#" class="btn btn-inverted">Back to Portfolio</a>
+                    <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
+                    <a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a>
                 </div>                   
             </Col>
         </Row>
@@ -162,7 +150,7 @@
 	<Container>
 		<Row>
 			<Col md="12">
-				<h2>Experience Living Your Dreams</h2>
+				<h2>{portfolio.relatedPortfolioHeading}</h2>
 			</Col>			
 			{#each rPortfolios as rPortfolio, index}
 				<Col>
@@ -297,21 +285,9 @@
 			}
 		}
 		&__paragraph{
-			display: flex;
-			flex-wrap: wrap;
-			p{
-				width: 50%;
-				padding: 0 3rem;
-				line-height: 2;
-				@include media-max(sm){
-					width: 100%;
-					padding: 0;
-				}
-				&:last-child{
-					@include media-max(sm){
-						margin-bottom: 0;
-					}						
-				}
+			column-count: 2;
+			@include media-max(sm){
+				column-count: 1;
 			}
 		}
 	}
@@ -379,9 +355,11 @@
 	&__article{
 		overflow: hidden;
 		position: relative;
+		height: 50vh;
         img{
             transition: 0.5s;
 			object-fit: cover;
+			height: 100%;
         }         
         &:hover{
             img{
