@@ -1,7 +1,6 @@
 @import 'vars';
-@import 'mixins.scss';
+@import 'mixins';
 @import 'flickity/css/flickity.css';
-
 *{
     font-family: $primary-font;
 }
@@ -114,7 +113,7 @@ img{
         opacity: 1;
         max-width: 80%;
         margin: auto;
-        border:2px solid #D8D7D7;
+        border:0.075rem solid #D8D7D7;
     }
 }
 .justify-content-center{
@@ -689,5 +688,10 @@ header{
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
+    }
+    @include media-max(sm){
+        .col-md-4:nth-child(2){
+            background-image: unset;
+        }
     }
 }

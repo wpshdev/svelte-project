@@ -14,7 +14,7 @@
     <p>{data.data.attributes.Subheading}</p>
 </div>
 <section>
-    <Container class="mw-1000">
+    <Container class="mw-1000 h-text">
         <h2 class="text-center mb-5">{data.data.attributes.Heading}</h2>
         {@html data.data.attributes.Content}
     </Container>
@@ -23,5 +23,15 @@
 <style lang="scss">
 :global(p){
     line-height: 1.7rem !important;
+}
+:global(.h-text){
+    :global(h3){
+        padding-bottom: 0.971rem;
+    }     
+}
+:global(.image){
+    :global(img){
+        height: 1.2rem;
+    }
 }
 </style>
