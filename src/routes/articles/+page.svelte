@@ -4,9 +4,10 @@
     import Cta from '$lib/components/layout/Cta.svelte';
     export let data;
     import blogempty from "$lib/img/blog-empty.svg";
+	import PageBanner from '$lib/components/layout/PageBanner.svelte';
+	import Animate from '$lib/components/Animate.svelte';
     let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
-    console.log(data);
     let title = data.page.data.attributes.title;
     let items = blogs;
   let currentPage = 1;
@@ -17,10 +18,8 @@
 	<title>{title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<div class="cover" style="background-image: url({url}{data.page.data.attributes.Cover.data[0].attributes.formats.large.url});">
-    <h2 class="pfont">{data.page.data.attributes.title}</h2>
-    <p class="pfont">{data.page.data.attributes.Subheading}</p>
-</div>
+
+<PageBanner title="{data.page.data.attributes.title}" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.formats.large.url}"/>
 <section>
     <Container>
         <Row>
@@ -44,27 +43,32 @@
         {#each paginatedBlogs as blog,i (blog.id)}
         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''}">
             <Col md="7" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
-                <div class="blogsection7 easein-img">
-                {#if blog.attributes.featuredimage.data != null}
-                    {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                        <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
-                    {:else}
-                        <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
-                    {/if}
-                {:else}
-                    <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
-                {/if}
-                </div>
+                <Animate>
+                    <div class="blogsection7 easein-img">
+                        {#if blog.attributes.featuredimage.data != null}
+                            {#if blog.attributes.featuredimage.data.attributes.formats != null}
+                                <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
+                            {:else}
+                                <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                            {/if}
+                        {:else}
+                            <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                        {/if}
+                    </div>
+                </Animate>
             </Col>
             <Col md="5" style="padding:20px 0;">
-                <div class="blogsection5">
-                    <div>
-                        <span>Vail, Colorado | 09 Apr 2023 · 2 min read</span>
-                        <h2>{blog.attributes.title}</h2>
-                        <p>{blog.attributes.shorttext}</p>
+                <Animate>
+                    <div class="blogsection5">
+                        <div>
+                            <span>Vail, Colorado | 09 Apr 2023 · 2 min read</span>
+                            <h2>{blog.attributes.title}</h2>
+                            <p>{blog.attributes.shorttext}</p>
+                        </div>
+                        <a class="btn mt-3 btn-secondary" href="/articles/{blog.attributes.slug}">Read More</a>
                     </div>
-                    <a class="btn mt-3 btn-secondary" href="/articles/{blog.attributes.slug}">Read More</a>
-                </div>
+                </Animate>
+
             </Col>
             <!-- </a> -->
         

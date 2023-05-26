@@ -4,7 +4,7 @@
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
 	// import { fade, fly } from 'svelte/transition';
 	// import { onMount } from "svelte";
-	// import Animate from "$lib/components/Animate.svelte";
+	import Animate from "$lib/components/Animate.svelte";
 	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
 	// import livingRoom from "$lib/img/living-room.jpg";		
@@ -59,7 +59,7 @@
         }
         }
 	}
-	// console.log()
+	console.log(portfolio.isFeatured);
 </script>
 
 <svelte:head>
@@ -68,160 +68,170 @@
 </svelte:head>
 
 <section class="portfolio-gallery" >
-	<Container>
-		<Row>
-			<Col class="text-center">
-				<div class="portfolio-gallery__content">
-					<span>Project</span>
-					<h1 class="h2">{portfolio.title}</h1>
-					{@html portfolio.content ? portfolio.content : ""}
-				</div>
-			</Col>
-		</Row>
-		<Row class="portfolio-gallery__slider">
-			<PortfolioCarousel {images} />
-		</Row>		
-	</Container>
+	<Animate>
+		<Container>
+			<Row>
+				<Col class="text-center">
+					<div class="portfolio-gallery__content">
+						<span>Project</span>
+						<h1 class="h2">{portfolio.title}</h1>
+						{@html portfolio.content ? portfolio.content : ""}
+					</div>
+				</Col>
+			</Row>
+			<Row class="portfolio-gallery__slider">
+				<PortfolioCarousel {images} />
+			</Row>		
+		</Container>
+	</Animate>
 </section>
 {#if portfolio.isFeatured}
 <section class="about-property">
-	<Container>
-		<Row>
-			<Col><h2>{portfolio.projectDetailHeading}</h2></Col>
-		</Row>
-		<Row>
-			<Col md="12">
-				<div class="about-property__content">
-					<div class="about-property__content__heading">
-						<div>
-							<i>
-								<svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M15.6096 37.8677C20.0675 33.9757 23.5067 30.1012 25.927 26.2444C28.3473 22.3875 29.5575 19.1275 29.5575 16.4644C29.5575 12.2585 28.224 8.8114 25.5571 6.12313C22.8901 3.43486 19.5749 2.09072 15.6115 2.09072C11.648 2.09072 8.33983 3.43541 5.68687 6.12478C3.03387 8.81415 1.70737 12.2637 1.70737 16.4733C1.70737 19.1389 2.92251 22.398 5.35279 26.2507C7.78308 30.1033 11.202 33.9757 15.6096 37.8677ZM15.6096 39.9999C10.3993 35.391 6.51964 31.1032 3.97077 27.1365C1.4219 23.1698 0.147461 19.6073 0.147461 16.4492C0.147461 11.5999 1.70689 7.73451 4.82575 4.85301C7.9446 1.97151 11.5414 0.530762 15.6161 0.530762C19.6907 0.530762 23.293 1.97167 26.4228 4.85348C29.5526 7.73529 31.1175 11.602 31.1175 16.4537C31.1175 19.6055 29.8354 23.1656 27.2713 27.134C24.7072 31.1024 20.8199 35.391 15.6096 39.9999ZM10.6397 21.5153H13.6304V16.3585H17.6345V21.5153H20.6252V13.2228L15.6096 9.95987L10.6397 13.2228V21.5153Z" fill="#00ADEE"/>
-								</svg>
-							</i>
-							<span>
-								{portfolio.projectDetailLocation}
-							</span>
+	<Animate>
+		<Container>
+			<Row>
+				<Col><h2>{portfolio.projectDetailHeading}</h2></Col>
+			</Row>
+			<Row>
+				<Col md="12">
+					<div class="about-property__content">
+						<div class="about-property__content__heading">
+							<div>
+								<i>
+									<svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M15.6096 37.8677C20.0675 33.9757 23.5067 30.1012 25.927 26.2444C28.3473 22.3875 29.5575 19.1275 29.5575 16.4644C29.5575 12.2585 28.224 8.8114 25.5571 6.12313C22.8901 3.43486 19.5749 2.09072 15.6115 2.09072C11.648 2.09072 8.33983 3.43541 5.68687 6.12478C3.03387 8.81415 1.70737 12.2637 1.70737 16.4733C1.70737 19.1389 2.92251 22.398 5.35279 26.2507C7.78308 30.1033 11.202 33.9757 15.6096 37.8677ZM15.6096 39.9999C10.3993 35.391 6.51964 31.1032 3.97077 27.1365C1.4219 23.1698 0.147461 19.6073 0.147461 16.4492C0.147461 11.5999 1.70689 7.73451 4.82575 4.85301C7.9446 1.97151 11.5414 0.530762 15.6161 0.530762C19.6907 0.530762 23.293 1.97167 26.4228 4.85348C29.5526 7.73529 31.1175 11.602 31.1175 16.4537C31.1175 19.6055 29.8354 23.1656 27.2713 27.134C24.7072 31.1024 20.8199 35.391 15.6096 39.9999ZM10.6397 21.5153H13.6304V16.3585H17.6345V21.5153H20.6252V13.2228L15.6096 9.95987L10.6397 13.2228V21.5153Z" fill="#00ADEE"/>
+									</svg>
+								</i>
+								<span>
+									{portfolio.projectDetailLocation}
+								</span>
+							</div>
+							<div>
+								<i>
+									<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M27.9993 28.4985L19.8204 20.3196V10.2102H21.5043V19.6804L29.1855 27.3616L27.9993 28.4985ZM2.81702 29.1785C2.14492 27.9186 1.62726 26.5791 1.26405 25.1598C0.900837 23.7405 0.692052 22.293 0.637695 20.8173H2.30009C2.35586 22.1471 2.56107 23.4384 2.91573 24.6911C3.27035 25.9438 3.7401 27.1672 4.32498 28.3612L2.81702 29.1785ZM0.637695 19.1334C0.692052 17.682 0.907994 16.2466 1.28552 14.8273C1.66304 13.4081 2.19929 12.0378 2.89426 10.7164L4.32498 11.5616C3.72151 12.7556 3.24712 13.9929 2.90179 15.2735C2.55642 16.554 2.35586 17.8407 2.30009 19.1334H0.637695ZM9.92339 36.9391C8.64786 36.1068 7.48099 35.1826 6.42277 34.1666C5.36459 33.1507 4.43795 31.9884 3.64286 30.6799L5.13577 29.7919C5.82504 30.9259 6.65267 31.9795 7.61864 32.9526C8.58458 33.9257 9.6417 34.7569 10.79 35.4462L9.92339 36.9391ZM5.13577 10.103L3.65574 9.2857C4.4508 8.03876 5.38244 6.88833 6.45065 5.83443C7.51887 4.78053 8.67645 3.85603 9.92339 3.06093L10.79 4.46165C9.65601 5.21239 8.60962 6.06502 7.65082 7.01954C6.69199 7.97406 5.85364 9.00187 5.13577 10.103ZM19.8204 40C18.3361 39.9456 16.8843 39.7297 15.465 39.3522C14.0458 38.9746 12.6919 38.4384 11.4035 37.7434L12.2486 36.3127C13.4098 36.9162 14.6306 37.3906 15.9112 37.7359C17.1917 38.0813 18.4948 38.2818 19.8204 38.3376V40ZM12.2486 3.6444L11.4035 2.20721C12.6919 1.54514 14.0458 1.02535 15.465 0.647824C16.8843 0.270298 18.3361 0.0543571 19.8204 0V1.61309C18.4948 1.70173 17.1917 1.91873 15.9112 2.26409C14.6306 2.60942 13.4098 3.06952 12.2486 3.6444ZM21.5043 40V38.3376C22.797 38.2818 24.0836 38.0813 25.3642 37.7359C26.6448 37.3906 27.8821 36.9162 29.0761 36.3127L29.9213 37.7434C28.5999 38.4384 27.2296 38.9746 25.8104 39.3522C24.3911 39.7297 22.9557 39.9456 21.5043 40ZM29.0761 3.6444C27.8821 3.06952 26.6448 2.60942 25.3642 2.26409C24.0836 1.91873 22.797 1.70173 21.5043 1.61309V0C22.9557 0.0543571 24.3911 0.268142 25.8104 0.641355C27.2296 1.0146 28.5999 1.53656 29.9213 2.20721L29.0761 3.6444ZM31.352 36.9391L30.5347 35.4462C31.6358 34.7569 32.6636 33.935 33.6181 32.9805C34.5727 32.0259 35.4253 30.9817 36.176 29.8477L37.5768 30.7143C36.7817 31.9612 35.8572 33.1081 34.8033 34.1549C33.7494 35.2016 32.5989 36.1297 31.352 36.9391ZM36.1482 10.0815C35.4303 8.94755 34.5906 7.91151 33.6289 6.97342C32.6672 6.03533 31.6358 5.19808 30.5347 4.46165L31.352 3.06093C32.5989 3.87031 33.7437 4.79123 34.7861 5.82372C35.8286 6.85617 36.7545 7.99587 37.5639 9.24281L36.1482 10.0815ZM39.0246 19.1334C38.936 17.7892 38.7097 16.4897 38.3457 15.2349C37.9818 13.9801 37.5053 12.7485 36.9161 11.5401L38.4305 10.6735C39.0869 11.9949 39.6052 13.3652 39.9856 14.7844C40.366 16.2037 40.5833 17.6534 40.6377 19.1334H39.0246ZM38.4305 29.2342L36.9933 28.417C37.5682 27.2372 38.0283 26.0117 38.3736 24.7404C38.719 23.4692 38.936 22.1615 39.0246 20.8173H40.6377C40.5833 22.3016 40.3674 23.7534 39.9899 25.1727C39.6123 26.5919 39.0926 27.9458 38.4305 29.2342Z" fill="#00ADEE"/>
+									</svg>									
+								</i>
+								<span>
+									{portfolio.projectDetailTimeframe}
+								</span>
+							</div>
 						</div>
-						<div>
-							<i>
-								<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M27.9993 28.4985L19.8204 20.3196V10.2102H21.5043V19.6804L29.1855 27.3616L27.9993 28.4985ZM2.81702 29.1785C2.14492 27.9186 1.62726 26.5791 1.26405 25.1598C0.900837 23.7405 0.692052 22.293 0.637695 20.8173H2.30009C2.35586 22.1471 2.56107 23.4384 2.91573 24.6911C3.27035 25.9438 3.7401 27.1672 4.32498 28.3612L2.81702 29.1785ZM0.637695 19.1334C0.692052 17.682 0.907994 16.2466 1.28552 14.8273C1.66304 13.4081 2.19929 12.0378 2.89426 10.7164L4.32498 11.5616C3.72151 12.7556 3.24712 13.9929 2.90179 15.2735C2.55642 16.554 2.35586 17.8407 2.30009 19.1334H0.637695ZM9.92339 36.9391C8.64786 36.1068 7.48099 35.1826 6.42277 34.1666C5.36459 33.1507 4.43795 31.9884 3.64286 30.6799L5.13577 29.7919C5.82504 30.9259 6.65267 31.9795 7.61864 32.9526C8.58458 33.9257 9.6417 34.7569 10.79 35.4462L9.92339 36.9391ZM5.13577 10.103L3.65574 9.2857C4.4508 8.03876 5.38244 6.88833 6.45065 5.83443C7.51887 4.78053 8.67645 3.85603 9.92339 3.06093L10.79 4.46165C9.65601 5.21239 8.60962 6.06502 7.65082 7.01954C6.69199 7.97406 5.85364 9.00187 5.13577 10.103ZM19.8204 40C18.3361 39.9456 16.8843 39.7297 15.465 39.3522C14.0458 38.9746 12.6919 38.4384 11.4035 37.7434L12.2486 36.3127C13.4098 36.9162 14.6306 37.3906 15.9112 37.7359C17.1917 38.0813 18.4948 38.2818 19.8204 38.3376V40ZM12.2486 3.6444L11.4035 2.20721C12.6919 1.54514 14.0458 1.02535 15.465 0.647824C16.8843 0.270298 18.3361 0.0543571 19.8204 0V1.61309C18.4948 1.70173 17.1917 1.91873 15.9112 2.26409C14.6306 2.60942 13.4098 3.06952 12.2486 3.6444ZM21.5043 40V38.3376C22.797 38.2818 24.0836 38.0813 25.3642 37.7359C26.6448 37.3906 27.8821 36.9162 29.0761 36.3127L29.9213 37.7434C28.5999 38.4384 27.2296 38.9746 25.8104 39.3522C24.3911 39.7297 22.9557 39.9456 21.5043 40ZM29.0761 3.6444C27.8821 3.06952 26.6448 2.60942 25.3642 2.26409C24.0836 1.91873 22.797 1.70173 21.5043 1.61309V0C22.9557 0.0543571 24.3911 0.268142 25.8104 0.641355C27.2296 1.0146 28.5999 1.53656 29.9213 2.20721L29.0761 3.6444ZM31.352 36.9391L30.5347 35.4462C31.6358 34.7569 32.6636 33.935 33.6181 32.9805C34.5727 32.0259 35.4253 30.9817 36.176 29.8477L37.5768 30.7143C36.7817 31.9612 35.8572 33.1081 34.8033 34.1549C33.7494 35.2016 32.5989 36.1297 31.352 36.9391ZM36.1482 10.0815C35.4303 8.94755 34.5906 7.91151 33.6289 6.97342C32.6672 6.03533 31.6358 5.19808 30.5347 4.46165L31.352 3.06093C32.5989 3.87031 33.7437 4.79123 34.7861 5.82372C35.8286 6.85617 36.7545 7.99587 37.5639 9.24281L36.1482 10.0815ZM39.0246 19.1334C38.936 17.7892 38.7097 16.4897 38.3457 15.2349C37.9818 13.9801 37.5053 12.7485 36.9161 11.5401L38.4305 10.6735C39.0869 11.9949 39.6052 13.3652 39.9856 14.7844C40.366 16.2037 40.5833 17.6534 40.6377 19.1334H39.0246ZM38.4305 29.2342L36.9933 28.417C37.5682 27.2372 38.0283 26.0117 38.3736 24.7404C38.719 23.4692 38.936 22.1615 39.0246 20.8173H40.6377C40.5833 22.3016 40.3674 23.7534 39.9899 25.1727C39.6123 26.5919 39.0926 27.9458 38.4305 29.2342Z" fill="#00ADEE"/>
-								</svg>									
-							</i>
-							<span>
-								{portfolio.projectDetailTimeframe}
-							</span>
+						<div class="about-property__content__paragraph">
+							{@html portfolio.projectDetails}
 						</div>
 					</div>
-					<div class="about-property__content__paragraph">
-						{@html portfolio.projectDetails}
-					</div>
-				</div>
-
-				
-			</Col>
-		</Row>
-	</Container>
+				</Col>
+			</Row>
+		</Container>
+	</Animate>
 </section>
 {#each portfolio.bannerQuote as bannerQuote}
-<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
-<Testimonial testimonial="{bannerQuote.quote}" />
+	<Animate>
+		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
+		<Testimonial testimonial="{bannerQuote.quote}" />
+	</Animate>
 {/each}
-{/if}
-<section class="portfolio-cta">
-    <Container>
-        <Row>
-            <Col class="text-center ">
-                <div class="portfolio-cta__content">
-                    <h2>{portfolio.ctaHeading}</h2>       
-					{@html portfolio.content}         
-                </div>
-                <div class="portfolio-cta__btns">
-                    <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
-                    <a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a>
-                </div>                   
-            </Col>
-        </Row>
-    </Container>
-</section>
 
-<section class="related">
-	<Container>
-		<Row>
-			<Col md="12">
-				<h2>{portfolio.relatedPortfolioHeading}</h2>
-			</Col>			
-			{#each rPortfolios as rPortfolio, index}
-				<Col>
+<section class="portfolio-cta">
+	<Animate>
+		<Container>
+			<Row>
+				<Col class="text-center ">
+					<div class="portfolio-cta__content">
+						<h2>{portfolio.ctaHeading}</h2>       
+						{@html portfolio.content}         
+					</div>
+					<div class="portfolio-cta__btns">
+						<a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
+						<a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a>
+					</div>                   
+				</Col>
+			</Row>
+		</Container>
+	</Animate>
+</section>
+{/if}
+<section class="related {!portfolio.isFeatured ? "my-0" : ""}">
+	<Animate>
+		<Container>
+			<Row>
+				<Col md="12">
+					<h2>{portfolio.relatedPortfolioHeading ? portfolio.relatedPortfolioHeading : "Explore our Projects..."}</h2>
+				</Col>			
+				{#each rPortfolios as rPortfolio, index}
+					<Col>
+						<div class="related__article">
+							<a href="{rPortfolio.attributes.slug}">
+								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+								<div class="related__article__text">
+									<span>0{index+1}</span>
+									{rPortfolio.attributes.title}
+								</div>
+							</a>
+						</div>
+					</Col>
+				{/each}
+				<!-- <Col md="6">
 					<div class="related__article">
-						<a href="{rPortfolio.attributes.slug}">
-							<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+						<a href="#">
+							<img src="{vailWood}" alt="vail">
 							<div class="related__article__text">
-								<span>0{index+1}</span>
-								{rPortfolio.attributes.title}
+								<span>02</span>
+								Cordillera Sunsets
 							</div>
 						</a>
 					</div>
-				</Col>
-			{/each}
-			<!-- <Col md="6">
-				<div class="related__article">
-					<a href="#">
-						<img src="{vailWood}" alt="vail">
-						<div class="related__article__text">
-							<span>02</span>
-							Cordillera Sunsets
-						</div>
-					</a>
-				</div>
-			</Col>		 -->
-		</Row>
-	</Container>
+				</Col>		 -->
+			</Row>
+		</Container>
+	</Animate>
 </section>
 
 <section class="contact" style="--contactBG: url({contactBG})">
-	<Container>
-		<Row>
-			<Col md="6">
-				<div class="contact__content">
-					<div class="contact__content__wrapper">
-						<h2>Ready to Start<br> your Dream Project?</h2>
-						<p>Let's discuss it!</p>
+	<Animate>
+		<Container>
+			<Row>
+				<Col md="6">
+					<div class="contact__content">
+						<div class="contact__content__wrapper">
+							<h2>Ready to Start<br> your Dream Project?</h2>
+							<p>Let's discuss it!</p>
+						</div>
 					</div>
-				</div>
-			</Col>
-			<Col md="6">
-				<div class="contact__form">
-					<Form method="post">
-						<FormGroup class="input-icon-box">
-							<Input class="input-user" placeholder="Full Name" bind:value={name} />
-							<div class="input-icon input-icon-user"></div>
-						</FormGroup>
-						<FormGroup class="input-icon-box">
-							<Input class="input-email" placeholder="Email address" bind:value={email} />
-							<div class="input-icon input-icon-email"></div>
-						</FormGroup>
-						<FormGroup class="input-icon-box">
-							<Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
-							<div class="input-icon input-icon-phone"></div>
-						</FormGroup>
-						<FormGroup>
-							<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
-						</FormGroup>
-						<Button type="btn is-primary"  on:click={doContact}>Send</Button>
-					</Form>
-				</div>
-                {result}
-			</Col>			
-		</Row>
-	</Container>
+				</Col>
+				<Col md="6">
+					<div class="contact__form">
+						<Form method="post">
+							<FormGroup class="input-icon-box">
+								<Input class="input-user" placeholder="Full Name" bind:value={name} />
+								<div class="input-icon input-icon-user"></div>
+							</FormGroup>
+							<FormGroup class="input-icon-box">
+								<Input class="input-email" placeholder="Email address" bind:value={email} />
+								<div class="input-icon input-icon-email"></div>
+							</FormGroup>
+							<FormGroup class="input-icon-box">
+								<Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
+								<div class="input-icon input-icon-phone"></div>
+							</FormGroup>
+							<FormGroup>
+								<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
+							</FormGroup>
+							<Button type="btn is-primary"  on:click={doContact}>Send</Button>
+						</Form>
+					</div>
+					{result}
+				</Col>			
+			</Row>
+		</Container>
+	</Animate>
 </section>
 
 <style lang="scss">
 
 .portfolio-gallery{
-    padding: 10vw 0;
+    padding: 8vw 0 10vw;
     margin-top: 0;
 	background-color: #EFEFF0;
 	margin-bottom: 0;
@@ -230,6 +240,8 @@
 		padding: 20vh 0 0;
 	}	
   &__content{
+	padding-top: 4vw;
+	border-top: 1px solid #ACA7A7;
     span{
       color: $primary-color;
     }

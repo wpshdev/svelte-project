@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
     import { LazyImage } from 'svelte-lazy-image';
+	import Animate from "$lib/components/Animate.svelte";
+	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
@@ -10,72 +12,78 @@
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<div class="cover" style="background-image: url({domain}{data.data.attributes.Cover.data.attributes.formats.large.url});">
-    <h2 class="pfont">{data.data.attributes.title}</h2>
-    <p class="pfont">{data.data.attributes.Subheading}</p>
-</div>
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large.url}"/>
 <section class="our-team">
-	<Container>
-		<Row>
-			<Col md="10" class="mx-auto">
-                <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
-                <p class="two-columns">{@html ourTeam.content}</p>
-                <div>
-                    <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
-                </div>
-			</Col>
-		</Row>
-	</Container>
+    <Animate>
+        <Container>
+            <Row>
+                <Col md="10" class="mx-auto">
+                    <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
+                    <p class="two-columns">{@html ourTeam.content}</p>
+                    <div>
+                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    </Animate>
 </section>
 <section class="owner">
-    <Container>
-        <Row noGutters>
-            <Col md=6 class="tm-img">
-                <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
-            <div class="tm-box wtc">
-                <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h3>
-                <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>
-            </div>
-            </Col>
-            <Col md=6 class="owner-quote-container">
-            <div class="owner-quote"><h3 class="stc line-height-2 text-center">{@html ourTeam.ownerquote}</h3></div>
-            </Col>
-        </Row>
-    </Container>
+    <Animate>
+        <Container>
+            <Row noGutters>
+                <Col md=6 class="tm-img">
+                    <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
+                <div class="tm-box wtc">
+                    <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h3>
+                    <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>
+                </div>
+                </Col>
+                <Col md=6 class="owner-quote-container">
+                <div class="owner-quote"><h3 class="stc line-height-2 text-center">{@html ourTeam.ownerquote}</h3></div>
+                </Col>
+            </Row>
+        </Container>
+    </Animate>
 </section>
 <section class="team-members">
-<Container>
-    <Row>
-        <h2 class="sfont ptc mb-5 text-center">{ourTeam.title}</h2>
-        <Col md={{ size: 8, offset: 2 }}>
-        <Row>
-            {#each ourTeam.team_members.data as member}
-                <Col md="6">
-                    <a href="/our-team/{member.attributes.slug}">
-                    <div class="our-team__member">
-                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                        <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
-                            <!-- our-team__member_caption class removed -->
-                            <h5 class="pfont">{member.attributes.name}</h5>
-                            <span class="pfont gtc">{member.attributes.position}</span>
-                        </div>
-                    </div>
-                    </a>
-                </Col>                    
-            {/each}                                          
-        </Row>
-    </Col>
-</Row>
-</Container>
-</section>
-<section>
     <Container>
         <Row>
-            <Col md="12">
-               <h2 class="text-center">{ourTeam.para2}</h2>
+            <h2 class="sfont ptc mb-5 text-center">{ourTeam.title}</h2>
+            <Col md={{ size: 8, offset: 2 }}>
+                <Row>
+                    {#each ourTeam.team_members.data as member}
+                    
+                        <Col md="6">
+                            <Animate>
+                                <a href="/our-team/{member.attributes.slug}">
+                                    <div class="our-team__member">
+                                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                                        <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
+                                            <!-- our-team__member_caption class removed -->
+                                            <h5 class="pfont">{member.attributes.name}</h5>
+                                            <span class="pfont gtc">{member.attributes.position}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </Animate>
+                        </Col>                    
+                    {/each}                                          
+                </Row>
             </Col>
         </Row>
     </Container>
+</section>
+<section>
+    <Animate>
+        <Container>
+            <Row>
+                <Col md="12">
+                   <h2 class="text-center">{ourTeam.para2}</h2>
+                </Col>
+            </Row>
+        </Container>
+    </Animate>
 </section>
 
 <style lang="scss">

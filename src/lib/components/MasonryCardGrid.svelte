@@ -16,7 +16,6 @@
     const cache = new Map();
     
     export let propCount;
-    console.log(propCount);
     async function getProjects(id) {
         if (cache.has(id)) {
             projects = cache.get(id);
@@ -84,7 +83,7 @@
             text-align: center;  
             height: 60vh;
             @include media-max(sm){
-                height: 30vh;
+                height: 20vh;
             }
             a{
                 display: block;
