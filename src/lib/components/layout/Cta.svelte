@@ -48,7 +48,10 @@
 		margin: 0;
 		background-image: var(--cta-banner);
 		background-size: cover;
-		
+		@include media-max(sm){
+			padding-left: 0;
+			padding-right: 0;
+		}		
 		&__container{
 			height: 70vh;
 			width: 100%;

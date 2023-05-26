@@ -60,7 +60,10 @@
 		background-color: #F2F2F2;
 		padding: 4rem 0;
 		margin-bottom: 0;
-
+		@include media-max(sm){
+			padding-left: 0;
+			padding-right: 0;
+		}
 		&__pre-heading{
 			color: $primary-color;
 			margin-bottom: 2rem;

@@ -588,6 +588,9 @@
 				font-family: $primary-font;
 				margin: 1rem 0 2rem;
 				text-transform: uppercase;
+				@include media-max(sm){
+					font-size: 2rem;
+				}
 			}
 			.btn{
 				background-color: #1E2D39;
@@ -598,6 +601,9 @@
 	.featured-projects{
 		margin: 10rem 0;
 		overflow: hidden;
+		@include media-max(sm){
+			margin: 5rem 0;
+		}
 	}
 
 	.reputation{
@@ -877,6 +883,12 @@
 
 	.img-section{
 		margin: 5rem 0;
+	}
+	section.m-0{
+		@include media-max(sm){
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 	
 	// .contact-form{
