@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
     import { LazyImage } from 'svelte-lazy-image';
+
 	import Animate from "$lib/components/Animate.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
+  import Contactform from "$lib/components/layout/Contactform.svelte";
+
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
@@ -74,18 +77,18 @@
         </Row>
     </Container>
 </section>
-<section>
-    <Animate>
-        <Container>
-            <Row>
-                <Col md="12">
-                   <h2 class="text-center">{ourTeam.para2}</h2>
-                </Col>
-            </Row>
-        </Container>
-    </Animate>
+<section class="ourteam5">
+   <Animate>
+    <Container>
+        <h4>{ourTeam.para2}</h4>
+        <h4>{ourTeam.para3}</h4>
+        <h4>{ourTeam.para4}</h4>
+    </Container>
+  </Animate>
 </section>
-
+<Animate>
+  <Contactform/>
+</Animate>
 <style lang="scss">
     section{
         margin: 10rem 0;
@@ -174,6 +177,20 @@
         @include media-max(sm){
             padding: 2rem 1rem;
         }
+    }
+}
+.ourteam5{
+    text-align: center;
+    max-width: 960px;
+    margin-left:auto;
+    margin-right: auto;
+    h4{
+        font-family: $primary-font;
+        font-weight: 400;
+        padding-bottom: 2rem;
+    }
+    h4:last-child{
+        text-align: right;
     }
 }
 </style>

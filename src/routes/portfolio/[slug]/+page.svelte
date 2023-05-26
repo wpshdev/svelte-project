@@ -1,17 +1,18 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
-    import { Form, FormGroup, Input, Button } from 'sveltestrap';
+    // import { Form, FormGroup, Input, Button } from 'sveltestrap';
 	// import { fade, fly } from 'svelte/transition';
 	// import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
 	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
-	// import livingRoom from "$lib/img/living-room.jpg";		
-	// import lvThropy from "$lib/img/lvThropy.jpg";	
+	import Contactform from "$lib/components/layout/Contactform.svelte";
+	// import livingRoom from "$lib/img/living-room.jpg";
+	// import lvThropy from "$lib/img/lvThropy.jpg";
 	// import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
-	import contactBG from "$lib/img/ContactBG.jpg";
+	// import contactBG from "$lib/img/ContactBG.jpg";
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	
  	const portfolio = data.portfolio.data[0].attributes;
@@ -188,45 +189,10 @@
 	</Animate>
 </section>
 
-<section class="contact" style="--contactBG: url({contactBG})">
-	<Animate>
-		<Container>
-			<Row>
-				<Col md="6">
-					<div class="contact__content">
-						<div class="contact__content__wrapper">
-							<h2>Ready to Start<br> your Dream Project?</h2>
-							<p>Let's discuss it!</p>
-						</div>
-					</div>
-				</Col>
-				<Col md="6">
-					<div class="contact__form">
-						<Form method="post">
-							<FormGroup class="input-icon-box">
-								<Input class="input-user" placeholder="Full Name" bind:value={name} />
-								<div class="input-icon input-icon-user"></div>
-							</FormGroup>
-							<FormGroup class="input-icon-box">
-								<Input class="input-email" placeholder="Email address" bind:value={email} />
-								<div class="input-icon input-icon-email"></div>
-							</FormGroup>
-							<FormGroup class="input-icon-box">
-								<Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
-								<div class="input-icon input-icon-phone"></div>
-							</FormGroup>
-							<FormGroup>
-								<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
-							</FormGroup>
-							<Button type="btn is-primary"  on:click={doContact}>Send</Button>
-						</Form>
-					</div>
-					{result}
-				</Col>			
-			</Row>
-		</Container>
-	</Animate>
-</section>
+
+<Animate>
+  <Contactform/>
+<Animate>
 
 <style lang="scss">
 
@@ -408,27 +374,27 @@
 	}
 }
 
-.contact{
-	padding: 10rem 0;
-	background-image: var(--contactBG);
-	background-size: cover;
-	margin: 0;
-	&__content{
-		display: flex;
-		height: 100%;
-		align-items: end;		
-		&__wrapper{
-			h2{
-				margin-bottom: 2rem;
-			}	
-		}
-	}
-	&__form{
-		:global(#yourMessage){
-			height: 15rem;
-		}
-	}
-}
+// .contact{
+// 	padding: 10rem 0;
+// 	background-image: var(--contactBG);
+// 	background-size: cover;
+// 	margin: 0;
+// 	&__content{
+// 		display: flex;
+// 		height: 100%;
+// 		align-items: end;		
+// 		&__wrapper{
+// 			h2{
+// 				margin-bottom: 2rem;
+// 			}	
+// 		}
+// 	}
+// 	&__form{
+// 		:global(#yourMessage){
+// 			height: 15rem;
+// 		}
+// 	}
+// }
 
 
 </style>

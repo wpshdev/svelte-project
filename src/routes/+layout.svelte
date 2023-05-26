@@ -19,7 +19,7 @@
     </script>
     <svelte:head>
         <link rel="preconnect" href="https://strapi.ulfbuilt.com:1337/">
-        <script src="/flickity/flickity.pkgd.min.js" async></script>    
+        <script async src="/flickity/flickity.pkgd.min.js"></script>    
     </svelte:head>    
     <div class="z10 {isPortfolio($page.route.id)}">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
