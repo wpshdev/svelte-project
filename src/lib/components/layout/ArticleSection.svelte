@@ -35,7 +35,7 @@
 			</Row>
 			<Row>
 				<Col md="6" class="">
-					<img src="{domain}{insight.image.data.attributes.url}" alt="Stair">
+					<img src="{domain}{insight.image.data.attributes.formats.large.url}" alt="Stair">
 				</Col>
 				<Col md="6" class="my-auto">
 					<div class="insight__content">

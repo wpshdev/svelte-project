@@ -24,7 +24,7 @@
             <p class="ptc pb-5">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
         </div>
     </Container>
-        <div class="coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>   
+        <div class="coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url});"></div>   
 </div>
 <Container class="py-5">
     <h2>{title}</h2>
