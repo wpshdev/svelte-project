@@ -49,29 +49,33 @@
 	<Animate >
 		<Container>
 			<Row>
-				<Col class="text-center">
+				<Col xs="12" class="pb-4">
+					<h2 in:fly={{
+						delay: 1000,
+						duration: 2000,
+						y: 50								
+				}}>{home.homeBuilderHeading}</h2>
+				</Col>
+				<Col xs="12" md={{ size: 6, offset:3 }}>
 					<div class="loc-gallery__cwrapper" in:fly={{
 							delay: 500,
 							duration: 2000,
 							y: 50								
 					}} >
-						<h2 in:fly={{
-							delay: 1000,
+							<div class="h3" in:fly={{
+								delay: 1500,
+								duration: 2000,
+								y: 50								
+							}}>
+								{@html home.homeBuilderSubHeading}
+							</div>
+						<div in:fly={{
+							delay: 2000,
 							duration: 2000,
 							y: 50								
-					}}>{home.homeBuilderHeading}</h2>
-						<div class="h3" in:fly={{
-							delay: 1500,
-							duration: 2000,
-							y: 50								
-					}}>{@html home.homeBuilderSubHeading}</div>
-					<div in:fly={{
-						delay: 2000,
-						duration: 2000,
-						y: 50								
-					}} >
-						{@html home.homeBuilderParagraph}
-					</div>
+						}} >
+							{@html home.homeBuilderParagraph}
+						</div>
 					</div>
 				</Col>
 			</Row>
@@ -391,14 +395,17 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// margin:80rem 0;
-		&__cwrapper{
-			h2{
+		h2{
 				font-family: $secondary-font;
 				margin-bottom: 1rem;
 				color: $secondary-color;
 				margin-bottom: 3rem;
-			}
+				text-align: center;
+				@include media-max(sm){
+					text-align: left;
+				}
+			}		
+		&__cwrapper{
 			.h3{
 				text-transform: uppercase;
 				margin-bottom: 2rem;

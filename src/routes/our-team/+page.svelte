@@ -61,7 +61,7 @@
                             <Animate>
                                 <a href="/our-team/{member.attributes.slug}">
                                     <div class="our-team__member">
-                                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url}" alt="member">
                                         <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                                             <!-- our-team__member_caption class removed -->
                                             <h5 class="pfont">{member.attributes.name}</h5>

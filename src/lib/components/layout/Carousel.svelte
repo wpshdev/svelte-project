@@ -76,9 +76,17 @@ $: {
   </Col>	
   <Col md=9>
     <div class="slider-container">
-      {#each featuredProjects.data as project}
+      {#each featuredProjects.data as project, index}
         <div class="slider-container__carousel-cell">
-          <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+          <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+          <div class="slider-container__carousel-cell__text">
+            <span>{index + 1}</span>
+            {project.attributes.title}
+            <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              </i>
+          </div>        
         </div>
       {/each}
     </div>
@@ -133,18 +141,48 @@ $: {
   position: relative;
 
   &__carousel-cell {
-    width: 40%;
-    @include media-max(sm){
-      width: 80%;
-    }      
+    width: 45%;
+    position: relative;   
     height: auto;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
     box-sizing: border-box;
     height: 70vh;
     overflow: hidden;
     @include media-max(sm){
       height: 50vh;
-    }     
+      width: 80%;      
+    }   
+    &__text{
+            background-color: $secondary-color;
+            color: #fff;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 2;
+            bottom: 1rem;
+            left: 1rem;
+            width: 90%;
+            text-align: left;
+            @include media-max(sm){
+                margin: 0;
+                // font-size: 0.6rem;
+                width: 90%;
+                bottom: 0.5rem
+            } 
+            span{
+                color: $primary-color;
+                font-size: 1.2rem;
+                margin: 0 0.8rem 0;
+                @include media-max(sm){
+                    margin: 0;
+                    // font-size: 0.6rem;
+                }                
+            }
+            i{
+              position: absolute;
+              top: 20%;
+              right: 1rem;
+            }
+    }      
     img {
       display: block;
       width: auto;

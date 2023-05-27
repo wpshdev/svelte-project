@@ -13,7 +13,7 @@
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
-	// console.log(data.data.attributes.Banner.background.data.attributes.url);
+	// console.log(data.data.attributes.Banner.background.data.attributes.formats.large.url);
 </script>
 <svelte:head>
 	<title>{portfolio.title}</title>

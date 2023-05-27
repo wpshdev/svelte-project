@@ -90,7 +90,7 @@
         </Container>
     </Animate>
     <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.url})">
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large.url})">
         </div>  
     </Animate>
    <Animate>
