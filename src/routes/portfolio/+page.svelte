@@ -23,7 +23,7 @@
 
 
 <Animate>
-    <PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}"/>
+    <PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url}"/>
 </Animate>
 <section class="portfolio-masonry">
     <Animate>

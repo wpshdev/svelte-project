@@ -129,7 +129,7 @@
 </section>
 {#each portfolio.bannerQuote as bannerQuote}
 	<Animate>
-		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
+		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url})"></section>
 		<Testimonial testimonial="{bannerQuote.quote}" />
 	</Animate>
 {/each}
@@ -164,7 +164,7 @@
 					<Col>
 						<div class="related__article">
 							<a href="{rPortfolio.attributes.slug}">
-								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="related__article__text">
 									<span>0{index+1}</span>
 									{rPortfolio.attributes.title}
@@ -192,7 +192,7 @@
 
 <Animate>
   <Contactform/>
-<Animate>
+</Animate>
 
 <style lang="scss">
 

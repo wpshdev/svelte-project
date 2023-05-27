@@ -20,48 +20,21 @@
 	//import gsap from 'gsap';
 	// import { lazyload } from '$lib/lazyload.js'
 
-	onMount(() => {
-
-// window.addEventListener("scroll", (e) => {
-//     let scroll = window.scrollY;
-// 	const element = document.querySelector<HTMLElement>(".section--bannerOnly");
-// 	let elementY = element?.getBoundingClientRect();
-// 	let elementt = e.clientY - window.innerHeight / 2;
-//     console.log(elementt);
-// });
-
-	});
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
 	const home = data.data.attributes;
 	let propCount = 3;
 	let listener = {};
-	let featuredData = {
-
-	}
 
 	let activeTab = home.categories.data[0].id;
-
 	function handleTabClick(category) {
 		activeTab = category;
 	}
 
 	$: listener = {propCount , activeTab};
-
-	let innerWidth;
-
-	onMount(()=>{
-		innerWidth = window.innerWidth;
-	})
-
-	$: {
-		if(innerWidth){
-			
-		}
-	}
 	
 	let height;
-	console.log(home.ourProcessTopImage.data[0].attributes.url);
+	console.log(home);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -69,31 +42,6 @@
 	<title>{home.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-
-<!-- <section class="homebanner" style="--banner: url({banner})">
-	<Container>
-		<Row>
-			<Col sm={{ size: 12 }}>
-				<div class="homebanner__content">
-					<div class="homebanner__content__text">
-						<Animate section=".homebanner">
-						<h1 class="ml3"><TextTransition text="Building Excellence"  transitionDelay=600/></h1>
-						</Animate>
-					</div>
-					<Animate section=".homebanner">
-						<p class="homebanner__content__paragraph" in:fly={{
-							delay: 3500,
-							duration: 2000,
-							y: 50							
-						}}>Home Builder and Remodeler in Vail, Colorado</p>
-					</Animate>						
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section> -->
-
-<!-- <img use:lazyload="{home.topBanner.background.data.attributes.url}" > -->
 
 <PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.formats.large.url}" extraClass="homebanner" />
 
@@ -134,7 +82,7 @@
 
 
 <Animate>
-	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"  in:fly={{
+	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url})"  in:fly={{
 		delay: 500,
 		duration: 2000,
 		y: 50								
@@ -150,7 +98,7 @@
 							delay: 3000,
 							duration: 2000,
 							y: 50								
-					}} >what are you looking for?</h2>
+					}} >{home.categoryGalleryTabHeading}</h2>
 					<div class="categories__tabs">
 						<div class="categories__tabs__heading">
 							<ul in:fly={{
@@ -227,7 +175,7 @@
 </section>
 
 
-<section class="tnr" style="--tp-banner: url({tr})" > 
+<section class="tnr" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.formats.large.url})" > 
 	<Container>
 		<Row>
 			<Col>
@@ -276,7 +224,7 @@
 					</div>
 				</Col>
 				<Col md="4" class="my-auto" >
-					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
+					<img src="{domain}{home.reputation.image.data.attributes.formats.large.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
 						y: 50								
@@ -297,7 +245,7 @@
 						duration: 2000,
 						y: 50								
 				}} >
-						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					</div>
 				</Col>
 			</Row>
@@ -322,7 +270,7 @@
 						duration: 2000,
 						y: 50								
 				}} >
-						<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					</div>
 				</Col>
 			</Row>
@@ -356,7 +304,7 @@
 					</div>
 				</Col>
 				<Col md="4" class="my-auto">
-					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
+					<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
 						y: 50								

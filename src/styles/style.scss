@@ -290,6 +290,9 @@ header{
             a.nav-link{
                 color: #fff;
                 text-decoration: none;
+                &:hover, &:focus{
+                    background-color: rgba(242, 237, 237, 0.20);
+                }
             }            
         }
     }
@@ -454,7 +457,6 @@ header{
             min-width: 10rem;
             text-align: center;   
             a{
-                text-transform: uppercase;
                 &:hover{
                     color: $white-color;
                 }
@@ -462,6 +464,11 @@ header{
         }
         .dropdown.show{
             background-color: rgb(216 215 215 / 50%);
+            .dropdown-toggle{
+                &:hover, &:focus{
+                    background-color: unset;
+                }
+            }
         }
         .dropdown-menu{
             background-color: rgb(216 215 215 / 50%);
@@ -474,13 +481,15 @@ header{
             }
             .dropdown-item{
                 color: #fff;
-                
                 text-align: center;
+                &:hover,&:focus{
+                    background-color: rgba(242, 237, 237, 0.20);
+                }
             }
         }
     }
     .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
-        color: $secondary-color;
+        color: $primary-color;
     }      
 }
 .logo{
@@ -597,7 +606,7 @@ header{
     box-shadow: none !important;
 }
 .mx-10{
-    margin:8rem auto;
+    margin:5rem auto;
 }
 .height-100vh{
     max-height:100vh;

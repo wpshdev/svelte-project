@@ -7,7 +7,7 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
-    console.log(processData);
+    console.log(data)
 </script>
 
 <svelte:head>
@@ -15,7 +15,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <Animate>
-    <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.url}" />
+    <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
 </Animate>
 <section class="our-process">
     <Animate>
@@ -30,7 +30,7 @@
             </Row>
             <Row>
                 <Col class="md-12">
-                    <img src="{domain}{processData.section2image.data.attributes.url}" alt="{processData.section2image.data.attributes.alternativeText}"/>
+                    <img src="{domain}{processData.section2image.data.attributes.formats.large.url}" alt="{processData.section2image.data.attributes.alternativeText}"/>
                     <div class="our-process__paragraph mx-auto">
                         {@html processData.section2text}
                     </div>
@@ -53,7 +53,7 @@
         </Container>
     </Animate>
 </section>
-<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.url})"></section> 
+<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large.url})"></section> 
 <section class="phase">
     <Animate>
         <Container>
@@ -117,7 +117,7 @@
    </Animate>
 </section>
 <Animate>
-    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.url})">
+    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large.url})">
     </section>
 </Animate>
 
@@ -136,7 +136,7 @@
 </secton>
 
 <Animate>
-    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.url})"></section> 
+    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large.url})"></section> 
 </Animate>
 
 <section class="phase">
@@ -183,7 +183,7 @@
         </Container>
     </Animate>
     <Animate>
-        <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
+        <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.formats.large.url})">
         </div>   
     </Animate>
     <Animate>
@@ -217,7 +217,7 @@
         </Container>   
     </Animate>
     <Animate>
-        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.url})">
+        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large.url})">
         </div>   
     </Animate>
     <Animate>
