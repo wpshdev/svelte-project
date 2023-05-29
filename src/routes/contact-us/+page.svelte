@@ -87,7 +87,7 @@
 <div class="contact-box container-fluid">
     <Container>
         <Row>
-            <Col sm="12" md={{ size: 6, offset: 3 }} class="contact-form tbc wtc border-radius">
+            <Col sm="12" class="contact-form tbc wtc border-radius">
                 <h2 class="text-center pb-4">Connect with Us</h2>
                 <Form method="post">
                     <FormGroup class="input-icon-box">
