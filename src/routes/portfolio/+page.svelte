@@ -19,9 +19,6 @@
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
-
-
-
 <PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}"/>
 <section class="portfolio-masonry">
     <Container>
@@ -51,7 +48,6 @@
     </Container>
 </section>
 <ArticleSection />
-
 <Cta />
 <style lang="scss">
     // .portfolio{
@@ -134,6 +130,7 @@
     .portfolio-masonry{
         h2{
             margin-bottom: 1.5rem;
+            color: $secondary-color;
             @include media-max(sm){
                 display: none;
             }
@@ -143,9 +140,9 @@
             margin: 0 auto 3rem;
         }
     }
-    .btn.btn-secondary {
-        margin-bottom: 15px;
-    }
+    // .btn.btn-secondary {
+    //     margin-bottom: 15px;
+    // }
     .portfolio-cta{
         min-height: 40vw;
         min-width: 40vw;        

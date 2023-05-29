@@ -17,16 +17,16 @@
 
 <div class="cover" style="background:#E5EEF2;">
 <Container>
-    <div class="covertitle">
+    <div class="cover__covertitle">
         <p class="pfont ptc mb-1 pt-3">Article</p>
         <h2 class="pfont stc mb-4">{title}</h2>
         <p class="ptc pb-5">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
     </div>
 </Container>
-    <div class="coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
+    <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
 </div>
-<Container class="py-5">
-    <h2>{title}</h2>
+<Container class="py-4">
+    <h2 class="pb-3">{title}</h2>
     <div class="two-columns">
         {@html content}
         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
@@ -38,12 +38,12 @@
         <Row>
             {#each filteredItems as blog,i (blog.id)}
             <Col md="4" class="pb-5">
-                <div class="easein-container">
+                <div class="related-articles__easein-container">
                     <div class="easein-img">
-                        <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.medium.url}" alt="blogtitle" class="blog-img w-100">
+                        <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.medium.url}" alt="blogtitle" class="easein-img__blog-img w-100">
                     </div>
                 </div>
-                <h3 class="pt-3">{blog.attributes.title}</h3>
+                <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
                 <p class="ptc">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
             </Col>
             {/each}
@@ -52,67 +52,73 @@
 </section>
 <Cta/>
 <style lang="scss">
-    .blog-1{
-    min-height: 50vh;
-    background-position: bottom;
-    background-size: cover;
-    padding-top: 200px;
-    h1{
-        background-color: rgba(0,0,0,0.6);
-        color: #fff;
-        padding: 1rem 3rem;
-        display: inline;
-        font-size: 3rem;
-        font-weight: 900;
-    }
-}
 .cover{
-    padding-top: 100px;
-    margin-bottom: 300px;
-    .covertitle{
+    padding-top: 6.25rem;
+    margin-bottom: 18.75rem;
+    height: 48.125rem;
+    @include media-max(sm){
+        height: 24.375rem;
+        margin-bottom: 12.5rem;
+    }
+    &__covertitle{
         width:100%;
-        max-width:800px;
+        max-width:50rem;
+        p{
+            text-align: left;
+        }
     }
-    p {
-        text-align: left;
-    }
-    .coverimg{
+    &__coverimg{
         height: 100vh;
         width: 100%;
-        max-width: 1200px;
-        margin-bottom: -260px;
+        max-width: 90%;
+        margin-bottom: -16.25rem;
         background-size: cover;
         align-self:flex-start;
         @include media-max(sm) {
-            margin-bottom: -190px;
-            margin-left: -16px;
+            margin-bottom: -11.875rem;
+            margin-left: -1rem;
+            max-width: 100%;
         }
     }
+}
+.two-columns{
+    overflow-wrap: break-word;
 }
 .related-articles{
     background: #e5eef3;
     margin-bottom: 0;
-    padding: 70px 50px 50px 50px;
+    padding: 4.375rem 3.125rem 3.125rem 3.125rem;
     @include media-max(sm) {
-        padding: 70px 10px 30px 10px;
+        padding: 4.375rem 0.625rem 1.875rem 0.625rem;
     }
-}
-.blog-img{
-    min-height: 260px;
-    max-height: 260px;
-    object-fit:cover;
-    -o-object-fit: cover;
-}
-.easein-container{
-    overflow: hidden;
+    h3{
+        margin: 0.5rem 0 1.5rem 0;
+        @include media-max(sm) {
+            margin: 0.5rem 0 1rem 0;
+        }
+    }
+    a{
+        text-decoration: none;
+        color: $secondary-color;
+        font-family: $secondary-font;
+        font-weight: 600;
+    }
+    &__easein-container{
+        overflow: hidden;
+        .easein-img{
+            &__blog-img{
+                min-height: 16.25rem;
+                max-height: 16.25rem;
+                object-fit:cover;
+                -o-object-fit: cover;
+            }
+        }
+    }
 }
 @include media-max(sm){
-    .cover{
-        height: 390px;
-        margin-bottom: 200px;
-    }
     h2 {
         padding-top: 1rem;
+        font-size: 2rem;
     }
 }
 </style>
