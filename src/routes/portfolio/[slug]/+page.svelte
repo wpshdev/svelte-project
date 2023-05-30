@@ -195,7 +195,9 @@
 </Animate>
 
 <style lang="scss">
-
+section{
+	min-height: 20vh;
+}
 .portfolio-gallery{
     padding: 8vw 0 10vw;
     margin-top: 0;

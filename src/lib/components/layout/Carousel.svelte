@@ -67,8 +67,14 @@ $: {
           <svg class="progress-ring" width="110" height="49">
             <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
             <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
-            <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
-            <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
+            <g class="progress-ring__arrow progress-ring__arrow--left" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>
+              <rect x="2" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
+              <text x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central">&larr;</text>
+            </g>
+            <g class="progress-ring__arrow progress-ring__arrow--right" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>
+              <rect x="56" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
+              <text x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central">&rarr;</text>
+            </g>
           </svg>
         </div> 
       {/if}
@@ -77,7 +83,7 @@ $: {
   <Col md=9>
     <div class="slider-container">
       {#each featuredProjects.data as project, index}
-        <div class="slider-container__carousel-cell">
+        <div class="slider-container__carousel-cell zoomImg">
           <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
           <div class="slider-container__carousel-cell__text">
             <span>{index + 1}</span>
@@ -112,7 +118,13 @@ $: {
   
 
 <style lang="scss">
+  .progress-ring__arrow rect {
+    transition: fill 1s;
+  }
 
+  .progress-ring__arrow:hover rect {
+    fill: rgba(129, 129, 129, 0.191);
+  }
 .slider-caption{
   height: 100%;
   display: flex;
@@ -144,7 +156,7 @@ $: {
     width: 45%;
     position: relative;   
     height: auto;
-    padding: 0 1rem;
+    margin: 0 0.5rem;
     box-sizing: border-box;
     height: 70vh;
     overflow: hidden;
@@ -159,7 +171,7 @@ $: {
             position: absolute;
             z-index: 2;
             bottom: 1rem;
-            left: 1rem;
+            left: 0;
             width: 90%;
             text-align: left;
             @include media-max(sm){

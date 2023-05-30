@@ -52,7 +52,7 @@
              {#each projects.data as project, index}				
                  {#if index < propCount}
                     <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
-                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}">      
+                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
                             <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
                             <!-- <div class="masonry-items__text">
                                 <span>{index + 1}</span>
@@ -91,17 +91,10 @@
                 width: 98%;
                 overflow: hidden;
                 img{
-                    transition: 0.5s;
                     height: 100%;
                     object-fit: cover;
                 }   
             }      
-            &:hover{
-                img{
-                    transition: 0.5s;
-                    scale: 1.2;
-                }
-            }
             &__text{
                 background-color: $secondary-color;
                 color: #fff;

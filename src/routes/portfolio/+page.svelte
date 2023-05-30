@@ -64,6 +64,9 @@
 </Animate>
 
 <style lang="scss">
+    section{
+        min-height: 20vh;
+    }
     // .portfolio{
 	// 	background-image: var(--banner);
 	// 	background-size: cover;

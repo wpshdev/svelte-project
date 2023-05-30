@@ -48,6 +48,7 @@
 		margin: 0;
 		background-image: var(--cta-banner);
 		background-size: cover;
+		min-height: 20vh;
 		@include media-max(sm){
 			padding-left: 0;
 			padding-right: 0;

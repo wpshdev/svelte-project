@@ -60,6 +60,7 @@
 		background-color: #F2F2F2;
 		padding: 4rem 0;
 		margin-bottom: 0;
+		min-height: 20vh;
 		@include media-max(sm){
 			padding-left: 0;
 			padding-right: 0;
@@ -104,6 +105,10 @@
 				}		
 				.btn-inverted{
 					background-color: #fff;
+					&:hover{
+						background-color: $secondary-color;
+						border-color: #fff;
+					}					
 				}
 			}
 		}
