@@ -324,25 +324,22 @@
             }            
         }
         :global(.phase__row){
-            margin-top: -24.3rem;
+            margin-top: -15.3rem;
             justify-content: center;
             align-items: center;
             position: relative;
             z-index: 1;
             @include media-max(sm){
-                margin-top: -10rem;
+                margin-top: -9.5rem;
             }               
         }
         .num{
-            font-size: 10rem;
+            font-size: 15rem;
             font-family: $secondary-font;
             color: $secondary-color;
-            font-size: 30rem;
-            margin-top: -5.45rem;
             display: block;            
             @include media-max(sm){
-                font-size: 12rem;
-                margin-top: -4.45rem;
+                font-size: 8rem;
             }              
         }
         &__heading{
@@ -365,7 +362,7 @@
         &__grid{
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
-            margin-top: -19rem; 
+            margin-top: -10.960rem;
             @include media-max(md){
                 // margin-top: -3.5rem;
             }      

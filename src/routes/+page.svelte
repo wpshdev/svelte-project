@@ -450,9 +450,10 @@
 			&__heading{
 				ul{
 					display: flex;
-					flex-wrap: wrap;
+					// flex-wrap: wrap;
 					margin-bottom: 2rem;
-					padding-left: 0;					
+					padding-left: 0;		
+								
 					@include media-max(xs){
 						flex-wrap: nowrap;
 						padding: 1rem 0
@@ -476,9 +477,12 @@
 							border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
-							@include media-max(sm){
+							@include media-max(lg){
 								font-size: 1.2rem;
-							}
+							}								
+							// @include media-max(sm){
+							// 	font-size: 1.2rem;
+							// }
 							&.active{
 								color: $primary-color;
 								border-bottom-color: $primary-color;
