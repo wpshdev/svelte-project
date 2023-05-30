@@ -88,7 +88,7 @@ p:last-child{
     line-height: 1.5;
 }
 .border-radius{
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 .flex-vcenter{
     display: flex;
@@ -97,7 +97,7 @@ p:last-child{
 }
 input,textarea, .form-control{
     padding: 0.8rem;
-    border-radius: 7px;
+    border-radius: 0.438rem;
 }
 input:focus{
     box-shadow: none;
@@ -121,7 +121,7 @@ img{
     width: 100%;
 }
 .mw-1000{
-    max-width: 1000px;
+    max-width: 62.5rem;
     margin:auto;
     hr{
         
@@ -145,35 +145,35 @@ img{
     position: relative;
 }
 .input-icon-box input{
-    padding-left:50px;
+    padding-left:3.125rem;
 }
 .input-icon{
     background-image: url(/src/lib/img/contact-icon.svg);
     background-repeat: no-repeat;
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
     position: absolute;
-    top: 11px;
-    left: 11px;
-    background-size: 60px;
+    top: 0.688rem;
+    left: 0.688rem;
+    background-size: 3.75rem;
 }
 .input-email:focus ~ .input-icon-email{
-    background-position: 0px -30px;
+    background-position: 0rem -1.875rem;
 }
 .input-phone:focus ~ .input-icon-phone{
-    background-position: 0px -60px;
+    background-position: 0rem -3.75rem;
 }
 .input-icon-user{
-    background-position: -30px 0px;
+    background-position: -1.875rem 0rem;
 }
 .input-icon-email{
-    background-position: -30px -30px;
+    background-position: -1.875rem -1.875rem;
 }
 .input-icon-phone{
-    background-position: -30px -60px;
+    background-position: -1.875rem -3.75rem;
 }
 .input-user:focus ~ .input-icon-user{
-    background-position: 0px 0px;
+    background-position: 0rem 0rem;
 }
 .btn{
     background-color: $primary-color;
@@ -183,8 +183,8 @@ img{
     border-radius: 0;      
     font-family: $primary-font;
     font-size: 1.2rem;
-    border: 1px solid $primary-color;
-    box-shadow: 0px 3px 4px rgba(140, 133, 133, 0.25);
+    border: 0.063rem solid $primary-color;
+    box-shadow: 0rem 0.188rem 0.25rem rgba(140, 133, 133, 0.25);
     border-radius: 2rem;    
     @include media-max(sm){
         padding: 0.7rem 1.4rem;
@@ -192,7 +192,7 @@ img{
     }
 }
 .input-user:focus ~ .input-icon-user{
-    background-position: 0px 0px;
+    background-position: 0rem 0rem;
 }​	
 .btn-primary{
     background-color: $primary-color;
@@ -200,13 +200,13 @@ img{
 }
 .btn-secondary{
     background-color: $secondary-color;
-    border: 1px solid $secondary-color;
+    border: 0.063rem solid $secondary-color;
     color: #fff;  
     width: fit-content;
 }
 .btn-inverted{
     background-color: transparent;
-    border: 1px solid $secondary-color;
+    border: 0.063rem solid $secondary-color;
     color: $secondary-color;
 }
 .btn-white{
@@ -218,9 +218,9 @@ img{
     color: #fff;
 }
 .two-columns{
-    -webkit-columns: 40px 2;
-    -moz-columns: 60px 2;
-    columns: 60px 2;
+    -webkit-columns: 2.5rem 2;
+    -moz-columns: 3.75rem 2;
+    columns: 3.75rem 2;
     @include media-max(sm){
         columns:1;
         text-align: center;
@@ -230,7 +230,7 @@ img{
     z-index: 10;
 }
 header.container-fluid{
-    padding: 5px 5px 5px 25px;
+    padding: 0.313rem 0.313rem 0.313rem 1.563rem;
     animation: 1.3s ease-out 0s 1 slideInFromTop;
 }
 @keyframes slideInFromTop {
@@ -262,7 +262,7 @@ header{
     align-items: center;
     z-index: 10;
     &.container-fluid{
-        padding-left: 5px;
+        padding-left: 0.313rem;
     }
     .mobile-menu-header{
         text-align: left;
@@ -297,11 +297,11 @@ header{
     }
     nav{
         ul{
-            margin-bottom: 0px;
+            margin-bottom: 0rem;
         }
         li{
             display: inline-block;
-            padding: 0px 20px;
+            padding: 0rem 1.25rem;
             a.nav-link{
                 color: #fff;
                 text-decoration: none;
@@ -509,7 +509,7 @@ header{
 }
 .logo{
     img{
-        height: 70px;
+        height: 4.375rem;
     }
 }
 .footer{
@@ -545,7 +545,7 @@ header{
     align-items: center;
     flex-direction: column;
     color:#fff;
-    height: 500px;
+    height: 40.313rem;
     @include media-max(sm){
         height: 20rem;
         padding:0 1rem;
@@ -567,19 +567,25 @@ header{
     }
 }
 
-
-
 .contact-form{
+<<<<<<< Updated upstream
     padding: 4rem;
     border:2px solid #D8D7D7;
     max-width: 600px;
     margin: auto;
     @include media-max(sm){
         padding: 2rem;
+=======
+    padding: 4rem 2rem;
+    border:0.125rem solid #D8D7D7;
+    form{
+        max-width: 25rem;
+        margin: auto;
+>>>>>>> Stashed changes
     }
 }
 .contact-img{
-    height: 400px;
+    height: 25rem;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -587,6 +593,9 @@ header{
 .contact-box{
     margin-top: -10rem;
     margin-bottom: 7rem;
+    @include media-max(sm) {
+        margin-bottom: 4rem;
+    }
     button{
         display: flex;
         margin: auto;
@@ -600,7 +609,7 @@ header{
         }
         .accordion-item{
             .accordion-collapse{
-                border-bottom: 1px solid #ACA7A7;
+                border-bottom: 0.063rem solid #ACA7A7;
                 border-radius: unset;                
             }
             .accordion-body{
@@ -661,7 +670,7 @@ header{
     &__widget{
         &__heading{
             h4{
-                border-bottom: 0.5px solid #EFEFEF;
+                border-bottom: 0.031rem solid #EFEFEF;
                 padding-bottom: 1rem;
                 width: 70%;
                 text-transform: uppercase;
