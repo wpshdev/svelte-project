@@ -32,13 +32,13 @@
         </Row>
     </Container>
 </section>
-<section class="mw-1000 mx-8 text-center article-section">
+<section class="mw-1000 text-center article-section">
     <Container>
         <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading}</h2>
         <p class="text-left">{@html data.page.data.attributes.section2description}</p>
     </Container>
 </section>
-<section>
+<section class="article-blog">
 <Container>
         {#each paginatedBlogs as blog,i (blog.id)}
         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''}">
@@ -57,15 +57,13 @@
                     </div>
                 </Animate>
             </Col>
-            <Col md="5" style="padding:20px 0;">
-                <Animate>
-                    <div class="blogsection5">
-                        <div>
-                            <span>Vail, Colorado | 09 Apr 2023 · 2 min read</span>
-                            <h2>{blog.attributes.title}</h2>
-                            <p>{blog.attributes.shorttext}</p>
-                        </div>
-                        <a class="btn mt-3 btn-secondary" href="/articles/{blog.attributes.slug}">Read More</a>
+
+            <Col md="5">
+                <div class="blogsection5">
+                    <div>
+                        <span>Vail, Colorado | January 28 · 2 minutes read</span>
+                        <h2>{blog.attributes.title}</h2>
+                        <p>{blog.attributes.shorttext}</p>
                     </div>
                 </Animate>
 
@@ -73,7 +71,7 @@
             <!-- </a> -->
         
     </Row>
-    <div style="padding: 20px;"></div>
+    <div class="mx-8"></div>
         {/each}
 <LightPaginationNav
   totalItems="{items.length}"
@@ -87,14 +85,30 @@
 </section>
 <Cta/>
 <style lang="scss">
+     .mx-8{
+        margin:6rem auto;
+        @include media-max(md){
+            margin:4rem auto;
+        }
+    }
+    .cover{
+        h2{
+            color: $white-color;
+        }
+    }
     .blog-img{
-        min-height: 400px;
-        max-height: 400px;
+        min-height: 25rem;
+        max-height: 25rem;
         object-fit:cover;
         -o-object-fit: cover;
+        @include media-max(sm){
+            min-height: 10rem;
+            max-height: 18rem;
+        }
+
     }
     .blogsection7{
-        border-radius: 10px;
+        border-radius: 0.625ren;
         overflow: hidden;
     }
     .blogsection5{
@@ -104,24 +118,65 @@
         justify-content: space-between;
         height: 100%;
         padding: 3rem;
+        @include media-max(sm){
+            padding: 2rem;
+        }
+        h2{
+            display: block;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 7.2rem;
+            font-size: 2rem;
+        }
+        p{
+            display: block;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 3.1em;
+        }
     }
-    .article-section {
-        padding: 0 0 4rem 0;
+    .article-section{
+        padding: 0 0 1rem 0;
         @include media-max(sm){
             padding: 0 0 0 0;
+        }
     }
-    }
-    .cat-list {
+    .cat-list{
         list-style: none;
         padding: 0;
         margin: 0;
-        li a {
-            padding: 1rem 1rem;
-            text-decoration: none;
+        li{
+            a{
+                padding: 1rem 1rem;
+                text-decoration: none;
+            }
         }
     }
     h2, .h2 {
-    font-size: 3rem;
+        font-size: 3rem;
+        color: $secondary-color;
     }
-
+    :global(.article-blog){
+        :global(.col-md-5){
+            padding: 1.25rem 0px;
+            @include media-max(sm){
+                padding: 0 0.625rem;
+            }
+        }
+    }
+    @include media-max(md){
+        :global(.mt-3){
+            margin-top: 2rem!important;
+        }
+    }
+    @include media-max(sm){
+        :global(.mt-3){
+            margin-top: 2rem!important;
+        }
+        :global(.btn){
+            padding: 0.7rem 2.4rem;
+        }
+    }
 </style>

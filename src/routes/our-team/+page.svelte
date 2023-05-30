@@ -50,39 +50,36 @@
     </Animate>
 </section>
 <section class="team-members">
-    <Container>
+<Container>
+    <Row>
+        <h2 class="sfont stc mb-5 text-center">{ourTeam.title}</h2>
+        <Col md={{ size: 8, offset: 2 }}>
         <Row>
-            <h2 class="sfont ptc mb-5 text-center">{ourTeam.title}</h2>
-            <Col md={{ size: 8, offset: 2 }}>
-                <Row>
-                    {#each ourTeam.team_members.data as member}
-                    
-                        <Col md="6">
-                            <Animate>
-                                <a href="/our-team/{member.attributes.slug}">
-                                    <div class="our-team__member">
-                                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url}" alt="member">
-                                        <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
-                                            <!-- our-team__member_caption class removed -->
-                                            <h5 class="pfont">{member.attributes.name}</h5>
-                                            <span class="pfont gtc">{member.attributes.position}</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </Animate>
-                        </Col>                    
-                    {/each}                                          
-                </Row>
-            </Col>
+            {#each ourTeam.team_members.data as member}
+                <Col md="6">
+                    <a href="/our-team/{member.attributes.slug}">
+                    <div class="our-team__member">
+                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                        <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
+                            <!-- our-team__member_caption class removed -->
+                            <h5 class="pfont">{member.attributes.name}</h5>
+                            <span class="pfont gtc">{member.attributes.position}</span>
+                        </div>
+                    </div>
+                    </a>
+                </Col>                    
+            {/each}                                          
         </Row>
-    </Container>
+    </Col>
+</Row>
+</Container>
 </section>
 <section class="ourteam5">
    <Animate>
     <Container>
         <h4>{ourTeam.para2}</h4>
         <h4>{ourTeam.para3}</h4>
-        <h4>{ourTeam.para4}</h4>
+        <h4>{ourTeam.team_member_owner.data.attributes.name}</h4>
     </Container>
   </Animate>
 </section>

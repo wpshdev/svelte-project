@@ -1,6 +1,6 @@
 @import 'vars';
 @import 'mixins';
-@import 'flickity/css/flickity.css';
+// @import 'flickity/css/flickity.css';
 *{
     font-family: $primary-font;
 }
@@ -570,11 +570,12 @@ header{
 
 
 .contact-form{
-    padding: 4rem 2rem;
+    padding: 4rem;
     border:2px solid #D8D7D7;
-    form{
-        max-width: 400px;
-        margin: auto;
+    max-width: 600px;
+    margin: auto;
+    @include media-max(sm){
+        padding: 2rem;
     }
 }
 .contact-img{
@@ -640,7 +641,7 @@ header{
 .pre-footer{
     background-color: #ACA7A7;
     margin: 0;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     &__btt{
         text-align: center;
         cursor: pointer;
