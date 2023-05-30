@@ -27,7 +27,7 @@
 </script>
 {#await promise}
 {:then ctaData} 
-	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.url})">
+	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.formats.large.url})">
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -48,7 +48,10 @@
 		margin: 0;
 		background-image: var(--cta-banner);
 		background-size: cover;
-		
+		@include media-max(sm){
+			padding-left: 0;
+			padding-right: 0;
+		}		
 		&__container{
 			height: 70vh;
 			width: 100%;

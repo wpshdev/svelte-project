@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
+	import Animate from '$lib/components/Animate.svelte';
     export let data;
     console.log(data);
     let title = data.page.data[0].attributes.title;
@@ -38,13 +39,15 @@
         <Row>
             {#each filteredItems as blog,i (blog.id)}
             <Col md="4" class="pb-5">
-                <div class="related-articles__easein-container">
-                    <div class="easein-img">
-                        <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.medium.url}" alt="blogtitle" class="easein-img__blog-img w-100">
+                <Animate>
+                    <div class="related-articles__easein-container">
+                        <div class="easein-img">
+                            <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.medium.url}" alt="blogtitle" class="blog-img w-100">
+                        </div>
                     </div>
-                </div>
                 <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
-                <p class="ptc">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
+                    <p class="ptc">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
+                </Animate>
             </Col>
             {/each}
         </Row>

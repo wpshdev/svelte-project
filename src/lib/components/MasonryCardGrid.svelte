@@ -16,7 +16,6 @@
     const cache = new Map();
     
     export let propCount;
-    console.log(propCount);
     async function getProjects(id) {
         if (cache.has(id)) {
             projects = cache.get(id);
@@ -54,7 +53,7 @@
                  {#if index < propCount}
                     <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
                         <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}">      
-                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
+                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
                             <!-- <div class="masonry-items__text">
                                 <span>{index + 1}</span>
                                 {project.attributes.title}
@@ -84,7 +83,7 @@
             text-align: center;  
             height: 60vh;
             @include media-max(sm){
-                height: 30vh;
+                height: 20vh;
             }
             a{
                 display: block;

@@ -6,49 +6,63 @@
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
+	import Animate from "$lib/components/Animate.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
    
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
-	// console.log(data.data.attributes.Banner.background.data.attributes.url);
+	// console.log(data.data.attributes.Banner.background.data.attributes.formats.large.url);
 </script>
 <svelte:head>
 	<title>{portfolio.title}</title>
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
-<PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}"/>
+
+<PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url}"/>
+
 <section class="portfolio-masonry">
-    <Container>
-        <Row>
-            <Col class="text-center">
-                <h2>{portfolio.masonryGallery.masonryHeading}</h2>
-                <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data}  />
-            </Col>
-        </Row>
-    </Container>
+    <Animate>
+        <Container>
+            <Row>
+                <Col class="text-center">
+                    <h2>{portfolio.masonryGallery.masonryHeading}</h2>
+                    <p>{portfolio.masonryGallery.masonrySubheading}</p>
+                    <Masonry items={portfolio.masonryGallery.masonryItems.data}  />
+                </Col>
+            </Row>
+        </Container>
+    </Animate>
 </section>
 <section class="portfolio-cta">
-    <Container>
-        <Row>
-            <Col class="text-center ">
-                <div class="portfolio-cta__content">
-                    <span>{portfolio.ourApproachPreHeading}</span>
-                    <h2>{@html portfolio.ourApproachHeading}</h2>                 
-                </div>
-                <div class="portfolio-cta__btns">
-                    <a href="{portfolio.ourApproachLeftBtnUrl}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle}</a>
-                    <a href="{portfolio.ourApproachRightBtnUrl}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle}</a>
-                </div>                   
-            </Col>
-        </Row>
-    </Container>
+    <Animate>
+        <Container>
+            <Row>
+                <Col class="text-center ">
+                    <div class="portfolio-cta__content">
+                        <span>{portfolio.ourApproachPreHeading}</span>
+                        <h2>{@html portfolio.ourApproachHeading}</h2>                 
+                    </div>
+                    <div class="portfolio-cta__btns">
+                        <a href="{portfolio.ourApproachLeftBtnUrl}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle}</a>
+                        <a href="{portfolio.ourApproachRightBtnUrl}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle}</a>
+                    </div>                   
+                </Col>
+            </Row>
+        </Container>
+    </Animate>
 </section>
-<ArticleSection />
-<Cta />
+
+<Animate>
+    <ArticleSection />
+</Animate>
+
+<Animate>
+    <Cta />
+</Animate>
+
 <style lang="scss">
     // .portfolio{
 	// 	background-image: var(--banner);

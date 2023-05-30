@@ -23,7 +23,7 @@
                 </div>
             </Col>
             <Col>
-                <div class="member__img" style="--banner: url({domain}/{member.memberPhoto.data.attributes.url})">
+                <div class="member__img" style="--banner: url({domain}/{member.memberPhoto.data.attributes.formats.large.url})">
                 </div>
             </Col>
         </Row>

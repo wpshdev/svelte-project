@@ -20,48 +20,21 @@
 	//import gsap from 'gsap';
 	// import { lazyload } from '$lib/lazyload.js'
 
-	onMount(() => {
-
-// window.addEventListener("scroll", (e) => {
-//     let scroll = window.scrollY;
-// 	const element = document.querySelector<HTMLElement>(".section--bannerOnly");
-// 	let elementY = element?.getBoundingClientRect();
-// 	let elementt = e.clientY - window.innerHeight / 2;
-//     console.log(elementt);
-// });
-
-	});
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
 	const home = data.data.attributes;
 	let propCount = 3;
 	let listener = {};
-	let featuredData = {
-
-	}
 
 	let activeTab = home.categories.data[0].id;
-
 	function handleTabClick(category) {
 		activeTab = category;
 	}
 
 	$: listener = {propCount , activeTab};
-
-	let innerWidth;
-
-	onMount(()=>{
-		innerWidth = window.innerWidth;
-	})
-
-	$: {
-		if(innerWidth){
-			
-		}
-	}
 	
 	let height;
-	console.log(home.ourProcessTopImage.data[0].attributes.url);
+	console.log(home);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -70,60 +43,39 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<!-- <section class="homebanner" style="--banner: url({banner})">
-	<Container>
-		<Row>
-			<Col sm={{ size: 12 }}>
-				<div class="homebanner__content">
-					<div class="homebanner__content__text">
-						<Animate section=".homebanner">
-						<h1 class="ml3"><TextTransition text="Building Excellence"  transitionDelay=600/></h1>
-						</Animate>
-					</div>
-					<Animate section=".homebanner">
-						<p class="homebanner__content__paragraph" in:fly={{
-							delay: 3500,
-							duration: 2000,
-							y: 50							
-						}}>Home Builder and Remodeler in Vail, Colorado</p>
-					</Animate>						
-				</div>
-			</Col>
-		</Row>
-	</Container>
-</section> -->
-
-<!-- <img use:lazyload="{home.topBanner.background.data.attributes.url}" > -->
-
 <PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.formats.large.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
 	<Animate >
 		<Container>
 			<Row>
-				<Col class="text-center">
+				<Col xs="12" class="pb-4">
+					<h2 in:fly={{
+						delay: 1000,
+						duration: 2000,
+						y: 50								
+				}}>{home.homeBuilderHeading}</h2>
+				</Col>
+				<Col xs="12" md={{ size: 6, offset:3 }}>
 					<div class="loc-gallery__cwrapper" in:fly={{
 							delay: 500,
 							duration: 2000,
 							y: 50								
 					}} >
-						<h2 in:fly={{
-							delay: 1000,
+							<div class="h3" in:fly={{
+								delay: 1500,
+								duration: 2000,
+								y: 50								
+							}}>
+								{@html home.homeBuilderSubHeading}
+							</div>
+						<div in:fly={{
+							delay: 2000,
 							duration: 2000,
 							y: 50								
-					}}>{home.homeBuilderHeading}</h2>
-						<div class="h3" in:fly={{
-							delay: 1500,
-							duration: 2000,
-							y: 50								
-					}}>{@html home.homeBuilderSubHeading}</div>
-					<div in:fly={{
-						delay: 2000,
-						duration: 2000,
-						y: 50								
-					}} >
-						{@html home.homeBuilderParagraph}
-					</div>
+						}} >
+							{@html home.homeBuilderParagraph}
+						</div>
 					</div>
 				</Col>
 			</Row>
@@ -134,7 +86,7 @@
 
 
 <Animate>
-	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"  in:fly={{
+	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url})"  in:fly={{
 		delay: 500,
 		duration: 2000,
 		y: 50								
@@ -150,7 +102,7 @@
 							delay: 3000,
 							duration: 2000,
 							y: 50								
-					}} >what are you looking for?</h2>
+					}} >{home.categoryGalleryTabHeading}</h2>
 					<div class="categories__tabs">
 						<div class="categories__tabs__heading">
 							<ul in:fly={{
@@ -227,7 +179,7 @@
 </section>
 
 
-<section class="tnr" style="--tp-banner: url({tr})" > 
+<section class="tnr" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.formats.large.url})" > 
 	<Container>
 		<Row>
 			<Col>
@@ -276,7 +228,7 @@
 					</div>
 				</Col>
 				<Col md="4" class="my-auto" >
-					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
+					<img src="{domain}{home.reputation.image.data.attributes.formats.large.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
 						y: 50								
@@ -297,7 +249,7 @@
 						duration: 2000,
 						y: 50								
 				}} >
-						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					</div>
 				</Col>
 			</Row>
@@ -322,7 +274,7 @@
 						duration: 2000,
 						y: 50								
 				}} >
-						<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					</div>
 				</Col>
 			</Row>
@@ -356,7 +308,7 @@
 					</div>
 				</Col>
 				<Col md="4" class="my-auto">
-					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
+					<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
 						y: 50								
@@ -443,14 +395,17 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// margin:80rem 0;
-		&__cwrapper{
-			h2{
+		h2{
 				font-family: $secondary-font;
 				margin-bottom: 1rem;
 				color: $secondary-color;
 				margin-bottom: 3rem;
-			}
+				text-align: center;
+				@include media-max(sm){
+					text-align: left;
+				}
+			}		
+		&__cwrapper{
 			.h3{
 				text-transform: uppercase;
 				margin-bottom: 2rem;
@@ -495,9 +450,10 @@
 			&__heading{
 				ul{
 					display: flex;
-					flex-wrap: wrap;
+					// flex-wrap: wrap;
 					margin-bottom: 2rem;
-					padding-left: 0;					
+					padding-left: 0;		
+								
 					@include media-max(xs){
 						flex-wrap: nowrap;
 						padding: 1rem 0
@@ -521,9 +477,12 @@
 							border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
-							@include media-max(sm){
+							@include media-max(lg){
 								font-size: 1.2rem;
-							}
+							}								
+							// @include media-max(sm){
+							// 	font-size: 1.2rem;
+							// }
 							&.active{
 								color: $primary-color;
 								border-bottom-color: $primary-color;
@@ -588,6 +547,9 @@
 				font-family: $primary-font;
 				margin: 1rem 0 2rem;
 				text-transform: uppercase;
+				@include media-max(sm){
+					font-size: 2rem;
+				}
 			}
 			.btn{
 				background-color: #1E2D39;
@@ -598,6 +560,9 @@
 	.featured-projects{
 		margin: 10rem 0;
 		overflow: hidden;
+		@include media-max(sm){
+			margin: 5rem 0;
+		}
 	}
 
 	.reputation{
@@ -877,6 +842,12 @@
 
 	.img-section{
 		margin: 5rem 0;
+	}
+	section.m-0{
+		@include media-max(sm){
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 	
 	// .contact-form{

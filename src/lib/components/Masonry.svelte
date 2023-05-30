@@ -6,9 +6,17 @@ export let items = [];
 
 console.log(items);
 let activeTab = items[0].id ;
+
 function handleTabClick(category) {
     activeTab = category;
 }	
+
+let propCount = 10;
+let listener = {};
+
+
+$: listener = {propCount , activeTab};
+
 </script>
 
 <div class="masonry">
@@ -28,16 +36,20 @@ function handleTabClick(category) {
                 {/each}
             </ul>
         </div>
-        <div class="masonry__tabs__link text-center">
-            <a href="#">View All Projects</a>
-        </div>
-        <div class="masonry__tabs__gallery">
-            {#key activeTab}
-                <div  id="modern" class="masonry__tabs__gallery__imgs" data-test={activeTab} transition:fade >
-                    <MasonryCard id={activeTab}/>
-                </div>			
-            {/key}								
-        </div>					
+		<div class="masonry__tabs__link view-all" >
+			{#if propCount === 10} 
+				<span on:click="{() => propCount = 999}">View All Projects</span>
+			{:else}
+				<span on:click="{() => propCount = 10}">View Less Projects</span>
+			{/if}
+		</div>					
+		<div class="categories__tabs__gallery">
+			{#key listener }
+				<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
+					<MasonryCard id={activeTab} {propCount}/>
+				</div>			
+			{/key}																		
+		</div>					
     </div>
 </div>
 
@@ -93,9 +105,12 @@ function handleTabClick(category) {
 			}
             &__link{
                 margin-bottom: 4rem;
-                a{
+                span{
                     color: $secondary-color;
                     text-decoration: none;
+					&:hover{
+						cursor: pointer;
+					}
                 }
             }
 			&__gallery{
