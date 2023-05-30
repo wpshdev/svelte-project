@@ -252,6 +252,9 @@
     <Cta />
 </Animate>
 <style lang="scss">
+    section{
+        min-height: 20vh;
+    }
     .our-process{
         &__heading{
             margin-bottom: 7vh;

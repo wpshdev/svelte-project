@@ -84,6 +84,7 @@
 	background-image: var(--contactBG);
 	background-size: cover;
 	margin: 0;
+	min-height: 20vh;
 	&__content{
 		display: flex;
 		height: 100%;

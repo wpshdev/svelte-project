@@ -552,7 +552,7 @@
 				}
 			}
 			.btn{
-				background-color: #1E2D39;
+				// background-color: #1E2D39;
 			}				
 		}
 	}
@@ -595,9 +595,12 @@
 				}		
 			}
 			&__wrapper{
-				max-width: 29rem;
+				max-width: 38rem;
 				z-index: 2;
-				padding-left: 4rem;
+				padding-left: 10rem;
+				@include media-max(lg){
+					padding-left: 5rem;
+				}						
 				@include media-max(sm){
 					padding-left: 0;
 					margin-bottom: 2rem;
@@ -771,41 +774,6 @@
 			z-index: 5;
 		}		
 	}	
-
-	.insight{
-		background-color: #F2F2F2;
-		padding: 4rem 0;
-		margin-bottom: 0;
-		&__pre-heading{
-			color: $primary-color;
-			margin-bottom: 2rem;
-			display: block;
-		}
-		&__content{
-			&__wrapper{
-				padding-left: 4rem;				
-				span{
-					color: $primary-color;
-					margin-bottom: 1rem;
-				}
-				h2{
-					margin: 1rem 0 2rem;	
-					font-size: 3rem;
-				}
-				p{
-					line-height: 2rem;
-					margin-bottom: 2rem;
-				}		
-				.btn-primary{
-					margin-right: 1rem;
-				}		
-				.btn-inverted{
-					background-color: #fff;
-				}
-			}
-		}
-	}
-
 
 	.living-room{
 		height: 30vw;		
