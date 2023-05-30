@@ -2,6 +2,7 @@
     export let data;
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
+    import PageBanner from '$lib/components/layout/PageBanner.svelte';
     const color = "white";
     import { Col, Container, Row } from 'sveltestrap';
     const url = "https://strapi.ulfbuilt.com:1337/";
@@ -52,10 +53,8 @@
 	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<div class="cover" style="background-image: url({url}{data.data.attributes.featuredimage.data.attributes.formats.large.url});">
-    <h2 class="pfont">{data.data.attributes.title}</h2>
-    <p class="pfont">{data.data.attributes.Subheading}</p>
-</div>
+
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
 <section class="mx-10">
     <Container class="mb-5">
         <Row>
