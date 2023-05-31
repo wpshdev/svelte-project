@@ -13,7 +13,7 @@
 	<title>{processData.section1heading}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-    <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" bannerMobile="{domain}{processData.Cover.data[0].attributes.formats.medium.url}" />
+<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
 <section class="our-process">
         <Container>
             <Row>
@@ -59,7 +59,9 @@
         </Container>
     </Animate>
 </section>
+<Animate>
 <section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large.url})"></section> 
+</Animate>
 <section class="phase">
     <Animate>
         <Container>
