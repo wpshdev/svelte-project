@@ -114,6 +114,6 @@
 
 <style lang="scss">
     @include media-max(sm) { 
-        .contact-img {height: 300px;}
+        .contact-img {height: 18.75rem;}
     }
 </style>
