@@ -28,7 +28,7 @@
             <Row>
                 <Col class="md-12">
                     <Animate>
-                        <img src="{domain}{processData.section2image.data.attributes.url}"
+                        <img src="{domain}{processData.section2image.data.attributes.formats.large.url}"
                         srcset="{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
                                 {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
                                 {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
