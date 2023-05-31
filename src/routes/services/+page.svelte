@@ -13,7 +13,7 @@
 	<meta name="description" content="ULF BUILT" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
-<PageBanner title="{page.Title}" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.formats.large.url}"/>
+<PageBanner title="{page.Title}" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.formats.large.url}" bannerMobile="{url}{page.Cover.data[0].attributes.formats.medium.url}" />
 <section class="service-b">
     <Animate>
         <Container>

@@ -11,6 +11,7 @@
     console.log(data);
     let abouttitle = data.data.attributes.Title
     let aboutimage = data.data.attributes.featuredimage.data.attributes.formats.large.url
+    let aboutimageMobile = data.data.attributes.featuredimage.data.attributes.formats.medium.url    
     let aboutsubheading = data.data.attributes.Aboutsubheading
     let about = data.data.attributes
     let url = "https://strapi.ulfbuilt.com:1337/";
@@ -22,7 +23,7 @@
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
-<PageBanner title="{abouttitle}" subTitle="{aboutsubheading}" banner="{url}{aboutimage}" />
+<PageBanner title="{abouttitle}" subTitle="{aboutsubheading}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
 
 <section class="mw-1000 text-center about-heading">
         <h2 class="pb-2">{@html about.AboutHeading}</h2>
