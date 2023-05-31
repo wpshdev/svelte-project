@@ -23,12 +23,13 @@
 							<!-- <h1 class="ml3"><TextTransition text="{title}"  transitionDelay=200/></h1> -->
 							<h1 class="ml3"><span>{title}</span></h1>
 						</div>
-
+						{#if subTitle != null}
 						<p class="banner__content__paragraph" in:fly={{
 							delay: 0,
 							duration: 100,
 							y: 50							
 						}}>{subTitle}</p>
+						{/if}
 					</Animate>		
 				</div>
 			</Col>
@@ -41,7 +42,7 @@
 		background-image: var(--banner);
 		background-size: cover;
 		min-height: 60vh;
-		background-position: bottom;
+		background-position: center;
 		background-size: cover;
 		margin: 0;
 		text-align: center;
@@ -69,8 +70,7 @@
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 5rem;		
-					margin-bottom: 2rem;	
+					font-size: 5rem;
 					@include media-max(sm) {
 						font-size: 3rem;
 					}
