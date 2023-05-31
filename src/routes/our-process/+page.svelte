@@ -271,7 +271,7 @@
             }
             h2{
                 font-size: 3rem;
-                margin: 2.5rem 0 2rem;
+                margin: 3rem 0 2rem;
             }
             p{
                 span{
