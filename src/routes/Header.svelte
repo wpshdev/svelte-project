@@ -1,6 +1,7 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.min.css';
     import { page } from '$app/stores';
+	import {Styles} from 'sveltestrap';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		

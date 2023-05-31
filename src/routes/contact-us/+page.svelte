@@ -54,7 +54,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" bannerMobile="{url}{data.data.attributes.featuredimage.data.attributes.formats.medium.url}" />
 <section class="mx-10">
     <Container class="mb-5">
         <Row>

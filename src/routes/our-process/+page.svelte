@@ -14,7 +14,7 @@
 	<title>{processData.section1heading}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-    <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
+    <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" bannerMobile="{domain}{processData.Cover.data[0].attributes.formats.medium.url}" />
 <section class="our-process">
         <Container>
             <Row>
@@ -27,10 +27,21 @@
             </Row>
             <Row>
                 <Col class="md-12">
-                    <img src="{domain}{processData.section2image.data.attributes.formats.large.url}" width="330" height="170" alt="{processData.section2image.data.attributes.alternativeText}"/>
-                    <div class="our-process__paragraph mx-auto">
-                        {@html processData.section2text}
-                    </div>
+                    <Animate>
+                        <img src="{domain}{processData.section2image.data.attributes.formats.large.url}"
+                        srcset="{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
+                                {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
+                                {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
+                        sizes="(max-width: 480px) 330px,
+                               (max-width: 960px) 660px,
+                               990px"
+                        width="330"
+                        height="170"
+                        alt="{processData.section2image.data.attributes.alternativeText}"/>
+                        <div class="our-process__paragraph mx-auto">
+                            {@html processData.section2text}
+                        </div>
+                    </Animate>
                 </Col>            
             </Row>
         </Container>
@@ -267,6 +278,9 @@
                     color: $primary-color;
                 }
             }
+        }
+        img{
+            height: auto;
         }
         &__paragraph{
             background-color: #F2F2F2;

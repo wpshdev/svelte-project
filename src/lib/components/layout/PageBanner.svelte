@@ -4,12 +4,24 @@
     import { fly } from "svelte/transition";
     import TextTransition from "$lib/TextTransition.svelte";
     export let banner;
+	export let bannerMobile;
     export let title;
     export let subTitle;
     export let extraClass;
+	let pageBanner = banner;
+	let innerWidth;
+	$: {
+		if(innerWidth < 768 && bannerMobile){
+			pageBanner = bannerMobile;
+		}
+	}
 </script>
 
-<section class="banner {extraClass}" style="--banner: url({banner})">
+<svelte:window 
+	bind:innerWidth
+/>
+
+<section class="banner {extraClass}" style="--banner: url({pageBanner})">
 	<Container>
 		<Row>
 			<Col >
@@ -19,7 +31,7 @@
 					</div>
 					{#if subTitle != null}
 						<p class="banner__content__paragraph" >{subTitle}</p>
-					{/if}          
+					{/if}
 				</div>
 			</Col>
 		</Row>
@@ -30,8 +42,8 @@
 	.banner{
 		background-image: var(--banner);
 		background-size: cover;
-		min-height: 60vh;
-		background-position: center;
+		min-height: 65vh;
+		background-position: bottom;
 		background-size: cover;
 		margin: 0;
 		text-align: center;
@@ -59,7 +71,8 @@
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 5rem;
+					font-size: 5rem;		
+					margin-bottom: 2rem;	
 					@include media-max(sm) {
 						font-size: 3rem;
 					}
