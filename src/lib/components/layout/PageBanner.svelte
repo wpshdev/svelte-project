@@ -17,7 +17,9 @@
 					<div class="banner__content__text">
 						<h1 class="ml3"><span>{title}</span></h1>
 					</div>
-					<p class="banner__content__paragraph">{subTitle}</p>
+					{#if subTitle != null}
+						<p class="banner__content__paragraph" >{subTitle}</p>
+					{/if}          
 				</div>
 			</Col>
 		</Row>
@@ -29,7 +31,7 @@
 		background-image: var(--banner);
 		background-size: cover;
 		min-height: 60vh;
-		background-position: bottom;
+		background-position: center;
 		background-size: cover;
 		margin: 0;
 		text-align: center;
@@ -57,8 +59,7 @@
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 5rem;		
-					margin-bottom: 2rem;	
+					font-size: 5rem;
 					@include media-max(sm) {
 						font-size: 3rem;
 					}
