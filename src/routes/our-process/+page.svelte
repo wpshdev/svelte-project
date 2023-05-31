@@ -271,7 +271,7 @@
             }
             h2{
                 font-size: 3rem;
-                margin-bottom: 1rem;
+                margin: 3rem 0 2rem;
             }
             p{
                 span{
@@ -280,6 +280,7 @@
             }
         }
         img{
+            margin-top: 1rem;
             height: auto;
         }
         &__paragraph{

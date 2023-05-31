@@ -42,7 +42,7 @@
 	.banner{
 		background-image: var(--banner);
 		background-size: cover;
-		min-height: 65vh;
+		min-height: 68vh;
 		background-position: bottom;
 		background-size: cover;
 		margin: 0;
