@@ -252,6 +252,7 @@
         min-height: 20vh;
     }
     .our-process{
+        min-height: 40vh;
         &__heading{
             margin-bottom: 7vh;
             :global(p span){
