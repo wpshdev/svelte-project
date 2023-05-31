@@ -14,11 +14,8 @@
 	<title>{processData.section1heading}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<Animate>
     <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
-</Animate>
 <section class="our-process">
-    <Animate>
         <Container>
             <Row>
                 <Col class="md-12 text-center">
@@ -37,7 +34,6 @@
                 </Col>            
             </Row>
         </Container>
-    </Animate>
 </section>
 
 <section class="phase-heading">
@@ -256,6 +252,7 @@
         min-height: 20vh;
     }
     .our-process{
+        min-height: 40vh;
         &__heading{
             margin-bottom: 7vh;
             :global(p span){
