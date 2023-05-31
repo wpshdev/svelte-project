@@ -27,7 +27,7 @@
             </Row>
             <Row>
                 <Col class="md-12">
-                    <img src="{domain}{processData.section2image.data.attributes.formats.large.url}" alt="{processData.section2image.data.attributes.alternativeText}"/>
+                    <img src="{domain}{processData.section2image.data.attributes.formats.large.url}" width="330" height="170" alt="{processData.section2image.data.attributes.alternativeText}"/>
                     <div class="our-process__paragraph mx-auto">
                         {@html processData.section2text}
                     </div>
