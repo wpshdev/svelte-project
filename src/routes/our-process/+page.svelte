@@ -28,7 +28,7 @@
             <Row>
                 <Col class="md-12">
                     <Animate>
-                        <img src="{domain}{processData.section2image.data.attributes.formats.large.url}"
+                        <img src="{domain}{processData.section2image.data.attributes.url}"
                         srcset="{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
                                 {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
                                 {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
@@ -271,7 +271,7 @@
             }
             h2{
                 font-size: 3rem;
-                margin-bottom: 1rem;
+                margin: 2.5rem 0 2rem;
             }
             p{
                 span{
@@ -280,6 +280,7 @@
             }
         }
         img{
+            margin-top: 1rem;
             height: auto;
         }
         &__paragraph{
