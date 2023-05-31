@@ -80,7 +80,7 @@
 	<NavbarBrand href="/">
 		<Animate>
 			<a href="/" in:fly>
-				<img src={logo} alt="ULFBUILT" class="logo"  width="80" height="80" />
+				<img src={logo} alt="ULFBUILT" class="logo"/>
 			</a>	
 		</Animate>
 	</NavbarBrand>
@@ -124,7 +124,7 @@
 					<span class="icon"></span>		
 				</div>
 				<a href="/" class="mobile-menu-logo">
-					<img src={logo} alt="ULFBUILT" class="logo" width="80" height="80" />
+					<img src={logo} alt="ULFBUILT" class="logo"/>
 				</a>				
 				
 				<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
