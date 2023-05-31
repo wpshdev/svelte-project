@@ -6,12 +6,12 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
-    console.log(data)
 </script>
 
 <svelte:head>
 	<title>{processData.section1heading}</title>
 	<meta name="description" content="ULF BUILT" />
+    <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.formats.large.url}" as="image">
 </svelte:head>
 <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
 <section class="our-process">
