@@ -14,22 +14,10 @@
 		<Row>
 			<Col >
 				<div class="banner__content">
-					<Animate>
-						<div class="banner__content__text" in:fly={{
-							delay: 0,
-							duration: 100,
-							y: 50							
-						}}>
-							<!-- <h1 class="ml3"><TextTransition text="{title}"  transitionDelay=200/></h1> -->
-							<h1 class="ml3"><span>{title}</span></h1>
-						</div>
-
-						<p class="banner__content__paragraph" in:fly={{
-							delay: 0,
-							duration: 100,
-							y: 50							
-						}}>{subTitle}</p>
-					</Animate>		
+					<div class="banner__content__text">
+						<h1 class="ml3"><span>{title}</span></h1>
+					</div>
+					<p class="banner__content__paragraph">{subTitle}</p>
 				</div>
 			</Col>
 		</Row>
