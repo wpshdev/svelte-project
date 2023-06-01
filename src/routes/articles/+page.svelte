@@ -59,11 +59,13 @@
             </Col>
 
             <Col md="5">
-                <div class="blogsection5">
-                    <div>
-                        <span>Vail, Colorado | January 28 · 2 minutes read</span>
-                        <h2>{blog.attributes.title}</h2>
-                        <p>{blog.attributes.shorttext}</p>
+                <Animate>
+                    <div class="blogsection5">
+                        <div>
+                            <span>Vail, Colorado | January 28 · 2 minutes read</span>
+                            <h2>{blog.attributes.title}</h2>
+                            <p>{blog.attributes.shorttext}</p>
+                        </div>
                     </div>
                 </Animate>
 
@@ -108,7 +110,7 @@
 
     }
     .blogsection7{
-        border-radius: 0.625ren;
+        border-radius: 0.625rem;
         overflow: hidden;
     }
     .blogsection5{

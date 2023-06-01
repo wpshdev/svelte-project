@@ -15,7 +15,7 @@
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large.url}"/>
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
 <section class="our-team">
     <Animate>
         <Container>

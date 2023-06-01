@@ -54,7 +54,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" bannerMobile="{url}{data.data.attributes.featuredimage.data.attributes.formats.medium.url}" />
 <section class="mx-10">
     <Container class="mb-5">
         <Row>
@@ -121,5 +121,6 @@
         .contact-img {height: 300px;}
         .pb-5{padding-bottom: 2rem!important;}
         .mx-10{margin: 3rem auto;padding: 0;}
+
     }
 </style>

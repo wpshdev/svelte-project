@@ -4,32 +4,34 @@
     import { fly } from "svelte/transition";
     import TextTransition from "$lib/TextTransition.svelte";
     export let banner;
+	export let bannerMobile;
     export let title;
     export let subTitle;
     export let extraClass;
+	let pageBanner = banner;
+	let innerWidth;
+	$: {
+		if(innerWidth < 768 && bannerMobile){
+			pageBanner = bannerMobile;
+		}
+	}
 </script>
 
-<section class="banner {extraClass}" style="--banner: url({banner})">
+<svelte:window 
+	bind:innerWidth
+/>
+
+<section class="banner {extraClass}" style="--banner: url({pageBanner})">
 	<Container>
 		<Row>
 			<Col >
 				<div class="banner__content">
-					<Animate>
-						<div class="banner__content__text" in:fly={{
-							delay: 0,
-							duration: 100,
-							y: 50							
-						}}>
-							<!-- <h1 class="ml3"><TextTransition text="{title}"  transitionDelay=200/></h1> -->
-							<h1 class="ml3"><span>{title}</span></h1>
-						</div>
-
-						<p class="banner__content__paragraph" in:fly={{
-							delay: 0,
-							duration: 100,
-							y: 50							
-						}}>{subTitle}</p>
-					</Animate>		
+					<div class="banner__content__text">
+						<h1 class="ml3"><span>{title}</span></h1>
+					</div>
+					{#if subTitle != null}
+						<p class="banner__content__paragraph" >{subTitle}</p>
+					{/if}
 				</div>
 			</Col>
 		</Row>
@@ -40,7 +42,7 @@
 	.banner{
 		background-image: var(--banner);
 		background-size: cover;
-		min-height: 60vh;
+		min-height: 68vh;
 		background-position: bottom;
 		background-size: cover;
 		margin: 0;
@@ -69,8 +71,9 @@
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 5rem;		
-					margin-bottom: 2rem;	
+					// font-size: 5rem;		
+					font-size: 3.5rem;		
+					margin-bottom: 1rem;	
 					@include media-max(sm) {
 						font-size: 3rem;
 					}
@@ -81,7 +84,7 @@
 			}
 			&__paragraph{
 				color: #fff;
-				font-size: 1.5rem;	
+				font-size: 1.25rem;	
 				@include media-max(sm) {
 					font-size: 1.2rem;
 				}							

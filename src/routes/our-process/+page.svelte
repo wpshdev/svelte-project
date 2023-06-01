@@ -2,23 +2,19 @@
 	import Animate from "$lib/components/Animate.svelte";
     import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
-    import topBanner from "$lib/img/processBanner.jpg";
 	import { Col, Container, Row } from "sveltestrap";
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
-    console.log(data)
 </script>
 
 <svelte:head>
 	<title>{processData.section1heading}</title>
 	<meta name="description" content="ULF BUILT" />
+    <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.formats.large.url}" as="image">
 </svelte:head>
-<Animate>
-    <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
-</Animate>
+<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
 <section class="our-process">
-    <Animate>
         <Container>
             <Row>
                 <Col class="md-12 text-center">
@@ -30,14 +26,24 @@
             </Row>
             <Row>
                 <Col class="md-12">
-                    <img src="{domain}{processData.section2image.data.attributes.formats.large.url}" alt="{processData.section2image.data.attributes.alternativeText}"/>
-                    <div class="our-process__paragraph mx-auto">
-                        {@html processData.section2text}
-                    </div>
+                    <Animate>
+                        <img src="{domain}{processData.section2image.data.attributes.formats.large.url}"
+                        srcset="{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
+                                {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
+                                {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
+                        sizes="(max-width: 480px) 330px,
+                               (max-width: 960px) 660px,
+                               990px"
+                        width="330"
+                        height="170"
+                        alt="{processData.section2image.data.attributes.alternativeText}"/>
+                        <div class="our-process__paragraph mx-auto">
+                            {@html processData.section2text}
+                        </div>
+                    </Animate>
                 </Col>            
             </Row>
         </Container>
-    </Animate>
 </section>
 
 <section class="phase-heading">
@@ -53,7 +59,9 @@
         </Container>
     </Animate>
 </section>
+<Animate>
 <section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large.url})"></section> 
+</Animate>
 <section class="phase">
     <Animate>
         <Container>
@@ -252,21 +260,30 @@
     <Cta />
 </Animate>
 <style lang="scss">
+    section{
+        min-height: 20vh;
+    }
     .our-process{
+        min-height: 40vh;
         &__heading{
             margin-bottom: 7vh;
             :global(p span){
                 color: $primary-color;
             }
             h2{
-                font-size: 3rem;
-                margin-bottom: 1rem;
+                font-size: 4rem;
+                margin: 3rem 0 2rem;
+                color: $secondary-color;
             }
             p{
                 span{
                     color: $primary-color;
                 }
             }
+        }
+        img{
+            margin-top: 1rem;
+            height: auto;
         }
         &__paragraph{
             background-color: #F2F2F2;
@@ -289,9 +306,14 @@
     .phase-heading{
         background-color: #F2F2F2;
         padding: 3rem 0;
-        h3{
+        :global(h3){
             @include media-max(sm){
                 font-size: 1.2rem;
+            }
+            font-size: 2.25rem;
+            :global(span) {
+               font-family: $secondary-font;
+               color: $secondary-color;
             }
         }
     }
@@ -323,8 +345,11 @@
                 font-size: 1.2rem;
             }            
         }
+        :global(h3) {
+            font-size: 2.5rem;
+        }
         :global(.phase__row){
-            margin-top: -15.3rem;
+            margin-top: -18.3rem;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -334,16 +359,16 @@
             }               
         }
         .num{
-            font-size: 15rem;
+            font-size: 20rem;
             font-family: $secondary-font;
-            color: $secondary-color;
+            color: $darkbluegreen;
             display: block;            
             @include media-max(sm){
                 font-size: 8rem;
             }              
         }
         &__heading{
-            background-color: $secondary-color;
+            background-color: $darkbluegreen;
             padding: 1rem 0;
             width: 100%;
             margin-top: 1rem;
@@ -362,7 +387,8 @@
         &__grid{
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
-            margin-top: -10.960rem;
+            // margin-top: -10.960rem;
+            margin-top: -9rem;
             @include media-max(md){
                 // margin-top: -3.5rem;
             }      
@@ -374,6 +400,9 @@
                 padding: 6rem 4rem;
                 @include media-max(sm){
                     padding: 1rem 0;
+                }
+                h4 {
+                    font-size: 2.25rem;
                 }
                 &:nth-child(odd){
                     padding-left: 8vw;

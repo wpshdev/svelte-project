@@ -53,11 +53,15 @@ $: if (id) {
          {#each projects.data as project, index}		
              {#if index < propCount}
                 <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
-                    <a href="/portfolio/{project.attributes.slug}">      
+                    <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
                         <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
                         <div class="masonry-items__text">
                             <span>{index + 1}</span>
                             {project.attributes.title}
+                            <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </i>
                         </div>
                     </a>
                 </div>			
@@ -96,17 +100,10 @@ $: if (id) {
                 width: 100%;
             }               
             img{
-                transition: 0.5s;
                 height: 100%;
                 object-fit: cover;
             }   
         }           
-        &:hover{
-            img{
-                transition: 0.5s;
-                scale: 1.2;
-            }
-        }
         &:nth-child(2){
             padding-top: 4rem;
             // top: 50px !important;    
@@ -142,8 +139,12 @@ $: if (id) {
                 margin: 0 0.8rem 0;
                 @include media-max(sm){
                     margin: 0;
-                    // font-size: 0.6rem;
                 }                
+            }
+            i{
+              position: absolute;
+              top: 20%;
+              right: 1rem;
             }
         }
     }

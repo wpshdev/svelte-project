@@ -18,6 +18,7 @@
 <style lang="scss">
 	.testimonial{
 		padding: 3rem 0;
+		min-height: 10vh;
 
 		p{
 			font-size: 1.3rem;

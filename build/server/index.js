@@ -95,7 +95,7 @@ ${o[1]?`${z$2(o[0]||X,"svelte:component").$$render(n,{data:f,this:a[0]},{this:s=
 		</div>
 	</body>
 </html>
-`},version_hash:"o9sonk"};function z$1(){return {}}
+`},version_hash:"1xwlhh1"};function z$1(){return {}}
 
 /** @type {Record<string, string>} */
 const escaped = {
