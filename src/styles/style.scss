@@ -586,20 +586,12 @@ header{
 }
 
 .contact-form{
-<<<<<<< Updated upstream
     padding: 4rem;
     border:2px solid #D8D7D7;
     max-width: 600px;
     margin: auto;
     @include media-max(sm){
         padding: 2rem;
-=======
-    padding: 4rem 2rem;
-    border:0.125rem solid #D8D7D7;
-    form{
-        max-width: 25rem;
-        margin: auto;
->>>>>>> Stashed changes
     }
 }
 .contact-img{
