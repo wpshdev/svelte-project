@@ -86,10 +86,12 @@
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
+					font-weight: 500;
 				
 				}
 				h2{
 					margin: 1rem 0 2rem;	
+					font-weight: 400;
 				}
 				p{
 					line-height: 2rem;
@@ -97,12 +99,15 @@
 					
 				}		
 				&__btns{
-					text-align: center;
-				
+					// text-align: center;
+					margin-top: 1.5rem;
 				}
 				.btn-primary{
 					margin-right: 1rem;
 				}		
+				.btn-secondary {
+					margin-right: 1.25rem;
+				}
 				.btn-inverted{
 					background-color: #fff;
 					&:hover{
@@ -110,6 +115,11 @@
 						border-color: #fff;
 					}					
 				}
+				@include media-max(md){
+					.btn {
+						margin-top: 1rem;
+					}
+				}	
 			}
 		}
 	}    

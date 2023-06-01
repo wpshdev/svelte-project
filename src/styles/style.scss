@@ -326,7 +326,7 @@ header{
                 &:hover, &:focus{
                     background-color: rgba(242, 237, 237, 0.20);
                 }
-            }            
+            }       
         }
     }
     nav{
@@ -420,7 +420,6 @@ header{
             } 
             .dropdown.show, .dropdown-menu{
                 background-color: unset;
-                
             }
             .mobile-menu-logo{
                 text-align: left;
@@ -500,6 +499,7 @@ header{
             .dropdown-toggle{
                 &:hover, &:focus{
                     background-color: unset;
+                    color: $primary-color;
                 }
             }
         }

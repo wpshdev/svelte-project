@@ -69,11 +69,11 @@ $: {
             <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
             <g class="progress-ring__arrow progress-ring__arrow--left" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>
               <rect x="2" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
-              <text x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central">&larr;</text>
+              <text x="33" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&larr;</text>
             </g>
             <g class="progress-ring__arrow progress-ring__arrow--right" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>
               <rect x="56" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
-              <text x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central">&rarr;</text>
+              <text x="77" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&rarr;</text>
             </g>
           </svg>
         </div> 
@@ -127,18 +127,24 @@ $: {
   }
 .slider-caption{
   height: 100%;
+  // display: flex;
+  // align-items: center;
+  // flex-wrap: wrap;  
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;  
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5rem;
   &__heading{
+    margin-top: 5rem;
     margin-bottom: 1rem;
     width: 100%;
     @include media-max(sm){
         text-align: center;
+        margin-top: 0;
     }    
     span{
       font-size: 1.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       color: $primary-color;
     }
     h2{
@@ -236,6 +242,7 @@ $: {
     font-family: Arial, sans-serif;
     cursor: pointer;
     user-select: none;
+    fill: $primary-color;
 
     &--left,
     &--right {

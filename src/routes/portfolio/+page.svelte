@@ -30,7 +30,7 @@
                 <Col class="text-center">
                     <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                     <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                    <Masonry items={portfolio.masonryGallery.masonryItems.data}  />
+                    <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="We have also completed <b>luxury retail and restaurant projects</b> in Vail, Beaver Creek,<br> Edwards, and greater Eagle County."  />
                 </Col>
             </Row>
         </Container>
@@ -81,7 +81,7 @@
         }
     }
     .portfolio-cta{
-        min-height: 40vw;
+        min-height: 30vw;
         min-width: 40vw;        
         display: flex;
         align-items: center;
@@ -90,6 +90,7 @@
         &__content{
             span{
                 color: $primary-color;
+                font-weight: 500;
             }
         }
         &__btns{

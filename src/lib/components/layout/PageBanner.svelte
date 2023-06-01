@@ -71,8 +71,9 @@
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 5rem;		
-					margin-bottom: 2rem;	
+					// font-size: 5rem;		
+					font-size: 3.5rem;		
+					margin-bottom: 1rem;	
 					@include media-max(sm) {
 						font-size: 3rem;
 					}
@@ -83,7 +84,7 @@
 			}
 			&__paragraph{
 				color: #fff;
-				font-size: 1.5rem;	
+				font-size: 1.25rem;	
 				@include media-max(sm) {
 					font-size: 1.2rem;
 				}							

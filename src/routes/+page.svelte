@@ -410,6 +410,7 @@
 				text-transform: uppercase;
 				margin-bottom: 2rem;
 				font-size: 2.5rem;
+				font-weight: 600;
 				@include media-max(sm){
 					font-size: 2rem;
 				}
@@ -422,6 +423,10 @@
 				margin: 0 auto;
 				text-align: left;
 				margin-bottom: 2rem;							
+			}
+			:global(a) {
+				color: $primary-color;
+				text-decoration: none;
 			}
 			&__btns{
 				margin: 2rem 0;
@@ -467,7 +472,11 @@
 						@include media-max(sm){
 							width: 10rem;
 							padding: 0 1rem;
-						}		
+						}
+						border-right: 3px solid $gray;	
+						&:last-child {
+							border: none;
+						}
 						span{				
 							font-family: $secondary-font;
 							font-size: 2rem;
@@ -561,7 +570,8 @@
 		margin: 10rem 0;
 		overflow: hidden;
 		@include media-max(sm){
-			margin: 5rem 0;
+			// margin: 5rem 0;
+			margin: 0;
 		}
 	}
 
@@ -583,9 +593,13 @@
 				position: absolute;
 				background: #E5EEF2;
 				width: 130%;
-				top: 0;
+				top: 5%;
 				content: "";
-				height: 100%;		
+				height: 90%;
+				@include media-max(xl){	
+					top: 0;
+					height: 100%;
+				}
 				@include media-max(sm){
 					width: 100vw;
 					top: -5vh;
@@ -611,6 +625,7 @@
 				}
 				h2{
 					margin: 1rem 0 2rem;
+					line-height: 4rem;
 				}
 				p{
 					line-height: 2rem;
