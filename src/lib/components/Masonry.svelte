@@ -14,6 +14,7 @@ function handleTabClick(category) {
 let propCount = 10;
 let listener = {};
 
+export let subHeading2 = '';
 
 $: listener = {propCount , activeTab};
 
@@ -42,7 +43,12 @@ $: listener = {propCount , activeTab};
 			{:else}
 				<span on:click="{() => propCount = 10}">View Less Projects</span>
 			{/if}
-		</div>					
+		</div>
+		{#if subHeading2}
+		<div class="masonry__tabs__subheading">
+			<p>{@html subHeading2}</p>
+		</div>	
+		{/if}				
 		<div class="categories__tabs__gallery">
 			{#key listener }
 				<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
@@ -80,13 +86,17 @@ $: listener = {propCount , activeTab};
 							width: 10rem;
 							padding: 0 1rem;
 						}		
+						border-right: 3px solid $gray;	
+						&:last-child {
+							border: none;
+						}
 						span{				
 							font-family: $secondary-font;
 							font-size: 2rem;
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;
-							border-bottom: 3px solid #D8D7D7;
+							// border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
 							@include media-max(lg){
@@ -96,7 +106,7 @@ $: listener = {propCount , activeTab};
 								font-size: 1.2rem;
 							}
 							&.active{
-								color: $primary-color;
+								color: $secondary-color;
 								border-bottom-color: $primary-color;
 							}
 						}
@@ -108,6 +118,8 @@ $: listener = {propCount , activeTab};
                 span{
                     color: $secondary-color;
                     text-decoration: none;
+					font-size: 1.25rem;
+					font-weight: 400;
 					&:hover{
 						cursor: pointer;
 					}
@@ -131,6 +143,12 @@ $: listener = {propCount , activeTab};
 						}						
 					}
 				}
+			}
+			&__subheading {
+				text-align: left;
+				display: flex;
+				justify-content: center;
+				margin-bottom: 3rem;
 			}
 		}
 	}    

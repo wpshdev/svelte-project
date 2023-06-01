@@ -271,8 +271,9 @@
                 color: $primary-color;
             }
             h2{
-                font-size: 3rem;
+                font-size: 4rem;
                 margin: 3rem 0 2rem;
+                color: $secondary-color;
             }
             p{
                 span{
@@ -305,9 +306,14 @@
     .phase-heading{
         background-color: #F2F2F2;
         padding: 3rem 0;
-        h3{
+        :global(h3){
             @include media-max(sm){
                 font-size: 1.2rem;
+            }
+            font-size: 2.25rem;
+            :global(span) {
+               font-family: $secondary-font;
+               color: $secondary-color;
             }
         }
     }
@@ -339,8 +345,11 @@
                 font-size: 1.2rem;
             }            
         }
+        :global(h3) {
+            font-size: 2.5rem;
+        }
         :global(.phase__row){
-            margin-top: -15.3rem;
+            margin-top: -18.3rem;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -350,16 +359,16 @@
             }               
         }
         .num{
-            font-size: 15rem;
+            font-size: 20rem;
             font-family: $secondary-font;
-            color: $secondary-color;
+            color: $darkbluegreen;
             display: block;            
             @include media-max(sm){
                 font-size: 8rem;
             }              
         }
         &__heading{
-            background-color: $secondary-color;
+            background-color: $darkbluegreen;
             padding: 1rem 0;
             width: 100%;
             margin-top: 1rem;
@@ -378,7 +387,8 @@
         &__grid{
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
-            margin-top: -10.960rem;
+            // margin-top: -10.960rem;
+            margin-top: -9rem;
             @include media-max(md){
                 // margin-top: -3.5rem;
             }      
@@ -390,6 +400,9 @@
                 padding: 6rem 4rem;
                 @include media-max(sm){
                     padding: 1rem 0;
+                }
+                h4 {
+                    font-size: 2.25rem;
                 }
                 &:nth-child(odd){
                     padding-left: 8vw;
