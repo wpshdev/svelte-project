@@ -51,7 +51,7 @@ $: listener = {propCount , activeTab};
 		{/if}				
 		<div class="categories__tabs__gallery">
 			{#key listener }
-				<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
+				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
 					<MasonryCard id={activeTab} {propCount}/>
 				</div>			
 			{/key}																		

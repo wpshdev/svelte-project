@@ -91,7 +91,7 @@
                     <h4>{processData.section5subheading}</h4>
                     {@html processData.section5text }
                 </div>  
-                <div class="phase__grid__item">
+                <div class="phase__grid__item last-even">
                   {@html processData.section5righttext}
                 </div>                                 
             </div>      
@@ -117,7 +117,7 @@
                     <h4>{processData.section8subheading}</h4>
                     {@html processData.section8text}
                 </div>  
-                <div class="phase__grid__item">
+                <div class="phase__grid__item last-even">
                     {@html processData.section8righttext}
                 </div>                                 
             </div>      
@@ -184,7 +184,7 @@
                     <h4>{processData.section13subheading}</h4>
                     {@html processData.section13righttext}
                 </div>  
-                <div class="phase__grid__item">
+                <div class="phase__grid__item last-even">
                     {@html processData.section12text}
                 </div>                                            
             </div>      
@@ -218,7 +218,7 @@
                     <h4>{processData.section17subheading}</h4>
                     {@html processData.section17text}
                 </div>  
-                <div class="phase__grid__item">
+                <div class="phase__grid__item last-even">
                     {@html processData.section17righttext }
                 </div>                                       
             </div>      
@@ -236,7 +236,7 @@
                     <h4>{processData.section19subheading}</h4>
                     {@html processData.section19text}
                 </div>
-                <div class="phase__grid__item">
+                <div class="phase__grid__item last-even">
                     {@html processData.section19righttext }
                 </div>                                           
             </div>      
@@ -388,7 +388,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
             // margin-top: -10.960rem;
-            margin-top: -9rem;
+            margin-top: -12rem;
             @include media-max(md){
                 // margin-top: -3.5rem;
             }      
@@ -397,7 +397,7 @@
                 margin-top: -5rem;  
             }            
             &__item{
-                padding: 6rem 4rem;
+                padding: 9rem 4rem 4rem;
                 @include media-max(sm){
                     padding: 1rem 0;
                 }
@@ -421,17 +421,24 @@
                     }
                 }
                 &:nth-child(even){
-                    padding-top: 8.5vw;
+                    padding-top: 18rem;
                     background-color: #F2F2F2;
+                    display: flex;
+                    align-items: flex-end;
+                    flex-direction: column;
 
                     :global(p:last-child){
                         margin-bottom: 0;                        
                     }
+
                     @include media-max(sm){
                         padding: 3rem 1.5rem;
                         margin-left: calc(50% - 50vw);
                         margin-right: calc(50% - 50vw);                        
                     }                    
+                }
+                &.last-even {
+                    padding-bottom: 15rem;
                 }
                 
             }  

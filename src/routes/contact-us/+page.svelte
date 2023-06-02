@@ -60,8 +60,8 @@
         <Row>
             <Col md="12">
                 <h2 class="text-center">Let's get started...</h2>
-                <h4 class="text-center f-family pfont">- <span class="ptc"><i>Ulf Lindroth</i></span></h4>
-                <p class="two-columns pt-5">{@html data.data.attributes.Subheading2}</p>
+                <h4 class="text-center pfont">- <span class="ptc"><i>Ulf Lindroth</i></span></h4>
+                <p class="two-columns pt-3">{@html data.data.attributes.Subheading2}</p>
             </Col>
         </Row>
     </Container>
@@ -69,11 +69,11 @@
         <Row>
             <Col md="4" class="flex-vcenter">
                 <h4 class="ptc pfont">OUR OFFICE</h4>
-                <h4 class="stc f-family pb-5">{@html office_address}</h4>
+                <h4 class="stc pb-5">{@html office_address}</h4>
                 <h4 class="ptc pfont">MAILING ADDRESS</h4>
-                <h4 class="stc f-family pb-5">{@html mailing_address}</h4>
+                <h4 class="stc pb-5">{@html mailing_address}</h4>
                 <h4 class="ptc pfont">PHONE</h4>
-                <h4 class="stc f-family pb-5">{@html phone}</h4>
+                <h4 class="stc pb-5">{@html phone}</h4>
             </Col>
             <Col md="8">
                 <iframe title="ULF BUILT" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -113,14 +113,7 @@
 </div>
 
 <style lang="scss">
-    :global(.f-family){
-    font-family: "normal", open sans;
-    font-weight: 400;
-    } 
     @include media-max(sm) { 
-        .contact-img {height: 300px;}
-        .pb-5{padding-bottom: 2rem!important;}
-        .mx-10{margin: 3rem auto;padding: 0;}
-
+        .contact-img {height: 18.75rem;}
     }
 </style>
