@@ -43,7 +43,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.formats.large.url}" extraClass="homebanner" />
+<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.formats.large.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
 	<Animate >
@@ -364,7 +364,7 @@
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 5rem;		
+					font-size: 4rem;		
 					margin-bottom: 2rem;	
 					span{
 						font-family: $primary-font;
@@ -483,7 +483,7 @@
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;
-							border-bottom: 3px solid #D8D7D7;
+							// border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
 							@include media-max(lg){
@@ -493,8 +493,8 @@
 							// 	font-size: 1.2rem;
 							// }
 							&.active{
-								color: $primary-color;
-								border-bottom-color: $primary-color;
+								color: $secondary-color;
+								border-bottom-color: $secondary-color;
 							}
 						}
 					}
@@ -556,6 +556,7 @@
 				font-family: $primary-font;
 				margin: 1rem 0 2rem;
 				text-transform: uppercase;
+				font-size: 2.688rem;
 				@include media-max(sm){
 					font-size: 2rem;
 				}
@@ -622,6 +623,7 @@
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
+					font-weight: 500;
 				}
 				h2{
 					margin: 1rem 0 2rem;
@@ -666,6 +668,12 @@
 			display: flex;
 			align-items: center;
 			position: relative;
+			@include media-max(md){
+				height: 50vw;
+			}	
+			@include media-max(ipadmini){
+				height: 55vw;
+			}	
 			@include media-max(sm){
 				height: auto;
 				margin-top: 3rem;
@@ -692,9 +700,11 @@
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
+					font-weight: 500;
 				}
 				h2{
 					margin: 1rem 0 2rem;
+					line-height: 4rem;
 				}
 				p{
 					line-height: 2rem;
@@ -758,6 +768,7 @@
 				span{
 					color: $primary-color;
 					margin-bottom: 1rem;
+					font-weight: 500;
 				}
 				h2{
 					margin: 1rem 0 2rem;
@@ -800,6 +811,9 @@
 		height: 90vh;
 		width: 90vw;
     	margin: 0 auto 3.75rem auto;
+		@include media-max(ipadmini){
+			height: 40vh;
+		}
 		@include media-max(sm){
 			height: 40vh;
 		}

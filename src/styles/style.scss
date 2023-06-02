@@ -88,7 +88,7 @@ p:last-child{
     line-height: 1.5;
 }
 .border-radius{
-    border-radius: 0.625rem;
+    border-radius: 10px;
 }
 .flex-vcenter{
     display: flex;
@@ -97,7 +97,7 @@ p:last-child{
 }
 input,textarea, .form-control{
     padding: 0.8rem;
-    border-radius: 0.438rem;
+    border-radius: 7px;
 }
 input:focus{
     box-shadow: none;
@@ -122,7 +122,7 @@ img{
     width: 100%;
 }
 .mw-1000{
-    max-width: 62.5rem;
+    max-width: 1000px;
     margin:auto;
     hr{
         
@@ -146,35 +146,35 @@ img{
     position: relative;
 }
 .input-icon-box input{
-    padding-left:3.125rem;
+    padding-left:50px;
 }
 .input-icon{
     background-image: url(/src/lib/img/contact-icon.svg);
     background-repeat: no-repeat;
-    height: 1.875rem;
-    width: 1.875rem;
+    height: 30px;
+    width: 30px;
     position: absolute;
-    top: 0.688rem;
-    left: 0.688rem;
-    background-size: 3.75rem;
+    top: 11px;
+    left: 11px;
+    background-size: 60px;
 }
 .input-email:focus ~ .input-icon-email{
-    background-position: 0rem -1.875rem;
+    background-position: 0px -30px;
 }
 .input-phone:focus ~ .input-icon-phone{
-    background-position: 0rem -3.75rem;
+    background-position: 0px -60px;
 }
 .input-icon-user{
-    background-position: -1.875rem 0rem;
+    background-position: -30px 0px;
 }
 .input-icon-email{
-    background-position: -1.875rem -1.875rem;
+    background-position: -30px -30px;
 }
 .input-icon-phone{
-    background-position: -1.875rem -3.75rem;
+    background-position: -30px -60px;
 }
 .input-user:focus ~ .input-icon-user{
-    background-position: 0rem 0rem;
+    background-position: 0px 0px;
 }
 .btn{
     background-color: $primary-color;
@@ -184,8 +184,8 @@ img{
     border-radius: 0;      
     font-family: $primary-font;
     font-size: 1.2rem;
-    border: 0.063rem solid $primary-color;
-    box-shadow: 0rem 0.188rem 0.25rem rgba(140, 133, 133, 0.25);
+    border: 1px solid $primary-color;
+    box-shadow: 0px 3px 4px rgba(140, 133, 133, 0.25);
     border-radius: 2rem;    
     @include media-max(sm){
         padding: 0.7rem 1.4rem;
@@ -193,7 +193,7 @@ img{
     }
 }
 .input-user:focus ~ .input-icon-user{
-    background-position: 0rem 0rem;
+    background-position: 0px 0px;
 }​	
 .btn-primary{
     background-color: $primary-color;
@@ -204,7 +204,7 @@ img{
 }
 .btn-secondary{
     background-color: $secondary-color;
-    border: 0.063rem solid $secondary-color;
+    border: 1px solid $secondary-color;
     color: #fff;  
     width: fit-content;
     &:hover{
@@ -213,7 +213,7 @@ img{
 }
 .btn-inverted{
     background-color: transparent;
-    border: 0.063rem solid $secondary-color;
+    border: 1px solid $secondary-color;
     color: $secondary-color;
     &:hover{
         background-color: $secondary-color;
@@ -236,9 +236,9 @@ img{
     color: #fff;
 }
 .two-columns{
-    -webkit-columns: 2.5rem 2;
-    -moz-columns: 3.75rem 2;
-    columns: 3.75rem 2;
+    -webkit-columns: 40px 2;
+    -moz-columns: 60px 2;
+    columns: 60px 2;
     @include media-max(sm){
         columns:1;
         text-align: center;
@@ -248,7 +248,7 @@ img{
     z-index: 10;
 }
 header.container-fluid{
-    padding: 0.313rem 0.313rem 0.313rem 1.563rem;
+    padding: 5px 5px 5px 25px;
     animation: 1.3s ease-out 0s 1 slideInFromTop;
 }
 @keyframes slideInFromTop {
@@ -280,7 +280,7 @@ header{
     align-items: center;
     z-index: 10;
     &.container-fluid{
-        padding-left: 0.313rem;
+        padding-left: 5px;
     }
     .mobile-menu-header{
         text-align: left;
@@ -315,16 +315,19 @@ header{
     }
     nav{
         ul{
-            margin-bottom: 0rem;
+            margin-bottom: 0px;
         }
         li{
             display: inline-block;
-            padding: 0rem 1.25rem;
+            padding: 0px 20px;
             a.nav-link{
                 color: #fff;
                 text-decoration: none;
                 &:hover, &:focus{
                     background-color: rgba(242, 237, 237, 0.20);
+                }
+                &:after {
+                    color: $primary-color;
                 }
             }       
         }
@@ -366,31 +369,31 @@ header{
                 display: none;
             }
             span{
-                padding: 0.2rem;
+                padding: 0.1rem;
                 border-radius: 0.5rem;
-                width: 2.2rem;
+                width: 2rem;
                 background-color: #fff;
                 margin-bottom: 0.8rem;
                 position: relative;
                 display: inline-block;
                 &:before{
                     content: "";
-                    width: 2.8rem;
-                    padding: 0.2rem;
+                    width: 2.6rem;
+                    padding: 0.1rem;
                     background: #fff;
                     position: absolute;
-                    top: -1rem;
+                    top: -.7rem;
                     border-radius: 0.2rem;
                     right: 0;
                     transition: 0.5s;   
                 }
                 &::after{
                     content: "";
-                    width: 1.6rem;
-                    padding: 0.2rem;
+                    width: 1.4rem;
+                    padding: 0.1rem;
                     background: #fff;
                     position: absolute;
-                    top: 1rem;
+                    top: .8rem;
                     border-radius: 0.2rem;
                     right: 0;
                     transition: 0.5s;   
@@ -492,6 +495,8 @@ header{
                 &:hover{
                     color: $white-color;
                 }
+                font-size: 1.125rem;
+                font-weight: 500;
             }         
         }
         .dropdown.show{
@@ -525,9 +530,14 @@ header{
         color: #000;
     }      
 }
+.svelte-headroom--unpin {
+    .mobile-nav {
+        top: 100% !important;
+    }
+}
 .logo{
     img{
-        height: 4.375rem;
+        height: 70px;
     }
 }
 .footer{
@@ -535,6 +545,9 @@ header{
     background:#262626;
     color: #fff;
     padding: 3rem 0;
+    @include media-max(sm){
+        padding: 3rem 1.5rem;
+    }	
     margin: 0;
     a{
         color: #fff;
@@ -563,7 +576,7 @@ header{
     align-items: center;
     flex-direction: column;
     color:#fff;
-    height: 40.313rem;
+    height: 500px;
     @include media-max(sm){
         height: 20rem;
         padding:0 1rem;
@@ -585,6 +598,8 @@ header{
     }
 }
 
+
+
 .contact-form{
     padding: 4rem;
     border:2px solid #D8D7D7;
@@ -595,16 +610,13 @@ header{
     }
 }
 .contact-img{
-    height: 25rem;
+    height: 400px;
     background-size: cover;
     background-repeat: no-repeat;
 }
 .contact-box{
     margin-top: -10rem;
     margin-bottom: 7rem;
-    @include media-max(sm) {
-        margin-bottom: 4rem;
-    }
     button{
         display: flex;
         margin: auto;
@@ -618,7 +630,7 @@ header{
         }
         .accordion-item{
             .accordion-collapse{
-                border-bottom: 0.063rem solid #ACA7A7;
+                border-bottom: 1px solid #ACA7A7;
                 border-radius: unset;                
             }
             .accordion-body{
@@ -680,23 +692,35 @@ header{
     &__widget{
         &__heading{
             h4{
-                border-bottom: 0.031rem solid #EFEFEF;
-                padding-bottom: 1rem;
-                width: 70%;
+                border-bottom: 0.5px solid #EFEFEF;
+                padding-bottom: .25rem;
+                width: 45%;
                 text-transform: uppercase;
+                font-size: 1.125rem;
+                font-family: $primary-font;
+                line-height: 1.5rem;
+                @include media-max(sm){
+                    width: 50%;
+                }
             }
         }
         &--item{
             margin-bottom: 1rem;
             text-align: left;
-            line-height: 1.7;
+            line-height: 1.5rem;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            font-size: 1.125rem;
+
             img{
-                width: auto;
+                width: 30%;
+                @include media-max(sm){
+                    width: 20%;
+                }	
             }
             p{
-                line-height: 2rem;
-                font-weight: 300;
-                font-size: 0.8rem;
+                line-height: 1.5rem;
+                font-weight: 400;
+                font-size: 1.125rem;
                 text-transform: none;
                 color:#ACA7A7;
             }
@@ -713,6 +737,15 @@ header{
                 margin-right: 1rem;
             }
         }
+        &__paragraph {
+            p {
+                font-feature-settings: 'pnum' on, 'lnum' on;
+            }
+        }
+        margin-top: -2.5rem;
+        @include media-max(sm){
+            margin-top: unset;
+        }	
     }
 }
 .text-right{

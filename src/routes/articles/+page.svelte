@@ -42,7 +42,7 @@
 <Container>
         {#each paginatedBlogs as blog,i (blog.id)}
         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''}">
-            <Col md="7" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
+            <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
                 <Animate>
                     <div class="blogsection7 easein-img">
                         {#if blog.attributes.featuredimage.data != null}
@@ -99,8 +99,8 @@
         }
     }
     .blog-img{
-        min-height: 25rem;
-        max-height: 25rem;
+        min-height: 28rem;
+        max-height: 28rem;
         object-fit:cover;
         -o-object-fit: cover;
         @include media-max(sm){

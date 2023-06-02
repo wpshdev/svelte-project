@@ -9,7 +9,6 @@
 	import Animate from "$lib/components/Animate.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
-   
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
@@ -30,7 +29,7 @@
                 <Col class="text-center">
                     <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                     <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                    <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="We have also completed <b>luxury retail and restaurant projects</b> in Vail, Beaver Creek,<br> Edwards, and greater Eagle County."  />
+                    <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="{portfolio.masonryGallery.masonrySubHeading2}"  />
                 </Col>
             </Row>
         </Container>
@@ -109,6 +108,9 @@
             .btn-inverted{
                 border-color: $secondary-color;
                 color: $secondary-color;
+                &:hover {
+                    color: #fff;
+                }
             }
         } 
     }

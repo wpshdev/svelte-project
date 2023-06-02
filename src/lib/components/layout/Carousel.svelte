@@ -146,6 +146,7 @@ $: {
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
       color: $primary-color;
+      font-weight: 500;
     }
     h2{
 
@@ -166,6 +167,10 @@ $: {
     box-sizing: border-box;
     height: 70vh;
     overflow: hidden;
+    @include media-max(ipadmini){
+      height: 50vh;
+      width: 80%;      
+    }   
     @include media-max(sm){
       height: 50vh;
       width: 80%;      
