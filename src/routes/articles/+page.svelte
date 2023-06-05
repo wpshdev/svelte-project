@@ -65,6 +65,7 @@
                             <span>Vail, Colorado | January 28 · 2 minutes read</span>
                             <h2>{blog.attributes.title}</h2>
                             <p>{blog.attributes.shorttext}</p>
+                            <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
                         </div>
                     </div>
                 </Animate>
@@ -83,6 +84,11 @@
   showStepOptions="{true}"
   on:setPage="{(e) => currentPage = e.detail.page}"
 />
+    <div class="divider">
+        <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.9931 22.2157L3.45312 12.9257L12.9931 3.63574L22.5431 12.9257L12.9931 22.2157Z" stroke="#D8D7D7" stroke-width="3.89" stroke-miterlimit="10"/>
+        </svg>
+    </div>
 </Container>
 </section>
 <Cta/>
@@ -129,7 +135,9 @@
             word-wrap: break-word;
             overflow: hidden;
             max-height: 7.2rem;
-            font-size: 2rem;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            margin-top: 0.5rem;
         }
         p{
             display: block;
@@ -137,9 +145,20 @@
             word-wrap: break-word;
             overflow: hidden;
             max-height: 3.1em;
+            font-size: 1.25rem;
+            line-height: 2.125rem;
+        }
+        .btn {
+           padding: 0.7rem 3rem;
+           @include media-max(sm){
+                border-radius: 8px;
+            }
         }
     }
     .article-section{
+        h2 {
+            color: $secondary-color;
+        }
         padding: 0 0 1rem 0;
         @include media-max(sm){
             padding: 0 0 0 0;
@@ -150,21 +169,38 @@
         padding: 0;
         margin: 0;
         li{
+            color: $darkgray;
             a{
                 padding: 1rem 1rem;
                 text-decoration: none;
+                color: $darkgray;
+                font-weight: 400;
             }
         }
     }
-    h2, .h2 {
-        font-size: 3rem;
-        color: $secondary-color;
-    }
+    // .h2 {
+    //     font-size: 3rem;
+    //     color: $secondary-color;
+    // }
     :global(.article-blog){
         :global(.col-md-5){
             padding: 1.25rem 0px;
             @include media-max(sm){
                 padding: 0 0.625rem;
+            }
+        }
+        .divider {
+            text-align: center;
+            margin-top: 7rem;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            &:before, &:after {
+                content: '';
+                border-top: 3.89px solid $gray;
+                width: 40%;
+                display: block;
             }
         }
     }
