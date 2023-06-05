@@ -9,7 +9,7 @@
     console.log(data);
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.data.attributes
-    let domain = "https://strapi.ulfbuilt.com:1337/";
+    console.log(page);
 
 
     export let pdata;
@@ -23,7 +23,6 @@
         const response = await axios.get(url, { headers });
         pdata = response.data.data.attributes;
         featuredProjects = pdata.featuredProjects.data;
-        console.log(featuredProjects);
     }
 
     onMount(() => {
@@ -36,81 +35,91 @@
 	<meta name="description" content="ULF BUILT" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
-<PageBanner title="{page.Title}" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.formats.large.url}" bannerMobile="{url}{page.Cover.data[0].attributes.formats.medium.url}" />
+<PageBanner title="{page.Title}" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.url}"  />
 <section class="service-b">
-    <Animate>
         <Container>
             <h2 class="text-center mb-5 py-3">{page.section1heading}</h2>
             <Row>
                 <Col md=4 sm=6 xs=12>
                     <div class="service-b__service-box">
                         <div class="service-b__service-box__service-box-inner">
-                            <div class="service-b__service-box__service-box-inner__service-icon">
-                                <img src="{url}{page.section1item1icon.data.attributes.formats.medium.url}" alt="{page.section1item1heading}">
-                            </div>
+                            <Animate>
+                                <div class="service-b__service-box__service-box-inner__service-icon">
+                                    <img src="{url}{page.section1item1icon.data.attributes.formats.medium.url}" alt="{page.section1item1heading}">
+                                </div>
+                            </Animate>
                             <h4>{page.section1item1heading}</h4>
                         </div>
                         <p>{page.section1item1text}</p>
                     </div>
                 </Col>
                 <Col md=4 sm=6 xs=12>
-                    <div class="service-b__service-box">
-                        <div class="service-b__service-box__service-box-inner">
-                            <div class="service-b__service-box__service-box-inner__service-icon">
-                                <img src="{url}{page.section1item2icon.data.attributes.formats.medium.url}" alt="{page.section1item2heading}">
+                    <Animate>
+                        <div class="service-b__service-box">
+                            <div class="service-b__service-box__service-box-inner">
+                                <div class="service-b__service-box__service-box-inner__service-icon">
+                                    <img src="{url}{page.section1item2icon.data.attributes.formats.medium.url}" alt="{page.section1item2heading}">
+                                </div>
+                                <h4>{page.section1item2heading}</h4>
                             </div>
-                            <h4>{page.section1item2heading}</h4>
+                            <p>{page.section1item2text}</p>
                         </div>
-                        <p>{page.section1item2text}</p>
-                    </div>
+                    </Animate>
                 </Col>
                 <Col md=4 sm=6 xs=12>
-                    <div class="service-b__service-box">
-                        <div class="service-b__service-box__service-box-inner">
-                            <div class="service-b__service-box__service-box-inner__service-icon">
-                                <img src="{url}{page.section1item3icon.data.attributes.formats.medium.url}" alt="{page.section1item3heading}">
+                    <Animate>
+                        <div class="service-b__service-box">
+                            <div class="service-b__service-box__service-box-inner">
+                                <div class="service-b__service-box__service-box-inner__service-icon">
+                                    <img src="{url}{page.section1item3icon.data.attributes.formats.medium.url}" alt="{page.section1item3heading}">
+                                </div>
+                                <h4>{page.section1item3heading}</h4>
                             </div>
-                            <h4>{page.section1item3heading}</h4>
+                            <p>{page.section1item3text}</p>
                         </div>
-                        <p>{page.section1item3text}</p>
-                    </div>
+                    </Animate>
                 </Col>
                 <Col md=4 sm=6 xs=12>
-                    <div class="service-b__service-box">
-                        <div class="service-b__service-box__service-box-inner">
-                            <div class="service-b__service-box__service-box-inner__service-icon">
-                                <img src="{url}{page.section1item4icon.data.attributes.formats.medium.url}" alt="{page.section1item4heading}">
+                    <Animate>
+                        <div class="service-b__service-box">
+                            <div class="service-b__service-box__service-box-inner">
+                                <div class="service-b__service-box__service-box-inner__service-icon">
+                                    <img src="{url}{page.section1item4icon.data.attributes.formats.medium.url}" alt="{page.section1item4heading}">
+                                </div>
+                                <h4>{page.section1item4heading}</h4>
                             </div>
-                            <h4>{page.section1item4heading}</h4>
+                            <p>{page.section1item4text}</p>
                         </div>
-                        <p>{page.section1item4text}</p>
-                    </div>
+                    </Animate>
                 </Col>
                 <Col md=4 sm=6 xs=12>
-                    <div class="service-b__service-box">
-                        <div class="service-b__service-box__service-box-inner">
-                            <div class="service-b__service-box__service-box-inner__service-icon">
-                                <img src="{url}{page.section1item5icon.data.attributes.formats.medium.url}" alt="{page.section1item5heading}">
+                    <Animate>
+                        <div class="service-b__service-box">
+                            <div class="service-b__service-box__service-box-inner">
+                                <div class="service-b__service-box__service-box-inner__service-icon">
+                                    <img src="{url}{page.section1item5icon.data.attributes.formats.medium.url}" alt="{page.section1item5heading}">
+                                </div>
+                                <h4>{page.section1item5heading}</h4>
                             </div>
-                            <h4>{page.section1item5heading}</h4>
+                            <p>{page.section1item5text}</p>
                         </div>
-                        <p>{page.section1item5text}</p>
-                    </div>
+                    </Animate>
                 </Col>
                 <Col md=4 sm=6 xs=12>
-                    <div class="service-b__service-box">
-                        <div class="service-b__service-box__service-box-inner">
-                            <div class="service-b__service-box__service-box-inner__service-icon">
-                                <img src="{url}{page.section1item6icon.data.attributes.formats.medium.url}" alt="{page.section1item6heading}">
+                    <Animate>
+                        <div class="service-b__service-box">
+                            <div class="service-b__service-box__service-box-inner">
+                                <div class="service-b__service-box__service-box-inner__service-icon">
+                                    <img src="{url}{page.section1item6icon.data.attributes.formats.medium.url}" alt="{page.section1item6heading}">
+                                </div>
+                                <h4>{page.section1item6heading}</h4>
                             </div>
-                            <h4>{page.section1item6heading}</h4>
+                            <p>{page.section1item6text}</p>
                         </div>
-                        <p>{page.section1item6text}</p>
-                    </div>
+                    </Animate>
                 </Col>
             </Row>
         </Container>
-    </Animate>
 </section>
 <section class="mx-10 sets-us-apart">
     <Animate>
@@ -160,7 +169,7 @@
 </section>
 <section class="height-100vh">
     <Animate>
-        <img src="{url}{page.section5image.data.attributes.formats.medium.url}" alt="{page.title}" class="w-100">
+        <img src="{url}{page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
     </Animate>
 </section>
 <section class="reimagine">
@@ -185,7 +194,7 @@
 					<Col sm="6">
 						<div class="explore__article">
 							<a href="{featuredProject.attributes.slug}">
-								<img src="{domain}{featuredProject.attributes.featuredImage.data.attributes.formats.large.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
+								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.formats.large.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="explore__article__text">
 									<span>0{index+1}</span>
 									{featuredProject.attributes.title}
@@ -225,6 +234,7 @@
             }
             @include media-max(sm){
                 padding: 1rem 1rem;
+                margin: 3rem 0;
             }
             p {
                 font-size: 1.15rem;

@@ -160,7 +160,7 @@ $: {
   position: relative;
 
   &__carousel-cell {
-    width: 45%;
+    width: 42%;
     position: relative;   
     height: auto;
     margin: 0 0.5rem;

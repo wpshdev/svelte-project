@@ -69,7 +69,7 @@
 </svelte:head>
 
 <section class="portfolio-gallery" >
-	<Animate>
+
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -84,7 +84,6 @@
 				<PortfolioCarousel {images} />
 			</Row>		
 		</Container>
-	</Animate>
 </section>
 {#if portfolio.isFeatured}
 <section class="about-property">

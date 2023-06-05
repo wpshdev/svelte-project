@@ -55,8 +55,8 @@
 </svelte:head>
 
 <PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" bannerMobile="{url}{data.data.attributes.featuredimage.data.attributes.formats.medium.url}" />
-<section class="mx-10">
-    <Container class="mb-5">
+<section class="mx-10 contact_inner">
+    <Container class="mb-5 contact_inner__content">
         <Row>
             <Col md="12">
                 <h2 class="text-center">Let's get started...</h2>
@@ -65,7 +65,7 @@
             </Col>
         </Row>
     </Container>
-    <Container>
+    <Container class="contact_inner__details">
         <Row>
             <Col md="4" class="flex-vcenter">
                 <h4 class="ptc pfont">OUR OFFICE</h4>
@@ -113,7 +113,52 @@
 </div>
 
 <style lang="scss">
+    .contact_inner {
+        .contact_inner__content {
+            h2 {
+                font-size: 2.813rem;
+            }
+            p {
+                font-size: 1.25rem;
+                line-height: 2.125rem;
+            }
+        }
+        .contact_inner__details {
+            .ptc {
+                font-size: 1.438rem;
+            }
+            .stc {
+                font-size: 1.688rem;
+            }
+        }
+    }
+    .contact-box {
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 3.125rem;
+        }
+        :global(.contact-form) {
+            max-width: 52.602rem;
+            padding: 4rem 10rem;
+            @include media-max(sm) { 
+                padding: 4rem;
+            }
+        }
+        :global(.contact-form textarea) {
+            height: 9rem;
+            margin: 2rem 0;
+        }
+        :global(.contact-form button) {
+            padding: 0.7rem 3.125rem;
+        }
+        :global(.contact-form button:hover) {
+            background-color: #263A63;
+            color: #fff;
+            border-color: #fff;
+        }
+    }
     @include media-max(sm) { 
         .contact-img {height: 18.75rem;}
     }
+    
 </style>

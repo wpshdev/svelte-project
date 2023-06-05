@@ -27,7 +27,7 @@
 </script>
 {#await promise}
 {:then ctaData} 
-	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.formats.large.url})">
+	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.url})">
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -60,16 +60,25 @@
 			align-items: center;
 			justify-content: center;
 		}
-		h2{
-			color: #000;
-			margin-bottom: 2rem;
-			@include media-max(sm){
-				font-size: 2rem;
+		&__wrapper {
+			h2{
+				color: #000;
+				margin-bottom: 2rem;
+				font-size: 2.5rem;
+				@include media-max(sm){
+					font-size: 3rem;
+				}
+			}
+			:global(p) {
+				font-size: 1.25rem;
+			}
+			.btn{
+				margin-top: 1rem;
+				color: #fff;
+				padding: 0.7rem 3.125rem; 
+				font-size: 1.25rem;
 			}
 		}
-		.btn{
-			margin-top: 1rem;
-			color: #fff;
-		}
+		
 	}    
 </style>

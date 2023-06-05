@@ -16,10 +16,10 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<div class="cover" style="background:#E5EEF2;">
+<div class="cover" style="background:#1E2D39;">
 <Container>
     <div class="cover__covertitle">
-        <p class="pfont ptc mb-1 pt-3">Article</p>
+        <p class="pfont ptc mb-1 pt-3 article">Article</p>
         <h2 class="pfont stc mb-4">{title}</h2>
         <p class="ptc pb-5">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
     </div>
@@ -56,11 +56,12 @@
 <Cta/>
 <style lang="scss">
 .cover{
-    padding-top: 6.25rem;
+    padding-top: 8rem;
     margin-bottom: 18.75rem;
     height: 48.125rem;
     @include media-max(sm){
-        height: 24.375rem;
+        // height: 24.375rem;
+        height: 37.375rem;
         margin-bottom: 12.5rem;
     }
     &__covertitle{
@@ -68,15 +69,27 @@
         max-width:50rem;
         p{
             text-align: left;
+            color: $gray;
+            font-size: 1.125rem;
+            &.article {
+                color: $primary-color;
+                font-size: 1.438rem;
+            }
+        }
+        h2 {
+            font-size: 3.438rem;
+            color: $white-color;
         }
     }
     &__coverimg{
-        height: 100vh;
+        // height: 100vh;
+        height: 39.588rem;
         width: 100%;
-        max-width: 90%;
+        max-width: 80%;
         margin-bottom: -16.25rem;
         background-size: cover;
         align-self:flex-start;
+        background-position: center;
         @include media-max(sm) {
             margin-bottom: -11.875rem;
             margin-left: -1rem;
@@ -94,8 +107,12 @@
     @include media-max(sm) {
         padding: 4.375rem 0.625rem 1.875rem 0.625rem;
     }
+    h2 {
+        font-size: 2.813rem;
+    }
     h3{
         margin: 0.5rem 0 1.5rem 0;
+        font-size: 2.25rem;
         @include media-max(sm) {
             margin: 0.5rem 0 1rem 0;
         }
@@ -104,6 +121,10 @@
         text-decoration: none;
         color: $secondary-color;
         font-family: $secondary-font;
+        font-weight: 600;
+    }
+    p {
+        font-size: 1.25rem;
         font-weight: 600;
     }
     &__easein-container{

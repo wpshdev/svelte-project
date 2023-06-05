@@ -10,6 +10,7 @@ const column = 0;
 const columnSize = 0;
 const columnSizeRatio = 0;
 import axios from "axios";
+	import Animate from "./Animate.svelte";
 export let id;
 let projects;
 let duration = 1500;
@@ -39,8 +40,8 @@ $: if (id) {
 }
 
 </script>
-
-    {#if projects}
+    <Animate>
+        {#if projects}
         <MasonryGrid
         class="container"
         {defaultDirection}
@@ -68,9 +69,10 @@ $: if (id) {
              {/if}			
          {/each}
         </MasonryGrid>         														
-    {:else}
-        <div class="col text-center">Loading...</div>
-    {/if}         
+        {:else}
+            <div class="col text-center">Loading...</div>
+        {/if}    
+    </Animate>     
 
 <style lang="scss">
     .container {

@@ -132,6 +132,7 @@ $: listener = {propCount , activeTab};
                     // display: grid;
                     // grid-template-columns: repeat(2, 1fr);
                     // grid-gap: 2rem;
+					min-height: 60vh;
 					div{
 						width: 33.33%;
 						margin: 0 1rem;

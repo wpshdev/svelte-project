@@ -45,6 +45,16 @@
 				isOpen = false;
 			}
 		});
+
+		window.onscroll = () =>  {
+			var dropdownParent = document.querySelector('.dropdown.nav-item');
+			var dropdownMenu = document.querySelector('.dropdown .dropdown-menu-end');
+
+			if(dropdownParent.classList.contains('show')) {
+				dropdownMenu.classList.remove('show');
+				dropdownParent.classList.remove('show');
+			}
+		};
   	});	
 
 </script>
