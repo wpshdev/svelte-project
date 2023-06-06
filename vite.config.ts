@@ -4,6 +4,7 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const filePath = dirname(fileURLToPath(import.meta.url))
+
 const sassPath = `${filePath}/src/styles/`
 
 const config: UserConfig = {
