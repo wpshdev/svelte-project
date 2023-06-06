@@ -447,7 +447,7 @@ header{
             }
             .bottom-menu-content{
                 // padding-left: 1.2rem;
-                margin-top: 20rem;
+                // margin-top: 20rem;
                 .mail{
                     color: #3E3636;
                     text-decoration: none;
@@ -763,7 +763,7 @@ header{
         background-size: 100%;
         background-position: right top;
         background-repeat: no-repeat;
-        @include media-max(sm){
+        @include media-max(xs){
            background: unset;
         }	
     }
@@ -772,7 +772,7 @@ header{
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
-        @include media-max(sm){
+        @include media-max(xs){
             background: unset;
          }	
     }
@@ -781,7 +781,7 @@ header{
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
-        @include media-max(sm){
+        @include media-max(xs){
             background: unset;
          }	
     }
@@ -790,7 +790,7 @@ header{
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
-        @include media-max(sm){
+        @include media-max(xs){
             background: unset;
          }	
     }
