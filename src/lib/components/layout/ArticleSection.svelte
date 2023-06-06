@@ -68,7 +68,8 @@
 		&__pre-heading{
 			color: $primary-color;
 			margin-bottom: 2rem;
-			display: block;			
+			display: block;	
+			font-weight: 500;		
 		}
 		&__content{
 			&__wrapper{
@@ -87,7 +88,6 @@
 					color: $primary-color;
 					margin-bottom: 1rem;
 					font-weight: 500;
-				
 				}
 				h2{
 					margin: 1rem 0 2rem;	

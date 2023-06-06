@@ -82,6 +82,9 @@
             color: white;
             text-align: center;  
             height: 60vh;
+            @include media-max(ipadmini){
+                height: 20vh;
+            }
             @include media-max(sm){
                 height: 20vh;
             }

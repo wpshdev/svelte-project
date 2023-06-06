@@ -15,6 +15,7 @@ let propCount = 10;
 let listener = {};
 
 export let subHeading2 = '';
+export let paginate;
 
 $: listener = {propCount , activeTab};
 
@@ -51,8 +52,8 @@ $: listener = {propCount , activeTab};
 		{/if}				
 		<div class="categories__tabs__gallery">
 			{#key listener }
-				<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
-					<MasonryCard id={activeTab} {propCount}/>
+				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
+					<MasonryCard id={activeTab} {propCount} addPagination={paginate} />
 				</div>			
 			{/key}																		
 		</div>					
@@ -132,6 +133,7 @@ $: listener = {propCount , activeTab};
                     // display: grid;
                     // grid-template-columns: repeat(2, 1fr);
                     // grid-gap: 2rem;
+					min-height: 60vh;
 					div{
 						width: 33.33%;
 						margin: 0 1rem;

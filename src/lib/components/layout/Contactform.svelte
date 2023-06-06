@@ -60,7 +60,7 @@
 							<div class="input-icon input-icon-user"></div>
 						</FormGroup>
 						<FormGroup class="input-icon-box">
-							<Input class="input-email" placeholder="Email address" bind:value={email} />
+							<Input class="input-email" placeholder="Email address" bind:value={email} required />
 							<div class="input-icon input-icon-email"></div>
 						</FormGroup>
 						<FormGroup class="input-icon-box">
@@ -68,7 +68,7 @@
 							<div class="input-icon input-icon-phone"></div>
 						</FormGroup>
 						<FormGroup>
-							<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message}/>
+							<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message} required/>
 						</FormGroup>
 						<Button type="btn is-primary"  on:click={doContact}>Send</Button>
 					</Form>
@@ -99,6 +99,7 @@
 		:global(#yourMessage){
 			height: 15rem;
 		}
+		margin-bottom: 1rem;
 	}
 }
 </style>

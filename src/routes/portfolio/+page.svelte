@@ -9,7 +9,7 @@
 	import Animate from "$lib/components/Animate.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
-   
+    
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
@@ -24,17 +24,15 @@
 <PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
 
 <section class="portfolio-masonry">
-    <Animate>
-        <Container>
-            <Row>
-                <Col class="text-center">
-                    <h2>{portfolio.masonryGallery.masonryHeading}</h2>
-                    <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                    <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="We have also completed <b>luxury retail and restaurant projects</b> in Vail, Beaver Creek,<br> Edwards, and greater Eagle County."  />
-                </Col>
-            </Row>
-        </Container>
-    </Animate>
+    <Container>
+        <Row>
+            <Col class="text-center">
+                <h2>{portfolio.masonryGallery.masonryHeading}</h2>
+                <p>{portfolio.masonryGallery.masonrySubheading}</p>
+                <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="{portfolio.masonryGallery.masonrySubHeading2}" paginate="true" />
+            </Col>
+        </Row>
+    </Container>
 </section>
 <section class="portfolio-cta">
     <Animate>
@@ -109,6 +107,9 @@
             .btn-inverted{
                 border-color: $secondary-color;
                 color: $secondary-color;
+                &:hover {
+                    color: #fff;
+                }
             }
         } 
     }

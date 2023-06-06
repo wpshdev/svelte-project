@@ -1,6 +1,7 @@
 <script lang="ts">
 import { fly, fade } from "svelte/transition";
 import { MasonryGrid } from "@egjs/svelte-grid";
+import { paginate, LightPaginationNav } from 'svelte-paginate';
 
 
 const gap = 0;
@@ -10,7 +11,9 @@ const column = 0;
 const columnSize = 0;
 const columnSizeRatio = 0;
 import axios from "axios";
+	import Animate from "./Animate.svelte";
 export let id;
+export let addPagination;
 let projects;
 let duration = 1500;
 const cache = new Map();
@@ -31,16 +34,28 @@ async function getProjects(id) {
     cache.set(id, projects);
 }
 
+// $: paginatedPortfolios = paginate({ portfolios, pageSize, currentPage });
+let items;
+let currentPage;
+let pageSize;
+// let paginatedPortfolios;
+
 $: if (id) {
     (async () => {
         await getProjects(id); 
         console.log(projects);
+
+        let portfolios = projects.data;
+        items = portfolios;
+        currentPage = 1;
+        pageSize = 4;
+        // paginatedPortfolios = paginate({ items, pageSize, currentPage });
     })();
 }
 
 </script>
-
-    {#if projects}
+    <Animate>
+        {#if projects}
         <MasonryGrid
         class="container"
         {defaultDirection}
@@ -50,7 +65,7 @@ $: if (id) {
         {columnSize}
         {columnSizeRatio}
     >       
-         {#each projects.data as project, index}		
+         {#each paginate({ items, pageSize, currentPage }) as project, index}			
              {#if index < propCount}
                 <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
                     <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
@@ -67,10 +82,23 @@ $: if (id) {
                 </div>			
              {/if}			
          {/each}
-        </MasonryGrid>         														
-    {:else}
-        <div class="col text-center">Loading...</div>
-    {/if}         
+        </MasonryGrid>  
+        {#if addPagination == 'true'}
+        <div class="paginate-section">
+            <LightPaginationNav
+            totalItems="{items.length}"
+            pageSize="{pageSize}"
+            currentPage="{currentPage}"
+            limit="{1}"
+            showStepOptions="{true}"
+            on:setPage="{(e) => currentPage = e.detail.page}"
+            />
+        </div>
+        {/if}       														
+        {:else}
+            <div class="col text-center">Loading...</div>
+        {/if}    
+    </Animate>     
 
 <style lang="scss">
     .container {
@@ -147,5 +175,22 @@ $: if (id) {
               right: 1rem;
             }
         }
+    }
+    .paginate-section {
+        margin-top: 5rem; 
+    }
+    :global(.option.prev path, .option.next path) {
+        fill: $primary-color;
+    }
+    :global(.option.prev::after) {
+        content: 'Prev';
+        margin-left: 0.25rem;
+    }
+    :global(.option.next::before) {
+        content: 'Next';
+        margin-right: 0.25rem;
+    }
+    :global(.blog-card) {
+        align-items: center;
     }
 </style>

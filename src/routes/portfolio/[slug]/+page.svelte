@@ -69,7 +69,7 @@
 </svelte:head>
 
 <section class="portfolio-gallery" >
-	<Animate>
+
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -84,7 +84,6 @@
 				<PortfolioCarousel {images} />
 			</Row>		
 		</Container>
-	</Animate>
 </section>
 {#if portfolio.isFeatured}
 <section class="about-property">
@@ -144,8 +143,10 @@
 						{@html portfolio.content}         
 					</div>
 					<div class="portfolio-cta__btns">
-						<a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
-						<a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a>
+						<!-- <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
+						<a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a> -->
+						<a href="/contact-us" class="btn btn-secondary">Talk to Us</a>
+						<a href="/portfolio" class="btn btn-inverted">Back to Portfolio</a>
 					</div>                   
 				</Col>
 			</Row>
@@ -212,9 +213,12 @@ section{
 	border-top: 1px solid #ACA7A7;
     span{
       color: $primary-color;
+	  font-weight: 500;
     }
     h1{
 	  margin: 1rem 0;
+	  font-size: 4rem;
+	  color: $secondary-color;
     }
 	p{
 		line-height: 2;
@@ -320,6 +324,9 @@ section{
 		.btn-inverted{
 			border-color: $secondary-color;
 			color: $secondary-color;
+			&:hover {
+				color: $white-color;
+			}
 		}
 	}
 }
