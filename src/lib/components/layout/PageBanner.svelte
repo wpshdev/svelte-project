@@ -56,7 +56,7 @@
 		}
         &:after{
             content: "";
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0.5);
             left: 0;
             top: 0;
             height: 100%;

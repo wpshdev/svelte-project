@@ -234,7 +234,7 @@
             }
             @include media-max(sm){
                 padding: 1rem 1rem;
-                margin: 3rem 0;
+                margin: 4.5rem 0;
             }
             p {
                 font-size: 1.15rem;
@@ -266,6 +266,7 @@
                     @include media-max(md){
                         align-self: center;
                         padding-left: 9px;
+                        font-size: 1.688rem;
                     }
                     @include media-max(sm){
                         padding-left: 2rem;
@@ -326,7 +327,7 @@
         flex-direction:column;
         justify-content:center;
         @include media-max(sm){ 
-            margin-top: 3rem;
+            margin-top: 3rem !important;
         }
         h4{
             text-transform:uppercase;

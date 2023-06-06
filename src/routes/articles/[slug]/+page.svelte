@@ -42,7 +42,9 @@
                 <Animate>
                     <div class="related-articles__easein-container">
                         <div class="easein-img">
-                            <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.medium.url}" alt="blogtitle" class="blog-img w-100">
+                            <a href="/articles/{blog.attributes.slug}">
+                                <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.medium.url}" alt="blogtitle" class="blog-img w-100">
+                            </a>
                         </div>
                     </div>
                 <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
@@ -64,6 +66,9 @@
         height: 37.375rem;
         margin-bottom: 12.5rem;
     }
+    @include media-max(xs){
+        height: 33.121rem;
+    }
     &__covertitle{
         width:100%;
         max-width:50rem;
@@ -71,14 +76,20 @@
             text-align: left;
             color: $gray;
             font-size: 1.125rem;
+            font-weight: 600;
             &.article {
                 color: $primary-color;
                 font-size: 1.438rem;
+                font-weight: 500;
             }
         }
         h2 {
             font-size: 3.438rem;
             color: $white-color;
+            @include media-max(xs){
+                font-size: 2.125rem;
+                padding-top: 0;
+            }
         }
     }
     &__coverimg{
@@ -94,6 +105,10 @@
             margin-bottom: -11.875rem;
             margin-left: -1rem;
             max-width: 100%;
+        }
+        @include media-max(xs){
+            height: 11.744rem;
+            max-width: 95%;
         }
     }
 }
@@ -126,6 +141,9 @@
     p {
         font-size: 1.25rem;
         font-weight: 600;
+        @include media-max(sm) {
+            font-weight: 500;
+        }
     }
     &__easein-container{
         overflow: hidden;

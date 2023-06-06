@@ -10,8 +10,8 @@
     export let data;
     console.log(data);
     let abouttitle = data.data.attributes.Title
-    let aboutimage = data.data.attributes.featuredimage.data.attributes.formats.large.url
-    let aboutimageMobile = data.data.attributes.featuredimage.data.attributes.formats.medium.url    
+    let aboutimage = data.data.attributes.featuredimage.data.attributes.url
+    let aboutimageMobile = data.data.attributes.featuredimage.data.attributes.url    
     let aboutsubheading = data.data.attributes.Aboutsubheading
     let about = data.data.attributes
     let url = "https://strapi.ulfbuilt.com:1337/";

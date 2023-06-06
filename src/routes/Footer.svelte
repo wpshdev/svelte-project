@@ -109,10 +109,10 @@ function scrollToTop() {
 </footer>
 
 <style lang="scss">
-    :global(.col.footer__col){
+    :global(.col.footer__col:not(:first-child)){
         @include media-max(sm){
             flex: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             h4{
                 max-width: 20rem;
             }
