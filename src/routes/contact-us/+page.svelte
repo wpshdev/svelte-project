@@ -54,7 +54,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" bannerMobile="{url}{data.data.attributes.featuredimage.data.attributes.formats.medium.url}" />
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.url}" bannerMobile="{url}{data.data.attributes.featuredimage.data.attributes.formats.medium.url}" />
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
         <Row>
@@ -81,7 +81,7 @@
         </Row>
     </Container>
 </section>
-<div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.formats.large.url});">
+<div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.url});">
 </div>
 <div class="contact-box container-fluid">
     <Container>
@@ -133,6 +133,7 @@
         }
     }
     .contact-box {
+        margin-top: -6rem;
         h2 {
             font-size: 2.25rem;
             margin-bottom: 3.125rem;
@@ -157,8 +158,13 @@
             border-color: #fff;
         }
     }
-    @include media-max(sm) { 
-        .contact-img {height: 18.75rem;}
+    .contact-img {
+        height: 31.313rem;
+        background-position: center;
+        @include media-max(sm) { 
+            height: 18.75rem;
+        }
     }
+    
     
 </style>

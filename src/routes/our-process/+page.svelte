@@ -13,7 +13,7 @@
 	<meta name="description" content="ULF BUILT" />
     <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.formats.large.url}" as="image">
 </svelte:head>
-<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.formats.large.url}" />
+<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
         <Container>
             <Row>
@@ -60,11 +60,11 @@
     </Animate>
 </section>
 <Animate>
-<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large.url})"></section> 
+<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.url})"></section> 
 </Animate>
 <section class="phase">
     <Animate>
-        <Container>
+        <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="2">
                     <span class="num">1</span>
@@ -76,52 +76,48 @@
         </Container>
     </Animate>
     <Animate>
-        <Container>
-            <div class="phase__grid">
-                <div class="phase__grid__item">
-                    <span>{processData.section4heading}</span>
-                    <h4>{processData.section4subheading}</h4>
-                    {@html processData.section4text}
-                </div>
-                <div class="phase__grid__item">
-                    {@html processData.section4righttext}
-                </div>     
-                <div class="phase__grid__item">
-                    <span>{processData.section5heading}</span>
-                    <h4>{processData.section5subheading}</h4>
-                    {@html processData.section5text }
-                </div>  
-                <div class="phase__grid__item last-even">
-                  {@html processData.section5righttext}
-                </div>                                 
-            </div>      
-        </Container>
+        <div class="phase__grid">
+            <div class="phase__grid__item">
+                <span>{processData.section4heading}</span>
+                <h4>{processData.section4subheading}</h4>
+                {@html processData.section4text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section4righttext}
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section5heading}</span>
+                <h4>{processData.section5subheading}</h4>
+                {@html processData.section5text }
+            </div>  
+            <div class="phase__grid__item last-even">
+                {@html processData.section5righttext}
+            </div>                                 
+        </div>  
     </Animate>
     <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large.url})">
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.url})">
         </div>  
     </Animate>
    <Animate>
-        <Container>
-            <div class="phase__grid scnd-row">
-                <div class="phase__grid__item">
-                    <span>{processData.section7heading}</span>
-                    <h4>{processData.section7subheading}</h4>
-                    {@html processData.section7text}
-                </div>
-                <div class="phase__grid__item">
-                    {@html processData.section7righttext}
-                </div>     
-                <div class="phase__grid__item">
-                    <span>{processData.section8heading}</span>
-                    <h4>{processData.section8subheading}</h4>
-                    {@html processData.section8text}
-                </div>  
-                <div class="phase__grid__item last-even">
-                    {@html processData.section8righttext}
-                </div>                                 
-            </div>      
-        </Container>      
+        <div class="phase__grid scnd-row">
+            <div class="phase__grid__item">
+                <span>{processData.section7heading}</span>
+                <h4>{processData.section7subheading}</h4>
+                {@html processData.section7text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section7righttext}
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section8heading}</span>
+                <h4>{processData.section8subheading}</h4>
+                {@html processData.section8text}
+            </div>  
+            <div class="phase__grid__item last-even">
+                {@html processData.section8righttext}
+            </div>                                 
+        </div>        
    </Animate>
 </section>
 <Animate>
@@ -149,7 +145,7 @@
 
 <section class="phase">
     <Animate>
-        <Container>
+        <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="9" md="10">
                     <div class="phase__heading"><h3>{processData.section10phase2heading}</h3></div>
@@ -161,86 +157,80 @@
         </Container>
     </Animate>
     <Animate>
-        <Container>
-            <div class="phase__grid">
-                <div class="phase__grid__item">
-                    <span>{processData.section11heading}</span>
-                    <h4>{processData.section11subheading}</h4>
-                    {@html processData.section11text}
-                </div>
-                <div class="phase__grid__item">
-                    {@html processData.section11righttext}
-                </div>     
-                <div class="phase__grid__item">
-                    <span>{processData.section12heading}</span>
-                    <h4>{processData.section12subheading}</h4>
-                    {@html processData.section12text}
-                </div>  
-                <div class="phase__grid__item">
-                    {@html processData.section11text}
-                </div>  
-                <div class="phase__grid__item">
-                    <span>{processData.section13heading}</span>
-                    <h4>{processData.section13subheading}</h4>
-                    {@html processData.section13righttext}
-                </div>  
-                <div class="phase__grid__item last-even">
-                    {@html processData.section12text}
-                </div>                                            
-            </div>      
-        </Container>
+        <div class="phase__grid">
+            <div class="phase__grid__item">
+                <span>{processData.section11heading}</span>
+                <h4>{processData.section11subheading}</h4>
+                {@html processData.section11text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section11righttext}
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section12heading}</span>
+                <h4>{processData.section12subheading}</h4>
+                {@html processData.section12text}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section11text}
+            </div>  
+            <div class="phase__grid__item">
+                <span>{processData.section13heading}</span>
+                <h4>{processData.section13subheading}</h4>
+                {@html processData.section13righttext}
+            </div>  
+            <div class="phase__grid__item last-even">
+                {@html processData.section12text}
+            </div>                                            
+        </div>    
     </Animate>
     <Animate>
         <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.formats.large.url})">
         </div>   
     </Animate>
     <Animate>
-        <Container>
-            <div class="phase__grid scnd-row">
-                <div class="phase__grid__item">
-                    <span>{processData.section15heading}</span>
-                    <h4>{processData.section15subheading}</h4>
-                    {@html processData.section15text}
-                </div>
-                <div class="phase__grid__item">
-                    {@html processData.section15righttext }
-                </div>     
-                <div class="phase__grid__item">
-                    <span>{processData.section16heading}</span>
-                    <h4>{processData.section16subheading}</h4>
-                    {@html processData.section16text}
-                </div>  
-                <div class="phase__grid__item">
-                    {@html processData.section16righttext }
-                </div>         
-                <div class="phase__grid__item">
-                    <span>{processData.section17heading}</span>
-                    <h4>{processData.section17subheading}</h4>
-                    {@html processData.section17text}
-                </div>  
-                <div class="phase__grid__item last-even">
-                    {@html processData.section17righttext }
-                </div>                                       
-            </div>      
-        </Container>   
+        <div class="phase__grid scnd-row">
+            <div class="phase__grid__item">
+                <span>{processData.section15heading}</span>
+                <h4>{processData.section15subheading}</h4>
+                {@html processData.section15text}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section15righttext }
+            </div>     
+            <div class="phase__grid__item">
+                <span>{processData.section16heading}</span>
+                <h4>{processData.section16subheading}</h4>
+                {@html processData.section16text}
+            </div>  
+            <div class="phase__grid__item">
+                {@html processData.section16righttext }
+            </div>         
+            <div class="phase__grid__item">
+                <span>{processData.section17heading}</span>
+                <h4>{processData.section17subheading}</h4>
+                {@html processData.section17text}
+            </div>  
+            <div class="phase__grid__item last-even">
+                {@html processData.section17righttext }
+            </div>                                       
+        </div>     
     </Animate>
     <Animate>
         <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large.url})">
         </div>   
     </Animate>
     <Animate>
-        <Container>
-            <div class="phase__grid scnd-row">
-                <div class="phase__grid__item">
-                    <span>{processData.section19heading}</span>
-                    <h4>{processData.section19subheading}</h4>
-                    {@html processData.section19text}
-                </div>
-                <div class="phase__grid__item last-even">
-                    {@html processData.section19righttext }
-                </div>                                           
-            </div>      
-        </Container>  
+        <div class="phase__grid scnd-row">
+            <div class="phase__grid__item">
+                <span>{processData.section19heading}</span>
+                <h4>{processData.section19subheading}</h4>
+                {@html processData.section19text}
+            </div>
+            <div class="phase__grid__item last-even">
+                {@html processData.section19righttext }
+            </div>                                           
+        </div>     
     </Animate>
 </section>
 <secton class="phase-banner-paragraph">
@@ -260,6 +250,10 @@
     <Cta />
 </Animate>
 <style lang="scss">
+    :global(p) {
+        font-size: 1.125rem;
+        line-height: 2rem;
+    }
     section{
         min-height: 20vh;
     }
@@ -292,6 +286,9 @@
             margin-top: -5rem;
             z-index: 2;
             position: relative;
+            :global(p) {
+                font-size: 1.25rem;
+            }
             @include media-max(sm){
                 width: 85vw;
                 font-size: 1.3rem;
@@ -308,7 +305,9 @@
         padding: 3rem 0;
         :global(h3){
             @include media-max(sm){
-                font-size: 1.2rem;
+                font-size: 1.688rem;
+                width: 70%;
+                margin: auto;
             }
             font-size: 2.25rem;
             :global(span) {
@@ -335,6 +334,9 @@
     }    
     .phase{
         margin-bottom: 0;
+        :global(.phase-container) {
+            max-width: 95%;
+        }
         @include media-max(sm){
             padding-left: 0;
             padding-right: 0;
@@ -349,7 +351,7 @@
             font-size: 2.5rem;
         }
         :global(.phase__row){
-            margin-top: -18.3rem;
+            margin-top: -19.3rem;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -389,11 +391,15 @@
             grid-template-columns: repeat(2, 1fr);     
             // margin-top: -10.960rem;
             margin-top: -12rem;
+            width: 90%;
+            margin-left: auto;
             @include media-max(md){
                 // margin-top: -3.5rem;
             }      
             @include media-max(sm){
-                grid-template-columns: repeat(1, 1fr);   
+                grid-template-columns: repeat(1, 1fr);
+                width: 80%;
+                margin: auto;
                 margin-top: -5rem;  
             }            
             &__item{
@@ -414,10 +420,16 @@
                     span{
                         color: $primary-color;
                         font-style: normal;
+                        font-size: 1.4em;
+                        font-weight: 500;
                     }
                     h4{
                         margin: 2rem 0;
                         font-style: normal;
+                        font-size: 2.813rem;
+                    }
+                    :global(p) {
+                        font-size: 1.25rem;
                     }
                 }
                 &:nth-child(even){
@@ -426,19 +438,23 @@
                     display: flex;
                     align-items: flex-end;
                     flex-direction: column;
+                    padding-right: 10rem;
 
                     :global(p:last-child){
                         margin-bottom: 0;                        
                     }
 
                     @include media-max(sm){
-                        padding: 3rem 1.5rem;
+                        padding: 3rem 3.25rem;
                         margin-left: calc(50% - 50vw);
                         margin-right: calc(50% - 50vw);                        
                     }                    
                 }
                 &.last-even {
                     padding-bottom: 15rem;
+                    @include media-max(sm){
+                        padding-bottom: 1.5rem;                  
+                    }    
                 }
                 
             }  

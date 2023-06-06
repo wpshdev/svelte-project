@@ -345,21 +345,21 @@ header{
             margin-top: 1rem;
             &.open{
                 position: absolute;
-                top: 1rem;
-                right: 30vw;
+                top: 2rem;
+                right: 5vw;
                 span{
                     background-color: transparent;
                     &:before{
                         top: 0;
                         transform: rotate(45deg);
-                        width: 2.8rem;
+                        width: 1.8rem;
                         transition: 0.5s;
                         background-color: #ACA7A7;
                     }                    
                     &:after{
                         top: 0;
                         transform: rotate(-45deg);
-                        width: 2.8rem;
+                        width: 1.8rem;
                         transition: 0.5s;         
                         background-color: #ACA7A7;               
                     }
@@ -410,14 +410,16 @@ header{
         }
         .open.mobile-nav{
             top: 0;
-            left: 25vw;
+            // left: 25vw;
+            right: 0;
             background: #E5EEF2;
-            width: 100vw;
+            width: 80vw;
             height: 100vh;
             position: fixed;    
-            padding-top: 5rem;        
-            padding-left: 10vw;
+            padding-top: 6rem;        
+            // padding-left: 10vw;
             // transition: 1s;
+            text-align: center;
             @include media-max(sm){
                 display: block;
             } 
@@ -425,26 +427,27 @@ header{
                 background-color: unset;
             }
             .mobile-menu-logo{
-                text-align: left;
+                // text-align: left;
                 display: inline-block;
-                padding-left: 1rem;
+                // padding-left: 1rem;
                 margin-bottom: 2rem;
                 img{
                     text-align: left;
-                    height: 5rem;
+                    height: 6.5rem;
                 }
             }
             ul{
                 li{
                     a{
-                        text-align: left;
+                        // text-align: left;
                         color: #3E3636;
                         font-size: 1.5rem;
                     }
                 }
             }
             .bottom-menu-content{
-                padding-left: 1.2rem;
+                // padding-left: 1.2rem;
+                // margin-top: 20rem;
                 .mail{
                     color: #3E3636;
                     text-decoration: none;
@@ -760,24 +763,36 @@ header{
         background-size: 100%;
         background-position: right top;
         background-repeat: no-repeat;
+        @include media-max(xs){
+           background: unset;
+        }	
     }
     .col-md-4:nth-child(2){
         background-image: url("/src/lib/img/Box2.svg");
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
+        @include media-max(xs){
+            background: unset;
+         }	
     }
     .col-md-4:nth-child(3){
         background-image: url("/src/lib/img/Box4.svg");
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
+        @include media-max(xs){
+            background: unset;
+         }	
     }
     .col-md-4:nth-child(6){
         background-image: url("/src/lib/img/Box3.svg");
         background-size: 100%;
         background-position: left bottom;
         background-repeat: no-repeat;
+        @include media-max(xs){
+            background: unset;
+         }	
     }
     @include media-max(sm){
         .col-md-4:nth-child(2){

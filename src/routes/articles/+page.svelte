@@ -19,8 +19,8 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.page.data.attributes.title}" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.formats.large.url}"/>
-<section>
+<PageBanner title="{data.page.data.attributes.title}" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
+<section class="category">
     <Container>
         <Row>
             <ul class="cat-list">
@@ -41,7 +41,7 @@
 <section class="article-blog">
 <Container>
         {#each paginatedBlogs as blog,i (blog.id)}
-        <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''}">
+        <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
             <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
                 <Animate>
                     <div class="blogsection7 easein-img">
@@ -76,14 +76,20 @@
     </Row>
     <div class="mx-8"></div>
         {/each}
-<LightPaginationNav
-  totalItems="{items.length}"
-  pageSize="{pageSize}"
-  currentPage="{currentPage}"
-  limit="{1}"
-  showStepOptions="{true}"
-  on:setPage="{(e) => currentPage = e.detail.page}"
-/>
+
+    <!-- Pagination -->
+
+    <LightPaginationNav
+    totalItems="{items.length}"
+    pageSize="{pageSize}"
+    currentPage="{currentPage}"
+    limit="{1}"
+    showStepOptions="{true}"
+    on:setPage="{(e) => currentPage = e.detail.page}"
+    />
+
+    <!-- End Pagination -->
+
     <div class="divider">
         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.9931 22.2157L3.45312 12.9257L12.9931 3.63574L22.5431 12.9257L12.9931 22.2157Z" stroke="#D8D7D7" stroke-width="3.89" stroke-miterlimit="10"/>
@@ -98,6 +104,9 @@
         @include media-max(md){
             margin:4rem auto;
         }
+    }
+    .category {
+        min-height: 0;
     }
     .cover{
         h2{
@@ -128,6 +137,22 @@
         padding: 3rem;
         @include media-max(sm){
             padding: 2rem;
+            text-align: center;
+        }
+        div {
+            @include media-max(sm){
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            } 
+        }
+        span {
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            font-weight: 600;
+            @include media-max(sm){
+                order: 2;
+                margin: 1.688rem 0;
+            } 
         }
         h2{
             display: block;
@@ -138,6 +163,10 @@
             font-size: 2.25rem;
             line-height: 2.5rem;
             margin-top: 0.5rem;
+            color: $secondary-color;
+            @include media-max(sm){
+                order: 1;
+            } 
         }
         p{
             display: block;
@@ -147,11 +176,18 @@
             max-height: 3.1em;
             font-size: 1.25rem;
             line-height: 2.125rem;
+            @include media-max(sm){
+                order: 3;
+            } 
         }
         .btn {
            padding: 0.7rem 3rem;
            @include media-max(sm){
                 border-radius: 8px;
+                order: 4;
+                font-size: 1.188rem;
+                padding: 1rem 3rem;
+                margin-top: 1.125rem;
             }
         }
     }
@@ -160,8 +196,12 @@
             color: $secondary-color;
         }
         padding: 0 0 1rem 0;
+        @include media-max(lg){
+            min-height: 0;
+        }
         @include media-max(sm){
             padding: 0 0 0 0;
+            display: none;
         }
     }
     .cat-list{
@@ -216,5 +256,19 @@
         :global(.btn){
             padding: 0.7rem 2.4rem;
         }
+    }
+    :global(.option.prev path, .option.next path) {
+        fill: $primary-color;
+    }
+    :global(.option.prev::after) {
+        content: 'Prev';
+        margin-left: 0.25rem;
+    }
+    :global(.option.next::before) {
+        content: 'Next';
+        margin-right: 0.25rem;
+    }
+    :global(.blog-card) {
+        align-items: center;
     }
 </style>

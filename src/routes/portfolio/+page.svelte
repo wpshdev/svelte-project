@@ -9,6 +9,7 @@
 	import Animate from "$lib/components/Animate.svelte";
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
+    
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
@@ -28,7 +29,7 @@
             <Col class="text-center">
                 <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="{portfolio.masonryGallery.masonrySubHeading2}"  />
+                <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="{portfolio.masonryGallery.masonrySubHeading2}" paginate="true" />
             </Col>
         </Row>
     </Container>
