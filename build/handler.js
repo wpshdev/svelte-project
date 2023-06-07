@@ -546,11 +546,7 @@ function send(req, res, file, stats, headers) {
 		let end = opts.end = parseInt(y, 10) || stats.size - 1;
 		let start = opts.start = parseInt(x, 10) || 0;
 
-		if (end >= stats.size) {
-			end = stats.size - 1;
-		}
-
-		if (start >= stats.size) {
+		if (start >= stats.size || end >= stats.size) {
 			res.setHeader('Content-Range', `bytes */${stats.size}`);
 			res.statusCode = 416;
 			return res.end();
@@ -645,7 +641,7 @@ function sirv (dir, opts={}) {
 		extns.push(...extensions); // [...br, ...gz, orig, ...exts]
 
 		if (pathname.indexOf('%') !== -1) {
-			try { pathname = decodeURI(pathname); }
+			try { pathname = decodeURIComponent(pathname); }
 			catch (err) { /* malform uri */ }
 		}
 
@@ -761,30 +757,24 @@ function parse(input, options) {
     }
   }
 
-  if (input.headers) {
-    if (typeof input.headers.getSetCookie === "function") {
-      // for fetch responses - they combine headers of the same type in the headers array,
-      // but getSetCookie returns an uncombined array
-      input = input.headers.getSetCookie();
-    } else if (input.headers["set-cookie"]) {
-      // fast-path for node.js (which automatically normalizes header names to lower-case
-      input = input.headers["set-cookie"];
-    } else {
-      // slow-path for other environments - see #25
-      var sch =
-        input.headers[
-          Object.keys(input.headers).find(function (key) {
-            return key.toLowerCase() === "set-cookie";
-          })
-        ];
-      // warn if called on a request-like object with a cookie header rather than a set-cookie header - see #34, 36
-      if (!sch && input.headers.cookie && !options.silent) {
-        console.warn(
-          "Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning."
-        );
-      }
-      input = sch;
+  if (input.headers && input.headers["set-cookie"]) {
+    // fast-path for node.js (which automatically normalizes header names to lower-case
+    input = input.headers["set-cookie"];
+  } else if (input.headers) {
+    // slow-path for other environments - see #25
+    var sch =
+      input.headers[
+        Object.keys(input.headers).find(function (key) {
+          return key.toLowerCase() === "set-cookie";
+        })
+      ];
+    // warn if called on a request-like object with a cookie header rather than a set-cookie header - see #34, 36
+    if (!sch && input.headers.cookie && !options.silent) {
+      console.warn(
+        "Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning."
+      );
     }
+    input = sch;
   }
   if (!Array.isArray(input)) {
     input = [input];
@@ -1039,25 +1029,17 @@ async function getRequest({ request, base, bodySizeLimit }) {
 
 /** @type {import('@sveltejs/kit/node').setResponse} */
 async function setResponse(res, response) {
-	for (const [key, value] of response.headers) {
-		try {
-			res.setHeader(
-				key,
-				key === 'set-cookie'
-					? splitCookiesString_1(
-							// This is absurd but necessary, TODO: investigate why
-							/** @type {string}*/ (response.headers.get(key))
-					  )
-					: value
-			);
-		} catch (error) {
-			res.getHeaderNames().forEach((name) => res.removeHeader(name));
-			res.writeHead(500).end(String(error));
-			return;
-		}
+	const headers = Object.fromEntries(response.headers);
+
+	if (response.headers.has('set-cookie')) {
+		const header = /** @type {string} */ (response.headers.get('set-cookie'));
+		const split = splitCookiesString_1(header);
+
+		// @ts-expect-error
+		headers['set-cookie'] = split;
 	}
 
-	res.writeHead(response.status);
+	res.writeHead(response.status, headers);
 
 	if (!response.body) {
 		res.end();
@@ -1065,10 +1047,11 @@ async function setResponse(res, response) {
 	}
 
 	if (response.body.locked) {
-		res.end(
+		res.write(
 			'Fatal error: Response body is locked. ' +
 				`This can happen when the response was already read (for example through 'response.json()' or 'response.text()').`
 		);
+		res.end();
 		return;
 	}
 
@@ -1140,7 +1123,7 @@ function serve(path, client = false) {
 				client &&
 				((res, pathname) => {
 					// only apply to build directory, not e.g. version.json
-					if (pathname.startsWith(`/${manifest.appPath}/immutable/`) && res.statusCode === 200) {
+					if (pathname.startsWith(`/${manifest.appPath}/immutable/`)) {
 						res.setHeader('cache-control', 'public,max-age=31536000,immutable');
 					}
 				})
@@ -1247,19 +1230,15 @@ const ssr = async (req, res) => {
 function sequence(handlers) {
 	/** @type {import('polka').Middleware} */
 	return (req, res, next) => {
-		/**
-		 * @param {number} i
-		 * @returns {ReturnType<import('polka').Middleware>}
-		 */
+		/** @param {number} i */
 		function handle(i) {
-			if (i < handlers.length) {
-				return handlers[i](req, res, () => handle(i + 1));
-			} else {
-				return next();
-			}
+			handlers[i](req, res, () => {
+				if (i < handlers.length) handle(i + 1);
+				else next();
+			});
 		}
 
-		return handle(0);
+		handle(0);
 	};
 }
 
