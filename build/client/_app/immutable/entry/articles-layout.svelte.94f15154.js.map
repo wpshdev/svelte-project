@@ -1,0 +1,1 @@
+{"version":3,"file":"articles-layout.svelte.94f15154.js","sources":["../../../../../../src/routes/articles/+layout.svelte"],"sourcesContent":["<header>\n</header>\n<main>\n    <slot>\n\n    </slot>\n</main>"],"names":["insert_hydration","target","header","anchor","main"],"mappings":"6XAAAA,EACQC,EAAAC,EAAAC,CAAA,WACRH,EAIMC,EAAAG,EAAAD,CAAA"}

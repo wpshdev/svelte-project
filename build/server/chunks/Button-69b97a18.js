@@ -1,9 +1,0 @@
-import { L, T, I, N, p, P, d } from './index-87618b6e.js';
-import { k } from './Row-0fc34542.js';
-
-const F=L((q,e,l,t)=>{let h,r,s,B=T(e,["class","active","block","children","close","color","disabled","href","inner","outline","size","style","value","white"]),{class:m=""}=e,{active:y=!1}=e,{block:_=!1}=e,{children:c=void 0}=e,{close:f=!1}=e,{color:w="secondary"}=e,{disabled:i=!1}=e,{href:o=""}=e,{inner:v=void 0}=e,{outline:k$1=!1}=e,{size:d$1=null}=e,{style:u=""}=e,{value:z=""}=e,{white:b=!1}=e;return e.class===void 0&&l.class&&m!==void 0&&l.class(m),e.active===void 0&&l.active&&y!==void 0&&l.active(y),e.block===void 0&&l.block&&_!==void 0&&l.block(_),e.children===void 0&&l.children&&c!==void 0&&l.children(c),e.close===void 0&&l.close&&f!==void 0&&l.close(f),e.color===void 0&&l.color&&w!==void 0&&l.color(w),e.disabled===void 0&&l.disabled&&i!==void 0&&l.disabled(i),e.href===void 0&&l.href&&o!==void 0&&l.href(o),e.inner===void 0&&l.inner&&v!==void 0&&l.inner(v),e.outline===void 0&&l.outline&&k$1!==void 0&&l.outline(k$1),e.size===void 0&&l.size&&d$1!==void 0&&l.size(d$1),e.style===void 0&&l.style&&u!==void 0&&l.style(u),e.value===void 0&&l.value&&z!==void 0&&l.value(z),e.white===void 0&&l.white&&b!==void 0&&l.white(b),h=e["aria-label"],r=k(m,f?"btn-close":"btn",f||`btn${k$1?"-outline":""}-${w}`,d$1?`btn-${d$1}`:!1,_?"d-block w-100":!1,{active:y,"btn-close-white":f&&b}),s=f?"Close":null,`${o?`<a${I([N(B),{class:p(r)},{disabled:i||null},{href:p(o)},{"aria-label":p(h||s)},{style:p(u)}],{})}${P("this",v,0)}>${c?`${d(c)}`:`${t.default?t.default({}):""}`}</a>`:`<button${I([N(B),{class:p(r)},{disabled:i||null},{value:p(z)},{"aria-label":p(h||s)},{style:p(u)}],{})}${P("this",v,0)}>${t.default?t.default({}):`
-      ${c?`${d(c)}`:`${t.default?t.default({}):""}`}
-    `}</button>`}`});
-
-export { F };
-//# sourceMappingURL=Button-69b97a18.js.map
