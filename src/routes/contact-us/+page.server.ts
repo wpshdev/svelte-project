@@ -7,3 +7,4 @@ export async function load() {
     });
     return response.json();
 }
+

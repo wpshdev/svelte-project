@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 import axios from 'axios';
 import { STRAPI_API } from '$env/static/private';
+=======
+import axios from '$lib/axios';
+>>>>>>> Stashed changes
 
 export async function load(params) {
     const url = 'https://strapi.ulfbuilt.com:1337/api/portfolios?filters[slug][$eq]='+params.params.slug+'&populate=deep,2';
