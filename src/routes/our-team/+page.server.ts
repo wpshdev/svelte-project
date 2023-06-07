@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios from '$lib/axios';
 import { STRAPI_API } from '$env/static/private';
+
 
 export async function load() {
     const headers = {
