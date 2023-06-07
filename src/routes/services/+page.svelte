@@ -226,6 +226,17 @@
         h2 {
             color: $secondary-color;
         }
+        // for mobile bg bars
+        :global(.row) {
+            @include media-max(xs){
+                background-image: url(/src/lib/img/service-mobile-bars.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: auto;
+                min-height: 1891px;
+            }
+        }
+        // end for mobile bg bars
         &__service-box{
             padding: 3rem;
             @include media-max(md){ 
@@ -236,6 +247,18 @@
                 padding: 1rem 1rem;
                 margin: 4.5rem 0;
             }
+            // for mobile bg bars
+            @include media-max(ml){
+                padding: 0;
+                margin: 4.5rem 2.5rem;
+            }
+            @include media-max(mm){
+                margin: 4.5rem 1rem;
+            }
+            @include media-max(ms){
+                margin: 3.5rem 1rem;
+            }
+            // end for mobile bg bars
             p {
                 font-size: 1.15rem;
                 line-height: 2rem;
@@ -245,17 +268,15 @@
                 margin-bottom: 20px;
                 &__service-icon{
                     img{
-                        width: 5rem;
+                        width: 6.202rem;
                         background-color: #263A63;
-                        padding: 10px 13px;
+                        padding: 1.418rem 1.396rem;
                         box-shadow: 3px 3px 3px #aaa;
                         border-radius: 10px;
-                        max-height: 5rem;
-                        min-height: 5rem;
+                        height: 6.246rem;
                         @include media-max(md){ 
                             padding: 8px 10px;
-                            max-height: 4rem;
-                            min-height: 4rem;
+                            height: 4rem;
                             width: auto;
                         }
                     }
@@ -332,7 +353,7 @@
         h4{
             text-transform:uppercase;
             color: $secondary-color;
-            font-size: 2.6rem;
+            font-size: 2.688rem;
             font-weight: 600;
             &.text-right {
                 padding-right: 3rem;
@@ -381,6 +402,7 @@
             text-align: center;
             margin-bottom: 3rem;
             font-size: 2.8rem;
+            color: $secondary-color;
         }
         &__article{
             overflow: hidden;

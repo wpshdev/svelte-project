@@ -113,6 +113,18 @@
 </div>
 
 <style lang="scss">
+    :global(.banner) {
+        @include media-max(xs) { 
+            min-height: 25rem !important;
+            background-size: auto !important;
+            background-position: center !important;
+        }
+    }
+    :global(.banner:after) {
+        @include media-max(xs) { 
+            background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+    }
     .contact_inner {
         .contact_inner__content {
             h2 {
@@ -146,7 +158,7 @@
             }
         }
         :global(.contact-form textarea) {
-            height: 9rem;
+            height: 13rem;
             margin: 2rem 0;
         }
         :global(.contact-form button) {

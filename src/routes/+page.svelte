@@ -389,6 +389,7 @@
 	:global(.loc-gallery p){
 		@include media-max(sm){
 			text-align: left;
+			
 		}	
 	}
 	:global(.loc-gallery .h3 span){
@@ -402,7 +403,8 @@
 				margin-bottom: 3rem;
 				text-align: center;
 				@include media-max(sm){
-					text-align: left;
+					text-align: center;
+					font-size: 2.813rem;
 				}
 			}		
 		&__cwrapper{
