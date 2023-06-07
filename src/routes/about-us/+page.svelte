@@ -97,7 +97,8 @@
         <p class="text-left">{@html about.Section5text}</p> -->
         {#if about.Section5image.data}
         <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-        <img src="/src/lib/img/certificate.png" alt="{about.Section3heading}">
+        <img src="/src/lib/img/certificate.png" alt="{about.Section3heading}" class="desktop">
+        <img src="/src/lib/img/certificate-mobile.png" alt="{about.Section3heading}" class="mobile">
         {/if}      
     </Animate>
     
@@ -194,6 +195,18 @@
             max-width: 100%;
             width: 75%;
             margin: auto;
+            .mobile {
+                display: none;
+            }
+            @include media-max(sm){
+                width: 100%;
+                .mobile {
+                    display: block;
+                }
+                .desktop {
+                    display: none;
+                }
+            }
         }
     }
     .contractor-details {

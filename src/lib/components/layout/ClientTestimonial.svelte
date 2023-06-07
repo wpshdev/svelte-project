@@ -60,7 +60,7 @@
     mix-blend-mode: normal;
     padding: 14rem 0;
     @include media-max(xs){
-        padding: 5rem 0;
+        padding: 5rem 0 0;
     }
     h2 {
         color: $secondary-color;
@@ -84,7 +84,7 @@
             @include media-max(xs){
                 width: 90%;
                 margin: 0 1rem;
-                padding: 3rem;
+                padding: 3rem 2rem;
             }
 
             p {
@@ -103,6 +103,9 @@
                 letter-spacing: 0.05em;
                 font-feature-settings: 'pnum' on, 'lnum' on;
                 color: $darkergray;
+                @include media-max(xs){
+                    font-size: 1.438rem;
+                }
             }
 
         }
@@ -112,12 +115,17 @@
         text-align: center;
         margin-top: 5rem;
 
+        @include media-max(xs){
+            margin-top: 3rem;
+        }
+
         progress {
             border-radius: 0px;
             width: 50%;
             @include media-max(xs){
                 width: 90%;
                 margin: auto;
+                height: 0.489rem;
             }
 
             &::-webkit-progress-bar {
