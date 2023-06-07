@@ -91,8 +91,13 @@
 		align-items: end;		
 		&__wrapper{
 			h2{
-				margin-bottom: 2rem;
+				margin-bottom: 1rem;
+				font-size: 2.813rem;
 			}	
+			p {
+				font-size: 1.438rem;
+				font-weight: 500;
+			}
 		}
 	}
 	&__form{
@@ -100,6 +105,11 @@
 			height: 15rem;
 		}
 		margin-bottom: 1rem;
+		text-align: center;
+		:global(.btn) {
+			padding: 0.7rem 3.125rem;
+            font-size: 1.25rem;
+		}
 	}
 }
 </style>

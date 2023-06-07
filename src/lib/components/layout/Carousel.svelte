@@ -86,7 +86,7 @@ $: {
         <div class="slider-container__carousel-cell zoomImg">
           <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
           <div class="slider-container__carousel-cell__text">
-            <span>{index + 1}</span>
+            <span>0{index + 1}</span>
             {project.attributes.title}
             <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
@@ -176,7 +176,7 @@ $: {
       width: 80%;      
     }   
     &__text{
-            background-color: $secondary-color;
+            background-color: $darkbluegreen;
             color: #fff;
             padding: 0.5rem;
             position: absolute;
