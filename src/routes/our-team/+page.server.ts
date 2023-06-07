@@ -1,9 +1,6 @@
-<<<<<<< Updated upstream
-import axios from 'axios';
-import { STRAPI_API } from '$env/static/private';
-=======
 import axios from '$lib/axios';
->>>>>>> Stashed changes
+import { STRAPI_API } from '$env/static/private';
+
 
 export async function load() {
     const headers = {
