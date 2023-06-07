@@ -21,13 +21,13 @@
     <div class="cover__covertitle">
         <p class="pfont ptc mb-1 pt-3 article">Article</p>
         <h2 class="pfont stc mb-4">{title}</h2>
-        <p class="ptc pb-5">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
+        <p class="ptc pb-5">Vail, Colorado | Jan 28 · 24 mins. read</p>
     </div>
 </Container>
     <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
 </div>
 <Container class="py-4">
-    <h2 class="pb-3">{title}</h2>
+    <h2 class="pb-3 sblue">{title}</h2>
     <div class="two-columns">
         {@html content}
         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
-                    <p class="ptc">Vail, Colorado | 09 Apr 2023 · 2 min read</p>
+                    <p class="ptc">Vail, Colorado | Jan 28 · 24 mins. read</p>
                 </Animate>
             </Col>
             {/each}
@@ -72,11 +72,13 @@
     &__covertitle{
         width:100%;
         max-width:50rem;
+        margin: auto;
         p{
             text-align: left;
             color: $gray;
             font-size: 1.125rem;
-            font-weight: 600;
+            font-weight: 500;
+            font-feature-settings: 'pnum' on, 'lnum' on;
             &.article {
                 color: $primary-color;
                 font-size: 1.438rem;
@@ -85,6 +87,7 @@
         }
         h2 {
             font-size: 3.438rem;
+            font-weight: 400;
             color: $white-color;
             @include media-max(xs){
                 font-size: 2.125rem;
@@ -128,6 +131,7 @@
     h3{
         margin: 0.5rem 0 1.5rem 0;
         font-size: 2.25rem;
+        font-weight: 400;
         @include media-max(sm) {
             margin: 0.5rem 0 1rem 0;
         }
@@ -136,11 +140,10 @@
         text-decoration: none;
         color: $secondary-color;
         font-family: $secondary-font;
-        font-weight: 600;
     }
     p {
         font-size: 1.25rem;
-        font-weight: 600;
+        font-weight: 500;
         @include media-max(sm) {
             font-weight: 500;
         }
@@ -162,5 +165,9 @@
         padding-top: 1rem;
         font-size: 2rem;
     }
+}
+.sblue {
+    color: $secondary-color;
+    font-size: 2.813rem;
 }
 </style>

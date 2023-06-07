@@ -102,6 +102,10 @@
 					// text-align: center;
 					margin-top: 1.5rem;
 				}
+				.btn {
+					padding: 0.7rem 3.125rem; 
+					font-size: 1.25rem;
+				}
 				.btn-primary{
 					margin-right: 1rem;
 				}		
