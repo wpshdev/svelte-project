@@ -16,6 +16,7 @@ let listener = {};
 
 export let subHeading2 = '';
 export let paginate;
+export let postperpage;
 
 $: listener = {propCount , activeTab};
 
@@ -53,7 +54,7 @@ $: listener = {propCount , activeTab};
 		<div class="categories__tabs__gallery">
 			{#key listener }
 				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
-					<MasonryCard id={activeTab} {propCount} addPagination={paginate} />
+					<MasonryCard id={activeTab} {propCount} addPagination={paginate} pageSize={postperpage} />
 				</div>			
 			{/key}																		
 		</div>					

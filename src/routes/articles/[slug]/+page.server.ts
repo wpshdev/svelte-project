@@ -21,6 +21,7 @@ export const load: PageLoad = async ({ params, fetch }) => {
     const blogs = await axios.get(urlblog, { headers }); 
     return {
         page: response.data,
-        blogs: blogs.data
+        blogs: blogs.data,
+        num: Math.ceil(Math.random() * 10)
     }
 }

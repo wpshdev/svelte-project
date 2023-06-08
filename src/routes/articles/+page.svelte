@@ -62,7 +62,7 @@
                 <Animate>
                     <div class="blogsection5">
                         <div>
-                            <span>Vail, Colorado | January 28 · 2 minutes read</span>
+                            <span>Vail, Colorado | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · 2 minutes read</span>
                             <h2>{blog.attributes.title}</h2>
                             <p>{blog.attributes.shorttext}</p>
                             <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
