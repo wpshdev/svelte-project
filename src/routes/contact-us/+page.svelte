@@ -55,7 +55,8 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner extraClass="contact-banner" title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.url}" bannerMobile="{url}{data.data.attributes.featuredimage.data.attributes.formats.medium.url}" />
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
+
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
         <Row>
