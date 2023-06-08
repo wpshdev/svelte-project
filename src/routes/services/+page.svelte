@@ -229,11 +229,16 @@
         // for mobile bg bars
         :global(.row) {
             @include media-max(xs){
-                background-image: url(/src/lib/img/service-mobile-bars.svg);
+                background-image: url(/src/lib/img/service-mobile-bars1.svg);
                 background-repeat: no-repeat;
+                // height: 1891px;
+                background-size: 100%;
+            }
+            @include media-max(ml){
+                background-image: url(/src/lib/img/service-mobile-bars.svg);
                 background-position: center;
                 background-size: auto;
-                min-height: 1891px;
+                height: 1891px;
             }
         }
         // end for mobile bg bars
@@ -248,6 +253,13 @@
                 margin: 4.5rem 0;
             }
             // for mobile bg bars
+            @include media-max(xs){
+                padding: 0;
+                margin: 17% 2.5rem;
+            }
+            @include media-max(w545){
+                margin: 15% 2.5rem;
+            }
             @include media-max(ml){
                 padding: 0;
                 margin: 4.5rem 2.5rem;
