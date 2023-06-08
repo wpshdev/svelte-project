@@ -1,15 +1,14 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
 
-    import { onMount } from 'svelte';
-	import { contenteditable_truthy_values } from 'svelte/internal';
 	import Animate from '$lib/components/Animate.svelte';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
-  import Contactform from '$lib/components/layout/Contactform.svelte';
-  import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
-
+    import Contactform from '$lib/components/layout/Contactform.svelte';
+    import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
+    import tempBG from '$lib/img/certificate.png';
+    import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
-    console.log(data);
+
     let abouttitle = data.data.attributes.Title
     let aboutimage = data.data.attributes.featuredimage.data.attributes.url
     let aboutimageMobile = data.data.attributes.featuredimage.data.attributes.url    
@@ -97,8 +96,8 @@
         <p class="text-left">{@html about.Section5text}</p> -->
         {#if about.Section5image.data}
         <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-        <img src="/src/lib/img/certificate.png" alt="{about.Section3heading}" class="desktop">
-        <img src="/src/lib/img/certificate-mobile.png" alt="{about.Section3heading}" class="mobile">
+        <img src="{tempBG}" alt="{about.Section3heading}" class="desktop">
+        <img src="{tempBgMobile}" alt="{about.Section3heading}" class="mobile">
         {/if}      
     </Animate>
     

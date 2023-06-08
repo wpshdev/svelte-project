@@ -157,9 +157,9 @@
     &__easein-container{
         overflow: hidden;
         .easein-img{
-            &__blog-img{
-                min-height: 16.25rem;
-                max-height: 16.25rem;
+            height: 20rem;            
+            img{
+                height: 100%;
                 object-fit:cover;
                 -o-object-fit: cover;
             }
