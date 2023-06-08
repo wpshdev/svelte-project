@@ -1,5 +1,4 @@
 <script lang="ts">
-	export let data;
 	import { Col, Container, Row } from "sveltestrap";
     // import { Form, FormGroup, Input, Button } from 'sveltestrap';
 	// import { fade, fly } from 'svelte/transition';
@@ -13,12 +12,24 @@
 	// import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
 	// import contactBG from "$lib/img/ContactBG.jpg";
+	
+	export let data;
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	
- 	const portfolio = data.portfolio.data[0].attributes;
-	const rPortfolios = data.rPortfolios;
-	console.log(portfolio);
-	const images = portfolio.images.data;
+	
+ 	// const portfolio = data.portfolio.data[0].attributes;
+
+	$: title = data.portfolio.data[0].attributes.title;
+	$: projectHeading = data.portfolio.data[0].attributes.projectDetailHeading;
+	$: images = data.portfolio.data[0].attributes.images.data;
+	$: bannerQuotes = data.portfolio.data[0].attributes.bannerQuote;
+	$: isFeatured = data.portfolio.data[0].attributes.isFeatured;
+	$: projectDetailLocation = data.portfolio.data[0].attributes.projectDetailLocation;
+	$: projectDetailTimeframe = data.portfolio.data[0].attributes.projectDetailTimeframe;
+	$: ctaHeading = data.portfolio.data[0].attributes.ctaHeading;
+	$: relatedPortfolioHeading = data.portfolio.data[0].attributes.relatedPortfolioHeading;
+
+    $: relatedPortfolios = data.portfolios.data.sort(() => 0.5 - Math.random()).slice(0, 2);
 
 
 	let name = '', email = '', subject = '', message = '', result = ''
@@ -60,11 +71,10 @@
         }
         }
 	}
-	console.log(portfolio.isFeatured);
 </script>
 
 <svelte:head>
-	<title>{portfolio.title}</title>
+	<title>{title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
@@ -75,8 +85,8 @@
 				<Col class="text-center">
 					<div class="portfolio-gallery__content">
 						<span>Project</span>
-						<h1 class="h2">{portfolio.title}</h1>
-						{@html portfolio.content ? portfolio.content : ""}
+						<h1 class="h2">{title}</h1>
+						{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
 					</div>
 				</Col>
 			</Row>
@@ -85,12 +95,12 @@
 			</Row>		
 		</Container>
 </section>
-{#if portfolio.isFeatured}
+{#if isFeatured}
 <section class="about-property">
 	<Animate>
 		<Container>
 			<Row>
-				<Col><h2>{portfolio.projectDetailHeading}</h2></Col>
+				<Col><h2>{projectHeading}</h2></Col>
 			</Row>
 			<Row>
 				<Col md="12">
@@ -103,7 +113,7 @@
 									</svg>
 								</i>
 								<span>
-									{portfolio.projectDetailLocation}
+									{projectDetailLocation}
 								</span>
 							</div>
 							<div>
@@ -113,12 +123,12 @@
 									</svg>									
 								</i>
 								<span>
-									{portfolio.projectDetailTimeframe}
+									{projectDetailTimeframe}
 								</span>
 							</div>
 						</div>
 						<div class="about-property__content__paragraph">
-							{@html portfolio.projectDetails}
+							{@html data.portfolio.data[0].attributes.projectDetails}
 						</div>
 					</div>
 				</Col>
@@ -126,7 +136,7 @@
 		</Container>
 	</Animate>
 </section>
-{#each portfolio.bannerQuote as bannerQuote}
+{#each bannerQuotes as bannerQuote}
 	<Animate>
 		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url})"></section>
 		<Testimonial testimonial="{bannerQuote.quote}" />
@@ -139,8 +149,8 @@
 			<Row>
 				<Col class="text-center ">
 					<div class="portfolio-cta__content">
-						<h2>{portfolio.ctaHeading}</h2>       
-						{@html portfolio.content}         
+						<h2>{ctaHeading}</h2>       
+						{@html data.portfolio.data[0].attributes.content}         
 					</div>
 					<div class="portfolio-cta__btns">
 						<!-- <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
@@ -154,18 +164,18 @@
 	</Animate>
 </section>
 {/if}
-<section class="related {!portfolio.isFeatured ? "my-0" : ""}">
+<section class="related {!isFeatured ? "my-0" : ""}">
 	<Animate>
 		<Container>
 			<Row>
 				<Col md="12">
-					<h2>{portfolio.relatedPortfolioHeading ? portfolio.relatedPortfolioHeading : "Explore our Projects..."}</h2>
+					<h2>{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
 				</Col>			
-				{#each rPortfolios as rPortfolio, index}
+				{#each relatedPortfolios as rPortfolio, index}
 					<Col>
 						<div class="related__article">
 							<a href="{rPortfolio.attributes.slug}">
-								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="related__article__text">
 									<span>0{index+1}</span>
 									{rPortfolio.attributes.title}

@@ -11,18 +11,17 @@
     let page = data.data.attributes
     console.log(page);
 
-
     export let pdata;
     export let featuredProjects;
     let promise = fetchProject();
     async function fetchProject(){
-        const url = 'https://strapi.ulfbuilt.com:1337/api/home-page?populate=deep,3';
+        const url = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
         const headers = {
             Authorization: 'Bearer ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' 
         }    
         const response = await axios.get(url, { headers });
-        pdata = response.data.data.attributes;
-        featuredProjects = pdata.featuredProjects.data;
+        pdata = response.data;
+        featuredProjects = pdata.data;
     }
 
     onMount(() => {
@@ -189,12 +188,11 @@
 				<Col md="12">
 					<h2 class="text-center">Explore our Projects...</h2>
 				</Col>			
-				{#each featuredProjects as featuredProject, index}
-                    {#if index <= 1}
+				{#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
 					<Col sm="6">
 						<div class="explore__article">
-							<a href="{featuredProject.attributes.slug}">
-								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.formats.large.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
+							<a href="portfolio/{featuredProject.attributes.slug}">
+								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="explore__article__text">
 									<span>0{index+1}</span>
 									{featuredProject.attributes.title}
@@ -206,7 +204,6 @@
 							</a>
 						</div>
 					</Col>
-                    {/if}
 				{/each}
 			</Row>
 		</Container>
@@ -237,8 +234,21 @@
             @include media-max(ml){
                 background-image: url(/src/lib/img/service-mobile-bars.svg);
                 background-position: center;
-                background-size: auto;
-                height: 1891px;
+                min-height: 1891px;
+            }
+            @include media-max(ms){
+                min-height: unset;
+            }
+        }
+        :global(.row .col-md-4) {
+            @include media-max(ml){
+                min-height: 24.813rem;
+            }
+            @include media-max(mm){
+                min-height: 18.75rem;
+            }
+            @include media-max(ms){
+                min-height: unset;
             }
         }
         // end for mobile bg bars

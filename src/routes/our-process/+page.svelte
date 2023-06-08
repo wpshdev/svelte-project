@@ -27,7 +27,7 @@
             <Row>
                 <Col class="md-12">
                     <Animate>
-                        <img src="{domain}{processData.section2image.data.attributes.formats.large.url}"
+                        <img src="{domain}{processData.section2image.data.attributes.url}"
                         srcset="{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
                                 {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
                                 {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
@@ -121,7 +121,7 @@
    </Animate>
 </section>
 <Animate>
-    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large.url})">
+    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.url})">
     </section>
 </Animate>
 
@@ -140,7 +140,7 @@
 </secton>
 
 <Animate>
-    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large.url})"></section> 
+    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.url})"></section> 
 </Animate>
 
 <section class="phase">
@@ -172,20 +172,20 @@
                 {@html processData.section12text}
             </div>  
             <div class="phase__grid__item">
-                {@html processData.section11text}
+                {@html processData.section12righttext}
             </div>  
             <div class="phase__grid__item">
                 <span>{processData.section13heading}</span>
                 <h4>{processData.section13subheading}</h4>
-                {@html processData.section13righttext}
+                {@html processData.section13text}
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section12text}
+                {@html processData.section13righttext}
             </div>                                            
         </div>    
     </Animate>
     <Animate>
-        <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.formats.large.url})">
+        <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
         </div>   
     </Animate>
     <Animate>
@@ -217,7 +217,7 @@
         </div>     
     </Animate>
     <Animate>
-        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large.url})">
+        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.url})">
         </div>   
     </Animate>
     <Animate>

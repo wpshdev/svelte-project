@@ -3,13 +3,17 @@
     import Cta from '$lib/components/layout/Cta.svelte';
 	import Animate from '$lib/components/Animate.svelte';
     export let data;
-    console.log(data);
-    let title = data.page.data[0].attributes.title;
-    let content = data.page.data[0].attributes.blogtext;
     const url = 'https://strapi.ulfbuilt.com:1337';
-    let num = Math.ceil(Math.random() * 10)
-    let num2 = num+3
+
+    $: num = data.num;
+    $: num2 = data.num+3;
     $: filteredItems = data.blogs.data.slice(num, num2);
+
+    
+    $: title = data.page.data[0].attributes.title;
+    $: content = data.page.data[0].attributes.blogtext;
+    $: published = new Date(Date.parse(data.page.data[0].attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' });
+    
 </script>
 <svelte:head>
 	<title>{title} - Article</title>
@@ -21,7 +25,7 @@
     <div class="cover__covertitle">
         <p class="pfont ptc mb-1 pt-3 article">Article</p>
         <h2 class="pfont stc mb-4">{title}</h2>
-        <p class="ptc pb-5">Vail, Colorado | Jan 28 · 24 mins. read</p>
+        <p class="ptc pb-5">Vail, Colorado | {published} · 24 mins. read</p>
     </div>
 </Container>
     <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
@@ -30,7 +34,7 @@
     <h2 class="pb-3 sblue">{title}</h2>
     <div class="two-columns">
         {@html content}
-        <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+        <!-- <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
     </div>
 </Container>
 <section class="related-articles">
@@ -48,7 +52,7 @@
                         </div>
                     </div>
                 <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
-                    <p class="ptc">Vail, Colorado | Jan 28 · 24 mins. read</p>
+                    <p class="ptc">Vail, Colorado | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · 24 mins. read</p>
                 </Animate>
             </Col>
             {/each}
@@ -116,7 +120,9 @@
     }
 }
 .two-columns{
-    overflow-wrap: break-word;
+    // overflow-wrap: break-word;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 .related-articles{
     background: #e5eef3;
