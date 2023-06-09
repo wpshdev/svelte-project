@@ -84,7 +84,7 @@ $: {
     <div class="slider-container">
       {#each featuredProjects.data as project, index}
         <div class="slider-container__carousel-cell zoomImg">
-          <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+          <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
           <div class="slider-container__carousel-cell__text">
             <span>0{index + 1}</span>
             {project.attributes.title}
@@ -185,6 +185,16 @@ $: {
             left: 0;
             width: 90%;
             text-align: left;
+            transition: 0.5s;
+            &:hover {
+              background: $primary-color;
+              span {
+                color: $white-color;
+              }
+              path {
+                stroke: $white-color;
+              }
+            }
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;

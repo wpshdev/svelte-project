@@ -1,6 +1,7 @@
 @import 'vars';
 @import 'mixins';
 // @import 'flickity/css/flickity.css';
+
 *{
     font-family: $primary-font;
 }
@@ -325,6 +326,7 @@ header{
                 text-decoration: none;
                 &:hover, &:focus{
                     background-color: rgba(242, 237, 237, 0.20);
+                    color: $primary-color;
                 }
                 &:after {
                     color: $primary-color;
@@ -503,7 +505,8 @@ header{
             }         
         }
         .dropdown.show{
-            background-color: rgb(216 215 215 / 50%);
+            // background-color: rgb(216 215 215 / 50%);
+            background-color: rgb(216 215 215 / 20%);
             .dropdown-toggle{
                 &:hover, &:focus{
                     background-color: unset;
@@ -512,7 +515,8 @@ header{
             }
         }
         .dropdown-menu{
-            background-color: rgb(216 215 215 / 50%);
+            // background-color: rgb(216 215 215 / 50%);
+            background-color: rgb(216 215 215 / 20%);
             border-radius: 0;
             width: 100%;
             border: none;
@@ -525,6 +529,7 @@ header{
                 text-align: center;
                 &:hover,&:focus{
                     background-color: rgba(242, 237, 237, 0.20);
+                    color: $primary-color;
                 }
             }
         }
@@ -733,6 +738,9 @@ header{
             a{
                 text-decoration: unset;
                 color:#EFEFEF;
+                &:hover {
+                    color: $primary-color;
+                }
             }
         }
     }
@@ -811,7 +819,8 @@ header{
     &:hover{
         img{
             transition: 1.2s;
-            scale: 1.2;
+            // scale: 1.2;
+            transform: scale(1.2);
         }
     }    
 }

@@ -50,8 +50,8 @@
 		background-size: cover;
 		min-height: 20vh;
 		@include media-max(sm){
-			padding-left: 0;
-			padding-right: 0;
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}	
 		&__container{
 			height: 70vh;

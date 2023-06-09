@@ -49,15 +49,15 @@
 
 	onMount(() => {
 		window.addEventListener('resize', () => {
-		if (window.innerWidth > 768) {
-				isOpen = false;
+			if (window.innerWidth > 768) {
+					isOpen = false;
 				window.addEventListener('scroll', onScroll);
 			} else {
 				window.removeEventListener('scroll', onScroll);
 			}
 		});
 
-		if (window.innerWidth <= 768) {	
+		if (window.innerWidth < 768) {	
 			window.addEventListener('scroll', onScroll);
 		}	
 
@@ -119,6 +119,7 @@
 					<img src={logo} alt="ULFBUILT" class="logo"/>
 				</a>				
 				
+
 				<Collapse {isOpen} navbar expand="md" >
 					<Nav class="ms-auto" navbar>
 					{#each menu.data.attributes.items.data as nav}
