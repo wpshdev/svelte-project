@@ -123,7 +123,18 @@ $: if (id) {
         color: white;
         text-align: center;  
         padding-top: 0.8rem;
-
+        &:hover{
+            .masonry-items__text{
+              background: $primary-color;
+              transition: 0.3s;
+              span {
+                color: $white-color;
+              }
+              path {
+                stroke: $white-color;
+              }  
+            }        
+        }
         @include media-max(sm){
             width: 100%;
             padding-top: 1rem;
@@ -178,15 +189,7 @@ $: if (id) {
             left: 0;
             width: 65%;
             text-align: left;
-            &:hover {
-              background: $primary-color;
-              span {
-                color: $white-color;
-              }
-              path {
-                stroke: $white-color;
-              }
-            }
+            transition: 0.3s;
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;
