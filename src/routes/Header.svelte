@@ -1,7 +1,5 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.min.css';
-    import { page } from '$app/stores';
-	import {Styles} from 'sveltestrap';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
@@ -18,25 +16,18 @@
 	  DropdownToggle,
 	  DropdownMenu,
 	  DropdownItem,
-
 	  Container
 
 	} from 'sveltestrap';
 	export let menu;
-	import axios from 'axios';
 	import { onMount } from 'svelte';
-	import { fly, slide } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	let isOpen = false;
-	let isMobile;
 	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
 	}
-  
-	function handleUpdate(event) {
-	//   isOpen = event.detail.isOpen;
-	}	
 
 	function onScroll() {
 		var dropdownParent = document.querySelector('.dropdown.nav-item');
@@ -47,7 +38,6 @@
 			dropdownParent.classList.remove('show');
 		}
 	}
-
 
 	onMount(() => {
 		window.addEventListener('resize', () => {
@@ -62,7 +52,6 @@
 		if (window.innerWidth <= 768) {	
 			window.addEventListener('scroll', onScroll);
 		}	
-
   	});	
 
 </script>
@@ -175,8 +164,5 @@
 				</div>	
 			</div>		
 		{/if}
-
-
-
   </Navbar>
 </Container>
