@@ -206,6 +206,9 @@
 </Animate>
 
 <style lang="scss">
+	:global(.dropdown.show, .dropdown-menu) {
+		background-color: $gray !important;
+	}
 section{
 	min-height: 20vh;
 }
@@ -360,13 +363,13 @@ section{
 			margin-bottom: 1rem;
 		}		
         img{
-            transition: 0.5s;
+            transition: 1.2s;
 			object-fit: cover;
 			height: 100%;
         }         
         &:hover{
             img{
-                transition: 0.5s;
+                transition: 1.2s;
                 scale: 1.2;
             }
         }
