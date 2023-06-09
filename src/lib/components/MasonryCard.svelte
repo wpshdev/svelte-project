@@ -67,8 +67,8 @@ $: if (id) {
          {#each paginate({ items, pageSize, currentPage }) as project, index}			
              {#if index < propCount}
                 <div class="masonry-items" in:fly="{{ y: 200, duration: 2200, delay:index * 1000}}" out:fly="{{y:400, duration:2000 }}">       
-                    <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-                        <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
+                    <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+                        <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
                         <div class="masonry-items__text">
                             <span>{index + 1}</span>
                             {project.attributes.title}
@@ -178,6 +178,15 @@ $: if (id) {
             left: 0;
             width: 65%;
             text-align: left;
+            &:hover {
+              background: $primary-color;
+              span {
+                color: $white-color;
+              }
+              path {
+                stroke: $white-color;
+              }
+            }
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;

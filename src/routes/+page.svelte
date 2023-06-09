@@ -43,7 +43,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.formats.large.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
+<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
 	<Animate >
@@ -86,7 +86,7 @@
 
 
 <Animate>
-	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url})"  in:fly={{
+	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"  in:fly={{
 		delay: 500,
 		duration: 2000,
 		y: 50								
@@ -179,7 +179,7 @@
 </section>
 
 
-<section class="tnr" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.formats.large.url})" > 
+<section class="tnr" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.url})" > 
 	<Container>
 		<Row>
 			<Col>
@@ -228,7 +228,7 @@
 					</div>
 				</Col>
 				<Col md="4" class="my-auto" >
-					<img src="{domain}{home.reputation.image.data.attributes.formats.large.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
+					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
 						y: 50								
@@ -249,7 +249,7 @@
 						duration: 2000,
 						y: 50								
 				}} >
-						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					</div>
 				</Col>
 			</Row>
@@ -274,7 +274,7 @@
 						duration: 2000,
 						y: 50								
 				}} >
-						<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					</div>
 				</Col>
 			</Row>
@@ -308,7 +308,7 @@
 					</div>
 				</Col>
 				<Col md="4" class="my-auto">
-					<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
+					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
 						y: 50								

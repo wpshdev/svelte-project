@@ -53,7 +53,7 @@
                  {#if index < propCount}
                     <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
                         <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
+                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
                             <!-- <div class="masonry-items__text">
                                 <span>{index + 1}</span>
                                 {project.attributes.title}

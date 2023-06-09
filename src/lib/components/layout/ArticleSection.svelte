@@ -22,7 +22,7 @@
 	onMount(() => {
 		promise = fetchCta();
 	});	
-	
+
 </script>
 {#await promise}
 {:then insight} 
@@ -97,10 +97,9 @@
 					margin: 1rem 0 2rem;	
 					font-weight: 400;
 				}
-				p{
-					line-height: 2rem;
-					margin-bottom: 2rem;
-					
+				:global(p){
+					line-height: 2.125rem;
+					font-size: 1.25rem;
 				}		
 				&__btns{
 					// text-align: center;
