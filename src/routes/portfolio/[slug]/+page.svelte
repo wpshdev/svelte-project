@@ -31,45 +31,11 @@
 
     $: relatedPortfolios = data.portfolios.data.sort(() => 0.5 - Math.random()).slice(0, 2);
 
-
+	console.log(projectHeading);
 	let name = '', email = '', subject = '', message = '', result = ''
 
     async function doContact () {
-        const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
-		const res = await fetch(url, {
-			method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer  ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' },
-			body: JSON.stringify({
-                data:{
-                "name": name,
-                "email": email,
-                "subject": subject,
-                "message": message
-                }
-			})
-		})
-		const json = await res.json()
-        if(json.error){
-            result = json.error.message
-        }else{
-            result = 'Processing...'
-        const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
-		const res2 = await fetch(url2, {
-			method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer  ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' },
-            body: JSON.stringify({
-                "to": "parth@wpsuperheroes.com",
-                "subject": "* Website * " + name + " Subject : " + subject,
-                "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
-            })
-		})
-		const json2 = await res2.json()
-        if(json2.error){
-            result = json2.error.message
-        }else{
-            result = "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner."
-        }
-        }
+
 	}
 </script>
 
@@ -95,7 +61,7 @@
 			</Row>		
 		</Container>
 </section>
-{#if isFeatured}
+{#if isFeatured && projectHeading}
 <section class="about-property">
 	<Animate>
 		<Container>
@@ -137,20 +103,18 @@
 	</Animate>
 </section>
 {#each bannerQuotes as bannerQuote}
-	<Animate>
 		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url})"></section>
 		<Testimonial testimonial="{bannerQuote.quote}" />
-	</Animate>
 {/each}
 
 <section class="portfolio-cta">
 	<Animate>
 		<Container>
 			<Row>
-				<Col class="text-center ">
+				<Col class="text-center" md={{ size: 8, offset: 2 }} xs="12">
 					<div class="portfolio-cta__content">
-						<h2>{ctaHeading}</h2>       
-						{@html data.portfolio.data[0].attributes.content}         
+						<h2>{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
+						{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
 					</div>
 					<div class="portfolio-cta__btns">
 						<!-- <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
@@ -164,7 +128,7 @@
 	</Animate>
 </section>
 {/if}
-<section class="related {!isFeatured ? "my-0" : ""}">
+<section class="related {!projectHeading ? "my-0" : ""}">
 	<Animate>
 		<Container>
 			<Row>
@@ -210,7 +174,7 @@
 		background-color: $gray !important;
 	}
 section{
-	min-height: 20vh;
+	min-height: 50vh;
 }
 .portfolio-gallery{
     padding: 8vw 0 10vw;

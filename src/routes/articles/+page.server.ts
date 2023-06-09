@@ -14,7 +14,7 @@
 //     }
 // }
 
-import axios from 'axios';
+import axios from '$lib/axios';
 import { STRAPI_API } from '$env/static/private';
 export async function load() {
     const url = 'https://strapi.ulfbuilt.com:1337/api/article?populate=deep';

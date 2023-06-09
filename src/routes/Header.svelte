@@ -1,5 +1,7 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.min.css';
+    import { page } from '$app/stores';
+	import {Styles} from 'sveltestrap';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
@@ -16,28 +18,34 @@
 	  DropdownToggle,
 	  DropdownMenu,
 	  DropdownItem,
+
 	  Container
 
 	} from 'sveltestrap';
 	export let menu;
+	import axios from 'axios';
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { fly, slide } from 'svelte/transition';
 
 	let isOpen = false;
+	let isMobile;
 	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
 	}
+  
+
 
 	function onScroll() {
 		var dropdownParent = document.querySelector('.dropdown.nav-item');
 		var dropdownMenu = document.querySelector('.dropdown .dropdown-menu-end');
 
-		if(dropdownParent.classList.contains('show')) {
+		if(dropdownParent && dropdownParent.classList.contains('show')) {
 			dropdownMenu.classList.remove('show');
 			dropdownParent.classList.remove('show');
 		}
 	}
+
 
 	onMount(() => {
 		window.addEventListener('resize', () => {
@@ -52,6 +60,7 @@
 		if (window.innerWidth < 768) {	
 			window.addEventListener('scroll', onScroll);
 		}	
+
   	});	
 
 </script>
@@ -59,7 +68,6 @@
 <svelte:window 
 	bind:innerWidth
   />
-<Container>
   <Navbar expand="md">
 	<NavbarBrand href="/">
 		<Animate>
@@ -111,7 +119,8 @@
 					<img src={logo} alt="ULFBUILT" class="logo"/>
 				</a>				
 				
-				<Collapse {isOpen} navbar expand="md">
+
+				<Collapse {isOpen} navbar expand="md" >
 					<Nav class="ms-auto" navbar>
 					{#each menu.data.attributes.items.data as nav}
 						{#if nav.attributes.children.data.length === 0}
@@ -165,4 +174,3 @@
 			</div>		
 		{/if}
   </Navbar>
-</Container>
