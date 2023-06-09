@@ -583,7 +583,10 @@
 		@include media-max(sm){
 			margin: 0;
 			padding: 1.5rem 0;
-		}			
+		}		
+		@include media-max(xs){
+			padding: 1rem;
+		}		
 		&__content{
 			height: 35vw;
 			display: flex;

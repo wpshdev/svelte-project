@@ -172,7 +172,7 @@
 					<h2>{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
 				</Col>			
 				{#each relatedPortfolios as rPortfolio, index}
-					<Col>
+					<Col md="6">
 						<div class="related__article">
 							<a href="{rPortfolio.attributes.slug}">
 								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
@@ -217,7 +217,7 @@ section{
 	overflow-x: hidden;
 	@include media-max(sm){
 		padding: 20vh 0 0;
-	}	
+	}
   &__content{
 	padding-top: 4vw;
 	border-top: 1px solid #ACA7A7;
@@ -345,6 +345,9 @@ section{
 	background-color: #E5EEF2;
 	padding: 5rem 0;
 	margin-bottom: 0;
+	@include media-max(xs){
+		padding: 5rem 1rem;
+	}		
 	h2{
 		text-align: center;
 		margin-bottom: 2rem;
@@ -353,6 +356,9 @@ section{
 		overflow: hidden;
 		position: relative;
 		height: 50vh;
+		@include media-max(sm){
+			margin-bottom: 1rem;
+		}		
         img{
             transition: 0.5s;
 			object-fit: cover;
@@ -376,7 +382,7 @@ section{
             text-align: left;
             @include media-max(sm){
                 margin: 0;
-                font-size: 0.6rem;
+                font-size: 1rem;
                 width: 90%;
                 bottom: 0.5rem
             } 			
@@ -386,7 +392,7 @@ section{
                 margin: 0 0.8rem 0;
                 @include media-max(sm){
                     margin: 0;
-                    font-size: 0.6rem;
+                    font-size: 1rem;
                 }                
             }
         }	

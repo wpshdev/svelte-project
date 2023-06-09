@@ -65,6 +65,10 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+		@include media-max(xs){
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
 		&__pre-heading{
 			color: $primary-color;
 			margin-bottom: 2rem;
