@@ -66,7 +66,7 @@ $: if (id) {
     >       
          {#each paginate({ items, pageSize, currentPage }) as project, index}			
              {#if index < propCount}
-                <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 700}}" out:fly="{{y:400, duration:2000 }}">       
+                <div class="masonry-items" in:fly="{{ y: 200, duration: 2200, delay:index * 1000}}" out:fly="{{y:400, duration:2000 }}">       
                     <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
                         <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
                         <div class="masonry-items__text">
@@ -129,8 +129,6 @@ $: if (id) {
             padding-top: 1rem;
         }
 
-        min-height: 26.813rem;
-        min-width: 39.688rem;
         @include media-max(lg){
             min-height: unset;
             min-width: unset;
@@ -148,6 +146,13 @@ $: if (id) {
             img{
                 height: 100%;
                 object-fit: cover;
+                min-height: 26.813rem;
+                min-width: 39.688rem;
+
+                @include media-max(xs){
+                    min-height: unset;
+                    min-width: unset;
+                }   
             }   
         }           
         &:nth-child(2){
