@@ -68,7 +68,6 @@
 <svelte:window 
 	bind:innerWidth
   />
-<Container>
   <Navbar expand="md">
 	<NavbarBrand href="/">
 		<Animate>
@@ -177,4 +176,3 @@
 
 
   </Navbar>
-</Container>
