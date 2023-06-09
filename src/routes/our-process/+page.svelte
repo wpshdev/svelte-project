@@ -415,8 +415,10 @@
                     line-height: 2;
                     font-style: italic;      
                     @include media-max(sm){
-                        padding: 2rem 1rem;
-                    }                                  
+                        padding: 3rem 3.25rem;
+                        margin-left: calc(50% - 50vw);
+                        margin-right: calc(50% - 50vw);                        
+                    }                                 
                     span{
                         color: $primary-color;
                         font-style: normal;
@@ -431,6 +433,7 @@
                     :global(p) {
                         font-size: 1.25rem;
                     }
+
                 }
                 &:nth-child(even){
                     padding-top: 18rem;
@@ -453,7 +456,7 @@
                 &.last-even {
                     padding-bottom: 15rem;
                     @include media-max(sm){
-                        padding-bottom: 1.5rem;                  
+                        padding-bottom: 3rem;                  
                     }    
                 }
                 
@@ -500,6 +503,11 @@
         display: block;
         margin-top: 0;
         background-color: #F2F2F2;
+        @include media-max(sm){
+            padding: 0 2.75rem;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);                        
+        }   
         div{
             padding: 3rem 0;
             text-align: center;

@@ -5,11 +5,24 @@
 	import Animate from "$lib/components/Animate.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
   import Contactform from "$lib/components/layout/Contactform.svelte";
+  import Modal from "$lib/components/layout/Modal.svelte";
 
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let ourTeam =  data.data.attributes;
-	console.log(ourTeam);
+
+    let showModal = false;
+    let memberName = '';
+    let memberImage = '';
+    let memberPosition = '';
+    let memberContent = '';
+    function getMemberIndex(index) {
+        memberName = ourTeam.team_members.data[index].attributes.name.replace(/^\s*\w+/, '<span>$&</span>');
+        memberImage = ourTeam.team_members.data[index].attributes.memberPhoto.data.attributes.url;
+        memberPosition = ourTeam.team_members.data[index].attributes.position;
+        memberContent = ourTeam.team_members.data[index].attributes.content;
+	}
+    
 </script>
 <svelte:head>
 	<title>Our Team</title>
@@ -55,10 +68,13 @@
         <h2 class="sfont stc mb-5 text-center">{ourTeam.title}</h2>
         <Col md={{ size: 8, offset: 2 }}>
         <Row>
-            {#each ourTeam.team_members.data as member}
+            {#each ourTeam.team_members.data as member,index}
                 <Col md="6">
-                    <a href="/our-team/{member.attributes.slug}">
-                    <div class="our-team__member">
+                    <!-- <a href="/our-team/{member.attributes.slug}"> -->
+                    <div class="our-team__member" 
+                    on:click={() => getMemberIndex(index)}
+                    on:click={() => (showModal = true)}
+                    >
                         <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
                         <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                             <!-- our-team__member_caption class removed -->
@@ -66,9 +82,25 @@
                             <span class="pfont gtc">{member.attributes.position}</span>
                         </div>
                     </div>
-                    </a>
+                    <!-- </a> -->
                 </Col>                    
-            {/each}                                          
+            {/each} 
+            
+            <Modal bind:showModal>
+                <div class="memberModal">
+                    <div class="memberModal__image">
+                        <img src="{domain}{memberImage}" alt="member">
+                    </div>
+                    <div class="memberModal__details">
+                        <h5 class="pfont">{@html memberName}</h5>
+                        <p class="position">{memberPosition}</p>
+                        {#if memberContent}
+                        <p class="content">{@html memberContent}</p>
+                        {/if}
+                    </div>
+                </div>
+            </Modal> 
+
         </Row>
     </Col>
 </Row>
@@ -103,6 +135,7 @@
         &__member{
             position: relative;
             margin-top: 1.5rem;
+            cursor: pointer;
             &:hover{
                 a{
                     opacity: 1;
@@ -190,4 +223,114 @@
         text-align: right;
     }
 }
+
+.memberModal {
+    display: flex;
+    align-items: flex-start;
+
+    @include media-max(ipadmini){ //768
+        display: unset;
+    }
+
+    &__image {
+        width: 45%;
+        z-index: 9;
+        text-align: end;
+        @include media-max(default){
+            img {
+                width: 30.938rem;
+            }
+        }
+        @include media-max(ipadmini){ //768
+            text-align: center;
+            width: 100%;
+            img {
+                width: 65%;
+            }
+        }
+    }
+
+    &__details {
+        width: 60%;
+        min-width: 60%;
+        background-color: $lightblue;
+        padding: 2.5rem 2.5rem 2.5rem 5.5rem;
+        box-shadow: 6px 8px 9px rgba(166, 184, 191, 0.2);
+        margin-left: -3rem;
+        margin-top: 3.563rem;
+        min-height: 36.888rem;
+
+        @include media-max(ipadmini){ //768
+            width: 100%;
+            min-width: 100%;
+            margin-top: -3rem;
+            padding: 5.5rem 2.5rem 2.5rem 2.5rem;
+            margin-left: 0;
+            min-height: unset;
+        }
+
+        @include media-max(ml){
+            padding: 5.5rem 2rem 2.5rem 2rem;
+        }
+
+        h5 {
+            font-size: 2.688rem;
+            text-transform: uppercase;
+            font-weight: 500;
+
+            @include media-max(ipadmini){ //768
+                text-align: center;
+            }
+
+            :global(span) {
+                color: $primary-color;
+            }
+        }
+
+        .position {
+            font-size: 1.438rem;
+            letter-spacing: 0.02em;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            color: $darkergray;
+            font-weight: 500;
+            margin-bottom: 2rem;
+
+            @include media-max(ipadmini){ //768
+                text-align: center;
+            }
+        }
+
+        .content {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.25rem;
+            line-height: 2.125rem;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            color: $darkergray;
+            height: 25.136rem;
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            @include scrollbars(0.824rem, 80px, $secondary-color, $white-color);
+
+            :global(p) {
+                max-width: 32.843rem;
+
+                @include media-max(ipadmini){ //768
+                    max-width: unset;
+                }
+            }
+
+            @include media-max(ipadmini){ //768
+                text-align: center;
+                overflow: hidden;
+                height: auto;
+            }
+           
+        }
+        
+    }
+
+}
+
 </style>

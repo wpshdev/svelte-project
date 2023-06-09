@@ -27,8 +27,10 @@
 <PageBanner title="{abouttitle}" subTitle="{aboutsubheading}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
 
 <section class="mw-1000 text-center about-heading">
-        <h2 class="pb-2">{@html about.AboutHeading}</h2>
-        <p>{@html about.abouttext}</p>
+    <Container>
+            <h2 class="pb-2">{@html about.AboutHeading}</h2>
+            <p>{@html about.abouttext}</p>
+    </Container>
 </section>
 <section class="contractor-details">
     <Container>
@@ -92,16 +94,17 @@
     </Animate>
 </section>
 <section class="certificate mx-8">
-    <Animate>
-        <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
-        <p class="text-left">{@html about.Section5text}</p> -->
-        {#if about.Section5image.data}
-        <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-        <img src="/src/lib/img/certificate.png" alt="{about.Section3heading}" class="desktop">
-        <img src="/src/lib/img/certificate-mobile.png" alt="{about.Section3heading}" class="mobile">
-        {/if}      
-    </Animate>
-    
+    <Container>
+        <Animate>
+            <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
+            <p class="text-left">{@html about.Section5text}</p> -->
+            {#if about.Section5image.data}
+            <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
+            <img src="/src/lib/img/certificate.png" alt="{about.Section3heading}" class="desktop">
+            <img src="/src/lib/img/certificate-mobile.png" alt="{about.Section3heading}" class="mobile">
+            {/if}      
+        </Animate>
+    </Container>
 </section>
 <section class="sets-parts">
     <Animate>
@@ -234,6 +237,12 @@
                 min-width:80vw;
                 max-width:100vw;
             }
+            p {
+                @include media-max(xs){
+                    padding: 0 1rem;
+                }
+            }
+            
         }
         @include media-max(xs){
             padding: 0;
