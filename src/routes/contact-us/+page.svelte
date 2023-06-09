@@ -54,7 +54,9 @@
 	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
+
 <PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
+
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
         <Row>
@@ -120,14 +122,14 @@
 </Animate>
 
 <style lang="scss">
-    :global(.banner) {
+    :global(.banner.contact-banner) {
+        background-position: center !important;
         @include media-max(xs) { 
             min-height: 25rem !important;
             background-size: auto !important;
-            background-position: center !important;
         }
     }
-    :global(.banner:after) {
+    :global(.banner.contact-banner:after) {
         @include media-max(xs) { 
             background-color: rgba(0, 0, 0, 0.4) !important;
         }

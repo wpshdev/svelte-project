@@ -14,6 +14,7 @@ import axios from "axios";
 	import Animate from "./Animate.svelte";
 export let id;
 export let addPagination;
+export let pageSize;
 let projects;
 let duration = 1500;
 const cache = new Map();
@@ -37,7 +38,6 @@ async function getProjects(id) {
 // $: paginatedPortfolios = paginate({ portfolios, pageSize, currentPage });
 let items;
 let currentPage;
-let pageSize;
 // let paginatedPortfolios;
 
 $: if (id) {
@@ -48,7 +48,6 @@ $: if (id) {
         let portfolios = projects.data;
         items = portfolios;
         currentPage = 1;
-        pageSize = 4;
         // paginatedPortfolios = paginate({ items, pageSize, currentPage });
     })();
 }

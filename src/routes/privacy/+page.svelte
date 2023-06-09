@@ -24,11 +24,18 @@
         opacity: 0;
     }
 .content{
+    h2 {
+        color: $secondary-color;
+    }
     :global(p){
         line-height: 1.7rem !important;        
     }
     :global(h3){
         padding-bottom: 0.971rem;
+        font-size: 2.25rem;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        color: $figmablack;
+        font-weight: 400;
     }         
     :global(img){
         height: 1.2rem;
