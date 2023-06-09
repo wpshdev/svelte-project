@@ -85,6 +85,9 @@
 	background-size: cover;
 	margin: 0;
 	min-height: 20vh;
+	@include media-max(sm){
+		padding: 10rem 1rem;
+	}
 	&__content{
 		display: flex;
 		height: 100%;

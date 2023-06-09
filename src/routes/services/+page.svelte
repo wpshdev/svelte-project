@@ -166,7 +166,7 @@
         </Container>
     </Animate>
 </section>
-<section class="height-100vh">
+<section class="height-100vh fullwidth">
     <Animate>
         <img src="{url}{page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
     </Animate>
@@ -189,7 +189,7 @@
 					<h2 class="text-center">Explore our Projects...</h2>
 				</Col>			
 				{#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
-					<Col sm="6">
+					<Col md="6">
 						<div class="explore__article">
 							<a href="portfolio/{featuredProject.attributes.slug}">
 								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
@@ -318,6 +318,9 @@
             } 
         }
     } 
+    .fullwidth {
+        padding: 0;
+    }
     .reimagine {
         .btn {
             padding: 0.7rem 3.125rem;
@@ -418,7 +421,7 @@
     }
     .explore {
         background-color: #E5EEF2;
-        padding: 5rem 0;
+        padding: 5rem 1rem;
         margin-bottom: 0;
         h2{
             text-align: center;
@@ -431,7 +434,7 @@
             position: relative;
             height: 50vh;
             @include media-max(sm){
-                margin-bottom: 2rem;
+                margin-bottom: 1rem;
             } 	
             img{
                 transition: 0.5s;
@@ -456,7 +459,7 @@
                 text-align: left;
                 @include media-max(sm){
                     margin: 0;
-                    font-size: 0.6rem;
+                    font-size: 1rem;
                     width: 90%;
                     bottom: 0.5rem
                 } 			
@@ -464,15 +467,15 @@
                     color: $primary-color;
                     font-size: 1.2rem;
                     margin: 0 0.8rem 0;
-                    @include media-max(sm){
-                        margin: 0;
-                        font-size: 0.6rem;
-                    }                
+                    // @include media-max(sm){
+                    //     margin: 0;
+                    //     font-size: 1rem;
+                    // }                
                 }
                 i {
-                position: absolute;
-                top: 20%;
-                right: 1rem;
+                    position: absolute;
+                    top: 20%;
+                    right: 1rem;
                 }
             }	
         }

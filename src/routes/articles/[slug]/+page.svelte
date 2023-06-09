@@ -30,13 +30,15 @@
 </Container>
     <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
 </div>
-<Container class="py-4">
-    <h2 class="pb-3 sblue">{title}</h2>
-    <div class="two-columns">
-        {@html content}
-        <!-- <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
-    </div>
-</Container>
+<section>
+    <Container class="py-4">
+        <h2 class="pb-3 sblue">{title}</h2>
+        <div class="two-columns">
+            {@html content}
+            <!-- <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
+        </div>
+    </Container>
+</section>
 <section class="related-articles">
     <Container>
         <h2 class="text-center pb-4">Related Articles</h2>
@@ -72,6 +74,7 @@
     }
     @include media-max(xs){
         height: 33.121rem;
+        margin-bottom: 7rem;
     }
     &__covertitle{
         width:100%;
@@ -123,13 +126,17 @@
     // overflow-wrap: break-word;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+    @include media-max(sm){
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 .related-articles{
     background: #e5eef3;
     margin-bottom: 0;
     padding: 4.375rem 3.125rem 3.125rem 3.125rem;
     @include media-max(sm) {
-        padding: 4.375rem 0.625rem 1.875rem 0.625rem;
+        padding: 4.375rem 1rem 1.875rem 1rem;
     }
     h2 {
         font-size: 2.813rem;

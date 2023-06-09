@@ -155,6 +155,9 @@
     }
     .contact-box {
         margin-top: -6rem;
+        @include media-max(xs) { 
+            padding: 0 1.25rem;
+        }
         h2 {
             font-size: 2.25rem;
             margin-bottom: 3.125rem;

@@ -10,6 +10,7 @@ $breakpoints: (
   mm: 376px,
   ms: 321px,
   w545: 545px,
+  default: 1441px
 );
 
 // @include respond-above(sm) {}
@@ -96,5 +97,30 @@ $breakpoints: (
         // Log a warning.
         @warn 'Your upper breakpoint was invalid: #{$upper}.';
       }
+    }
+  }
+
+  // Scrollbars
+  @mixin scrollbars($size, $bradius, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+    // For Google Chrome
+    &::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+      border-radius: $bradius;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: $background-color;
+      border-radius: $bradius;
+    }
+  
+    // For Internet Explorer
+    & {
+      scrollbar-face-color: $foreground-color;
+      scrollbar-track-color: $background-color;
     }
   }

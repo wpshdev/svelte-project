@@ -56,7 +56,7 @@ $: if (id) {
     <Animate>
         {#if projects}
         <MasonryGrid
-        class="container"
+        class="container masonry-wrapper"
         {defaultDirection}
         {gap}
         {align}
@@ -66,7 +66,7 @@ $: if (id) {
     >       
          {#each paginate({ items, pageSize, currentPage }) as project, index}			
              {#if index < propCount}
-                <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 600}}" out:fly="{{y:400, duration:2000 }}">       
+                <div class="masonry-items" in:fly="{{ y: 200, duration: 2000, delay:index * 700}}" out:fly="{{y:400, duration:2000 }}">       
                     <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
                         <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url}" alt="modern" >
                         <div class="masonry-items__text">
@@ -81,28 +81,37 @@ $: if (id) {
                 </div>			
              {/if}			
          {/each}
-        </MasonryGrid>  
-        {#if addPagination == 'true'}
-        <div class="paginate-section">
-            <LightPaginationNav
-            totalItems="{items.length}"
-            pageSize="{pageSize}"
-            currentPage="{currentPage}"
-            limit="{1}"
-            showStepOptions="{true}"
-            on:setPage="{(e) => currentPage = e.detail.page}"
-            />
-        </div>
-        {/if}       														
+        </MasonryGrid>  										
         {:else}
             <div class="col text-center">Loading...</div>
-        {/if}    
-    </Animate>     
+        {/if}  
+        
+        {#if addPagination == 'true'}
+         <div class="paginate-section">
+             <LightPaginationNav
+             totalItems="{items.length}"
+             pageSize="{pageSize}"
+             currentPage="{currentPage}"
+             limit="{1}"
+             showStepOptions="{true}"
+             on:setPage="{(e) => currentPage = e.detail.page}"
+             />
+         </div>
+         {/if} 
+             	
+    </Animate>  
 
 <style lang="scss">
     .container {
     overflow: hidden;
     }    
+    :global(.masonry-wrapper) {
+        min-height: 57.75rem;
+
+        @include media-max(md){
+            min-height: 31.313rem;
+        }
+    }
     .loading{
         width: 100%;
         text-align: center;
@@ -114,15 +123,25 @@ $: if (id) {
         color: white;
         text-align: center;  
         padding-top: 0.8rem;
+
         @include media-max(sm){
             width: 100%;
             padding-top: 1rem;
         }
+
+        min-height: 26.813rem;
+        min-width: 39.688rem;
+        @include media-max(lg){
+            min-height: unset;
+            min-width: unset;
+        }   
+
         a{
             display: block;
             height: 100%;
             width: 98%;
             overflow: hidden;
+                   
             @include media-max(sm){
                 width: 100%;
             }               
