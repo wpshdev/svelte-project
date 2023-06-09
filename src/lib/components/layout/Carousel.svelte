@@ -167,6 +167,18 @@ $: {
     box-sizing: border-box;
     height: 70vh;
     overflow: hidden;
+    &:hover{
+        .slider-container__carousel-cell__text{
+          background: $primary-color;
+          transition: 0.3s;
+          span {
+            color: $white-color;
+          }
+          path {
+            stroke: $white-color;
+          }  
+        }        
+    }    
     @include media-max(ipadmini){
       height: 50vh;
       width: 80%;      
@@ -186,15 +198,7 @@ $: {
             width: 90%;
             text-align: left;
             transition: 0.5s;
-            &:hover {
-              background: $primary-color;
-              span {
-                color: $white-color;
-              }
-              path {
-                stroke: $white-color;
-              }
-            }
+
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;
