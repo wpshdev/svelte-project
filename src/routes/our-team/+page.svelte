@@ -142,6 +142,15 @@
                     background-color: rgb(8, 161, 216, 0.3);
                     transition: 0.3s;
                 }
+               
+                .tm-box{
+                    background: $primary-color;
+                    transition: 0.3s;
+                    h5, span {
+                        color: $white-color;
+                    }
+                }  
+
             }
             a{
                 opacity: 0;

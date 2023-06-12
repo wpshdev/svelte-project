@@ -176,7 +176,7 @@
         <Container>
             <h2 class="text-center mb-3 py-3">{page.section6heading}</h2>
             <p class="mb-2 py-3 two-columns">{@html page.section6text}</p>
-            <div class="text-right"><a class="btn btn-secondary" href="/contact">{page.section6btn}</a></div>
+            <div class="text-right"><a class="btn btn-secondary" href="/contact-us">{page.section6btn}</a></div>
         </Container>
     </Animate>
 </section>
@@ -446,6 +446,16 @@
                     transition: 0.5s;
                     scale: 1.2;
                 }
+                .explore__article__text {
+                    background: $primary-color;
+                    transition: 0.3s;
+                    span {
+                        color: $white-color;
+                    }
+                    path {
+                        stroke: $white-color;
+                    }  
+                }  
             }
             &__text{
                 background-color: $secondary-color;

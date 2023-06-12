@@ -139,6 +139,19 @@ $: if (id) {
             height: 100%;
             width: 98%;
             overflow: hidden;
+
+            &:hover{
+                .masonry-items__text{
+                    background: $primary-color;
+                    transition: 0.3s;
+                    span {
+                        color: $white-color;
+                    }
+                    path {
+                        stroke: $white-color;
+                    }  
+                }        
+            }  
                    
             @include media-max(sm){
                 width: 100%;

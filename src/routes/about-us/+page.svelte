@@ -174,7 +174,10 @@
 </section>
 <Contactform/>
 <style lang="scss">
-    $darkgrey-color: #3E3636;    
+    $darkgrey-color: #3E3636;   
+    :global(.banner) {
+        background-position: center !important;
+    } 
     .about-heading{
         h2 {
             color:$secondary-color;

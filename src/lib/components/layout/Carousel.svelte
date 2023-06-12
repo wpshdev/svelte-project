@@ -83,16 +83,18 @@ $: {
   <Col md=9>
     <div class="slider-container">
       {#each featuredProjects.data as project, index}
-        <div class="slider-container__carousel-cell zoomImg">
-          <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-          <div class="slider-container__carousel-cell__text">
-            <span>0{index + 1}</span>
-            {project.attributes.title}
-            <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              </i>
-          </div>        
+        <div class="slider-container__carousel-cell">
+          <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+            <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+            <div class="slider-container__carousel-cell__text">
+              <span>0{index + 1}</span>
+              {project.attributes.title}
+              <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                </i>
+            </div>      
+          </a>  
         </div>
       {/each}
     </div>
@@ -167,6 +169,18 @@ $: {
     box-sizing: border-box;
     height: 70vh;
     overflow: hidden;
+    &:hover{
+        .slider-container__carousel-cell__text{
+          background: $primary-color;
+          transition: 0.3s;
+          span {
+            color: $white-color;
+          }
+          path {
+            stroke: $white-color;
+          }  
+        }        
+    }    
     @include media-max(ipadmini){
       height: 50vh;
       width: 80%;      
@@ -186,15 +200,7 @@ $: {
             width: 90%;
             text-align: left;
             transition: 0.5s;
-            &:hover {
-              background: $primary-color;
-              span {
-                color: $white-color;
-              }
-              path {
-                stroke: $white-color;
-              }
-            }
+
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;
@@ -218,7 +224,7 @@ $: {
     }      
     img {
       display: block;
-      width: auto;
+      // width: auto;
       object-fit: cover;
       height: 100%;
     }
@@ -276,6 +282,3 @@ $: {
 
 
 </style>
-
-  
-  

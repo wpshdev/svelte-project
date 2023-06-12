@@ -143,6 +143,10 @@
 								<div class="related__article__text">
 									<span>0{index+1}</span>
 									{rPortfolio.attributes.title}
+									<i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+										</svg>
+									</i>
 								</div>
 							</a>
 						</div>
@@ -336,6 +340,17 @@ section{
                 transition: 1.2s;
                 scale: 1.2;
             }
+			
+			.related__article__text {
+				background: $primary-color;
+				transition: 0.3s;
+				span {
+					color: $white-color;
+				}
+				path {
+					stroke: $white-color;
+				}  
+			}  
         }
         &__text{
             background-color: $secondary-color;
@@ -352,7 +367,16 @@ section{
                 font-size: 1rem;
                 width: 90%;
                 bottom: 0.5rem
-            } 			
+            } 
+			&:hover {
+              background: $primary-color;
+              span {
+                color: $white-color;
+              }
+              path {
+                stroke: $white-color;
+              }
+            }			
             span{
                 color: $primary-color;
                 font-size: 1.2rem;
@@ -361,6 +385,11 @@ section{
                     margin: 0;
                     font-size: 1rem;
                 }                
+            }
+			i{
+              position: absolute;
+              top: 20%;
+              right: 1rem;
             }
         }	
 	}

@@ -152,6 +152,9 @@ $: listener = {propCount , activeTab};
 				display: flex;
 				justify-content: center;
 				margin-bottom: 3rem;
+				:global(p) {
+					font-size: 1.25rem;
+				}
 			}
 		}
 	}    

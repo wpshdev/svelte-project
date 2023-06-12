@@ -16,6 +16,9 @@ html{
         font-size: 14px;
     }
 }
+body {
+    scroll-behavior: auto;
+}
 
 h1,.h1{
     font-size: 5rem;
@@ -142,6 +145,12 @@ img{
 }
 .changeBG{
     background:#1E2D39;
+    .dropdown.show, .dropdown-menu  {
+        background-color: $gray;
+        a {
+            color: $primary-color;
+        }
+    }
 }
 .input-icon-box{
     position: relative;
@@ -425,8 +434,21 @@ header{
             @include media-max(sm){
                 display: block;
             } 
-            .dropdown.show, .dropdown-menu{
+            .dropdown.show{
                 background-color: unset;
+            }
+            .dropdown-menu {
+                background-color: unset;
+                a {
+                    color: $darkgray;
+                    &:before {
+                        content: "";
+                        border-top: 1px solid #ACA7A7;
+                        display: block;
+                        width: 55%;
+                        margin: 1px auto 8px;
+                    }
+                }
             }
             .mobile-menu-logo{
                 // text-align: left;
@@ -506,7 +528,7 @@ header{
         }
         .dropdown.show{
             // background-color: rgb(216 215 215 / 50%);
-            background-color: rgb(216 215 215 / 20%);
+            background-color: rgba(242, 237, 237, 0.20);
             .dropdown-toggle{
                 &:hover, &:focus{
                     background-color: unset;
@@ -516,7 +538,7 @@ header{
         }
         .dropdown-menu{
             // background-color: rgb(216 215 215 / 50%);
-            background-color: rgb(216 215 215 / 20%);
+            background-color: rgba(242, 237, 237, 0.20);
             border-radius: 0;
             width: 100%;
             border: none;
