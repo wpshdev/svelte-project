@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let showModal; // boolean
+	import xButton from "$lib/img/modal-close.svg";
 
 	let dialog; // HTMLDialogElement
 
@@ -13,7 +14,7 @@
 	on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
-		<img src="/src/lib/img/modal-close.svg" class="close" alt="close" on:click={() => dialog.close()}>
+		<img src="{xButton}" class="close" alt="close" on:click={() => dialog.close()}>
 		<slot />
 	</div>
 </dialog>
