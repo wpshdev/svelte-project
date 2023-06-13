@@ -92,6 +92,11 @@
 		display: flex;
 		height: 100%;
 		align-items: end;		
+		padding-bottom: 7rem;
+		@include media-max(sm){
+			padding-bottom: 3rem;
+			text-align: center;
+		}
 		&__wrapper{
 			h2{
 				margin-bottom: 1rem;

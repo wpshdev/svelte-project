@@ -47,7 +47,7 @@
                     <div class="blogsection7 easein-img">
                         {#if blog.attributes.featuredimage.data != null}
                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
+                                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                             {:else}
                                 <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
                             {/if}
@@ -99,6 +99,9 @@
 </section>
 <Cta/>
 <style lang="scss">
+    :global(.banner) {
+        background-position: center !important;
+    } 
      .mx-8{
         margin:6rem auto;
         @include media-max(md){

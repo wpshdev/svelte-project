@@ -2,6 +2,9 @@
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	import { onMount } from "svelte";
 	import axios from "axios";
+	import {
+		goto
+	} from '$app/navigation';
 
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	let promise = fetchCta();
@@ -18,6 +21,17 @@
 			console.error('Error fetching data:', error);
 		}
 	}
+
+	// function handleClick(event) {
+	// 	event.preventDefault();
+	// 	const href = event.target.getAttribute('href');
+	// 	if (href) {
+	// 		history.pushState({}, '', href);
+	// 		window.location.href = href;
+	// 		goto(href);
+	// 	}
+	// }
+	// on:click|preventDefault={handleClick}
 
 	onMount(() => {
 		promise = fetchCta();
@@ -44,7 +58,7 @@
 							<h2>{insight.Heading}</h2>
 							{@html insight.paragprah}
 							<div class="insight__content__wrapper__btns">
-								<a href="{insight.leftBtnUrl}" class="btn btn-secondary">{insight.leftBtnTitle}</a> <a href="{insight.rightBtnUrl}" class="btn btn-inverted">{insight.rightBtnTitle}</a>
+								<a href="{insight.leftBtnUrl}/" class="btn btn-secondary">{insight.leftBtnTitle}</a> <a href="{insight.rightBtnUrl}/" class="btn btn-inverted">{insight.rightBtnTitle}</a>
 							</div>
 						</div>
 					</div>				

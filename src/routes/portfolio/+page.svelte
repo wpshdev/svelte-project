@@ -13,7 +13,7 @@
     // let properties = data.properties.data;
     // console.log(properties);
     // console.log(data);
-	// console.log(data.data.attributes.Banner.background.data.attributes.formats.large.url);
+	// console.log(data.data.attributes.Banner.background.data.attributes.url);
 </script>
 <svelte:head>
 	<title>{portfolio.title}</title>
@@ -21,7 +21,7 @@
 
 </svelte:head>
 
-<PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
+<PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
 
 <section class="portfolio-masonry">
     <Container>

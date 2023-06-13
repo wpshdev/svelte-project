@@ -33,8 +33,6 @@
 	function toggleMenu() {
 		isOpen = !isOpen;
 	}
-  
-
 
 	function onScroll() {
 		var dropdownParent = document.querySelector('.dropdown.nav-item');
