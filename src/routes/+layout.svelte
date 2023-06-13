@@ -5,7 +5,8 @@
     import Header from "./Header.svelte";
 	import { redirect } from "@sveltejs/kit";
     import {page} from '$app/stores'
-	import { Container } from "sveltestrap";   
+	import { Container } from "sveltestrap";  
+    import Animate from "$lib/components/Animate.svelte";
 	// import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     // let isHomePage = false;
     function isHome(url) {
@@ -42,9 +43,13 @@
         </Headroom>
     </div>
     <main>
-        <slot>
-    
-        </slot>
+        {#key $page}
+        <Animate>
+            <slot>
+        
+            </slot>
+        </Animate>
+        {/key}
     </main>
     <footer>
         <Footer />

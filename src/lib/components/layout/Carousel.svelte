@@ -84,7 +84,7 @@ $: {
     <div class="slider-container">
       {#each featuredProjects.data as project, index}
         <div class="slider-container__carousel-cell">
-          <a href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+          <a href="/portfolio/{project.attributes.slug}" data-sveltekit-reload class="zoomImg">      
             <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
             <div class="slider-container__carousel-cell__text">
               <span>0{index + 1}</span>

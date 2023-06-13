@@ -2,6 +2,7 @@
 import { fly, fade } from "svelte/transition";
 import { MasonryGrid } from "@egjs/svelte-grid";
 import { paginate, LightPaginationNav } from 'svelte-paginate';
+import { PUBLIC_STRAPI_API } from '$env/static/public';
 
 
 const gap = 0;
@@ -28,7 +29,7 @@ async function getProjects(id) {
     }
     const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
     const headers = {
-        Authorization: 'Bearer e66e57d2fe279d76a7bc806393da27e7b822486a6f3f44d4f2f09b0f63e0810038fb035984d80012d0e62eed2c75c9b02214e298424fc88518b6f743c29649eb0f47b38566eb64ed3a7bc1edf9d279ba3e42b9730b7fca5a2d90de9a794649c08c2ce510502b2610d87d0a93799a0c74316277771029ea8f9a28f026a11d499a' 
+        Authorization: 'Bearer ' + PUBLIC_STRAPI_API
     }    
     const response = await axios.get(url, { headers });
     projects = response.data;

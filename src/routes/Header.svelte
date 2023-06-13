@@ -34,14 +34,24 @@
 		isOpen = !isOpen;
 	}
 
-	function onScroll() {
-		var dropdownParent = document.querySelector('.dropdown.nav-item');
-		var dropdownMenu = document.querySelector('.dropdown .dropdown-menu-end');
+	function hideDropdownOnScroll() { // hide opened dropdown upon scrolling
+		
+		const dropdownParent = document.querySelector('.dropdown.nav-item');
 
-		if(dropdownParent && dropdownParent.classList.contains('show')) {
-			dropdownMenu.classList.remove('show');
-			dropdownParent.classList.remove('show');
+		if (window.innerWidth >= 768) { // apply only on desktop
+			if(dropdownParent.classList.contains('show')) {
+
+				// Create a custom click event
+				const clickEvent = new MouseEvent('click', {
+					bubbles: true,
+					cancelable: true,
+					view: window
+				});
+
+				dropdownParent.dispatchEvent(clickEvent);
+			}
 		}
+
 	}
 
 
@@ -49,22 +59,15 @@
 		window.addEventListener('resize', () => {
 			if (window.innerWidth > 768) {
 					isOpen = false;
-				window.addEventListener('scroll', onScroll);
-			} else {
-				window.removeEventListener('scroll', onScroll);
-			}
+			} 
 		});
-
-		if (window.innerWidth < 768) {	
-			window.addEventListener('scroll', onScroll);
-		}	
-
   	});	
 
 </script>
 
 <svelte:window 
 	bind:innerWidth
+	on:scroll={hideDropdownOnScroll}
   />
   <Navbar expand="md">
 	<NavbarBrand href="/">
