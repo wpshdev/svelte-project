@@ -41,7 +41,7 @@
             <Col md="6">
                 <Animate>
                     <div>
-                        <img src="{url+about.Section1image.data.attributes.formats.large.url}" alt="{about.Section1heading}" class="w-100">
+                        <img src="{url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
                     </div>
                 </Animate>
             </Col>
@@ -54,7 +54,7 @@
         <Row>
             <Col md="6">
                 <div>
-                    <img src="{url+about.Section2image.data.attributes.formats.large.url}" alt="{about.Section2heading}" class="w-100">
+                    <img src="{url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100">
                 </div>
             </Col>
             <Col md="5" class="align-self-center">
@@ -75,7 +75,7 @@
                 </Col>
                 <Col md="6">
                     <div>
-                        <img src="{url+about.Section3image.data.attributes.formats.large.url}" alt="{about.Section3heading}" class="w-100 2col-image">
+                        <img src="{url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image">
                     </div>
                 </Col>
             </Row>
@@ -119,7 +119,7 @@
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
-                        <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
+                        <img src="{url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100">
                     </div>
                 </Col>
             </Row>
@@ -131,7 +131,7 @@
                 <Col md="6" style="z-index: 1;">
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
-                        <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
+                        <img src="{url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100">
                     </div>
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
@@ -151,7 +151,7 @@
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
-                        <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
+                        <img src="{url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100">
                     </div>
                 </Col>
             </Row>
@@ -176,7 +176,7 @@
 <style lang="scss">
     $darkgrey-color: #3E3636;   
     :global(.banner) {
-        background-position: center !important;
+        background-position: top !important;
     } 
     .about-heading{
         h2 {

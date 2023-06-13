@@ -28,7 +28,7 @@
 	<title>Our Team</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
+<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{domain}{data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
 <section class="our-team">
     <Animate>
         <Container>
@@ -37,7 +37,7 @@
                     <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
                     <p class="two-columns">{@html ourTeam.content}</p>
                     <div>
-                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.small.url}" alt="Team Philosophy"/>
+                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy"/>
                     </div>
                 </Col>
             </Row>
@@ -49,7 +49,7 @@
         <Container>
             <Row noGutters>
                 <Col md=6 class="tm-img">
-                    <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url}">
+                    <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                 <div class="tm-box wtc">
                     <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h3>
                     <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>

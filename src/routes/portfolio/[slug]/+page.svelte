@@ -103,7 +103,7 @@
 	</Animate>
 </section>
 {#each bannerQuotes as bannerQuote}
-		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url})"></section>
+		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
 		<Testimonial testimonial="{bannerQuote.quote}" />
 {/each}
 

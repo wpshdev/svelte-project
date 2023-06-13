@@ -8,25 +8,26 @@
     import axios from "axios";
     console.log(data);
     const url = "https://strapi.ulfbuilt.com:1337/";
-    let page = data.data.attributes
+    let page = data.services.data.attributes
+    let featuredProjects = data.portfolios.data
     console.log(page);
 
-    export let pdata;
-    export let featuredProjects;
-    let promise = fetchProject();
-    async function fetchProject(){
-        const url = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
-        const headers = {
-            Authorization: 'Bearer ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' 
-        }    
-        const response = await axios.get(url, { headers });
-        pdata = response.data;
-        featuredProjects = pdata.data;
-    }
+    // export let pdata;
+    // export let featuredProjects;
+    // let promise = fetchProject();
+    // async function fetchProject(){
+    //     const url = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
+    //     const headers = {
+    //         Authorization: 'Bearer ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072' 
+    //     }    
+    //     const response = await axios.get(url, { headers });
+    //     pdata = response.data;
+    //     featuredProjects = pdata.data;
+    // }
 
-    onMount(() => {
-        promise = fetchProject();
-    });	
+    // onMount(() => {
+    //     promise = fetchProject();
+    // });	
 
 </script>
 <svelte:head>
@@ -44,7 +45,7 @@
                         <div class="service-b__service-box__service-box-inner">
                             <Animate>
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item1icon.data.attributes.formats.medium.url}" alt="{page.section1item1heading}">
+                                    <img src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}">
                                 </div>
                             </Animate>
                             <h4>{page.section1item1heading}</h4>
@@ -57,7 +58,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item2icon.data.attributes.formats.medium.url}" alt="{page.section1item2heading}">
+                                    <img src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}">
                                 </div>
                                 <h4>{page.section1item2heading}</h4>
                             </div>
@@ -70,7 +71,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item3icon.data.attributes.formats.medium.url}" alt="{page.section1item3heading}">
+                                    <img src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}">
                                 </div>
                                 <h4>{page.section1item3heading}</h4>
                             </div>
@@ -83,7 +84,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item4icon.data.attributes.formats.medium.url}" alt="{page.section1item4heading}">
+                                    <img src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}">
                                 </div>
                                 <h4>{page.section1item4heading}</h4>
                             </div>
@@ -96,7 +97,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item5icon.data.attributes.formats.medium.url}" alt="{page.section1item5heading}">
+                                    <img src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}">
                                 </div>
                                 <h4>{page.section1item5heading}</h4>
                             </div>
@@ -109,7 +110,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item6icon.data.attributes.formats.medium.url}" alt="{page.section1item6heading}">
+                                    <img src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}">
                                 </div>
                                 <h4>{page.section1item6heading}</h4>
                             </div>
@@ -130,7 +131,7 @@
                         <p class="text-right px-5 py-5 blue-color-background">{@html page.section2text}</p>
                     </Col>
                     <Col md="6" class="imageCont">
-                        <img src="{url}{page.section2image.data.attributes.formats.medium.url}" alt="{page.section2heading}" class="w-100">
+                        <img src="{url}{page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100">
                     </Col>
                 </Row>
         </Container>
@@ -141,7 +142,7 @@
         <Container>
             <Row noGutters class="justify-content-center flex-md-row flex-column-reverse sets-us-apart__row">
                 <Col md="6" class="imageCont">
-                    <img src="{url}{page.section3image.data.attributes.formats.medium.url}" alt="{page.section3heading}" class="w-100">
+                    <img src="{url}{page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
                 </Col>
                 <Col md="6" class="sets-us-apart__content">
                     <h4 class="txt-center py-3 pfont">{@html page.section3heading}</h4>
@@ -160,7 +161,7 @@
                     <p class="text-right px-5 py-5 blue-color-background">{@html page.section4text}</p>
                 </Col>
                 <Col md="6" class="imageCont">
-                    <img src="{url}{page.section4image.data.attributes.formats.medium.url}" alt="{page.section4heading}" class="w-100">
+                    <img src="{url}{page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
                 </Col>
             </Row>
         </Container>
