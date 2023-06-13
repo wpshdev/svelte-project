@@ -560,6 +560,12 @@
 
 	.reputation{
 		margin: 7rem 0 3.75rem;
+		:global(.container){
+			@include media-max(sm){
+				padding-left: 1.8rem;
+				padding-right: 1.8rem;
+			}			
+		}
 		@include media-max(sm){
 			margin: 0;
 			padding: 5rem 0 1.5rem 0;

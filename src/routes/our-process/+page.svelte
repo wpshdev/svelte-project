@@ -390,7 +390,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);     
             // margin-top: -10.960rem;
-            margin-top: -12rem;
+            margin-top: -14.5rem;
             width: 90%;
             margin-left: auto;
             @include media-max(md){
