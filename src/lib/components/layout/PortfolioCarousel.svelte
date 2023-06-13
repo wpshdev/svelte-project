@@ -63,7 +63,7 @@ $: {
     
   }
 }
-  
+  console.log(images);
 function log(){
   // console.log("test");
   // console.log( document.querySelector('.slider-container'));
