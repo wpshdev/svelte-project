@@ -19,7 +19,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.page.data.attributes.title}" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
+<PageBanner title="{data.page.data.attributes.title}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
     <Container>
         <Row>
@@ -99,7 +99,7 @@
 </section>
 <Cta/>
 <style lang="scss">
-    :global(.banner) {
+    :global(.banner.articles) {
         background-position: center !important;
     } 
      .mx-8{

@@ -10,7 +10,7 @@
 	<title>{data.data.attributes.title}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{url}{data.data.attributes.Cover.data.attributes.url}"/>
+<PageBanner title="{data.data.attributes.title}" extraClass="privacy" subTitle="{data.data.attributes.Subheading}"  banner="{url}{data.data.attributes.Cover.data.attributes.url}"/>
 
 <section class="content" >
     <Container class="mw-1000 h-text">
@@ -20,9 +20,6 @@
 </section>
 <Cta/>
 <style lang="scss">
-    :global(.banner:after) {
-        opacity: 0;
-    }
 .content{
     h2 {
         color: $secondary-color;

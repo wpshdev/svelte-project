@@ -192,7 +192,7 @@
 				{#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
 					<Col md="6">
 						<div class="explore__article">
-							<a href="portfolio/{featuredProject.attributes.slug}">
+							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload>
 								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="explore__article__text">
 									<span>0{index+1}</span>
