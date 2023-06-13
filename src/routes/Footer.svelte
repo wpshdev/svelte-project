@@ -33,22 +33,20 @@ function scrollToTop() {
 </script>
 
 <section class="pre-footer" in:fly={{delay:500, duration: 2000}}>
-    <Animate>
-        <Container>
-            <Row>
-                <Col>
-                    <div class="pre-footer__btt" on:click="{scrollToTop}">
-                        <svg width="30" height="11" viewBox="0 0 30 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.44043 8.96631L15.4066 1.71729L28.5605 8.96631" stroke="white" stroke-width="2" stroke-linecap="square"/>
-                        </svg>
-                        <span>TOP</span>    
-                    </div>
-                </Col>
-            </Row>
-        </Container>
-    </Animate>
+    <Container>
+        <Row>
+            <Col>
+                <div class="pre-footer__btt" on:click="{scrollToTop}">
+                    <svg width="30" height="11" viewBox="0 0 30 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.44043 8.96631L15.4066 1.71729L28.5605 8.96631" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                    </svg>
+                    <span>TOP</span>    
+                </div>
+            </Col>
+        </Row>
+    </Container>
 </section>
-<footer class="footer" in:fly={{delay:1000, duration: 2000}}>
+<footer class="footer">
     <Animate>
         <Container>
             <Row>
@@ -111,7 +109,7 @@ function scrollToTop() {
 </footer>
 
 <style lang="scss">
-    :global(.col.footer__col:not(:first-child)){
+    :global(.col.footer__col){
         @include media-max(sm){
             flex: 100%;
             margin-bottom: 3rem;
