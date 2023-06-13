@@ -5,7 +5,7 @@
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
-    import tempBG from '$lib/img/certificate.png';
+    // import tempBG from '$lib/img/certificate.png';
     import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
@@ -14,6 +14,7 @@
     let aboutimageMobile = data.data.attributes.featuredimage.data.attributes.url    
     let aboutsubheading = data.data.attributes.Aboutsubheading
     let about = data.data.attributes
+    console.log(about)
     let url = "https://strapi.ulfbuilt.com:1337/";
     let scroll: number;
 </script>
@@ -23,7 +24,7 @@
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
-<PageBanner title="{abouttitle}" subTitle="{aboutsubheading}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
+<PageBanner title="{abouttitle}" extraClass="about" subTitle="{aboutsubheading}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
 
 <section class="mw-1000 text-center about-heading">
     <Container>
@@ -41,7 +42,7 @@
             <Col md="6">
                 <Animate>
                     <div>
-                        <img src="{url+about.Section1image.data.attributes.formats.large.url}" alt="{about.Section1heading}" class="w-100">
+                        <img src="{url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
                     </div>
                 </Animate>
             </Col>
@@ -54,7 +55,7 @@
         <Row>
             <Col md="6">
                 <div>
-                    <img src="{url+about.Section2image.data.attributes.formats.large.url}" alt="{about.Section2heading}" class="w-100">
+                    <img src="{url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100">
                 </div>
             </Col>
             <Col md="5" class="align-self-center">
@@ -75,7 +76,7 @@
                 </Col>
                 <Col md="6">
                     <div>
-                        <img src="{url+about.Section3image.data.attributes.formats.large.url}" alt="{about.Section3heading}" class="w-100 2col-image">
+                        <img src="{url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image">
                     </div>
                 </Col>
             </Row>
@@ -99,7 +100,7 @@
             <p class="text-left">{@html about.Section5text}</p> -->
             {#if about.Section5image.data}
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-              <img src="{tempBG}" alt="{about.Section3heading}" class="desktop">
+              <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
               <img src="{tempBgMobile}" alt="{about.Section3heading}" class="mobile">
             {/if}      
         </Animate>
@@ -119,7 +120,7 @@
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
-                        <img src="{url+about.Section6image.data.attributes.formats.large.url}" alt="{about.Section6subheading}" class="w-100">
+                        <img src="{url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100">
                     </div>
                 </Col>
             </Row>
@@ -131,7 +132,7 @@
                 <Col md="6" style="z-index: 1;">
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
-                        <img src="{url+about.Section7image.data.attributes.formats.large.url}" alt="{about.Section7heading}" class="w-100">
+                        <img src="{url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100">
                     </div>
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
@@ -151,7 +152,7 @@
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
-                        <img src="{url+about.Section8image.data.attributes.formats.large.url}" alt="{about.Section8heading}" class="w-100">
+                        <img src="{url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100">
                     </div>
                 </Col>
             </Row>
@@ -167,14 +168,17 @@
         <h2>Home Builder in Vail Valley, Colorado</h2>
         <p>We build and remodel custom homes in Vail, Beaver Creek and the Central Rockies of Colorado.</p>
         <div class="talktous__btns">
-            <a href="#" class="btn btn-secondary">Talk to Us</a>
-            <a href="#" class="btn btn-inverted">Explore our Gallery</a>
+            <a href="/contact-us" class="btn btn-secondary">Talk to Us</a>
+            <a href="/portfolio" class="btn btn-inverted">Explore our Gallery</a>
         </div>
     </Container>
 </section>
 <Contactform/>
 <style lang="scss">
-    $darkgrey-color: #3E3636;    
+    $darkgrey-color: #3E3636;   
+    :global(.banner.about) {
+        background-position: top !important;
+    } 
     .about-heading{
         h2 {
             color:$secondary-color;

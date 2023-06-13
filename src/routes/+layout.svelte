@@ -5,7 +5,9 @@
     import Header from "./Header.svelte";
 	import { redirect } from "@sveltejs/kit";
     import {page} from '$app/stores'
-	import { Container } from "sveltestrap";    
+	import { Container } from "sveltestrap";  
+    import Animate from "$lib/components/Animate.svelte";
+	// import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     // let isHomePage = false;
     function isHome(url) {
         return url === "/" ? false : true;
@@ -13,6 +15,15 @@
     function isPortfolio(url) {
         return url === "/portfolio/[slug]" ? "portfolio-page" : "";
     }     
+
+	// afterNavigate(() => {
+	// 	disableScrollHandling();
+    //     setTimeout( () => {
+    //         console.log('delay');
+    //         window.scrollTo(0,0); 
+    //     }, 1500);
+	// }) 
+
 
     let yaxis: any;
     export let data;
@@ -32,9 +43,13 @@
         </Headroom>
     </div>
     <main>
-        <slot>
-    
-        </slot>
+        {#key $page}
+        <Animate>
+            <slot>
+        
+            </slot>
+        </Animate>
+        {/key}
     </main>
     <footer>
         <Footer />

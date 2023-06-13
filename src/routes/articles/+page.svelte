@@ -19,7 +19,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.page.data.attributes.title}" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
+<PageBanner title="{data.page.data.attributes.title}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
     <Container>
         <Row>
@@ -47,7 +47,7 @@
                     <div class="blogsection7 easein-img">
                         {#if blog.attributes.featuredimage.data != null}
                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                <img src="{url+blog.attributes.featuredimage.data.attributes.formats.small.url}" alt="blogtitle" class="blog-img w-100">
+                                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                             {:else}
                                 <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
                             {/if}
@@ -99,6 +99,9 @@
 </section>
 <Cta/>
 <style lang="scss">
+    :global(.banner.articles) {
+        background-position: center !important;
+    } 
      .mx-8{
         margin:6rem auto;
         @include media-max(md){

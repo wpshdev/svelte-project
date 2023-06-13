@@ -11,7 +11,7 @@
 <svelte:head>
 	<title>{processData.section1heading}</title>
 	<meta name="description" content="ULF BUILT" />
-    <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.formats.large.url}" as="image">
+    <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.url}" as="image">
 </svelte:head>
 <PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
@@ -28,9 +28,9 @@
                 <Col class="md-12">
                     <Animate>
                         <img src="{domain}{processData.section2image.data.attributes.url}"
-                        srcset="{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
-                                {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
-                                {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
+                        srcset="{domain}{processData.section2image.data.attributes.url} 330w,
+                                {domain}{processData.section2image.data.attributes.url} 660w,
+                                {domain}{processData.section2image.data.attributes.url} 990w"
                         sizes="(max-width: 480px) 330px,
                                (max-width: 960px) 660px,
                                990px"
