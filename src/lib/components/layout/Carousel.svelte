@@ -111,7 +111,7 @@ $: {
       </div>
     {/if}       
     <div class="slider-btn">
-      <a href="{btnUrl}" class="btn btn-secondary">{btnTitle}</a>
+      <a href="{btnUrl}" class="btn btn-secondary scaleLarge">{btnTitle}</a>
     </div>    
  
   </Col>
@@ -195,7 +195,7 @@ $: {
             padding: 0.5rem;
             position: absolute;
             z-index: 2;
-            bottom: 1rem;
+            bottom: 4rem;
             left: 0;
             width: 90%;
             text-align: left;
@@ -231,8 +231,9 @@ $: {
   }
 }
 .slider-btn{
-  margin: 2rem 5rem 0;
+  margin: 3rem 5rem 0;
   text-align: right;
+  height: 0;
   @include media-max(sm){
     text-align: center;
     margin: 2rem 0 0;

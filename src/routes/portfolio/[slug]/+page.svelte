@@ -31,7 +31,7 @@
 
     $: relatedPortfolios = data.portfolios.data.sort(() => 0.5 - Math.random()).slice(0, 2);
 
-	console.log(projectHeading);
+	console.log(data.portfolio.data[0].attributes);
 	let name = '', email = '', subject = '', message = '', result = ''
 
     async function doContact () {
@@ -119,8 +119,8 @@
 					<div class="portfolio-cta__btns">
 						<!-- <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
 						<a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a> -->
-						<a href="/contact-us" class="btn btn-secondary">Talk to Us</a>
-						<a href="/portfolio" class="btn btn-inverted">Back to Portfolio</a>
+						<a href="{portfolio.ctaLeftBtnUrl ? portfolio.ctaLeftBtnUrl : '/contact-us'}" class="btn btn-secondary">Talk to Us</a>
+						<a href="{portfolio.ctaRightUrl ? portfolio.ctaRightUrl : '/portfolio'}" class="btn btn-inverted">Back to Portfolio</a>
 					</div>                   
 				</Col>
 			</Row>

@@ -3,13 +3,14 @@
 	import ctabg from "$lib/img/CTA-BG.svg";
 	import { onMount } from "svelte";
 	import axios from "axios";
+	import { PUBLIC_STRAPI_API } from '$env/static/public';
 
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	let promise = fetchCta();
 	async function fetchCta(){
 		const url = 'https://strapi.ulfbuilt.com:1337/api/global-cta?populate=deep,2';
 		const headers = {
-			Authorization: 'Bearer ec0d6b5aece1773cbd6e5f48756c70d9b0b3a59a4d1c325a2e699c1c1b1cae0980dc56aa2c3dfd565237b2a00db9a547a1a9e54a86f80697b31766e6bf80257b37760df84c70b534edeb4df0bdde9452777a52a757850d7a82c28dba854776c405f20ef3fbd95c72b759280f375f69191f2ca75d69600ea9584d8b2100309072'
+			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
 		};
 
 		try {
@@ -49,6 +50,8 @@
 		background-image: var(--cta-banner);
 		background-size: cover;
 		min-height: 20vh;
+		background-attachment: fixed;
+		background-position: center;
 		@include media-max(sm){
 			padding-left: 1rem;
 			padding-right: 1rem;

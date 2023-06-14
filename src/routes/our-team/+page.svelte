@@ -36,7 +36,7 @@
                 <Col md="10" class="mx-auto">
                     <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
                     <p class="two-columns">{@html ourTeam.content}</p>
-                    <div>
+                    <div class="heading-image">
                         <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy"/>
                     </div>
                 </Col>
@@ -127,11 +127,20 @@
     }
     .our-team{
         margin-top: 5rem;
+        .heading-image {
+            margin: 2rem 0;
+            position: relative;
+            height: 35.625rem;
+            overflow: hidden;
+            img {
+                height: inherit;
+            }
+        }
         img{
-                width: 100%;
-                max-width: 100%;
-                height: auto;
-            }      
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }      
         &__member{
             position: relative;
             margin-top: 1.5rem;
@@ -227,6 +236,7 @@
         font-family: $primary-font;
         font-weight: 400;
         padding-bottom: 2rem;
+        line-height: 2.375rem;
     }
     h4:last-child{
         text-align: right;
