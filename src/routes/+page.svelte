@@ -87,8 +87,6 @@
 
 <Animate>
 	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"  in:fly={{
-		delay: 500,
-		duration: 2000,
 		y: 50								
 }} ></section>
 </Animate>
@@ -99,15 +97,12 @@
 			<Row>
 				<Col class="text-center">
 						<h2 in:fly={{
-							delay: 3000,
-							duration: 2000,
+
 							y: 50								
 					}} >{home.categoryGalleryTabHeading}</h2>
 					<div class="categories__tabs">
 						<div class="categories__tabs__heading">
 							<ul in:fly={{
-								delay: 3500,
-								duration: 2000,
 								y: 50								
 						}}>
 								{#each home.categories.data as heading}
@@ -124,8 +119,6 @@
 							</ul>
 						</div>
 						<p class="text-center view-all" in:fly={{
-							delay: 4000,
-							duration: 2000,
 							y: 50								
 					}}>
 							{#if propCount === 3} 
@@ -135,8 +128,6 @@
 							{/if}
 						</p>					
 						<div class="categories__tabs__gallery" in:fly={{
-							delay: 4500,
-							duration: 2000,
 							y: 50								
 					}}>
 							{#key listener }
@@ -157,7 +148,6 @@
 <section class="featured-projects">	
 	<Animate>
 		<div in:fly={{
-			delay: 500,
 			duration: 2000,
 			y: 50
 			}}
@@ -185,12 +175,10 @@
 			<Col>
 				<Animate>
 					<div class="tnr__wrapper" in:fly={{
-						delay: 500,
 						duration: 2000,
 						y: 50								
 				}} >
 						<div class="tnr__wrapper__captions" in:fly={{
-							delay: 500,
 							duration: 2000,
 							y: 50								
 					}} >
@@ -215,7 +203,6 @@
 			<Row>
 				<Col md="7" class="">
 					<div class="reputation__content" in:fly={{
-						delay: 500,
 						duration: 2000,
 						y: 50								
 				}} >
@@ -229,7 +216,6 @@
 				</Col>
 				<Col md="5" class="my-auto" >
 					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
-						delay: 500,
 						duration: 2000,
 						y: 50								
 				}} >
@@ -245,7 +231,6 @@
 			<Row>
 				<Col md="6">
 					<div class="process__top-image" in:fly={{
-						delay: 500,
 						duration: 2000,
 						y: 50								
 				}} >
@@ -257,7 +242,6 @@
 				<Col md="7" class="">
 					<div class="process__content">
 						<div class="process__content__wrapper" in:fly={{
-							delay: 1000,
 							duration: 2000,
 							y: 50								
 					}} >
@@ -270,7 +254,6 @@
 				</Col>
 				<Col md="5" class="my-auto ">
 					<div class="process__bottom" in:fly={{
-						delay: 1500,
 						duration: 2000,
 						y: 50								
 				}} >
@@ -290,7 +273,6 @@
 				<Col md="7" class="">
 					<div class="story__content">
 						<div class="story__content__wrapper" in:fly={{
-							delay: 500,
 							duration: 2000,
 							y: 50								
 					}} >
@@ -309,7 +291,6 @@
 				</Col>
 				<Col md="5" class="my-auto">
 					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
-						delay: 500,
 						duration: 2000,
 						y: 50								
 				}} >
@@ -322,7 +303,6 @@
 <section class="m-0 article-wrapper">
 	<Animate>	
 		<div in:fly={{
-			delay: 500,
 			duration: 2000,
 			y: 50								
 	}} >
@@ -334,7 +314,6 @@
 <section class="m-0 cta-wrapper">
 	<Animate>
 		<div in:fly={{
-			delay: 500,
 			duration: 2000,
 			y: 50								
 	}} >
@@ -536,6 +515,7 @@
 			height: 80vh;
 			align-items: end;
 			padding-bottom: 2rem;
+			margin-bottom: 0;
 		}
 		&::before{
 			content: "";
@@ -582,12 +562,17 @@
 
 	.reputation{
 		margin: 7rem 0 3.75rem;
+		:global(.container){
+			@include media-max(sm){
+				padding-left: 1.8rem;
+				padding-right: 1.8rem;
+			}			
+		}
 		@include media-max(sm){
 			margin: 0;
-			padding: 1.5rem 0;
+			padding: 5rem 0 1.5rem 0;
 		}		
 		@include media-max(xs){
-			padding: 1rem;
 		}		
 		&__content{
 			height: 35vw;
@@ -610,7 +595,7 @@
 				}
 				@include media-max(sm){
 					width: 100vw;
-					top: -5vh;
+					top: -5rem;
 					margin-left: calc(50% - 50vw);
 					// margin-right: calc(50% - 50vw);			
 					height: 160%;		

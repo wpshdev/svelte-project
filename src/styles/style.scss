@@ -341,6 +341,9 @@ header{
             a.nav-link{
                 color: #fff;
                 text-decoration: none;
+                @include media-min(sm){
+                    text-align: center;
+                }
                 &:hover, &:focus{
                     background-color: rgba(242, 237, 237, 0.20);
                     color: $primary-color;
@@ -444,6 +447,9 @@ header{
                 flex-direction: column;
                 align-items: center;
             } 
+            .navbar-nav{
+                width: 11rem;
+            }
             .dropdown.show{
                 background-color: unset;
                 a {
@@ -473,7 +479,7 @@ header{
                 margin-bottom: 4rem;
                 img{
                     // text-align: left;
-                    height: 7.5rem;
+                    height: 9rem;
                 }
             }
             ul{
