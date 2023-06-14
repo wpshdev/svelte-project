@@ -201,6 +201,14 @@ img{
         padding: 0.7rem 1.4rem;
         font-size: 1rem;
     }
+    &:hover {
+        border: unset;
+    }
+    &.scaleLarge {
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
 }
 .input-user:focus ~ .input-icon-user{
     background-position: 0px 0px;
@@ -477,7 +485,7 @@ header{
             ul{
                 li{
                     a{
-                        // text-align: left;
+                        text-align: left;
                         color: #3E3636;
                         font-size: 1.5rem;
                         text-transform: uppercase;
@@ -542,7 +550,7 @@ header{
         }
         .nav-item{
             min-width: 10rem;
-            // text-align: center;   
+            text-align: center;   
             a{
                 &:hover{
                     color: $white-color;
@@ -574,8 +582,8 @@ header{
             .dropdown-item{
                 color: #fff;
                 text-align: center;
-                &:hover,&:focus{
-                    background-color: rgba(242, 237, 237, 0.20);
+                &:hover,&:focus,&:active{
+                    background-color: #e9ecef;
                     color: $primary-color;
                 }
             }

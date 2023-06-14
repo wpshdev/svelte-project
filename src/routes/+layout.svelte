@@ -7,7 +7,7 @@
     import {page} from '$app/stores'
 	import { Container } from "sveltestrap";  
     import Animate from "$lib/components/Animate.svelte";
-	// import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
+	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     // let isHomePage = false;
     function isHome(url) {
         return url === "/" ? false : true;
@@ -16,13 +16,9 @@
         return url === "/portfolio/[slug]" ? "portfolio-page" : "";
     }     
 
-	// afterNavigate(() => {
-	// 	disableScrollHandling();
-    //     setTimeout( () => {
-    //         console.log('delay');
-    //         window.scrollTo(0,0); 
-    //     }, 1500);
-	// }) 
+	afterNavigate(() => {
+		disableScrollHandling();
+	}) 
 
 
     let yaxis: any;
@@ -42,16 +38,17 @@
             </header>
         </Headroom>
     </div>
+    
+    {#key $page}
+    <Animate>
     <main>
-        {#key $page}
-        <Animate>
             <slot>
         
             </slot>
-        </Animate>
-        {/key}
     </main>
     <footer>
         <Footer />
     </footer>
+    </Animate>
+    {/key}
 <svelte:window bind:scrollY={yaxis} />

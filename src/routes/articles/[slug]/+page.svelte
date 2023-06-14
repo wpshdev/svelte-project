@@ -13,7 +13,8 @@
     $: title = data.page.data[0].attributes.title;
     $: content = data.page.data[0].attributes.blogtext;
     $: published = new Date(Date.parse(data.page.data[0].attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' });
-    
+    $: location = data.page.data[0].attributes.location ? data.page.data[0].attributes.location : 'Vail, Colorado';
+    $: minutesRead = data.page.data[0].attributes.minutesRead ? data.page.data[0].attributes.minutesRead : '2';
 </script>
 <svelte:head>
 	<title>{title} - Article</title>
@@ -25,7 +26,7 @@
     <div class="cover__covertitle">
         <p class="pfont ptc mb-1 pt-3 article">Article</p>
         <h2 class="pfont stc mb-4">{title}</h2>
-        <p class="ptc pb-5">Vail, Colorado | {published} · 24 mins. read</p>
+        <p class="ptc pb-5">{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
     </div>
 </Container>
     <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
@@ -54,7 +55,7 @@
                         </div>
                     </div>
                 <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
-                    <p class="ptc">Vail, Colorado | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · 24 mins. read</p>
+                    <p class="ptc">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'mins' : 'min'}. read</p>
                 </Animate>
             </Col>
             {/each}

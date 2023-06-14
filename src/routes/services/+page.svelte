@@ -35,7 +35,7 @@
 	<meta name="description" content="ULF BUILT" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
-<PageBanner title="{page.Title}" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.url}"  />
+<PageBanner title="{page.Title}" extraClass="services" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.url}"  />
 <section class="service-b">
         <Container>
             <h2 class="text-center mb-5 py-3">{page.section1heading}</h2>
@@ -219,6 +219,9 @@
         @include media-max(sm){
             display:none;
         }
+    }
+    :global(.banner.services) {
+        background-position: center !important;
     }
     .service-b{
         h2 {
@@ -438,18 +441,18 @@
                 margin-bottom: 1rem;
             } 	
             img{
-                transition: 0.5s;
+                transition:1.2s;
                 object-fit: cover;
                 height: 100%;
             }         
             &:hover{
                 img{
-                    transition: 0.5s;
+                    transition: 1.2s;
                     scale: 1.2;
                 }
                 .explore__article__text {
                     background: $primary-color;
-                    transition: 0.3s;
+                    transition: 1.2s;
                     span {
                         color: $white-color;
                     }

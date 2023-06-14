@@ -62,7 +62,7 @@
                 <Animate>
                     <div class="blogsection5">
                         <div>
-                            <span>Vail, Colorado | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · 2 minutes read</span>
+                            <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
                             <h2>{blog.attributes.title}</h2>
                             <p>{blog.attributes.shorttext}</p>
                             <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
