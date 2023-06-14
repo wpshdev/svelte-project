@@ -6,7 +6,7 @@
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
     // import tempBG from '$lib/img/certificate.png';
-    import tempBgMobile from '$lib/img/certificate-mobile.png'; 
+    // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
     let abouttitle = data.data.attributes.Title
@@ -101,7 +101,7 @@
             {#if about.Section5image.data}
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
               <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
-              <img src="{tempBgMobile}" alt="{about.Section3heading}" class="mobile">
+              <img src="{url+about.Section5MobileImage.data.attributes.url}" alt="{about.Section3heading}" class="mobile">
             {/if}      
         </Animate>
     </Container>
@@ -282,13 +282,13 @@
             }
         }
         :global(.sets-parts__mrl-30){
-            margin-left: -30px;
+            margin-left: -15px;
             @include media-max(xs) {
                 margin-left: 0;
             }
         }
         &__mr-l{
-            margin-left: -30px;
+            margin-left: -15px;
             @include media-max(md) {
                 margin-left: -12px;
             }

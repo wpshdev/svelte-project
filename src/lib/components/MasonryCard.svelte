@@ -44,7 +44,8 @@ let currentPage;
 $: if (id) {
     (async () => {
         await getProjects(id); 
-        console.log(projects);
+        // console.log('projects');
+        // console.log(projects);
 
         let portfolios = projects.data;
         items = portfolios;
@@ -90,7 +91,7 @@ $: if (id) {
         {#if addPagination == 'true'}
          <div class="paginate-section">
              <LightPaginationNav
-             totalItems="{items.length}"
+             totalItems="{projects.length}"
              pageSize="{pageSize}"
              currentPage="{currentPage}"
              limit="{1}"

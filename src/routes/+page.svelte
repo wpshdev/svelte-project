@@ -213,7 +213,7 @@
 	<Animate>
 		<Container>
 			<Row>
-				<Col md="8" class="">
+				<Col md="7" class="">
 					<div class="reputation__content" in:fly={{
 						delay: 500,
 						duration: 2000,
@@ -227,7 +227,7 @@
 						</div>
 					</div>
 				</Col>
-				<Col md="4" class="my-auto" >
+				<Col md="5" class="my-auto" >
 					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
@@ -254,7 +254,7 @@
 				</Col>
 			</Row>
 			<Row>
-				<Col md="8" class="">
+				<Col md="7" class="">
 					<div class="process__content">
 						<div class="process__content__wrapper" in:fly={{
 							delay: 1000,
@@ -268,7 +268,7 @@
 						</div>
 					</div>
 				</Col>
-				<Col md="4" class="my-auto ">
+				<Col md="5" class="my-auto ">
 					<div class="process__bottom" in:fly={{
 						delay: 1500,
 						duration: 2000,
@@ -287,7 +287,7 @@
 	<Animate>
 		<Container>
 			<Row>
-				<Col md="8" class="">
+				<Col md="7" class="">
 					<div class="story__content">
 						<div class="story__content__wrapper" in:fly={{
 							delay: 500,
@@ -307,7 +307,7 @@
 						</div>
 					</div>
 				</Col>
-				<Col md="4" class="my-auto">
+				<Col md="5" class="my-auto">
 					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
 						delay: 500,
 						duration: 2000,
@@ -319,7 +319,7 @@
 	</Animate>	
 </section>
 
-<section class="m-0">
+<section class="m-0 article-wrapper">
 	<Animate>	
 		<div in:fly={{
 			delay: 500,
@@ -331,7 +331,7 @@
 	</Animate>
 </section>
 
-<section class="m-0">
+<section class="m-0 cta-wrapper">
 	<Animate>
 		<div in:fly={{
 			delay: 500,
@@ -570,11 +570,13 @@
 	}
 
 	.featured-projects{
-		margin: 10rem 0;
+		margin: 10rem 0 5rem;
+		padding-bottom: 5rem;
 		overflow: hidden;
 		@include media-max(sm){
 			// margin: 5rem 0;
 			margin: 0;
+			padding-bottom: 0;
 		}
 	}
 
@@ -598,7 +600,7 @@
 			&:after{
 				position: absolute;
 				background: #E5EEF2;
-				width: 130%;
+				width: 135%;
 				top: 5%;
 				content: "";
 				height: 90%;
@@ -620,7 +622,7 @@
 				padding-left: 10rem;
 				@include media-max(lg){
 					padding-left: 5rem;
-				}						
+				}	
 				@include media-max(sm){
 					padding-left: 0;
 					margin-bottom: 2rem;
@@ -633,6 +635,9 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4rem;
+					@include media-max(md){
+						line-height: 2.5rem;
+					}	
 				}
 				p{
 					line-height: 2rem;
@@ -662,7 +667,11 @@
 				margin-bottom: 0;	
 			}				
 			img{
-				max-width: 25rem;
+				max-width: 30rem;
+				height: 28.125rem;
+				@include media-max(lg){
+					height: auto;
+				}	
 				@include media-max(sm){
 					max-width: 70vw;
 				}			
@@ -686,7 +695,7 @@
 			&:after{
 				position: absolute;
 				background: #F2F2F2;
-				width: 130%;
+				width: 135%;
 				content: "";
 				height: 100%;				
 				@include media-max(sm){
@@ -710,6 +719,9 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4rem;
+					@include media-max(md){
+						line-height: 2.5rem;
+					}	
 				}
 				p{
 					line-height: 2rem;
@@ -753,9 +765,13 @@
 			&:after{
 				position: absolute;
 				background: #E5EEF2;
-				width: 130%;
+				width: 135%;
 				content: "";
-				height: 100%;		
+				height: 90%;	
+				@include media-max(xl){	
+					top: 0;
+					height: 100%;
+				}	
 				@include media-max(sm){
 					top: -10vw;
 					width: 100vw;
@@ -777,6 +793,9 @@
 				}
 				h2{
 					margin: 1rem 0 2rem;
+					@include media-max(md){
+						line-height: 2.5rem;
+					}	
 				}
 				:global(p){
 					line-height: 2rem;
@@ -850,6 +869,11 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+	}
+
+	.cta-wrapper, .article-wrapper {
+		padding-left: unset;
+		padding-right: unset;
 	}
 	
 	// .contact-form{
