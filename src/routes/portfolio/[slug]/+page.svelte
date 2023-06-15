@@ -362,7 +362,7 @@ section{
             left: 0;
             width: 65%;
             text-align: left;
-            @include media-max(sm){
+            @include media-max(ipadmini){
                 margin: 0;
                 font-size: 1rem;
                 width: 90%;

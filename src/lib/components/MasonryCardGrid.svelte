@@ -42,7 +42,7 @@
     
         {#if projects}
             <MasonryGrid
-            class="container"
+            class="container masonry_container"
             {defaultDirection}
             {gap}
             {align}
@@ -72,6 +72,9 @@
         .container {
         overflow: hidden;
         }    
+        :global(.masonry_container) {
+            max-width: 1440px;
+        }
         .loading{
             width: 100%;
             text-align: center;
@@ -82,7 +85,7 @@
             position: absolute;
             color: white;
             text-align: center;  
-            height: 60vh;
+            height: 55vh;
             @include media-max(ipadmini){
                 height: 20vh;
             }

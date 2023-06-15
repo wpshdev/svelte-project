@@ -198,14 +198,19 @@
     section{
         margin:8rem auto;
         &.certificate {
-            max-width: 100%;
-            width: 75%;
-            margin: auto;
+            text-align: center;
+            img {
+                width: auto;
+                margin: auto;
+                
+                @include media-max(lg){
+                    width: 100%;
+                }
+            }
             .mobile {
                 display: none;
             }
             @include media-max(sm){
-                width: 100%;
                 .mobile {
                     display: block;
                 }
@@ -277,6 +282,7 @@
         }
         :global(.sets-parts__content p) {
             font-size: 1.25rem;
+            text-wrap: balance;
             @include media-max(xs) {
                 text-align: left !important;
             }

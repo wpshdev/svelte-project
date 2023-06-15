@@ -167,6 +167,9 @@ img{
     top: 11px;
     left: 11px;
     background-size: 60px;
+    @include media-max(ipadmini) { 
+        top: 6px;
+    }
 }
 .input-email:focus ~ .input-icon-email{
     background-position: 0px -30px;
@@ -202,7 +205,7 @@ img{
         font-size: 1rem;
     }
     &:hover {
-        border: unset;
+        border-color: transparent;
     }
     &.scaleLarge {
         &:hover {
@@ -593,11 +596,19 @@ header{
         color: #000;
     }      
 }
+
+
+.svelte-1ql6gaa {
+    opacity: 1;
+}
+
 .svelte-headroom--unpin {
+    opacity: 0;
     .mobile-nav {
         top: 100% !important;
     }
 }
+
 .logo{
     img{
         height: 70px;
@@ -607,8 +618,9 @@ header{
     font-weight: 300;
     background:#262626;
     color: #fff;
-    padding: 3rem 0;
-    @include media-max(sm){
+    // padding: 3rem 0;
+    padding: 5rem 8rem;
+    @include media-max(ipadmini){
         padding: 3rem 1.5rem;
     }	
     margin: 0;
@@ -668,8 +680,8 @@ header{
 
 .contact-form{
     padding: 4rem;
-    border:2px solid #D8D7D7;
-    max-width: 600px;
+    border: 1px solid #D8D7D7;
+    // max-width: 600px;
     margin: auto;
     @include media-max(sm){
         padding: 2rem;

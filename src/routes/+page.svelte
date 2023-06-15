@@ -93,7 +93,7 @@
 
 <section class="categories" >
 	<Animate >
-		<Container>
+		<Container class="categories_wrapper">
 			<Row>
 				<Col class="text-center">
 						<h2 in:fly={{
@@ -420,6 +420,9 @@
 
 	.categories{
 		margin-top: 0;
+		:global(.categories_wrapper) {
+			max-width: 1440px;
+		}
 		h2{
 			margin-bottom: 2rem;
 		}
