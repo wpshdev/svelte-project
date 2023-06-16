@@ -6,6 +6,9 @@
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
 	import Animate from "$lib/components/Animate.svelte";
+	import HamburgerLight from "$lib/img/HamburgerLight.svg"
+	import HamburgerDark from "$lib/img/HamburgerDark.svg"
+	
 	import {
 	  Collapse,
 	  Navbar,
@@ -29,7 +32,8 @@
 
 	let isOpen = false;
 	let isMobile;
-	let innerWidth;
+	// let innerWidth;
+	let outerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
 	}
@@ -38,7 +42,7 @@
 		
 		const dropdownParent = document.querySelector('.dropdown.nav-item');
 
-		if (window.innerWidth >= 768) { // apply only on desktop
+		if (window.outerWidth >= 768) { // apply only on desktop
 			if(dropdownParent.classList.contains('show')) {
 
 				// Create a custom click event
@@ -57,17 +61,18 @@
 
 	onMount(() => {
 		window.addEventListener('resize', () => {
-			if (window.innerWidth > 768) {
+			if (window.outerWidth > 768) {
 					isOpen = false;
 			} 
+			// console.log(window.outerWidth);
 		});
   	});	
 
 </script>
 
 <svelte:window 
-	bind:innerWidth
 	on:scroll={hideDropdownOnScroll}
+	bind:outerWidth
   />
   <Navbar expand="md">
 	<NavbarBrand href="/">
@@ -78,12 +83,14 @@
 		</Animate>
 	</NavbarBrand>
 	{#if !isOpen}
-		<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
-			<span class="icon"></span>		
+		<div class="{isOpen ? "hamburger open" : "hamburger close" }" on:click={toggleMenu}>
+			<!-- <span class="icon"></span>		 -->
+			<img src="{HamburgerLight}" alt="hamburger" class="light-hamburger">
+			<img src="{HamburgerDark}" alt="hamburger" class="dark-hamburger">
 		</div>
 	{/if}
 	<NavbarToggler on:click={() => (isOpen = !isOpen)} />
-		{#if innerWidth > 767}
+		{#if outerWidth > 767}
 			<Collapse navbar expand="md">
 				<Nav class="ms-auto" navbar>
 				{#each menu.data.attributes.items.data as nav}
@@ -105,7 +112,7 @@
 				</Nav>
 			</Collapse>		
 		 {/if}
-		{#if isOpen && innerWidth < 767}
+		{#if isOpen && outerWidth < 767}
 			<div class="{isOpen ? "mobile-nav open" : "mobile-nav" }" in:fly={{
 				duration: 1000,
 				x: 250							
@@ -113,8 +120,11 @@
 				duration: 1000,
 				x: 400							
 			}}>
+				
 				<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
-					<span class="icon"></span>		
+					<!-- change to svg -->
+					<span class="icon"></span>
+					<!-- {Hamburger} -->
 				</div>
 				<a href="/" class="mobile-menu-logo">
 					<img src={logo} alt="ULFBUILT" class="logo"/>

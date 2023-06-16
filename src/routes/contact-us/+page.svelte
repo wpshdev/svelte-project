@@ -166,7 +166,8 @@
         :global(.contact-form) {
             max-width: 52.602rem;
             padding: 4rem 10rem;
-            @include media-max(sm) { 
+            @include media-max(ipadmini) { 
+                max-width: 45rem;
                 padding: 4rem;
             }
         }

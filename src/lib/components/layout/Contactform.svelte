@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
-    import contactBG from "$lib/img/ContactBG.jpg";
+    // import contactBG from "$lib/img/ContactBG.jpg";
+    import contactBGPlain from "$lib/img/contactBGPlain.jpeg";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 
     let name = '', email = '', subject = '', message = '', result = ''
@@ -43,7 +44,7 @@
         }
 	}
 </script>
-<section class="contact" style="--contactBG: url({contactBG})">
+<section class="contact" style="--contactBG: url({contactBGPlain})">
 	<Container>
 		<Row>
 			<Col md="6">
@@ -85,6 +86,7 @@
 	padding: 10rem 0;
 	background-image: var(--contactBG);
 	background-size: cover;
+	box-shadow: inset 0 0 0 2000px rgb(237 234 220 / 85%);
 	margin: 0;
 	min-height: 20vh;
 	@include media-max(sm){

@@ -350,6 +350,9 @@
         }
     }
     :global(.sets-us-apart__row){
+        @include media-max(ipadmini){
+            align-items: end;
+        }
         @include media-max(sm){
             flex-direction: column-reverse;
             &.flex-column-reverse {
@@ -363,12 +366,18 @@
         }
     }
     :global(.imageCont) {
+        @include media-max(ipadmini){
+            img {
+                min-height: 25rem;
+            }
+        }
         @include media-max(sm){
             text-align: center;
             z-index: 2;
             img {
                 width: 90% !important;
                 margin: auto;
+                min-height: unset;
             }
         }
     }

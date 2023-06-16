@@ -46,11 +46,11 @@ $: listener = {propCount , activeTab};
 				<span on:click="{() => propCount = 10}">View Less Projects</span>
 			{/if}
 		</div>
-		{#if subHeading2}
+		<!-- {#if subHeading2}
 		<div class="masonry__tabs__subheading">
 			<p>{@html subHeading2}</p>
 		</div>	
-		{/if}				
+		{/if}				 -->
 		<div class="categories__tabs__gallery">
 			{#key listener }
 				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
@@ -74,12 +74,15 @@ $: listener = {propCount , activeTab};
 				ul{
 					display: flex;
 					flex-wrap: wrap;
+					width: 90%;
+					margin: auto;
 					margin-bottom: 2rem;
 					padding-left: 0;					
 					@include media-max(lg){
 						flex-wrap: nowrap;
 						padding: 1rem 0;
 						overflow-x: scroll;
+						width: 100%;
 					}										
 					li{
 						list-style: none;
@@ -94,7 +97,7 @@ $: listener = {propCount , activeTab};
 						}
 						span{				
 							font-family: $secondary-font;
-							font-size: 2rem;
+							font-size: 1.75rem;
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;
