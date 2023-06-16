@@ -192,7 +192,7 @@
 				{#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
 					<Col md="6">
 						<div class="explore__article">
-							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload>
+							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="explore__article__text">
 									<span>0{index+1}</span>
@@ -448,20 +448,11 @@
             height: 50vh;
             @include media-max(sm){
                 margin-bottom: 1rem;
-            } 	
-            img{
-                transition:1.2s;
-                object-fit: cover;
-                height: 100%;
-            }         
+            }      
             &:hover{
-                img{
-                    transition: 1.2s;
-                    scale: 1.2;
-                }
                 .explore__article__text {
                     background: $primary-color;
-                    transition: 1.2s;
+                    transition: 1.5s;
                     span {
                         color: $white-color;
                     }
@@ -480,6 +471,7 @@
                 left: 0;
                 width: 65%;
                 text-align: left;
+                transition: 1.5s;
                 @include media-max(sm){
                     margin: 0;
                     font-size: 1rem;
