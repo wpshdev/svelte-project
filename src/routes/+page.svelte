@@ -482,6 +482,7 @@
 				}
 			}
 			&__gallery{
+				min-height: 60vh;
 				&__imgs{
 					display: none;
 					&.active{

@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6{
 }
 html{
     @include media-max(lg){
-        font-size: 12px;
+        // font-size: 12px;
     }
     @include media-max(sm){
         font-size: 14px;
@@ -877,11 +877,17 @@ header{
 
 .zoomImg{
     img{
-        transition: 1.2s;
+        -webkit-transition: -webkit-transform 1.5s ease-out;
+        transition: -webkit-transform 1.5s ease-out;
+        transition: transform 1.5s ease-out;
+        transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;    
     }
     &:hover{
         img{
-            transition: 1.2s;
+            -webkit-transition: -webkit-transform 1.5s ease-out;
+            transition: -webkit-transform 1.5s ease-out;
+            transition: transform 1.5s ease-out;
+            transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;
             // scale: 1.2;
             transform: scale(1.2);
         }
