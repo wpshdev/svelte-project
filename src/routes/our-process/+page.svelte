@@ -337,7 +337,7 @@
         :global(.phase-container) {
             max-width: 95%;
         }
-        @include media-max(sm){
+        @include media-max(ipadmini){
             padding-left: 0;
             padding-right: 0;
         }
@@ -393,6 +393,9 @@
             margin-top: -14.5rem;
             width: 90%;
             margin-left: auto;
+            @include media-max(ipadmini){
+                width: 100%;                    
+            } 
             @include media-max(md){
                 // margin-top: -3.5rem;
             }      
@@ -413,7 +416,10 @@
                 &:nth-child(odd){
                     padding-left: 8vw;
                     line-height: 2;
-                    font-style: italic;      
+                    font-style: italic;
+                    @include media-max(ipadmini){
+                        padding: 8rem 3.25rem;                    
+                    }        
                     @include media-max(sm){
                         padding: 3rem 3.25rem;
                         margin-left: calc(50% - 50vw);
@@ -446,6 +452,10 @@
                     :global(p:last-child){
                         margin-bottom: 0;                        
                     }
+
+                    @include media-max(ipadmini){
+                        padding: 8rem 3.25rem;                    
+                    }  
 
                     @include media-max(sm){
                         padding: 3rem 3.25rem;

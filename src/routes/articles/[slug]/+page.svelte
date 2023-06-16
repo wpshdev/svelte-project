@@ -49,7 +49,7 @@
                 <Animate>
                     <div class="related-articles__easein-container">
                         <div class="easein-img">
-                            <a href="/articles/{blog.attributes.slug}">
+                            <a href="/articles/{blog.attributes.slug}" class="zoomImg"> 
                                 <img src="{url}{blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                             </a>
                         </div>

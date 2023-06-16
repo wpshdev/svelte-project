@@ -151,14 +151,14 @@ body {
       min-width: 20rem;
       height: 70vh;
     }
-    @include media-max(sm){
+    @include media-max(ipadmini){
       // margin: 30vh 0.5rem 30vh;
       margin: 1rem 0;
     }      
     overflow: hidden;      
     transition: 0.5s; 
     position: relative;
-    @include media-max(sm){
+    @include media-max(ipadmini){
         height: 40vh;
     }    
     &:hover{
@@ -188,10 +188,6 @@ body {
       height: 70vh;
       @include media-max(sm){
         height: 40vh;
-      }
-      &:hover{
-        // transition: 1.2s;
-        // scale: 1.2;        
       }
     }  
   }

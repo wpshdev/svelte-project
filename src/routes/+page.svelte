@@ -93,7 +93,7 @@
 
 <section class="categories" >
 	<Animate >
-		<Container>
+		<Container class="categories_wrapper">
 			<Row>
 				<Col class="text-center">
 						<h2 in:fly={{
@@ -420,6 +420,9 @@
 
 	.categories{
 		margin-top: 0;
+		// :global(.categories_wrapper) {
+		// 	max-width: 1440px;
+		// }
 		h2{
 			margin-bottom: 2rem;
 		}
@@ -437,8 +440,17 @@
 				ul{
 					display: flex;
 					// flex-wrap: wrap;
+					width: 90%;
+					margin: auto;
 					margin-bottom: 2rem;
-					padding-left: 0;		
+					padding-left: 0;	
+					
+					@include media-max(lg){
+						flex-wrap: nowrap;
+						padding: 1rem 0;
+						overflow-x: scroll;
+						width: 100%;
+					}		
 								
 					@include media-max(xs){
 						flex-wrap: nowrap;
@@ -460,7 +472,7 @@
 						}
 						span{				
 							font-family: $secondary-font;
-							font-size: 2rem;
+							font-size: 1.75rem;
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;

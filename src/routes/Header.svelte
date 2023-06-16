@@ -6,6 +6,9 @@
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
 	import Animate from "$lib/components/Animate.svelte";
+	import HamburgerLight from "$lib/img/HamburgerLight.svg"
+	import HamburgerDark from "$lib/img/HamburgerDark.svg"
+	
 	import {
 	  Collapse,
 	  Navbar,
@@ -29,6 +32,7 @@
 
 	let isOpen = false;
 	let isMobile;
+	// let innerWidth;
 	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
@@ -60,6 +64,7 @@
 			if (window.innerWidth > 768) {
 					isOpen = false;
 			} 
+			// console.log(window.innerWidth);
 		});
   	});	
 
@@ -78,8 +83,10 @@
 		</Animate>
 	</NavbarBrand>
 	{#if !isOpen}
-		<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
-			<span class="icon"></span>		
+		<div class="{isOpen ? "hamburger open" : "hamburger close" }" on:click={toggleMenu}>
+			<!-- <span class="icon"></span>		 -->
+			<img src="{HamburgerLight}" alt="hamburger" class="light-hamburger">
+			<img src="{HamburgerDark}" alt="hamburger" class="dark-hamburger">
 		</div>
 	{/if}
 	<NavbarToggler on:click={() => (isOpen = !isOpen)} />
@@ -113,8 +120,11 @@
 				duration: 1000,
 				x: 400							
 			}}>
+				
 				<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
-					<span class="icon"></span>		
+					<!-- change to svg -->
+					<span class="icon"></span>
+					<!-- {Hamburger} -->
 				</div>
 				<a href="/" class="mobile-menu-logo">
 					<img src={logo} alt="ULFBUILT" class="logo"/>
