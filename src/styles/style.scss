@@ -846,15 +846,7 @@ header{
             font-size: 1.125rem;
 
             img{
-                width: 35%;
-                padding-right: 3rem;
-                @include media-max(lg){
-                    width: 30%;
-                    padding-right: 0;
-                }	
-                @include media-max(ipadmini){
-                    width: 40%;
-                }
+                width: auto;
                 @include media-max(sm){
                     width: 20%;
                 }	
