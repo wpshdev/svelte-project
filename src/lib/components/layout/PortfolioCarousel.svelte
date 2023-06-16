@@ -189,10 +189,6 @@ body {
       @include media-max(sm){
         height: 40vh;
       }
-      &:hover{
-        // transition: 1.2s;
-        // scale: 1.2;        
-      }
     }  
   }
 }

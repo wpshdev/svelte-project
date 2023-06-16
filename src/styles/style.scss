@@ -51,7 +51,10 @@ p:last-child{
     margin-bottom: 0;
 }
 .logo{
-    height: 3.5rem;
+    height: 5rem;
+    @include media-max(sm){
+        height: 3.5rem;
+    }  
 }
 .pfont{
     font-family: $primary-font;
@@ -625,6 +628,9 @@ header{
 
 .svelte-headroom--unpin {
     opacity: 0;
+    @include media-max(sm){
+        opacity: 1;
+    }
     .mobile-nav {
         top: 100% !important;
     }
@@ -640,10 +646,7 @@ header{
     font-weight: 300;
     background:#262626;
     color: #fff;
-    .col.footer__col:first-child{
-        flex: 0 0 auto;
-        width: 35%;        
-    }
+    padding: 3rem 7rem;
     @include media-max(sm){
         padding: 3rem 1.5rem;
     }	
@@ -815,15 +818,23 @@ header{
     &__widget{
         &__heading{
             h4{
-                border-bottom: 0.5px solid #EFEFEF;
                 padding-bottom: .25rem;
-                width: 45%;
+                // width: 45%;
                 text-transform: uppercase;
                 font-size: 1.125rem;
                 font-family: $primary-font;
                 line-height: 1.5rem;
                 @include media-max(sm){
                     width: 50%;
+                }
+                &:after {
+                    content: '';
+                    border-bottom: 0.5px solid #EFEFEF;
+                    display: block;
+                    width: 8rem;
+                    @include media-max(sm){
+                        width: 100%;
+                    }
                 }
             }
         }

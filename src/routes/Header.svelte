@@ -33,7 +33,7 @@
 	let isOpen = false;
 	let isMobile;
 	// let innerWidth;
-	let outerWidth;
+	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
 	}
@@ -42,7 +42,7 @@
 		
 		const dropdownParent = document.querySelector('.dropdown.nav-item');
 
-		if (window.outerWidth >= 768) { // apply only on desktop
+		if (window.innerWidth >= 768) { // apply only on desktop
 			if(dropdownParent.classList.contains('show')) {
 
 				// Create a custom click event
@@ -61,18 +61,18 @@
 
 	onMount(() => {
 		window.addEventListener('resize', () => {
-			if (window.outerWidth > 768) {
+			if (window.innerWidth > 768) {
 					isOpen = false;
 			} 
-			// console.log(window.outerWidth);
+			// console.log(window.innerWidth);
 		});
   	});	
 
 </script>
 
 <svelte:window 
+	bind:innerWidth
 	on:scroll={hideDropdownOnScroll}
-	bind:outerWidth
   />
   <Navbar expand="md">
 	<NavbarBrand href="/">
@@ -90,7 +90,7 @@
 		</div>
 	{/if}
 	<NavbarToggler on:click={() => (isOpen = !isOpen)} />
-		{#if outerWidth > 767}
+		{#if innerWidth > 767}
 			<Collapse navbar expand="md">
 				<Nav class="ms-auto" navbar>
 				{#each menu.data.attributes.items.data as nav}
@@ -112,7 +112,7 @@
 				</Nav>
 			</Collapse>		
 		 {/if}
-		{#if isOpen && outerWidth < 767}
+		{#if isOpen && innerWidth < 767}
 			<div class="{isOpen ? "mobile-nav open" : "mobile-nav" }" in:fly={{
 				duration: 1000,
 				x: 250							

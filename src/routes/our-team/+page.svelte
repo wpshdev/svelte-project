@@ -149,12 +149,12 @@
                 a{
                     opacity: 1;
                     background-color: rgb(8, 161, 216, 0.3);
-                    transition: 0.3s;
+                    transition: 1.5s;
                 }
                
                 .tm-box{
                     background: $primary-color;
-                    transition: 0.3s;
+                    transition: 1.5s;
                     h5, span {
                         color: $white-color;
                     }
