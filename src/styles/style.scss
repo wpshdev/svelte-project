@@ -221,6 +221,7 @@ img{
     color: #fff;  
     &:hover{
         background-color: $secondary-color;
+        background-color: $secondary-color;
     }    
 }
 .btn-secondary{
@@ -230,6 +231,7 @@ img{
     width: fit-content;
     &:hover{
         background-color: $primary-color;
+        border: 1px solid $primary-color;
     }
 }
 .btn-inverted{
@@ -238,6 +240,7 @@ img{
     color: $secondary-color;
     &:hover{
         background-color: $secondary-color;
+        border: 1px solid $secondary-color;
         color: #fff;
         border-color: #fff;
     }
@@ -632,13 +635,16 @@ header{
         height: 70px;
     }
 }
+
 .footer{
     font-weight: 300;
     background:#262626;
     color: #fff;
-    // padding: 3rem 0;
-    padding: 5rem 8rem;
-    @include media-max(ipadmini){
+    .col.footer__col:first-child{
+        flex: 0 0 auto;
+        width: 35%;        
+    }
+    @include media-max(sm){
         padding: 3rem 1.5rem;
     }	
     margin: 0;
@@ -829,7 +835,7 @@ header{
             font-size: 1.125rem;
 
             img{
-                width: 30%;
+                width: auto;
                 @include media-max(sm){
                     width: 20%;
                 }	
