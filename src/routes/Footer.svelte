@@ -118,4 +118,13 @@ function scrollToTop() {
             }
         }
     }
+    :global(.footer__widget--item p) {
+        width: 80%;
+        @include media-max(ipadmini){
+            width: 100%;
+        }
+    }
+    :global(.footer__widget--item p br) {
+        display: none;
+    }
 </style>

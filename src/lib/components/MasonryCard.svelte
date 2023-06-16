@@ -50,6 +50,7 @@ $: if (id) {
         let portfolios = projects.data;
         items = portfolios;
         currentPage = 1;
+        
         // paginatedPortfolios = paginate({ items, pageSize, currentPage });
     })();
 }
@@ -88,10 +89,10 @@ $: if (id) {
             <div class="col text-center">Loading...</div>
         {/if}  
         
-        {#if addPagination == 'true'}
+        {#if addPagination == 'true' && pageSize < items.length}
          <div class="paginate-section">
              <LightPaginationNav
-             totalItems="{projects.length}"
+             totalItems="{items.length}"
              pageSize="{pageSize}"
              currentPage="{currentPage}"
              limit="{1}"
@@ -108,11 +109,11 @@ $: if (id) {
     overflow: hidden;
     }    
     :global(.masonry-wrapper) {
-        min-height: 57.75rem;
+        min-height: 31rem;
 
-        @include media-max(md){
-            min-height: 31.313rem;
-        }
+        // @include media-max(md){
+        //     min-height: 31.313rem;
+        // }
     }
     .loading{
         width: 100%;
@@ -128,7 +129,7 @@ $: if (id) {
         &:hover{
             .masonry-items__text{
               background: $primary-color;
-              transition: 0.3s;
+              transition: 1.5s;
               span {
                 color: $white-color;
               }
@@ -150,13 +151,15 @@ $: if (id) {
         a{
             display: block;
             height: 100%;
-            width: 98%;
+            width: 100%;
+            margin: 0 1.125rem;
             overflow: hidden;
+            position: relative;
 
             &:hover{
                 .masonry-items__text{
                     background: $primary-color;
-                    transition: 0.3s;
+                    transition: 1.5s;
                     span {
                         color: $white-color;
                     }
