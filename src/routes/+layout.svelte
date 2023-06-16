@@ -31,7 +31,7 @@
     <div class="z10 {isPortfolio($page.route.id)}">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
             <!-- <header class="d-block" class:changeBG={yaxis >= 250 || isHome($page.url.pathname)} > -->
-            <header class="d-block" class:changeBG={yaxis >= 200} >                
+            <header class="d-block" class:changeBG={yaxis >= 500} >                
                 <Container>
                     <Header menu={data} />
                 </Container>
