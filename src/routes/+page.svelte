@@ -50,30 +50,14 @@
 		<Container>
 			<Row>
 				<Col xs="12" class="pb-4">
-					<h2 in:fly={{
-						delay: 1000,
-						duration: 2000,
-						y: 50								
-				}}>{home.homeBuilderHeading}</h2>
+					<h2>{home.homeBuilderHeading}</h2>
 				</Col>
 				<Col xs="12" md={{ size: 6, offset:3 }}>
-					<div class="loc-gallery__cwrapper" in:fly={{
-							delay: 500,
-							duration: 2000,
-							y: 50								
-					}} >
-							<div class="h3" in:fly={{
-								delay: 1500,
-								duration: 2000,
-								y: 50								
-							}}>
+					<div class="loc-gallery__cwrapper" i>
+							<div class="h3" >
 								{@html home.homeBuilderSubHeading}
 							</div>
-						<div in:fly={{
-							delay: 2000,
-							duration: 2000,
-							y: 50								
-						}} >
+						<div>
 							{@html home.homeBuilderParagraph}
 						</div>
 					</div>
@@ -118,7 +102,7 @@
 								{/each}
 							</ul>
 						</div>
-						<p class="text-center view-all" in:fly={{
+						<!-- <p class="text-center view-all" in:fly={{
 							y: 50								
 					}}>
 							{#if propCount === 3} 
@@ -126,7 +110,7 @@
 							{:else}
 								<span on:click="{() => propCount = 3}">View Less Projects</span>
 							{/if}
-						</p>					
+						</p>					 -->
 						<div class="categories__tabs__gallery" in:fly={{
 							y: 50								
 					}}>
@@ -462,14 +446,25 @@
 					li{
 						list-style: none;
 						width: 25%;
+						border-right: 1px solid $gray;	
+						transition: 0.3s all;						
 						@include media-max(sm){
 							width: 15rem;
 							padding: 0 1rem;
 						}
-						border-right: 3px solid $gray;	
 						&:last-child {
 							border: none;
 						}
+						&:hover{
+							background-color: rgba(32, 36, 41, 0.561);	
+							transition: 0.3s all;
+							span{
+								color: #fff;
+								&.active{
+									color: #fff;
+								}
+							}
+						}						
 						span{				
 							font-family: $secondary-font;
 							font-size: 1.75rem;
@@ -637,7 +632,7 @@
 						line-height: 2.5rem;
 					}	
 				}
-				p{
+				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
 				}
@@ -721,7 +716,7 @@
 						line-height: 2.5rem;
 					}	
 				}
-				p{
+				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
 				}

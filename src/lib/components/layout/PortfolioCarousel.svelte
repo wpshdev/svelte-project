@@ -14,7 +14,7 @@
     ScrollTrigger.create({
       trigger: '.slider-container',
       start: 'top top',
-      end: () => container.scrollWidth - window.innerWidth,
+      end: () => container.scrollWidth - window.innerWidth + 15000,
       pin: true,
       scrub: 0.5,
       onUpdate: (self) => {
@@ -145,11 +145,11 @@ body {
   &__carousel-cell {
     flex-shrink: 0;
     width: auto;
-    height: 70vh;
-    margin: 15vh 0.5rem 15vh;
+    height: 76vh;
+    margin: 12vh 0.5rem 12vh;
     .image-wrapper{
       min-width: 20rem;
-      height: 70vh;
+      height: 76vh;
     }
     @include media-max(ipadmini){
       // margin: 30vh 0.5rem 30vh;
@@ -185,7 +185,7 @@ body {
       width: 100%;
       transition: 1.2s;
 			object-fit: cover;
-      height: 70vh;
+      height: 76vh;
       @include media-max(sm){
         height: 40vh;
       }

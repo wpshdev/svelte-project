@@ -152,7 +152,7 @@ $: if (id) {
             display: block;
             height: 100%;
             width: 100%;
-            margin: 0 1.125rem;
+            margin: 0 1.125rem 1.125rem;
             overflow: hidden;
             position: relative;
 
