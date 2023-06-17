@@ -138,7 +138,7 @@
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
 						<div class="related__article">
-							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
+							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg" style="background-image">
 								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="related__article__text">
 									<span>0{index+1}</span>
@@ -327,6 +327,11 @@ section{
 		overflow: hidden;
 		position: relative;
 		height: 50vh;
+		img{
+			object-fit: cover;
+			object-position: center;
+			width: 100%;
+		}
 		@include media-max(sm){
 			margin-bottom: 1rem;
 		}	     
