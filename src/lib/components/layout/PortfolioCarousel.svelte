@@ -15,18 +15,18 @@
     ScrollTrigger.create({
       trigger: '.slider-container',
       start: 'top left',
-      end: () => (container.scrollWidth * 2) - (window.innerWidth * 0.75), 
+      end: () => (container.scrollWidth * 1.9) - (window.innerWidth * 0.75), 
       pin: true,
-      scrub: 0.5,
+      scrub: 0.0,
       onUpdate: (self) => {
         const progress = self.progress;
         // Container width
         const conwidth = container.scrollWidth - (window.innerWidth * 0.75);
         // Position of Container scrolling
         const conx = (-container.scrollWidth * progress);
-        console.log(" ConWidth: " + conwidth + " ConX: " + conx);
-        console.log("window.innerWidth: "+ window.innerWidth);
-        console.log("container.scrollWidth: "+ container.scrollWidth);
+        // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
+        // console.log("window.innerWidth: "+ window.innerWidth);
+        // console.log("container.scrollWidth: "+ container.scrollWidth);
           if(conx < -conwidth){
             return
           }else{
