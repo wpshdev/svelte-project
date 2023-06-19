@@ -24,9 +24,9 @@
         const conwidth = -(container.scrollWidth) + (window.innerWidth * 0.75);
         // Position of Container scrolling
         const conx = (-container.scrollWidth * progress);
-        console.log(" ConWidth: " + conwidth + " ConX: " + conx);
-        console.log("window.innerWidth: "+ window.innerWidth);
-        console.log("container.scrollWidth: "+ container.scrollWidth);
+        // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
+        // console.log("window.innerWidth: "+ window.innerWidth);
+        // console.log("container.scrollWidth: "+ container.scrollWidth);
           if(conx < conwidth){
             return
           }else{
