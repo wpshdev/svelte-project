@@ -13,23 +13,30 @@
 
     ScrollTrigger.create({
       trigger: '.slider-container',
-      start: 'top top',
-      end: () => container.scrollWidth - window.innerWidth,
-      // end: () => "top bottom"
+      start: 'top left',
+      end: () => container.scrollWidth - window.innerWidth + 15000,
       pin: true,
       scrub: 0.5,
       onUpdate: (self) => {
-        let progress = self.progress;
-        console.log(container.scrollWidth );
-        if(container.scrollWidth < container.scrollWidth - 1500){
-          progress = progress - 10000; 
+        const progress = self.progress;
+        // Container width
+        const conwidth = -(container.scrollWidth) + (window.innerWidth * 1.75);
+        // Position of Container scrolling
+        const conx = (-container.scrollWidth * progress);
+        // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
+        // console.log("window.innerWidth: "+ window.innerWidth);
+        // console.log("container.scrollWidth: "+ container.scrollWidth);
+          if(conx < conwidth){
+            return
+          }else{
+            gsap.to(container, {
+            x: (-container.scrollWidth * progress) - window.innerWidth,
+            duration: 0.01,
+          });
         }
-        gsap.to(container, {
-          x: -container.scrollWidth * progress,
-          duration: 0.01,
-        });
       },
     });
+    
   }
 
   onMount(async() => {
@@ -85,7 +92,7 @@ function log(){
           {#each images as image, index}
             <div class="slider-container__carousel-cell">
               <div class="image-wrapper">
-                <img src="{domain}{image.attributes.formats.medium_x2.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                <img src="{domain}{image.attributes.formats.medium_x2.url ? image.attributes.formats.medium_x2.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               </div>     
                 <a href="{domain}{image.attributes.url}?download" class="download" download>
                   <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
