@@ -85,23 +85,21 @@ $: if (id) {
              {/if}			
          {/each}
         </MasonryGrid>  										
-        {:else}
-            <div class="col text-center">Loading...</div>
-        {/if}  
-        
-        {#if addPagination == 'true' && pageSize < items.length}
-         <div class="paginate-section">
-             <LightPaginationNav
-             totalItems="{items.length}"
-             pageSize="{pageSize}"
-             currentPage="{currentPage}"
-             limit="{1}"
-             showStepOptions="{true}"
-             on:setPage="{(e) => currentPage = e.detail.page}"
-             />
-         </div>
-         {/if} 
-             	
+            {#if addPagination == 'true' && pageSize < items.length}
+            <div class="paginate-section">
+                <LightPaginationNav
+                totalItems="{items.length}"
+                pageSize="{pageSize}"
+                currentPage="{currentPage}"
+                limit="{1}"
+                showStepOptions="{true}"
+                on:setPage="{(e) => currentPage = e.detail.page}"
+                />
+            </div>
+            {/if}              	
+         {:else}
+             <div class="col text-center">Loading...</div>
+        {/if}           
     </Animate>  
 
 <style lang="scss">

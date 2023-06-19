@@ -14,11 +14,16 @@
     ScrollTrigger.create({
       trigger: '.slider-container',
       start: 'top top',
-      end: () => container.scrollWidth - window.innerWidth + 15000,
+      end: () => container.scrollWidth - window.innerWidth,
+      // end: () => "top bottom"
       pin: true,
       scrub: 0.5,
       onUpdate: (self) => {
-        const progress = self.progress;
+        let progress = self.progress;
+        console.log(container.scrollWidth );
+        if(container.scrollWidth < container.scrollWidth - 1500){
+          progress = progress - 10000; 
+        }
         gsap.to(container, {
           x: -container.scrollWidth * progress,
           duration: 0.01,
@@ -80,7 +85,7 @@ function log(){
           {#each images as image, index}
             <div class="slider-container__carousel-cell">
               <div class="image-wrapper">
-                <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                <img src="{domain}{image.attributes.formats.medium_x2.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               </div>     
                 <a href="{domain}{image.attributes.url}?download" class="download" download>
                   <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +103,7 @@ function log(){
         {#each images as image}
           <Animate>
             <div class="slider-container__carousel-cell">
-              <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+              <img src="{domain}{image.attributes.formats.medium_x2.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               <a href="{domain}{image.attributes.url}?download" class="download" download>
                 <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="27.501" cy="27.5" r="27.5" fill="#1E2D39"/>
@@ -194,32 +199,6 @@ body {
 }
 
 
-// .slider-container {
-//   overflow-x: hidden;
-//   display: flex;  
-
-//   &__carousel-cell {
-//     &.empty-cell{
-//       height: 100%;
-//       min-width: 25vw;
-//       min-width: none;
-//     }
-//     width: 70%;
-//     height: auto;
-//     padding: 0 0.5rem;
-//     box-sizing: border-box;
-//     min-width: 50vw;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-    
-//     img {
-//       display: block;
-//       width: 100%;
-//       height: auto;
-//     }
-//   }
-// }
 .slider-btn{
   margin: 0;
   margin-right: calc(52% - 50vw);
