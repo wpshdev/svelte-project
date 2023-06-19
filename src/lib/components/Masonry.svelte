@@ -95,6 +95,16 @@ $: listener = {propCount , activeTab};
 						&:last-child {
 							border: none;
 						}
+						&:hover{
+							background-color: rgba(32, 36, 41, 0.561);	
+							transition: 0.3s all;
+							span{
+								color: #fff;
+								&.active{
+									color: #fff;
+								}
+							}
+						}						
 						span{				
 							font-family: $secondary-font;
 							font-size: 1.75rem;
