@@ -47,8 +47,6 @@
     }
   });
 
-
-
 afterUpdate(() => {
   // ScrollTrigger.refresh();
   // initScrollAnimations();
