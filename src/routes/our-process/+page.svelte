@@ -320,6 +320,7 @@
         background-image: var(--phs1);
         background-size: cover;
         height: 90vh;
+               
         @include media-max(sm){
             height: 40vh;
         }          
@@ -328,6 +329,9 @@
         background-image: var(--phs2);
         background-size: cover;
         height: 90vh;
+        @include media-min(sm){
+            margin-top: 0;
+        }                 
         @include media-max(sm){
             height: 40vh;
         }          

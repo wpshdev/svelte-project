@@ -330,7 +330,7 @@ section{
 		img{
 			object-fit: cover;
 			object-position: center;
-			width: 100%;
+			height: 100%;
 		}
 		@include media-max(sm){
 			margin-bottom: 1rem;
