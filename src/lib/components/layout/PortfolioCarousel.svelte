@@ -36,6 +36,7 @@
         }
       },
     });
+    
   }
 
   onMount(async() => {
@@ -89,7 +90,7 @@ function log(){
           {#each images as image, index}
             <div class="slider-container__carousel-cell">
               <div class="image-wrapper">
-                <img src="{domain}{image.attributes.formats.medium_x2.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                <img src="{domain}{image.attributes.formats.medium_x2.url ? image.attributes.formats.medium_x2.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               </div>     
                 <a href="{domain}{image.attributes.url}?download" class="download" download>
                   <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
