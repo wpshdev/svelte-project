@@ -495,6 +495,9 @@
 			}
 			&__gallery{
 				min-height: 60vh;
+				@include media-max(ipadmini){
+					min-height: auto;
+				}	
 				&__imgs{
 					display: none;
 					&.active{
@@ -606,6 +609,10 @@
 					top: 0;
 					height: 100%;
 				}
+				@include media-max(ipadmini){	
+					top: unset;
+					height: 135%;
+				}
 				@include media-max(sm){
 					width: 100vw;
 					top: -5rem;
@@ -633,8 +640,9 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4rem;
-					@include media-max(md){
-						line-height: 2.5rem;
+					@include media-max(lg){
+						line-height: 3rem;
+						margin: 1rem 0;
 					}	
 				}
 				p{
@@ -656,10 +664,22 @@
 	}	
 
 	.process{
-		margin: 7rem 0;		
+		margin: 7rem 0;	
+		@include media-max(ipadmini){
+			padding-bottom: 7rem;
+		}
+		@include media-max(sm){
+			padding-bottom: 0;
+		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -3rem;		
+    		margin-bottom: -3rem;
+			@include media-max(lg){
+				margin-bottom: 1.5rem;	
+			}	
+			@include media-max(lg){
+				margin-bottom: 5rem;	
+			}		
 			@include media-max(sm){
 				text-align: left;
 				margin-bottom: 0;	
@@ -695,7 +715,13 @@
 				background: #F2F2F2;
 				width: 135%;
 				content: "";
-				height: 100%;				
+				height: 100%;
+				@include media-max(xl){	
+					height: 120%;
+				}	
+				@include media-max(ipadmini){	
+					height: 140%;
+				}			
 				@include media-max(sm){
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
@@ -717,8 +743,9 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4rem;
-					@include media-max(md){
-						line-height: 2.5rem;
+					@include media-max(lg){
+						line-height: 3rem;
+						margin: 1rem 0;
 					}	
 				}
 				p{
@@ -752,6 +779,12 @@
 
 	.story{
 		margin: 7rem 0 3.75rem;
+		@include media-max(ipadmini){
+			padding-bottom: 7rem;
+		}
+		@include media-max(sm){
+			padding-bottom: 0;
+		}	
 		&__content{
 			height: 35vw;
 			display: flex;
@@ -769,6 +802,10 @@
 				@include media-max(xl){	
 					top: 0;
 					height: 100%;
+				}	
+				@include media-max(ipadmini){	
+					top: unset;
+					height: 150%;
 				}	
 				@include media-max(sm){
 					top: -10vw;
@@ -791,8 +828,8 @@
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					@include media-max(md){
-						line-height: 2.5rem;
+					@include media-max(lg){
+						line-height: 3rem;
 					}	
 				}
 				:global(p){

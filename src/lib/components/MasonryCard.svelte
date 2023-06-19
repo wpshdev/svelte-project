@@ -47,7 +47,7 @@ $: if (id) {
         // console.log('projects');
         // console.log(projects);
 
-        let portfolios = projects.data;
+        const portfolios = projects.data;
         items = portfolios;
         currentPage = 1;
         
@@ -89,7 +89,7 @@ $: if (id) {
             <div class="col text-center">Loading...</div>
         {/if}  
         
-        {#if addPagination == 'true' && pageSize < items.length}
+        {#if addPagination == 'true' && pageSize < items.length && items.length}
          <div class="paginate-section">
              <LightPaginationNav
              totalItems="{items.length}"
@@ -171,6 +171,7 @@ $: if (id) {
                    
             @include media-max(sm){
                 width: 100%;
+                margin: 0;
             }               
             img{
                 height: 100%;
@@ -208,7 +209,7 @@ $: if (id) {
             width: 65%;
             text-align: left;
             transition: 0.3s;
-            @include media-max(sm){
+            @include media-max(ipadmini){
                 margin: 0;
                 // font-size: 0.6rem;
                 width: 90%;

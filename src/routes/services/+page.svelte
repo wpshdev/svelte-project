@@ -350,7 +350,7 @@
         }
     }
     :global(.sets-us-apart__row){
-        @include media-max(ipadmini){
+        @include media-max(lg){
             align-items: end;
         }
         @include media-max(sm){
@@ -368,7 +368,7 @@
     :global(.imageCont) {
         @include media-max(ipadmini){
             img {
-                min-height: 25rem;
+                min-height: 20rem;
             }
         }
         @include media-max(sm){
@@ -472,7 +472,7 @@
                 width: 65%;
                 text-align: left;
                 transition: 1.5s;
-                @include media-max(sm){
+                @include media-max(ipadmini){
                     margin: 0;
                     font-size: 1rem;
                     width: 90%;

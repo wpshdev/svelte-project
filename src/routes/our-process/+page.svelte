@@ -356,6 +356,9 @@
             align-items: center;
             position: relative;
             z-index: 1;
+            @include media-max(ipadmini){
+                margin-top: -15.5rem;
+            }  
             @include media-max(sm){
                 margin-top: -9.5rem;
             }               
@@ -364,7 +367,10 @@
             font-size: 20rem;
             font-family: $secondary-font;
             color: $darkbluegreen;
-            display: block;            
+            display: block;  
+            @include media-max(ipadmini){
+                font-size: 15rem;
+            }                  
             @include media-max(sm){
                 font-size: 8rem;
             }              
@@ -407,6 +413,7 @@
             }            
             &__item{
                 padding: 9rem 4rem 4rem;
+                z-index: -1;
                 @include media-max(sm){
                     padding: 1rem 0;
                 }
@@ -418,7 +425,7 @@
                     line-height: 2;
                     font-style: italic;
                     @include media-max(ipadmini){
-                        padding: 8rem 3.25rem;                    
+                        padding: 10rem 3.25rem;                    
                     }        
                     @include media-max(sm){
                         padding: 3rem 3.25rem;
@@ -454,7 +461,7 @@
                     }
 
                     @include media-max(ipadmini){
-                        padding: 8rem 3.25rem;                    
+                        padding: 10rem 3.25rem;                    
                     }  
 
                     @include media-max(sm){
