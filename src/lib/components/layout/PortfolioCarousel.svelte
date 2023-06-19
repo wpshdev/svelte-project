@@ -50,8 +50,6 @@
     console.log(isRetina);
   });
 
-
-
 afterUpdate(() => {
   // ScrollTrigger.refresh();
   // initScrollAnimations();
