@@ -4,6 +4,7 @@ import { fade } from "svelte/transition";
 
 export let items = [];
 
+console.log('items');
 console.log(items);
 let activeTab = items[0].id ;
 
@@ -15,10 +16,10 @@ let propCount = 10;
 let listener = {};
 
 export let subHeading2 = '';
-export let paginate;
-export let postperpage;
+export let paginate = '';
+export let postperpage = '';
 
-$: listener = {propCount , activeTab};
+$: listener = {propCount, activeTab, paginate, postperpage};
 
 </script>
 
@@ -52,7 +53,7 @@ $: listener = {propCount , activeTab};
 		</div>	
 		{/if}				 -->
 		<div class="categories__tabs__gallery">
-			{#key listener }
+			{#key listener}
 				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
 					<MasonryCard id={activeTab} {propCount} addPagination={paginate} pageSize={postperpage} />
 				</div>			

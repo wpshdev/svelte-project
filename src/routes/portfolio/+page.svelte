@@ -104,13 +104,6 @@
                     margin: 0 0 1rem;
                 }
             }
-            .btn-inverted{
-                border-color: $secondary-color;
-                color: $secondary-color;
-                &:hover {
-                    color: #fff;
-                }
-            }
         } 
     }
 </style>

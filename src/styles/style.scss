@@ -577,7 +577,10 @@ header{
         }
         .nav-item{
             min-width: 10rem;
-            text-align: center;   
+            text-align: center;  
+            @include media-max(ipadmini){
+                min-width: 8rem;
+            }
             a{
                 &:hover{
                     color: $white-color;
@@ -649,7 +652,7 @@ header{
     background:#262626;
     color: #fff;
     padding: 3rem 7rem;
-    @include media-max(sm){
+    @include media-max(ipadmini){
         padding: 3rem 1.5rem;
     }	
     margin: 0;

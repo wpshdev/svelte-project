@@ -3,7 +3,7 @@ import { fly, fade } from "svelte/transition";
 import { MasonryGrid } from "@egjs/svelte-grid";
 import { paginate, LightPaginationNav } from 'svelte-paginate';
 import { PUBLIC_STRAPI_API } from '$env/static/public';
-
+import { onMount } from 'svelte'
 
 const gap = 0;
 const defaultDirection = "end";
@@ -21,39 +21,53 @@ let duration = 1500;
 const cache = new Map();
 
 export let propCount;
+let items;
+let currentPage = 1;
 
-async function getProjects(id) {
-    if (cache.has(id)) {
-        projects = cache.get(id);
-        return;
-    }
+// async function getProjects(id) {
+//     if (cache.has(id)) {
+//         projects = cache.get(id);
+//         return;
+//     }
+//     const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
+//     const headers = {
+//         Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+//     }    
+//     const response = await axios.get(url, { headers });
+//     projects = response.data;
+//     cache.set(id, projects);
+// }
+
+// $: if (id) {
+//     (async () => {
+//         await getProjects(id); 
+//         // console.log('projects');
+//         // console.log(projects);
+
+//         const portfolios = projects.data;
+//         items = portfolios;
+//         currentPage = 1;
+        
+//         // paginatedPortfolios = paginate({ items, pageSize, currentPage });
+//     })();
+// }
+
+onMount(async () => {
+
+    console.log(id);
+
     const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
     const headers = {
         Authorization: 'Bearer ' + PUBLIC_STRAPI_API
     }    
     const response = await axios.get(url, { headers });
+
     projects = response.data;
-    cache.set(id, projects);
-}
+    const portfolios = projects.data;
+    items = portfolios;
+    console.log(projects.data);
 
-// $: paginatedPortfolios = paginate({ portfolios, pageSize, currentPage });
-let items;
-let currentPage;
-// let paginatedPortfolios;
-
-$: if (id) {
-    (async () => {
-        await getProjects(id); 
-        // console.log('projects');
-        // console.log(projects);
-
-        let portfolios = projects.data;
-        items = portfolios;
-        currentPage = 1;
-        
-        // paginatedPortfolios = paginate({ items, pageSize, currentPage });
-    })();
-}
+})
 
 </script>
     <Animate>
@@ -169,6 +183,7 @@ $: if (id) {
                    
             @include media-max(sm){
                 width: 100%;
+                margin: 0;
             }               
             img{
                 height: 100%;
@@ -206,7 +221,7 @@ $: if (id) {
             width: 65%;
             text-align: left;
             transition: 0.3s;
-            @include media-max(sm){
+            @include media-max(ipadmini){
                 margin: 0;
                 // font-size: 0.6rem;
                 width: 90%;
