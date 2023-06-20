@@ -21,7 +21,7 @@
       onUpdate: (self) => {
         const progress = self.progress;
         // Container width
-        const conwidth = -(container.scrollWidth) + (window.innerWidth * 1.75);
+        const conwidth = -(container.scrollWidth) + (window.innerWidth * 0.75);
         // Position of Container scrolling
         const conx = (-container.scrollWidth * progress);
         // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
@@ -31,7 +31,7 @@
             return
           }else{
             gsap.to(container, {
-            x: (-container.scrollWidth * progress) - window.innerWidth,
+            x: (-container.scrollWidth * progress),
             duration: 0.01,
           });
         }

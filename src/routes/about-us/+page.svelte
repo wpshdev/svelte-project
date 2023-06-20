@@ -9,14 +9,16 @@
     // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
-    let abouttitle = data.data.attributes.Title
-    let aboutimage = data.data.attributes.featuredimage.data.attributes.url
-    let aboutimageMobile = data.data.attributes.featuredimage.data.attributes.url    
-    let aboutsubheading = data.data.attributes.Aboutsubheading
-    let about = data.data.attributes
+    let abouttitle = data.about.data.attributes.Title
+    let aboutimage = data.about.data.attributes.featuredimage.data.attributes.url
+    let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
+    let aboutsubheading = data.about.data.attributes.Aboutsubheading
+    let about = data.about.data.attributes
     console.log(about)
     let url = "https://strapi.ulfbuilt.com:1337";
     let scroll: number;
+
+    let testimonialsData = data.testimonials.data;
 </script>
 <svelte:head>
 	<title>{abouttitle}</title>
@@ -161,15 +163,15 @@
 
 </section>
 
-<ClientTestimonial/>
+<ClientTestimonial clientTestimonials={testimonialsData}/>
 
 <section class="talktous">
     <Container>
-        <h2>Home Builder in Vail Valley, Colorado</h2>
-        <p>We build and remodel custom homes in Vail, Beaver Creek and the Central Rockies of Colorado.</p>
+        <h2>{about.talkTous.talkTous_title}</h2>
+        <p>{about.talkTous.talkTous_content}</p>
         <div class="talktous__btns">
-            <a href="/contact-us" class="btn btn-secondary">Talk to Us</a>
-            <a href="/portfolio" class="btn btn-inverted">Explore our Gallery</a>
+            <a href="{about.talkTous.talkTous_btn1Link}" class="btn btn-secondary">{about.talkTous.talkTous_btn1}</a>
+            <a href="{about.talkTous.talkTous_btn2Link}" class="btn btn-inverted">{about.talkTous.talkTous_btn2}</a>
         </div>
     </Container>
 </section>
@@ -228,6 +230,9 @@
         h3 {
             color:$secondary-color;
             font-size: 2.813rem;
+            @include media-max(ipadmini){ 
+                font-size: 2.3rem;
+            }
         }
         p {
             font-size: 1.25rem;
@@ -276,6 +281,9 @@
         :global(.sets-parts__content h3) {
             color: $secondary-color;
             font-size: 2.813rem;
+            @include media-max(ipadmini){ 
+                font-size: 2.3rem;
+            }
             @include media-max(xs) {
                 text-align: left !important;
             }
