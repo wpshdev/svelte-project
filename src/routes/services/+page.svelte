@@ -258,6 +258,9 @@
         // end for mobile bg bars
         &__service-box{
             padding: 3rem;
+            @include media-max(default){ 
+                padding: 2rem;
+            }
             @include media-max(md){ 
                 padding: 1rem 0rem;
                 padding-left: 10px;

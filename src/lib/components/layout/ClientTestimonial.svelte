@@ -11,24 +11,24 @@
             // contain: true,
             wrapAround: true,
             prevNextButtons: false,
-            pageDots: false,
+            pageDots: true,
             autoPlay: false,
             groupCells: 1,
             draggable: true,
             adaptiveHeight: true,
-            on: {
-                change: updateProgress,
-            },
+            // on: {
+            //     change: updateProgress,
+            // },
         });
     })
 
-    let progressPercentage = 100 / clientTestimonials.length;
+    // let progressPercentage = 100 / clientTestimonials.length;
 
-    function updateProgress() {
-        const totalSlides = clientTestimonials.length;
-        const index = flickityInstance.selectedIndex + 1;
-        progressPercentage = ((index) / totalSlides) * 100;
-    }
+    // function updateProgress() {
+    //     const totalSlides = clientTestimonials.length;
+    //     const index = flickityInstance.selectedIndex + 1;
+    //     progressPercentage = ((index) / totalSlides) * 100;
+    // }
 
 </script>
 
@@ -42,9 +42,9 @@
             </div>
         {/each}
     </div>
-    <div class="slider-progress">
+    <!-- <div class="slider-progress">
         <progress id="file" value="{progressPercentage}" max="100"></progress>
-    </div>
+    </div> -->
 </section>
 
 <style lang="scss">
@@ -80,11 +80,11 @@
             @include media-max(ipadmini){
                 width: 60%;
                 margin: 0 2rem;
+                padding: 3rem 2rem;
             }
             @include media-max(xs){
                 width: 90%;
                 margin: 0 1rem;
-                padding: 3rem 2rem;
             }
 
             p {
@@ -111,30 +111,51 @@
         }
 
     }
-    .slider-progress {
-        text-align: center;
-        margin-top: 5rem;
+    // .slider-progress {
+    //     text-align: center;
+    //     margin-top: 5rem;
 
+    //     @include media-max(xs){
+    //         margin-top: 3rem;
+    //     }
+
+    //     progress {
+    //         border-radius: 0px;
+    //         width: 50%;
+    //         @include media-max(xs){
+    //             width: 90%;
+    //             margin: auto;
+    //             height: 0.489rem;
+    //         }
+
+    //         &::-webkit-progress-bar {
+    //             background: $gray;
+    //         }
+    //         &::-webkit-progress-value {
+    //             background: $secondary-color;
+    //         }
+    //     }
+    // }
+    :global(.flickity-viewport) {
+        margin-bottom: 5rem;
+    }
+    :global(.flickity-page-dots) {
+        bottom: unset;
+    }
+    :global(.flickity-page-dots .dot) {
+        height: 0.466rem;
+        width: 5.386rem;
+        margin: 0 0.75rem;
+        border-radius: 0;
+        background: $gray;
+        opacity: 1;
         @include media-max(xs){
-            margin-top: 3rem;
+            width: 3rem;
+            margin: 0 .5rem;
         }
-
-        progress {
-            border-radius: 0px;
-            width: 50%;
-            @include media-max(xs){
-                width: 90%;
-                margin: auto;
-                height: 0.489rem;
-            }
-
-            &::-webkit-progress-bar {
-                background: $gray;
-            }
-            &::-webkit-progress-value {
-                background: $secondary-color;
-            }
-        }
+    }
+    :global(.flickity-page-dots .dot.is-selected) {
+        background: $secondary-color;
     }
 }
 

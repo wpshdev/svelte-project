@@ -13,16 +13,27 @@
 
     ScrollTrigger.create({
       trigger: '.slider-container',
-      start: 'top top',
+      start: 'top left',
       end: () => container.scrollWidth - window.innerWidth,
       pin: true,
       scrub: 0.5,
       onUpdate: (self) => {
         const progress = self.progress;
-        gsap.to(container, {
-          x: -container.scrollWidth * progress,
-          duration: 0.01,
-        });
+        // Container width
+        const conwidth = -(container.scrollWidth) + (window.innerWidth * 1.75);
+        // Position of Container scrolling
+        const conx = (-container.scrollWidth * progress);
+        // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
+        // console.log("window.innerWidth: "+ window.innerWidth);
+        // console.log("container.scrollWidth: "+ container.scrollWidth);
+          if(conx < conwidth){
+            return
+          }else{
+            gsap.to(container, {
+            x: (-container.scrollWidth * progress) - window.innerWidth,
+            duration: 0.01,
+          });
+        }
       },
     });
   }

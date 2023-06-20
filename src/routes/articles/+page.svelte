@@ -40,6 +40,19 @@
 </section>
 <section class="article-blog">
 <Container>
+        <!-- Pagination -->
+
+        <LightPaginationNav
+        totalItems="{items.length}"
+        pageSize="{pageSize}"
+        currentPage="{currentPage}"
+        limit="{1}"
+        showStepOptions="{true}"
+        on:setPage="{(e) => currentPage = e.detail.page}"
+        />
+
+        <!-- End Pagination -->
+        <div class="mx-8"></div>
         {#each paginatedBlogs as blog,i (blog.id)}
         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
             <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
@@ -165,8 +178,9 @@
             max-height: 7.2rem;
             font-size: 2.25rem;
             line-height: 2.5rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             color: $secondary-color;
+            margin-bottom: 1.5rem;
             @include media-max(sm){
                 order: 1;
             } 
@@ -179,6 +193,7 @@
             max-height: 3.1em;
             font-size: 1.25rem;
             line-height: 2.125rem;
+            margin-bottom: 1.5rem;
             @include media-max(sm){
                 order: 3;
             } 
@@ -226,6 +241,7 @@
     //     color: $secondary-color;
     // }
     :global(.article-blog){
+        margin-top: 1.5rem;
         :global(.col-md-5){
             padding: 1.25rem 0px;
             @include media-max(sm){

@@ -674,6 +674,9 @@
 		&__top-image{
 			text-align: right;
     		margin-bottom: -3rem;
+			@include media-max(default){
+				margin-bottom: 0rem;	
+			}	
 			@include media-max(lg){
 				margin-bottom: 1.5rem;	
 			}	

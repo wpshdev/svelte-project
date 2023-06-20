@@ -139,7 +139,7 @@
 					<Col md="6">
 						<div class="related__article">
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
-								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="related__article__text">
 									<span>0{index+1}</span>
 									{rPortfolio.attributes.title}
