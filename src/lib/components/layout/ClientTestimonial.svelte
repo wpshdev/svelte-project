@@ -1,55 +1,50 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    let flickityInstance;
 
+    let flickityInstance;
+    export let clientTestimonials;
+
+    console.log(clientTestimonials);
     onMount(() => {
-        innerWidth = window.innerWidth;
-        
         flickityInstance = new Flickity('.slider-container', {
             cellAlign: 'center',
-            contain: true,
+            // contain: true,
             wrapAround: true,
             prevNextButtons: false,
-            pageDots: false,
+            pageDots: true,
             autoPlay: false,
             groupCells: 1,
             draggable: true,
-            on: {
-                change: updateProgress,
-            },
+            adaptiveHeight: true,
+            // on: {
+            //     change: updateProgress,
+            // },
         });
     })
 
-    let progressPercentage = 33.33;
+    // let progressPercentage = 100 / clientTestimonials.length;
 
-    function updateProgress() {
-        const totalSlides = 3;
-        const index = flickityInstance.selectedIndex + 1;
-        progressPercentage = ((index) / totalSlides) * 100;
-    }
+    // function updateProgress() {
+    //     const totalSlides = clientTestimonials.length;
+    //     const index = flickityInstance.selectedIndex + 1;
+    //     progressPercentage = ((index) / totalSlides) * 100;
+    // }
 
 </script>
-
 
 <section class="our_client_say">
     <h2>Our Clients say...</h2>
     <div class="our_client_say__cards slider-container">
-        <div class="details">
-            <p>We used Ulf Built to remodel our guest bathroom and kitchen.in Cordillera in Edwards.  Alex Chay was our general contractor and his team did an excellent job. They stayed on budget and completed the work by the date promised. We are very pleased with the result and recommend them highly. </p>
-            <h3>Deborah Lamb</h3>
-        </div>
-        <div class="details">
-            <p>We used Ulf Built to remodel our guest bathroom and kitchen.in Cordillera in Edwards.  Alex Chay was our general contractor and his team did an excellent job. They stayed on budget and completed the work by the date promised. We are very pleased with the result and recommend them highly. </p>
-            <h3>Deborah Lamb</h3>
-        </div>
-        <div class="details">
-            <p>We used Ulf Built to remodel our guest bathroom and kitchen.in Cordillera in Edwards.  Alex Chay was our general contractor and his team did an excellent job. They stayed on budget and completed the work by the date promised. We are very pleased with the result and recommend them highly. </p>
-            <h3>Deborah Lamb</h3>
-        </div>
+        {#each clientTestimonials as testimonial}
+            <div class="details">
+                <p>{testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "")}</p>
+                <h3>{testimonial.attributes.Name}</h3>
+            </div>
+        {/each}
     </div>
-    <div class="slider-progress">
+    <!-- <div class="slider-progress">
         <progress id="file" value="{progressPercentage}" max="100"></progress>
-    </div>
+    </div> -->
 </section>
 
 <style lang="scss">
@@ -59,7 +54,7 @@
     background:  linear-gradient(180deg, rgba(255, 255, 255, 0) -40.92%, rgba(239, 239, 240, 0.83) 36.13%, #FFFFFF 76.97%, rgba(255, 255, 255, 0) 137.31%); ;
     mix-blend-mode: normal;
     padding: 14rem 0;
-    @include media-max(xs){
+    @include media-max(ipadmini){
         padding: 5rem 0 0;
     }
     h2 {
@@ -74,6 +69,7 @@
             border: 1px solid $darkgray;
             border-radius: 8px;
             min-height: 27.156rem;
+            // height: inherit;
             width: 50%;
             padding: 4rem 6rem;
             overflow: hidden;
@@ -81,10 +77,14 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            @include media-max(ipadmini){
+                width: 60%;
+                margin: 0 2rem;
+                padding: 3rem 2rem;
+            }
             @include media-max(xs){
                 width: 90%;
                 margin: 0 1rem;
-                padding: 3rem 2rem;
             }
 
             p {
@@ -111,30 +111,51 @@
         }
 
     }
-    .slider-progress {
-        text-align: center;
-        margin-top: 5rem;
+    // .slider-progress {
+    //     text-align: center;
+    //     margin-top: 5rem;
 
+    //     @include media-max(xs){
+    //         margin-top: 3rem;
+    //     }
+
+    //     progress {
+    //         border-radius: 0px;
+    //         width: 50%;
+    //         @include media-max(xs){
+    //             width: 90%;
+    //             margin: auto;
+    //             height: 0.489rem;
+    //         }
+
+    //         &::-webkit-progress-bar {
+    //             background: $gray;
+    //         }
+    //         &::-webkit-progress-value {
+    //             background: $secondary-color;
+    //         }
+    //     }
+    // }
+    :global(.flickity-viewport) {
+        margin-bottom: 5rem;
+    }
+    :global(.flickity-page-dots) {
+        bottom: unset;
+    }
+    :global(.flickity-page-dots .dot) {
+        height: 0.466rem;
+        width: 5.386rem;
+        margin: 0 0.75rem;
+        border-radius: 0;
+        background: $gray;
+        opacity: 1;
         @include media-max(xs){
-            margin-top: 3rem;
+            width: 3rem;
+            margin: 0 .5rem;
         }
-
-        progress {
-            border-radius: 0px;
-            width: 50%;
-            @include media-max(xs){
-                width: 90%;
-                margin: auto;
-                height: 0.489rem;
-            }
-
-            &::-webkit-progress-bar {
-                background: $gray;
-            }
-            &::-webkit-progress-value {
-                background: $secondary-color;
-            }
-        }
+    }
+    :global(.flickity-page-dots .dot.is-selected) {
+        background: $secondary-color;
     }
 }
 

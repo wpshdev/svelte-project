@@ -22,8 +22,8 @@
 <style lang="scss">
 	dialog {
 		max-width: 80%;
-        min-height: 50.75rem;
-        height: auto;
+        // min-height: 50.75rem;
+        height: 95%;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;
@@ -41,7 +41,7 @@
 		@include media-max(ipadmini){ //768
             overflow: auto;
 			@include scrollbars(0.824rem, 80px, $secondary-color, $white-color);
-			min-height: 60.75rem;
+			// min-height: 60.75rem;
         }
 
 		@include media-max(xs){

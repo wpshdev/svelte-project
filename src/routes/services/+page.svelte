@@ -258,6 +258,9 @@
         // end for mobile bg bars
         &__service-box{
             padding: 3rem;
+            @include media-max(default){ 
+                padding: 2rem;
+            }
             @include media-max(md){ 
                 padding: 1rem 0rem;
                 padding-left: 10px;
@@ -350,7 +353,7 @@
         }
     }
     :global(.sets-us-apart__row){
-        @include media-max(ipadmini){
+        @include media-max(lg){
             align-items: end;
         }
         @include media-max(sm){
@@ -368,7 +371,7 @@
     :global(.imageCont) {
         @include media-max(ipadmini){
             img {
-                min-height: 25rem;
+                min-height: 20rem;
             }
         }
         @include media-max(sm){
@@ -472,7 +475,7 @@
                 width: 65%;
                 text-align: left;
                 transition: 1.5s;
-                @include media-max(sm){
+                @include media-max(ipadmini){
                     margin: 0;
                     font-size: 1rem;
                     width: 90%;

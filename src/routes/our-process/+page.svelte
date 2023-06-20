@@ -6,6 +6,7 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
+    console.log(processData);
 </script>
 
 <svelte:head>
@@ -27,7 +28,7 @@
             <Row>
                 <Col class="md-12">
                     <Animate>
-                        <img src="{domain}{processData.section2image.data.attributes.url}"
+                        <img src="{domain}{processData.section2image.data.attributes.formats.large_x2 ? processData.section2image.data.attributes.formats.large_x2.url : processData.section2image.data.attributes.url}"
                         srcset="{domain}{processData.section2image.data.attributes.url} 330w,
                                 {domain}{processData.section2image.data.attributes.url} 660w,
                                 {domain}{processData.section2image.data.attributes.url} 990w"
@@ -60,7 +61,7 @@
     </Animate>
 </section>
 <Animate>
-<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.url})"></section> 
+<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
 </Animate>
 <section class="phase">
     <Animate>
@@ -96,7 +97,7 @@
         </div>  
     </Animate>
     <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.url})">
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.medium_x2 ? processData.section6image.data.attributes.formats.medium_x2.url : processData.section6image.data.attributes.url })">
         </div>  
     </Animate>
    <Animate>
@@ -121,7 +122,7 @@
    </Animate>
 </section>
 <Animate>
-    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.url})">
+    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.medium_x2 ? processData.section9image.data.attributes.url : processData.section9image.data.attributes.url })">
     </section>
 </Animate>
 
@@ -140,7 +141,7 @@
 </secton>
 
 <Animate>
-    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.url})"></section> 
+    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.medium_x2 ? processData.section10phase2image.data.attributes.url : processData.section10phase2image.data.attributes.url })"></section> 
 </Animate>
 
 <section class="phase">
@@ -184,11 +185,11 @@
             </div>                                            
         </div>    
     </Animate>
-    <Animate>
+    <!-- <Animate>
         <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
         </div>   
-    </Animate>
-    <Animate>
+    </Animate> -->
+    <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <span>{processData.section15heading}</span>
@@ -215,12 +216,12 @@
                 {@html processData.section17righttext }
             </div>                                       
         </div>     
-    </Animate>
+    </Animate> -->
     <Animate>
-        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.url})">
+        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.medium_x2 ? processData.section18image.data.attributes.formats.medium_x2.url : processData.section18image.data.attributes.url })">
         </div>   
     </Animate>
-    <Animate>
+    <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <span>{processData.section19heading}</span>
@@ -231,7 +232,7 @@
                 {@html processData.section19righttext }
             </div>                                           
         </div>     
-    </Animate>
+    </Animate> -->
 </section>
 <secton class="phase-banner-paragraph">
     <Animate>
@@ -360,6 +361,9 @@
             align-items: center;
             position: relative;
             z-index: 1;
+            @include media-max(ipadmini){
+                margin-top: -15.5rem;
+            }  
             @include media-max(sm){
                 margin-top: -9.5rem;
             }               
@@ -368,7 +372,10 @@
             font-size: 20rem;
             font-family: $secondary-font;
             color: $darkbluegreen;
-            display: block;            
+            display: block;  
+            @include media-max(ipadmini){
+                font-size: 15rem;
+            }                  
             @include media-max(sm){
                 font-size: 8rem;
             }              
@@ -411,6 +418,7 @@
             }            
             &__item{
                 padding: 9rem 4rem 4rem;
+                z-index: -1;
                 @include media-max(sm){
                     padding: 1rem 0;
                 }
@@ -422,7 +430,7 @@
                     line-height: 2;
                     font-style: italic;
                     @include media-max(ipadmini){
-                        padding: 8rem 3.25rem;                    
+                        padding: 10rem 3.25rem;                    
                     }        
                     @include media-max(sm){
                         padding: 3rem 3.25rem;
@@ -458,7 +466,7 @@
                     }
 
                     @include media-max(ipadmini){
-                        padding: 8rem 3.25rem;                    
+                        padding: 10rem 3.25rem;                    
                     }  
 
                     @include media-max(sm){

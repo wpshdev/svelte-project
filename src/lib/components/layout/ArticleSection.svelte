@@ -93,7 +93,7 @@
 		&__content{
 			&__wrapper{
 				padding-left: 4rem;		
-				@include media-max(sm){
+				@include media-max(ipadmini){
 					padding: 0;
 				}					
 				&__pre-heading{
@@ -121,6 +121,9 @@
 					// text-align: center;
 					// margin-top: 1.5rem;
 					display: flex;
+					@include media-max(ipadmini){
+						display: block;
+					}
 				}
 				.btn {
 					padding: 0.7rem 3.125rem; 
