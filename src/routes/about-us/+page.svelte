@@ -15,7 +15,7 @@
     let aboutsubheading = data.data.attributes.Aboutsubheading
     let about = data.data.attributes
     console.log(about)
-    let url = "https://strapi.ulfbuilt.com:1337/";
+    let url = "https://strapi.ulfbuilt.com:1337";
     let scroll: number;
 </script>
 <svelte:head>
@@ -100,7 +100,7 @@
             <p class="text-left">{@html about.Section5text}</p> -->
             {#if about.Section5image.data}
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-              <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
+              <img src="{url+about.Section5image.data.attributes.url }" alt="{about.Section3heading}" class="desktop">
               <img src="{url+about.Section5MobileImage.data.attributes.url}" alt="{about.Section3heading}" class="mobile">
             {/if}      
         </Animate>
@@ -202,7 +202,7 @@
             img {
                 width: auto;
                 margin: auto;
-                
+                max-width: 100%;
                 @include media-max(lg){
                     width: 100%;
                 }
