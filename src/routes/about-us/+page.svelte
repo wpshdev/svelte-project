@@ -329,6 +329,9 @@
         }
     }
     .talktous{
+        @include media-max(ipadmini){ 
+            margin-top: 15rem;
+        }
         h2 {
             color: $secondary-color;
         }

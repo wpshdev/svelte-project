@@ -62,8 +62,8 @@
     <Container class="mb-5 contact_inner__content">
         <Row>
             <Col md="12">
-                <h2 class="text-center">Let's get started...</h2>
-                <h4 class="text-center pfont">- <span class="ptc"><i>Ulf Lindroth</i></span></h4>
+                <h2 class="text-center">{data.data.attributes.section1Title}</h2>
+                <h4 class="text-center pfont">- <span class="ptc"><i>{data.data.attributes.Section1SubAuthor}</i></span></h4>
                 <p class="two-columns pt-3">{@html data.data.attributes.Subheading2}</p>
             </Col>
         </Row>
@@ -72,11 +72,11 @@
         <Row>
             <Col md="4" class="flex-vcenter">
                 <Animate>
-                    <h4 class="ptc pfont">OUR OFFICE</h4>
+                    <h4 class="ptc pfont">{data.data.attributes.office_address_title}</h4>
                     <h4 class="stc pb-5">{@html office_address}</h4>
-                    <h4 class="ptc pfont">MAILING ADDRESS</h4>
+                    <h4 class="ptc pfont">{data.data.attributes.mailing_address_title}</h4>
                     <h4 class="stc pb-5">{@html mailing_address}</h4>
-                    <h4 class="ptc pfont">PHONE</h4>
+                    <h4 class="ptc pfont">{data.data.attributes.phone_title}</h4>
                     <h4 class="stc pb-5">{@html phone}</h4>
                 </Animate>
             </Col>
@@ -96,7 +96,7 @@
         <Container>
             <Row>
                 <Col sm="12" class="contact-form tbc wtc border-radius">
-                    <h2 class="text-center pb-4">Connect with Us</h2>
+                    <h2 class="text-center pb-4">{data.data.attributes.contact_form_title}</h2>
                     <Form method="post">
                         <FormGroup class="input-icon-box">
                             <Input class="input-user" placeholder="Full Name" bind:value={name} />

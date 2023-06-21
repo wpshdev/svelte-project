@@ -23,99 +23,81 @@ const cache = new Map();
 export let propCount;
 let items;
 let currentPage = 1;
-
-// async function getProjects(id) {
-//     if (cache.has(id)) {
-//         projects = cache.get(id);
-//         return;
-//     }
-//     const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
-//     const headers = {
-//         Authorization: 'Bearer ' + PUBLIC_STRAPI_API
-//     }    
-//     const response = await axios.get(url, { headers });
-//     projects = response.data;
-//     cache.set(id, projects);
-// }
-
-// $: if (id) {
-//     (async () => {
-//         await getProjects(id); 
-//         // console.log('projects');
-//         // console.log(projects);
-
-//         const portfolios = projects.data;
-//         items = portfolios;
-//         currentPage = 1;
-        
-//         // paginatedPortfolios = paginate({ items, pageSize, currentPage });
-//     })();
-// }
-
-onMount(async () => {
-
-    console.log(id);
-
+async function getProjects(id) {
+    if (cache.has(id)) {
+        projects = cache.get(id);
+        return;
+    }
     const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
     const headers = {
         Authorization: 'Bearer ' + PUBLIC_STRAPI_API
     }    
     const response = await axios.get(url, { headers });
-
     projects = response.data;
     const portfolios = projects.data;
     items = portfolios;
-    console.log(projects.data);
+    console.log(items)
+    cache.set(id, projects);
+}
 
+$: if (id) {
+    (async () => {
+        await getProjects(id); 
+    })();
+}
+
+onMount(async () => {
+    await getProjects(id);
 })
 
 </script>
     <Animate>
         {#if projects}
-        <MasonryGrid
-        class="container masonry-wrapper"
-        {defaultDirection}
-        {gap}
-        {align}
-        {column}
-        {columnSize}
-        {columnSizeRatio}
-    >       
-         {#each paginate({ items, pageSize, currentPage }) as project, index}			
-             {#if index < propCount}
-                <div class="masonry-items" in:fly="{{ y: 200, duration: 2200, delay:index * 1000}}" out:fly="{{y:400, duration:2000 }}">       
-                    <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-                        <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
-                        <div class="masonry-items__text">
-                            <span>{index + 1}</span>
-                            {project.attributes.title}
-                            <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </i>
-                        </div>
-                    </a>
-                </div>			
-             {/if}			
-         {/each}
-        </MasonryGrid>  										
+            {#key items}
+                <MasonryGrid
+                    class="container masonry-wrapper"
+                    {defaultDirection}
+                    {gap}
+                    {align}
+                    {column}
+                    {columnSize}
+                    {columnSizeRatio}
+                >       
+                {#each paginate({ items, pageSize, currentPage }) as project, index}			
+                    {#if index < propCount}
+                        <div class="masonry-items" in:fly="{{ y: 200, duration: 1000, delay:index * 1200}}" out:fly="{{y:400, duration:1000 }}">       
+                            <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+                                <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
+                                <div class="masonry-items__text">
+                                    <span>{index + 1}</span>
+                                    {project.attributes.title}
+                                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </i>
+                                </div>
+                            </a>
+                        </div>			
+                    {/if}			
+                {/each}
+                </MasonryGrid>  
+            {/key}
+            {#if addPagination == 'true' && pageSize < items.length}
+                <div class="paginate-section">
+                    <LightPaginationNav
+                    totalItems="{items.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                </div>
+            {/if} 					
         {:else}
             <div class="col text-center">Loading...</div>
         {/if}  
         
-        {#if addPagination == 'true' && pageSize < projects.data.length}
-         <div class="paginate-section">
-             <LightPaginationNav
-             totalItems="{projects.data.length}"
-             pageSize="{pageSize}"
-             currentPage="{currentPage}"
-             limit="{1}"
-             showStepOptions="{true}"
-             on:setPage="{(e) => currentPage = e.detail.page}"
-             />
-         </div>
-         {/if} 
-             	
     </Animate>  
 
 <style lang="scss">

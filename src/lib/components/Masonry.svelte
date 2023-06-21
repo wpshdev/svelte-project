@@ -3,9 +3,6 @@ import MasonryCard from "./MasonryCard.svelte";
 import { fade } from "svelte/transition";
 
 export let items = [];
-
-console.log('items');
-console.log(items);
 let activeTab = items[0].id ;
 
 function handleTabClick(category) {

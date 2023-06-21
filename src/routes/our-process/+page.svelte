@@ -400,19 +400,17 @@
             width: 90%;
             margin-left: auto;
             @include media-max(ipadmini){
-                width: 100%;                    
-            } 
-            @include media-max(md){
-                // margin-top: -3.5rem;
+                width: 100%;  
+                margin-top: -8.5rem;                  
             }      
             @include media-max(sm){
                 grid-template-columns: repeat(1, 1fr);
                 width: 80%;
                 margin: auto;
-                margin-top: -5rem;  
+                margin-top: -3rem;  
             }            
             &__item{
-                padding: 9rem 4rem 4rem;
+                padding: 9vw 4vw 4vw;
                 z-index: -1;
                 @include media-max(sm){
                     padding: 1rem 0;
@@ -424,11 +422,8 @@
                     padding-left: 8vw;
                     line-height: 2;
                     font-style: italic;
-                    @include media-max(ipadmini){
-                        padding: 10rem 3.25rem;                    
-                    }        
                     @include media-max(sm){
-                        padding: 3rem 3.25rem;
+                        padding: 6vw;
                         margin-left: calc(50% - 50vw);
                         margin-right: calc(50% - 50vw);                        
                     }                                 
@@ -449,32 +444,25 @@
 
                 }
                 &:nth-child(even){
-                    padding-top: 18rem;
+                    padding-top: 18vw;
                     background-color: #F2F2F2;
                     display: flex;
                     align-items: flex-end;
                     flex-direction: column;
-                    padding-right: 10rem;
+                    padding-right: 10vw;
 
                     :global(p:last-child){
                         margin-bottom: 0;                        
                     }
 
-                    @include media-max(ipadmini){
-                        padding: 10rem 3.25rem;                    
-                    }  
-
                     @include media-max(sm){
-                        padding: 3rem 3.25rem;
+                        padding: 6vw;
                         margin-left: calc(50% - 50vw);
                         margin-right: calc(50% - 50vw);                        
                     }                    
                 }
                 &.last-even {
-                    padding-bottom: 15rem;
-                    @include media-max(sm){
-                        padding-bottom: 3rem;                  
-                    }    
+                    padding-bottom: 15vw;
                 }
                 
             }  

@@ -147,11 +147,12 @@ img{
     position: relative;
 }
 .changeBG{
-    background:#1E2D39;
+    background:$darkbluegreen;
     .dropdown.show, .dropdown-menu  {
-        background-color: $gray;
+        // background-color: $gray;
+        background-color: $darkbluegreen;
         a {
-            color: $primary-color;
+            color: $white-color;
         }
     }
 }
@@ -292,14 +293,14 @@ header.container-fluid{
     }
 }
 .portfolio-page{
-    .changeBG{
-        nav li.nav-item a.nav-link{
-            color: #fff;
-        }
-    }
-    header nav li a.nav-link{
-        color: $secondary-color;
-    }
+    // .changeBG{
+    //     nav li.nav-item a.nav-link{
+    //         color: #fff;
+    //     }
+    // }
+    // header nav li a.nav-link{
+    //     color: $secondary-color;
+    // }
     .hamburger {
         .dark-hamburger {
             display: block;
@@ -591,9 +592,10 @@ header{
         }
         .dropdown.show{
             // background-color: rgb(216 215 215 / 50%);
-            background-color: rgba(242, 237, 237, 0.20);
+            // background-color: rgba(242, 237, 237, 0.20);
+            background-color: $darkbluegreen;
             .dropdown-toggle{
-                &:hover, &:focus{
+                &:hover, &:focus,&:active{
                     background-color: unset;
                     color: $primary-color;
                 }
@@ -601,7 +603,8 @@ header{
         }
         .dropdown-menu{
             // background-color: rgb(216 215 215 / 50%);
-            background-color: rgba(242, 237, 237, 0.20);
+            // background-color: rgba(242, 237, 237, 0.20);
+            background-color: $darkbluegreen;
             border-radius: 0;
             width: 100%;
             border: none;
@@ -891,52 +894,52 @@ header{
 .text-right{
     text-align: right;
 }
-.service-b{
-    .col-md-4{
-        display: flex;
-    }
-    .col-md-4:nth-child(1){
-        background-image: url("/src/lib/img/Box1.svg");
-        background-size: 100%;
-        background-position: right top;
-        background-repeat: no-repeat;
-        @include media-max(xs){
-           background: unset;
-        }	
-    }
-    .col-md-4:nth-child(2){
-        background-image: url("/src/lib/img/Box2.svg");
-        background-size: 100%;
-        background-position: left bottom;
-        background-repeat: no-repeat;
-        @include media-max(xs){
-            background: unset;
-         }	
-    }
-    .col-md-4:nth-child(3){
-        background-image: url("/src/lib/img/Box4.svg");
-        background-size: 100%;
-        background-position: left bottom;
-        background-repeat: no-repeat;
-        @include media-max(xs){
-            background: unset;
-         }	
-    }
-    .col-md-4:nth-child(6){
-        background-image: url("/src/lib/img/Box3.svg");
-        background-size: 100%;
-        background-position: left bottom;
-        background-repeat: no-repeat;
-        @include media-max(xs){
-            background: unset;
-         }	
-    }
-    @include media-max(sm){
-        .col-md-4:nth-child(2){
-            background-image: unset;
-        }
-    }
-}
+// .service-b{
+//     .col-md-4{
+//         display: flex;
+//     }
+//     .col-md-4:nth-child(1){
+//         background-image: url("/src/lib/img/Box1.svg");
+//         background-size: 100%;
+//         background-position: right top;
+//         background-repeat: no-repeat;
+//         @include media-max(xs){
+//            background: unset;
+//         }	
+//     }
+//     .col-md-4:nth-child(2){
+//         background-image: url("/src/lib/img/Box2.svg");
+//         background-size: 100%;
+//         background-position: left bottom;
+//         background-repeat: no-repeat;
+//         @include media-max(xs){
+//             background: unset;
+//          }	
+//     }
+//     .col-md-4:nth-child(3){
+//         background-image: url("/src/lib/img/Box4.svg");
+//         background-size: 100%;
+//         background-position: left bottom;
+//         background-repeat: no-repeat;
+//         @include media-max(xs){
+//             background: unset;
+//          }	
+//     }
+//     .col-md-4:nth-child(6){
+//         background-image: url("/src/lib/img/Box3.svg");
+//         background-size: 100%;
+//         background-position: left bottom;
+//         background-repeat: no-repeat;
+//         @include media-max(xs){
+//             background: unset;
+//          }	
+//     }
+//     @include media-max(sm){
+//         .col-md-4:nth-child(2){
+//             background-image: unset;
+//         }
+//     }
+// }
 
 .zoomImg{
     img{

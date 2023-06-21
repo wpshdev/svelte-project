@@ -15,7 +15,7 @@
             autoPlay: false,
             groupCells: 1,
             draggable: true,
-            adaptiveHeight: true,
+            // adaptiveHeight: true,
             // on: {
             //     change: updateProgress,
             // },
@@ -68,8 +68,8 @@
             background: $white-color;
             border: 1px solid $darkgray;
             border-radius: 8px;
-            min-height: 27.156rem;
-            // height: inherit;
+            min-height: 100%;
+            height: auto;
             width: 50%;
             padding: 4rem 6rem;
             overflow: hidden;
@@ -77,10 +77,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            @include media-max(ipadmini){
+            @include media-max(lg){
                 width: 60%;
                 margin: 0 2rem;
-                padding: 3rem 2rem;
+                padding: 3rem 2.5rem;
             }
             @include media-max(xs){
                 width: 90%;
@@ -138,20 +138,30 @@
     // }
     :global(.flickity-viewport) {
         margin-bottom: 5rem;
+        // min-height: 37.975rem !important;
+        height: 40rem !important;
+        @include media-max(default){
+            height: 100vh !important;
+        }
+        @include media-max(ipadmini){
+            height: 115vh !important;
+        }
     }
     :global(.flickity-page-dots) {
         bottom: unset;
     }
     :global(.flickity-page-dots .dot) {
-        height: 0.466rem;
-        width: 5.386rem;
-        margin: 0 0.75rem;
+        height: 1rem;
+        width: 10rem;
+        margin: 0;
         border-radius: 0;
         background: $gray;
         opacity: 1;
-        @include media-max(xs){
+        @include media-max(ipadmini){
+            width: 5rem;
+        }
+        @include media-max(mm){
             width: 3rem;
-            margin: 0 .5rem;
         }
     }
     :global(.flickity-page-dots .dot.is-selected) {

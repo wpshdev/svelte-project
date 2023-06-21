@@ -56,7 +56,7 @@
 						y: 50								
 				}}>{home.homeBuilderHeading}</h2>
 				</Col>
-				<Col xs="12" md={{ size: 6, offset:3 }}>
+				<Col xs="12">
 					<div class="loc-gallery__cwrapper" in:fly={{
 							delay: 500,
 							duration: 2000,
@@ -387,6 +387,8 @@
 				}
 			}		
 		&__cwrapper{
+			max-width: 42rem;
+			margin: auto;
 			.h3{
 				text-transform: uppercase;
 				margin-bottom: 2rem;

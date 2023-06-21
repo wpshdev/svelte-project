@@ -64,6 +64,9 @@
 </section>
 <Cta/>
 <style lang="scss">
+    :global(.article-page .dropdown.show, .article-page .dropdown-menu) {
+		background-color: rgba(242, 237, 237, 0.20) !important;
+	}
 .cover{
     padding-top: 8rem;
     margin-bottom: 18.75rem;
