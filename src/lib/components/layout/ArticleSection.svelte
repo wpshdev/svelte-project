@@ -115,10 +115,11 @@
 				:global(p){
 					line-height: 2.125rem;
 					font-size: 1.25rem;
+					margin-bottom: 2rem;
 				}		
 				&__btns{
 					// text-align: center;
-					margin-top: 1.5rem;
+					// margin-top: 1.5rem;
 					display: flex;
 					@include media-max(ipadmini){
 						display: block;

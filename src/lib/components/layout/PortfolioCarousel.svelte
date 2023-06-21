@@ -5,6 +5,7 @@
   import { Col } from "sveltestrap";
 	import { browser } from '$app/environment';
   import Animate from '../Animate.svelte';
+  let isRetina = false;
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -14,28 +15,29 @@
     ScrollTrigger.create({
       trigger: '.slider-container',
       start: 'top left',
-      end: () => container.scrollWidth - window.innerWidth,
+      end: () => (container.scrollWidth * 1.9) - (window.innerWidth * 0.75), 
       pin: true,
-      scrub: 0.5,
+      scrub: 0.0,
       onUpdate: (self) => {
         const progress = self.progress;
         // Container width
-        const conwidth = -(container.scrollWidth) + (window.innerWidth * 1.75);
+        const conwidth = container.scrollWidth - (window.innerWidth * 0.75);
         // Position of Container scrolling
         const conx = (-container.scrollWidth * progress);
         // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
         // console.log("window.innerWidth: "+ window.innerWidth);
         // console.log("container.scrollWidth: "+ container.scrollWidth);
-          if(conx < conwidth){
+          if(conx < -conwidth){
             return
           }else{
             gsap.to(container, {
-            x: (-container.scrollWidth * progress) - window.innerWidth,
-            duration: 0.01,
+            x: (-container.scrollWidth * progress),
+            duration: 0.67,
           });
         }
       },
     });
+    
   }
 
   onMount(async() => {
@@ -44,9 +46,9 @@
     if(innerWidth > 768){
       initScrollAnimations();
     }
+    isRetina = window.devicePixelRatio > 1;
+    console.log(isRetina);
   });
-
-
 
 afterUpdate(() => {
   // ScrollTrigger.refresh();
@@ -91,7 +93,7 @@ function log(){
           {#each images as image, index}
             <div class="slider-container__carousel-cell">
               <div class="image-wrapper">
-                <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                <img src="{domain}{image.attributes.formats.medium_x2 ? image.attributes.formats.medium_x2.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               </div>     
                 <a href="{domain}{image.attributes.url}?download" class="download" download>
                   <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +111,7 @@ function log(){
         {#each images as image}
           <Animate>
             <div class="slider-container__carousel-cell">
-              <img src={domain}{image.attributes.url} alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+              <img src="{domain}{image.attributes.formats.medium_x2 ? image.attributes.formats.medium_x2.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               <a href="{domain}{image.attributes.url}?download" class="download" download>
                 <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="27.501" cy="27.5" r="27.5" fill="#1E2D39"/>
@@ -156,11 +158,11 @@ body {
   &__carousel-cell {
     flex-shrink: 0;
     width: auto;
-    height: 70vh;
-    margin: 15vh 0.5rem 15vh;
+    height: 78vh;
+    margin: 11vh 0.5rem 11vh;
     .image-wrapper{
       min-width: 20rem;
-      height: 70vh;
+      height: 78vh;
     }
     @include media-max(ipadmini){
       // margin: 30vh 0.5rem 30vh;
@@ -196,7 +198,7 @@ body {
       width: 100%;
       transition: 1.2s;
 			object-fit: cover;
-      height: 70vh;
+      height: 77vh;
       @include media-max(sm){
         height: 40vh;
       }
@@ -205,32 +207,6 @@ body {
 }
 
 
-// .slider-container {
-//   overflow-x: hidden;
-//   display: flex;  
-
-//   &__carousel-cell {
-//     &.empty-cell{
-//       height: 100%;
-//       min-width: 25vw;
-//       min-width: none;
-//     }
-//     width: 70%;
-//     height: auto;
-//     padding: 0 0.5rem;
-//     box-sizing: border-box;
-//     min-width: 50vw;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-    
-//     img {
-//       display: block;
-//       width: 100%;
-//       height: auto;
-//     }
-//   }
-// }
 .slider-btn{
   margin: 0;
   margin-right: calc(52% - 50vw);
