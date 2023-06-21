@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
-    import contactBG from "$lib/img/ContactBG.jpg";
+    // import contactBG from "$lib/img/ContactBG.jpg";
+    import contactBGPlain from "$lib/img/contactBGPlain.jpeg";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
+	import { onMount } from 'svelte';
+	import axios from 'axios';
 
     let name = '', email = '', subject = '', message = '', result = ''
     async function doContact () {
@@ -42,15 +45,38 @@
         }
         }
 	}
+
+	let promise = fetchContactSettings();
+	const domain = "https://strapi.ulfbuilt.com:1337/";
+	async function fetchContactSettings(){
+		const url = 'https://strapi.ulfbuilt.com:1337/api/contact-cta?populate=deep,3';
+		const headers = {
+			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+		};
+
+		try {
+			const response = await axios.get(url, { headers });
+			return response.data.data.attributes;
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	onMount(() => {
+		promise = fetchContactSettings();
+		console.log(promise)
+  	});	
 </script>
-<section class="contact" style="--contactBG: url({contactBG})">
+{#await promise}
+{:then contactSettings} 
+<section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})">
 	<Container>
 		<Row>
 			<Col md="6">
 				<div class="contact__content">
 					<div class="contact__content__wrapper">
-						<h2>Ready to Start<br> your Dream Project?</h2>
-						<p>Let's discuss it!</p>
+						<h2>{contactSettings.heading}</h2>
+						<p>{contactSettings.subheading}</p>
 					</div>
 				</div>
 			</Col>
@@ -80,11 +106,13 @@
 		</Row>
 	</Container>
 </section>
+{/await}
 <style lang="scss">
 .contact{
 	padding: 10rem 0;
 	background-image: var(--contactBG);
 	background-size: cover;
+	box-shadow: inset 0 0 0 2000px rgb(237 234 220 / 85%);
 	margin: 0;
 	min-height: 20vh;
 	@include media-max(sm){

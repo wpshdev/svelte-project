@@ -29,7 +29,7 @@
             <Col class="text-center">
                 <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data} subHeading2="{portfolio.masonryGallery.masonrySubHeading2}" paginate="true" postperpage="4"/>
+                <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="4"/>
             </Col>
         </Row>
     </Container>
@@ -102,13 +102,6 @@
                 margin-right: 1.5rem;
                 @include media-max(sm){
                     margin: 0 0 1rem;
-                }
-            }
-            .btn-inverted{
-                border-color: $secondary-color;
-                color: $secondary-color;
-                &:hover {
-                    color: #fff;
                 }
             }
         } 

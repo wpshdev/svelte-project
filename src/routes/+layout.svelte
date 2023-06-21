@@ -16,6 +16,10 @@
         return url === "/portfolio/[slug]" ? "portfolio-page" : "";
     }     
 
+    function isArticle(url) {
+        return url === "/articles/[slug]" ? "article-page" : "";
+    }  
+
 	afterNavigate(() => {
 		disableScrollHandling();
 	}) 
@@ -28,10 +32,10 @@
         <link rel="preconnect" href="https://strapi.ulfbuilt.com:1337/">
         <script async src="/flickity/flickity.pkgd.min.js"></script>    
     </svelte:head>    
-    <div class="z10 {isPortfolio($page.route.id)}">
+    <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
             <!-- <header class="d-block" class:changeBG={yaxis >= 250 || isHome($page.url.pathname)} > -->
-            <header class="d-block" class:changeBG={yaxis >= 500} >                
+            <header class="d-block" class:changeBG={yaxis >= 200} >                
                 <Container>
                     <Header menu={data} />
                 </Container>

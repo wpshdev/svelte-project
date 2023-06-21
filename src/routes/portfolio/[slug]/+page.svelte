@@ -119,8 +119,8 @@
 					<div class="portfolio-cta__btns">
 						<!-- <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
 						<a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a> -->
-						<a href="{portfolio.ctaLeftBtnUrl ? portfolio.ctaLeftBtnUrl : '/contact-us'}" class="btn btn-secondary">Talk to Us</a>
-						<a href="{portfolio.ctaRightUrl ? portfolio.ctaRightUrl : '/portfolio'}" class="btn btn-inverted">Back to Portfolio</a>
+						<a href="{portfolio.ctaLeftBtnUrl ? portfolio.ctaLeftBtnUrl : '/contact-us'}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle ? portfolio.ctaLeftBtnTitle : 'Talk to Us'}</a>
+						<a href="{portfolio.ctaRightUrl ? portfolio.ctaRightUrl : '/portfolio'}" class="btn btn-inverted">{portfolio.ctaRightBtnTitle ? portfolio.ctaRightBtnTitle : 'Back to Portfolio'}</a>
 					</div>                   
 				</Col>
 			</Row>
@@ -138,8 +138,8 @@
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
 						<div class="related__article">
-							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload>
-								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
+								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="related__article__text">
 									<span>0{index+1}</span>
 									{rPortfolio.attributes.title}
@@ -174,8 +174,8 @@
 </Animate>
 
 <style lang="scss">
-	:global(.dropdown.show, .dropdown-menu) {
-		background-color: $gray !important;
+	:global(.portfolio-page .dropdown.show, .portfolio-page .dropdown-menu) {
+		background-color: rgba(242, 237, 237, 0.20) !important;
 	}
 section{
 	min-height: 50vh;
@@ -186,12 +186,26 @@ section{
 	background-color: #EFEFF0;
 	margin-bottom: 0;
 	overflow-x: hidden;
+	&:before {
+		content: '';
+		display: block;
+		background: #1E2D39;
+		width: 100%;
+		height: 55rem;
+		position: absolute;
+		top: 0;
+		z-index: 0;
+	}
 	@include media-max(sm){
 		padding: 20vh 0 0;
 	}
   &__content{
 	padding-top: 4vw;
-	border-top: 1px solid #ACA7A7;
+	// border-top: 1px solid #ACA7A7;
+	border-top: 1px solid $white-color;
+	
+	z-index: 1;
+	position: relative;
     span{
       color: $primary-color;
 	  font-weight: 500;
@@ -199,7 +213,8 @@ section{
     h1{
 	  margin: 1rem 0;
 	  font-size: 4rem;
-	  color: $secondary-color;
+	//   color: $secondary-color;
+	  color: $white-color;
     }
 	p{
 		line-height: 2;
@@ -329,21 +344,11 @@ section{
 		height: 50vh;
 		@include media-max(sm){
 			margin-bottom: 1rem;
-		}		
-        img{
-            transition: 1.2s;
-			object-fit: cover;
-			height: 100%;
-        }         
+		}	     
         &:hover{
-            img{
-                transition: 1.2s;
-                scale: 1.2;
-            }
-			
 			.related__article__text {
 				background: $primary-color;
-				transition: 0.3s;
+				transition: 1.5s;
 				span {
 					color: $white-color;
 				}
@@ -362,7 +367,8 @@ section{
             left: 0;
             width: 65%;
             text-align: left;
-            @include media-max(sm){
+			transition: 1.5s;
+            @include media-max(ipadmini){
                 margin: 0;
                 font-size: 1rem;
                 width: 90%;

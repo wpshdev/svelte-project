@@ -3,8 +3,6 @@ import MasonryCard from "./MasonryCard.svelte";
 import { fade } from "svelte/transition";
 
 export let items = [];
-
-console.log(items);
 let activeTab = items[0].id ;
 
 function handleTabClick(category) {
@@ -15,10 +13,10 @@ let propCount = 10;
 let listener = {};
 
 export let subHeading2 = '';
-export let paginate;
-export let postperpage;
+export let paginate = '';
+export let postperpage = '';
 
-$: listener = {propCount , activeTab};
+$: listener = {propCount, activeTab, paginate, postperpage};
 
 </script>
 
@@ -46,13 +44,13 @@ $: listener = {propCount , activeTab};
 				<span on:click="{() => propCount = 10}">View Less Projects</span>
 			{/if}
 		</div>
-		{#if subHeading2}
+		<!-- {#if subHeading2}
 		<div class="masonry__tabs__subheading">
 			<p>{@html subHeading2}</p>
 		</div>	
-		{/if}				
+		{/if}				 -->
 		<div class="categories__tabs__gallery">
-			{#key listener }
+			{#key listener}
 				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
 					<MasonryCard id={activeTab} {propCount} addPagination={paginate} pageSize={postperpage} />
 				</div>			
@@ -74,12 +72,15 @@ $: listener = {propCount , activeTab};
 				ul{
 					display: flex;
 					flex-wrap: wrap;
+					width: 90%;
+					margin: auto;
 					margin-bottom: 2rem;
 					padding-left: 0;					
 					@include media-max(lg){
 						flex-wrap: nowrap;
 						padding: 1rem 0;
 						overflow-x: scroll;
+						width: 100%;
 					}										
 					li{
 						list-style: none;
@@ -94,7 +95,7 @@ $: listener = {propCount , activeTab};
 						}
 						span{				
 							font-family: $secondary-font;
-							font-size: 2rem;
+							font-size: 1.75rem;
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;

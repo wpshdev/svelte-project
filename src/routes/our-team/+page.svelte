@@ -66,7 +66,7 @@
 <Container>
     <Row>
         <h2 class="sfont stc mb-5 text-center">{ourTeam.title}</h2>
-        <Col md={{ size: 8, offset: 2 }}>
+        <Col md={{ size: 8, offset: 2 }} class="inner-col">
         <Row>
             {#each ourTeam.team_members.data as member,index}
                 <Col md="6">
@@ -149,12 +149,12 @@
                 a{
                     opacity: 1;
                     background-color: rgb(8, 161, 216, 0.3);
-                    transition: 0.3s;
+                    transition: 1.5s;
                 }
                
                 .tm-box{
                     background: $primary-color;
-                    transition: 0.3s;
+                    transition: 1.5s;
                     h5, span {
                         color: $white-color;
                     }
@@ -260,6 +260,11 @@
                 width: 30.938rem;
             }
         }
+        @include media-max(lg){
+            img {
+                width: 100%;
+            }
+        }
         @include media-max(ipadmini){ //768
             text-align: center;
             width: 100%;
@@ -277,7 +282,11 @@
         box-shadow: 6px 8px 9px rgba(166, 184, 191, 0.2);
         margin-left: -3rem;
         margin-top: 3.563rem;
-        min-height: 36.888rem;
+        height: 36.888rem;
+
+        @include media-max(xl){
+            height: 30rem;
+        }
 
         @include media-max(ipadmini){ //768
             width: 100%;
@@ -286,6 +295,7 @@
             padding: 5.5rem 2.5rem 2.5rem 2.5rem;
             margin-left: 0;
             min-height: unset;
+            height: auto;
         }
 
         @include media-max(ml){
@@ -326,9 +336,13 @@
             line-height: 2.125rem;
             font-feature-settings: 'pnum' on, 'lnum' on;
             color: $darkergray;
-            height: 25.136rem;
+            height: 22rem;
             overflow-x: hidden;
             overflow-y: scroll;
+
+            @include media-max(xl){
+                height: 15rem;
+            }
 
             @include scrollbars(0.824rem, 80px, $secondary-color, $white-color);
 
@@ -350,6 +364,13 @@
         
     }
 
+}
+
+@include media-max(lg){ 
+    :global(.team-members .inner-col) {
+        margin-left: unset;
+        width: 100%;
+    }
 }
 
 </style>

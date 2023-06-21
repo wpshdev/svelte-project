@@ -172,7 +172,7 @@ $: {
     &:hover{
         .slider-container__carousel-cell__text{
           background: $primary-color;
-          transition: 0.3s;
+          transition: 1.5s;
           span {
             color: $white-color;
           }
@@ -199,7 +199,7 @@ $: {
             left: 0;
             width: 90%;
             text-align: left;
-            transition: 0.5s;
+            transition: 1.5s;
 
             @include media-max(sm){
                 margin: 0;

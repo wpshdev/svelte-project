@@ -93,14 +93,14 @@
 		&__content{
 			&__wrapper{
 				padding-left: 4rem;		
-				@include media-max(sm){
+				@include media-max(ipadmini){
 					padding: 0;
 				}					
 				&__pre-heading{
 					color: $secondary-color;
 					font-weight: 500;
 					@include media-max(sm){
-						padding: 1rem 0 0;
+						padding: 2rem 0 0;
 					}						
 				}	
 				span{
@@ -119,10 +119,17 @@
 				&__btns{
 					// text-align: center;
 					margin-top: 1.5rem;
+					display: flex;
+					@include media-max(ipadmini){
+						display: block;
+					}
 				}
 				.btn {
 					padding: 0.7rem 3.125rem; 
 					font-size: 1.25rem;
+					@include media-max(sm){
+						padding: 0.7rem 1rem;
+					}		
 				}
 				.btn-primary{
 					margin-right: 1rem;

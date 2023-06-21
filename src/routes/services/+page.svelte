@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
 <PageBanner title="{page.Title}" extraClass="services" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.url}"  />
+<Animate>
 <section class="service-b">
         <Container>
             <h2 class="text-center mb-5 py-3">{page.section1heading}</h2>
@@ -121,6 +122,7 @@
             </Row>
         </Container>
 </section>
+</Animate>
 <section class="mx-10 sets-us-apart">
     <Animate>
         <Container>
@@ -187,12 +189,12 @@
 		<Container>
 			<Row>
 				<Col md="12">
-					<h2 class="text-center">Explore our Projects...</h2>
+					<h2 class="text-center">{page.ExploreProjects.Heading}</h2>
 				</Col>			
 				{#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
 					<Col md="6">
 						<div class="explore__article">
-							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload>
+							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="explore__article__text">
 									<span>0{index+1}</span>
@@ -224,70 +226,131 @@
         background-position: center !important;
     }
     .service-b{
+        @include media-max(ipadmini){
+            padding-left: 0;
+            padding-right: 0;
+        }
         h2 {
             color: $secondary-color;
         }
-        // for mobile bg bars
-        :global(.row) {
+        // for bg bars
+        :global(.row:after) {
+            content: '';
+            display: block;
+            background-image: url(/src/lib/img/service-desktop-bars.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+            @include media-max(laptopS){
+                background-size: 110vw;
+                background-position: center;
+            }
+            @include media-max(ipadmini){
+                background-size: 125vw;
+                background-position: unset;
+                background-position-x: center;
+                background-position-y: 1rem;
+            }
             @include media-max(xs){
                 background-image: url(/src/lib/img/service-mobile-bars1.svg);
-                background-repeat: no-repeat;
-                // height: 1891px;
-                background-size: 100%;
-            }
-            @include media-max(ml){
-                background-image: url(/src/lib/img/service-mobile-bars.svg);
                 background-position: center;
-                min-height: 1891px;
-            }
-            @include media-max(ms){
-                min-height: unset;
-            }
-        }
-        :global(.row .col-md-4) {
-            @include media-max(ml){
-                min-height: 24.813rem;
+                background-size: contain;
             }
             @include media-max(mm){
-                min-height: 18.75rem;
+                background-image: url(/src/lib/img/service-mobile-bars.svg);
+                background-size: auto;
             }
-            @include media-max(ms){
+        }
+        :global(.row) {
+            position: relative;
+            // @include media-max(xs){
+            //     background-image: url(/src/lib/img/service-mobile-bars1.svg);
+            //     background-repeat: no-repeat;
+            //     // height: 1891px;
+            //     background-size: 100%;
+            // }
+            // @include media-max(ml){
+            //     background-image: url(/src/lib/img/service-mobile-bars.svg);
+            //     background-position: center;
+            //     min-height: 1891px;
+            // }
+            // @include media-max(ms){
+            //     min-height: unset;
+            // }
+        }
+        :global(.row .col-md-4) {
+            min-height: 40vh;
+            @include media-max(ipadmini){
                 min-height: unset;
             }
+            // @include media-max(ml){
+            //     min-height: 24.813rem;
+            // }
+            // @include media-max(mm){
+            //     min-height: 18.75rem;
+            // }
+            // @include media-max(ms){
+            //     min-height: unset;
+            // }
         }
         // end for mobile bg bars
         &__service-box{
-            padding: 3rem;
-            @include media-max(md){ 
-                padding: 1rem 0rem;
-                padding-left: 10px;
-            }
-            @include media-max(sm){
-                padding: 1rem 1rem;
-                margin: 4.5rem 0;
-            }
-            // for mobile bg bars
+            padding: 3vw;
             @include media-max(xs){
-                padding: 0;
-                margin: 17% 2.5rem;
-            }
-            @include media-max(w545){
-                margin: 15% 2.5rem;
+                padding: 15vw;
             }
             @include media-max(ml){
-                padding: 0;
-                margin: 4.5rem 2.5rem;
+                padding: 10vw 5vw;
             }
             @include media-max(mm){
-                margin: 4.5rem 1rem;
+                padding: 25vw 10vw;
+                margin: -10px;
             }
-            @include media-max(ms){
-                margin: 3.5rem 1rem;
-            }
+            // @include media-max(default){ 
+            //     padding: 2rem;
+            // }
+            // @include media-max(md){ 
+            //     padding: 1rem 0rem;
+            //     padding-left: 10px;
+            // }
+            // @include media-max(sm){
+            //     padding: 1rem 1rem;
+            //     margin: 4.5rem 0;
+            // }
+            // for mobile bg bars
+            // @include media-max(xs){
+            //     padding: 0;
+            //     margin: 17% 2.5rem;
+            // }
+            // @include media-max(w545){
+            //     margin: 15% 2.5rem;
+            // }
+            // @include media-max(ml){
+            //     padding: 0;
+            //     margin: 4.5rem 2.5rem;
+            // }
+            // @include media-max(mm){
+            //     margin: 4.5rem 1rem;
+            // }
+            // @include media-max(ms){
+            //     margin: 3.5rem 1rem;
+            // }
             // end for mobile bg bars
             p {
                 font-size: 1.15rem;
                 line-height: 2rem;
+                @include media-max(ipadmini){
+                    font-size: 1rem;
+                    line-height: 1.75rem;
+                }
+                @include media-max(xs){
+                    font-size: 1.15rem;
+                line-height: 2rem;
+                }
             }
             &__service-box-inner{
                 display: flex;
@@ -315,8 +378,12 @@
                         padding-left: 9px;
                         font-size: 1.688rem;
                     }
+                    @include media-max(ipadmini){
+                        font-size: 1.5rem;
+                    }
                     @include media-max(sm){
                         padding-left: 2rem;
+                        font-size: 1.688rem;
                     }
                 }
             } 
@@ -350,6 +417,9 @@
         }
     }
     :global(.sets-us-apart__row){
+        @include media-max(lg){
+            align-items: end;
+        }
         @include media-max(sm){
             flex-direction: column-reverse;
             &.flex-column-reverse {
@@ -363,12 +433,18 @@
         }
     }
     :global(.imageCont) {
+        @include media-max(ipadmini){
+            img {
+                min-height: 20rem;
+            }
+        }
         @include media-max(sm){
             text-align: center;
             z-index: 2;
             img {
                 width: 90% !important;
                 margin: auto;
+                min-height: unset;
             }
         }
     }
@@ -439,20 +515,11 @@
             height: 50vh;
             @include media-max(sm){
                 margin-bottom: 1rem;
-            } 	
-            img{
-                transition:1.2s;
-                object-fit: cover;
-                height: 100%;
-            }         
+            }      
             &:hover{
-                img{
-                    transition: 1.2s;
-                    scale: 1.2;
-                }
                 .explore__article__text {
                     background: $primary-color;
-                    transition: 1.2s;
+                    transition: 1.5s;
                     span {
                         color: $white-color;
                     }
@@ -471,7 +538,8 @@
                 left: 0;
                 width: 65%;
                 text-align: left;
-                @include media-max(sm){
+                transition: 1.5s;
+                @include media-max(ipadmini){
                     margin: 0;
                     font-size: 1rem;
                     width: 90%;

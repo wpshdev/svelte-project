@@ -56,7 +56,7 @@
 						y: 50								
 				}}>{home.homeBuilderHeading}</h2>
 				</Col>
-				<Col xs="12" md={{ size: 6, offset:3 }}>
+				<Col xs="12">
 					<div class="loc-gallery__cwrapper" in:fly={{
 							delay: 500,
 							duration: 2000,
@@ -93,7 +93,7 @@
 
 <section class="categories" >
 	<Animate >
-		<Container>
+		<Container class="categories_wrapper">
 			<Row>
 				<Col class="text-center">
 						<h2 in:fly={{
@@ -387,6 +387,8 @@
 				}
 			}		
 		&__cwrapper{
+			max-width: 42rem;
+			margin: auto;
 			.h3{
 				text-transform: uppercase;
 				margin-bottom: 2rem;
@@ -420,6 +422,9 @@
 
 	.categories{
 		margin-top: 0;
+		// :global(.categories_wrapper) {
+		// 	max-width: 1440px;
+		// }
 		h2{
 			margin-bottom: 2rem;
 		}
@@ -437,8 +442,17 @@
 				ul{
 					display: flex;
 					// flex-wrap: wrap;
+					width: 90%;
+					margin: auto;
 					margin-bottom: 2rem;
-					padding-left: 0;		
+					padding-left: 0;	
+					
+					@include media-max(lg){
+						flex-wrap: nowrap;
+						padding: 1rem 0;
+						overflow-x: scroll;
+						width: 100%;
+					}		
 								
 					@include media-max(xs){
 						flex-wrap: nowrap;
@@ -460,7 +474,7 @@
 						}
 						span{				
 							font-family: $secondary-font;
-							font-size: 2rem;
+							font-size: 1.75rem;
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;
@@ -482,6 +496,10 @@
 				}
 			}
 			&__gallery{
+				min-height: 60vh;
+				@include media-max(ipadmini){
+					min-height: auto;
+				}	
 				&__imgs{
 					display: none;
 					&.active{
@@ -593,6 +611,10 @@
 					top: 0;
 					height: 100%;
 				}
+				@include media-max(ipadmini){	
+					top: unset;
+					height: 135%;
+				}
 				@include media-max(sm){
 					width: 100vw;
 					top: -5rem;
@@ -620,8 +642,9 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4rem;
-					@include media-max(md){
-						line-height: 2.5rem;
+					@include media-max(lg){
+						line-height: 3rem;
+						margin: 1rem 0;
 					}	
 				}
 				p{
@@ -643,10 +666,25 @@
 	}	
 
 	.process{
-		margin: 7rem 0;		
+		margin: 7rem 0;	
+		@include media-max(ipadmini){
+			padding-bottom: 7rem;
+		}
+		@include media-max(sm){
+			padding-bottom: 0;
+		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -3rem;		
+    		margin-bottom: -3rem;
+			@include media-max(default){
+				margin-bottom: 0rem;	
+			}	
+			@include media-max(lg){
+				margin-bottom: 1.5rem;	
+			}	
+			@include media-max(lg){
+				margin-bottom: 5rem;	
+			}		
 			@include media-max(sm){
 				text-align: left;
 				margin-bottom: 0;	
@@ -682,7 +720,13 @@
 				background: #F2F2F2;
 				width: 135%;
 				content: "";
-				height: 100%;				
+				height: 100%;
+				@include media-max(xl){	
+					height: 120%;
+				}	
+				@include media-max(ipadmini){	
+					height: 140%;
+				}			
 				@include media-max(sm){
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
@@ -704,8 +748,9 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4rem;
-					@include media-max(md){
-						line-height: 2.5rem;
+					@include media-max(lg){
+						line-height: 3rem;
+						margin: 1rem 0;
 					}	
 				}
 				p{
@@ -739,6 +784,12 @@
 
 	.story{
 		margin: 7rem 0 3.75rem;
+		@include media-max(ipadmini){
+			padding-bottom: 7rem;
+		}
+		@include media-max(sm){
+			padding-bottom: 0;
+		}	
 		&__content{
 			height: 35vw;
 			display: flex;
@@ -756,6 +807,10 @@
 				@include media-max(xl){	
 					top: 0;
 					height: 100%;
+				}	
+				@include media-max(ipadmini){	
+					top: unset;
+					height: 150%;
 				}	
 				@include media-max(sm){
 					top: -10vw;
@@ -778,8 +833,8 @@
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					@include media-max(md){
-						line-height: 2.5rem;
+					@include media-max(lg){
+						line-height: 3rem;
 					}	
 				}
 				:global(p){
