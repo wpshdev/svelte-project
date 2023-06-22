@@ -13,7 +13,7 @@
           observer.disconnect();
         }
       });
-    }, { threshold: [0] }); // Set the threshold to 10%
+    }, { threshold: [0.1] }); // Set the threshold to 10%
   
 	  observer.observe(element);
   

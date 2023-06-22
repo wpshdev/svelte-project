@@ -235,30 +235,17 @@
         }
         // for bg bars
         :global(.row:after) {
-            content: '';
-            display: block;
-            background-image: url(/src/lib/img/service-desktop-bars.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            z-index: -1;
-            @include media-max(laptopS){
-                background-size: 110vw;
-                background-position: center;
-            }
-            @include media-max(ipadmini){
-                background-size: 125vw;
-                background-position: unset;
-                background-position-x: center;
-                background-position-y: 1rem;
-            }
             @include media-max(xs){
+                content: '';
+                display: block;
                 background-image: url(/src/lib/img/service-mobile-bars1.svg);
                 background-position: center;
                 background-size: contain;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: -1;
             }
             @include media-max(mm){
                 background-image: url(/src/lib/img/service-mobile-bars.svg);
@@ -267,79 +254,28 @@
         }
         :global(.row) {
             position: relative;
-            // @include media-max(xs){
-            //     background-image: url(/src/lib/img/service-mobile-bars1.svg);
-            //     background-repeat: no-repeat;
-            //     // height: 1891px;
-            //     background-size: 100%;
-            // }
-            // @include media-max(ml){
-            //     background-image: url(/src/lib/img/service-mobile-bars.svg);
-            //     background-position: center;
-            //     min-height: 1891px;
-            // }
-            // @include media-max(ms){
-            //     min-height: unset;
-            // }
         }
         :global(.row .col-md-4) {
             min-height: 40vh;
             @include media-max(ipadmini){
                 min-height: unset;
             }
-            // @include media-max(ml){
-            //     min-height: 24.813rem;
-            // }
-            // @include media-max(mm){
-            //     min-height: 18.75rem;
-            // }
-            // @include media-max(ms){
-            //     min-height: unset;
-            // }
         }
         // end for mobile bg bars
         &__service-box{
             padding: 3vw;
+            
             @include media-max(xs){
                 padding: 15vw;
             }
             @include media-max(ml){
-                padding: 10vw 5vw;
+                padding: 10vw 15vw;
             }
             @include media-max(mm){
                 padding: 25vw 10vw;
                 margin: -10px;
             }
-            // @include media-max(default){ 
-            //     padding: 2rem;
-            // }
-            // @include media-max(md){ 
-            //     padding: 1rem 0rem;
-            //     padding-left: 10px;
-            // }
-            // @include media-max(sm){
-            //     padding: 1rem 1rem;
-            //     margin: 4.5rem 0;
-            // }
-            // for mobile bg bars
-            // @include media-max(xs){
-            //     padding: 0;
-            //     margin: 17% 2.5rem;
-            // }
-            // @include media-max(w545){
-            //     margin: 15% 2.5rem;
-            // }
-            // @include media-max(ml){
-            //     padding: 0;
-            //     margin: 4.5rem 2.5rem;
-            // }
-            // @include media-max(mm){
-            //     margin: 4.5rem 1rem;
-            // }
-            // @include media-max(ms){
-            //     margin: 3.5rem 1rem;
-            // }
-            // end for mobile bg bars
+            
             p {
                 font-size: 1.15rem;
                 line-height: 2rem;
@@ -516,6 +452,11 @@
             @include media-max(sm){
                 margin-bottom: 1rem;
             }      
+            img {
+                object-fit: cover;
+                object-position: center;
+                height: 100%;
+            }   
             &:hover{
                 .explore__article__text {
                     background: $primary-color;

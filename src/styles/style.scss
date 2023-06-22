@@ -894,52 +894,52 @@ header{
 .text-right{
     text-align: right;
 }
-// .service-b{
-//     .col-md-4{
-//         display: flex;
-//     }
-//     .col-md-4:nth-child(1){
-//         background-image: url("/src/lib/img/Box1.svg");
-//         background-size: 100%;
-//         background-position: right top;
-//         background-repeat: no-repeat;
-//         @include media-max(xs){
-//            background: unset;
-//         }	
-//     }
-//     .col-md-4:nth-child(2){
-//         background-image: url("/src/lib/img/Box2.svg");
-//         background-size: 100%;
-//         background-position: left bottom;
-//         background-repeat: no-repeat;
-//         @include media-max(xs){
-//             background: unset;
-//          }	
-//     }
-//     .col-md-4:nth-child(3){
-//         background-image: url("/src/lib/img/Box4.svg");
-//         background-size: 100%;
-//         background-position: left bottom;
-//         background-repeat: no-repeat;
-//         @include media-max(xs){
-//             background: unset;
-//          }	
-//     }
-//     .col-md-4:nth-child(6){
-//         background-image: url("/src/lib/img/Box3.svg");
-//         background-size: 100%;
-//         background-position: left bottom;
-//         background-repeat: no-repeat;
-//         @include media-max(xs){
-//             background: unset;
-//          }	
-//     }
-//     @include media-max(sm){
-//         .col-md-4:nth-child(2){
-//             background-image: unset;
-//         }
-//     }
-// }
+.service-b{
+    .col-md-4{
+        display: flex;
+    }
+    .col-md-4:nth-child(1){
+        background-image: url("/src/lib/img/Box1.svg");
+        background-size: cover;
+        background-position: right top;
+        background-repeat: no-repeat;
+        @include media-max(xs){
+           background: unset;
+        }	
+    }
+    .col-md-4:nth-child(2){
+        background-image: url("/src/lib/img/Box2.svg");
+        background-size: cover;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        @include media-max(xs){
+            background: unset;
+         }	
+    }
+    .col-md-4:nth-child(3){
+        background-image: url("/src/lib/img/Box4.svg");
+        background-size: cover;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        @include media-max(xs){
+            background: unset;
+         }	
+    }
+    .col-md-4:nth-child(6){
+        background-image: url("/src/lib/img/Box3.svg");
+        background-size: cover;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        @include media-max(xs){
+            background: unset;
+         }	
+    }
+    @include media-max(sm){
+        .col-md-4:nth-child(2){
+            background-image: unset;
+        }
+    }
+}
 
 .zoomImg{
     img{

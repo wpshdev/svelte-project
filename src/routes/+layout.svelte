@@ -8,6 +8,7 @@
 	import { Container } from "sveltestrap";  
     import Animate from "$lib/components/Animate.svelte";
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
+    import { fade, fly } from 'svelte/transition';
     // let isHomePage = false;
     function isHome(url) {
         return url === "/" ? false : true;
