@@ -344,7 +344,12 @@ section{
 		height: 50vh;
 		@include media-max(sm){
 			margin-bottom: 1rem;
-		}	     
+		}	  
+		img {
+			object-fit: cover;
+			object-position: center;
+			height: 100%;
+		}   
         &:hover{
 			.related__article__text {
 				background: $primary-color;

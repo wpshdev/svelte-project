@@ -29,7 +29,7 @@
             <Col class="text-center">
                 <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="4"/>
+                <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="5"/>
             </Col>
         </Row>
     </Container>

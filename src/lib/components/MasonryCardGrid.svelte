@@ -2,7 +2,7 @@
     import { fly, fade } from "svelte/transition";
     import { MasonryGrid } from "@egjs/svelte-grid";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
-    
+    import { onMount } from 'svelte'
     
     const gap = 0;
     const defaultDirection = "end";
@@ -17,56 +17,58 @@
     const cache = new Map();
     
     export let propCount;
-    async function getProjects(id) {
-        if (cache.has(id)) {
-            projects = cache.get(id);
-            return;
-        }
+    let promise = fetchPortfolios();
+    async function fetchPortfolios(){
         const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
         const headers = {
             Authorization: 'Bearer ' + PUBLIC_STRAPI_API
-        }    
-        const response = await axios.get(url, { headers });
-        projects = response.data;
-        cache.set(id, projects);
+        }  
+
+        try {
+            const response = await axios.get(url, { headers });
+            return response.data.data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
-    
+
     $: if (id) {
-        (async () => {
-            await getProjects(id); 
-            console.log(projects);
-        })();
+        promise = fetchPortfolios();
     }
+
+    onMount(() => {
+        promise = fetchPortfolios();
+    })
     
     </script>
     
-        {#if projects}
-            <MasonryGrid
-            class="container masonry_container"
-            {defaultDirection}
-            {gap}
-            {align}
-            {column}
-            {columnSize}
-            {columnSizeRatio}
-        >       
-             {#each projects.data as project, index}				
-                 {#if index < propCount}
-                    <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1200}}" out:fly="{{y: 0, duration:1000 }}">       
-                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
-                            <!-- <div class="masonry-items__text">
-                                <span>{index + 1}</span>
-                                {project.attributes.title}
-                            </div> -->
-                        </a>
-                    </div>	                    
-                 {/if}				
-             {/each}
-            </MasonryGrid>         														
-        {:else}
-            <div class="col text-center">Loading...</div>
-        {/if}         
+    {#await promise}
+    <div class="col text-center">Loading...</div>
+    {:then portfolios}
+        <MasonryGrid
+        class="container masonry_container"
+        {defaultDirection}
+        {gap}
+        {align}
+        {column}
+        {columnSize}
+        {columnSizeRatio}
+    >       
+            {#each portfolios as project, index}				
+                {#if index < propCount}
+                <div class="masonry-items" in:fly="{{ y: 0, duration: 500, delay:index * 1000}}" out:fly="{{y: 0, duration:500 }}">       
+                    <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+                        <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
+                        <!-- <div class="masonry-items__text">
+                            <span>{index + 1}</span>
+                            {project.attributes.title}
+                        </div> -->
+                    </a>
+                </div>	                    
+                {/if}				
+            {/each}
+        </MasonryGrid>   
+    {/await}      
     
     <style lang="scss">
         .container {
