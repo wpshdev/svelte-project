@@ -16,7 +16,7 @@ export let subHeading2 = '';
 export let paginate = '';
 export let postperpage = '';
 
-$: listener = {propCount, activeTab, paginate, postperpage};
+$: listener = {propCount, activeTab};
 
 </script>
 

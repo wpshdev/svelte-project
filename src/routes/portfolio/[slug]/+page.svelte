@@ -141,7 +141,7 @@
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
 								<div class="related__article__text">
-									<span>0{index+1}</span>
+									<span>{('0' + (index + 1)).slice(-2)}</span>
 									{rPortfolio.attributes.title}
 									<i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>

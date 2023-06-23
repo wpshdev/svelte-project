@@ -10,8 +10,8 @@
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
     
-    // let properties = data.properties.data;
-    // console.log(properties);
+    let properties = data.properties.data;
+    console.log(properties);
     // console.log(data);
 	// console.log(data.data.attributes.Banner.background.data.attributes.url);
 </script>
@@ -29,7 +29,7 @@
             <Col class="text-center">
                 <h2>{portfolio.masonryGallery.masonryHeading}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="5"/>
+                <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/>
             </Col>
         </Row>
     </Container>

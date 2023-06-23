@@ -9,12 +9,12 @@ export async function load() {
     const response = await axios.get(url, { headers });
 
 
-    // const urlProperties = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
-    // const properties = await axios.get(urlProperties, { headers }); 
+    const urlProperties = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
+    const properties = await axios.get(urlProperties, { headers }); 
 
     // console.log(response.json());
     return {
-        portfolio: response.data
-        // properties: properties.data
+        portfolio: response.data,
+        properties: properties.data
     }
 }                                                                     

@@ -1,15 +1,15 @@
 <script lang="ts">
     import { fly, fade } from "svelte/transition";
-    import { MasonryGrid } from "@egjs/svelte-grid";
+    // import { MasonryGrid } from "@egjs/svelte-grid";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import { onMount } from 'svelte'
     
-    const gap = 0;
-    const defaultDirection = "end";
-    const align = "end";
-    const column = 3;
-    const columnSize = 0;
-    const columnSizeRatio = 0;
+    // const gap = 5;
+    // const defaultDirection = "end";
+    // const align = "end";
+    // const column = 3;
+    // const columnSize = 0;
+    // const columnSizeRatio = 0;
     import axios from "axios";
     export let id;
     let projects;
@@ -42,21 +42,14 @@
     
     </script>
     
+    
     {#await promise}
     <div class="col text-center">Loading...</div>
     {:then portfolios}
-        <MasonryGrid
-        class="container masonry_container"
-        {defaultDirection}
-        {gap}
-        {align}
-        {column}
-        {columnSize}
-        {columnSizeRatio}
-    >       
+        <div class="container masonry_container">       
             {#each portfolios as project, index}				
                 {#if index < propCount}
-                <div class="masonry-items" in:fly="{{ y: 0, duration: 500, delay:index * 1000}}" out:fly="{{y: 0, duration:500 }}">       
+                <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
                     <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
                         <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
                         <!-- <div class="masonry-items__text">
@@ -67,7 +60,7 @@
                 </div>	                    
                 {/if}				
             {/each}
-        </MasonryGrid>   
+        </div>
     {/await}      
     
     <style lang="scss">
@@ -81,48 +74,51 @@
             width: 100%;
             text-align: center;
         }
-        .masonry-items{
-            width: 33%;   
-            overflow: hidden;
-            position: absolute;
-            color: white;
-            text-align: center;  
-            height: 55vh;
-            @include media-max(ipadmini){
-                height: 20vh;
-            }
-            @include media-max(sm){
-                height: 20vh;
-            }
-            a{
-                display: block;
-                height: 100%;
-                width: 100%;
-                margin: 0 1.125rem;
+        .masonry_container {
+            display: flex;
+            .masonry-items{
+                width: 33%;   
                 overflow: hidden;
-                img{
+                // position: absolute;
+                color: white;
+                text-align: center;  
+                height: 55vh;
+                @include media-max(ipadmini){
+                    height: 20vh;
+                }
+                @include media-max(sm){
+                    height: 20vh;
+                }
+                a{
+                    display: block;
                     height: 100%;
-                    object-fit: cover;
-                }   
-            }      
-            &__text{
-                background-color: $secondary-color;
-                color: #fff;
-                padding: 0.5rem;
-                position: absolute;
-                z-index: 2;
-                bottom: 1rem;
-                left: 0;
-                width: 75%;
-                text-align: left;
-             
-                span{
-                    color: $primary-color;
-                    font-size: 1.2rem;
-                    margin: 0 0.8rem 0;
-                    @include media-max(sm){
-                        font-size: 0.8rem;
-                    }                       
+                    width: 100%;
+                    margin: 0 1.125rem;
+                    overflow: hidden;
+                    img{
+                        height: 100%;
+                        object-fit: cover;
+                    }   
+                }      
+                &__text{
+                    background-color: $secondary-color;
+                    color: #fff;
+                    padding: 0.5rem;
+                    position: absolute;
+                    z-index: 2;
+                    bottom: 1rem;
+                    left: 0;
+                    width: 75%;
+                    text-align: left;
+                
+                    span{
+                        color: $primary-color;
+                        font-size: 1.2rem;
+                        margin: 0 0.8rem 0;
+                        @include media-max(sm){
+                            font-size: 0.8rem;
+                        }                       
+                    }
                 }
             }
         }
