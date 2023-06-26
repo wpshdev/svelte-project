@@ -3,6 +3,7 @@
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
 // import Flickity from "flickity";
+import noFeatured from "$lib/img/blog-empty.svg"
 
 let flickityInstance;
 export let preHeading; 
@@ -85,7 +86,11 @@ $: {
       {#each featuredProjects.data as project, index}
         <div class="slider-container__carousel-cell">
           <a href="/portfolio/{project.attributes.slug}" data-sveltekit-reload class="zoomImg">      
+            {#if project.attributes.featuredImage.data != null}
             <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+            {:else}
+            <img src="{noFeatured}" alt="{project.attributes.title}" >
+            {/if}
             <div class="slider-container__carousel-cell__text">
               <span>{('0' + (index + 1)).slice(-2)}</span>
               {project.attributes.title}

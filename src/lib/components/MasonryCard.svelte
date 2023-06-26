@@ -9,6 +9,7 @@ import { fly, fade } from "svelte/transition";
 import { paginate, LightPaginationNav } from 'svelte-paginate';
 import { PUBLIC_STRAPI_API } from '$env/static/public';
 import { onMount } from 'svelte'
+import noFeatured from "$lib/img/blog-empty.svg"
 
 // const gap = 10;
 // const defaultDirection = "end";
@@ -28,7 +29,7 @@ const cache = new Map();
 export let propCount;
 let currentPage = 1;
 
-let items;
+// let items;
 
 let promise = fetchPortfolios();
 async function fetchPortfolios(){
@@ -64,8 +65,12 @@ onMount(async () => {
     {#each paginate({ items, pageSize, currentPage }) as project, index}			
         {#if index < propCount}
             <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}"> 
-                <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-                    <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
+                <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
+                    {#if project.attributes.featuredImage.data != null}
+                    <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+                    {:else}
+                    <img src="{noFeatured}" alt="{project.attributes.title}" >
+                    {/if}
                     <div class="masonry-items__text">
                         <span>{('0' + (index + 1)).slice(-2)}</span>
                         {project.attributes.title}

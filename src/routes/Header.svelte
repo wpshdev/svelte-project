@@ -59,7 +59,7 @@
 		
 		const dropdownParent = document.querySelector('.dropdown.nav-item');
 
-		if (window.innerWidth >= 768) { // apply only on desktop
+		if (window.innerWidth >= 768 && dropdownParent) {
 			if(dropdownParent.classList.contains('show')) {
 
 				// Create a custom click event

@@ -10,6 +10,7 @@
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.services.data.attributes
     let featuredProjects = data.portfolios.data
+    import noFeatured from "$lib/img/blog-empty.svg"
     console.log(page);
 
     // export let pdata;
@@ -195,8 +196,13 @@
 					<Col md="6">
 						<div class="explore__article">
 							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
-								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
-								<div class="explore__article__text">
+								<!-- <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}"> -->
+								{#if featuredProject.attributes.featuredImage.data != null}
+                                <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
+                                {:else}
+                                <img src="{noFeatured}" alt="{featuredProject.attributes.title}" >
+                                {/if}
+                                <div class="explore__article__text">
 									<span>{('0' + (index + 1)).slice(-2)}</span>
 									{featuredProject.attributes.title}
                                     <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">

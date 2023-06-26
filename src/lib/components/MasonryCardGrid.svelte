@@ -3,7 +3,8 @@
     // import { MasonryGrid } from "@egjs/svelte-grid";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import { onMount } from 'svelte'
-    
+    import noFeatured from "$lib/img/blog-empty.svg"
+    import Animate from "./Animate.svelte";
     // const gap = 5;
     // const defaultDirection = "end";
     // const align = "end";
@@ -15,6 +16,7 @@
     let projects;
     let duration = 1500;
     const cache = new Map();
+    
     
     export let propCount;
     let promise = fetchPortfolios();
@@ -42,7 +44,6 @@
     
     </script>
     
-    
     {#await promise}
     <div class="col text-center">Loading...</div>
     {:then portfolios}
@@ -51,7 +52,11 @@
                 {#if index < propCount}
                 <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
                     <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-                        <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="modern" >
+                        {#if project.attributes.featuredImage.data != null}
+                        <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+                        {:else}
+                        <img src="{noFeatured}" alt="{project.attributes.title}" >
+                        {/if}
                         <!-- <div class="masonry-items__text">
                             <span>{index + 1}</span>
                             {project.attributes.title}
@@ -61,8 +66,8 @@
                 {/if}				
             {/each}
         </div>
-    {/await}      
-    
+    {/await}   
+
     <style lang="scss">
         .container {
         overflow: hidden;
