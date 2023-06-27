@@ -12,7 +12,9 @@
 	// import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
 	// import contactBG from "$lib/img/ContactBG.jpg";
-	
+	import noFeatured from "$lib/img/blog-empty.svg"
+	// import ImageLoader from "$lib/components/imageLazy/ImageLoader.svelte";
+
 	export let data;
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	
@@ -138,10 +140,15 @@
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
 						<div class="related__article">
-							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg" style="background-image">
-								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}">
+							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
+								<!-- <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}"> -->
+								{#if rPortfolio.attributes.featuredImage.data != null}
+                                <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
+                                {:else}
+                                <img src="{noFeatured}" alt="{rPortfolio.attributes.title}" >
+                                {/if}
 								<div class="related__article__text">
-									<span>0{index+1}</span>
+									<span>{('0' + (index + 1)).slice(-2)}</span>
 									{rPortfolio.attributes.title}
 									<i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
@@ -216,10 +223,11 @@ section{
 	//   color: $secondary-color;
 	  color: $white-color;
     }
-	p{
+	:global(p){
 		line-height: 2;
 		max-width: 800px;
-    	margin: 0 auto;		
+    	margin: 0 auto;	
+		color: $white-color;	
 	}
   }
 }

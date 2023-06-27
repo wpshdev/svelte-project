@@ -10,6 +10,7 @@
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.services.data.attributes
     let featuredProjects = data.portfolios.data
+    import noFeatured from "$lib/img/blog-empty.svg"
     console.log(page);
 
     // export let pdata;
@@ -42,17 +43,17 @@
             <h2 class="text-center mb-5 py-3">{page.section1heading}</h2>
             <Row>
                 <Col md=4 sm=6 xs=12>
-                    <div class="service-b__service-box">
-                        <div class="service-b__service-box__service-box-inner">
-                            <Animate>
-                                <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}">
-                                </div>
-                            </Animate>
-                            <h4>{page.section1item1heading}</h4>
+                    <Animate>
+                        <div class="service-b__service-box">
+                            <div class="service-b__service-box__service-box-inner">
+                                    <div class="service-b__service-box__service-box-inner__service-icon">
+                                        <img src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}">
+                                    </div>
+                                <h4>{page.section1item1heading}</h4>
+                            </div>
+                            <p>{page.section1item1text}</p>
                         </div>
-                        <p>{page.section1item1text}</p>
-                    </div>
+                    </Animate>
                 </Col>
                 <Col md=4 sm=6 xs=12>
                     <Animate>
@@ -195,9 +196,14 @@
 					<Col md="6">
 						<div class="explore__article">
 							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
-								<img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}">
-								<div class="explore__article__text">
-									<span>0{index+1}</span>
+								<!-- <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}"> -->
+								{#if featuredProject.attributes.featuredImage.data != null}
+                                <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
+                                {:else}
+                                <img src="{noFeatured}" alt="{featuredProject.attributes.title}" >
+                                {/if}
+                                <div class="explore__article__text">
+									<span>{('0' + (index + 1)).slice(-2)}</span>
 									{featuredProject.attributes.title}
                                     <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
@@ -226,9 +232,13 @@
         background-position: center !important;
     }
     .service-b{
-        @include media-max(ipadmini){
+        @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
+            :global(.container) {
+                max-width: 100%;
+                margin: auto;
+            }
         }
         h2 {
             color: $secondary-color;
@@ -266,10 +276,10 @@
             padding: 3vw;
             
             @include media-max(xs){
-                padding: 15vw;
+                padding: 15vw 10vw;
             }
             @include media-max(ml){
-                padding: 10vw 15vw;
+                padding: 10vw 0;
             }
             @include media-max(mm){
                 padding: 25vw 10vw;
