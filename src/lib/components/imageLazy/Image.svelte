@@ -21,13 +21,9 @@
       width: 100%;
       transition: .5s;
 	    object-fit: cover;
-      height: 70vh;
       opacity: 0;
       &.loaded {
         opacity: 1;
-      }
-      @include media-max(sm){
-        height: 40vh;
       }
     } 
   </style>

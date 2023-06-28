@@ -218,17 +218,6 @@ onMount(async () => {
     .paginate-section {
         margin-top: 5rem; 
     }
-    :global(.option.prev path, .option.next path) {
-        fill: $primary-color;
-    }
-    :global(.option.prev::after) {
-        content: 'Prev';
-        margin-left: 0.25rem;
-    }
-    :global(.option.next::before) {
-        content: 'Next';
-        margin-right: 0.25rem;
-    }
     :global(.blog-card) {
         align-items: center;
     }

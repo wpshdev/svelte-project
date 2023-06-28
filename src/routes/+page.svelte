@@ -19,22 +19,45 @@
 	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
 	//import gsap from 'gsap';
 	// import { lazyload } from '$lib/lazyload.js'
+	import axios from "axios";
+	import { PUBLIC_STRAPI_API } from '$env/static/public';
+	import noFeatured from "$lib/img/blog-empty.svg"
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
 	const home = data.data.attributes;
 	let propCount = 3;
-	let listener = {};
+	//let listener = {};
+	let portfolioList = [];
 
 	let activeTab = home.categories.data[0].id;
 	function handleTabClick(category) {
 		activeTab = category;
 	}
 
-	$: listener = {propCount , activeTab};
+	$: if (activeTab) { // Check if has new variable data
+        portfolioList = []; // to reset portfolioList length
+        (async () => {
+            const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
+            const headers = {
+                Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+            }  
+
+            try {
+                const response = await axios.get(url, { headers });
+                new Promise((resolve) => {
+                    setTimeout(() => resolve(portfolioList = response.data.data), 500)
+                })
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        })();
+    }
+
+	// $: listener = {propCount , activeTab};
 	
-	let height;
-	console.log(home);
+	// let height;
+	// console.log(home);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -130,11 +153,28 @@
 						<div class="categories__tabs__gallery" in:fly={{
 							y: 50								
 					}}>
-							{#key listener }
+							<!-- {#key listener }
 								<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
 									<MasonryCardGrid id={activeTab} {propCount}/>
 								</div>			
-							{/key}																		
+							{/key}																		 -->
+							{#key activeTab}
+								<div class="container masonry_container">       
+									{#each portfolioList as project, index}				
+										{#if index < propCount}
+										<div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
+											<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+												{#if project.attributes.featuredImage.data != null}
+												<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+												{:else}
+												<img src="{noFeatured}" alt="{project.attributes.title}" >
+												{/if}
+											</a>
+										</div>	                    
+										{/if}				
+									{/each}
+								</div>
+                			{/key}
 						</div>					
 					</div>
 				</Col>
@@ -518,6 +558,57 @@
 				}
 			}
 		}
+		.masonry_container {
+            display: flex;
+            .masonry-items{
+                width: 33%;   
+                overflow: hidden;
+                display: grid;
+                grid-template-rows: 1fr auto;
+                break-inside: avoid;
+                // position: absolute;
+                color: white;
+                text-align: center;  
+                height: 55vh;
+                @include media-max(ipadmini){
+                    height: 20vh;
+                }
+                @include media-max(sm){
+                    height: 20vh;
+                }
+                a{
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    margin: 0 1.125rem;
+                    overflow: hidden;
+                    img{
+                        height: 100%;
+                        object-fit: cover;
+                    }   
+                }      
+                &__text{
+                    background-color: $secondary-color;
+                    color: #fff;
+                    padding: 0.5rem;
+                    position: absolute;
+                    z-index: 2;
+                    bottom: 1rem;
+                    left: 0;
+                    width: 75%;
+                    text-align: left;
+                
+                    span{
+                        color: $primary-color;
+                        font-size: 1.2rem;
+                        margin: 0 0.8rem 0;
+                        @include media-max(sm){
+                            font-size: 0.8rem;
+                        }                       
+                    }
+                }
+            }
+        }
 	}
 
 	.tnr{

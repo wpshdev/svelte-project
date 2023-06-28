@@ -164,6 +164,10 @@ body {
     .image-wrapper{
       min-width: 20rem;
       height: 70vh;
+      :global(img) {
+        min-width: 20rem;
+        height: 70vh;
+      }
     }
     @include media-max(ipadmini){
       // margin: 30vh 0.5rem 30vh;
