@@ -93,8 +93,8 @@ function log(){
           {#each images as image, index}
             <div class="slider-container__carousel-cell">
               <div class="image-wrapper">
-                <img src={domain}{image.attributes.url}  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
-                <!-- <ImageLoader src="{domain}{image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader> -->
+                <!-- <img src={domain}{image.attributes.url}  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />          -->
+                <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader>
               </div>     
                 <a href="{domain}{image.attributes.url}?download" class="download" download>
                   <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,7 +164,11 @@ body {
     margin: 11vh 0.5rem 11vh;
     .image-wrapper{
       min-width: 20rem;
-      height: 78vh;
+      height: 70vh;
+      :global(img) {
+        min-width: 20rem;
+        height: 70vh;
+      }
     }
     @include media-max(ipadmini){
       // margin: 30vh 0.5rem 30vh;

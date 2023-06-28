@@ -29,6 +29,8 @@ const cache = new Map();
 export let propCount;
 let currentPage = 1;
 
+import ImageLoader from './imageLazy/ImageLoader.svelte';
+
 // let items;
 
 let promise = fetchPortfolios();
@@ -67,9 +69,11 @@ onMount(async () => {
             <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}"> 
                 <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                     {#if project.attributes.featuredImage.data != null}
-                    <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+                    <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader>
+                    <!-- <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >    -->
                     {:else}
-                    <img src="{noFeatured}" alt="{project.attributes.title}" >
+                    <ImageLoader src="{noFeatured}" lowRes="{noFeatured}" alt="{project.attributes.title}"></ImageLoader>
+                    <!-- <img src="{noFeatured}" alt="{project.attributes.title}" > -->
                     {/if}
                     <div class="masonry-items__text">
                         <span>{('0' + (index + 1)).slice(-2)}</span>
@@ -213,17 +217,6 @@ onMount(async () => {
     
     .paginate-section {
         margin-top: 5rem; 
-    }
-    :global(.option.prev path, .option.next path) {
-        fill: $primary-color;
-    }
-    :global(.option.prev::after) {
-        content: 'Prev';
-        margin-left: 0.25rem;
-    }
-    :global(.option.next::before) {
-        content: 'Next';
-        margin-right: 0.25rem;
     }
     :global(.blog-card) {
         align-items: center;

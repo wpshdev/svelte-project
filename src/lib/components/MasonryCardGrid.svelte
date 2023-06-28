@@ -84,6 +84,9 @@
             .masonry-items{
                 width: 33%;   
                 overflow: hidden;
+                display: grid;
+                grid-template-rows: 1fr auto;
+                break-inside: avoid;
                 // position: absolute;
                 color: white;
                 text-align: center;  

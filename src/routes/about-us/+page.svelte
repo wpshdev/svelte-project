@@ -6,6 +6,8 @@
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
     // import tempBG from '$lib/img/certificate.png';
+    import certBG from '$lib/img/BlankCertBg.png';
+    import certBGMobile from '$lib/img/CertBGMobileBlank.png';
     // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
@@ -100,11 +102,19 @@
         <Animate>
             <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
             <p class="text-left">{@html about.Section5text}</p> -->
-            {#if about.Section5image.data}
+            <div class="certificate-container" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
+                <h2 class="certificate-title">Commitment to Excellence</h2>
+                <div class="certificate-content">
+                From start to finish, ULFBUILT demonstrates their commitment to excellence. Our team is passionate, motivated and willing to go above and beyond to make sure our clients are satisfied.
+                <div class="spacer"></div>
+                We take pride in providing quality customer service and creating long-lasting relationships with the customers we serve. We believe that any task can be completed successfully when you have a team of talented individuals who care about their work.</div>
+            </div>
+            
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-              <img src="{url+about.Section5image.data.attributes.url }" alt="{about.Section3heading}" class="desktop">
+            <!-- {#if about.Section5image.data}
+              <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
               <img src="{url+about.Section5MobileImage.data.attributes.url}" alt="{about.Section3heading}" class="mobile">
-            {/if}      
+            {/if}       -->
         </Animate>
     </Container>
 </section>
@@ -177,6 +187,7 @@
 </section>
 <Contactform/>
 <style lang="scss">
+    @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
     $darkgrey-color: #3E3636;   
     :global(.banner.about) {
         background-position: top !important;
@@ -212,12 +223,73 @@
             .mobile {
                 display: none;
             }
+            @include media-max(md){
+                :global(.container) {
+                    max-width: 100%;
+                    margin: auto;
+                }
+            }
             @include media-max(sm){
                 .mobile {
                     display: block;
                 }
                 .desktop {
                     display: none;
+                }
+            }
+            .certificate-container {
+                background-image: var(--cta-banner);
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: relative;
+                background-size: contain;
+                @include media-max(md){
+                    background-image: var(--cta-banner-mobile);
+                    background-position: center;
+                }
+                .certificate-title {
+                    color: $secondary-color;
+                    font-family: "Pinyon Script", cursive;
+                    padding-top: 13.5rem;
+                    @include media-max(w1400){
+                        padding-top: 11rem;
+                    }
+                    @include media-max(lg){
+                        padding-top: 10rem;
+                    }
+                    @include media-max(md){
+                       width: 14.375rem;
+                       margin: auto;
+                       padding-top: 7.8rem;
+                    }
+                }
+                .certificate-content {
+                    max-width: 43.379rem;
+                    font-size: 1.25rem;
+                    line-height: 2.125rem;
+                    color: $darkergray;
+                    margin: auto;
+                    padding-top: 7rem;
+                    @include media-max(w1400){
+                        padding-top: 5rem;
+                    }
+                    @include media-max(lg){
+                        padding-top: 3rem;
+                        font-size: 1rem;
+                    }
+                    @include media-max(md){
+                       width: 14.375rem;
+                       line-height: 2.125rem;
+                    }
+                    .spacer {
+                        margin-bottom: 2.5rem;
+                        @include media-max(lg){
+                            margin-bottom: 1.5rem;
+                        }
+                        @include media-max(md){
+                            margin-bottom: 0;
+                        }
+                    } 
                 }
             }
         }

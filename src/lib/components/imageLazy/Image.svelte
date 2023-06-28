@@ -1,6 +1,7 @@
 <script lang="ts">
     export let src
     export let alt
+    export let lowRes
   
     import { onMount } from 'svelte'
   
@@ -18,17 +19,20 @@
   <style lang="scss">
     img {
       width: 100%;
-      transition: 1.2s;
-	  object-fit: cover;
-      height: 70vh;
+      transition: .5s;
+	    object-fit: cover;
       opacity: 0;
       &.loaded {
         opacity: 1;
       }
-      @include media-max(sm){
-        height: 40vh;
-      }
     } 
   </style>
   
+  <!-- {#if loaded}
+  <img {src} {alt} class:loaded bind:this={thisImage} loading="lazy" />
+  {:else} 
+  {@const src = lowRes}
+  <img {src} {alt} class:loaded bind:this={thisImage} loading="lazy" />
+  {/if} -->
+
   <img {src} {alt} class:loaded bind:this={thisImage} loading="lazy" />

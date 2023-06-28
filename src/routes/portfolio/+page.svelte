@@ -1,19 +1,54 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
-    import LazyImage from "$lib/LazyImage.svelte";
-    import Masonry from "$lib/components/Masonry.svelte";
+    // import LazyImage from "$lib/LazyImage.svelte";
+    // import Masonry from "$lib/components/Masonry.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import Animate from "$lib/components/Animate.svelte";
+    import { PUBLIC_STRAPI_API } from '$env/static/public';
+    import axios from "axios";
+    // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
+    // import { onMount } from 'svelte';
+    import noFeatured from "$lib/img/blog-empty.svg"
+    import { fly } from "svelte/transition";
+    import { paginate, LightPaginationNav } from 'svelte-paginate';
+
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
-    
-    let properties = data.properties.data;
-    console.log(properties);
-    // console.log(data);
-	// console.log(data.data.attributes.Banner.background.data.attributes.url);
+    let propCount = 10;
+    let portfolioList = [];
+    let pageSize = 6;
+    let currentPage = 1;
+
+    // let properties = data.properties.data;
+    // console.log(portfolio);
+
+    let activeTab = portfolio.masonryGallery.masonryItems.data[0].id;
+    function handleTabClick(category) {
+		activeTab = category;
+	}
+
+    $: if (activeTab) { // Check if has new variable data
+        portfolioList = []; // to reset portfolioList length
+        (async () => {
+            const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
+            const headers = {
+                Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+            }  
+
+            try {
+                const response = await axios.get(url, { headers });
+                new Promise((resolve) => {
+                    setTimeout(() => resolve(portfolioList = response.data.data), 1000)
+                })
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        })();
+    }
+
 </script>
 <svelte:head>
 	<title>{portfolio.title}</title>
@@ -28,8 +63,72 @@
         <Row>
             <Col class="text-center">
                 <h2>{portfolio.masonryGallery.masonryHeading}</h2>
-                <p>{portfolio.masonryGallery.masonrySubheading}</p>
-                <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/>
+                <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
+                <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
+                <div class="categories__tabs__heading">
+                    <ul>
+                        {#each portfolio.masonryGallery.masonryItems.data as heading}
+                            <li>
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <span 
+                                data-category="{heading.id}"
+                                class:active="{activeTab === heading.id}"
+                                on:click="{() => handleTabClick(heading.id)}"
+                                >
+                                {heading.attributes.Title}
+                                </span>
+                            </li>
+                        {/each}
+                    </ul>
+                </div>
+                <p class="text-center view-all">
+                    {#if propCount === 10} 
+                        <span on:click="{() => propCount = 999}">View All Projects</span>
+                    {:else}
+                        <span on:click="{() => propCount = 10}">View Less Projects</span>
+                    {/if}
+                </p>
+                {#key activeTab}
+                    {#if portfolioList.length == 0} 
+                        <div class="col text-center">Loading...</div>
+                    {:else}
+                    {@const items = portfolioList}
+                        <div class="container masonry-wrapper">       
+                            {#each paginate({ items, pageSize, currentPage }) as project, index}			
+                                {#if index < propCount}
+                                    <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" out:fly="{{y:0, duration:1000 }}"> 
+                                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
+                                            {#if project.attributes.featuredImage.data != null}
+                                            <!-- <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader> -->
+                                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                            {:else}
+                                            <img src="{noFeatured}" alt="{project.attributes.title}">
+                                            {/if}
+                                            <div class="masonry-items__text">
+                                                <span>{('0' + (index + 1)).slice(-2)}</span>
+                                                {project.attributes.title}
+                                                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                        </a>
+                                    </div>		
+                                {/if}			
+                            {/each}
+                        </div>
+                        <div class="paginate-section">
+                            <LightPaginationNav
+                            totalItems="{portfolioList.length}"
+                            pageSize="{pageSize}"
+                            currentPage="{currentPage}"
+                            limit="{1}"
+                            showStepOptions="{true}"
+                            on:setPage="{(e) => currentPage = e.detail.page}"
+                            />
+                        </div>
+                    {/if}
+                {/key}
             </Col>
         </Row>
     </Container>
@@ -77,6 +176,174 @@
             max-width: 1100px;
             margin: 0 auto 3rem;
         }
+        .categories__tabs__heading{
+            ul{
+                display: flex;
+                width: 90%;
+                margin: auto;
+                margin-bottom: 2rem;
+                padding-left: 0;	
+                
+                @include media-max(lg){
+                    flex-wrap: nowrap;
+                    padding: 1rem 0;
+                    overflow-x: scroll;
+                    width: 100%;
+                }		
+                            
+                @include media-max(xs){
+                    flex-wrap: nowrap;
+                    padding: 1rem 0
+                }						
+                @include media-max(sm){
+                    overflow-x: scroll;
+                }					
+                li{
+                    list-style: none;
+                    width: 25%;
+                    @include media-max(sm){
+                        width: 15rem;
+                        padding: 0 1rem;
+                    }
+                    border-right: 3px solid $gray;	
+                    &:last-child {
+                        border: none;
+                    }
+                    span{				
+                        font-family: $secondary-font;
+                        font-size: 1.75rem;
+                        color: #D8D7D7;
+                        text-transform: uppercase;
+                        margin-bottom: 2em;
+                        font-weight: 500;
+                        cursor: pointer;
+                        @include media-max(lg){
+                            font-size: 1.2rem;
+                        }	
+                        &.active{
+                            color: $secondary-color;
+                            border-bottom-color: $secondary-color;
+                        }
+                    }
+                }
+            }
+        }
+        .view-all{
+			margin-bottom: 2rem;
+			span{
+				color: $secondary-color;
+				&:hover{
+					cursor: pointer;
+				}
+			}
+		}
+        .masonry-wrapper {
+            min-height: 31rem;
+            column-count: 2;
+            column-gap: 0.625rem;
+            .masonry-items{
+                // display: grid;
+                // grid-template-rows: 1fr auto;
+                break-inside: avoid;
+                overflow: hidden;
+                color: white;
+                text-align: center;  
+                padding-top: 0.8rem;
+                &:hover{
+                    .masonry-items__text{
+                    background: $primary-color;
+                    transition: 1.5s;
+                    span {
+                        color: $white-color;
+                    }
+                    path {
+                        stroke: $white-color;
+                    }  
+                    }        
+                }
+                @include media-max(sm){
+                    width: 100%;
+                    padding-top: 1rem;
+                }
+
+                @include media-max(lg){
+                    min-height: unset;
+                    min-width: unset;
+                }   
+
+                a{
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    margin: .5rem;
+                    overflow: hidden;
+                    position: relative;
+
+                    &:hover{
+                        .masonry-items__text{
+                            background: $primary-color;
+                            transition: 1.5s;
+                            span {
+                                color: $white-color;
+                            }
+                            path {
+                                stroke: $white-color;
+                            }  
+                        }        
+                    }  
+                        
+                    @include media-max(sm){
+                        width: 100%;
+                        margin: 0;
+                    }               
+                    img{
+                        height: 100%;
+                        object-fit: cover;
+                        min-height: 26.813rem;
+                        min-width: 39.688rem;
+
+                        @include media-max(xs){
+                            min-height: unset;
+                            min-width: unset;
+                        }   
+                    }   
+                }  
+                &__text{
+                    background-color: $secondary-color;
+                    color: #fff;
+                    padding: 0.5rem;
+                    position: absolute;
+                    z-index: 2;
+                    bottom: 1rem;
+                    left: 0;
+                    width: 65%;
+                    text-align: left;
+                    transition: 0.3s;
+                    @include media-max(ipadmini){
+                        margin: 0;
+                        // font-size: 0.6rem;
+                        width: 90%;
+                        bottom: 0.5rem
+                    } 
+                    span{
+                        color: $primary-color;
+                        font-size: 1.2rem;
+                        margin: 0 0.8rem 0;
+                        @include media-max(sm){
+                            margin: 0;
+                        }                
+                    }
+                    i{
+                    position: absolute;
+                    top: 20%;
+                    right: 1rem;
+                    }
+                }
+            }
+        }
+        .paginate-section {
+            margin-top: 5rem; 
+        }
     }
     .portfolio-cta{
         min-height: 30vw;
@@ -105,5 +372,17 @@
                 }
             }
         } 
+    }
+
+    :global(.option.prev path, .option.next path) {
+        fill: $primary-color;
+    }
+    :global(.option.prev::after) {
+        content: 'Prev';
+        margin-left: 0.25rem;
+    }
+    :global(.option.next::before) {
+        content: 'Next';
+        margin-right: 0.25rem;
     }
 </style>

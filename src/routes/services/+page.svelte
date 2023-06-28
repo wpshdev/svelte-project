@@ -339,6 +339,14 @@
         padding: 0;
     }
     .reimagine {
+        @include media-between(xs, md){
+            padding-left: 0;
+            padding-right: 0;
+            :global(.container) {
+                max-width: 95%;
+                margin: auto;
+            }
+        }
         .btn {
             padding: 0.7rem 3.125rem;
             font-size: 1.25rem;
@@ -358,6 +366,14 @@
         }
     }
     .sets-us-apart {
+        @include media-between(xs, md){
+            padding-left: 0;
+            padding-right: 0;
+            :global(.container) {
+                max-width: 95%;
+                margin: auto;
+            }
+        }
         h2 {
             color: $secondary-color;
         }
@@ -379,7 +395,12 @@
         }
     }
     :global(.imageCont) {
-        @include media-max(ipadmini){
+        // @include media-between(xs, md){
+        //     img {
+        //         min-height: 30rem;
+        //     }
+        // }
+        @include media-max(md){
             img {
                 min-height: 20rem;
             }
@@ -431,10 +452,18 @@
             &.txt-center {
                 padding-right: 7rem !important;
             }
+            @include media-between(xs, md){
+                &.text-right {
+                    padding-left: 3rem !important;
+                }
+                &.txt-center {
+                    padding-right: 3rem !important;
+                }
+            }
             @include media-max(ipadmini){ 
                 &.blue-color-background {
-                    padding-left: 3rem !important;
-                    padding-right: 3rem !important;
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
                 }
             }
             @include media-max(sm){ 
@@ -449,6 +478,14 @@
         background-color: #E5EEF2;
         padding: 5rem 1rem;
         margin-bottom: 0;
+        @include media-between(xs, md){
+            padding-left: 0;
+            padding-right: 0;
+            :global(.container) {
+                max-width: 95%;
+                margin: auto;
+            }
+        }
         h2{
             text-align: center;
             margin-bottom: 3rem;
