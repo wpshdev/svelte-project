@@ -6,8 +6,9 @@
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
     // import tempBG from '$lib/img/certificate.png';
-    // import certBG from '$lib/img/BlankCertBg.png';
-    // import certBGMobile from '$lib/img/CertBGMobileBlank.png';
+    import certBG from '$lib/img/BlankCertBg.png';
+        import certBGMobile from '$lib/img/CertBGMobileBlank.png';
+
     // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
@@ -16,14 +17,15 @@
     let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
     let aboutsubheading = data.about.data.attributes.Aboutsubheading
     let about = data.about.data.attributes
-    let url = "https://strapi.ulfbuilt.com:1337/";
+//    console.log(about)
+    let url = "https://strapi.ulfbuilt.com:1337";
     let scroll: number;
 
     let testimonialsData = data.testimonials.data;
 </script>
 <svelte:head>
 	<title>{abouttitle}</title>
-	<meta name="description" content="ULF BUILT" />
+	<meta name="description" content="ULFBUILT" />
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
@@ -101,12 +103,15 @@
         <Animate>
             <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
             <p class="text-left">{@html about.Section5text}</p> -->
-            <div class="certificate-container" style="--cta-banner: url({url+about.Section5image.data.attributes.url}); --cta-banner-mobile: url({url+about.Section5MobileImage.data.attributes.url})">
+            <!-- This Certificate is not a Dynamic Section, and should not have passed through CODE REVIEW,  
+            Next time, we need to catch sections like this and make sure this is not released for client review without making sure EVERY SECTION is dynamic  --- Ryan Iguchi -- 6/29/23   -->
+        
+            {#if about.certTitle.data}
+            <div class="certificate-container" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
                 <h2 class="certificate-title">{about.certTitle}</h2>
-                <div class="certificate-content">
-                    {@html about.certContent}
-                </div>
-            
+                <div class="certificate-content">{@html about.certContent}</div>
+            </div>
+            {/if}
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
             <!-- {#if about.Section5image.data}
               <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
@@ -217,23 +222,23 @@
                     width: 100%;
                 }
             }
-            // .mobile {
-            //     display: none;
-            // }
+            .mobile {
+                display: none;
+            }
             @include media-max(md){
                 :global(.container) {
                     max-width: 100%;
                     margin: auto;
                 }
             }
-            // @include media-max(sm){
-            //     .mobile {
-            //         display: block;
-            //     }
-            //     .desktop {
-            //         display: none;
-            //     }
-            // }
+            @include media-max(sm){
+                .mobile {
+                    display: block;
+                }
+                .desktop {
+                    display: none;
+                }
+            }
             .certificate-container {
                 background-image: var(--cta-banner);
                 height: 100vh;
@@ -259,15 +264,6 @@
                        margin: auto;
                        padding-top: 7.8rem;
                     }
-                    @include media-max(ipadmini){
-                       padding-top: 7rem;
-                    }
-                    @include media-max(xs){
-                       padding-top: 8rem;
-                    }
-                    @include media-max(ms){
-                       padding-top: 10rem;
-                    }
                 }
                 .certificate-content {
                     max-width: 43.379rem;
@@ -287,13 +283,7 @@
                        width: 14.375rem;
                        line-height: 2.125rem;
                     }
-                    @include media-max(ipadmini){
-                       padding-top: 2rem;
-                    }
-                    @include media-max(xs){
-                       padding-top: 3rem;
-                    }
-                    :global(.spacer) {
+                    .spacer {
                         margin-bottom: 2.5rem;
                         @include media-max(lg){
                             margin-bottom: 1.5rem;
@@ -374,7 +364,7 @@
         }
         :global(.sets-parts__content p) {
             font-size: 1.25rem;
-            text-wrap: balance;
+            text-wrap: balance;   /* ---------> This seems to be not a SCSS property.  Please use accepted property */
             @include media-max(xs) {
                 text-align: left !important;
             }
