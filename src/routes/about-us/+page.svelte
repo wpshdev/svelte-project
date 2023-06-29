@@ -6,8 +6,8 @@
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
     // import tempBG from '$lib/img/certificate.png';
-    import certBG from '$lib/img/BlankCertBg.png';
-    import certBGMobile from '$lib/img/CertBGMobileBlank.png';
+    // import certBG from '$lib/img/BlankCertBg.png';
+    // import certBGMobile from '$lib/img/CertBGMobileBlank.png';
     // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
@@ -16,7 +16,6 @@
     let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
     let aboutsubheading = data.about.data.attributes.Aboutsubheading
     let about = data.about.data.attributes
-    console.log(about)
     let url = "https://strapi.ulfbuilt.com:1337/";
     let scroll: number;
 
@@ -102,13 +101,11 @@
         <Animate>
             <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
             <p class="text-left">{@html about.Section5text}</p> -->
-            <div class="certificate-container" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
-                <h2 class="certificate-title">Commitment to Excellence</h2>
+            <div class="certificate-container" style="--cta-banner: url({url+about.Section5image.data.attributes.url}); --cta-banner-mobile: url({url+about.Section5MobileImage.data.attributes.url})">
+                <h2 class="certificate-title">{about.certTitle}</h2>
                 <div class="certificate-content">
-                From start to finish, ULFBUILT demonstrates their commitment to excellence. Our team is passionate, motivated and willing to go above and beyond to make sure our clients are satisfied.
-                <div class="spacer"></div>
-                We take pride in providing quality customer service and creating long-lasting relationships with the customers we serve. We believe that any task can be completed successfully when you have a team of talented individuals who care about their work.</div>
-            </div>
+                    {@html about.certContent}
+                </div>
             
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
             <!-- {#if about.Section5image.data}
@@ -220,23 +217,23 @@
                     width: 100%;
                 }
             }
-            .mobile {
-                display: none;
-            }
+            // .mobile {
+            //     display: none;
+            // }
             @include media-max(md){
                 :global(.container) {
                     max-width: 100%;
                     margin: auto;
                 }
             }
-            @include media-max(sm){
-                .mobile {
-                    display: block;
-                }
-                .desktop {
-                    display: none;
-                }
-            }
+            // @include media-max(sm){
+            //     .mobile {
+            //         display: block;
+            //     }
+            //     .desktop {
+            //         display: none;
+            //     }
+            // }
             .certificate-container {
                 background-image: var(--cta-banner);
                 height: 100vh;
@@ -262,6 +259,15 @@
                        margin: auto;
                        padding-top: 7.8rem;
                     }
+                    @include media-max(ipadmini){
+                       padding-top: 7rem;
+                    }
+                    @include media-max(xs){
+                       padding-top: 8rem;
+                    }
+                    @include media-max(ms){
+                       padding-top: 10rem;
+                    }
                 }
                 .certificate-content {
                     max-width: 43.379rem;
@@ -281,7 +287,13 @@
                        width: 14.375rem;
                        line-height: 2.125rem;
                     }
-                    .spacer {
+                    @include media-max(ipadmini){
+                       padding-top: 2rem;
+                    }
+                    @include media-max(xs){
+                       padding-top: 3rem;
+                    }
+                    :global(.spacer) {
                         margin-bottom: 2.5rem;
                         @include media-max(lg){
                             margin-bottom: 1.5rem;

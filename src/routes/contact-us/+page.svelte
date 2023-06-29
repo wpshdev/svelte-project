@@ -63,7 +63,7 @@
         <Row>
             <Col md="12">
                 <h2 class="text-center">{data.data.attributes.section1Title}</h2>
-                <h4 class="text-center pfont">- <span class="ptc"><i>{data.data.attributes.Section1SubAuthor}</i></span></h4>
+                <h4 class="text-center pfont">{data.data.attributes.Section1SubAuthor ? '-' : ''} <span class="ptc"><i>{data.data.attributes.Section1SubAuthor ? data.data.attributes.Section1SubAuthor : ''}</i></span></h4>
                 <p class="two-columns pt-3">{@html data.data.attributes.Subheading2}</p>
             </Col>
         </Row>

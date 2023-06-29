@@ -808,9 +808,11 @@ header{
     &__btt{
         text-align: center;
         cursor: pointer;
+        width: 10%;
+        margin: auto;
         svg{
             display: inline-block;
-            margin-bottom: 0.5rem;
+            // margin-bottom: 0.5rem;
         }
         span{
             color: #fff;
