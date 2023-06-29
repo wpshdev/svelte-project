@@ -106,8 +106,8 @@
             <!-- This Certificate is not a Dynamic Section, and should not have passed through CODE REVIEW,  
             Next time, we need to catch sections like this and make sure this is not released for client review without making sure EVERY SECTION is dynamic  --- Ryan Iguchi -- 6/29/23   -->
         
-            {#if about.certTitle.data}
-            <div class="certificate-container" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
+            {#if about.certTitle}
+            <div class="certificate-container">
                 <h2 class="certificate-title">{about.certTitle}</h2>
                 <div class="certificate-content">{@html about.certContent}</div>
             </div>
@@ -124,7 +124,7 @@
     <Animate>
         <Container>
             <Row>
-                <Col md="12"><h2 class="text-center mb-5">{@html about.Section6heading}</h2></Col>
+                <Col md="12"><h3 class="text-center mb-5">{@html about.Section6heading}</h3></Col>
             </Row>
             <Row class="flex-md-row flex-column-reverse sets-parts__row">  
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
@@ -241,7 +241,7 @@
             }
             .certificate-container {
                 background-image: var(--cta-banner);
-                height: 100vh;
+                height: 50vh;
                 background-repeat: no-repeat;
                 position: relative;
                 background-size: contain;
@@ -252,13 +252,7 @@
                 .certificate-title {
                     color: $secondary-color;
                     font-family: "Pinyon Script", cursive;
-                    padding-top: 13.5rem;
-                    @include media-max(w1400){
-                        padding-top: 11rem;
-                    }
-                    @include media-max(lg){
-                        padding-top: 10rem;
-                    }
+                    padding-top: 2.5rem;
                     @include media-max(md){
                        width: 14.375rem;
                        margin: auto;
@@ -271,12 +265,12 @@
                     line-height: 2.125rem;
                     color: $darkergray;
                     margin: auto;
-                    padding-top: 7rem;
+                    padding-top: 3rem;
                     @include media-max(w1400){
-                        padding-top: 5rem;
+                        padding-top: 3rem;
                     }
                     @include media-max(lg){
-                        padding-top: 3rem;
+                        padding-top: 2rem;
                         font-size: 1rem;
                     }
                     @include media-max(md){
@@ -303,7 +297,7 @@
         }
         h3 {
             color:$secondary-color;
-            font-size: 2.813rem;
+            font-size: 2.75rem;
             @include media-max(ipadmini){ 
                 font-size: 2.3rem;
             }
