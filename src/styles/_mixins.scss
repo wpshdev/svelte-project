@@ -5,6 +5,7 @@ $breakpoints: (
   md: 992px,
   lg: 1200px,
   xl: 1600px,
+  xl1: 1601px,
   ipadmini: 769px, // for ipad mini
   ml: 426px, // for service bar bg breakpoints
   mm: 376px,
@@ -12,7 +13,8 @@ $breakpoints: (
   w545: 545px,
   default: 1441px,
   laptopS: 1025px,
-  w1400: 1400px
+  w1400: 1400px,
+  w800: 801px,
 );
 
 // @include respond-above(sm) {}

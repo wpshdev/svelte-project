@@ -139,11 +139,14 @@
     :global(.flickity-viewport) {
         margin-bottom: 5rem;
         // min-height: 37.975rem !important;
-        height: 40rem !important;
+        height: 45rem !important;
+        @include media-max(xl1){
+            height: 50rem !important;
+        }
         @include media-max(default){
             height: 100vh !important;
         }
-        @include media-max(ipadmini){
+        @include media-max(w800){
             height: 115vh !important;
         }
     }
@@ -157,7 +160,7 @@
         border-radius: 0;
         background: $gray;
         opacity: 1;
-        @include media-max(ipadmini){
+        @include media-max(w800){
             width: 5rem;
         }
         @include media-max(mm){

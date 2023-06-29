@@ -82,6 +82,27 @@ function log(){
   // console.log( document.querySelector('.slider-container'));
 }
 
+// Lazy Load
+const loaded = new Map();
+	
+function lazy(node, data) {
+  if (loaded.has(data.src)) {
+    node.setAttribute('src', data.src);
+  } else {
+    const img = new Image();
+    img.src = data.src;
+    img.onload = () => {
+      loaded.set(data.src, img);
+      node.setAttribute('src', data.src); 
+    };
+  }
+
+  return {
+    destroy(){} // noop
+  };
+
+}
+
 </script>
 
 <svelte:window 
@@ -91,10 +112,11 @@ function log(){
     <Col>
         <div class="slider-container" >
           {#each images as image, index}
+            {@const highRes = image.attributes.url}
             <div class="slider-container__carousel-cell">
               <div class="image-wrapper">
-                <!-- <img src={domain}{image.attributes.url}  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />          -->
-                <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader>
+                <img src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://strapi.ulfbuilt.com:1337'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                <!-- <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader> -->
               </div>     
                 <a href="{domain}{image.attributes.url}?download" class="download" download>
                   <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">

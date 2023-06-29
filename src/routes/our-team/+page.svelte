@@ -62,6 +62,13 @@
         </Container>
     </Animate>
 </section>
+<section class="paragraph1">
+    <Animate>
+        <Container>
+            <h4>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
+        </Container>
+      </Animate>
+</section>
 <section class="team-members">
 <Container>
     <Row>
@@ -109,8 +116,8 @@
 <section class="ourteam5">
    <Animate>
     <Container>
-        <h4>{ourTeam.para2}</h4>
-        <h4>{ourTeam.para3}</h4>
+        <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
+        <h4>{ourTeam.para3 ? ourTeam.para3 : ''}</h4>
         <h4>{ourTeam.team_member_owner.data.attributes.name}</h4>
     </Container>
   </Animate>
@@ -127,6 +134,10 @@
     }
     .our-team{
         margin-top: 5rem;
+        :global(p) {
+            font-size: 1.25rem;
+            line-height: 2rem;
+        }
         .heading-image {
             margin: 2rem 0;
             position: relative;
@@ -225,6 +236,18 @@
         @include media-max(sm){
             padding: 2rem 1rem;
         }
+    }
+}
+.paragraph1 {
+    text-align: center;
+    max-width: 960px;
+    margin-left:auto;
+    margin-right: auto;
+    h4{
+        font-family: $primary-font;
+        font-weight: 400;
+        padding-bottom: 2rem;
+        line-height: 2.375rem;
     }
 }
 .ourteam5{
