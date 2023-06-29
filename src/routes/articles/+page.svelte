@@ -7,6 +7,8 @@
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
 	import Animate from '$lib/components/Animate.svelte';
     let blogs = data.blogs.data;
+    let category = data.category.data;
+    console.log(category);
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
     let items = blogs;
@@ -25,8 +27,13 @@
         <Row>
             <ul class="cat-list">
                 <li>
-                    <a href="/"> CATEGORY</a>|
-                    <a href="/"> DATE ADDED</a>
+                    CATEGORY
+                    <select class="cat-select">  
+                        {#each category as cat}
+                        <option>{cat.attributes.name}</option>
+                        {/each}
+                    </select>
+                    | <a href="/"> DATE ADDED</a>
                 </li>
             </ul>
         </Row>
@@ -235,6 +242,10 @@
                 font-weight: 400;
             }
         }
+    }
+    .cat-select,.cat-select:focus,.cat-select:focus-visible{
+        border: 0;
+        margin: 0 1rem;
     }
     // .h2 {
     //     font-size: 3rem;
