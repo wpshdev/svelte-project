@@ -6,13 +6,42 @@
     import blogempty from "$lib/img/blog-empty.svg";
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
 	import Animate from '$lib/components/Animate.svelte';
+    import { PUBLIC_STRAPI_API } from '$env/static/public';
+    import axios from "axios";
     let blogs = data.blogs.data;
+    let category = data.category.data;
+    console.log(category);
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
     let items = blogs;
   let currentPage = 1;
   let pageSize = 5;
-  $: paginatedBlogs = paginate({ items, pageSize, currentPage });
+//   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
+  let articleList = [];
+
+    let activeDate = 'DESC'; // newest/latest default
+    function activeDateClick(datesort) {
+        activeDate = datesort;
+    }
+    $: if (activeDate) {
+        articleList = []; // to reset portfolioList length
+        (async () => {
+            const url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+            const headers = {
+                Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+            }  
+
+            try {
+                const response = await axios.get(url, { headers });
+                new Promise((resolve) => {
+                    setTimeout(() => resolve(articleList = response.data.data), 1000)
+                })
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        })();
+    }
+    $: listener = {activeDate};
 </script>
 <svelte:head>
 	<title>{title}</title>
@@ -25,8 +54,17 @@
         <Row>
             <ul class="cat-list">
                 <li>
-                    <a href="/"> CATEGORY</a>|
-                    <a href="/"> DATE ADDED</a>
+                    <div>
+                        <p class="category-data">CATEGORY</p>
+                   </div> |
+                   <div class="category-date-content">
+                        <p class="category-date">DATE ADDED</p>
+                        <div class="category-date-dropdown dropdown-content">
+                            <p class={activeDate === 'DESC' ? 'selected' : ''} on:click="{() => activeDateClick('DESC')}">Latest</p>
+                            <p class={activeDate === 'ASC' ? 'selected' : ''} on:click="{() => activeDateClick('ASC')}">Oldest</p>
+                        </div>
+                    </div>
+
                 </li>
             </ul>
         </Row>
@@ -40,69 +78,74 @@
 </section>
 <section class="article-blog">
 <Container>
-        <!-- Pagination -->
+        {#key listener}
+            {#if articleList.length == 0} 
+                <div class="col text-center">Loading...</div>
+            {:else}
+            {@const items = articleList}
 
-        <LightPaginationNav
-        totalItems="{items.length}"
-        pageSize="{pageSize}"
-        currentPage="{currentPage}"
-        limit="{1}"
-        showStepOptions="{true}"
-        on:setPage="{(e) => currentPage = e.detail.page}"
-        />
+                 <!-- Pagination -->
+                <LightPaginationNav
+                totalItems="{articleList.length}"
+                pageSize="{pageSize}"
+                currentPage="{currentPage}"
+                limit="{1}"
+                showStepOptions="{true}"
+                on:setPage="{(e) => currentPage = e.detail.page}"
+                />
+                <!-- End Pagination -->
+                
+                <div class="mx-8"></div>
+                {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
+                    <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
+                        <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
+                            <Animate>
+                                <div class="blogsection7 easein-img">
+                                    {#if blog.attributes.featuredimage.data != null}
+                                        {#if blog.attributes.featuredimage.data.attributes.formats != null}
+                                            <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
+                                        {:else}
+                                            <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                                        {/if}
+                                    {:else}
+                                        <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                                    {/if}
+                                </div>
+                            </Animate>
+                        </Col>
+            
+                        <Col md="5">
+                            <Animate>
+                                <div class="blogsection5">
+                                    <div>
+                                        <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
+                                        <h2>{blog.attributes.title}</h2>
+                                        <p>{blog.attributes.shorttext}</p>
+                                        <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
+                                    </div>
+                                </div>
+                            </Animate>
+            
+                        </Col>
+                        <!-- </a> -->
+                </Row>
+                <div class="mx-8"></div>
+                {/each}
 
-        <!-- End Pagination -->
-        <div class="mx-8"></div>
-        {#each paginatedBlogs as blog,i (blog.id)}
-        <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
-            <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
-                <Animate>
-                    <div class="blogsection7 easein-img">
-                        {#if blog.attributes.featuredimage.data != null}
-                            {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
-                            {:else}
-                                <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
-                            {/if}
-                        {:else}
-                            <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
-                        {/if}
-                    </div>
-                </Animate>
-            </Col>
+                <!-- Pagination -->
+                <LightPaginationNav
+                totalItems="{items.length}"
+                pageSize="{pageSize}"
+                currentPage="{currentPage}"
+                limit="{1}"
+                showStepOptions="{true}"
+                on:setPage="{(e) => currentPage = e.detail.page}"
+                />
+                <!-- End Pagination -->
 
-            <Col md="5">
-                <Animate>
-                    <div class="blogsection5">
-                        <div>
-                            <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
-                            <h2>{blog.attributes.title}</h2>
-                            <p>{blog.attributes.shorttext}</p>
-                            <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
-                        </div>
-                    </div>
-                </Animate>
+            {/if}
 
-            </Col>
-            <!-- </a> -->
-        
-    </Row>
-    <div class="mx-8"></div>
-        {/each}
-
-    <!-- Pagination -->
-
-    <LightPaginationNav
-    totalItems="{items.length}"
-    pageSize="{pageSize}"
-    currentPage="{currentPage}"
-    limit="{1}"
-    showStepOptions="{true}"
-    on:setPage="{(e) => currentPage = e.detail.page}"
-    />
-
-    <!-- End Pagination -->
-
+        {/key}
     <div class="divider">
         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.9931 22.2157L3.45312 12.9257L12.9931 3.63574L22.5431 12.9257L12.9931 22.2157Z" stroke="#D8D7D7" stroke-width="3.89" stroke-miterlimit="10"/>
@@ -228,13 +271,50 @@
         margin: 0;
         li{
             color: $darkgray;
-            a{
-                padding: 1rem 1rem;
-                text-decoration: none;
-                color: $darkgray;
-                font-weight: 400;
+            display: flex;
+            align-items: center;
+            div {
+                &.category-date-content {
+                    &:hover {
+                        .category-date {
+                            color: $primary-color;
+                        }
+                        .category-date-dropdown {
+                            display: block;
+                        }
+                    }
+                }
+                p{
+                    padding: 1rem 1rem;
+                    text-decoration: none;
+                    color: $darkgray;
+                    font-weight: 400;
+                    cursor: pointer;
+                    margin-bottom: 0;
+                }
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #e9ebef;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                    p {
+                        font-family: $primary-font;
+                        font-feature-settings: 'pnum' on, 'lnum' on;
+                        color: $primary-color;
+                        &:hover, &.selected {
+                            background-color: $secondary-color;
+                            color: $white-color;
+                        }
+                    }
+                }
             }
         }
+    }
+    .cat-select,.cat-select:focus,.cat-select:focus-visible{
+        border: 0;
+        margin: 0 1rem;
     }
     // .h2 {
     //     font-size: 3rem;

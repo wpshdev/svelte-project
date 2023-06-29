@@ -3,7 +3,7 @@ import { STRAPI_API } from '$env/static/private';
 
 
 export const load: PageLoad = async ({ params, fetch }) => {
-    const url = 'https://strapi.ulfbuilt.com:1337/api/portfolios?filters[slug][$eq]='+params.slug+'&populate=deep,2';
+    const url = 'https://strapi.ulfbuilt.com:1337/api/portfolios?filters[slug][$eq]='+params.slug+'&populate=deep,3';
     const headers = {
         Authorization: 'Bearer ' + STRAPI_API 
     }    
