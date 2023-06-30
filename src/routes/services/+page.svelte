@@ -33,7 +33,7 @@
 </script>
 <svelte:head>
 	<title>{page.Title}</title>
-	<meta name="description" content="ULF BUILT" />
+	<meta name="description" content="ULFBUILT" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
 <PageBanner title="{page.Title}" extraClass="services" subTitle="{page.Subheading}"  banner="{url}{page.Cover.data[0].attributes.url}"  />
