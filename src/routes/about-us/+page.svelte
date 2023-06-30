@@ -6,8 +6,8 @@
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
     // import tempBG from '$lib/img/certificate.png';
-    // import certBG from '$lib/img/BlankCertBg.png';
-    // import certBGMobile from '$lib/img/CertBGMobileBlank.png';
+    import certBG from '$lib/img/BlankCertBg.png';
+    import certBGMobile from '$lib/img/CertBGMobileBlank.png';
     // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     export let data;
 
@@ -22,31 +22,33 @@
     let testimonialsData = data.testimonials.data;
 </script>
 <svelte:head>
-	<title>{abouttitle}</title>
+	<title>{abouttitle ? abouttitle : 'About us'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
-<PageBanner title="{abouttitle}" extraClass="about" subTitle="{aboutsubheading}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
+<PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
 
 <section class="mw-1000 text-center about-heading">
     <Container>
-            <h2 class="pb-2">{@html about.AboutHeading}</h2>
-            <p>{@html about.abouttext}</p>
+            <h2 class="pb-2">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
+            <p>{@html about.abouttext ? about.abouttext : ''}</p>
     </Container>
 </section>
 <section class="contractor-details">
     <Container>
         <Row class="flex-md-row flex-column-reverse">
             <Col md="5" class="align-self-center">
-                <h3 class="mb-4 mr-t">{@html about.Section1heading}</h3>
-                <p>{@html about.Section1text}</p>
+                <h3 class="mb-4 mr-t">{@html about.Section1heading ? about.Section1heading : ''}</h3>
+                <p>{@html about.Section1text ? about.Section1text : ''}</p>
             </Col>
             <Col md="6">
                 <Animate>
+                    {#if about.Section1image.data}
                     <div>
                         <img src="{url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
                     </div>
+                    {/if}
                 </Animate>
             </Col>
         </Row>
@@ -57,13 +59,15 @@
         <Container>
         <Row>
             <Col md="6">
+                {#if about.Section2image.data}
                 <div>
                     <img src="{url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100">
                 </div>
+                {/if}
             </Col>
             <Col md="5" class="align-self-center">
-                <h3 class="mb-4 mr-t">{@html about.Section2heading}</h3>
-                <p>{@html about.Section2text}</p>
+                <h3 class="mb-4 mr-t">{@html about.Section2heading ? about.Section2heading : ''}</h3>
+                <p>{@html about.Section2text ? about.Section2text : ''}</p>
             </Col>
         </Row>
         </Container>        
@@ -74,13 +78,15 @@
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
-                    <h3 class="mb-4 mr-t">{@html about.Section3heading}</h3>
-                    <p>{@html about.Section3text}</p>
+                    <h3 class="mb-4 mr-t">{@html about.Section3heading ? about.Section3heading : ''}</h3>
+                    <p>{@html about.Section3text ? about.Section3text : ''}</p>
                 </Col>
                 <Col md="6">
+                    {#if about.Section3image.data}
                     <div>
                         <img src="{url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image">
                     </div>
+                    {/if}
                 </Col>
             </Row>
         </Container>    
@@ -92,7 +98,7 @@
             {#if about.Section4image.data}
             <img src="{url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}">
             {/if}
-            <p class="text-center pt-3"><i><b>{about.Section4text}</b></i></p>
+            <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
         </div>        
     </Animate>
 </section>
@@ -101,10 +107,10 @@
         <Animate>
             <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
             <p class="text-left">{@html about.Section5text}</p> -->
-            <div class="certificate-container" style="--cta-banner: url({url+about.Section5image.data.attributes.url}); --cta-banner-mobile: url({url+about.Section5MobileImage.data.attributes.url})">
-                <h2 class="certificate-title">{about.certTitle}</h2>
+            <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
+                <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
                 <div class="certificate-content">
-                    {@html about.certContent}
+                    {@html about.certContent ? about.certContent : ''}
                 </div>
             
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
@@ -119,17 +125,19 @@
     <Animate>
         <Container>
             <Row>
-                <Col md="12"><h2 class="text-center mb-5">{@html about.Section6heading}</h2></Col>
+                <Col md="12"><h2 class="text-center mb-5">{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
             </Row>
             <Row class="flex-md-row flex-column-reverse sets-parts__row">  
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
-                    <h3 class="mb-4 text-right">{@html about.Section6subheading}</h3>
-                    <p class="text-right">{@html about.Section6text}</p>
+                    <h3 class="mb-4 text-right">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
+                    <p class="text-right">{@html about.Section6text ? about.Section6text : ''}</p>
                 </Col>
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
+                        {#if about.Section6image.data}
                         <img src="{url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100">
+                        {/if}
                     </div>
                 </Col>
             </Row>
@@ -141,12 +149,14 @@
                 <Col md="6" style="z-index: 1;">
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
+                        {#if about.Section7image.data}
                         <img src="{url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100">
+                        {/if}
                     </div>
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
-                    <h3 class="mb-4 rp-fontsize">{@html about.Section7heading}</h3>
-                    <p>{@html about.Section7text}</p>
+                    <h3 class="mb-4 rp-fontsize">{@html about.Section7heading ? about.Section7heading : ''}</h3>
+                    <p>{@html about.Section7text ? about.Section7text : ''}</p>
                 </Col>
             </Row>
         </Container>    
@@ -155,13 +165,15 @@
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
-                    <h3 class="mb-4 text-right">{@html about.Section8heading}</h3>
-                    <p class="text-right">{@html about.Section8text}</p>
+                    <h3 class="mb-4 text-right">{@html about.Section8heading ? about.Section8heading : ''}</h3>
+                    <p class="text-right">{@html about.Section8text ? about.Section8text : ''}</p>
                 </Col>
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
+                        {#if about.Section8image.data}
                         <img src="{url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100">
+                        {/if}
                     </div>
                 </Col>
             </Row>
@@ -170,15 +182,17 @@
 
 </section>
 
-<ClientTestimonial clientTestimonials={testimonialsData}/>
+{#if testimonialsData}
+<ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/>
+{/if}
 
 <section class="talktous">
     <Container>
-        <h2>{about.talkTous.talkTous_title}</h2>
-        <p>{about.talkTous.talkTous_content}</p>
+        <h2>{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
+        <p>{about.talkTous.talkTous_content ? about.talkTous.talkTous_content : ''}</p>
         <div class="talktous__btns">
-            <a href="{about.talkTous.talkTous_btn1Link}" class="btn btn-secondary">{about.talkTous.talkTous_btn1}</a>
-            <a href="{about.talkTous.talkTous_btn2Link}" class="btn btn-inverted">{about.talkTous.talkTous_btn2}</a>
+            <a href="{about.talkTous.talkTous_btn1Link ? about.talkTous.talkTous_btn1Link : '#'}" class="btn btn-secondary">{about.talkTous.talkTous_btn1 ? about.talkTous.talkTous_btn1 : 'Button'}</a>
+            <a href="{about.talkTous.talkTous_btn2Link ? about.talkTous.talkTous_btn2Link  : '#'}" class="btn btn-inverted">{about.talkTous.talkTous_btn2 ? about.talkTous.talkTous_btn2 : 'Button'}</a>
         </div>
     </Container>
 </section>

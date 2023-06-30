@@ -81,7 +81,7 @@ function log(){
   // console.log( document.querySelector('.slider-container'));
 }
 
-// Lazy Load
+// Lazy Load - for checking and testing
 const loaded = new Map();
 	
 function lazy(node, data) {
@@ -97,7 +97,7 @@ function lazy(node, data) {
   }
 
   return {
-    destroy(){} // noop
+    destroy(){}
   };
 
 }

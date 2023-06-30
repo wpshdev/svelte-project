@@ -25,7 +25,7 @@
 <Container>
     <div class="cover__covertitle">
         <p class="pfont ptc mb-1 pt-3 article">Article</p>
-        <h2 class="pfont stc mb-4">{title}</h2>
+        <h2 class="pfont stc mb-4">{title ? title : ''}</h2>
         <p class="ptc pb-5">{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
     </div>
 </Container>
@@ -33,9 +33,9 @@
 </div>
 <section>
     <Container class="py-4">
-        <h2 class="pb-3 sblue">{title}</h2>
+        <h2 class="pb-3 sblue">{title ? title : ''}</h2>
         <div class="two-columns">
-            {@html content}
+            {@html content ? content : ''}
             <!-- <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
         </div>
     </Container>
@@ -47,14 +47,16 @@
             {#each filteredItems as blog,i (blog.id)}
             <Col md="4" class="pb-5">
                 <Animate>
+                    {#if blog.attributes.featuredimage.data}
                     <div class="related-articles__easein-container">
                         <div class="easein-img">
-                            <a href="/articles/{blog.attributes.slug}" class="zoomImg"> 
+                            <a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}" class="zoomImg"> 
                                 <img src="{url}{blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                             </a>
                         </div>
                     </div>
-                <h3 class="pt-3"><a href="/articles/{blog.attributes.slug}">{blog.attributes.title}</a></h3>
+                    {/if}
+                <h3 class="pt-3"><a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}">{blog.attributes.title ? blog.attributes.title : ''}</a></h3>
                     <p class="ptc">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'mins' : 'min'}. read</p>
                 </Animate>
             </Col>
@@ -127,13 +129,14 @@
     }
 }
 .two-columns{
-    // overflow-wrap: break-word;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    text-align: left;
-    @include media-max(sm){
-        grid-template-columns: repeat(1, 1fr);
-    }
+    overflow-wrap: break-word;
+    gap: 3.5rem;
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // text-align: left;
+    // @include media-max(sm){
+    //     grid-template-columns: repeat(1, 1fr);
+    // }
 }
 .related-articles{
     background: #e5eef3;

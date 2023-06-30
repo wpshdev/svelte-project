@@ -21,13 +21,13 @@
 	bind:innerWidth
 />
 
-<section class="banner {extraClass}" style="--banner: url({pageBanner})">
+<section class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner})">
 	<Container>
 		<Row>
 			<Col >
 				<div class="banner__content">
 					<div class="banner__content__text">
-						<h1 class="ml3"><span>{title}</span></h1>
+						<h1 class="ml3"><span>{title ? title : ''}</span></h1>
 					</div>
 					{#if subTitle != null}
 						<p class="banner__content__paragraph" >{subTitle}</p>

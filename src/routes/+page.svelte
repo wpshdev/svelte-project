@@ -28,6 +28,8 @@
 	const home = data.data.attributes;
 	let propCount = 3;
 	//let listener = {};
+
+	// Function for portfolio masonry
 	let portfolioList = [];
 
 	let activeTab = home.categories.data[0].id;
@@ -62,11 +64,11 @@
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
-	<title>{home.title}</title>
+	<title>{home.title ? home.title : 'Home'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{home.topBanner.heading}" subTitle="{home.topBanner.paragraph}" banner="{domain}{home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
+<PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
 	<Animate >
@@ -76,8 +78,10 @@
 					<h2 in:fly={{
 						delay: 1000,
 						duration: 2000,
-						y: 50								
-				}}>{home.homeBuilderHeading}</h2>
+						y: 50	}}
+					>
+						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+					</h2>
 				</Col>
 				<Col xs="12">
 					<div class="loc-gallery__cwrapper" in:fly={{
@@ -90,14 +94,14 @@
 								duration: 2000,
 								y: 50								
 							}}>
-								{@html home.homeBuilderSubHeading}
+								{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 							</div>
 						<div in:fly={{
 							delay: 2000,
 							duration: 2000,
 							y: 50								
 						}} >
-							{@html home.homeBuilderParagraph}
+							{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
 						</div>
 					</div>
 				</Col>
@@ -107,12 +111,13 @@
 </section>	
 
 
-
+{#if home.homeBuilderBanner.data}
 <Animate>
 	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.url})"  in:fly={{
 		y: 50								
 }} ></section>
 </Animate>
+{/if}
 
 <section class="categories" >
 	<Animate >
@@ -122,7 +127,7 @@
 						<h2 in:fly={{
 
 							y: 50								
-					}} >{home.categoryGalleryTabHeading}</h2>
+					}} >{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}</h2>
 					<div class="categories__tabs">
 						<div class="categories__tabs__heading">
 							<ul in:fly={{
@@ -135,7 +140,7 @@
 										data-category="{heading.id}"
 										class:active="{activeTab === heading.id}"
 										on:click="{() => handleTabClick(heading.id)}">
-										{heading.attributes.Title}
+										{heading.attributes.Title ? heading.attributes.Title : ''}
 										</span>
 									</li>
 								{/each}
@@ -196,10 +201,10 @@
 		<Container>
 			<Row>
 				<Carousel 
-				preHeading={home.featuredProjectsPreHeading} 
-				heading={home.featuredProjectsHeading} 
-				btnTitle={home.featurePropertyBtnTitle}
-				btnUrl={home.featuredPropertyBtnUrl}
+				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 				featuredProjects={home.featuredProjects}
 		/>
 			</Row>
@@ -222,10 +227,10 @@
 							duration: 2000,
 							y: 50								
 					}} >
-							<span>{home.midBanner.paragraph}</span>
-							<h2>{home.midBanner.heading}</h2>
-							<a href="{home.midBanner.btnUrl}" class="btn btn-secondary">
-								{home.midBanner.btnTitle}
+							<span>{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</span>
+							<h2>{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+							<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+								{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
 							</a>
 						</div>
 					</div>
@@ -247,18 +252,20 @@
 						y: 50								
 				}} >
 						<div class="reputation__content__wrapper">
-							<span>{home.reputation.preHeading}</span>
-							<h2>{home.reputation.heading}</h2>
-							<p>{@html home.reputation.content}</p>
-							<a href="{home.reputation.btnUrl}" class="btn btn-secondary">{home.reputation.btnTitle}</a>
+							<span>{home.reputation.preHeading ? home.reputation.preHeading : ''}</span>
+							<h2>{home.reputation.heading ? home.reputation.heading : ''}</h2>
+							<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
+							<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
 						</div>
 					</div>
 				</Col>
 				<Col md="5" class="my-auto" >
+					{#if home.reputation.image.data}
 					<img src="{domain}{home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
 						duration: 2000,
 						y: 50								
 				}} >
+					{/if}
 				</Col>
 			</Row>
 		</Container>
@@ -274,7 +281,9 @@
 						duration: 2000,
 						y: 50								
 				}} >
+						{#if home.ourProcessTopImage.data[0]}
 						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						{/if}
 					</div>
 				</Col>
 			</Row>
@@ -285,10 +294,10 @@
 							duration: 2000,
 							y: 50								
 					}} >
-							<span>{home.ourProcessPreHeading}</span>
-							<h2>{home.ourProcessHeading}</h2>
-							{@html home.ourProcessParagraph}
-							<a href="{home.ourProcessButtonUrl}" class="btn btn-secondary">{ home.ourProcessButtonTitle }</a>
+							<span>{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</span>
+							<h2>{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
+							{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
+							<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
 						</div>
 					</div>
 				</Col>
@@ -297,7 +306,9 @@
 						duration: 2000,
 						y: 50								
 				}} >
+						{#if home.ourProcessRightImage.data}
 						<img src="{domain}{home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						{/if}
 					</div>
 				</Col>
 			</Row>
@@ -316,9 +327,9 @@
 							duration: 2000,
 							y: 50								
 					}} >
-							<span>{home.ourStoryPreHeading}</span>
-							<h2>{home.ourStoryHeading}</h2>
-							{@html home.ourStoryParagraph}
+							<span>{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</span>
+							<h2>{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+							{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 							
 							<!-- <Accordion>
 								<AccordionItem active>
@@ -330,10 +341,12 @@
 					</div>
 				</Col>
 				<Col md="5" class="my-auto">
+					{#if home.ourStoryRightImage.data}
 					<img src="{domain}{home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
 						duration: 2000,
 						y: 50								
 				}} >
+					{/if}
 				</Col>
 			</Row>
 		</Container>

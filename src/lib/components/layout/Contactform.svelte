@@ -75,8 +75,8 @@
 			<Col md="6">
 				<div class="contact__content">
 					<div class="contact__content__wrapper">
-						<h2>{contactSettings.heading}</h2>
-						<p>{contactSettings.subheading}</p>
+						<h2>{contactSettings.heading ? contactSettings.heading : ''}</h2>
+						<p>{contactSettings.subheading ? contactSettings.subheading : ''}</p>
 					</div>
 				</div>
 			</Col>

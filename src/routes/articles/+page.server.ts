@@ -22,10 +22,12 @@ export async function load() {
         Authorization: 'Bearer ' + STRAPI_API
     }
     const response = await axios.get(url, { headers });
-    const urlblog = 'https://strapi.ulfbuilt.com:1337/api/blogs?populate=deep';
-    const blogs = await axios.get(urlblog, { headers }); 
+    // const urlblog = 'https://strapi.ulfbuilt.com:1337/api/blogs?populate=deep';
+    // const blogs = await axios.get(urlblog, { headers }); 
+    const urlCategories = 'https://strapi.ulfbuilt.com:1337/api/blog-categories?populate=deep';
+    const categories = await axios.get(urlCategories, { headers }); 
     return {
         page: response.data,
-        blogs: blogs.data
+        categories: categories.data
     }
 }

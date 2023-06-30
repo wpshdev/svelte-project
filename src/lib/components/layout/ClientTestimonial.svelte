@@ -3,8 +3,8 @@
 
     let flickityInstance;
     export let clientTestimonials;
+    export let testimonialHeading;
 
-    console.log(clientTestimonials);
     onMount(() => {
         flickityInstance = new Flickity('.slider-container', {
             cellAlign: 'center',
@@ -33,12 +33,12 @@
 </script>
 
 <section class="our_client_say">
-    <h2>Our Clients say...</h2>
+    <h2>{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
     <div class="our_client_say__cards slider-container">
         {#each clientTestimonials as testimonial}
             <div class="details">
-                <p>{testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "")}</p>
-                <h3>{testimonial.attributes.Name}</h3>
+                <p>{testimonial.attributes.testimonialText ? testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "") : ''}</p>
+                <h3>{testimonial.attributes.Name ? testimonial.attributes.Name : ''}</h3>
             </div>
         {/each}
     </div>

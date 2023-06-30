@@ -8,52 +8,79 @@
 	import Animate from '$lib/components/Animate.svelte';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from "axios";
-    let blogs = data.blogs.data;
+    // let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
-    let items = blogs;
+    // let items = blogs;
   let currentPage = 1;
   let pageSize = 5;
 //   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
   let articleList = [];
+  let categories = data.categories.data;
+  let noArticle;
 
-    let activeDate = 'DESC'; // newest/latest default
-    function activeDateClick(datesort) {
+    // Date on click
+    let activeDate = 'DESC'; // made newest/latest default on date filter
+    function activeDateClick(datesort) { 
         activeDate = datesort;
     }
-    $: if (activeDate) {
-        articleList = []; // to reset portfolioList length
+
+    // Category tab on click
+    let activeCategoryTab = '';
+    function activeCategoryTabClick(id) {
+        activeCategoryTab = id;
+    }
+
+    // check if there is new value selected for either activeDate or activeCategoryTab, then run the fetch function
+    $: if (activeDate || activeCategoryTab) { 
+        noArticle = false;
+        articleList = []; // to reset articleList length - to able to show loading text
+        // For showing no articles after certain time on loading - some categories have no articles
+        setTimeout(() => {
+            noArticle = true;
+        }, 5000);
         (async () => {
-            const url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+            let url;
+            if(activeCategoryTab || activeCategoryTab != '') { // if has activeCategoryTab, add it on the fetch url
+                url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&filters[blog_category][id][$eq]="+activeCategoryTab+"&populate=deep";
+            } else {
+                url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+            }
             const headers = {
                 Authorization: 'Bearer ' + PUBLIC_STRAPI_API
             }  
 
             try {
                 const response = await axios.get(url, { headers });
-                new Promise((resolve) => {
-                    setTimeout(() => resolve(articleList = response.data.data), 1000)
-                })
+                articleList = response.data.data
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         })();
     }
-    $: listener = {activeDate};
+    
+    // variable for {#key} to check if has new data in either activeDate or activeCategoryTab, to recreate their contents 
+    $: listener = {activeDate, activeCategoryTab};
 </script>
 <svelte:head>
-	<title>{title}</title>
+	<title>{title ? title : 'Articles & Press'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.page.data.attributes.title}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
+<PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
     <Container>
         <Row>
             <ul class="cat-list">
                 <li>
-                    <div>
-                        <p class="category-data">CATEGORY</p>
+                    <div class="category-list-content">
+                        <p class="category-list">CATEGORY</p>
+                        <div class="category-list-dropdown dropdown-content">
+                            {#each categories as category}
+                                <p class={activeCategoryTab === category.id ? 'selected' : ''} on:click="{() => activeCategoryTabClick(category.id)}">{category.attributes.name}</p>
+                            {/each}
+                            <p class={activeCategoryTab === '' ? 'selected' : ''} on:click="{() => activeCategoryTabClick('')}">Show All</p>
+                        </div>
                    </div> |
                    <div class="category-date-content">
                         <p class="category-date">DATE ADDED</p>
@@ -70,15 +97,19 @@
 </section>
 <section class="mw-1000 text-center article-section">
     <Container>
-        <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading}</h2>
-        <p class="text-left">{@html data.page.data.attributes.section2description}</p>
+        <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading ? data.page.data.attributes.section2heading : ''}</h2>
+        <p class="text-left">{@html data.page.data.attributes.section2description ? data.page.data.attributes.section2description : ''}</p>
     </Container>
 </section>
 <section class="article-blog">
 <Container>
         {#key listener}
             {#if articleList.length == 0} 
-                <div class="col text-center">Loading...</div>
+                {#if noArticle}
+                    <div class="col text-center">No articles found!</div>
+                {:else}
+                    <div class="col text-center">Loading...</div>
+                {/if}
             {:else}
             {@const items = articleList}
 
@@ -101,12 +132,12 @@
                                 <div class="blogsection7 easein-img">
                                     {#if blog.attributes.featuredimage.data != null}
                                         {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                            <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
+                                            <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
                                         {:else}
-                                            <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                                            <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
                                         {/if}
                                     {:else}
-                                        <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                                        <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
                                     {/if}
                                 </div>
                             </Animate>
@@ -255,6 +286,7 @@
             color: $secondary-color;
         }
         padding: 0 0 1rem 0;
+        min-height: 15vh;
         @include media-max(lg){
             min-height: 0;
         }
@@ -278,6 +310,16 @@
                             color: $primary-color;
                         }
                         .category-date-dropdown {
+                            display: block;
+                        }
+                    }
+                }
+                &.category-list-content {
+                    &:hover {
+                        .category-list {
+                            color: $primary-color;
+                        }
+                        .category-list-dropdown {
                             display: block;
                         }
                     }

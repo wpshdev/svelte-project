@@ -7,15 +7,15 @@
     const url = "https://strapi.ulfbuilt.com:1337/";
 </script>
 <svelte:head>
-	<title>{data.data.attributes.title}</title>
+	<title>{data.data.attributes.title ? data.data.attributes.title : 'Privacy Policy'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<PageBanner title="{data.data.attributes.title}" extraClass="privacy" subTitle="{data.data.attributes.Subheading}"  banner="{url}{data.data.attributes.Cover.data.attributes.url}"/>
+<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Privacy Policy'}" extraClass="privacy" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{url}{data.data.attributes.Cover.data.attributes.url}"/>
 
 <section class="content" >
     <Container class="mw-1000 h-text">
-        <h2 class="text-center mb-5">{data.data.attributes.Heading}</h2>
-        {@html data.data.attributes.Content}
+        <h2 class="text-center mb-5">{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
+        {@html data.data.attributes.Content ? data.data.attributes.Content : ''}
     </Container>
 </section>
 <Cta/>
