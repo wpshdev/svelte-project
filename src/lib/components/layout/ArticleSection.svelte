@@ -45,21 +45,23 @@
 		<Container>
 			<Row>
 				<Col>
-					<span class="insight__pre-heading">{insight.leftPreHeading}</span>
+					<span class="insight__pre-heading">{insight.leftPreHeading ? insight.leftPreHeading : ''}</span>
 				</Col>
 			</Row>
 			<Row>
 				<Col md="6" class="">
+					{#if insight.image.data}
 					<img src="{domain}{insight.image.data.attributes.formats.large.url}" alt="Stair">
+					{/if}
 				</Col>
 				<Col md="6" class="my-auto">
 					<div class="insight__content">
 						<div class="insight__content__wrapper">
-							<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading}</div>
-							<h2>{insight.Heading}</h2>
-							{@html insight.paragprah}
+							<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading ? insight.rightPreHeading : ''}</div>
+							<h2>{insight.Heading ? insight.Heading : ''}</h2>
+							{@html insight.paragprah ? insight.paragprah : ''}
 							<div class="insight__content__wrapper__btns">
-								<a href="{insight.leftBtnUrl}/" class="btn btn-secondary">{insight.leftBtnTitle}</a> <a href="{insight.rightBtnUrl}/" class="btn btn-inverted">{insight.rightBtnTitle}</a>
+								<a href="{insight.leftBtnUrl ? insight.leftBtnUrl : '#'}/" class="btn btn-secondary">{insight.leftBtnTitle ? insight.leftBtnTitle : 'Button'}</a> <a href="{insight.rightBtnUrl ? insight.rightBtnUrl : '#'}/" class="btn btn-inverted">{insight.rightBtnTitle ? insight.rightBtnTitle : 'Button'}</a>
 							</div>
 						</div>
 					</div>				

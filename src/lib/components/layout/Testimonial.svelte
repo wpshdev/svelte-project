@@ -8,7 +8,7 @@
 		<Row>
 			<Col >
 				<p class="text-center">
-                    { testimonial }
+                    { testimonial ? testimonial : '' }
 				</p>
 			</Col>
 		</Row>
@@ -21,10 +21,11 @@
 		min-height: 10vh;
 
 		p{
-			font-size: 1.3rem;
-    		font-weight: 300;		
+			font-size: 1.688rem;
+    		font-weight: 400;		
 			position: relative;
 			padding: 0 3rem;
+			font-family: $secondary-font;
 			@include media-max(sm){
 				padding: 0;
 			}			

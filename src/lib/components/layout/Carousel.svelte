@@ -60,8 +60,8 @@ $: {
   <Col md="3">
     <div class="slider-caption">
       <div class="slider-caption__heading">
-        <span>{preHeading}</span>
-        <h2>{@html heading}</h2>
+        <span>{preHeading ? preHeading : ''}</span>
+        <h2>{@html heading ? heading : ''}</h2>
       </div>
       {#if innerWidth > 767}
         <div class="progress-ring-container">
@@ -85,7 +85,7 @@ $: {
     <div class="slider-container">
       {#each featuredProjects.data as project, index}
         <div class="slider-container__carousel-cell">
-          <a href="/portfolio/{project.attributes.slug}" data-sveltekit-reload class="zoomImg">      
+          <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
             {#if project.attributes.featuredImage.data != null}
             <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
             {:else}
@@ -93,7 +93,7 @@ $: {
             {/if}
             <div class="slider-container__carousel-cell__text">
               <span>{('0' + (index + 1)).slice(-2)}</span>
-              {project.attributes.title}
+              {project.attributes.title ? project.attributes.title : ''}
               <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
                 </svg>
@@ -116,7 +116,7 @@ $: {
       </div>
     {/if}       
     <div class="slider-btn">
-      <a href="{btnUrl}" class="btn btn-secondary scaleLarge">{btnTitle}</a>
+      <a href="{btnUrl ? btnUrl : '#'}" class="btn btn-secondary scaleLarge">{btnTitle ? btnTitle : 'Button'}</a>
     </div>    
  
   </Col>

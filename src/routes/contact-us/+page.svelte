@@ -52,19 +52,19 @@
 	}
 </script>
 <svelte:head>
-	<title>{data.data.attributes.title}</title>
+	<title>{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title}" extraClass="contact" subTitle="{data.data.attributes.Subheading}" banner="{url}{data.data.attributes.featuredimage.data.attributes.url}" />
+<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}" banner="{url}{data.data.attributes.featuredimage.data.attributes.url}" />
 
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
         <Row>
             <Col md="12">
-                <h2 class="text-center">{data.data.attributes.section1Title}</h2>
+                <h2 class="text-center">{data.data.attributes.section1Title ? data.data.attributes.section1Title : ''}</h2>
                 <h4 class="text-center pfont">{data.data.attributes.Section1SubAuthor ? '-' : ''} <span class="ptc"><i>{data.data.attributes.Section1SubAuthor ? data.data.attributes.Section1SubAuthor : ''}</i></span></h4>
-                <p class="two-columns pt-3">{@html data.data.attributes.Subheading2}</p>
+                <p class="two-columns pt-3">{@html data.data.attributes.Subheading2 ? data.data.attributes.Subheading2 : ''}</p>
             </Col>
         </Row>
     </Container>
@@ -72,12 +72,12 @@
         <Row>
             <Col md="4" class="flex-vcenter">
                 <Animate>
-                    <h4 class="ptc pfont">{data.data.attributes.office_address_title}</h4>
-                    <h4 class="stc pb-5">{@html office_address}</h4>
-                    <h4 class="ptc pfont">{data.data.attributes.mailing_address_title}</h4>
-                    <h4 class="stc pb-5">{@html mailing_address}</h4>
-                    <h4 class="ptc pfont">{data.data.attributes.phone_title}</h4>
-                    <h4 class="stc pb-5">{@html phone}</h4>
+                    <h4 class="ptc pfont">{data.data.attributes.office_address_title ? data.data.attributes.office_address_title : ''}</h4>
+                    <h4 class="stc pb-5">{@html office_address ? office_address : ''}</h4>
+                    <h4 class="ptc pfont">{data.data.attributes.mailing_address_title ? data.data.attributes.mailing_address_title : ''}</h4>
+                    <h4 class="stc pb-5">{@html mailing_address ? mailing_address : ''}</h4>
+                    <h4 class="ptc pfont">{data.data.attributes.phone_title ? data.data.attributes.phone_title : ''}</h4>
+                    <h4 class="stc pb-5">{@html phone ? phone : ''}</h4>
                 </Animate>
             </Col>
             <Col md="8">
@@ -96,7 +96,7 @@
         <Container>
             <Row>
                 <Col sm="12" class="contact-form tbc wtc border-radius">
-                    <h2 class="text-center pb-4">{data.data.attributes.contact_form_title}</h2>
+                    <h2 class="text-center pb-4">{data.data.attributes.contact_form_title ? data.data.attributes.contact_form_title : ''}</h2>
                     <Form method="post">
                         <FormGroup class="input-icon-box">
                             <Input class="input-user" placeholder="Full Name" bind:value={name} />

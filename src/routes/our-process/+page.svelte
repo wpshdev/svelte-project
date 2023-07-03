@@ -10,25 +10,26 @@
 </script>
 
 <svelte:head>
-	<title>{processData.section1heading}</title>
+	<title>{processData.section1heading ? processData.section1heading : 'Our Process'}</title>
 	<meta name="description" content="ULF BUILT" />
     <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.url}" as="image">
 </svelte:head>
-<PageBanner title="Our Process" subTitle="Home Builder and Remodeler in Vail, Colorado" banner="{domain}{processData.Cover.data[0].attributes.url}" />
+<PageBanner title="{processData.section1heading ? processData.section1heading : 'Our Process'}" subTitle="{processData.bannerSub ? processData.bannerSub : ''}" banner="{domain}{processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
         <Container>
             <Row>
                 <Col class="md-12 text-center">
                     <div class="our-process__heading">
-                        <h2>{processData.section1heading}</h2>
-                        {@html processData.section1text}
+                        <h2>{processData.section1heading ? processData.section1heading : ''}</h2>
+                        {@html processData.section1text ? processData.section1text : ''}
                     </div>
                 </Col>
             </Row>
             <Row>
                 <Col class="md-12">
                     <Animate>
-                        <img src="{domain}{processData.section2image.data.attributes.formats.large_x2 ? processData.section2image.data.attributes.formats.large_x2.url : processData.section2image.data.attributes.url}"
+                        {#if processData.section2image.data}
+                        <img src="{domain}{processData.section2image.data.attributes.url}"
                         srcset="{domain}{processData.section2image.data.attributes.url} 330w,
                                 {domain}{processData.section2image.data.attributes.url} 660w,
                                 {domain}{processData.section2image.data.attributes.url} 990w"
@@ -38,8 +39,9 @@
                         width="330"
                         height="170"
                         alt="{processData.section2image.data.attributes.alternativeText}"/>
+                        {/if}
                         <div class="our-process__paragraph mx-auto">
-                            {@html processData.section2text}
+                            {@html processData.section2text ? processData.section2text : ''}
                         </div>
                     </Animate>
                 </Col>            
@@ -53,7 +55,7 @@
             <Row>
                 <Col md="{{ size: '6', offset: 3 }}" class="text-center">
                     <h3>
-                        {@html processData.section3heading}                  
+                        {@html processData.section3heading ? processData.section3heading : ''}                  
                     </h3>
                 </Col>
             </Row>
@@ -71,7 +73,7 @@
                     <span class="num">1</span>
                 </Col>
                 <Col xs="10">
-                    <div class="phase__heading"><h3>{processData.section3phase1mainheading}</h3></div>
+                    <div class="phase__heading"><h3>{processData.section3phase1mainheading ? processData.section3phase1mainheading : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
@@ -79,20 +81,20 @@
     <Animate>
         <div class="phase__grid">
             <div class="phase__grid__item">
-                <span>{processData.section4heading}</span>
-                <h4>{processData.section4subheading}</h4>
-                {@html processData.section4text}
+                <span>{processData.section4heading ? processData.section4heading : ''}</span>
+                <h4>{processData.section4subheading ? processData.section4subheading : ''}</h4>
+                {@html processData.section4text ? processData.section4text : ''}
             </div>
             <div class="phase__grid__item">
-                {@html processData.section4righttext}
+                {@html processData.section4righttext ? processData.section4righttext : ''}
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section5heading}</span>
-                <h4>{processData.section5subheading}</h4>
-                {@html processData.section5text }
+                <span>{processData.section5heading ? processData.section5heading : ''}</span>
+                <h4>{processData.section5subheading ? processData.section5subheading : ''}</h4>
+                {@html processData.section5text ? processData.section5text : '' }
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section5righttext}
+                {@html processData.section5righttext ? processData.section5righttext : ''}
             </div>                                 
         </div>  
     </Animate>
@@ -103,20 +105,20 @@
    <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
-                <span>{processData.section7heading}</span>
-                <h4>{processData.section7subheading}</h4>
-                {@html processData.section7text}
+                <span>{processData.section7heading ? processData.section7heading : ''}</span>
+                <h4>{processData.section7subheading ? processData.section7subheading : ''}</h4>
+                {@html processData.section7text ? processData.section7text : ''}
             </div>
             <div class="phase__grid__item">
-                {@html processData.section7righttext}
+                {@html processData.section7righttext ? processData.section7righttext : ''}
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section8heading}</span>
-                <h4>{processData.section8subheading}</h4>
-                {@html processData.section8text}
+                <span>{processData.section8heading ? processData.section8heading : ''}</span>
+                <h4>{processData.section8subheading ? processData.section8subheading : ''}</h4>
+                {@html processData.section8text ? processData.section8text : ''}
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section8righttext}
+                {@html processData.section8righttext ? processData.section8righttext : ''}
             </div>                                 
         </div>        
    </Animate>
@@ -132,7 +134,7 @@
             <Row>
                 <Col>
                     <div>
-                        {@html processData.section9text}
+                        {@html processData.section9text ? processData.section9text : ''}
                     </div>
                 </Col>
             </Row>
@@ -149,7 +151,7 @@
         <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="9" md="10">
-                    <div class="phase__heading"><h3>{processData.section10phase2heading}</h3></div>
+                    <div class="phase__heading"><h3>{processData.section10phase2heading ? processData.section10phase2heading : ''}</h3></div>
                 </Col>            
                 <Col xs="3" md="2">
                     <span class="num">2</span>
@@ -160,28 +162,28 @@
     <Animate>
         <div class="phase__grid">
             <div class="phase__grid__item">
-                <span>{processData.section11heading}</span>
-                <h4>{processData.section11subheading}</h4>
-                {@html processData.section11text}
+                <span>{processData.section11heading ? processData.section11heading : ''}</span>
+                <h4>{processData.section11subheading ? processData.section11subheading : ''}</h4>
+                {@html processData.section11text ? processData.section11text : ''}
             </div>
             <div class="phase__grid__item">
-                {@html processData.section11righttext}
+                {@html processData.section11righttext ? processData.section11righttext : ''}
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section12heading}</span>
-                <h4>{processData.section12subheading}</h4>
-                {@html processData.section12text}
+                <span>{processData.section12heading ? processData.section12heading : ''} </span>
+                <h4>{processData.section12subheading ? processData.section12subheading : ''}</h4>
+                {@html processData.section12text ? processData.section12text : ''}
             </div>  
             <div class="phase__grid__item">
-                {@html processData.section12righttext}
+                {@html processData.section12righttext ? processData.section12righttext : ''}
             </div>  
             <div class="phase__grid__item">
-                <span>{processData.section13heading}</span>
-                <h4>{processData.section13subheading}</h4>
-                {@html processData.section13text}
+                <span>{processData.section13heading ? processData.section13heading : ''}</span>
+                <h4>{processData.section13subheading ? processData.section13subheading : ''}</h4>
+                {@html processData.section13text ? processData.section13text : ''}
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section13righttext}
+                {@html processData.section13righttext ? processData.section13righttext : ''}
             </div>                                            
         </div>    
     </Animate>
@@ -192,28 +194,28 @@
     <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
-                <span>{processData.section15heading}</span>
-                <h4>{processData.section15subheading}</h4>
-                {@html processData.section15text}
+                <span>{processData.section15heading ? processData.section15heading : ''}</span>
+                <h4>{processData.section15subheading ? processData.section15subheading : ''}</h4>
+                {@html processData.section15text ? processData.section15text : ''}
             </div>
             <div class="phase__grid__item">
-                {@html processData.section15righttext }
+                {@html processData.section15righttext ? processData.section15righttext : '' }
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section16heading}</span>
-                <h4>{processData.section16subheading}</h4>
-                {@html processData.section16text}
+                <span>{processData.section16heading ? processData.section16heading : ''}</span>
+                <h4>{processData.section16subheading ? processData.section16subheading : ''}</h4>
+                {@html processData.section16text ? processData.section16text : ''}
             </div>  
             <div class="phase__grid__item">
-                {@html processData.section16righttext }
+                {@html processData.section16righttext ? processData.section16righttext : '' }
             </div>         
             <div class="phase__grid__item">
-                <span>{processData.section17heading}</span>
-                <h4>{processData.section17subheading}</h4>
-                {@html processData.section17text}
+                <span>{processData.section17heading ? processData.section17heading : ''}</span>
+                <h4>{processData.section17subheading ? processData.section17subheading : ''}</h4>
+                {@html processData.section17text ? processData.section17text : ''}
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section17righttext }
+                {@html processData.section17righttext ? processData.section17righttext : '' }
             </div>                                       
         </div>     
     </Animate> -->
@@ -224,12 +226,12 @@
     <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
-                <span>{processData.section19heading}</span>
-                <h4>{processData.section19subheading}</h4>
-                {@html processData.section19text}
+                <span>{processData.section19heading ? processData.section19heading : ''}</span>
+                <h4>{processData.section19subheading ? processData.section19subheading : ''}</h4>
+                {@html processData.section19text ? processData.section19text : ''}
             </div>
             <div class="phase__grid__item last-even">
-                {@html processData.section19righttext }
+                {@html processData.section19righttext ? processData.section19righttext : '' }
             </div>                                           
         </div>     
     </Animate> -->
@@ -240,7 +242,7 @@
             <Row>
                 <Col>
                     <div>
-                        {@html processData.section20text }
+                        {@html processData.section20text ? processData.section20text : '' }
                     </div>
                 </Col>
             </Row>

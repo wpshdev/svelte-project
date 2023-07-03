@@ -8,54 +8,75 @@
 	import Animate from '$lib/components/Animate.svelte';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from "axios";
-    let blogs = data.blogs.data;
-    let category = data.category.data;
-    console.log(category);
+    // let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
-    let items = blogs;
+    // let items = blogs;
   let currentPage = 1;
   let pageSize = 5;
 //   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
   let articleList = [];
-
-    let activeDate = 'DESC'; // newest/latest default
-    function activeDateClick(datesort) {
+  let categories = data.categories.data;
+  let loadingArticle;
+  
+    // Date on click
+    let activeDate = 'DESC'; // made newest/latest default on date filter
+    function activeDateClick(datesort) { 
         activeDate = datesort;
     }
-    $: if (activeDate) {
-        articleList = []; // to reset portfolioList length
+
+    // Category tab on click
+    let activeCategoryTab = '';
+    function activeCategoryTabClick(id) {
+        activeCategoryTab = id;
+    }
+
+    // check if there is new value selected for either activeDate or activeCategoryTab, then run the fetch function
+    $: if (activeDate || activeCategoryTab) { 
+        loadingArticle = true; // to able to show loading text, if true show loading text
         (async () => {
-            const url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+            let apiUrl;
+            if(activeCategoryTab || activeCategoryTab != '') { // if has activeCategoryTab, add it on the fetch url
+                apiUrl = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&filters[blog_category][id][$eq]="+activeCategoryTab+"&populate=deep";
+            } else {
+                apiUrl = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+            }
             const headers = {
                 Authorization: 'Bearer ' + PUBLIC_STRAPI_API
             }  
 
             try {
-                const response = await axios.get(url, { headers });
-                new Promise((resolve) => {
-                    setTimeout(() => resolve(articleList = response.data.data), 1000)
-                })
+                const response = await axios.get(apiUrl, { headers });
+                loadingArticle = false;
+                articleList = response.data.data;
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         })();
     }
-    $: listener = {activeDate};
+    
+    // variable for {#key} to check if has new data in either activeDate or activeCategoryTab, to recreate their contents 
+    $: listener = {activeDate, activeCategoryTab};
 </script>
 <svelte:head>
-	<title>{title}</title>
+	<title>{title ? title : 'Articles & Press'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.page.data.attributes.title}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
+<PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
     <Container>
         <Row>
             <ul class="cat-list">
                 <li>
-                    <div>
-                        <p class="category-data">CATEGORY</p>
+                    <div class="category-list-content">
+                        <p class="category-list">CATEGORY</p>
+                        <div class="category-list-dropdown dropdown-content">
+                            {#each categories as category}
+                                <p class={activeCategoryTab === category.id ? 'selected' : ''} on:click="{() => activeCategoryTabClick(category.id)}">{category.attributes.name}</p>
+                            {/each}
+                            <p class={activeCategoryTab === '' ? 'selected' : ''} on:click="{() => activeCategoryTabClick('')}">Show All</p>
+                        </div>
                    </div> |
                    <div class="category-date-content">
                         <p class="category-date">DATE ADDED</p>
@@ -72,79 +93,80 @@
 </section>
 <section class="mw-1000 text-center article-section">
     <Container>
-        <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading}</h2>
-        <p class="text-left">{@html data.page.data.attributes.section2description}</p>
+        <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading ? data.page.data.attributes.section2heading : ''}</h2>
+        <p class="text-left">{@html data.page.data.attributes.section2description ? data.page.data.attributes.section2description : ''}</p>
     </Container>
 </section>
 <section class="article-blog">
 <Container>
         {#key listener}
-            {#if articleList.length == 0} 
-                <div class="col text-center">Loading...</div>
+            {#if loadingArticle}  <!-- show load -->
+              <div class="col text-center">Loading...</div>
             {:else}
-            {@const items = articleList}
-
-                 <!-- Pagination -->
-                <LightPaginationNav
-                totalItems="{articleList.length}"
-                pageSize="{pageSize}"
-                currentPage="{currentPage}"
-                limit="{1}"
-                showStepOptions="{true}"
-                on:setPage="{(e) => currentPage = e.detail.page}"
-                />
-                <!-- End Pagination -->
-                
-                <div class="mx-8"></div>
-                {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
-                    <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
-                        <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
-                            <Animate>
-                                <div class="blogsection7 easein-img">
-                                    {#if blog.attributes.featuredimage.data != null}
-                                        {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                            <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
+                {#if articleList.length == 0} 
+                    <div class="col text-center">No Articles Found...</div>
+                {:else}
+                {@const items = articleList}
+                    <!-- Pagination -->
+                    <LightPaginationNav
+                    totalItems="{articleList.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                    <!-- End Pagination -->
+                    
+                    <div class="mx-8"></div>
+                    {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
+                        <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
+                            <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
+                                <Animate>
+                                    <div class="blogsection7 easein-img">
+                                        {#if blog.attributes.featuredimage.data != null}
+                                            {#if blog.attributes.featuredimage.data.attributes.formats != null}
+                                                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
+                                            {:else}
+                                                <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
+                                            {/if}
                                         {:else}
-                                            <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
+                                            <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
                                         {/if}
-                                    {:else}
-                                        <img alt="blogtitle" src="{blogempty}" class="blog-img w-100">
-                                    {/if}
-                                </div>
-                            </Animate>
-                        </Col>
-            
-                        <Col md="5">
-                            <Animate>
-                                <div class="blogsection5">
-                                    <div>
-                                        <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
-                                        <h2>{blog.attributes.title}</h2>
-                                        <p>{blog.attributes.shorttext}</p>
-                                        <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
                                     </div>
-                                </div>
-                            </Animate>
-            
-                        </Col>
-                        <!-- </a> -->
-                </Row>
-                <div class="mx-8"></div>
-                {/each}
+                                </Animate>
+                            </Col>
+                
+                            <Col md="5">
+                                <Animate>
+                                    <div class="blogsection5">
+                                        <div>
+                                            <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
+                                            <h2>{blog.attributes.title}</h2>
+                                            <p>{blog.attributes.shorttext}</p>
+                                            <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
+                                        </div>
+                                    </div>
+                                </Animate>
+                
+                            </Col>
+                            <!-- </a> -->
+                    </Row>
+                    <div class="mx-8"></div>
+                    {/each}
 
-                <!-- Pagination -->
-                <LightPaginationNav
-                totalItems="{items.length}"
-                pageSize="{pageSize}"
-                currentPage="{currentPage}"
-                limit="{1}"
-                showStepOptions="{true}"
-                on:setPage="{(e) => currentPage = e.detail.page}"
-                />
-                <!-- End Pagination -->
-
+                    <!-- Pagination -->
+                    <LightPaginationNav
+                    totalItems="{items.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                    <!-- End Pagination -->
+                {/if}
             {/if}
-
         {/key}
     <div class="divider">
         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,6 +279,7 @@
             color: $secondary-color;
         }
         padding: 0 0 1rem 0;
+        min-height: 15vh;
         @include media-max(lg){
             min-height: 0;
         }
@@ -280,6 +303,16 @@
                             color: $primary-color;
                         }
                         .category-date-dropdown {
+                            display: block;
+                        }
+                    }
+                }
+                &.category-list-content {
+                    &:hover {
+                        .category-list {
+                            color: $primary-color;
+                        }
+                        .category-list-dropdown {
                             display: block;
                         }
                     }

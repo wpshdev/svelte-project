@@ -34,9 +34,9 @@
 				<Col class="text-center">
 					<div class="home-cta__container">
 						<div class="home-cta__wrapper">
-							<h2>{ctaData.heading}</h2>
-							{@html ctaData.paragraph}
-							<a href="{ctaData.btnUrl}" class="btn btn-secondary">{ctaData.btnTitle}</a>
+							<h2>{ctaData.heading ? ctaData.heading : ''}</h2>
+							{@html ctaData.paragraph ? ctaData.paragraph : ''}
+							<a href="{ctaData.btnUrl ? ctaData.btnUrl : '#'}" class="btn btn-secondary">{ctaData.btnTitle ? ctaData.btnTitle : 'Button'}</a>
 						</div>
 					</div>
 				</Col>

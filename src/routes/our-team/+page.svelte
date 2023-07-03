@@ -25,20 +25,22 @@
     
 </script>
 <svelte:head>
-	<title>Our Team</title>
+	<title>{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<PageBanner title="{data.data.attributes.title}" subTitle="{data.data.attributes.Subheading}"  banner="{domain}{data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
+<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
 <section class="our-team">
     <Animate>
         <Container>
             <Row>
                 <Col md="10" class="mx-auto">
-                    <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle}</h2>
-                    <p class="two-columns">{@html ourTeam.content}</p>
+                    <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
+                    <p class="two-columns">{@html ourTeam.content ? ourTeam.content : ''}</p>
+                    {#if ourTeam.SecondSectionImage.data}
                     <div class="heading-image">
                         <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy"/>
                     </div>
+                    {/if}
                 </Col>
             </Row>
         </Container>
@@ -51,12 +53,12 @@
                 <Col md=6 class="tm-img">
                     <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                 <div class="tm-box wtc">
-                    <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name}</h3>
-                    <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position}</h4>
+                    <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
+                    <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
                 </div>
                 </Col>
                 <Col md=6 class="owner-quote-container">
-                <div class="owner-quote"><h3 class="stc line-height-2 text-center">{@html ourTeam.ownerquote}</h3></div>
+                <div class="owner-quote"><h3 class="stc line-height-2 text-center">{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
@@ -72,7 +74,7 @@
 <section class="team-members">
 <Container>
     <Row>
-        <h2 class="sfont stc mb-5 text-center">{ourTeam.title}</h2>
+        <h2 class="sfont stc mb-5 text-center">{ourTeam.title ? ourTeam.title : ''}</h2>
         <Col md={{ size: 8, offset: 2 }} class="inner-col">
         <Row>
             {#each ourTeam.team_members.data as member,index}
@@ -96,11 +98,13 @@
             <Modal bind:showModal>
                 <div class="memberModal">
                     <div class="memberModal__image">
+                        {#if memberImage}
                         <img src="{domain}{memberImage}" alt="member">
+                        {/if}
                     </div>
                     <div class="memberModal__details">
-                        <h5 class="pfont">{@html memberName}</h5>
-                        <p class="position">{memberPosition}</p>
+                        <h5 class="pfont">{@html memberName ? memberName : ''}</h5>
+                        <p class="position">{memberPosition ? memberPosition : ''}</p>
                         {#if memberContent}
                         <p class="content">{@html memberContent}</p>
                         {/if}
@@ -118,7 +122,7 @@
     <Container>
         <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
         <h4>{ourTeam.para3 ? ourTeam.para3 : ''}</h4>
-        <h4>{ourTeam.team_member_owner.data.attributes.name}</h4>
+        <h4>{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h4>
     </Container>
   </Animate>
 </section>

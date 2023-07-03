@@ -21,7 +21,7 @@
     let portfolioList = [];
     let pageSize = 6;
     let currentPage = 1;
-
+    let loading;
     // let properties = data.properties.data;
     // console.log(portfolio);
 
@@ -31,7 +31,8 @@
 	}
 
     $: if (activeTab) { // Check if has new variable data
-        portfolioList = []; // to reset portfolioList length
+        // portfolioList = []; // to reset portfolioList length
+        loading = true;
         (async () => {
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
             const headers = {
@@ -40,9 +41,11 @@
 
             try {
                 const response = await axios.get(url, { headers });
-                new Promise((resolve) => {
-                    setTimeout(() => resolve(portfolioList = response.data.data), 1000)
-                })
+                portfolioList = response.data.data;
+                loading = false;
+                // new Promise((resolve) => {
+                //     setTimeout(() => resolve(portfolioList = response.data.data), 1000)
+                // })
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -51,18 +54,18 @@
 
 </script>
 <svelte:head>
-	<title>{portfolio.title}</title>
+	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
 	<meta name="description" content="ULF BUILT" />
 
 </svelte:head>
 
-<PageBanner title="{portfolio.title}" subTitle="{portfolio.subTitle}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
+<PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
 
 <section class="portfolio-masonry">
     <Container>
         <Row>
             <Col class="text-center">
-                <h2>{portfolio.masonryGallery.masonryHeading}</h2>
+                <h2>{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
                 <div class="categories__tabs__heading">
@@ -75,7 +78,7 @@
                                 class:active="{activeTab === heading.id}"
                                 on:click="{() => handleTabClick(heading.id)}"
                                 >
-                                {heading.attributes.Title}
+                                {heading.attributes.Title ? heading.attributes.Title : ''}
                                 </span>
                             </li>
                         {/each}
@@ -89,44 +92,51 @@
                     {/if}
                 </p>
                 {#key activeTab}
-                    {#if portfolioList.length == 0} 
+                    {#if loading}  <!-- show load -->
                         <div class="col text-center">Loading...</div>
                     {:else}
-                    {@const items = portfolioList}
-                        <div class="container masonry-wrapper">       
-                            {#each paginate({ items, pageSize, currentPage }) as project, index}			
-                                {#if index < propCount}
-                                    <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" out:fly="{{y:0, duration:1000 }}"> 
-                                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
-                                            {#if project.attributes.featuredImage.data != null}
-                                            <!-- <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader> -->
-                                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
-                                            {:else}
-                                            <img src="{noFeatured}" alt="{project.attributes.title}">
-                                            {/if}
-                                            <div class="masonry-items__text">
-                                                <span>{('0' + (index + 1)).slice(-2)}</span>
-                                                {project.attributes.title}
-                                                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                        </a>
-                                    </div>		
-                                {/if}			
-                            {/each}
-                        </div>
-                        <div class="paginate-section">
-                            <LightPaginationNav
-                            totalItems="{portfolioList.length}"
-                            pageSize="{pageSize}"
-                            currentPage="{currentPage}"
-                            limit="{1}"
-                            showStepOptions="{true}"
-                            on:setPage="{(e) => currentPage = e.detail.page}"
-                            />
-                        </div>
+                        {#if portfolioList.length == 0} 
+                            <div class="col text-center">No Portfolio Found...</div>
+                        {:else}
+                        {@const items = portfolioList}
+                            <div class="container masonry-wrapper">       
+                                {#each paginate({ items, pageSize, currentPage }) as project, index}			
+                                    {#if index < propCount}
+                                    <!-- class:second-column={(index + 1) % (portfolioList.length) === 4} -->
+                                        <div class="masonry-items" 
+                                        in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" 
+                                        out:fly="{{y:0, duration:1000 }}"> 
+                                            <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
+                                                {#if project.attributes.featuredImage.data != null}
+                                                <!-- <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader> -->
+                                                <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                                {:else}
+                                                <img src="{noFeatured}" alt="{project.attributes.title}">
+                                                {/if}
+                                                <div class="masonry-items__text">
+                                                    <span>{('0' + (index + 1)).slice(-2)}</span>
+                                                    {project.attributes.title ? project.attributes.title : ''}
+                                                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </i>
+                                                </div>
+                                            </a>
+                                        </div>		
+                                    {/if}			
+                                {/each}
+                            </div>
+                            <div class="paginate-section">
+                                <LightPaginationNav
+                                totalItems="{portfolioList.length}"
+                                pageSize="{pageSize}"
+                                currentPage="{currentPage}"
+                                limit="{1}"
+                                showStepOptions="{true}"
+                                on:setPage="{(e) => currentPage = e.detail.page}"
+                                />
+                            </div>
+                        {/if}
                     {/if}
                 {/key}
             </Col>
@@ -139,12 +149,12 @@
             <Row>
                 <Col class="text-center ">
                     <div class="portfolio-cta__content">
-                        <span>{portfolio.ourApproachPreHeading}</span>
-                        <h2>{@html portfolio.ourApproachHeading}</h2>                 
+                        <span>{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</span>
+                        <h2>{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
                     </div>
                     <div class="portfolio-cta__btns">
-                        <a href="{portfolio.ourApproachLeftBtnUrl}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle}</a>
-                        <a href="{portfolio.ourApproachRightBtnUrl}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle}</a>
+                        <a href="{portfolio.ourApproachLeftBtnUrl ? portfolio.ourApproachLeftBtnUrl : '#'}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle ? portfolio.ourApproachLeftBtnTitle : 'Button'}</a>
+                        <a href="{portfolio.ourApproachRightBtnUrl ? portfolio.ourApproachRightBtnUrl : '#'}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle ? portfolio.ourApproachRightBtnTitle : 'Button'}</a>
                     </div>                   
                 </Col>
             </Row>

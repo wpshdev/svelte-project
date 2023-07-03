@@ -41,7 +41,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{title ? title : 'Project'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
@@ -52,7 +52,7 @@
 				<Col class="text-center">
 					<div class="portfolio-gallery__content">
 						<span>Project</span>
-						<h1 class="h2">{title}</h1>
+						<h1 class="h2">{title ? title : ''}</h1>
 						{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
 					</div>
 				</Col>
@@ -67,7 +67,7 @@
 	<Animate>
 		<Container>
 			<Row>
-				<Col><h2>{projectHeading}</h2></Col>
+				<Col><h2>{projectHeading ? projectHeading : ''}</h2></Col>
 			</Row>
 			<Row>
 				<Col md="12">
@@ -80,7 +80,7 @@
 									</svg>
 								</i>
 								<span>
-									{projectDetailLocation}
+									{projectDetailLocation ? projectDetailLocation : ''}
 								</span>
 							</div>
 							<div>
@@ -90,12 +90,12 @@
 									</svg>									
 								</i>
 								<span>
-									{projectDetailTimeframe}
+									{projectDetailTimeframe ? projectDetailTimeframe : ''}
 								</span>
 							</div>
 						</div>
 						<div class="about-property__content__paragraph">
-							{@html data.portfolio.data[0].attributes.projectDetails}
+							{@html data.portfolio.data[0].attributes.projectDetails ? data.portfolio.data[0].attributes.projectDetails : ''}
 						</div>
 					</div>
 				</Col>
@@ -104,7 +104,9 @@
 	</Animate>
 </section>
 {#each bannerQuotes as bannerQuote}
+		{#if bannerQuote.banner.data}
 		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
+		{/if}
 		<Testimonial testimonial="{bannerQuote.quote}" />
 {/each}
 
@@ -148,7 +150,7 @@
                                 {/if}
 								<div class="related__article__text">
 									<span>{('0' + (index + 1)).slice(-2)}</span>
-									{rPortfolio.attributes.title}
+									{rPortfolio.attributes.title ? rPortfolio.attributes.title : ''}
 									<i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
 										</svg>
@@ -237,6 +239,9 @@ section{
 	padding: 4rem 0;
 	h2{
 		margin-bottom: 2rem;
+		color: $secondary-color;
+		font-size: 2.25rem;
+		font-weight: 400;
 	}
 	&__content{
 		background-color: #E5EEF2;
@@ -269,12 +274,23 @@ section{
 						}							
 					}
 				}
+				span {
+					font-size: 1.438rem;
+					font-weight: 500;
+					letter-spacing: 0.029rem;
+					font-feature-settings: 'pnum' on, 'lnum' on;
+				}
 			}
 		}
 		&__paragraph{
 			column-count: 2;
 			@include media-max(sm){
 				column-count: 1;
+			}
+			p {
+				font-family: 1.25rem;
+				line-height: 2.125rem;
+				font-weight: 400;
 			}
 		}
 	}
@@ -298,11 +314,12 @@ section{
 }
 
 .portfolio-cta{
-	min-height: 40vw;
-	min-width: 40vw;        
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	// min-height: 40vw;
+	// min-width: 40vw;        
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+	min-height: unset;
 	position: relative;      
 	&__content{
 		h2{
