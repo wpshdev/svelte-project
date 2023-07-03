@@ -15,3 +15,14 @@ vite.config.ts
 package-lock.json
 package.json
 src/routes/+page.server.ts
+src/routes/our-team/\+page.server.ts
+
+src/routes/our-process/\+page.server.ts
+
+src/routes/portfolio/\+page.server.ts
+
+src/routes/portfolio/\[slug\]/\+page.server.ts
+
+src/routes/services/\+page.server.ts
+
+src/routes/about-us/\+page.server.ts

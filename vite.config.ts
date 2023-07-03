@@ -3,11 +3,11 @@ import type { UserConfig } from 'vite';
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-// const filePath = dirname(fileURLToPath(import.meta.url))
+const filePath = dirname(fileURLToPath(import.meta.url))
 // I think there is something wrong with this path -- Ryan Iguchi - 6/28/2023
 
 // This is another possibility for this filePath var
-const filePath = process.cwd
+// const filePath = process.cwd()
 
 
 // I think it is the sassPath that is causing the File error. 
