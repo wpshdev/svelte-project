@@ -108,10 +108,13 @@
             <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
             <p class="text-left">{@html about.Section5text}</p> -->
             <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
-                <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
-                <div class="certificate-content">
-                    {@html about.certContent ? about.certContent : ''}
+                <div class="certificate-inner-container">
+                    <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
+                    <div class="certificate-content">
+                        {@html about.certContent ? about.certContent : ''}
+                    </div>
                 </div>
+            </div>
             
             <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
             <!-- {#if about.Section5image.data}
@@ -231,91 +234,61 @@
                     width: 100%;
                 }
             }
-            // .mobile {
-            //     display: none;
-            // }
             @include media-max(md){
                 :global(.container) {
                     max-width: 100%;
                     margin: auto;
                 }
             }
-            // @include media-max(sm){
-            //     .mobile {
-            //         display: block;
-            //     }
-            //     .desktop {
-            //         display: none;
-            //     }
-            // }
             .certificate-container {
                 background-image: var(--cta-banner);
-                height: 100vh;
+                // height: 100vh;
+                height: 50rem;
                 background-repeat: no-repeat;
                 position: relative;
                 background-size: contain;
-                @include media-max(md){
+                background-position: center;
+                @include media-max(md){ 
                     background-image: var(--cta-banner-mobile);
-                    background-position: center;
                 }
-                .certificate-title {
-                    color: $secondary-color;
-                    font-family: "Pinyon Script", cursive;
-                    padding-top: 13.5rem;
-                    @include media-max(w1400){
-                        padding-top: 11rem;
-                    }
+                .certificate-inner-container {
+                    padding-top: 12.5rem;
                     @include media-max(lg){
-                        padding-top: 10rem;
+                        padding-top: 15rem;
                     }
                     @include media-max(md){
-                       width: 14.375rem;
-                       margin: auto;
-                       padding-top: 7.8rem;
+                        padding-top: 6rem;
                     }
-                    @include media-max(ipadmini){
-                       padding-top: 7rem;
-                    }
-                    @include media-max(xs){
-                       padding-top: 8rem;
-                    }
-                    @include media-max(ms){
-                       padding-top: 10rem;
-                    }
-                }
-                .certificate-content {
-                    max-width: 43.379rem;
-                    font-size: 1.25rem;
-                    line-height: 2.125rem;
-                    color: $darkergray;
-                    margin: auto;
-                    padding-top: 7rem;
-                    @include media-max(w1400){
-                        padding-top: 5rem;
-                    }
-                    @include media-max(lg){
-                        padding-top: 3rem;
-                        font-size: 1rem;
-                    }
-                    @include media-max(md){
-                       width: 14.375rem;
-                       line-height: 2.125rem;
-                    }
-                    @include media-max(ipadmini){
-                       padding-top: 2rem;
-                    }
-                    @include media-max(xs){
-                       padding-top: 3rem;
-                    }
-                    :global(.spacer) {
-                        margin-bottom: 2.5rem;
+                    .certificate-title {
+                        color: $secondary-color;
+                        font-family: "Pinyon Script", cursive;
+                        padding-bottom: 5rem;
                         @include media-max(lg){
-                            margin-bottom: 1.5rem;
+                            padding-bottom: 3rem;
                         }
                         @include media-max(md){
-                            margin-bottom: 0;
+                            width: 14rem;
+                            margin: auto;
+                            padding-bottom: 1rem;
                         }
-                    } 
+                    }
+                    .certificate-content {
+                        max-width: 43.379rem;
+                        font-size: 1.25rem;
+                        line-height: 2.125rem;
+                        color: $darkergray;
+                        margin: auto;
+                        @include media-max(lg){
+                            font-size: 1rem;
+                        }
+                        @include media-max(md){
+                            width: 14.375rem;
+                            line-height: 2rem;
+                            :global(br) {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
         }

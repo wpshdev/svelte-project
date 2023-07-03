@@ -17,8 +17,8 @@
 //   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
   let articleList = [];
   let categories = data.categories.data;
-  let noArticle;
-
+  let loadingArticle;
+  
     // Date on click
     let activeDate = 'DESC'; // made newest/latest default on date filter
     function activeDateClick(datesort) { 
@@ -33,26 +33,22 @@
 
     // check if there is new value selected for either activeDate or activeCategoryTab, then run the fetch function
     $: if (activeDate || activeCategoryTab) { 
-        noArticle = false;
-        articleList = []; // to reset articleList length - to able to show loading text
-        // For showing no articles after certain time on loading - some categories have no articles
-        setTimeout(() => {
-            noArticle = true;
-        }, 5000);
+        loadingArticle = true; // to able to show loading text, if true show loading text
         (async () => {
-            let url;
+            let apiUrl;
             if(activeCategoryTab || activeCategoryTab != '') { // if has activeCategoryTab, add it on the fetch url
-                url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&filters[blog_category][id][$eq]="+activeCategoryTab+"&populate=deep";
+                apiUrl = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&filters[blog_category][id][$eq]="+activeCategoryTab+"&populate=deep";
             } else {
-                url = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+                apiUrl = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
             }
             const headers = {
                 Authorization: 'Bearer ' + PUBLIC_STRAPI_API
             }  
 
             try {
-                const response = await axios.get(url, { headers });
-                articleList = response.data.data
+                const response = await axios.get(apiUrl, { headers });
+                loadingArticle = false;
+                articleList = response.data.data;
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -104,76 +100,73 @@
 <section class="article-blog">
 <Container>
         {#key listener}
-            {#if articleList.length == 0} 
-                {#if noArticle}
-                    <div class="col text-center">No articles found!</div>
-                {:else}
-                    <div class="col text-center">Loading...</div>
-                {/if}
+            {#if loadingArticle}  <!-- show load -->
+              <div class="col text-center">Loading...</div>
             {:else}
-            {@const items = articleList}
-
-                 <!-- Pagination -->
-                <LightPaginationNav
-                totalItems="{articleList.length}"
-                pageSize="{pageSize}"
-                currentPage="{currentPage}"
-                limit="{1}"
-                showStepOptions="{true}"
-                on:setPage="{(e) => currentPage = e.detail.page}"
-                />
-                <!-- End Pagination -->
-                
-                <div class="mx-8"></div>
-                {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
-                    <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
-                        <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
-                            <Animate>
-                                <div class="blogsection7 easein-img">
-                                    {#if blog.attributes.featuredimage.data != null}
-                                        {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                            <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
+                {#if articleList.length == 0} 
+                    <div class="col text-center">No Articles Found...</div>
+                {:else}
+                {@const items = articleList}
+                    <!-- Pagination -->
+                    <LightPaginationNav
+                    totalItems="{articleList.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                    <!-- End Pagination -->
+                    
+                    <div class="mx-8"></div>
+                    {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
+                        <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
+                            <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
+                                <Animate>
+                                    <div class="blogsection7 easein-img">
+                                        {#if blog.attributes.featuredimage.data != null}
+                                            {#if blog.attributes.featuredimage.data.attributes.formats != null}
+                                                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
+                                            {:else}
+                                                <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
+                                            {/if}
                                         {:else}
                                             <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
                                         {/if}
-                                    {:else}
-                                        <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
-                                    {/if}
-                                </div>
-                            </Animate>
-                        </Col>
-            
-                        <Col md="5">
-                            <Animate>
-                                <div class="blogsection5">
-                                    <div>
-                                        <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
-                                        <h2>{blog.attributes.title}</h2>
-                                        <p>{blog.attributes.shorttext}</p>
-                                        <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
                                     </div>
-                                </div>
-                            </Animate>
-            
-                        </Col>
-                        <!-- </a> -->
-                </Row>
-                <div class="mx-8"></div>
-                {/each}
+                                </Animate>
+                            </Col>
+                
+                            <Col md="5">
+                                <Animate>
+                                    <div class="blogsection5">
+                                        <div>
+                                            <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
+                                            <h2>{blog.attributes.title}</h2>
+                                            <p>{blog.attributes.shorttext}</p>
+                                            <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
+                                        </div>
+                                    </div>
+                                </Animate>
+                
+                            </Col>
+                            <!-- </a> -->
+                    </Row>
+                    <div class="mx-8"></div>
+                    {/each}
 
-                <!-- Pagination -->
-                <LightPaginationNav
-                totalItems="{items.length}"
-                pageSize="{pageSize}"
-                currentPage="{currentPage}"
-                limit="{1}"
-                showStepOptions="{true}"
-                on:setPage="{(e) => currentPage = e.detail.page}"
-                />
-                <!-- End Pagination -->
-
+                    <!-- Pagination -->
+                    <LightPaginationNav
+                    totalItems="{items.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                    <!-- End Pagination -->
+                {/if}
             {/if}
-
         {/key}
     <div class="divider">
         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">

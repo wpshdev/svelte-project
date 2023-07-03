@@ -21,7 +21,7 @@
     let portfolioList = [];
     let pageSize = 6;
     let currentPage = 1;
-
+    let loading;
     // let properties = data.properties.data;
     // console.log(portfolio);
 
@@ -31,7 +31,8 @@
 	}
 
     $: if (activeTab) { // Check if has new variable data
-        portfolioList = []; // to reset portfolioList length
+        // portfolioList = []; // to reset portfolioList length
+        loading = true;
         (async () => {
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
             const headers = {
@@ -40,9 +41,11 @@
 
             try {
                 const response = await axios.get(url, { headers });
-                new Promise((resolve) => {
-                    setTimeout(() => resolve(portfolioList = response.data.data), 1000)
-                })
+                portfolioList = response.data.data;
+                loading = false;
+                // new Promise((resolve) => {
+                //     setTimeout(() => resolve(portfolioList = response.data.data), 1000)
+                // })
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -89,44 +92,51 @@
                     {/if}
                 </p>
                 {#key activeTab}
-                    {#if portfolioList.length == 0} 
+                    {#if loading}  <!-- show load -->
                         <div class="col text-center">Loading...</div>
                     {:else}
-                    {@const items = portfolioList}
-                        <div class="container masonry-wrapper">       
-                            {#each paginate({ items, pageSize, currentPage }) as project, index}			
-                                {#if index < propCount}
-                                    <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" out:fly="{{y:0, duration:1000 }}"> 
-                                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
-                                            {#if project.attributes.featuredImage.data != null}
-                                            <!-- <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader> -->
-                                            <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
-                                            {:else}
-                                            <img src="{noFeatured}" alt="{project.attributes.title}">
-                                            {/if}
-                                            <div class="masonry-items__text">
-                                                <span>{('0' + (index + 1)).slice(-2)}</span>
-                                                {project.attributes.title ? project.attributes.title : ''}
-                                                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                        </a>
-                                    </div>		
-                                {/if}			
-                            {/each}
-                        </div>
-                        <div class="paginate-section">
-                            <LightPaginationNav
-                            totalItems="{portfolioList.length}"
-                            pageSize="{pageSize}"
-                            currentPage="{currentPage}"
-                            limit="{1}"
-                            showStepOptions="{true}"
-                            on:setPage="{(e) => currentPage = e.detail.page}"
-                            />
-                        </div>
+                        {#if portfolioList.length == 0} 
+                            <div class="col text-center">No Portfolio Found...</div>
+                        {:else}
+                        {@const items = portfolioList}
+                            <div class="container masonry-wrapper">       
+                                {#each paginate({ items, pageSize, currentPage }) as project, index}			
+                                    {#if index < propCount}
+                                    <!-- class:second-column={(index + 1) % (portfolioList.length) === 4} -->
+                                        <div class="masonry-items" 
+                                        in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" 
+                                        out:fly="{{y:0, duration:1000 }}"> 
+                                            <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
+                                                {#if project.attributes.featuredImage.data != null}
+                                                <!-- <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader> -->
+                                                <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                                {:else}
+                                                <img src="{noFeatured}" alt="{project.attributes.title}">
+                                                {/if}
+                                                <div class="masonry-items__text">
+                                                    <span>{('0' + (index + 1)).slice(-2)}</span>
+                                                    {project.attributes.title ? project.attributes.title : ''}
+                                                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </i>
+                                                </div>
+                                            </a>
+                                        </div>		
+                                    {/if}			
+                                {/each}
+                            </div>
+                            <div class="paginate-section">
+                                <LightPaginationNav
+                                totalItems="{portfolioList.length}"
+                                pageSize="{pageSize}"
+                                currentPage="{currentPage}"
+                                limit="{1}"
+                                showStepOptions="{true}"
+                                on:setPage="{(e) => currentPage = e.detail.page}"
+                                />
+                            </div>
+                        {/if}
                     {/if}
                 {/key}
             </Col>

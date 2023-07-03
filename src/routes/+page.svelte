@@ -31,6 +31,7 @@
 
 	// Function for portfolio masonry
 	let portfolioList = [];
+	let loading;
 
 	let activeTab = home.categories.data[0].id;
 	function handleTabClick(category) {
@@ -38,7 +39,8 @@
 	}
 
 	$: if (activeTab) { // Check if has new variable data
-        portfolioList = []; // to reset portfolioList length
+        // portfolioList = []; // to reset portfolioList length
+		loading = true;
         (async () => {
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
             const headers = {
@@ -47,9 +49,11 @@
 
             try {
                 const response = await axios.get(url, { headers });
-                new Promise((resolve) => {
-                    setTimeout(() => resolve(portfolioList = response.data.data), 500)
-                })
+				portfolioList = response.data.data;
+				loading = false;
+                // new Promise((resolve) => {
+                //     setTimeout(() => resolve(portfolioList = response.data.data), 500)
+                // })
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -164,21 +168,25 @@
 								</div>			
 							{/key}																		 -->
 							{#key activeTab}
-								<div class="container masonry_container">       
-									{#each portfolioList as project, index}				
-										{#if index < propCount}
-										<div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
-											<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-												{#if project.attributes.featuredImage.data != null}
-												<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
-												{:else}
-												<img src="{noFeatured}" alt="{project.attributes.title}" >
-												{/if}
-											</a>
-										</div>	                    
-										{/if}				
-									{/each}
-								</div>
+								{#if loading}  <!-- show load -->
+									<div class="col text-center">Loading...</div>
+								{:else}
+									<div class="container masonry_container">       
+										{#each portfolioList as project, index}				
+											{#if index < propCount}
+											<div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
+												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+													{#if project.attributes.featuredImage.data != null}
+													<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+													{:else}
+													<img src="{noFeatured}" alt="{project.attributes.title}" >
+													{/if}
+												</a>
+											</div>	                    
+											{/if}				
+										{/each}
+									</div>
+								{/if}
                 			{/key}
 						</div>					
 					</div>
