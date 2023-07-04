@@ -12,9 +12,13 @@ export async function load() {
     const urlProperties = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
     const properties = await axios.get(urlProperties, { headers }); 
 
+    const urlSiteSettings = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
+    const siteSettings = await axios.get(urlSiteSettings, { headers }); 
+
     // console.log(response.json());
     return {
         portfolio: response.data,
-        properties: properties.data
+        properties: properties.data,
+        fallback: siteSettings.data
     }
 }                                                                     

@@ -17,7 +17,7 @@
 
 	export let data;
 	const domain = "https://strapi.ulfbuilt.com:1337"
-	
+	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	
  	// const portfolio = data.portfolio.data[0].attributes;
 
@@ -146,7 +146,7 @@
 								{#if rPortfolio.attributes.featuredImage.data != null}
                                 <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
                                 {:else}
-                                <img src="{noFeatured}" alt="{rPortfolio.attributes.title}" >
+                                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{rPortfolio.attributes.title}" >
                                 {/if}
 								<div class="related__article__text">
 									<span>{('0' + (index + 1)).slice(-2)}</span>

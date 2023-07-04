@@ -17,6 +17,7 @@
 
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
+    let fallback = data.fallback.data.attributes.fallbackImage.data;
     let propCount = 10;
     let portfolioList = [];
     let pageSize = 6;
@@ -29,6 +30,32 @@
     function handleTabClick(category) {
 		activeTab = category;
 	}
+
+    // Determine first even and last odd
+    let start;
+    let firstEven = null;
+    let lastOdd = null;
+
+    function findNumbers(end) {
+        start = 1;
+        // Find the first even number
+        for (let num = start; num <= end; num++) {
+            if (num % 2 === 0) {
+                firstEven = num;
+                // console.log(firstEven)
+                break;
+            }
+        }
+
+        // Find the last odd number
+        for (let num = end; num >= start; num--) {
+            if (num % 2 !== 0) {
+                lastOdd = num;
+                // console.log(lastOdd)
+                break;
+            }
+        }
+    }
 
     $: if (activeTab) { // Check if has new variable data
         // portfolioList = []; // to reset portfolioList length
@@ -43,15 +70,12 @@
                 const response = await axios.get(url, { headers });
                 portfolioList = response.data.data;
                 loading = false;
-                // new Promise((resolve) => {
-                //     setTimeout(() => resolve(portfolioList = response.data.data), 1000)
-                // })
+                findNumbers(response.data.data.length > pageSize ? pageSize : response.data.data.length);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         })();
     }
-
 </script>
 <svelte:head>
 	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
@@ -103,15 +127,14 @@
                                 {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                     {#if index < propCount}
                                     <!-- class:second-column={(index + 1) % (portfolioList.length) === 4} -->
-                                        <div class="masonry-items" 
+                                        <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
                                         in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" 
                                         out:fly="{{y:0, duration:1000 }}"> 
                                             <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                                 {#if project.attributes.featuredImage.data != null}
-                                                <!-- <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader> -->
-                                                <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                                    <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
                                                 {:else}
-                                                <img src="{noFeatured}" alt="{project.attributes.title}">
+                                                    <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
                                                 {/if}
                                                 <div class="masonry-items__text">
                                                     <span>{('0' + (index + 1)).slice(-2)}</span>
@@ -249,8 +272,14 @@
 		}
         .masonry-wrapper {
             min-height: 31rem;
-            column-count: 2;
-            column-gap: 0.625rem;
+            // column-count: 2;
+            // column-gap: 0.625rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 1rem;
+            @include media-max(sm){
+                grid-template-columns: 1fr;
+            }	
             .masonry-items{
                 // display: grid;
                 // grid-template-rows: 1fr auto;
@@ -258,7 +287,29 @@
                 overflow: hidden;
                 color: white;
                 text-align: center;  
-                padding-top: 0.8rem;
+                // padding-top: 0.8rem;
+                &:nth-child(even) {
+                    padding-top: 2rem;
+                }
+                &:nth-child(odd) {
+                    padding-bottom: 2rem;
+                }
+                &.firstEven {
+                    padding-top: 5rem;
+                    @include media-max(sm){
+                        padding-top: 1rem;
+                    }
+                }
+                &.lastOdd {
+                    padding-bottom: 5rem;
+                    @include media-max(sm){
+                        padding-bottom: 1rem;
+                    }
+                }
+                @include media-max(sm){
+                    padding-top: 0 !important;
+                    padding-bottom: 0 !important;
+                }
                 &:hover{
                     .masonry-items__text{
                     background: $primary-color;

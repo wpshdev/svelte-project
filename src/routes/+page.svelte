@@ -25,7 +25,8 @@
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
-	const home = data.data.attributes;
+	const home = data.home.data.attributes;
+	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	let propCount = 3;
 	//let listener = {};
 
@@ -179,7 +180,7 @@
 													{#if project.attributes.featuredImage.data != null}
 													<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
 													{:else}
-													<img src="{noFeatured}" alt="{project.attributes.title}" >
+													<img src="{fallback ? domain+fallback.attribute.url : noFeatured}" alt="{project.attributes.title}" >
 													{/if}
 												</a>
 											</div>	                    
