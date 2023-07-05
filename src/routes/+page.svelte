@@ -170,23 +170,27 @@
 							{/key}																		 -->
 							{#key activeTab}
 								{#if loading}  <!-- show load -->
-									<div class="col text-center">Loading...</div>
+									<div class="col text-center list-text-details">Loading...</div>
 								{:else}
-									<div class="container masonry_container">       
-										{#each portfolioList as project, index}				
-											{#if index < propCount}
-											<div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
-												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-													{#if project.attributes.featuredImage.data != null}
-													<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
-													{:else}
-													<img src="{fallback ? domain+fallback.attribute.url : noFeatured}" alt="{project.attributes.title}" >
-													{/if}
-												</a>
-											</div>	                    
-											{/if}				
-										{/each}
-									</div>
+									{#if portfolioList.length == 0} 
+										<div class="col text-center list-text-details">No Project Found...</div>
+									{:else}
+										<div class="container masonry_container">       
+											{#each portfolioList as project, index}				
+												{#if index < propCount}
+												<div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
+													<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+														{#if project.attributes.featuredImage.data != null}
+														<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+														{:else}
+														<img src="{fallback ? domain+fallback.attribute.url : noFeatured}" alt="{project.attributes.title}" >
+														{/if}
+													</a>
+												</div>	                    
+												{/if}				
+											{/each}
+										</div>
+									{/if}
 								{/if}
                 			{/key}
 						</div>					
@@ -559,9 +563,17 @@
 			}
 			&__gallery{
 				min-height: 60vh;
+				position: relative;
 				@include media-max(ipadmini){
 					min-height: auto;
 				}	
+				.list-text-details {
+					position: absolute;
+					top: 0;
+					left:50%;
+					-webkit-transform: translateX(-50%);
+					transform: translateX(-50%)
+				}
 				&__imgs{
 					display: none;
 					&.active{
@@ -694,6 +706,10 @@
 	.reputation{
 		margin: 7rem 0 3.75rem;
 		:global(.container){
+			@include media-max(md){
+				padding-left: 1.8rem;
+				padding-right: 1.8rem;
+			}	
 			@include media-max(sm){
 				padding-left: 1.8rem;
 				padding-right: 1.8rem;
@@ -726,7 +742,7 @@
 				}
 				@include media-max(ipadmini){	
 					top: unset;
-					height: 135%;
+					height: 140%;
 				}
 				@include media-max(sm){
 					width: 100vw;
@@ -742,6 +758,9 @@
 				padding-left: 10rem;
 				@include media-max(lg){
 					padding-left: 5rem;
+				}	
+				@include media-max(md){
+					padding-left: 3rem;
 				}	
 				@include media-max(sm){
 					padding-left: 0;
@@ -837,9 +856,9 @@
 				@include media-max(xl){	
 					height: 120%;
 				}	
-				@include media-max(ipadmini){	
-					height: 140%;
-				}			
+				// @include media-max(ipadmini){	
+				// 	height: 140%;
+				// }			
 				@include media-max(sm){
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
@@ -850,6 +869,9 @@
 				max-width: 40rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(md){
+					padding-left: 3rem;
+				}
 				@include media-max(sm){
 					padding-left: 0;
 				}					
@@ -936,6 +958,9 @@
 				max-width: 43rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(md){
+					padding-left: 3rem;
+				}
 				@include media-max(sm){
 					padding: 0;
 				}  				
@@ -953,6 +978,9 @@
 				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
+					@include media-max(md){
+						margin-bottom: 0;
+					}
 				}
 				.accordion{
 					.accordion-item{
@@ -1036,4 +1064,5 @@
 	// 	max-width: 400px;
 	// 	}
 	// }
+	
 </style>

@@ -653,7 +653,7 @@ header{
     background:#262626;
     color: #fff;
     padding: 3rem 7rem;
-    @include media-max(ipadmini){
+    @include media-max(laptopS){
         padding: 3rem 1.5rem;
     }	
     margin: 0;
@@ -979,5 +979,11 @@ header{
             transform: scale(1.2);
         }
     }    
+}
+
+.container {
+    @include media-max(md){
+        max-width: 100%;
+    }		
 }
 

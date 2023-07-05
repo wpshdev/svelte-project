@@ -115,6 +115,10 @@
 	box-shadow: inset 0 0 0 2000px rgb(237 234 220 / 85%);
 	margin: 0;
 	min-height: 20vh;
+	@include media-max(md){
+       padding-left: 3rem;
+	   padding-right: 3rem;
+    }	
 	@include media-max(sm){
 		padding: 10rem 1rem;
 	}

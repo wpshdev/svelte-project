@@ -31,7 +31,7 @@
 </Container>
     <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
 </div>
-<section>
+<section class="content">
     <Container class="py-4">
         <h2 class="pb-3 sblue">{title ? title : ''}</h2>
         <div class="two-columns">
@@ -86,6 +86,12 @@
         width:100%;
         max-width:50rem;
         margin: auto;
+        @include media-max(ipadmini){
+            padding: 0 3rem;
+        }
+        @include media-max(sm){
+            padding: 0;
+        }
         p{
             text-align: left;
             color: $gray;
@@ -128,15 +134,30 @@
         }
     }
 }
-.two-columns{
-    overflow-wrap: break-word;
-    gap: 3.5rem;
-    // display: grid;
-    // grid-template-columns: repeat(2, 1fr);
-    // text-align: left;
-    // @include media-max(sm){
-    //     grid-template-columns: repeat(1, 1fr);
-    // }
+.content {
+    .two-columns{
+        overflow-wrap: break-word;
+        gap: 3.5rem;
+        font-size: 1.15rem;
+        line-height: 2rem;
+        padding: 3rem 0;
+        @include media-max(sm){
+            padding: 1rem 0;
+        }
+        // display: grid;
+        // grid-template-columns: repeat(2, 1fr);
+        // text-align: left;
+        // @include media-max(sm){
+        //     grid-template-columns: repeat(1, 1fr);
+        // }
+    }
+    .sblue {
+        color: $secondary-color;
+        font-size: 2.813rem;
+        @include media-max(sm){
+            text-align: center;
+        }
+    }
 }
 .related-articles{
     background: #e5eef3;
@@ -185,9 +206,5 @@
         padding-top: 1rem;
         font-size: 2rem;
     }
-}
-.sblue {
-    color: $secondary-color;
-    font-size: 2.813rem;
 }
 </style>

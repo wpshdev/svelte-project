@@ -117,10 +117,10 @@
                 </p>
                 {#key activeTab}
                     {#if loading}  <!-- show load -->
-                        <div class="col text-center">Loading...</div>
+                        <div class="col text-center list-text-details">Loading...</div>
                     {:else}
                         {#if portfolioList.length == 0} 
-                            <div class="col text-center">No Portfolio Found...</div>
+                            <div class="col text-center list-text-details">No Portfolios Found...</div>
                         {:else}
                         {@const items = portfolioList}
                             <div class="container masonry-wrapper">       
@@ -198,6 +198,14 @@
         min-height: 20vh;
     }
     .portfolio-masonry{
+        position: relative;
+        .list-text-details {
+            position: absolute;
+            top: 20rem;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%)
+        }
         h2{
             margin-bottom: 1.5rem;
             color: $secondary-color;
@@ -279,7 +287,7 @@
             column-gap: 1rem;
             @include media-max(sm){
                 grid-template-columns: 1fr;
-            }	
+            }
             .masonry-items{
                 // display: grid;
                 // grid-template-rows: 1fr auto;
@@ -296,19 +304,13 @@
                 }
                 &.firstEven {
                     padding-top: 5rem;
-                    @include media-max(sm){
-                        padding-top: 1rem;
-                    }
                 }
                 &.lastOdd {
                     padding-bottom: 5rem;
-                    @include media-max(sm){
-                        padding-bottom: 1rem;
-                    }
                 }
                 @include media-max(sm){
                     padding-top: 0 !important;
-                    padding-bottom: 0 !important;
+                    padding-bottom: 1rem !important;
                 }
                 &:hover{
                     .masonry-items__text{

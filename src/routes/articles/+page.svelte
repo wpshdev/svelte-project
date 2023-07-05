@@ -102,10 +102,10 @@
 <Container>
         {#key listener}
             {#if loadingArticle}  <!-- show load -->
-              <div class="col text-center">Loading...</div>
+              <div class="col text-center list-text-details">Loading...</div>
             {:else}
                 {#if articleList.length == 0} 
-                    <div class="col text-center">No Articles Found...</div>
+                    <div class="col text-center list-text-details">No Articles Found...</div>
                 {:else}
                 {@const items = articleList}
                     <!-- Pagination -->
@@ -352,11 +352,19 @@
     // }
     :global(.article-blog){
         margin-top: 1.5rem;
+        position: relative;
         :global(.col-md-5){
             padding: 1.25rem 0px;
             @include media-max(sm){
                 padding: 0 0.625rem;
             }
+        }
+        .list-text-details {
+            position: absolute;
+            top: -5rem;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
         }
         .divider {
             text-align: center;
