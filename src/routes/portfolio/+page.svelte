@@ -20,7 +20,7 @@
     let fallback = data.fallback.data.attributes.fallbackImage.data;
     let propCount = 10;
     let portfolioList = [];
-    let pageSize = 4;
+    let pageSize = 6;
     let currentPage = 1;
     let loading;
     // let properties = data.properties.data;
