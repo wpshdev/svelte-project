@@ -212,7 +212,7 @@ body {
     }    
     .download{
       position: absolute;
-      bottom: 1rem;
+      bottom: 6rem;
       right: 1rem;
       // display: none;
       opacity: 0;
