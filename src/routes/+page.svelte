@@ -183,7 +183,7 @@
 														{#if project.attributes.featuredImage.data != null}
 														<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
 														{:else}
-														<img src="{fallback ? domain+fallback.attribute.url : noFeatured}" alt="{project.attributes.title}" >
+														<img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
 														{/if}
 													</a>
 												</div>	                    

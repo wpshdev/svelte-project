@@ -6,6 +6,7 @@ export async function load() {
     const headers = {
         Authorization: 'Bearer ' + STRAPI_API
     }
+    const url = 'https://strapi.ulfbuilt.com:1337/api/article?populate=deep';
     const response = await axios.get(url, { headers });
     // const urlblog = 'https://strapi.ulfbuilt.com:1337/api/blogs?populate=deep';
     // const blogs = await axios.get(urlblog, { headers }); 
