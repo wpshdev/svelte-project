@@ -406,10 +406,6 @@
             margin-top: -14.5rem;
             width: 90%;
             margin-left: auto;
-            @include media-max(laptopS){
-                width: 100%; 
-                margin-top: -12.5rem;               
-            } 
             @include media-max(ipadmini){
                 width: 100%;  
                 margin-top: -8.5rem;                  

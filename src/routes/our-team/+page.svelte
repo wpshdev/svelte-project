@@ -146,9 +146,6 @@
             margin: 2rem 0;
             position: relative;
             height: 35.625rem;
-            @include media-max(ipadmini){
-                height: auto;
-            }
             overflow: hidden;
             img {
                 height: inherit;
@@ -163,10 +160,6 @@
             position: relative;
             margin-top: 1.5rem;
             cursor: pointer;
-            min-height: 26rem;
-            @include media-max(ipadmini){
-                min-height: 26vh;
-            }
             &:hover{
                 a{
                     opacity: 1;
@@ -281,7 +274,7 @@
     display: flex;
     align-items: flex-start;
 
-    @include media-max(md){ 
+    @include media-max(ipadmini){ //768
         display: unset;
     }
 
@@ -299,10 +292,9 @@
                 width: 100%;
             }
         }
-        @include media-max(md){ 
+        @include media-max(ipadmini){ //768
             text-align: center;
             width: 100%;
-            min-height: 33vh;
             img {
                 width: 65%;
             }
@@ -323,7 +315,7 @@
             height: 30rem;
         }
 
-        @include media-max(md){
+        @include media-max(ipadmini){ //768
             width: 100%;
             min-width: 100%;
             margin-top: -3rem;
@@ -342,7 +334,7 @@
             text-transform: uppercase;
             font-weight: 500;
 
-            @include media-max(md){
+            @include media-max(ipadmini){ //768
                 text-align: center;
             }
 
@@ -359,7 +351,7 @@
             font-weight: 500;
             margin-bottom: 2rem;
 
-            @include media-max(md){
+            @include media-max(ipadmini){ //768
                 text-align: center;
             }
         }
@@ -384,12 +376,12 @@
             :global(p) {
                 max-width: 32.843rem;
 
-                @include media-max(md){
+                @include media-max(ipadmini){ //768
                     max-width: unset;
                 }
             }
 
-            @include media-max(md){
+            @include media-max(ipadmini){ //768
                 text-align: center;
                 overflow: hidden;
                 height: auto;

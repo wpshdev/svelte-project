@@ -15,7 +15,6 @@
 
 		try {
 			const response = await axios.get(url, { headers });
-			console.log(response)
 			return response.data.data.attributes;
 		} catch (error) {
 			console.error('Error fetching data:', error);
