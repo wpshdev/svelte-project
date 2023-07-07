@@ -25,7 +25,8 @@
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
-	const home = data.data.attributes;
+	const home = data.home.data.attributes;
+	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	let propCount = 3;
 	//let listener = {};
 
@@ -169,10 +170,10 @@
 							{/key}																		 -->
 							{#key activeTab}
 								{#if loading}  <!-- show load -->
-									<div class="col text-center">Loading...</div>
+									<div class="col text-center list-text-details">Loading...</div>
 								{:else}
 									{#if portfolioList.length == 0} 
-										<div class="col text-center list-text-details">No Projects Found...</div>
+										<div class="col text-center list-text-details">No Project Found...</div>
 									{:else}
 										<div class="container masonry_container">       
 											{#each portfolioList as project, index}				
@@ -573,35 +574,43 @@
 			}
 			&__gallery{
 				min-height: 60vh;
+				position: relative;
 				@include media-max(ipadmini){
 					min-height: auto;
 				}	
-				&__imgs{
-					display: none;
-					&.active{
-						display: flex;
-					}
-					div{
-						width: 33.33%;
-						margin: 0 1rem;
-						&:first-child{
-							margin-left: 0;
-						}
-						&:last-child{
-							margin-right: 0;
-						}						
-					}
+				.list-text-details {
+					position: absolute;
+					top: 0;
+					left:50%;
+					-webkit-transform: translateX(-50%);
+					transform: translateX(-50%)
 				}
+				// &__imgs{
+				// 	// display: none;
+				// 	&.active{
+				// 		display: flex;
+				// 	}
+				// 	div{
+				// 		width: 33.33%;
+				// 		margin: 0 1rem;
+				// 		&:first-child{
+				// 			margin-left: 0;
+				// 		}
+				// 		&:last-child{
+				// 			margin-right: 0;
+				// 		}						
+				// 	}
+				// }
 			}
 		}
 		.masonry_container {
-            display: flex;
+            // display: flex;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
             .masonry-items{
-                width: 33%;   
-                overflow: hidden;
-                display: grid;
-                grid-template-rows: 1fr auto;
-                break-inside: avoid;
+                // width: 33%;   
+                // overflow: hidden;
                 // position: absolute;
                 color: white;
                 text-align: center;  
@@ -609,9 +618,9 @@
                 @include media-max(ipadmini){
                     height: 20vh;
                 }
-                @include media-max(sm){
-                    height: 20vh;
-                }
+                // @include media-max(sm){
+                //     height: 20vh;
+                // }
                 a{
                     display: block;
                     height: 100%;
@@ -708,6 +717,10 @@
 	.reputation{
 		margin: 7rem 0 3.75rem;
 		:global(.container){
+			@include media-max(md){
+				padding-left: 1.8rem;
+				padding-right: 1.8rem;
+			}	
 			@include media-max(sm){
 				padding-left: 1.8rem;
 				padding-right: 1.8rem;
@@ -740,7 +753,7 @@
 				}
 				@include media-max(ipadmini){	
 					top: unset;
-					height: 135%;
+					height: 140%;
 				}
 				@include media-max(sm){
 					width: 100vw;
@@ -756,6 +769,9 @@
 				padding-left: 10rem;
 				@include media-max(lg){
 					padding-left: 5rem;
+				}	
+				@include media-max(md){
+					padding-left: 3rem;
 				}	
 				@include media-max(sm){
 					padding-left: 0;
@@ -851,9 +867,9 @@
 				@include media-max(xl){	
 					height: 120%;
 				}	
-				@include media-max(ipadmini){	
-					height: 140%;
-				}			
+				// @include media-max(ipadmini){	
+				// 	height: 140%;
+				// }			
 				@include media-max(sm){
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
@@ -864,6 +880,9 @@
 				max-width: 40rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(md){
+					padding-left: 3rem;
+				}
 				@include media-max(sm){
 					padding-left: 0;
 				}					
@@ -950,6 +969,9 @@
 				max-width: 43rem;
 				z-index: 2;
 				padding-left: 4rem;
+				@include media-max(md){
+					padding-left: 3rem;
+				}
 				@include media-max(sm){
 					padding: 0;
 				}  				
@@ -967,6 +989,9 @@
 				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
+					@include media-max(md){
+						margin-bottom: 0;
+					}
 				}
 				.accordion{
 					.accordion-item{
@@ -1050,4 +1075,5 @@
 	// 	max-width: 400px;
 	// 	}
 	// }
+	
 </style>
