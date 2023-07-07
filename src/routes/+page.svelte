@@ -173,7 +173,7 @@
 									<div class="col text-center list-text-details">Loading...</div>
 								{:else}
 									{#if portfolioList.length == 0} 
-										<div class="col text-center list-text-details">No Project Found...</div>
+										<div class="col text-center list-text-details">No Projects Found...</div>
 									{:else}
 										<div class="container masonry_container">       
 											{#each portfolioList as project, index}				
