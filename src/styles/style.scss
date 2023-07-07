@@ -301,14 +301,14 @@ header.container-fluid{
     // header nav li a.nav-link{
     //     color: $secondary-color;
     // }
-    // .hamburger {
-    //     .dark-hamburger {
-    //         display: block;
-    //     }
-    //     .light-hamburger {
-    //         display: none;
-    //     }
-    // }
+    .hamburger {
+        .dark-hamburger {
+            display: block;
+        }
+        .light-hamburger {
+            display: none;
+        }
+    }
 } 
 header{
     display: flex;
@@ -653,7 +653,7 @@ header{
     background:#262626;
     color: #fff;
     padding: 3rem 7rem;
-    @include media-max(laptopS){
+    @include media-max(ipadmini){
         padding: 3rem 1.5rem;
     }	
     margin: 0;
@@ -980,10 +980,3 @@ header{
         }
     }    
 }
-
-.container {
-    @include media-max(md){
-        max-width: 100%;
-    }		
-}
-

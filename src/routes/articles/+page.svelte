@@ -11,7 +11,6 @@
     // let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
-    let fallback = data.fallback.data.attributes.fallbackImage.data;
     // let items = blogs;
   let currentPage = 1;
   let pageSize = 5;
@@ -102,10 +101,10 @@
 <Container>
         {#key listener}
             {#if loadingArticle}  <!-- show load -->
-              <div class="col text-center list-text-details">Loading...</div>
+              <div class="col text-center">Loading...</div>
             {:else}
                 {#if articleList.length == 0} 
-                    <div class="col text-center list-text-details">No Articles Found...</div>
+                    <div class="col text-center">No Articles Found...</div>
                 {:else}
                 {@const items = articleList}
                     <!-- Pagination -->
@@ -129,10 +128,10 @@
                                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
                                                 <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
                                             {:else}
-                                                <img alt="{blog.attributes.title}" src="{fallback ? url+fallback.attributes.url : blogempty}" class="blog-img w-100">
+                                                <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
                                             {/if}
                                         {:else}
-                                            <img alt="{blog.attributes.title}" src="{fallback ? url+fallback.attributes.url : blogempty}" class="blog-img w-100">
+                                            <img alt="{blog.attributes.title}" src="{blogempty}" class="blog-img w-100">
                                         {/if}
                                     </div>
                                 </Animate>
@@ -356,19 +355,11 @@
     // }
     :global(.article-blog){
         margin-top: 1.5rem;
-        position: relative;
         :global(.col-md-5){
             padding: 1.25rem 0px;
             @include media-max(sm){
                 padding: 0 0.625rem;
             }
-        }
-        .list-text-details {
-            position: absolute;
-            top: -5rem;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
         }
         .divider {
             text-align: center;
