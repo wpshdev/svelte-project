@@ -10,19 +10,11 @@ export async function load() {
         Authorization: 'Bearer ' + STRAPI_API
     }    
     const response = await axios.get(url, { headers });
-
-    const urlSiteSettings = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
-    const siteSettings = await axios.get(urlSiteSettings, { headers }); 
-
     if (response.fromCache) {
         console.log("Response from cache");
       } else {
         console.log("Response from server");
       }    
 
-    // return response.data;
-    return {
-      home: response.data,
-      fallback: siteSettings.data
-  }
+    return response.data;
 }                                                                     

@@ -38,7 +38,7 @@
 			max-width: 95%;
 		}
 
-		@include media-max(md){
+		@include media-max(ipadmini){ //768
             overflow: auto;
 			@include scrollbars(0.824rem, 80px, $secondary-color, $white-color);
 			// min-height: 60.75rem;

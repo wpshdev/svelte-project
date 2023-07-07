@@ -386,9 +386,9 @@
         }
         &__mr-r{
             margin-right: 0;
-            // @include media-max(md) {
-            //     margin-right: 18px;
-            // }
+            @include media-max(md) {
+                margin-right: 18px;
+            }
             @include media-max(sm){
                 margin-right: 0;
             }
