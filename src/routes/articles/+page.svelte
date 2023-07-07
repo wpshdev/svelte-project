@@ -346,6 +346,10 @@
             }
         }
     }
+    .cat-select,.cat-select:focus,.cat-select:focus-visible{
+        border: 0;
+        margin: 0 1rem;
+    }
     // .h2 {
     //     font-size: 3rem;
     //     color: $secondary-color;

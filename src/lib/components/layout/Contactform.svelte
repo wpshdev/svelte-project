@@ -2,7 +2,7 @@
 	import { Col, Container, Row } from "sveltestrap";
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
     // import contactBG from "$lib/img/ContactBG.jpg";
-    import contactBGPlain from "$lib/img/contactBGPlain.jpeg";
+    import contactBGPlain from "$lib/img/ContactBGPlain.jpeg";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import axios from 'axios';

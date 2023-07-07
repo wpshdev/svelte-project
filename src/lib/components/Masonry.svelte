@@ -37,13 +37,13 @@ $: listener = {propCount, activeTab};
                 {/each}
             </ul>
         </div>
-		<div class="masonry__tabs__link view-all" >
+		<!-- <div class="masonry__tabs__link view-all" >
 			{#if propCount === 10} 
 				<span on:click="{() => propCount = 999}">View All Projects</span>
 			{:else}
 				<span on:click="{() => propCount = 10}">View Less Projects</span>
 			{/if}
-		</div>
+		</div> -->
 		<!-- {#if subHeading2}
 		<div class="masonry__tabs__subheading">
 			<p>{@html subHeading2}</p>
@@ -52,7 +52,7 @@ $: listener = {propCount, activeTab};
 		<div class="categories__tabs__gallery">
 			{#key listener}
 				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
-					<MasonryCard id={activeTab} {propCount} addPagination={paginate} pageSize={postperpage} />
+					<MasonryCard id={activeTab} {propCount} addPagination={paginate} pageSize=9 />
 				</div>			
 			{/key}																		
 		</div>					
@@ -89,10 +89,20 @@ $: listener = {propCount, activeTab};
 							width: 15rem;
 							padding: 0 1rem;
 						}		
-						border-right: 3px solid $gray;	
+						border-right: 1px solid $gray;	
 						&:last-child {
 							border: none;
 						}
+						&:hover{
+							background-color: rgba(32, 36, 41, 0.561);	
+							transition: 0.3s all;
+							span{
+								color: #fff;
+								&.active{
+									color: #fff;
+								}
+							}
+						}						
 						span{				
 							font-family: $secondary-font;
 							font-size: 1.75rem;

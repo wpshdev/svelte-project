@@ -229,7 +229,7 @@
             img {
                 width: auto;
                 margin: auto;
-                
+                max-width: 100%;
                 @include media-max(lg){
                     width: 100%;
                 }

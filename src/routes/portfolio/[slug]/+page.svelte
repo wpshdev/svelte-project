@@ -366,6 +366,11 @@ section{
 		overflow: hidden;
 		position: relative;
 		height: 50vh;
+		img{
+			object-fit: cover;
+			object-position: center;
+			height: 100%;
+		}
 		@include media-max(sm){
 			margin-bottom: 1rem;
 		}	  

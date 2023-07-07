@@ -37,7 +37,7 @@
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
             body: JSON.stringify({
-                "to": "parth@wpsuperheroes.com",
+                "to": "dev@netdevs.com",
                 "subject": "* Website * " + name + " Subject : " + subject,
                 "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
             })
@@ -56,7 +56,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}" banner="{url}{data.data.attributes.featuredimage.data.attributes.url}" />
+<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
 
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
@@ -89,7 +89,7 @@
     </Container>
 </section>
 <Animate>
-    <div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.url});"></div>
+    <div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.formats.large.url});"></div>
 </Animate>
 <Animate>
     <div class="contact-box container-fluid">

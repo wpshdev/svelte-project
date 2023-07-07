@@ -6,6 +6,7 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
+    console.log(processData);
 </script>
 
 <svelte:head>
@@ -62,7 +63,7 @@
     </Animate>
 </section>
 <Animate>
-<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.url})"></section> 
+<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
 </Animate>
 <section class="phase">
     <Animate>
@@ -98,7 +99,7 @@
         </div>  
     </Animate>
     <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.url})">
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.medium_x2 ? processData.section6image.data.attributes.formats.medium_x2.url : processData.section6image.data.attributes.url })">
         </div>  
     </Animate>
    <Animate>
@@ -123,7 +124,7 @@
    </Animate>
 </section>
 <Animate>
-    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.url})">
+    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.medium_x2 ? processData.section9image.data.attributes.url : processData.section9image.data.attributes.url })">
     </section>
 </Animate>
 
@@ -142,7 +143,7 @@
 </secton>
 
 <Animate>
-    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.url})"></section> 
+    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.medium_x2 ? processData.section10phase2image.data.attributes.url : processData.section10phase2image.data.attributes.url })"></section> 
 </Animate>
 
 <section class="phase">
@@ -186,11 +187,11 @@
             </div>                                            
         </div>    
     </Animate>
-    <Animate>
+    <!-- <Animate>
         <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
         </div>   
-    </Animate>
-    <Animate>
+    </Animate> -->
+    <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <span>{processData.section15heading ? processData.section15heading : ''}</span>
@@ -217,12 +218,12 @@
                 {@html processData.section17righttext ? processData.section17righttext : '' }
             </div>                                       
         </div>     
-    </Animate>
+    </Animate> -->
     <Animate>
-        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.url})">
+        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.medium_x2 ? processData.section18image.data.attributes.formats.medium_x2.url : processData.section18image.data.attributes.url })">
         </div>   
     </Animate>
-    <Animate>
+    <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <span>{processData.section19heading ? processData.section19heading : ''}</span>
@@ -233,7 +234,7 @@
                 {@html processData.section19righttext ? processData.section19righttext : '' }
             </div>                                           
         </div>     
-    </Animate>
+    </Animate> -->
 </section>
 <secton class="phase-banner-paragraph">
     <Animate>
@@ -322,6 +323,7 @@
         background-image: var(--phs1);
         background-size: cover;
         height: 90vh;
+               
         @include media-max(sm){
             height: 40vh;
         }          
@@ -330,6 +332,9 @@
         background-image: var(--phs2);
         background-size: cover;
         height: 90vh;
+        @include media-min(sm){
+            margin-top: 0;
+        }                 
         @include media-max(sm){
             height: 40vh;
         }          

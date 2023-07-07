@@ -151,7 +151,7 @@
 								{/each}
 							</ul>
 						</div>
-						<p class="text-center view-all" in:fly={{
+						<!-- <p class="text-center view-all" in:fly={{
 							y: 50								
 					}}>
 							{#if propCount === 3} 
@@ -159,7 +159,7 @@
 							{:else}
 								<span on:click="{() => propCount = 3}">View Less Projects</span>
 							{/if}
-						</p>					
+						</p>					 -->
 						<div class="categories__tabs__gallery" in:fly={{
 							y: 50								
 					}}>
@@ -530,14 +530,25 @@
 					li{
 						list-style: none;
 						width: 25%;
+						border-right: 1px solid $gray;	
+						transition: 0.3s all;						
 						@include media-max(sm){
 							width: 15rem;
 							padding: 0 1rem;
 						}
-						border-right: 3px solid $gray;	
 						&:last-child {
 							border: none;
 						}
+						&:hover{
+							background-color: rgba(32, 36, 41, 0.561);	
+							transition: 0.3s all;
+							span{
+								color: #fff;
+								&.active{
+									color: #fff;
+								}
+							}
+						}						
 						span{				
 							font-family: $secondary-font;
 							font-size: 1.75rem;
@@ -779,7 +790,7 @@
 						margin: 1rem 0;
 					}	
 				}
-				p{
+				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
 				}
@@ -888,7 +899,7 @@
 						margin: 1rem 0;
 					}	
 				}
-				p{
+				:global(p){
 					line-height: 2rem;
 					margin-bottom: 2rem;
 				}
