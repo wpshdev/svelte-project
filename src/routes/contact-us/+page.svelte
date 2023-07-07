@@ -82,7 +82,7 @@
             </Col>
             <Col md="8">
                 <Animate>
-                    <iframe title="ULFBUILT" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="ULF BUILT" src="{data.data.attributes.map_url ? data.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </Animate>
             </Col>
         </Row>
@@ -135,6 +135,11 @@
             background-color: rgba(0, 0, 0, 0.4) !important;
         }
     }
+    :global(.container.contact_inner__details) {
+        @include media-max(sm) { 
+            text-align: center;
+        }
+    }
     .contact_inner {
         .contact_inner__content {
             h2 {
@@ -146,6 +151,7 @@
             }
         }
         .contact_inner__details {
+            
             .ptc {
                 font-size: 1.438rem;
             }

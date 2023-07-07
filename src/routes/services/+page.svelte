@@ -11,6 +11,7 @@
     let page = data.services.data.attributes
     let featuredProjects = data.portfolios.data
     import noFeatured from "$lib/img/blog-empty.svg"
+    let fallback = data.fallback.data.attributes.fallbackImage.data;
     console.log(page);
 
     // export let pdata;
@@ -208,7 +209,7 @@
 								{#if featuredProject.attributes.featuredImage.data != null}
                                 <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
                                 {:else}
-                                <img src="{noFeatured}" alt="{featuredProject.attributes.title}" >
+                                <img src="{fallback ? url+fallback.attribute.url : noFeatured}" alt="{featuredProject.attributes.title}" >
                                 {/if}
                                 <div class="explore__article__text">
 									<span>{('0' + (index + 1)).slice(-2)}</span>

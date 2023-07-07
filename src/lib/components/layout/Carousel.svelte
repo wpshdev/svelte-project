@@ -2,6 +2,8 @@
 	import { browser } from '$app/environment';
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
+import axios from "axios";
+	import { PUBLIC_STRAPI_API } from '$env/static/public';
 // import Flickity from "flickity";
 import noFeatured from "$lib/img/blog-empty.svg"
 
@@ -14,7 +16,23 @@ export let featuredProjects;
 
 let innerWidth;
 
+  let promise = fetchFallback();
+	async function fetchFallback(){
+		const url = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
+		const headers = {
+			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+		};
+
+		try {
+			const response = await axios.get(url, { headers });
+			return response.data.data.attributes.fallbackImage.data;
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
 onMount(() => {
+  promise = fetchFallback();
   innerWidth = window.innerWidth;
   
   flickityInstance = new Flickity('.slider-container', {
@@ -89,7 +107,10 @@ $: {
             {#if project.attributes.featuredImage.data != null}
             <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
             {:else}
-            <img src="{noFeatured}" alt="{project.attributes.title}" >
+            {#await promise}
+            {:then fallback} 
+              <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+            {/await}
             {/if}
             <div class="slider-container__carousel-cell__text">
               <span>{('0' + (index + 1)).slice(-2)}</span>
