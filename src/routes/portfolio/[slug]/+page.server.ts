@@ -12,14 +12,9 @@ export const load: PageLoad = async ({ params, fetch }) => {
     const urlporfolios = 'https://strapi.ulfbuilt.com:1337/api/portfolios?populate=deep';
     
     const portfolios = await axios.get(urlporfolios, { headers }); 
-
-    const urlSiteSettings = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
-    const siteSettings = await axios.get(urlSiteSettings, { headers }); 
-
     return {
         portfolio: response.data,
         portfolios: portfolios.data,
-        fallback: siteSettings.data
     }
     // const response = await axios.get(url, { headers });
 

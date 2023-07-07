@@ -78,10 +78,6 @@
 		padding: 4rem 0;
 		margin-bottom: 0;
 		min-height: 20vh;
-		@include media-max(md){
-			padding-left: 3rem;
-			padding-right: 3rem;
-		}
 		@include media-max(sm){
 			padding-left: 0;
 			padding-right: 0;
@@ -127,7 +123,7 @@
 					// text-align: center;
 					// margin-top: 1.5rem;
 					display: flex;
-					@include media-max(md){
+					@include media-max(ipadmini){
 						display: block;
 					}
 				}
