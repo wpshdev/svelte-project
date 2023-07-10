@@ -63,7 +63,7 @@
     </Animate>
 </section>
 <Animate>
-<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
+<section class="phase1-img" style="--phs1: url({domain}{ processData.section3image.data.attributes.url })"></section> 
 </Animate>
 <section class="phase">
     <Animate>
@@ -99,7 +99,7 @@
         </div>  
     </Animate>
     <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.medium_x2 ? processData.section6image.data.attributes.formats.medium_x2.url : processData.section6image.data.attributes.url })">
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.url })">
         </div>  
     </Animate>
    <Animate>
@@ -124,7 +124,7 @@
    </Animate>
 </section>
 <Animate>
-    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.medium_x2 ? processData.section9image.data.attributes.url : processData.section9image.data.attributes.url })">
+    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.url})">
     </section>
 </Animate>
 
@@ -143,7 +143,7 @@
 </secton>
 
 <Animate>
-    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.medium_x2 ? processData.section10phase2image.data.attributes.url : processData.section10phase2image.data.attributes.url })"></section> 
+    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.url})"></section> 
 </Animate>
 
 <section class="phase">
@@ -220,7 +220,7 @@
         </div>     
     </Animate> -->
     <Animate>
-        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.medium_x2 ? processData.section18image.data.attributes.formats.medium_x2.url : processData.section18image.data.attributes.url })">
+        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{ processData.section18image.data.attributes.url })">
         </div>   
     </Animate>
     <!-- <Animate>
