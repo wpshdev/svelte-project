@@ -29,7 +29,7 @@
 </script>
 {#await promise}
 {:then ctaData} 
-	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.url})">
+	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.formats.large_x2.url ? ctaData.backgroundImage.data.attributes.formats.large_x2.url : ctaData.backgroundImage.data.attributes.url})">
 		<Container>
 			<Row>
 				<Col class="text-center">

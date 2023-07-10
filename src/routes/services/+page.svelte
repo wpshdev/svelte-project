@@ -37,7 +37,7 @@
 	<meta name="description" content="ULF BUILT" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
-<PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.url}"  />
+<PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 <Animate>
 <section class="service-b">
         <Container>
@@ -136,7 +136,7 @@
                     </Col>
                     <Col md="6" class="imageCont">
                         {#if page.section2image.data}
-                        <img src="{url}{page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100">
+                        <img src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100">
                         {/if}
                     </Col>
                 </Row>
@@ -149,7 +149,7 @@
             <Row noGutters class="justify-content-center flex-md-row flex-column-reverse sets-us-apart__row">
                 <Col md="6" class="imageCont">
                     {#if page.section3image.data}
-                    <img src="{url}{page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
+                    <img src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
                     {/if}
                 </Col>
                 <Col md="6" class="sets-us-apart__content">
@@ -170,7 +170,7 @@
                 </Col>
                 <Col md="6" class="imageCont">
                     {#if page.section4image.data}
-                    <img src="{url}{page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
+                    <img src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
                     {/if}
                 </Col>
             </Row>
@@ -180,7 +180,7 @@
 <section class="height-100vh fullwidth">
     <Animate>
         {#if page.section5image.data}
-        <img src="{url}{page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
+        <img src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
         {/if}
     </Animate>
 </section>
@@ -207,7 +207,7 @@
 							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								<!-- <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}"> -->
 								{#if featuredProject.attributes.featuredImage.data != null}
-                                <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
+                                <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.formats.large.url ? featuredProject.attributes.featuredImage.data.attributes.formats.large.url : featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
                                 {:else}
                                 <img src="{fallback ? url+fallback.attribute.url : noFeatured}" alt="{featuredProject.attributes.title}" >
                                 {/if}

@@ -51,7 +51,7 @@
 			<Row>
 				<Col md="6" class="">
 					{#if insight.image.data}
-					<img src="{domain}{insight.image.data.attributes.formats.large.url}" alt="Stair">
+					<img src="{domain}{insight.image.data.attributes.formats.large.url ? insight.image.data.attributes.formats.large.url : insight.image.data.attributes.url}" alt="Stair">
 					{/if}
 				</Col>
 				<Col md="6" class="my-auto">

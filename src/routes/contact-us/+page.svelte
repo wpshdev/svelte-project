@@ -56,7 +56,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large.url}" />
+<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.data.attributes.featuredimage.data.attributes.url}" />
 
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
@@ -89,7 +89,7 @@
     </Container>
 </section>
 <Animate>
-    <div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.formats.large.url});"></div>
+    <div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.formats.large.url ? data.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});"></div>
 </Animate>
 <Animate>
     <div class="contact-box container-fluid">

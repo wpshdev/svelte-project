@@ -20,7 +20,7 @@
     let fallback = data.fallback.data.attributes.fallbackImage.data;
     let propCount = 10;
     let portfolioList = [];
-    let pageSize = 6;
+    let pageSize = 9;
     let currentPage = 1;
     let loading;
     // let properties = data.properties.data;
@@ -83,7 +83,7 @@
 
 </svelte:head>
 
-<PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
+<PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url ? portfolio.featuredImage.data.attributes.formats.large.url : portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
 
 <section class="portfolio-masonry">
     <Container>
@@ -132,7 +132,7 @@
                                         out:fly="{{y:0, duration:1000 }}"> 
                                             <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                                 {#if project.attributes.featuredImage.data != null}
-                                                    <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                                    <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
                                                 {:else}
                                                     <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
                                                 {/if}

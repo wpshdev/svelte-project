@@ -105,7 +105,7 @@
 </section>
 {#each bannerQuotes as bannerQuote}
 		{#if bannerQuote.banner.data}
-		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.url})"></section>
+		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
 		{/if}
 		<Testimonial testimonial="{bannerQuote.quote}" />
 {/each}
@@ -144,7 +144,7 @@
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								<!-- <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}"> -->
 								{#if rPortfolio.attributes.featuredImage.data != null}
-                                <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
+                                <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
                                 {:else}
                                 <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{rPortfolio.attributes.title}" >
                                 {/if}

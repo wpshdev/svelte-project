@@ -28,7 +28,7 @@
 	<title>{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
+<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large_x2.url ? data.data.attributes.Cover.data.attributes.formats.large_x2.url : data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
 <section class="our-team">
     <Animate>
         <Container>
@@ -38,7 +38,7 @@
                     <p class="two-columns">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
                     <div class="heading-image">
-                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy"/>
+                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy"/>
                     </div>
                     {/if}
                 </Col>
@@ -51,7 +51,7 @@
         <Container>
             <Row noGutters>
                 <Col md=6 class="tm-img">
-                    <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
+                    <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                 <div class="tm-box wtc">
                     <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
                     <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
@@ -84,7 +84,7 @@
                     on:click={() => getMemberIndex(index)}
                     on:click={() => (showModal = true)}
                     >
-                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
                         <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                             <!-- our-team__member_caption class removed -->
                             <h5 class="pfont">{member.attributes.name}</h5>

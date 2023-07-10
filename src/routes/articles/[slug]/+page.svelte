@@ -29,7 +29,7 @@
         <p class="ptc pb-5">{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
     </div>
 </Container>
-    <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
+    <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url ? data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url : data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
 </div>
 <section class="content">
     <Container class="py-4">
@@ -51,7 +51,7 @@
                     <div class="related-articles__easein-container">
                         <div class="easein-img">
                             <a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}" class="zoomImg"> 
-                                <img src="{url}{blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
+                                <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.large.url ? blog.attributes.featuredimage.data.attributes.formats.large.url : blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                             </a>
                         </div>
                     </div>
