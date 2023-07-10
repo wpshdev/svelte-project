@@ -69,7 +69,7 @@
 </script>
 {#await promise}
 {:then contactSettings} 
-<section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})">
+<section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.formats.large_x2.url ? contactSettings.background.data.attributes.formats.large_x2.url : contactSettings.background.data.attributes.url})">
 	<Container>
 		<Row>
 			<Col md="6">

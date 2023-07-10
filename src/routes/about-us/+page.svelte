@@ -12,8 +12,8 @@
     export let data;
 
     let abouttitle = data.about.data.attributes.Title
-    let aboutimage = data.about.data.attributes.featuredimage.data.attributes.url
-    let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
+    let aboutimage = data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.about.data.attributes.featuredimage.data.attributes.url
+    //let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
     let aboutsubheading = data.about.data.attributes.Aboutsubheading
     let about = data.about.data.attributes
     let url = "https://strapi.ulfbuilt.com:1337/";
@@ -27,7 +27,7 @@
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
-<PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimageMobile}"/>
+<PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
 <section class="mw-1000 text-center about-heading">
     <Container>
@@ -46,7 +46,7 @@
                 <Animate>
                     {#if about.Section1image.data}
                     <div>
-                        <img src="{url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
+                        <img src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
                     </div>
                     {/if}
                 </Animate>
@@ -61,7 +61,7 @@
             <Col md="6">
                 {#if about.Section2image.data}
                 <div>
-                    <img src="{url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100">
+                    <img src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100">
                 </div>
                 {/if}
             </Col>
@@ -84,7 +84,7 @@
                 <Col md="6">
                     {#if about.Section3image.data}
                     <div>
-                        <img src="{url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image">
+                        <img src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image">
                     </div>
                     {/if}
                 </Col>
@@ -96,7 +96,7 @@
     <Animate>
         <div class="remodel__bgimage">
             {#if about.Section4image.data}
-            <img src="{url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}">
+            <img src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}">
             {/if}
             <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
         </div>        
@@ -139,7 +139,7 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
                         {#if about.Section6image.data}
-                        <img src="{url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100">
+                        <img src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100">
                         {/if}
                     </div>
                 </Col>
@@ -153,7 +153,7 @@
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                         {#if about.Section7image.data}
-                        <img src="{url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100">
+                        <img src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100">
                         {/if}
                     </div>
                 </Col>
@@ -175,7 +175,7 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
                         {#if about.Section8image.data}
-                        <img src="{url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100">
+                        <img src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100">
                         {/if}
                     </div>
                 </Col>

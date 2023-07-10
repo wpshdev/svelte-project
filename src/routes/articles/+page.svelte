@@ -127,7 +127,7 @@
                                     <div class="blogsection7 easein-img">
                                         {#if blog.attributes.featuredimage.data != null}
                                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                                <img src="{url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
+                                                <img src="{blog.attributes.featuredimage.data.attributes.formats.large.url ? url+blog.attributes.featuredimage.data.attributes.formats.large.url : url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
                                             {:else}
                                                 <img alt="{blog.attributes.title}" src="{fallback ? url+fallback.attributes.url : blogempty}" class="blog-img w-100">
                                             {/if}

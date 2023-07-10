@@ -105,7 +105,7 @@ $: {
         <div class="slider-container__carousel-cell">
           <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
             {#if project.attributes.featuredImage.data != null}
-            <img src="{domain}{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+            <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
             {:else}
             {#await promise}
             {:then fallback} 

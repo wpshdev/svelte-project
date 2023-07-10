@@ -113,7 +113,7 @@ function lazy(node, data) {
       <Col>
           <div class="slider-container" >
             {#each images as image, index}
-              {@const highRes = image.attributes.url}
+              {@const highRes = image.attributes.formats.large.url ? image.attributes.formats.large.url : image.attributes.url}
                 <div class="slider-container__carousel-cell">
                   <div class="image-wrapper">
                     <Animate>
@@ -137,7 +137,7 @@ function lazy(node, data) {
         {#each images as image}
           <Animate>
             <div class="slider-container__carousel-cell">
-              <img src="{domain}{image.attributes.formats.medium_x2 ? image.attributes.formats.medium_x2.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+              <img src="{domain}{image.attributes.formats.large.url ? image.attributes.formats.large.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               <a href="{domain}{image.attributes.url}?download" class="download" download>
                 <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="27.501" cy="27.5" r="27.5" fill="#1E2D39"/>
