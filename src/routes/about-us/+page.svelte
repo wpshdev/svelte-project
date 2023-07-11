@@ -105,8 +105,8 @@
 <section class="certificate mx-8">
     <Container>
         <Animate>
-            <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
-            <p class="text-left">{@html about.Section5text}</p> -->
+            <!--<h2 class="mb-5 text-center">{about.Section5heading}</h2>
+            <p class="text-left">{@html about.Section5text}</p>-->
             <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
                 <div class="certificate-inner-container">
                     <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
@@ -120,7 +120,7 @@
             <!-- {#if about.Section5image.data}
               <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
               <img src="{url+about.Section5MobileImage.data.attributes.url}" alt="{about.Section3heading}" class="mobile">
-            {/if}       -->
+            {/if} -->
         </Animate>
     </Container>
 </section>

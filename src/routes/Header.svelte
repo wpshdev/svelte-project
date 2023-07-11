@@ -82,7 +82,6 @@
 			if (window.innerWidth > 768) {
 					isOpen = false;
 			} 
-			// console.log(window.innerWidth);
 		});
   	});	
 
@@ -143,9 +142,7 @@
 			}}>
 				
 				<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
-					<!-- change to svg -->
-					<span class="icon"></span>
-					<!-- {Hamburger} -->
+					<span class="icon"></span> <!-- x icon -->
 				</div>
 				<a href="/" class="mobile-menu-logo">
 					<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo"/>

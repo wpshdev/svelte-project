@@ -6,13 +6,11 @@
     import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import { onMount } from "svelte";
     import axios from "axios";
-    console.log(data);
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.services.data.attributes
     let featuredProjects = data.portfolios.data
     import noFeatured from "$lib/img/blog-empty.svg"
     let fallback = data.fallback.data.attributes.fallbackImage.data;
-    console.log(page);
 
     // export let pdata;
     // export let featuredProjects;
