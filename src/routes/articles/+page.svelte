@@ -69,7 +69,7 @@
         <Row>
             <ul class="cat-list">
                 <li>
-                    <div class="category-list-content">
+                    <div class="category-list-content category-container">
                         <p class="category-list">CATEGORY</p>
                         <div class="category-list-dropdown dropdown-content">
                             {#each categories as category}
@@ -78,7 +78,7 @@
                             <p class={activeCategoryTab === '' ? 'selected' : ''} on:click="{() => activeCategoryTabClick('')}">Show All</p>
                         </div>
                    </div> |
-                   <div class="category-date-content">
+                   <div class="category-date-content category-container">
                         <p class="category-date">DATE ADDED</p>
                         <div class="category-date-dropdown dropdown-content">
                             <p class={activeDate === 'DESC' ? 'selected' : ''} on:click="{() => activeDateClick('DESC')}">Latest</p>

@@ -997,27 +997,27 @@ header{
         color: $darkgray;
         display: flex;
         align-items: center;
-        div {
-            &.category-date-content {
-                &:hover {
-                    .category-date {
-                        color: $primary-color;
-                    }
-                    .category-date-dropdown {
-                        display: block;
-                    }
+        .category-date-content {
+            &:hover {
+                .category-date {
+                    color: $primary-color;
+                }
+                .category-date-dropdown {
+                    display: block;
                 }
             }
-            &.category-list-content {
-                &:hover {
-                    .category-list {
-                        color: $primary-color;
-                    }
-                    .category-list-dropdown {
-                        display: block;
-                    }
+        }
+        .category-list-content {
+            &:hover {
+                .category-list {
+                    color: $primary-color;
+                }
+                .category-list-dropdown {
+                    display: block;
                 }
             }
+        }
+        .category-container {
             p{
                 padding: 1rem 1rem;
                 text-decoration: none;
