@@ -5,9 +5,9 @@ import axios from "axios";
 import Animate from "$lib/components/Animate.svelte"
 import { fly } from "svelte/transition";
 const domain = "https://strapi.ulfbuilt.com:1337"
-let promise = fetchCta();
 import { PUBLIC_STRAPI_API } from '$env/static/public';
 
+let promise = fetchCta();
 async function fetchCta(){
     const url = 'https://strapi.ulfbuilt.com:1337/api/footer?populate=deep,3';
     const headers = {

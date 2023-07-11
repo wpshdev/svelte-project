@@ -42,7 +42,6 @@
         for (let num = start; num <= end; num++) {
             if (num % 2 === 0) {
                 firstEven = num;
-                // console.log(firstEven)
                 break;
             }
         }
@@ -51,14 +50,12 @@
         for (let num = end; num >= start; num--) {
             if (num % 2 !== 0) {
                 lastOdd = num;
-                // console.log(lastOdd)
                 break;
             }
         }
     }
 
     $: if (activeTab) { // Check if has new variable data
-        // portfolioList = []; // to reset portfolioList length
         loading = true;
         (async () => {
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";

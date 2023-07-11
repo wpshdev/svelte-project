@@ -3,7 +3,6 @@
     import {Container} from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
-    console.log(data);
     const url = "https://strapi.ulfbuilt.com:1337/";
 </script>
 <svelte:head>

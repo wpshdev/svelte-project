@@ -6,7 +6,6 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
-    console.log(processData);
 </script>
 
 <svelte:head>

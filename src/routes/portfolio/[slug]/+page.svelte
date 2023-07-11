@@ -120,8 +120,6 @@
 						{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
 					</div>
 					<div class="portfolio-cta__btns">
-						<!-- <a href="{portfolio.ctaLeftBtnUrl}" class="btn btn-secondary">{portfolio.ctaLeftBtnTitle}</a>
-						<a href="{portfolio.ctaRightUrl}" class="btn btn-inverted">{portfolio.ctaRightTitle}</a> -->
 						<a href="{data.portfolio.ctaLeftBtnUrl ? data.portfolio.ctaLeftBtnUrl : '/contact-us'}" class="btn btn-secondary">{data.portfolio.ctaLeftBtnTitle ? data.portfolio.ctaLeftBtnTitle : 'Talk to Us'}</a>
 						<a href="{data.portfolio.ctaRightUrl ? data.portfolio.ctaRightUrl : '/portfolio'}" class="btn btn-inverted">{data.portfolio.ctaRightBtnTitle ? data.portfolio.ctaRightBtnTitle : 'Back to Portfolio'}</a>
 					</div>                   
@@ -142,7 +140,6 @@
 					<Col md="6">
 						<div class="related__article">
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
-								<!-- <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}"> -->
 								{#if rPortfolio.attributes.featuredImage.data != null}
                                 <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
                                 {:else}
