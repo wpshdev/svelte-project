@@ -205,7 +205,7 @@ section{
 		z-index: 0;
 	}
 	@include media-max(sm){
-		padding: 20vh 0 0;
+		padding: 10vh 0 0;
 	}
   &__content{
 	padding-top: 4vw;
@@ -214,6 +214,15 @@ section{
 	
 	z-index: 1;
 	position: relative;
+	@include media-max(laptopS){
+		margin-top: 5vw;
+	}
+	@include media-max(ipadmini){
+		margin-top: 10vw;
+	}
+	@include media-max(sm){
+		margin-top: 0;
+	}
     span{
       color: $primary-color;
 	  font-weight: 500;

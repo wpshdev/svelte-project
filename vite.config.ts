@@ -14,8 +14,8 @@ const filePath = dirname(fileURLToPath(import.meta.url))
 // How do we trace this out and rewrite the path to the local file path?
 // root: process.cwd() ------ This is the suggested path constant.
 
-// const sassPath = `D:/Coding - David/Work/NetDevs/ULF/src/styles/`
-const sassPath = `${filePath}/src/styles/`
+const sassPath = `D:/Coding - David/Work/NetDevs/ULF/src/styles/`
+// const sassPath = `${filePath}/src/styles/`
 
 const config: UserConfig = {
 	plugins: [sveltekit()],
