@@ -294,20 +294,20 @@
                 text-align: center;  
                 // padding-top: 0.8rem;
                 &:nth-child(even) {
-                    padding-top: 2rem;
+                    margin-top: 2rem;
                 }
                 &:nth-child(odd) {
-                    padding-bottom: 2rem;
+                    margin-bottom: 2rem;
                 }
                 &.firstEven {
-                    padding-top: 5rem;
+                    margin-top: 5rem;
                 }
                 &.lastOdd {
-                    padding-bottom: 5rem;
+                    margin-bottom: 5rem;
                 }
                 @include media-max(sm){
-                    padding-top: 0 !important;
-                    padding-bottom: 1rem !important;
+                    margin-top: 0 !important;
+                    margin-bottom: 1rem !important;
                 }
                 &:hover{
                     .masonry-items__text{
@@ -359,6 +359,7 @@
                     img{
                         height: 100%;
                         object-fit: cover;
+                        // aspect-ratio: auto;
                         min-height: 26.813rem;
                         min-width: 39.688rem;
 
