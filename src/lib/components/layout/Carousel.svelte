@@ -217,16 +217,16 @@ $: {
       width: 80%;      
     }   
     &__text{
-            background-color: $darkbluegreen;
-            color: #fff;
-            padding: 0.5rem;
-            position: absolute;
-            z-index: 2;
-            bottom: 4rem;
-            left: 0;
-            width: 90%;
-            text-align: left;
-            transition: 1.5s;
+          background-color: $secondary-color;
+          color: #fff;
+          padding: 0.5rem 3rem 0.5rem 0.5rem;
+          position: absolute;
+          z-index: 2;
+          bottom: 1rem;
+          left: 0;
+          max-width: 90%;
+          text-align: left;
+          transition: 1.5s;
 
             @include media-max(sm){
                 margin: 0;

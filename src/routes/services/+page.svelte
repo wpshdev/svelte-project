@@ -32,7 +32,7 @@
 </script>
 <svelte:head>
 	<title>{page.Title ? page.Title : 'Services'}</title>
-	<meta name="description" content="ULF BUILT" />
+	<meta name="description" content="ULFBUILT" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
@@ -526,12 +526,12 @@
             &__text{
                 background-color: $secondary-color;
                 color: #fff;
-                padding: 0.5rem;
+                padding: 0.5rem 3rem 0.5rem 0.5rem;
                 position: absolute;
                 z-index: 2;
                 bottom: 1rem;
                 left: 0;
-                width: 65%;
+                max-width: 90%;
                 text-align: left;
                 transition: 1.5s;
                 @include media-max(ipadmini){
