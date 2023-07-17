@@ -18,7 +18,7 @@
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
     let fallback = data.fallback.data.attributes.fallbackImage.data;
-    let propCount = 10;
+    // let propCount = 10;
     let portfolioList = [];
     let pageSize = 9;
     let currentPage = 1;
@@ -73,6 +73,8 @@
             }
         })();
     }
+
+    $: listener = {pageSize, activeTab};
 </script>
 <svelte:head>
 	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
@@ -106,13 +108,13 @@
                     </ul>
                 </div>
                 <p class="text-center view-all">
-                    {#if propCount === 10} 
-                        <span on:click="{() => propCount = 999}">View All Projects</span>
+                    {#if pageSize <= portfolioList.length} 
+                        <span on:click="{() => pageSize = 999}">View All Projects</span>
                     {:else}
-                        <span on:click="{() => propCount = 10}">View Less Projects</span>
+                        <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
                 </p>
-                {#key activeTab}
+                {#key listener}
                     {#if loading}  <!-- show load -->
                         <div class="col text-center list-text-details">Loading...</div>
                     {:else}
@@ -122,28 +124,25 @@
                         {@const items = portfolioList}
                             <div class="container masonry-wrapper">       
                                 {#each paginate({ items, pageSize, currentPage }) as project, index}			
-                                    {#if index < propCount}
-                                    <!-- class:second-column={(index + 1) % (portfolioList.length) === 4} -->
-                                        <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                        in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" 
-                                        out:fly="{{y:0, duration:1000 }}"> 
-                                            <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
-                                                {#if project.attributes.featuredImage.data != null}
-                                                    <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
-                                                {:else}
-                                                    <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
-                                                {/if}
-                                                <div class="masonry-items__text">
-                                                    <span>{('0' + (index + 1)).slice(-2)}</span>
-                                                    {project.attributes.title ? project.attributes.title : ''}
-                                                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                                                        </svg>
-                                                    </i>
-                                                </div>
-                                            </a>
-                                        </div>		
-                                    {/if}			
+                                    <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
+                                    in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" 
+                                    out:fly="{{y:0, duration:1000 }}"> 
+                                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
+                                            {#if project.attributes.featuredImage.data != null}
+                                                <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                            {:else}
+                                                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
+                                            {/if}
+                                            <div class="masonry-items__text">
+                                                <span>{('0' + (index + 1)).slice(-2)}</span>
+                                                {project.attributes.title ? project.attributes.title : ''}
+                                                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                        </a>
+                                    </div>			
                                 {/each}
                             </div>
                             <div class="paginate-section">
@@ -372,14 +371,14 @@
                 &__text{
                     background-color: $secondary-color;
                     color: #fff;
-                    padding: 0.5rem;
+                    padding: 0.5rem 3rem 0.5rem 0.5rem;
                     position: absolute;
                     z-index: 2;
                     bottom: 1rem;
                     left: 0;
-                    width: 65%;
+                    max-width: 90%;
                     text-align: left;
-                    transition: 0.3s;
+                    transition: 1.5s;
                     @include media-max(ipadmini){
                         margin: 0;
                         // font-size: 0.6rem;
