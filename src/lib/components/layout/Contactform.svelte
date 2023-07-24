@@ -32,7 +32,7 @@
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
             body: JSON.stringify({
-                "to": "parth@wpsuperheroes.com",
+                "to": email,
                 "subject": "* Website * " + name + " Subject : " + subject,
                 "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
             })
