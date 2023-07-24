@@ -15,7 +15,6 @@
     // let items = blogs;
   let currentPage = 1;
   let pageSize = 5;
-//   $: paginatedBlogs = paginate({ items, pageSize, currentPage });
   let articleList = [];
   let categories = data.categories.data;
   let loadingArticle;
@@ -64,13 +63,13 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.url}"/>
+<PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url ? data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url  : data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
     <Container>
         <Row>
             <ul class="cat-list">
                 <li>
-                    <div class="category-list-content">
+                    <div class="category-list-content category-container">
                         <p class="category-list">CATEGORY</p>
                         <div class="category-list-dropdown dropdown-content">
                             {#each categories as category}
@@ -79,7 +78,7 @@
                             <p class={activeCategoryTab === '' ? 'selected' : ''} on:click="{() => activeCategoryTabClick('')}">Show All</p>
                         </div>
                    </div> |
-                   <div class="category-date-content">
+                   <div class="category-date-content category-container">
                         <p class="category-date">DATE ADDED</p>
                         <div class="category-date-dropdown dropdown-content">
                             <p class={activeDate === 'DESC' ? 'selected' : ''} on:click="{() => activeDateClick('DESC')}">Latest</p>
@@ -189,6 +188,64 @@
     }
     .category {
         min-height: 0;
+        
+        .cat-list{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li{
+                color: $darkgray;
+                display: flex;
+                align-items: center;
+                .category-date-content {
+                    &:hover {
+                        .category-date {
+                            color: $primary-color;
+                        }
+                        .category-date-dropdown {
+                            display: block;
+                        }
+                    }
+                }
+                .category-list-content {
+                    &:hover {
+                        .category-list {
+                            color: $primary-color;
+                        }
+                        .category-list-dropdown {
+                            display: block;
+                        }
+                    }
+                }
+                .category-container {
+                    p{
+                        padding: 1rem 1rem;
+                        text-decoration: none;
+                        color: $darkgray;
+                        font-weight: 400;
+                        cursor: pointer;
+                        margin-bottom: 0;
+                    }
+                    .dropdown-content {
+                        display: none;
+                        position: absolute;
+                        background-color: #e9ebef;
+                        min-width: 160px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        z-index: 1;
+                        p {
+                            font-family: $primary-font;
+                            font-feature-settings: 'pnum' on, 'lnum' on;
+                            color: $primary-color;
+                            &:hover, &.selected {
+                                background-color: $secondary-color;
+                                color: $white-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     .cover{
         h2{
@@ -287,63 +344,6 @@
         @include media-max(sm){
             padding: 0 0 0 0;
             display: none;
-        }
-    }
-    .cat-list{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        li{
-            color: $darkgray;
-            display: flex;
-            align-items: center;
-            div {
-                &.category-date-content {
-                    &:hover {
-                        .category-date {
-                            color: $primary-color;
-                        }
-                        .category-date-dropdown {
-                            display: block;
-                        }
-                    }
-                }
-                &.category-list-content {
-                    &:hover {
-                        .category-list {
-                            color: $primary-color;
-                        }
-                        .category-list-dropdown {
-                            display: block;
-                        }
-                    }
-                }
-                p{
-                    padding: 1rem 1rem;
-                    text-decoration: none;
-                    color: $darkgray;
-                    font-weight: 400;
-                    cursor: pointer;
-                    margin-bottom: 0;
-                }
-                .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    background-color: #e9ebef;
-                    min-width: 160px;
-                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                    z-index: 1;
-                    p {
-                        font-family: $primary-font;
-                        font-feature-settings: 'pnum' on, 'lnum' on;
-                        color: $primary-color;
-                        &:hover, &.selected {
-                            background-color: $secondary-color;
-                            color: $white-color;
-                        }
-                    }
-                }
-            }
         }
     }
     .cat-select,.cat-select:focus,.cat-select:focus-visible{

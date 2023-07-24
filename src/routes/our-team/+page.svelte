@@ -4,8 +4,8 @@
 
 	import Animate from "$lib/components/Animate.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-  import Contactform from "$lib/components/layout/Contactform.svelte";
-  import Modal from "$lib/components/layout/Modal.svelte";
+    import Contactform from "$lib/components/layout/Contactform.svelte";
+    import Modal from "$lib/components/layout/Modal.svelte";
 
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
@@ -16,6 +16,7 @@
     let memberImage = '';
     let memberPosition = '';
     let memberContent = '';
+
     function getMemberIndex(index) {
         memberName = ourTeam.team_members.data[index].attributes.name.replace(/^\s*\w+/, '<span>$&</span>');
         memberImage = ourTeam.team_members.data[index].attributes.memberPhoto.data.attributes.url;

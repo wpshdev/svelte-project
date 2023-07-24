@@ -6,15 +6,14 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
-    console.log(processData);
 </script>
 
 <svelte:head>
 	<title>{processData.section1heading ? processData.section1heading : 'Our Process'}</title>
-	<meta name="description" content="ULF BUILT" />
-    <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.url}" as="image">
+	<meta name="description" content="ULFBUILT" />
+    <!-- <link rel="preload" href="{domain}{processData.Cover.data[0].attributes.url}" as="image"> -->
 </svelte:head>
-<PageBanner title="{processData.section1heading ? processData.section1heading : 'Our Process'}" subTitle="{processData.bannerSub ? processData.bannerSub : ''}" banner="{domain}{processData.Cover.data[0].attributes.formats.large_x2.url ? processData.Cover.data[0].attributes.formats.large_x2.url : processData.Cover.data[0].attributes.url}" />
+<PageBanner title="{processData.section1heading ? processData.section1heading : 'Our Process'}" subTitle="{processData.bannerSub ? processData.bannerSub : ''}" banner="{domain}{processData.Cover.data[0].attributes.formats.large_x2 ? processData.Cover.data[0].attributes.formats.large_x2.url : processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
         <Container>
             <Row>
@@ -99,7 +98,7 @@
         </div>  
     </Animate>
     <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large ? processData.section6image.data.attributes.formats.large.url : processData.section6image.data.attributes.url })">
+        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
         </div>  
     </Animate>
    <Animate>
@@ -338,7 +337,14 @@
         @include media-max(sm){
             height: 40vh;
         }          
-    }    
+    }   
+    
+    :global(.phase) {
+        @include media-max(laptopS){
+            padding-left: 0; 
+            padding-right: 0;
+        }
+    } 
     .phase{
         margin-bottom: 0;
         :global(.phase-container) {
@@ -534,9 +540,14 @@
             }
         }
     }
-    @include media-max(sm){
-        .phase1-img, .phase__banner, .phase2-img, .phase-banner-separator {
+    .phase1-img, .phase__banner, .phase2-img, .phase-banner-separator {
+        @include media-max(laptopS){
+            height: 70vh;
+            background-position: center;
+        }
+        @include media-max(sm){
             height: 30vh;
         }
     }
+    
 </style>

@@ -105,7 +105,7 @@ $: {
         <div class="slider-container__carousel-cell">
           <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
             {#if project.attributes.featuredImage.data != null}
-            <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+              <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
             {:else}
             {#await promise}
             {:then fallback} 
@@ -153,34 +153,35 @@ $: {
   .progress-ring__arrow:hover rect {
     fill: rgba(129, 129, 129, 0.191);
   }
-.slider-caption{
-  height: 100%;
-  // display: flex;
-  // align-items: center;
-  // flex-wrap: wrap;  
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 5rem;
-  &__heading{
-    margin-top: 5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    @include media-max(sm){
-        text-align: center;
-        margin-top: 0;
-    }    
-    span{
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: $primary-color;
-      font-weight: 500;
-    }
-    h2{
+    
+  .slider-caption{
+    height: 100%;
+    // display: flex;
+    // align-items: center;
+    // flex-wrap: wrap;  
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5rem;
+    &__heading{
+      margin-top: 5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      @include media-max(sm){
+          text-align: center;
+          margin-top: 0;
+      }    
+      span{
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: $primary-color;
+        font-weight: 500;
+      }
+      h2{
 
+      }
     }
   }
-}
 
 .slider-container {
   width: 100%;
@@ -216,16 +217,16 @@ $: {
       width: 80%;      
     }   
     &__text{
-            background-color: $darkbluegreen;
-            color: #fff;
-            padding: 0.5rem;
-            position: absolute;
-            z-index: 2;
-            bottom: 4rem;
-            left: 0;
-            width: 90%;
-            text-align: left;
-            transition: 1.5s;
+          background-color: $secondary-color;
+          color: #fff;
+          padding: 0.5rem 3rem 0.5rem 0.5rem;
+          position: absolute;
+          z-index: 2;
+          bottom: 1rem;
+          left: 0;
+          max-width: 90%;
+          text-align: left;
+          transition: 1.5s;
 
             @include media-max(sm){
                 margin: 0;
@@ -256,6 +257,7 @@ $: {
     }
   }
 }
+
 .slider-btn{
   margin: 3rem 5rem 0;
   text-align: right;

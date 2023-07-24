@@ -3,11 +3,9 @@
 	import { onMount } from "svelte";
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
-	import {
-		goto
-	} from '$app/navigation';
 
 	const domain = "https://strapi.ulfbuilt.com:1337"
+	
 	let promise = fetchCta();
 	async function fetchCta(){
 		const url = 'https://strapi.ulfbuilt.com:1337/api/global-article-cta?populate=deep,2';
@@ -22,17 +20,6 @@
 			console.error('Error fetching data:', error);
 		}
 	}
-
-	// function handleClick(event) {
-	// 	event.preventDefault();
-	// 	const href = event.target.getAttribute('href');
-	// 	if (href) {
-	// 		history.pushState({}, '', href);
-	// 		window.location.href = href;
-	// 		goto(href);
-	// 	}
-	// }
-	// on:click|preventDefault={handleClick}
 
 	onMount(() => {
 		promise = fetchCta();

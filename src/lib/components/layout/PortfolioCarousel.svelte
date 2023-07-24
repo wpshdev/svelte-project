@@ -46,8 +46,8 @@
     if(innerWidth > 768){
       initScrollAnimations();
     }
-    isRetina = window.devicePixelRatio > 1;
-    console.log(isRetina);
+    // isRetina = window.devicePixelRatio > 1;
+    // console.log(isRetina);
   });
 
 afterUpdate(() => {
@@ -120,13 +120,13 @@ function lazy(node, data) {
                     <img src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://strapi.ulfbuilt.com:1337'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
                     <!-- <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader> -->
                     </Animate>
-                  </div>     
                     <a href="{domain}{image.attributes.url}?download" class="download" download>
                       <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="27.501" cy="27.5" r="27.5" fill="#1E2D39"/>
                         <path d="M28.501 16.5C28.501 15.9477 28.0533 15.5 27.501 15.5C26.9487 15.5 26.501 15.9477 26.501 16.5L28.501 16.5ZM26.7939 39.2071C27.1844 39.5976 27.8176 39.5976 28.2081 39.2071L34.572 32.8431C34.9626 32.4526 34.9626 31.8195 34.572 31.4289C34.1815 31.0384 33.5484 31.0384 33.1578 31.4289L27.501 37.0858L21.8441 31.4289C21.4536 31.0384 20.8204 31.0384 20.4299 31.4289C20.0394 31.8195 20.0394 32.4526 20.4299 32.8431L26.7939 39.2071ZM26.501 16.5L26.501 38.5L28.501 38.5L28.501 16.5L26.501 16.5Z" fill="white"/>
                       </svg>                        
                     </a>
+                  </div>    
                 </div>
             {/each}
           </div>
@@ -168,7 +168,7 @@ function lazy(node, data) {
   <!-- <ImageLoader src="{domain}{images[0].attributes.url}" alt="test"></ImageLoader> -->
   
   
-
+ 
 <style lang="scss">
 
 body {
@@ -190,9 +190,18 @@ body {
     .image-wrapper{
       min-width: 20rem;
       height: 70vh;
+      position: relative;
       :global(img) {
         min-width: 20rem;
         height: 70vh;
+      }
+      .download{
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        // display: none;
+        opacity: 0;
+        transition: 1s;
       }
     }
     @include media-max(ipadmini){
@@ -210,14 +219,7 @@ body {
 
       }
     }    
-    .download{
-      position: absolute;
-      bottom: 6rem;
-      right: 1rem;
-      // display: none;
-      opacity: 0;
-      transition: 1s;
-    }
+    
     &:hover{
       .download{
         transition: 1s;        

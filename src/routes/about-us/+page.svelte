@@ -1,6 +1,6 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
-
+    import { onMount } from 'svelte';
 	import Animate from '$lib/components/Animate.svelte';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
@@ -9,6 +9,7 @@
     import certBG from '$lib/img/BlankCertBg.png';
     import certBGMobile from '$lib/img/CertBGMobileBlank.png';
     // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
+    import {page} from '$app/stores';
     export let data;
 
     let abouttitle = data.about.data.attributes.Title
@@ -20,10 +21,28 @@
     let scroll: number;
 
     let testimonialsData = data.testimonials.data;
+
+    function scrollToDiv() {
+        const clientSays = $page.url.hash;
+        if(clientSays) {
+            const id = clientSays.substring(1);
+            const element = document.getElementById(id);
+            console.log(element);
+            element.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    onMount(() => {
+        setTimeout(scrollToDiv, 1000);
+        // scrollToDiv();
+    });	
+
 </script>
 <svelte:head>
 	<title>{abouttitle ? abouttitle : 'About us'}</title>
-	<meta name="description" content="ULF BUILT" />
+	<meta name="description" content="ULFBUILT" />
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
@@ -43,19 +62,19 @@
                 <p>{@html about.Section1text ? about.Section1text : ''}</p>
             </Col>
             <Col md="6">
-                <Animate>
+                
                     {#if about.Section1image.data}
                     <div>
                         <img src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
                     </div>
                     {/if}
-                </Animate>
+                
             </Col>
         </Row>
     </Container>
 </section>
 <section class="contractor-details">
-    <Animate>
+    
         <Container>
         <Row>
             <Col md="6">
@@ -71,10 +90,10 @@
             </Col>
         </Row>
         </Container>        
-    </Animate>
+    
 </section>
 <section class="contractor-details">
-    <Animate>
+    
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
@@ -90,24 +109,32 @@
                 </Col>
             </Row>
         </Container>    
-    </Animate>
+    
 </section>
 <section class="mx-8 remodel">
-    <Animate>
+    
         <div class="remodel__bgimage">
             {#if about.Section4image.data}
             <img src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}">
             {/if}
             <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
         </div>        
-    </Animate>
+    
 </section>
 <section class="certificate mx-8">
     <Container>
-        <Animate>
-            <!-- <h2 class="mb-5 text-center">{about.Section5heading}</h2>
-            <p class="text-left">{@html about.Section5text}</p> -->
-            <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
+        
+            <!-- <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
+                <div class="certificate-inner-container">
+                    <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
+                    <div class="certificate-content">
+                        {@html about.certContent ? about.certContent : ''}
+                    </div>
+                </div>
+            </div> -->
+
+            {#if about.certTitle}
+            <div class="certificate-container" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
                 <div class="certificate-inner-container">
                     <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
                     <div class="certificate-content">
@@ -115,17 +142,12 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section5heading}"> -->
-            <!-- {#if about.Section5image.data}
-              <img src="{url+about.Section5image.data.attributes.url}" alt="{about.Section3heading}" class="desktop">
-              <img src="{url+about.Section5MobileImage.data.attributes.url}" alt="{about.Section3heading}" class="mobile">
-            {/if}       -->
-        </Animate>
+            {/if}
+
     </Container>
 </section>
 <section class="sets-parts">
-    <Animate>
+    
         <Container>
             <Row>
                 <Col md="12"><h2 class="text-center mb-5">{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
@@ -145,8 +167,8 @@
                 </Col>
             </Row>
         </Container>        
-    </Animate>
-    <Animate>
+    
+    
         <Container class="mx-10">
             <Row class="sets-parts__row">
                 <Col md="6" style="z-index: 1;">
@@ -163,8 +185,8 @@
                 </Col>
             </Row>
         </Container>    
-    </Animate>
-    <Animate>
+    
+    
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
@@ -181,13 +203,15 @@
                 </Col>
             </Row>
         </Container>        
-    </Animate>
+    
 
 </section>
 
+<div id="clientSays">
 {#if testimonialsData}
 <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/>
 {/if}
+</div>
 
 <section class="talktous">
     <Container>
@@ -361,7 +385,8 @@
         }
         :global(.sets-parts__content p) {
             font-size: 1.25rem;
-            text-wrap: balance;
+            // text-wrap: balance;
+            hyphens: auto;
             @include media-max(xs) {
                 text-align: left !important;
             }

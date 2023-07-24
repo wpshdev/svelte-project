@@ -8,7 +8,7 @@
     import { Col, Container, Row } from 'sveltestrap';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     const url = "https://strapi.ulfbuilt.com:1337/";
-    console.log(data);
+    
     let phone = data.data.attributes.phone;
     let office_address = data.data.attributes.office_address;
     let mailing_address = data.data.attributes.mailing_address;

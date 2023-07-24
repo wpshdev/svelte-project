@@ -36,7 +36,6 @@
         <h2 class="pb-3 sblue">{title ? title : ''}</h2>
         <div class="two-columns">
             {@html content ? content : ''}
-            <!-- <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
         </div>
     </Container>
 </section>
@@ -144,12 +143,6 @@
         @include media-max(sm){
             padding: 1rem 0;
         }
-        // display: grid;
-        // grid-template-columns: repeat(2, 1fr);
-        // text-align: left;
-        // @include media-max(sm){
-        //     grid-template-columns: repeat(1, 1fr);
-        // }
     }
     .sblue {
         color: $secondary-color;

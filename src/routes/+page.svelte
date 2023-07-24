@@ -16,7 +16,7 @@
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	//import MasonryCard from "$lib/components/MasonryCard.svelte";
-	import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
+	//import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
 	//import gsap from 'gsap';
 	// import { lazyload } from '$lib/lazyload.js'
 	import axios from "axios";
@@ -40,7 +40,6 @@
 	}
 
 	$: if (activeTab) { // Check if has new variable data
-        // portfolioList = []; // to reset portfolioList length
 		loading = true;
         (async () => {
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
@@ -64,7 +63,6 @@
 	// $: listener = {propCount , activeTab};
 	
 	// let height;
-	// console.log(home);
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -167,7 +165,7 @@
 								<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
 									<MasonryCardGrid id={activeTab} {propCount}/>
 								</div>			
-							{/key}																		 -->
+							{/key}-->
 							{#key activeTab}
 								{#if loading}  <!-- show load -->
 									<div class="col text-center list-text-details">Loading...</div>
