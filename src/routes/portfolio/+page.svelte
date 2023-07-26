@@ -108,8 +108,8 @@
                     </ul>
                 </div>
                 <p class="text-center view-all">
-                    {#if pageSize <= portfolioList.length} 
-                        {#if pageSize < portfolioList.length} 
+                    {#if pageSize === 9} 
+                        {#if portfolioList.length > pageSize} 
                             <span on:click="{() => pageSize = 999}">View All Projects</span>
                         {/if}
                     {:else}
@@ -199,7 +199,7 @@
         position: relative;
         .list-text-details {
             position: absolute;
-            top: 20rem;
+            top: 15rem;
             left: 50%;
             -webkit-transform: translateX(-50%);
             transform: translateX(-50%)

@@ -65,7 +65,7 @@
                 
                     {#if about.Section1image.data}
                     <div>
-                        <img src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100">
+                        <img src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                     </div>
                     {/if}
                 
@@ -80,7 +80,7 @@
             <Col md="6">
                 {#if about.Section2image.data}
                 <div>
-                    <img src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100">
+                    <img src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
                 </div>
                 {/if}
             </Col>
@@ -103,7 +103,7 @@
                 <Col md="6">
                     {#if about.Section3image.data}
                     <div>
-                        <img src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image">
+                        <img src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -115,7 +115,7 @@
     
         <div class="remodel__bgimage">
             {#if about.Section4image.data}
-            <img src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}">
+            <img src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
             {/if}
             <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
         </div>        
@@ -161,7 +161,7 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
                         {#if about.Section6image.data}
-                        <img src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100">
+                        <img src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -175,7 +175,7 @@
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                         {#if about.Section7image.data}
-                        <img src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100">
+                        <img src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -197,7 +197,7 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
                         {#if about.Section8image.data}
-                        <img src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100">
+                        <img src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>

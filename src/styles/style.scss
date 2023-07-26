@@ -967,16 +967,16 @@ header{
         -webkit-transition: -webkit-transform 1.5s ease-out;
         transition: -webkit-transform 1.5s ease-out;
         transition: transform 1.5s ease-out;
-        transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;    
+        transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;
     }
     &:hover{
         img{
-            -webkit-transition: -webkit-transform 1.5s ease-out;
-            transition: -webkit-transform 1.5s ease-out;
-            transition: transform 1.5s ease-out;
-            transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;
-            // scale: 1.2;
-            transform: scale(1.2);
+            -webkit-transform: scale(1.25);
+            transform: scale(1.25);
+            -webkit-transition: -webkit-transform 5s ease-out;
+            transition: -webkit-transform 5s ease-out;
+            transition: transform 5s ease-out;
+            transition: transform 5s ease-out,-webkit-transform 5s ease-out;
         }
     }    
 }
@@ -985,4 +985,9 @@ header{
     @include media-max(md){
         max-width: 100%;
     }		
+}
+
+img {
+    width:100%; 
+    height: auto;
 }
