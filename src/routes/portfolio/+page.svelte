@@ -109,7 +109,9 @@
                 </div>
                 <p class="text-center view-all">
                     {#if pageSize <= portfolioList.length} 
-                        <span on:click="{() => pageSize = 999}">View All Projects</span>
+                        {#if pageSize < portfolioList.length} 
+                            <span on:click="{() => pageSize = 999}">View All Projects</span>
+                        {/if}
                     {:else}
                         <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
