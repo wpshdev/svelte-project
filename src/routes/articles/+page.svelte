@@ -123,10 +123,10 @@
                         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
                             <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
                                 <Animate>
-                                    <div class="blogsection7 easein-img">
+                                    <div class="blogsection7 zoomImg">
                                         {#if blog.attributes.featuredimage.data != null}
                                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
-                                                <img src="{blog.attributes.featuredimage.data.attributes.formats.large.url ? url+blog.attributes.featuredimage.data.attributes.formats.large.url : url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
+                                                <img width="{blog.attributes.featuredimage.data.attributes.width}" height="{blog.attributes.featuredimage.data.attributes.height}" src="{blog.attributes.featuredimage.data.attributes.formats.large.url ? url+blog.attributes.featuredimage.data.attributes.formats.large.url : url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
                                             {:else}
                                                 <img alt="{blog.attributes.title}" src="{fallback ? url+fallback.attributes.url : blogempty}" class="blog-img w-100">
                                             {/if}

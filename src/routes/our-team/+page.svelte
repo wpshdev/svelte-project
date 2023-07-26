@@ -39,7 +39,7 @@
                     <p class="two-columns">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
                     <div class="heading-image">
-                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy"/>
+                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                     </div>
                     {/if}
                 </Col>
@@ -85,7 +85,7 @@
                     on:click={() => getMemberIndex(index)}
                     on:click={() => (showModal = true)}
                     >
-                        <img src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                        <img width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
                         <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                             <!-- our-team__member_caption class removed -->
                             <h5 class="pfont">{member.attributes.name}</h5>

@@ -46,7 +46,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}">
+                                        <img src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
                                     </div>
                                 <h4>{page.section1item1heading ? page.section1item1heading : ''}</h4>
                             </div>
@@ -59,7 +59,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}">
+                                    <img src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
                                 </div>
                                 <h4>{page.section1item2heading ? page.section1item2heading : ''}</h4>
                             </div>
@@ -72,7 +72,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}">
+                                    <img src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
                                 </div>
                                 <h4>{page.section1item3heading ? page.section1item3heading : ''}</h4>
                             </div>
@@ -85,7 +85,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}">
+                                    <img src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
                                 </div>
                                 <h4>{page.section1item4heading ? page.section1item4heading : ''}</h4>
                             </div>
@@ -98,7 +98,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}">
+                                    <img src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
                                 </div>
                                 <h4>{page.section1item5heading ? page.section1item5heading : ''}</h4>
                             </div>
@@ -111,7 +111,7 @@
                         <div class="service-b__service-box">
                             <div class="service-b__service-box__service-box-inner">
                                 <div class="service-b__service-box__service-box-inner__service-icon">
-                                    <img src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}">
+                                    <img src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
                                 </div>
                                 <h4>{page.section1item6heading ? page.section1item6heading : ''}</h4>
                             </div>
@@ -134,7 +134,7 @@
                     </Col>
                     <Col md="6" class="imageCont">
                         {#if page.section2image.data}
-                        <img src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100">
+                        <img src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
                         {/if}
                     </Col>
                 </Row>
