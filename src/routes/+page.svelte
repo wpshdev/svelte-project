@@ -79,7 +79,7 @@
 			<Row>
 				<Col xs="12" class="pb-4">
 					<h2 in:fly={{
-						delay: 1000,
+						//delay: 1000,
 						duration: 2000,
 						y: 50	}}
 					>
@@ -88,19 +88,19 @@
 				</Col>
 				<Col xs="12">
 					<div class="loc-gallery__cwrapper" in:fly={{
-							delay: 500,
+							//delay: 500,
 							duration: 2000,
 							y: 50								
 					}} >
 							<div class="h3" in:fly={{
-								delay: 1500,
+								//delay: 1500,
 								duration: 2000,
 								y: 50								
 							}}>
 								{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 							</div>
 						<div in:fly={{
-							delay: 2000,
+							//delay: 2000,
 							duration: 2000,
 							y: 50								
 						}} >
@@ -960,7 +960,7 @@
 					top: -10vw;
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
-					height: 160%;	
+					height: 200%;	
 				}  						
 			}
 			&__wrapper{
@@ -1012,6 +1012,9 @@
 		img{
 			position: relative;
 			z-index: 5;
+			@include media-max(ipadmini){
+				margin-top: 2rem;
+			}
 		}		
 	}	
 

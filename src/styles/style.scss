@@ -964,10 +964,10 @@ header{
 
 .zoomImg{
     img{
-        -webkit-transition: -webkit-transform 1.5s ease-out;
-        transition: -webkit-transform 1.5s ease-out;
-        transition: transform 1.5s ease-out;
-        transition: transform 1.5s ease-out,-webkit-transform 1.5s ease-out;
+        -webkit-transition: -webkit-transform 1.75s ease-out;
+        transition: -webkit-transform 1.75s ease-out;
+        transition: transform 1.75s ease-out;
+        transition: transform 1.75s ease-out,-webkit-transform 1.75s ease-out;
     }
     &:hover{
         img{
