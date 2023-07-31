@@ -9,10 +9,13 @@
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     const url = "https://strapi.ulfbuilt.com:1337/";
     
-    let phone = data.data.attributes.phone;
-    let office_address = data.data.attributes.office_address;
-    let mailing_address = data.data.attributes.mailing_address;
-    let name = '', email = '', subject = '', message = '', result = ''
+    let phone = data.contact.data.attributes.phone;
+    let office_address = data.contact.data.attributes.office_address;
+    let mailing_address = data.contact.data.attributes.mailing_address;
+    let emailTo = data.contactDetails.data.attributes.contactDetails.emailTo;
+	let emailSubject = data.contactDetails.data.attributes.contactDetails.emailSubject;
+	let emailResponse = data.contactDetails.data.attributes.contactDetails.emailResponse;
+    let name = '', email = '', formPhone = '', message = '', result = ''
     async function doContact () {
         const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
 		const res = await fetch(url, {
@@ -22,7 +25,7 @@
                 data:{
                 "name": name,
                 "email": email,
-                "subject": subject,
+                "phone": formPhone,
                 "message": message
                 }
 			})
@@ -37,34 +40,34 @@
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
             body: JSON.stringify({
-                "to": email,
-                "subject": "* Website * " + name + " Subject : " + subject,
-                "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
+                "to": emailTo ? emailTo : 'dev@netdevs.com',
+                "subject": emailSubject ? emailSubject : 'UlfBuilt Contact Form',
+                "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+formPhone+"</p><p>"+message+"</p>",
             })
 		})
 		const json2 = await res2.json()
         if(json2.error){
             result = json2.error.message
         }else{
-            result = "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner."
+            result = emailResponse ? emailResponse : "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner.";
         }
         }
 	}
 </script>
 <svelte:head>
-	<title>{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}</title>
+	<title>{data.contact.data.attributes.title ? data.contact.data.attributes.title : 'Contact Us'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}" banner="{url}{data.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.data.attributes.featuredimage.data.attributes.url}" />
+<PageBanner title="{data.contact.data.attributes.title ? data.contact.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.contact.data.attributes.Subheading ? data.contact.data.attributes.Subheading : ''}" banner="{url}{data.contact.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.contact.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.contact.data.attributes.featuredimage.data.attributes.url}" />
 
 <section class="mx-10 contact_inner">
     <Container class="mb-5 contact_inner__content">
         <Row>
             <Col md="12">
-                <h2 class="text-center">{data.data.attributes.section1Title ? data.data.attributes.section1Title : ''}</h2>
-                <h4 class="text-center pfont">{data.data.attributes.Section1SubAuthor ? '-' : ''} <span class="ptc"><i>{data.data.attributes.Section1SubAuthor ? data.data.attributes.Section1SubAuthor : ''}</i></span></h4>
-                <p class="two-columns pt-3">{@html data.data.attributes.Subheading2 ? data.data.attributes.Subheading2 : ''}</p>
+                <h2 class="text-center">{data.contact.data.attributes.section1Title ? data.contact.data.attributes.section1Title : ''}</h2>
+                <h4 class="text-center pfont">{data.contact.data.attributes.Section1SubAuthor ? '-' : ''} <span class="ptc"><i>{data.contact.data.attributes.Section1SubAuthor ? data.data.attributes.Section1SubAuthor : ''}</i></span></h4>
+                <p class="two-columns pt-3">{@html data.contact.data.attributes.Subheading2 ? data.contact.data.attributes.Subheading2 : ''}</p>
             </Col>
         </Row>
     </Container>
@@ -72,31 +75,31 @@
         <Row>
             <Col md="4" class="flex-vcenter">
                 <Animate>
-                    <h4 class="ptc pfont">{data.data.attributes.office_address_title ? data.data.attributes.office_address_title : ''}</h4>
+                    <h4 class="ptc pfont">{data.contact.data.attributes.office_address_title ? data.contact.data.attributes.office_address_title : ''}</h4>
                     <h4 class="stc pb-5">{@html office_address ? office_address : ''}</h4>
-                    <h4 class="ptc pfont">{data.data.attributes.mailing_address_title ? data.data.attributes.mailing_address_title : ''}</h4>
+                    <h4 class="ptc pfont">{data.contact.data.attributes.mailing_address_title ? data.contact.data.attributes.mailing_address_title : ''}</h4>
                     <h4 class="stc pb-5">{@html mailing_address ? mailing_address : ''}</h4>
-                    <h4 class="ptc pfont">{data.data.attributes.phone_title ? data.data.attributes.phone_title : ''}</h4>
+                    <h4 class="ptc pfont">{data.contact.data.attributes.phone_title ? data.contact.data.attributes.phone_title : ''}</h4>
                     <h4 class="stc pb-5">{@html phone ? phone : ''}</h4>
                 </Animate>
             </Col>
             <Col md="8">
                 <Animate>
-                    <iframe title="ULF BUILT" src="{data.data.attributes.map_url ? data.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="ULF BUILT" src="{data.contact.data.attributes.map_url ? data.contact.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </Animate>
             </Col>
         </Row>
     </Container>
 </section>
 <Animate>
-    <div class="contact-img" style="background-image: url({url}{data.data.attributes.formcover.data.attributes.formats.large.url ? data.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});"></div>
+    <div class="contact-img" style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});"></div>
 </Animate>
 <Animate>
     <div class="contact-box container-fluid">
         <Container>
             <Row>
                 <Col sm="12" class="contact-form tbc wtc border-radius">
-                    <h2 class="text-center pb-4">{data.data.attributes.contact_form_title ? data.data.attributes.contact_form_title : ''}</h2>
+                    <h2 class="text-center pb-4">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
                     <Form method="post">
                         <FormGroup class="input-icon-box">
                             <Input class="input-user" placeholder="Full Name" bind:value={name} />
@@ -107,7 +110,7 @@
                             <div class="input-icon input-icon-email"></div>
                         </FormGroup>
                         <FormGroup class="input-icon-box">
-                            <Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
+                            <Input class="input-phone" placeholder="Phone Number" bind:value={formPhone} />
                             <div class="input-icon input-icon-phone"></div>
                         </FormGroup>
                         <FormGroup>

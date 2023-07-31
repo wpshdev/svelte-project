@@ -7,17 +7,38 @@
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 
-    let name = '', email = '', subject = '', message = '', result = ''
+	let emailTo = '';
+	let emailSubject = '';
+	let emailResponse = '';
+	async function fetchContactDetails(){
+		const url = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
+		const headers = {
+			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
+		};
+
+		try {
+			const response = await axios.get(url, { headers });
+			// return response.data.data.attributes;
+			emailTo = response.data.data.attributes.contactDetails.emailTo;
+			emailSubject = response.data.data.attributes.contactDetails.emailSubject;
+			emailResponse = response.data.data.attributes.contactDetails.emailResponse;
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+
+    let name = '', email = '', phone = '', message = '', result = ''
     async function doContact () {
-        const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
-		const res = await fetch(url, {
+        const contactUrl = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
+		const res = await fetch(contactUrl, {
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
 			body: JSON.stringify({
                 data:{
                 "name": name,
                 "email": email,
-                "subject": subject,
+                "phone": phone,
                 "message": message
                 }
 			})
@@ -27,22 +48,22 @@
             result = json.error.message
         }else{
             result = 'Processing...'
-        const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
-		const res2 = await fetch(url2, {
-			method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
-            body: JSON.stringify({
-                "to": email,
-                "subject": "* Website * " + name + " Subject : " + subject,
-                "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+subject+"</p>",
-            })
-		})
-		const json2 = await res2.json()
-        if(json2.error){
-            result = json2.error.message
-        }else{
-            result = "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner."
-        }
+			const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
+			const res2 = await fetch(url2, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
+				body: JSON.stringify({
+					"to": emailTo ? emailTo : 'dev@netdevs.com',
+					"subject": emailSubject ? emailSubject : 'UlfBuilt Contact Form',
+					"html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+phone+"</p><p>"+message+"</p>",
+				})
+			})
+			const json2 = await res2.json()
+			if(json2.error){
+				result = json2.error.message
+			}else{
+				result = emailResponse ? emailResponse : "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner.";
+			}
         }
 	}
 
@@ -64,7 +85,7 @@
 
 	onMount(() => {
 		promise = fetchContactSettings();
-		console.log(promise)
+		fetchContactDetails();
   	});	
 </script>
 {#await promise}
@@ -92,13 +113,14 @@
 							<div class="input-icon input-icon-email"></div>
 						</FormGroup>
 						<FormGroup class="input-icon-box">
-							<Input class="input-phone" placeholder="Phone Number" bind:value={subject} />
+							<Input class="input-phone" placeholder="Phone Number" bind:value={phone} />
 							<div class="input-icon input-icon-phone"></div>
 						</FormGroup>
 						<FormGroup>
 							<Input type="textarea" id="yourMessage" placeholder="Tell us about you project..." bind:value={message} required/>
 						</FormGroup>
-						<Button type="btn is-primary"  on:click={doContact}>Send</Button>
+						<!-- <Button type="btn is-primary"  on:click={doContact}>Send</Button> -->
+						<button on:click|preventDefault={doContact} class="btn btn-secondary">Send</button>
 					</Form>
 				</div>
                 {result}
