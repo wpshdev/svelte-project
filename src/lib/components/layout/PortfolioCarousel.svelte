@@ -189,11 +189,11 @@ body {
     margin: 11vh 0.5rem 11vh;
     .image-wrapper{
       min-width: 20rem;
-      height: 70vh;
+      height: 77vh;
       position: relative;
       :global(img) {
         min-width: 20rem;
-        height: 70vh;
+        height: 77vh;
       }
       .download{
         position: absolute;
