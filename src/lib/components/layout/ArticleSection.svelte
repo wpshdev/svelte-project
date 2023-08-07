@@ -3,6 +3,8 @@
 	import { onMount } from "svelte";
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
+	import { fade, fly } from 'svelte/transition';
+	import Animate from "$lib/components/Animate.svelte";
 
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	
@@ -28,34 +30,38 @@
 </script>
 {#await promise}
 {:then insight} 
-	<section class="insight">
-		<Container>
-			<Row>
-				<Col>
-					<span class="insight__pre-heading">{insight.leftPreHeading ? insight.leftPreHeading : ''}</span>
-				</Col>
-			</Row>
-			<Row>
-				<Col md="6" class="">
-					{#if insight.image.data}
-					<img src="{domain}{insight.image.data.attributes.formats.large.url ? insight.image.data.attributes.formats.large.url : insight.image.data.attributes.url}" alt="Stair">
-					{/if}
-				</Col>
-				<Col md="6" class="my-auto">
-					<div class="insight__content">
-						<div class="insight__content__wrapper">
-							<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading ? insight.rightPreHeading : ''}</div>
-							<h2>{insight.Heading ? insight.Heading : ''}</h2>
-							{@html insight.paragprah ? insight.paragprah : ''}
-							<div class="insight__content__wrapper__btns">
-								<a href="{insight.leftBtnUrl ? insight.leftBtnUrl : '#'}/" class="btn btn-secondary">{insight.leftBtnTitle ? insight.leftBtnTitle : 'Button'}</a> <a href="{insight.rightBtnUrl ? insight.rightBtnUrl : '#'}/" class="btn btn-inverted">{insight.rightBtnTitle ? insight.rightBtnTitle : 'Button'}</a>
-							</div>
+	<Animate>
+		<section class="insight">
+			<Container>
+				<Row>
+					<Col>
+						<span class="insight__pre-heading" in:fly={{duration: 2000,y: 50, delay: 1000}}>{insight.leftPreHeading ? insight.leftPreHeading : ''}</span>
+					</Col>
+				</Row>
+				<Row>
+					<Col md="6" class="">
+						<div in:fly={{duration: 2000, x: -100, delay: 1500}}>
+							{#if insight.image.data}
+							<img in:fade={{delay: 1000, duration: 1000}} src="{domain}{insight.image.data.attributes.formats.large.url ? insight.image.data.attributes.formats.large.url : insight.image.data.attributes.url}" alt="Stair">
+							{/if}
 						</div>
-					</div>				
-				</Col>
-			</Row>
-		</Container>
-	</section>
+					</Col>
+					<Col md="6" class="my-auto">
+						<div class="insight__content" in:fly={{duration: 2000,y: 50, delay: 2000}}>
+							<div class="insight__content__wrapper">
+								<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading ? insight.rightPreHeading : ''}</div>
+								<h2>{insight.Heading ? insight.Heading : ''}</h2>
+								{@html insight.paragprah ? insight.paragprah : ''}
+								<div class="insight__content__wrapper__btns">
+									<a href="{insight.leftBtnUrl ? insight.leftBtnUrl : '#'}/" class="btn btn-secondary">{insight.leftBtnTitle ? insight.leftBtnTitle : 'Button'}</a> <a href="{insight.rightBtnUrl ? insight.rightBtnUrl : '#'}/" class="btn btn-inverted">{insight.rightBtnTitle ? insight.rightBtnTitle : 'Button'}</a>
+								</div>
+							</div>
+						</div>				
+					</Col>
+				</Row>
+			</Container>
+		</section>
+	</Animate>
 {/await}
 
 

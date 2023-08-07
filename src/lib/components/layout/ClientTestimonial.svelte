@@ -1,5 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { fade, fly } from 'svelte/transition';
+	import Animate from "$lib/components/Animate.svelte";
 
     let flickityInstance;
     export let clientTestimonials;
@@ -33,18 +35,20 @@
 </script>
 
 <section class="our_client_say">
-    <h2>{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
-    <div class="our_client_say__cards slider-container">
-        {#each clientTestimonials as testimonial}
-            <div class="details">
-                <p>{testimonial.attributes.testimonialText ? testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "") : ''}</p>
-                <h3>{testimonial.attributes.Name ? testimonial.attributes.Name : ''}</h3>
-            </div>
-        {/each}
+    <div in:fly={{duration: 2000,y: 50, delay: 1000}}>
+        <h2>{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
+        <div class="our_client_say__cards slider-container">
+            {#each clientTestimonials as testimonial}
+                <div class="details">
+                    <p>{testimonial.attributes.testimonialText ? testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "") : ''}</p>
+                    <h3>{testimonial.attributes.Name ? testimonial.attributes.Name : ''}</h3>
+                </div>
+            {/each}
+        </div>
+        <!-- <div class="slider-progress">
+            <progress id="file" value="{progressPercentage}" max="100"></progress>
+        </div> -->
     </div>
-    <!-- <div class="slider-progress">
-        <progress id="file" value="{progressPercentage}" max="100"></progress>
-    </div> -->
 </section>
 
 <style lang="scss">

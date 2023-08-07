@@ -12,7 +12,7 @@
     // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
     // import { onMount } from 'svelte';
     import noFeatured from "$lib/img/blog-empty.svg"
-    import { fly } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
     import { paginate, LightPaginationNav } from 'svelte-paginate';
 
 	let domain = "https://strapi.ulfbuilt.com:1337";
@@ -88,10 +88,10 @@
     <Container>
         <Row>
             <Col class="text-center">
-                <h2>{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
+                <h2 in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
-                <div class="categories__tabs__heading">
+                <div class="categories__tabs__heading" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
                     <ul>
                         {#each portfolio.masonryGallery.masonryItems.data as heading}
                             <li>
@@ -127,8 +127,8 @@
                             <div class="container masonry-wrapper">       
                                 {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                     <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                    in:fly="{{ y: 0, duration: 1000, delay:index * 1000}}" 
-                                    out:fly="{{y:0, duration:1000 }}"> 
+                                    in:fade="{{ duration: 1000, delay:index * 1000}}" 
+                                    out:fade="{{ duration:1000 }}"> 
                                         <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                             {#if project.attributes.featuredImage.data != null}
                                                 <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
@@ -147,16 +147,18 @@
                                     </div>			
                                 {/each}
                             </div>
-                            <div class="paginate-section">
-                                <LightPaginationNav
-                                totalItems="{portfolioList.length}"
-                                pageSize="{pageSize}"
-                                currentPage="{currentPage}"
-                                limit="{1}"
-                                showStepOptions="{true}"
-                                on:setPage="{(e) => currentPage = e.detail.page}"
-                                />
-                            </div>
+                            <Animate>
+                                <div class="paginate-section" in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+                                    <LightPaginationNav
+                                    totalItems="{portfolioList.length}"
+                                    pageSize="{pageSize}"
+                                    currentPage="{currentPage}"
+                                    limit="{1}"
+                                    showStepOptions="{true}"
+                                    on:setPage="{(e) => currentPage = e.detail.page}"
+                                    />
+                                </div>
+                            </Animate>
                         {/if}
                     {/if}
                 {/key}
@@ -170,10 +172,10 @@
             <Row>
                 <Col class="text-center ">
                     <div class="portfolio-cta__content">
-                        <span>{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</span>
-                        <h2>{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
+                        <span in:fly={{ y: 50,duration: 2000, delay: 500 }}>{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</span>
+                        <h2 in:fly={{ y: 50,duration: 2000, delay: 1000 }}>{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
                     </div>
-                    <div class="portfolio-cta__btns">
+                    <div class="portfolio-cta__btns" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
                         <a href="{portfolio.ourApproachLeftBtnUrl ? portfolio.ourApproachLeftBtnUrl : '#'}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle ? portfolio.ourApproachLeftBtnTitle : 'Button'}</a>
                         <a href="{portfolio.ourApproachRightBtnUrl ? portfolio.ourApproachRightBtnUrl : '#'}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle ? portfolio.ourApproachRightBtnTitle : 'Button'}</a>
                     </div>                   
@@ -183,13 +185,17 @@
     </Animate>
 </section>
 
-<Animate>
-    <ArticleSection />
-</Animate>
+<section class="m-0 article-wrapper">
+	<Animate>
+		<ArticleSection />
+	</Animate>
+</section>
 
-<Animate>
-    <Cta />
-</Animate>
+<section class="m-0 cta-wrapper">
+	<Animate>
+		<Cta />
+	</Animate>
+</section>
 
 <style lang="scss">
     section{

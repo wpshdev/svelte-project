@@ -4,6 +4,7 @@
 	// import { fade, fly } from 'svelte/transition';
 	// import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
+	import { fade, fly } from "svelte/transition";
 	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
 	import Contactform from "$lib/components/layout/Contactform.svelte";
@@ -51,9 +52,11 @@
 			<Row>
 				<Col class="text-center">
 					<div class="portfolio-gallery__content">
-						<span>Project</span>
-						<h1 class="h2">{title ? title : ''}</h1>
-						{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
+						<span in:fly={{ y: 50,duration: 2000, delay: 500 }}>Project</span>
+						<h1 class="h2" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>{title ? title : ''}</h1>
+						<div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
+						</div>
 					</div>
 				</Col>
 			</Row>
@@ -67,12 +70,12 @@
 	<Animate>
 		<Container>
 			<Row>
-				<Col><h2>{projectHeading ? projectHeading : ''}</h2></Col>
+				<Col><h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{projectHeading ? projectHeading : ''}</h2></Col>
 			</Row>
 			<Row>
 				<Col md="12">
 					<div class="about-property__content">
-						<div class="about-property__content__heading">
+						<div class="about-property__content__heading" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
 							<div>
 								<i>
 									<svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +97,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="about-property__content__paragraph">
+						<div class="about-property__content__paragraph" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
 							{@html data.portfolio.data[0].attributes.projectDetails ? data.portfolio.data[0].attributes.projectDetails : ''}
 						</div>
 					</div>
@@ -103,12 +106,17 @@
 		</Container>
 	</Animate>
 </section>
-{#each bannerQuotes as bannerQuote}
-		{#if bannerQuote.banner.data}
-		<section class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
-		{/if}
-		<Testimonial testimonial="{bannerQuote.quote}" />
-{/each}
+
+<section>
+	<Animate>
+		{#each bannerQuotes as bannerQuote, index}
+				{#if bannerQuote.banner.data}
+				<section in:fade="{{ duration: 1000, delay:1000*index}}" class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
+				{/if}
+				<Testimonial testimonial="{bannerQuote.quote}" />
+		{/each}
+	</Animate>
+</section>
 
 <section class="portfolio-cta">
 	<Animate>
@@ -116,10 +124,12 @@
 			<Row>
 				<Col class="text-center" md={{ size: 8, offset: 2 }} xs="12">
 					<div class="portfolio-cta__content">
-						<h2>{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
-						{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
+						<h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
+						<div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
+							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
+						</div>
 					</div>
-					<div class="portfolio-cta__btns">
+					<div class="portfolio-cta__btns" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
 						<a href="{data.portfolio.ctaLeftBtnUrl ? data.portfolio.ctaLeftBtnUrl : '/contact-us'}" class="btn btn-secondary">{data.portfolio.ctaLeftBtnTitle ? data.portfolio.ctaLeftBtnTitle : 'Talk to Us'}</a>
 						<a href="{data.portfolio.ctaRightUrl ? data.portfolio.ctaRightUrl : '/portfolio'}" class="btn btn-inverted">{data.portfolio.ctaRightBtnTitle ? data.portfolio.ctaRightBtnTitle : 'Back to Portfolio'}</a>
 					</div>                   
@@ -134,11 +144,11 @@
 		<Container>
 			<Row>
 				<Col md="12">
-					<h2>{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
+					<h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
 				</Col>			
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
-						<div class="related__article">
+						<div class="related__article" in:fade="{{ duration: 1000, delay:index * 1000}}">
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								{#if rPortfolio.attributes.featuredImage.data != null}
                                 <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />

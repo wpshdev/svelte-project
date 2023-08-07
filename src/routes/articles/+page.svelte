@@ -8,6 +8,7 @@
 	import Animate from '$lib/components/Animate.svelte';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from "axios";
+    import { fade, fly } from 'svelte/transition';
     // let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
@@ -65,37 +66,41 @@
 
 <PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url ? data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url  : data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
-    <Container>
-        <Row>
-            <ul class="cat-list">
-                <li>
-                    <div class="category-list-content category-container">
-                        <p class="category-list">CATEGORY</p>
-                        <div class="category-list-dropdown dropdown-content">
-                            {#each categories as category}
-                                <p class={activeCategoryTab === category.id ? 'selected' : ''} on:click="{() => activeCategoryTabClick(category.id)}">{category.attributes.name}</p>
-                            {/each}
-                            <p class={activeCategoryTab === '' ? 'selected' : ''} on:click="{() => activeCategoryTabClick('')}">Show All</p>
+    <Animate>
+        <Container>
+            <Row>
+                <ul class="cat-list" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+                    <li>
+                        <div class="category-list-content category-container">
+                            <p class="category-list">CATEGORY</p>
+                            <div class="category-list-dropdown dropdown-content">
+                                {#each categories as category}
+                                    <p class={activeCategoryTab === category.id ? 'selected' : ''} on:click="{() => activeCategoryTabClick(category.id)}">{category.attributes.name}</p>
+                                {/each}
+                                <p class={activeCategoryTab === '' ? 'selected' : ''} on:click="{() => activeCategoryTabClick('')}">Show All</p>
+                            </div>
+                    </div> |
+                    <div class="category-date-content category-container">
+                            <p class="category-date">DATE ADDED</p>
+                            <div class="category-date-dropdown dropdown-content">
+                                <p class={activeDate === 'DESC' ? 'selected' : ''} on:click="{() => activeDateClick('DESC')}">Latest</p>
+                                <p class={activeDate === 'ASC' ? 'selected' : ''} on:click="{() => activeDateClick('ASC')}">Oldest</p>
+                            </div>
                         </div>
-                   </div> |
-                   <div class="category-date-content category-container">
-                        <p class="category-date">DATE ADDED</p>
-                        <div class="category-date-dropdown dropdown-content">
-                            <p class={activeDate === 'DESC' ? 'selected' : ''} on:click="{() => activeDateClick('DESC')}">Latest</p>
-                            <p class={activeDate === 'ASC' ? 'selected' : ''} on:click="{() => activeDateClick('ASC')}">Oldest</p>
-                        </div>
-                    </div>
 
-                </li>
-            </ul>
-        </Row>
-    </Container>
+                    </li>
+                </ul>
+            </Row>
+        </Container>
+    </Animate>
 </section>
 <section class="mw-1000 text-center article-section">
-    <Container>
-        <h2 class="mb-2 text-center">{data.page.data.attributes.section2heading ? data.page.data.attributes.section2heading : ''}</h2>
-        <p class="text-left">{@html data.page.data.attributes.section2description ? data.page.data.attributes.section2description : ''}</p>
-    </Container>
+    <Animate>
+        <Container>
+            <h2 class="mb-2 text-center" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{data.page.data.attributes.section2heading ? data.page.data.attributes.section2heading : ''}</h2>
+            <p class="text-left" in:fly={{ y: 50,duration: 2000, delay: 2500 }}>{@html data.page.data.attributes.section2description ? data.page.data.attributes.section2description : ''}</p>
+        </Container>
+    </Animate>
 </section>
 <section class="article-blog">
 <Container>
@@ -107,23 +112,26 @@
                     <div class="col text-center list-text-details">No Articles Found...</div>
                 {:else}
                 {@const items = articleList}
-                    <!-- Pagination -->
-                    <LightPaginationNav
-                    totalItems="{articleList.length}"
-                    pageSize="{pageSize}"
-                    currentPage="{currentPage}"
-                    limit="{1}"
-                    showStepOptions="{true}"
-                    on:setPage="{(e) => currentPage = e.detail.page}"
-                    />
-                    <!-- End Pagination -->
-                    
+                    <Animate>
+                        <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+                            <!-- Pagination -->
+                            <LightPaginationNav
+                            totalItems="{articleList.length}"
+                            pageSize="{pageSize}"
+                            currentPage="{currentPage}"
+                            limit="{1}"
+                            showStepOptions="{true}"
+                            on:setPage="{(e) => currentPage = e.detail.page}"
+                            />
+                            <!-- End Pagination -->
+                        </div>
+                    </Animate>
                     <div class="mx-8"></div>
                     {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
                         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
                             <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
                                 <Animate>
-                                    <div class="blogsection7 zoomImg">
+                                    <div class="blogsection7 zoomImg" in:fade={{delay: 500, duration: 1000}}>
                                         {#if blog.attributes.featuredimage.data != null}
                                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
                                                 <img width="{blog.attributes.featuredimage.data.attributes.width}" height="{blog.attributes.featuredimage.data.attributes.height}" src="{blog.attributes.featuredimage.data.attributes.formats.large.url ? url+blog.attributes.featuredimage.data.attributes.formats.large.url : url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
@@ -140,7 +148,7 @@
                             <Col md="5">
                                 <Animate>
                                     <div class="blogsection5">
-                                        <div>
+                                        <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
                                             <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
                                             <h2>{blog.attributes.title}</h2>
                                             <p>{blog.attributes.shorttext}</p>
@@ -155,16 +163,20 @@
                     <div class="mx-8"></div>
                     {/each}
 
-                    <!-- Pagination -->
-                    <LightPaginationNav
-                    totalItems="{items.length}"
-                    pageSize="{pageSize}"
-                    currentPage="{currentPage}"
-                    limit="{1}"
-                    showStepOptions="{true}"
-                    on:setPage="{(e) => currentPage = e.detail.page}"
-                    />
-                    <!-- End Pagination -->
+                    <Animate>
+                        <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+                            <!-- Pagination -->
+                            <LightPaginationNav
+                            totalItems="{articleList.length}"
+                            pageSize="{pageSize}"
+                            currentPage="{currentPage}"
+                            limit="{1}"
+                            showStepOptions="{true}"
+                            on:setPage="{(e) => currentPage = e.detail.page}"
+                            />
+                            <!-- End Pagination -->
+                        </div>
+                    </Animate>
                 {/if}
             {/if}
         {/key}
