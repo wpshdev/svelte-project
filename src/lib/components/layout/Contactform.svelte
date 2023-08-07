@@ -6,6 +6,8 @@
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import axios from 'axios';
+	import Animate from '$lib/components/Animate.svelte';
+    import { fade, fly } from 'svelte/transition';
 
 	let emailTo = '';
 	let emailSubject = '';
@@ -90,19 +92,20 @@
 </script>
 {#await promise}
 {:then contactSettings} 
+<Animate>
 <section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.formats.large_x2.url ? contactSettings.background.data.attributes.formats.large_x2.url : contactSettings.background.data.attributes.url})">
 	<Container>
 		<Row>
 			<Col md="6">
 				<div class="contact__content">
-					<div class="contact__content__wrapper">
+					<div class="contact__content__wrapper" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
 						<h2>{contactSettings.heading ? contactSettings.heading : ''}</h2>
 						<p>{contactSettings.subheading ? contactSettings.subheading : ''}</p>
 					</div>
 				</div>
 			</Col>
 			<Col md="6">
-				<div class="contact__form">
+				<div class="contact__form" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
 					<Form method="post">
 						<FormGroup class="input-icon-box">
 							<Input class="input-user" placeholder="Full Name" bind:value={name} />
@@ -128,6 +131,7 @@
 		</Row>
 	</Container>
 </section>
+</Animate>
 {/await}
 <style lang="scss">
 .contact{

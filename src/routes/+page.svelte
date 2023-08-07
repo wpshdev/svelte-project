@@ -78,32 +78,16 @@
 		<Container>
 			<Row>
 				<Col xs="12" class="pb-4">
-					<h2 in:fly={{
-						//delay: 1000,
-						duration: 2000,
-						y: 50	}}
-					>
+					<h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>
 						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 					</h2>
 				</Col>
 				<Col xs="12">
-					<div class="loc-gallery__cwrapper" in:fly={{
-							//delay: 500,
-							duration: 2000,
-							y: 50								
-					}} >
-							<div class="h3" in:fly={{
-								//delay: 1500,
-								duration: 2000,
-								y: 50								
-							}}>
+					<div class="loc-gallery__cwrapper" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
+							<div class="h3">
 								{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 							</div>
-						<div in:fly={{
-							//delay: 2000,
-							duration: 2000,
-							y: 50								
-						}} >
+						<div>
 							{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
 						</div>
 					</div>
@@ -115,27 +99,26 @@
 
 
 {#if home.homeBuilderBanner.data}
-<Animate>
-	<section class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"  in:fly={{
-		y: 50								
-}} ></section>
-</Animate>
+	<section>
+		<Animate>
+			<div in:fly={{ y: 50, duration: 2000, delay: 1000 }}>
+				<div in:fade={{duration: 1000}} class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
+			</div>
+		</Animate>
+	</section>
 {/if}
 
 <section class="categories" >
-	<Animate >
+	<Animate>
 		<Container class="categories_wrapper">
 			<Row>
 				<Col class="text-center">
-						<h2 in:fly={{
-
-							y: 50								
-					}} >{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}</h2>
+					<h2 in:fly={{ y: 50, duration: 2000, delay: 500}}>
+						{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
+					</h2>
 					<div class="categories__tabs">
 						<div class="categories__tabs__heading">
-							<ul in:fly={{
-								y: 50								
-						}}>
+							<ul in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
 								{#each home.categories.data as heading}
 									<li>
 										<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -149,23 +132,7 @@
 								{/each}
 							</ul>
 						</div>
-						<!-- <p class="text-center view-all" in:fly={{
-							y: 50								
-					}}>
-							{#if propCount === 3} 
-								<span on:click="{() => propCount = 999}">View All Projects</span>
-							{:else}
-								<span on:click="{() => propCount = 3}">View Less Projects</span>
-							{/if}
-						</p>					 -->
-						<div class="categories__tabs__gallery" in:fly={{
-							y: 50								
-					}}>
-							<!-- {#key listener }
-								<div  id="modern" class="masonry__tabs__gallery__imgs"  data-test={activeTab} transition:fade >
-									<MasonryCardGrid id={activeTab} {propCount}/>
-								</div>			
-							{/key}-->
+						<div class="categories__tabs__gallery" in:fly={{y: 50, duration: 2000, delay: 1500}}>
 							{#key activeTab}
 								{#if loading}  <!-- show load -->
 									<div class="col text-center list-text-details">Loading...</div>
@@ -176,7 +143,8 @@
 										<div class="container masonry_container">       
 											{#each portfolioList as project, index}				
 												{#if index < propCount}
-												<div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}">       
+												<div class="masonry-items" in:fade={{delay: 1000, duration: 1000}}> 
+													<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
 													<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
 														{#if project.attributes.featuredImage.data != null}
 														<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
@@ -192,23 +160,18 @@
 								{/if}
                 			{/key}
 						</div>					
-					</div>
+					</div>	
 				</Col>
 			</Row>
 		</Container>
-	</Animate>		
+	</Animate>	
 </section>
 
 
 
 <section class="featured-projects">	
 	<Animate>
-		<div in:fly={{
-			duration: 2000,
-			y: 50
-			}}
-		>			
-
+		<div in:fly={{ duration: 2000, y: 50, delay: 500 }}>		
 		<Container>
 			<Row>
 				<Carousel 
@@ -230,14 +193,8 @@
 		<Row>
 			<Col>
 				<Animate>
-					<div class="tnr__wrapper" in:fly={{
-						duration: 2000,
-						y: 50								
-				}} >
-						<div class="tnr__wrapper__captions" in:fly={{
-							duration: 2000,
-							y: 50								
-					}} >
+					<div class="tnr__wrapper" in:fly={{ duration: 2000, y: 50, delay: 500}} >
+						<div class="tnr__wrapper__captions">
 							<span>{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</span>
 							<h2>{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
 							<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
@@ -258,11 +215,8 @@
 		<Container>
 			<Row>
 				<Col md="7" class="">
-					<div class="reputation__content" in:fly={{
-						duration: 2000,
-						y: 50								
-				}} >
-						<div class="reputation__content__wrapper">
+					<div class="reputation__content">
+						<div class="reputation__content__wrapper" in:fly={{duration: 2000, y: 50, delay: 1000}}>
 							<span>{home.reputation.preHeading ? home.reputation.preHeading : ''}</span>
 							<h2>{home.reputation.heading ? home.reputation.heading : ''}</h2>
 							<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
@@ -271,12 +225,12 @@
 					</div>
 				</Col>
 				<Col md="5" class="my-auto" >
-					{#if home.reputation.image.data}
-					<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" in:fly={{
-						duration: 2000,
-						y: 50								
-				}} >
-					{/if}
+					<div in:fly={{duration: 2000, y: 50, delay: 500}}>
+						{#if home.reputation.image.data}
+						<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" 
+						in:fade={{delay: 500, duration: 1000}}>
+						{/if}
+					</div>
 				</Col>
 			</Row>
 		</Container>
@@ -288,12 +242,9 @@
 		<Container>
 			<Row>
 				<Col md="6">
-					<div class="process__top-image" in:fly={{
-						duration: 2000,
-						y: 50								
-				}} >
+					<div class="process__top-image" in:fly={{duration: 2000, x: -100, delay: 1000 }}>
 						{#if home.ourProcessTopImage.data[0]}
-						<img src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fade={{delay: 1000, duration: 1000}}  src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 						{/if}
 					</div>
 				</Col>
@@ -301,10 +252,7 @@
 			<Row>
 				<Col md="7" class="">
 					<div class="process__content">
-						<div class="process__content__wrapper" in:fly={{
-							duration: 2000,
-							y: 50								
-					}} >
+						<div class="process__content__wrapper" in:fly={{duration: 2000, y: 50, delay: 2000 }} >
 							<span>{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</span>
 							<h2>{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
 							{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
@@ -313,12 +261,9 @@
 					</div>
 				</Col>
 				<Col md="5" class="my-auto ">
-					<div class="process__bottom" in:fly={{
-						duration: 2000,
-						y: 50								
-				}} >
+					<div class="process__bottom" in:fly={{duration: 2000, y: 50, delay: 1500 }}>
 						{#if home.ourProcessRightImage.data}
-						<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fade={{delay: 1500, duration: 1000}}  src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 						{/if}
 					</div>
 				</Col>
@@ -334,10 +279,7 @@
 			<Row>
 				<Col md="7" class="">
 					<div class="story__content">
-						<div class="story__content__wrapper" in:fly={{
-							duration: 2000,
-							y: 50								
-					}} >
+						<div class="story__content__wrapper" in:fly={{duration: 2000,y: 50, delay: 1000}} >
 							<span>{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</span>
 							<h2>{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
 							{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
@@ -352,12 +294,12 @@
 					</div>
 				</Col>
 				<Col md="5" class="my-auto">
-					{#if home.ourStoryRightImage.data}
-					<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}" in:fly={{
-						duration: 2000,
-						y: 50								
-				}} >
-					{/if}
+					<div in:fly={{duration: 2000, y: 50, delay: 500}}>
+						{#if home.ourStoryRightImage.data}
+						<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}"
+						in:fade={{delay: 500, duration: 1000}}>
+						{/if}
+					</div>	
 				</Col>
 			</Row>
 		</Container>
@@ -365,24 +307,14 @@
 </section>
 
 <section class="m-0 article-wrapper">
-	<Animate>	
-		<div in:fly={{
-			duration: 2000,
-			y: 50								
-	}} >
+	<Animate>
 		<ArticleSection />
-		</div>
 	</Animate>
 </section>
 
 <section class="m-0 cta-wrapper">
 	<Animate>
-		<div in:fly={{
-			duration: 2000,
-			y: 50								
-	}} >
-			<Cta />
-		</div>
+		<Cta />
 	</Animate>
 </section>
 
@@ -1025,9 +957,10 @@
 	.section--bannerOnly{
 		background-image: var(--lrbg);
 		background-size: cover;
-		height: 90vh;
-		width: 90vw;
-    	margin: 0 auto 3.75rem auto;
+		height: 100vh;
+		width: 100%;
+    	margin: 0 auto;
+		// padding-bottom: 3.75rem;
 		@include media-max(ipadmini){
 			height: 40vh;
 		}

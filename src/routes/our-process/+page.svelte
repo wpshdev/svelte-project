@@ -3,6 +3,7 @@
     import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import { Col, Container, Row } from "sveltestrap";
+    import { fade, fly } from 'svelte/transition';
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
@@ -16,35 +17,41 @@
 <PageBanner title="{processData.section1heading ? processData.section1heading : 'Our Process'}" subTitle="{processData.bannerSub ? processData.bannerSub : ''}" banner="{domain}{processData.Cover.data[0].attributes.formats.large_x2 ? processData.Cover.data[0].attributes.formats.large_x2.url : processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
         <Container>
-            <Row>
-                <Col class="md-12 text-center">
-                    <div class="our-process__heading">
-                        <h2>{processData.section1heading ? processData.section1heading : ''}</h2>
-                        {@html processData.section1text ? processData.section1text : ''}
-                    </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col class="md-12">
-                    <Animate>
-                        {#if processData.section2image.data}
-                        <img src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
-                        srcset="{domain}{processData.section2image.data.attributes.url} 330w,
-                                {domain}{processData.section2image.data.attributes.url} 660w,
-                                {domain}{processData.section2image.data.attributes.url} 990w"
-                        sizes="(max-width: 480px) 330px,
-                               (max-width: 960px) 660px,
-                               990px"
-                        width="330"
-                        height="170"
-                        alt="{processData.section2image.data.attributes.alternativeText}"/>
-                        {/if}
-                        <div class="our-process__paragraph mx-auto">
-                            {@html processData.section2text ? processData.section2text : ''}
+            <Animate>
+                <Row>
+                    <Col class="md-12 text-center">
+                        <div class="our-process__heading">
+                            <h2 in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{processData.section1heading ? processData.section1heading : ''}</h2>
+                            <div in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+                                {@html processData.section1text ? processData.section1text : ''}
+                            </div>
                         </div>
-                    </Animate>
-                </Col>            
-            </Row>
+                    </Col>
+                </Row>
+            </Animate>
+            <Animate>
+                <Row>
+                    <Col class="md-12">
+                        <Animate>
+                            {#if processData.section2image.data}
+                            <img in:fade={{duration: 1000,  delay: 1000}} src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
+                            srcset="{domain}{processData.section2image.data.attributes.url} 330w,
+                                    {domain}{processData.section2image.data.attributes.url} 660w,
+                                    {domain}{processData.section2image.data.attributes.url} 990w"
+                            sizes="(max-width: 480px) 330px,
+                                (max-width: 960px) 660px,
+                                990px"
+                            width="330"
+                            height="170"
+                            alt="{processData.section2image.data.attributes.alternativeText}"/>
+                            {/if}
+                            <div class="our-process__paragraph mx-auto">
+                                <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html processData.section2text ? processData.section2text : ''}</div>
+                            </div>
+                        </Animate>
+                    </Col>            
+                </Row>
+            </Animate>
         </Container>
 </section>
 
@@ -53,7 +60,7 @@
         <Container>
             <Row>
                 <Col md="{{ size: '6', offset: 3 }}" class="text-center">
-                    <h3>
+                    <h3 in:fly={{ y: 50,duration: 2000, delay: 500 }}>
                         {@html processData.section3heading ? processData.section3heading : ''}                  
                     </h3>
                 </Col>
@@ -61,24 +68,26 @@
         </Container>
     </Animate>
 </section>
+
 <Animate>
-<section class="phase1-img" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
+<section class="phase1-img" in:fade={{duration: 1000,  delay: 1000}} style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
 </Animate>
+
 <section class="phase">
     <Animate>
         <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="2">
-                    <span class="num">1</span>
+                    <span class="num"  in:fly={{ y: 50,duration: 2000, delay: 500 }}>1</span>
                 </Col>
                 <Col xs="10">
-                    <div class="phase__heading"><h3>{processData.section3phase1mainheading ? processData.section3phase1mainheading : ''}</h3></div>
+                    <div class="phase__heading"  in:fly={{ y: 50,duration: 2000, delay: 1000 }}><h3>{processData.section3phase1mainheading ? processData.section3phase1mainheading : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
     </Animate>
     <Animate>
-        <div class="phase__grid">
+        <div class="phase__grid" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
             <div class="phase__grid__item">
                 <span>{processData.section4heading ? processData.section4heading : ''}</span>
                 <h4>{processData.section4subheading ? processData.section4subheading : ''}</h4>
@@ -97,12 +106,16 @@
             </div>                                 
         </div>  
     </Animate>
-    <Animate>
-        <div class="phase__banner" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
-        </div>  
-    </Animate>
+</section>
+
+<Animate>
+    <section class="phase__banner" in:fade={{duration: 1000,  delay: 1000}} style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
+    </section>  
+</Animate>
+   
+<section class="phase no-margin-top">
    <Animate>
-        <div class="phase__grid scnd-row">
+        <div class="phase__grid scnd-row" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
             <div class="phase__grid__item">
                 <span>{processData.section7heading ? processData.section7heading : ''}</span>
                 <h4>{processData.section7subheading ? processData.section7subheading : ''}</h4>
@@ -122,27 +135,28 @@
         </div>        
    </Animate>
 </section>
+
 <Animate>
-    <section class="phase-banner-separator" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url })">
+    <section class="phase-banner-separator" in:fade={{duration: 1000,  delay: 1000}}  style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url })">
     </section>
 </Animate>
 
-<secton class="phase-banner-paragraph">
+<section class="phase-banner-paragraph">
     <Animate>
         <Container>
             <Row>
                 <Col>
-                    <div>
+                    <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
                         {@html processData.section9text ? processData.section9text : ''}
                     </div>
                 </Col>
             </Row>
         </Container>
     </Animate>
-</secton>
+</section>
 
 <Animate>
-    <section class="phase2-img" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section> 
+    <section class="phase2-img" in:fade={{duration: 1000,  delay: 1000}} style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section> 
 </Animate>
 
 <section class="phase">
@@ -150,16 +164,16 @@
         <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="9" md="10">
-                    <div class="phase__heading"><h3>{processData.section10phase2heading ? processData.section10phase2heading : ''}</h3></div>
+                    <div class="phase__heading" in:fly={{ y: 50,duration: 2000, delay: 1000 }}><h3>{processData.section10phase2heading ? processData.section10phase2heading : ''}</h3></div>
                 </Col>            
                 <Col xs="3" md="2">
-                    <span class="num">2</span>
+                    <span class="num" in:fly={{ y: 50,duration: 2000, delay: 500 }}>2</span>
                 </Col>
             </Row>
         </Container>
     </Animate>
     <Animate>
-        <div class="phase__grid">
+        <div class="phase__grid" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
             <div class="phase__grid__item">
                 <span>{processData.section11heading ? processData.section11heading : ''}</span>
                 <h4>{processData.section11subheading ? processData.section11subheading : ''}</h4>
@@ -186,6 +200,7 @@
             </div>                                            
         </div>    
     </Animate>
+</section>
     <!-- <Animate>
         <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
         </div>   
@@ -219,7 +234,7 @@
         </div>     
     </Animate> -->
     <Animate>
-        <div class="phase__banner banner3" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url })">
+        <div class="phase__banner banner3" in:fade={{duration: 1000,  delay: 1000}} style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url })">
         </div>   
     </Animate>
     <!-- <Animate>
@@ -234,20 +249,19 @@
             </div>                                           
         </div>     
     </Animate> -->
-</section>
-<secton class="phase-banner-paragraph">
+<section class="phase-banner-paragraph">
     <Animate>
         <Container>
             <Row>
                 <Col>
-                    <div>
+                    <div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
                         {@html processData.section20text ? processData.section20text : '' }
                     </div>
                 </Col>
             </Row>
         </Container>
     </Animate>
-</secton>
+</section>
 <Animate>
     <Cta />
 </Animate>
@@ -346,6 +360,9 @@
         }
     } 
     .phase{
+        &.no-margin-top {
+            margin-top: 0;
+        }
         margin-bottom: 0;
         :global(.phase-container) {
             max-width: 95%;
@@ -501,6 +518,7 @@
                 background-image: var(--phs1Banner);
                 background-size: cover;
                 height: 90vh;
+                margin: 0;
                 &.banner2{
                     background-image: var(--phs2Banner1)
                 }

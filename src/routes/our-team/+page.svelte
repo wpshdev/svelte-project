@@ -6,6 +6,7 @@
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import Contactform from "$lib/components/layout/Contactform.svelte";
     import Modal from "$lib/components/layout/Modal.svelte";
+    import { fade, fly } from 'svelte/transition';
 
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
@@ -35,12 +36,14 @@
         <Container>
             <Row>
                 <Col md="10" class="mx-auto">
-                    <h2 class="stc pb-4 text-center">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
-                    <p class="two-columns">{@html ourTeam.content ? ourTeam.content : ''}</p>
+                    <h2 class="stc pb-4 text-center" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
+                    <p class="two-columns" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
-                    <div class="heading-image">
-                        <LazyImage src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
-                    </div>
+                    <Animate>
+                        <div class="heading-image">
+                            <img in:fade={{duration: 1000, delay: 1000}} src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
+                        </div>
+                    </Animate>
                     {/if}
                 </Col>
             </Row>
@@ -52,14 +55,16 @@
         <Container>
             <Row noGutters>
                 <Col md=6 class="tm-img">
-                    <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
-                <div class="tm-box wtc">
-                    <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
-                    <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
-                </div>
+                    <div in:fade={{duration: 1000,  delay: 1000}}>
+                        <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
+                        <div class="tm-box wtc">
+                            <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
+                            <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
+                        </div>
+                    </div>
                 </Col>
                 <Col md=6 class="owner-quote-container">
-                <div class="owner-quote"><h3 class="stc line-height-2 text-center">{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
+                <div class="owner-quote" ><h3 class="stc line-height-2 text-center" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
@@ -68,62 +73,67 @@
 <section class="paragraph1">
     <Animate>
         <Container>
-            <h4>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
+            <h4 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
         </Container>
       </Animate>
 </section>
 <section class="team-members">
-<Container>
-    <Row>
-        <h2 class="sfont stc mb-5 text-center">{ourTeam.title ? ourTeam.title : ''}</h2>
-        <Col md={{ size: 8, offset: 2 }} class="inner-col">
-        <Row>
-            {#each ourTeam.team_members.data as member,index}
-                <Col md="6">
-                    <!-- <a href="/our-team/{member.attributes.slug}"> -->
-                    <div class="our-team__member" 
-                    on:click={() => getMemberIndex(index)}
-                    on:click={() => (showModal = true)}
-                    >
-                        <img width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                        <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
-                            <!-- our-team__member_caption class removed -->
-                            <h5 class="pfont">{member.attributes.name}</h5>
-                            <span class="pfont gtc">{member.attributes.position}</span>
+    <Animate>
+        <Container>
+            <Row>
+                <h2 class="sfont stc mb-5 text-center" in:fly={{ y: 50,duration: 2000, delay: 500 }}>{ourTeam.title ? ourTeam.title : ''}</h2>
+                <Col md={{ size: 8, offset: 2 }} class="inner-col">
+                <Row>
+                    {#each ourTeam.team_members.data as member,index}
+                        <Col md="6">
+                            <!-- <a href="/our-team/{member.attributes.slug}"> -->
+                            <div class="our-team__member" 
+                            on:click={() => getMemberIndex(index)}
+                            on:click={() => (showModal = true)}
+                            in:fade={{duration: 1000,  delay: 1000*index}}
+                            >
+                                <img width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                                <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
+                                    <!-- our-team__member_caption class removed -->
+                                    <h5 class="pfont">{member.attributes.name}</h5>
+                                    <span class="pfont gtc">{member.attributes.position}</span>
+                                </div>
+                            </div>
+                            <!-- </a> -->
+                        </Col>                    
+                    {/each} 
+                    
+                    <Modal bind:showModal>
+                        <div class="memberModal">
+                            <div class="memberModal__image">
+                                {#if memberImage}
+                                <img src="{domain}{memberImage}" alt="member">
+                                {/if}
+                            </div>
+                            <div class="memberModal__details">
+                                <h5 class="pfont">{@html memberName ? memberName : ''}</h5>
+                                <p class="position">{memberPosition ? memberPosition : ''}</p>
+                                {#if memberContent}
+                                <p class="content">{@html memberContent}</p>
+                                {/if}
+                            </div>
                         </div>
-                    </div>
-                    <!-- </a> -->
-                </Col>                    
-            {/each} 
-            
-            <Modal bind:showModal>
-                <div class="memberModal">
-                    <div class="memberModal__image">
-                        {#if memberImage}
-                        <img src="{domain}{memberImage}" alt="member">
-                        {/if}
-                    </div>
-                    <div class="memberModal__details">
-                        <h5 class="pfont">{@html memberName ? memberName : ''}</h5>
-                        <p class="position">{memberPosition ? memberPosition : ''}</p>
-                        {#if memberContent}
-                        <p class="content">{@html memberContent}</p>
-                        {/if}
-                    </div>
-                </div>
-            </Modal> 
+                    </Modal> 
 
+                </Row>
+            </Col>
         </Row>
-    </Col>
-</Row>
-</Container>
+    </Container>
+</Animate>
 </section>
 <section class="ourteam5">
    <Animate>
     <Container>
-        <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
-        <h4>{ourTeam.para3 ? ourTeam.para3 : ''}</h4>
-        <h4>{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h4>
+        <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+            <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
+            <h4>{ourTeam.para3 ? ourTeam.para3 : ''}</h4>
+            <h4>{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h4>
+        </div>
     </Container>
   </Animate>
 </section>

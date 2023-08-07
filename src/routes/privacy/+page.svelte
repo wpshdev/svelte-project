@@ -3,6 +3,7 @@
     import {Container} from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
+    import { fade, fly } from "svelte/transition";
     const url = "https://strapi.ulfbuilt.com:1337/";
 </script>
 <svelte:head>
@@ -13,8 +14,8 @@
 
 <section class="content" >
     <Container class="mw-1000 h-text">
-        <h2 class="text-center mb-5">{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
-        {@html data.data.attributes.Content ? data.data.attributes.Content : ''}
+        <h2 class="text-center mb-5" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
+        <div in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{@html data.data.attributes.Content ? data.data.attributes.Content : ''}</div>
     </Container>
 </section>
 <Cta/>

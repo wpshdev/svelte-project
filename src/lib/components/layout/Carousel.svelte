@@ -6,6 +6,7 @@ import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 // import Flickity from "flickity";
 import noFeatured from "$lib/img/blog-empty.svg"
+import { fade, fly } from 'svelte/transition';
 
 let flickityInstance;
 export let preHeading; 
@@ -102,7 +103,7 @@ $: {
   <Col md=9>
     <div class="slider-container">
       {#each featuredProjects.data as project, index}
-        <div class="slider-container__carousel-cell">
+        <div class="slider-container__carousel-cell" in:fade={{delay: 1000, duration: 1000}}>
           <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
             {#if project.attributes.featuredImage.data != null}
               <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />

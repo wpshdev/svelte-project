@@ -6,6 +6,7 @@
 	import { browser } from '$app/environment';
   import Animate from '../Animate.svelte';
   import ImageLoader from '../imageLazy/ImageLoader.svelte';
+  import { fade, fly } from "svelte/transition";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -117,7 +118,7 @@ function lazy(node, data) {
                 <div class="slider-container__carousel-cell">
                   <div class="image-wrapper">
                     <Animate>
-                    <img src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://strapi.ulfbuilt.com:1337'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                    <img in:fade="{{ duration: 1000, delay:index * 1000}}" src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://strapi.ulfbuilt.com:1337'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
                     <!-- <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader> -->
                     </Animate>
                     <a href="{domain}{image.attributes.url}?download" class="download" download>

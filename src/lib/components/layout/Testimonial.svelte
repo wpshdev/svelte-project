@@ -1,18 +1,22 @@
 <script>
     export let testimonial;
     import {Container, Row, Col} from "sveltestrap";
+	import { fade, fly } from 'svelte/transition';
+	import Animate from "$lib/components/Animate.svelte";
 </script>
 
 <section class="testimonial testimonialA">
-	<Container>
-		<Row>
-			<Col >
-				<p class="text-center">
-                    { testimonial ? testimonial : '' }
-				</p>
-			</Col>
-		</Row>
-	</Container>
+	<Animate>
+		<Container>
+			<Row>
+				<Col >
+					<p class="text-center" in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+						{ testimonial ? testimonial : '' }
+					</p>
+				</Col>
+			</Row>
+		</Container>
+	</Animate>
 </section>
 
 <style lang="scss">
