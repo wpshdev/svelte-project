@@ -352,6 +352,12 @@
             justify-content: center;
             gap: 3rem;
         }
+        @include media-max(ipadmini){
+            :global(.row>*) {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
         h3 {
             color:$secondary-color;
             font-size: 2.813rem;
@@ -361,6 +367,15 @@
         }
         p {
             font-size: 1.25rem;
+        }
+        img {
+            height: 100vh;
+            @include media-max(md){
+				height: 80vh;
+			}
+            @include media-max(sm){
+				height: auto;
+			}
         }
     }
     .remodel {
@@ -389,6 +404,12 @@
     .sets-parts{
         h2{
             color:$darkgrey-color;
+        }
+        @include media-max(ipadmini){
+            :global(.row>*) {
+                width: 100%;
+                max-width: 100%;
+            }
         }
         :global(.sets-parts__row) {
             justify-content: center;
@@ -447,6 +468,12 @@
             @include media-max(sm){
                 margin-right: 0;
             }
+        }
+        img {
+            height: 100vh;
+            @include media-max(md){
+				height: auto;
+			}
         }
     } 
     @include media-max(sm){ 

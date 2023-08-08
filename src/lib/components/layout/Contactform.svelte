@@ -2,7 +2,7 @@
 	import { Col, Container, Row } from "sveltestrap";
     import { Form, FormGroup, Input, Button } from 'sveltestrap';
     // import contactBG from "$lib/img/ContactBG.jpg";
-    import contactBGPlain from "$lib/img/ContactBGPlain.jpeg";
+    // import contactBGPlain from "$lib/img/ContactBGPlain.jpeg";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import axios from 'axios';
@@ -93,7 +93,7 @@
 {#await promise}
 {:then contactSettings} 
 <Animate>
-<section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.formats.large_x2.url ? contactSettings.background.data.attributes.formats.large_x2.url : contactSettings.background.data.attributes.url})">
+<section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})">
 	<Container>
 		<Row>
 			<Col md="6">
@@ -138,7 +138,7 @@
 	padding: 10rem 0;
 	background-image: var(--contactBG);
 	background-size: cover;
-	box-shadow: inset 0 0 0 2000px rgb(237 234 220 / 85%);
+	// box-shadow: inset 0 0 0 2000px rgb(237 234 220 / 85%);
 	margin: 0;
 	min-height: 20vh;
 	@include media-max(md){

@@ -86,7 +86,7 @@ $: {
         <div class="progress-ring-container">
           <svg class="progress-ring" width="110" height="49">
             <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
-            <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
+            <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="2" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
             <g class="progress-ring__arrow progress-ring__arrow--left" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>
               <rect x="2" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
               <text x="33" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&larr;</text>
@@ -130,7 +130,7 @@ $: {
         <div class="progress-ring-container">
           <svg class="progress-ring" width="110" height="49">
             <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
-            <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="4" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
+            <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="2" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
             <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
             <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
           </svg>
@@ -195,7 +195,7 @@ $: {
     height: auto;
     margin: 0 0.5rem;
     box-sizing: border-box;
-    height: 70vh;
+    height: 75vh;
     overflow: hidden;
     &:hover{
         .slider-container__carousel-cell__text{

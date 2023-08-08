@@ -394,6 +394,16 @@
         h2 {
             color: $secondary-color;
         }
+        img {
+            height: 80vh;
+            @include media-max(md){
+                width: 90% !important;
+                height: auto;
+            }
+            @include media-max(sm){
+                width: 90% !important;
+            }
+        }
     }
     :global(.sets-us-apart__row){
         @include media-max(lg){
@@ -412,24 +422,9 @@
         }
     }
     :global(.imageCont) {
-        // @include media-between(xs, md){
-        //     img {
-        //         min-height: 30rem;
-        //     }
-        // }
-        @include media-max(md){
-            img {
-                min-height: 20rem;
-            }
-        }
         @include media-max(sm){
             text-align: center;
             z-index: 2;
-            img {
-                width: 90% !important;
-                margin: auto;
-                min-height: unset;
-            }
         }
     }
     :global(.sets-us-apart__content){
@@ -450,11 +445,13 @@
             &.txt-center {
                 padding-left: 3rem;
             }
-            @include media-max(sm){ 
+            @include media-max(ipadmini){ 
                 &.pfont {
-                    padding-left: 3rem;
-                    padding-right: 3rem;
+                    padding-left: 2rem;
+                    padding-right: 2rem;
                 }
+            }
+            @include media-max(sm){ 
                 text-align: left;
                 z-index: 1;
                 margin-bottom: -5rem;
@@ -486,7 +483,7 @@
             @include media-max(sm){ 
                 text-align: left;
                 padding-top: 15rem !important;
-                margin-top: -10rem;
+                margin-top: -15rem;
             }
         }
 
@@ -512,7 +509,7 @@
         &__article{
             overflow: hidden;
             position: relative;
-            height: 50vh;
+            height: 70vh;
             @include media-max(sm){
                 margin-bottom: 1rem;
             }      

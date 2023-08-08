@@ -127,7 +127,7 @@
                             <div class="container masonry-wrapper">       
                                 {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                     <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                    in:fade="{{ duration: 1000, delay:index * 1000}}" 
+                                    in:fade="{{ duration: 1000, delay:index * 500}}" 
                                     out:fade="{{ duration:1000 }}"> 
                                         <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                             {#if project.attributes.featuredImage.data != null}
@@ -172,10 +172,10 @@
             <Row>
                 <Col class="text-center ">
                     <div class="portfolio-cta__content">
-                        <span in:fly={{ y: 50,duration: 2000, delay: 500 }}>{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</span>
-                        <h2 in:fly={{ y: 50,duration: 2000, delay: 1000 }}>{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
+                        <span in:fly={{ y: 50,duration: 2000, delay:1000 }}>{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</span>
+                        <h2 in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
                     </div>
-                    <div class="portfolio-cta__btns" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+                    <div class="portfolio-cta__btns" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
                         <a href="{portfolio.ourApproachLeftBtnUrl ? portfolio.ourApproachLeftBtnUrl : '#'}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle ? portfolio.ourApproachLeftBtnTitle : 'Button'}</a>
                         <a href="{portfolio.ourApproachRightBtnUrl ? portfolio.ourApproachRightBtnUrl : '#'}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle ? portfolio.ourApproachRightBtnTitle : 'Button'}</a>
                     </div>                   
