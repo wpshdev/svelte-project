@@ -381,7 +381,7 @@ section{
 	&__article{
 		overflow: hidden;
 		position: relative;
-		height: 50vh;
+		height: 70vh;
 		img{
 			object-fit: cover;
 			object-position: center;

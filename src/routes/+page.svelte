@@ -372,16 +372,17 @@
 	}	
 	.loc-gallery{
 		h2{
-				font-family: $secondary-font;
-				margin-bottom: 1rem;
-				color: $secondary-color;
-				margin-bottom: 3rem;
+			font-family: $secondary-font;
+			margin-bottom: 1rem;
+			color: $secondary-color;
+			margin-bottom: 3rem;
+			text-align: center;
+			font-size: 3rem;
+			@include media-max(sm){
 				text-align: center;
-				@include media-max(sm){
-					text-align: center;
-					font-size: 2.813rem;
-				}
-			}		
+				font-size: 2.813rem;
+			}
+		}		
 		&__cwrapper{
 			max-width: 42rem;
 			margin: auto;
@@ -538,24 +539,27 @@
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
+			@include media-max(sm){
+				gap: 0.5rem;
+			}
             .masonry-items{
                 // width: 33%;   
                 // overflow: hidden;
                 // position: absolute;
                 color: white;
                 text-align: center;  
-                height: 55vh;
+                height: 75vh;
                 @include media-max(ipadmini){
+                    height: 40vh;
+                }
+                @include media-max(sm){
                     height: 20vh;
                 }
-                // @include media-max(sm){
-                //     height: 20vh;
-                // }
                 a{
                     display: block;
                     height: 100%;
                     width: 100%;
-                    margin: 0 1.125rem;
+                    // margin: 0 1.125rem;
                     overflow: hidden;
                     img{
                         height: 100%;
@@ -646,16 +650,16 @@
 
 	.reputation{
 		margin: 7rem 0 3.75rem;
-		:global(.container){
-			@include media-max(md){
-				padding-left: 1.8rem;
-				padding-right: 1.8rem;
-			}	
-			@include media-max(sm){
-				padding-left: 1.8rem;
-				padding-right: 1.8rem;
-			}			
-		}
+		// :global(.container){
+		// 	@include media-max(md){
+		// 		padding-left: 1.8rem;
+		// 		padding-right: 1.8rem;
+		// 	}	
+		// 	@include media-max(sm){
+		// 		padding-left: 1.8rem;
+		// 		padding-right: 1.8rem;
+		// 	}			
+		// }
 		@include media-max(sm){
 			margin: 0;
 			padding: 5rem 0 1.5rem 0;
@@ -664,6 +668,12 @@
 		}		
 		&__content{
 			height: 35vw;
+			@include media-max(xl){
+				height: 40vw;
+			}
+			@include media-max(default){
+				height: 38vw;
+			}
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -735,42 +745,58 @@
 		img{
 			position: relative;
 			z-index: 5;
+			height: 70vh;
+			width: 75vh;
+			@include media-max(lg){
+				height: 50vh;
+				width: 100%;
+			}
+			@include media-max(ipadmini){
+				height: 100%;
+			}
 		}		
 	}	
 
 	.process{
 		margin: 7rem 0;	
-		@include media-max(ipadmini){
-			padding-bottom: 7rem;
-		}
+		padding-bottom: 7rem;
 		@include media-max(sm){
 			padding-bottom: 0;
 		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -3rem;
+    		// margin-bottom: -1rem;
 			@include media-max(default){
 				margin-bottom: 0rem;	
+				text-align: center;
 			}	
 			@include media-max(lg){
-				margin-bottom: 1.5rem;	
-			}	
-			@include media-max(lg){
-				margin-bottom: 5rem;	
+				margin-bottom: 1rem;	
+				margin-left: 1.5rem;
 			}		
 			@include media-max(sm){
 				text-align: left;
 				margin-bottom: 0;	
+				margin-left: 0;
 			}				
 			img{
-				max-width: 30rem;
-				height: 28.125rem;
+				// max-width: 30rem;
+				// height: 28.125rem;
+				// @include media-max(lg){
+				// 	height: auto;
+				// }	
+				// @include media-max(sm){
+				// 	max-width: 70vw;
+				// }	
+				height: 60vh;
+				width: 65vh;
 				@include media-max(lg){
-					height: auto;
-				}	
-				@include media-max(sm){
-					max-width: 70vw;
-				}			
+					height: 50vh;
+					width: 100%;
+				}
+				@include media-max(ipadmini){
+					height: 100%;
+				}		
 			}
 		}
 		&__content{
@@ -846,9 +872,18 @@
 				text-align: right;
 			}							
 			img{
-				@include media-max(sm){
-					max-width: 70vw;
-				}			
+				// @include media-max(sm){
+				// 	max-width: 70vw;
+				// }	
+				height: 65vh;
+				width: 65vh;
+				@include media-max(lg){
+					height: 50vh;
+					width: 100%;
+				}
+				@include media-max(ipadmini){
+					height: 100%;
+				}		
 			}			
 		}
 		img{
@@ -868,6 +903,12 @@
 		}	
 		&__content{
 			height: 35vw;
+			@include media-max(xl){
+				height: 40vw;
+			}
+			@include media-max(default){
+				height: 38vw;
+			}
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -944,9 +985,19 @@
 		img{
 			position: relative;
 			z-index: 5;
-			@include media-max(ipadmini){
-				margin-top: 2rem;
+			height: 70vh;
+			width: 75vh;
+			@include media-max(lg){
+				height: 50vh;
+				width: 100%;
 			}
+			@include media-max(ipadmini){
+				height: 100%;
+				margin-top: 2rem;
+			}	
+			// @include media-max(ipadmini){
+			// 	margin-top: 2rem;
+			// }
 		}		
 	}	
 
