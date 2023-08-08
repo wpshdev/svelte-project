@@ -276,6 +276,7 @@ img{
     z-index: 10;
 }
 header.container-fluid{
+    position: relative;
     padding: 5px 5px 5px 25px;
     animation: 1.3s ease-out 0s 1 slideInFromTop;
 }
@@ -372,8 +373,13 @@ header{
             }       
         }
     }
+    .logo{
+        position: absolute;
+    }
     nav{
         .navbar-brand{
+            width: 7.5rem;
+            height: 3rem;
             a{
                 img{
                     width: auto;

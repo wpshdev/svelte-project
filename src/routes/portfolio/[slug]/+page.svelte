@@ -217,7 +217,7 @@ section{
   &__content{
 	padding-top: 4vw;
 	// border-top: 1px solid #ACA7A7;
-	border-top: 1px solid $white-color;
+	border-top: 1px solid #4e4e4e;
 	
 	z-index: 1;
 	position: relative;
