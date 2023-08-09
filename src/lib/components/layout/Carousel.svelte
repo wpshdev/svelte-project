@@ -195,7 +195,7 @@ $: {
     height: auto;
     margin: 0 0.5rem;
     box-sizing: border-box;
-    height: 75vh;
+    height: 32rem;
     overflow: hidden;
     &:hover{
         .slider-container__carousel-cell__text{

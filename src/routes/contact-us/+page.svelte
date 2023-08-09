@@ -98,10 +98,10 @@
     </Animate>
 </section>
 <Animate>
-    <div class="contact-img" in:fade={{duration: 1000, delay: 2500}} style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});"></div>
+    <div class="contact-img" in:fade={{duration: 1000, delay: 1000}} style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});"></div>
 </Animate>
 <Animate>
-    <div class="contact-box container-fluid" in:fly={{ y: 50,duration: 2000, delay: 3000 }}>
+    <div class="contact-box container-fluid" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
         <Container>
             <Row>
                 <Col sm="12" class="contact-form tbc wtc border-radius">

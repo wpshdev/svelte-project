@@ -369,11 +369,11 @@
             font-size: 1.25rem;
         }
         img {
-            height: 100vh;
-            @include media-max(md){
-				height: 80vh;
+            height: 40rem;
+            @include media-max(lg){
+				height: 30rem;
 			}
-            @include media-max(sm){
+            @include media-max(ipadmini){
 				height: auto;
 			}
         }
@@ -470,8 +470,11 @@
             }
         }
         img {
-            height: 100vh;
-            @include media-max(md){
+            height: 40rem;
+            @include media-max(lg){
+				height: 30rem;
+			}
+            @include media-max(ipadmini){
 				height: auto;
 			}
         }
