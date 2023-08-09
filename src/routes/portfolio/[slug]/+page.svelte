@@ -381,7 +381,13 @@ section{
 	&__article{
 		overflow: hidden;
 		position: relative;
-		height: 70vh;
+		height: 30rem;
+		@include media-max(ipadmini){
+			height: 20rem;
+		}
+		@include media-max(sm){
+			height: auto;
+		}
 		img{
 			object-fit: cover;
 			object-position: center;

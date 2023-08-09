@@ -395,14 +395,23 @@
             color: $secondary-color;
         }
         img {
-            height: 80vh;
-            @include media-max(md){
-                width: 90% !important;
-                height: auto;
-            }
+            height: 40rem;
+            @include media-max(lg){
+				height: 30rem;
+			}
+            @include media-max(ipadmini){
+				height: 20rem;
+			}
             @include media-max(sm){
-                width: 90% !important;
-            }
+				height: auto;
+			}
+            // @include media-max(md){
+            //     width: 90% !important;
+            //     height: auto;
+            // }
+            // @include media-max(sm){
+            //     width: 90% !important;
+            // }
         }
     }
     :global(.sets-us-apart__row){
@@ -509,10 +518,14 @@
         &__article{
             overflow: hidden;
             position: relative;
-            height: 70vh;
+            height: 30rem;
+            @include media-max(ipadmini){
+                height: 20rem;
+            }
             @include media-max(sm){
+                height: auto;
                 margin-bottom: 1rem;
-            }      
+            }   
             img {
                 object-fit: cover;
                 object-position: center;

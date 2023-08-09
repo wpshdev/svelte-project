@@ -49,7 +49,7 @@
 					<Col md="6" class="my-auto">
 						<div class="insight__content" in:fly={{duration: 2000,y: 50, delay: 2000}}>
 							<div class="insight__content__wrapper">
-								<div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading ? insight.rightPreHeading : ''}</div>
+								<!-- <div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading ? insight.rightPreHeading : ''}</div> -->
 								<h2>{insight.Heading ? insight.Heading : ''}</h2>
 								{@html insight.paragprah ? insight.paragprah : ''}
 								<div class="insight__content__wrapper__btns">
@@ -75,11 +75,11 @@
 			padding-left: 3rem;
 			padding-right: 3rem;
 		}
+		// @include media-max(sm){
+		// 	padding-left: 0;
+		// 	padding-right: 0;
+		// }
 		@include media-max(sm){
-			padding-left: 0;
-			padding-right: 0;
-		}
-		@include media-max(xs){
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}
@@ -122,6 +122,9 @@
 					display: flex;
 					@include media-max(md){
 						display: block;
+					}
+					@include media-max(sm){
+						text-align: center;
 					}
 				}
 				.btn {

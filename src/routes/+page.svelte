@@ -22,6 +22,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
+	import { textAnimate, flyUp, fadeIn } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -59,7 +60,6 @@
             }
         })();
     }
-
 	// $: listener = {propCount , activeTab};
 	
 	// let height;
@@ -74,37 +74,31 @@
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
 <section class="loc-gallery" >
-	<Animate >
-		<Container>
-			<Row>
-				<Col xs="12" class="pb-4">
-					<h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>
-						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
-					</h2>
-				</Col>
-				<Col xs="12">
-					<div class="loc-gallery__cwrapper" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
-							<div class="h3">
-								{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
-							</div>
-						<div>
-							{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
+	<Container>
+		<Row>
+			<Col xs="12" class="pb-4">
+				<h2 in:flyUp id="home-builder" gsap-duration="1">
+					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+				</h2>
+			</Col>
+			<Col xs="12">
+				<div class="loc-gallery__cwrapper" in:flyUp id="build-trust" gsap-delay="0.5" gsap-duration="1">
+						<div class="h3">
+							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 						</div>
+					<div>
+						{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
 					</div>
-				</Col>
-			</Row>
-		</Container>
-	</Animate>	
+				</div>
+			</Col>
+		</Row>
+	</Container>
 </section>	
 
 
 {#if home.homeBuilderBanner.data}
 	<section>
-		<Animate>
-			<div in:fly={{ y: 50, duration: 2000, delay: 1000 }}>
-				<div in:fade={{duration: 1000}} class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
-			</div>
-		</Animate>
+		<div in:flyUp id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
 	</section>
 {/if}
 
@@ -113,7 +107,7 @@
 		<Container class="categories_wrapper">
 			<Row>
 				<Col class="text-center">
-					<h2 in:fly={{ y: 50, duration: 2000, delay: 500}}>
+					<h2 in:flyUp id="category_title" gsap-duration="1">
 						{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
 					</h2>
 					<div class="categories__tabs">
@@ -548,12 +542,12 @@
                 // position: absolute;
                 color: white;
                 text-align: center;  
-                height: 75vh;
+                height: 30rem;
                 @include media-max(ipadmini){
-                    height: 40vh;
+                    height: 20rem;
                 }
                 @include media-max(sm){
-                    height: 20vh;
+                    height: 10rem;
                 }
                 a{
                     display: block;
@@ -667,19 +661,19 @@
 		@include media-max(xs){
 		}		
 		&__content{
-			height: 35vw;
-			@include media-max(xl){
-				height: 40vw;
+			height: 41.875rem;
+			@include media-max(lg){
+				height: 30rem;
+			}	
+			@include media-max(ipadmini){
+				height: 20rem;
 			}
-			@include media-max(default){
-				height: 38vw;
-			}
-			display: flex;
-			align-items: center;
-			position: relative;
 			@include media-max(sm){
 				height: auto;
-			}				
+			}	
+			display: flex;
+			align-items: center;
+			position: relative;		
 			&:after{
 				position: absolute;
 				background: #E5EEF2;
@@ -745,15 +739,17 @@
 		img{
 			position: relative;
 			z-index: 5;
-			height: 70vh;
-			width: 75vh;
+			height: 31.25rem;
+			width: 100%;
 			@include media-max(lg){
-				height: 50vh;
-				width: 100%;
+				height: 25rem;
 			}
 			@include media-max(ipadmini){
-				height: 100%;
-			}
+				height: 15rem;
+			}	
+			@include media-max(sm){
+				height: auto;
+			}	
 		}		
 	}	
 
@@ -765,7 +761,9 @@
 		}		
 		&__top-image{
 			text-align: right;
-    		// margin-bottom: -1rem;
+    		margin-bottom: -3rem;
+			z-index: 5;
+			position: relative;
 			@include media-max(default){
 				margin-bottom: 0rem;	
 				text-align: center;
@@ -788,32 +786,35 @@
 				// @include media-max(sm){
 				// 	max-width: 70vw;
 				// }	
-				height: 60vh;
-				width: 65vh;
+				height: 27.5rem;
+				width: 80%;
 				@include media-max(lg){
-					height: 50vh;
+					height: 25rem;
 					width: 100%;
-				}
+				}	
 				@include media-max(ipadmini){
-					height: 100%;
-				}		
+					height: 15rem;
+				}	
+				@include media-max(sm){
+					height: auto;
+				}	
 			}
 		}
 		&__content{
-			height: 40vw;
-			display: flex;
-			align-items: center;
-			position: relative;
-			@include media-max(md){
-				height: 50vw;
+			height: 51.536rem;
+			@include media-max(lg){
+				height: 35rem;
 			}	
 			@include media-max(ipadmini){
-				height: 55vw;
+				height: 30rem;
 			}	
 			@include media-max(sm){
 				height: auto;
 				margin-top: 3rem;
-			}			
+			}	
+			display: flex;
+			align-items: center;
+			position: relative;		
 			&:after{
 				position: absolute;
 				background: #F2F2F2;
@@ -875,20 +876,21 @@
 				// @include media-max(sm){
 				// 	max-width: 70vw;
 				// }	
-				height: 65vh;
-				width: 65vh;
+				height: 31.25rem;
+				width: 100%;
 				@include media-max(lg){
-					height: 50vh;
-					width: 100%;
+					height: 25rem;
 				}
 				@include media-max(ipadmini){
-					height: 100%;
-				}		
+					height: 15rem;
+				}	
+				@include media-max(sm){
+					height: auto;
+				}	
 			}			
 		}
 		img{
 			position: relative;
-			z-index: 5;
 		}		
 
 	}	
@@ -902,19 +904,19 @@
 			padding-bottom: 0;
 		}	
 		&__content{
-			height: 35vw;
-			@include media-max(xl){
-				height: 40vw;
+			height: 41.875rem;
+			@include media-max(lg){
+				height: 30rem;
 			}
-			@include media-max(default){
-				height: 38vw;
-			}
-			display: flex;
-			align-items: center;
-			position: relative;
+			@include media-max(ipadmini){
+				height: 20rem;
+			}	
 			@include media-max(sm){
 				height: auto;
-			}   						
+			}	
+			display: flex;
+			align-items: center;
+			position: relative;						
 			&:after{
 				position: absolute;
 				background: #E5EEF2;
@@ -985,14 +987,16 @@
 		img{
 			position: relative;
 			z-index: 5;
-			height: 70vh;
-			width: 75vh;
+			height: 31.25rem;
+			width: 100%;
 			@include media-max(lg){
-				height: 50vh;
-				width: 100%;
+				height: 25rem;
 			}
 			@include media-max(ipadmini){
-				height: 100%;
+				height: 15rem;
+			}	
+			@include media-max(sm){
+				height: auto;
 				margin-top: 2rem;
 			}	
 			// @include media-max(ipadmini){

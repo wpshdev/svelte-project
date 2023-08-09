@@ -3,6 +3,7 @@
     import Animate from "../Animate.svelte";
     import { fly } from "svelte/transition";
     import TextTransition from "$lib/TextTransition.svelte";
+	import { textAnimate, flyUp } from '$lib/GsapAnimation.js';
     export let banner;
 	export let bannerMobile;
     export let title;
@@ -26,10 +27,10 @@
 			<Col >
 				<div class="banner__content">
 					<div class="banner__content__text">
-						<h1 class="ml3" in:fly={{duration: 2000, y: 50, delay: 500}}><span>{title ? title : ''}</span></h1>
+						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate><span>{title ? title : ''}</span></h1>
 					</div>
 					{#if subTitle != null}
-						<p class="banner__content__paragraph" in:fly={{duration: 2000, y: 50, delay: 1000}}>{subTitle}</p>
+						<p class="banner__content__paragraph" in:flyUp id="banner_sub" gsap-delay="1.1" gsap-duration="0.5">{subTitle}</p>
 					{/if}
 				</div>
 			</Col>
@@ -73,6 +74,7 @@
 					// font-size: 5rem;		
 					font-size: 3.5rem;		
 					margin-bottom: 1rem;	
+					justify-content: center;
 					@include media-max(sm) {
 						font-size: 3rem;
 					}
