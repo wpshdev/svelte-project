@@ -75,16 +75,19 @@
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
-<section class="loc-gallery" >
+<section class="loc-gallery slow-scroll">
+	<ScrollingSection>
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
-				<h2 class="text-animate" in:textAnimate id="home-builder" gsap-duration="0.5">
+				<h2>
+					<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
 					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 				</h2>
 			</Col>
 			<Col xs="12">
-				<div class="loc-gallery__cwrapper" in:fly id="build-trust" gsap-delay="1" gsap-duration="1.5">
+				<div class="loc-gallery__cwrapper" id="build-trust">
+					<!-- gsap-delay="1" gsap-duration="1.5" -->
 						<div class="h3">
 							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 						</div>
@@ -95,6 +98,7 @@
 			</Col>
 		</Row>
 	</Container>
+	</ScrollingSection>
 </section>	
 
 
