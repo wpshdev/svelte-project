@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
+	import SmoothScroll from "$lib/components/SmoothScroll.svelte";
+  	import ScrollingSection from '$lib/components/ScrollingSection.svelte';
 	// import banner from "$lib/img/first-section.svg";
 	// import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
@@ -10,7 +12,7 @@
 	import Carousel from "$lib/components/layout/Carousel.svelte";
 	// import modern from "$lib/img/modern.svg";
 	// import mountain from "$lib/img/mountain.svg";
-	// import traditional from "$lib/img/traditional.svg";		
+	// import traditional from "$lib/img/traditional.svg";
 	import tr from "$lib/img/tnr.svg";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
@@ -313,7 +315,7 @@
 		<Cta />
 	</Animate>
 </section>
-
+<SmoothScroll />
 <style lang="scss">
 	section{
 		min-height: 20vh;
@@ -367,6 +369,7 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
+		min-height: 80rem;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
