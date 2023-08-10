@@ -311,6 +311,10 @@ header{
         padding-left: 5px;
     }
     &.changeBG{
+        .logo{
+            background: #1e2d39;
+            padding: 0.5rem;
+        }
         background:$darkbluegreen;
         .dropdown.show, .dropdown-menu  {
             // background-color: $gray;
@@ -381,13 +385,13 @@ header{
             }       
         }
     }
-    .logo{
-        position: absolute;
-    }
+    // .logo{
+    //     position: absolute;
+    // }
     nav{
         .navbar-brand{
             width: 7.5rem;
-            height: 2.75rem;
+            // height: 2.75rem;
             a{
                 img{
                     width: auto;

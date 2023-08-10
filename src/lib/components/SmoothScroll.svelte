@@ -8,8 +8,8 @@
             const LocomotiveScroll = LocomotiveScrollModule.default;
             const scroll = new LocomotiveScroll({
             el: document.querySelector('[data-scroll-container]'),
-                smooth: 0.04, // Enable smooth scrolling
-                lerp: 0.04,
+                smooth: true, // Enable smooth scrolling
+                lerp: 1,
             });
         });
         }

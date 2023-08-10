@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import Headroom from "svelte-headroom";
     import SmoothScroll from '$lib/components/SmoothScroll.svelte';
     const onPin = () => console.log("pin");
@@ -10,6 +11,8 @@
     import Animate from "$lib/components/Animate.svelte";
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     import { fade, fly } from 'svelte/transition';
+    import { gsap } from 'gsap';
+
     // let isHomePage = false;
     function isHome(url) {
         return url === "/" ? false : true;
@@ -17,15 +20,18 @@
     function isPortfolio(url) {
         return url === "/portfolio/[slug]" ? "portfolio-page" : "";
     }     
-
     function isArticle(url) {
         return url === "/articles/[slug]" ? "article-page" : "";
-    }  
-
+    }
 	afterNavigate(() => {
 		disableScrollHandling();
 	}) 
 
+
+    let header: gsap.TweenTarget;
+    onMount(() => {
+        gsap.from(header, { y: -100, duration: 2, opacity: 0, ease: 'power2.out' });
+    });
 
     let yaxis: any;
     export let data;
@@ -37,7 +43,7 @@
     <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
             <!-- <header class="d-block" class:changeBG={yaxis >= 250 || isHome($page.url.pathname)} > -->
-            <header class="d-block" class:changeBG={yaxis >= 200} >                
+            <header class="d-block" class:changeBG={yaxis >= 200} bind:this={header}>                
                 <Container>
                     <Header menu={data} />
                 </Container>

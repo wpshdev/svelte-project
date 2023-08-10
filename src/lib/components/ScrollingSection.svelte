@@ -1,21 +1,21 @@
 <script>
-    import { onMount } from 'svelte';
-    import { TweenMax } from 'gsap';
-  
-    let section;
+  import { onMount } from 'svelte';
+  import { gsap } from 'gsap';
 
-onMount(() => {
-  window.addEventListener('scroll', handleScroll);
-});
+  let section;
 
-function handleScroll() {
-  const scrollTop = window.scrollY;
-  const speedMultiplier = 1.2; // Adjust the speed as needed
+  onMount(() => {
+    window.addEventListener('scroll', handleScroll);
+  });
 
-  TweenMax.to(section, 0.1, { y: scrollTop * speedMultiplier });
-}
-  </script>
+  function handleScroll() {
+    const scrollTop = window.scrollY;
+    const speedMultiplier = 1.5; // Adjust the speed as needed
 
-  <section bind:this={section}>
-    <slot />
-  </section>
+    gsap.to(section, { duration: 0.1, y: scrollTop * speedMultiplier });
+  }
+</script>
+
+<section bind:this={section}>
+  <slot />
+</section>
