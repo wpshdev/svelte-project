@@ -15,13 +15,7 @@ function handleScroll() {
   TweenMax.to(section, 0, { y: scrollTop * speedMultiplier });
 }
   </script>
-  
-  <style>
-    section {
-      height: 100vh;
-      padding-top: 10rem;
-    }
-  </style>
+
   <section bind:this={section}>
     <slot />
   </section>
