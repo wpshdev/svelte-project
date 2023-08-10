@@ -2,7 +2,8 @@
     import {Container, Row, Col} from 'sveltestrap';
     import { onMount } from 'svelte';
 	import Animate from '$lib/components/Animate.svelte';
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
@@ -50,90 +51,79 @@
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
 <section class="mw-1000 text-center about-heading">
-    <Animate >
-        <Container>
-                <h2 class="pb-2" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{@html about.abouttext ? about.abouttext : ''}</p>
-        </Container>
-    </Animate>
+    <Container>
+            <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="0.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
+            <p in:fly id="about_heading_cont" gsap-delay="0.5" gsap-duration="1.2">{@html about.abouttext ? about.abouttext : ''}</p>
+    </Container>
 </section>
 <section class="contractor-details">
-    <Animate >
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
-                        <h3 class="mb-4 mr-t">{@html about.Section1heading ? about.Section1heading : ''}</h3>
-                        <p>{@html about.Section1text ? about.Section1text : ''}</p>
+                    <div>
+                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="0.5">{@html about.Section1heading ? about.Section1heading : ''}</h3>
+                        <p in:fly id="cd-cont1" gsap-duration="1.2">{@html about.Section1text ? about.Section1text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     
                         {#if about.Section1image.data}
-                        <div in:fly={{duration: 2000, x: 100, delay: 500}}>
-                            <img in:fade={{delay: 500, duration: 1000}} src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
+                        <div>
+                            <img in:slide id="cd-image1" gsap-x="20" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                         </div>
                         {/if}
                     
                 </Col>
             </Row>
         </Container>
-    </Animate>
 </section>
 <section class="contractor-details">
-    <Animate >
-        <Container>
+    <Container>
         <Row>
             <Col md="6">
                 {#if about.Section2image.data}
-                <div in:fly={{duration: 2000, x: -100, delay: 1000}}>
-                    <img in:fade={{delay: 1000, duration: 1000}} src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
+                <div>
+                    <img in:slide id="cd-image2" gsap-x="-20" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
                 </div>
                 {/if}
             </Col>
             <Col md="5" class="align-self-center">
-                <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
-                    <h3 class="mb-4 mr-t">{@html about.Section2heading ? about.Section2heading : ''}</h3>
-                    <p>{@html about.Section2text ? about.Section2text : ''}</p>
+                <div>
+                    <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="0.5">{@html about.Section2heading ? about.Section2heading : ''}</h3>
+                    <p in:fly id="cd-cont2" gsap-duration="1.2">{@html about.Section2text ? about.Section2text : ''}</p>
                 </div>
             </Col>
         </Row>
-        </Container>        
-    </Animate>
+    </Container>   
 </section>
 <section class="contractor-details">
-    <Animate >
-        <Container>
-            <Row class="flex-md-row flex-column-reverse">
-                <Col md="5" class="align-self-center">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
-                        <h3 class="mb-4 mr-t">{@html about.Section3heading ? about.Section3heading : ''}</h3>
-                        <p>{@html about.Section3text ? about.Section3text : ''}</p>
-                    </div>
-                </Col>
-                <Col md="6">
-                    {#if about.Section3image.data}
-                    <div in:fly={{duration: 2000, x: 100, delay: 500}}>
-                        <img in:fade={{delay: 500, duration: 1000}} src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
-                    </div>
-                    {/if}
-                </Col>
-            </Row>
-        </Container>    
-    </Animate>
+    <Container>
+        <Row class="flex-md-row flex-column-reverse">
+            <Col md="5" class="align-self-center">
+                <div>
+                    <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="0.5">{@html about.Section3heading ? about.Section3heading : ''}</h3>
+                    <p in:fly id="cd-cont3" gsap-duration="1.2"> {@html about.Section3text ? about.Section3text : ''}</p>
+                </div>
+            </Col>
+            <Col md="6">
+                {#if about.Section3image.data}
+                <div >
+                    <img in:slide id="cd-image3" gsap-x="20" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
+                </div>
+                {/if}
+            </Col>
+        </Row>
+    </Container>   
 </section>
 <section class="mx-8 remodel">
-    <Animate >
-        <div class="remodel__bgimage" in:fly={{ y: 50, duration: 2000, delay: 500 }}>
-            {#if about.Section4image.data}
-            <img in:fade={{duration: 1000}} src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
-            {/if}
-            <p class="text-center pt-3" in:fly={{ y: 50, duration: 2000, delay: 1000 }}><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
-        </div>        
-    </Animate>
+    <div class="remodel__bgimage">
+        {#if about.Section4image.data}
+        <img in:fadeIn id="remodel-img" gsap-duration="1.5" src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
+        {/if}
+        <p class="text-center pt-3" in:fly id="remodel-text" gsap-duration="1.2"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
+    </div>    
 </section>
 <section class="certificate mx-8">
-    <Animate >
         <Container>
             
                 <!-- <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
@@ -146,7 +136,7 @@
                 </div> -->
 
                 {#if about.certTitle}
-                <div class="certificate-container" in:fly={{ y: 50, duration: 2000, delay: 500 }} style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
+                <div class="certificate-container" in:fly id="cert-img" gsap-duration="1.5" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
                     <div class="certificate-inner-container">
                         <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
                         <div class="certificate-content">
@@ -156,103 +146,91 @@
                 </div>
                 {/if}
         </Container>
-    </Animate >
 </section>
 <section class="sets-parts">
-    <Animate >
-        <Container>
-            <Row>
-                <Col md="12"><h2 class="text-center mb-5" in:fly={{ y: 50,duration: 2000, delay: 500 }}>{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
-            </Row>
-            <Row class="flex-md-row flex-column-reverse sets-parts__row">  
-                <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
-                        <h3 class="mb-4 text-right">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
-                        <p class="text-right">{@html about.Section6text ? about.Section6text : ''}</p>
-                    </div>
-                </Col>
-                <Col md="6">
-                    <div class="sets-parts__mr-l">
-                        <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
-                        {#if about.Section6image.data}
-                        <img in:fade={{delay: 1000, duration: 1000}} src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
-                        {/if}
-                    </div>
-                </Col>
-            </Row>
-        </Container>        
-    </Animate>
+    <Container>
+        <Row>
+            <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="0.5" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
+        </Row>
+        <Row class="flex-md-row flex-column-reverse sets-parts__row">  
+            <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
+                <div >
+                    <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="0.5">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
+                    <p class="text-right" in:fly id="sp-cont1" gsap-duration="1.2">{@html about.Section6text ? about.Section6text : ''}</p>
+                </div>
+            </Col>
+            <Col md="6">
+                <div class="sets-parts__mr-l">
+                    <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
+                    {#if about.Section6image.data}
+                    <img in:fadeIn id="sp-img1" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
+                    {/if}
+                </div>
+            </Col>
+        </Row>
+    </Container>  
 </section>
-<section class="sets-parts">  
-    <Animate >
+<section class="sets-parts"> 
         <Container class="mx-10">
             <Row class="sets-parts__row">
                 <Col md="6" style="z-index: 1;">
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                         {#if about.Section7image.data}
-                        <img in:fade={{delay: 500, duration: 1000}} src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
+                        <img in:fadeIn id="sp-img2" src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
-                        <h3 class="mb-4 rp-fontsize">{@html about.Section7heading ? about.Section7heading : ''}</h3>
-                        <p>{@html about.Section7text ? about.Section7text : ''}</p>
-                    </div>
-                </Col>
-            </Row>
-        </Container>    
-    </Animate>
-</section>
-<section class="sets-parts">  
-    <Animate >
-        <Container class="mx-10">
-            <Row class="flex-md-row flex-column-reverse sets-parts__row">
-                <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
-                        <h3 class="mb-4 text-right">{@html about.Section8heading ? about.Section8heading : ''}</h3>
-                        <p class="text-right">{@html about.Section8text ? about.Section8text : ''}</p>
-                    </div>
-                </Col>
-                <Col md="6">
-                    <div class="sets-parts__mr-l">
-                        <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
-                        {#if about.Section8image.data}
-                        <img in:fade={{delay: 500, duration: 1000}}  src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
-                        {/if}
+                    <div>
+                        <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="0.5">{@html about.Section7heading ? about.Section7heading : ''}</h3>
+                        <p in:fly id="sp-cont2" gsap-duration="1.2">{@html about.Section7text ? about.Section7text : ''}</p>
                     </div>
                 </Col>
             </Row>
         </Container> 
-    </Animate>  
-        
+</section>
+<section class="sets-parts">
+    <Container class="mx-10">
+        <Row class="flex-md-row flex-column-reverse sets-parts__row">
+            <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
+                <div>
+                    <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="0.5">{@html about.Section8heading ? about.Section8heading : ''}</h3>
+                    <p class="text-right" in:fly id="sp-cont3" gsap-duration="1.2">{@html about.Section8text ? about.Section8text : ''}</p>
+                </div>
+            </Col>
+            <Col md="6">
+                <div class="sets-parts__mr-l">
+                    <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
+                    {#if about.Section8image.data}
+                    <img in:fadeIn id="sp-img3" src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
+                    {/if}
+                </div>
+            </Col>
+        </Row>
+    </Container> 
 </section>
 
 <section id="clientSays">
 {#if testimonialsData}
-<Animate>
 <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/>
-</Animate>
 {/if}
 </section>
 
 <section class="talktous">
-    <Animate>
         <Container>
-            <h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
-            <p in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{about.talkTous.talkTous_content ? about.talkTous.talkTous_content : ''}</p>
-            <div class="talktous__btns" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+            <h2>{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
+            <p>{about.talkTous.talkTous_content ? about.talkTous.talkTous_content : ''}</p>
+            <div class="talktous__btns">
                 <a href="{about.talkTous.talkTous_btn1Link ? about.talkTous.talkTous_btn1Link : '#'}" class="btn btn-secondary">{about.talkTous.talkTous_btn1 ? about.talkTous.talkTous_btn1 : 'Button'}</a>
                 <a href="{about.talkTous.talkTous_btn2Link ? about.talkTous.talkTous_btn2Link  : '#'}" class="btn btn-inverted">{about.talkTous.talkTous_btn2 ? about.talkTous.talkTous_btn2 : 'Button'}</a>
             </div>
         </Container>
-    </Animate>
 </section>
 
-<Animate>
-    <Contactform/>
-</Animate>
+
+<Contactform/>
+
 
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
@@ -263,6 +241,7 @@
     .about-heading{
         h2 {
             color:$secondary-color;
+            justify-content: center;
         }
     }
     .mw-1000{
@@ -361,10 +340,18 @@
         h3 {
             color:$secondary-color;
             font-size: 2.813rem;
+            flex-wrap: wrap;
+            &#cd-heading2 {
+                width: 37rem;
+            }
+            &#cd-heading3 {
+                width: 35rem;
+            }
             @include media-max(ipadmini){ 
                 font-size: 2.3rem;
             }
         }
+        
         p {
             font-size: 1.25rem;
         }
@@ -404,6 +391,8 @@
     .sets-parts{
         h2{
             color:$darkgrey-color;
+            justify-content: center;
+            padding-bottom: 2rem;
         }
         @include media-max(ipadmini){
             :global(.row>*) {
@@ -433,6 +422,9 @@
             @include media-max(xs) {
                 text-align: left !important;
             }
+        }
+        :global(.sets-parts__content h3.text-right) {
+            justify-content: end;
         }
         :global(.sets-parts__content p) {
             font-size: 1.25rem;

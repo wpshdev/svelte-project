@@ -6,7 +6,9 @@ import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 // import Flickity from "flickity";
 import noFeatured from "$lib/img/blog-empty.svg"
-import { fade, fly } from 'svelte/transition';
+// import { fade, fly } from 'svelte/transition';
+
+import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 let flickityInstance;
 export let preHeading; 
@@ -79,8 +81,8 @@ $: {
   <Col md="3">
     <div class="slider-caption">
       <div class="slider-caption__heading">
-        <span>{preHeading ? preHeading : ''}</span>
-        <h2>{@html heading ? heading : ''}</h2>
+        <p in:slide id="carousel-preheading" gsap-duration="1.5">{preHeading ? preHeading : ''}</p>
+        <h2 class="text-animate secondary-font" in:textAnimate id="carousel-heading">{heading ? heading : ''}</h2>
       </div>
       {#if innerWidth > 767}
         <div class="progress-ring-container">
@@ -101,9 +103,9 @@ $: {
     </div>
   </Col>	
   <Col md=9>
-    <div class="slider-container">
+    <div class="slider-container" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10">
       {#each featuredProjects.data as project, index}
-        <div class="slider-container__carousel-cell" in:fade={{delay: 1000, duration: 1000}}>
+        <div class="slider-container__carousel-cell">
           <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
             {#if project.attributes.featuredImage.data != null}
               <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
@@ -165,21 +167,22 @@ $: {
     flex-direction: column;
     gap: 5rem;
     &__heading{
-      margin-top: 5rem;
+      padding-top: 5rem;
       margin-bottom: 1rem;
       width: 100%;
       @include media-max(sm){
           text-align: center;
           margin-top: 0;
       }    
-      span{
+      p{
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
         color: $primary-color;
         font-weight: 500;
       }
       h2{
-
+        flex-wrap: wrap;
+        width: 18rem;
       }
     }
   }

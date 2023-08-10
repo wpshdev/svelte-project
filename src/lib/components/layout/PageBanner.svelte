@@ -1,9 +1,9 @@
 <script lang="ts">
     import { Container, Row, Col } from "sveltestrap";
     import Animate from "../Animate.svelte";
-    import { fly } from "svelte/transition";
+    // import { fly } from "svelte/transition";
     import TextTransition from "$lib/TextTransition.svelte";
-	import { textAnimate, flyUp } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly } from '$lib/GsapAnimation.js';
     export let banner;
 	export let bannerMobile;
     export let title;
@@ -30,7 +30,7 @@
 						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate><span>{title ? title : ''}</span></h1>
 					</div>
 					{#if subTitle != null}
-						<p class="banner__content__paragraph" in:flyUp id="banner_sub" gsap-delay="1.1" gsap-duration="0.5">{subTitle}</p>
+						<p class="banner__content__paragraph" in:fly id="banner_sub" gsap-delay="1" gsap-duration="0.7">{subTitle}</p>
 					{/if}
 				</div>
 			</Col>

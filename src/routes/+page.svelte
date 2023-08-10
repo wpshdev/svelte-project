@@ -4,7 +4,7 @@
 	import SmoothScroll from "$lib/components/SmoothScroll.svelte";
   	import ScrollingSection from '$lib/components/ScrollingSection.svelte';
 	// import banner from "$lib/img/first-section.svg";
-	import { fade, fly } from 'svelte/transition';
+	// import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
 	// import TextTransition from "$lib/TextTransition.svelte";
@@ -24,7 +24,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
-	import { textAnimate, flyUp, fadeIn } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -79,12 +79,12 @@
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
-				<h2 in:flyUp id="home-builder" gsap-duration="1">
+				<h2 class="text-animate" in:textAnimate id="home-builder" gsap-duration="0.5">
 					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 				</h2>
 			</Col>
 			<Col xs="12">
-				<div class="loc-gallery__cwrapper" in:flyUp id="build-trust" gsap-delay="0.5" gsap-duration="1">
+				<div class="loc-gallery__cwrapper" in:fly id="build-trust" gsap-delay="1" gsap-duration="1.5">
 						<div class="h3">
 							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 						</div>
@@ -99,88 +99,82 @@
 
 
 {#if home.homeBuilderBanner.data}
-	<section>
-		<div in:flyUp id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
+	<section class="bannerOnly--Container">
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1.5" class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
 	</section>
 {/if}
 
 <section class="categories" >
-	<Animate>
-		<Container class="categories_wrapper">
-			<Row>
-				<Col class="text-center">
-					<h2 in:flyUp id="category_title" gsap-duration="1">
-						{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
-					</h2>
-					<div class="categories__tabs">
-						<div class="categories__tabs__heading">
-							<ul in:fly={{ y: 50,duration: 2000, delay: 0 }}>
-								{#each home.categories.data as heading}
-									<li>
-										<!-- svelte-ignore a11y-click-events-have-key-events -->
-										<span
-										data-category="{heading.id}"
-										class:active="{activeTab === heading.id}"
-										on:click="{() => handleTabClick(heading.id)}">
-										{heading.attributes.Title ? heading.attributes.Title : ''}
-										</span>
-									</li>
-								{/each}
-							</ul>
-						</div>
-						<div class="categories__tabs__gallery" in:fly={{y: 50, duration: 2000, delay: 0}}>
-							{#key activeTab}
-								{#if loading}  <!-- show load -->
-									<div class="col text-center list-text-details">Loading...</div>
+	<Container class="categories_wrapper">
+		<Row>
+			<Col class="text-center">
+				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="0.5">
+					{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
+				</h2>
+				<div class="categories__tabs">
+					<div class="categories__tabs__heading">
+						<ul in:fly id="categories" gsap-duration="1" gsap-delay="1">
+							{#each home.categories.data as heading}
+								<li>
+									<!-- svelte-ignore a11y-click-events-have-key-events -->
+									<span
+									data-category="{heading.id}"
+									class:active="{activeTab === heading.id}"
+									on:click="{() => handleTabClick(heading.id)}">
+									{heading.attributes.Title ? heading.attributes.Title : ''}
+									</span>
+								</li>
+							{/each}
+						</ul>
+					</div>
+					<div class="categories__tabs__gallery" in:fadeIn id="categories_data" gsap-duration="1.5" gsap-delay="1.5">
+						{#key activeTab}
+							{#if loading}  <!-- show load -->
+								<div class="col text-center list-text-details">Loading...</div>
+							{:else}
+								{#if portfolioList.length == 0} 
+									<div class="col text-center list-text-details">No Project Found...</div>
 								{:else}
-									{#if portfolioList.length == 0} 
-										<div class="col text-center list-text-details">No Project Found...</div>
-									{:else}
-										<div class="container masonry_container">       
-											{#each portfolioList as project, index}				
-												{#if index < propCount}
-												<div class="masonry-items" in:fade={{delay: 0, duration: 1000}}> 
-													<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
-													<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-														{#if project.attributes.featuredImage.data != null}
-														<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
-														{:else}
-														<img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
-														{/if}
-													</a>
-												</div>	                    
-												{/if}				
-											{/each}
-										</div>
-									{/if}
+									<div class="container masonry_container">       
+										{#each portfolioList as project, index}				
+											{#if index < propCount}
+											<div class="masonry-items"> 
+												<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
+												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
+													{#if project.attributes.featuredImage.data != null}
+													<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
+													{:else}
+													<img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+													{/if}
+												</a>
+											</div>	                    
+											{/if}				
+										{/each}
+									</div>
 								{/if}
-                			{/key}
-						</div>					
-					</div>	
-				</Col>
-			</Row>
-		</Container>
-	</Animate>	
+							{/if}
+						{/key}
+					</div>					
+				</div>	
+			</Col>
+		</Row>
+	</Container>
 </section>
 
 
 
 <section class="featured-projects">	
-	<Animate>
-		<div in:fly={{ duration: 2000, y: 50, delay: 0 }}>		
-		<Container>
-			<Row>
-				<Carousel 
-				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
-				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
-				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
-				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-				featuredProjects={home.featuredProjects}
-		/>
-			</Row>
-		</Container>
-		</div>
-	</Animate>		
+	<Container>
+		<Row>
+			<Carousel 
+			preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+			heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+			btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+			btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
+			featuredProjects={home.featuredProjects}
+	/>
+		</Row>
+	</Container>
 </section>
 
 
@@ -189,13 +183,15 @@
 		<Row>
 			<Col>
 				<Animate>
-					<div class="tnr__wrapper" in:fly={{ duration: 2000, y: 50, delay: 0}} >
+					<div class="tnr__wrapper">
 						<div class="tnr__wrapper__captions">
-							<span>{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</span>
-							<h2>{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
-							<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
-								{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
-							</a>
+							<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
+							<h2 class="text-animate" in:textAnimate id="tnr-heading">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+							<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+								<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+									{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
+								</a>
+							</div>
 						</div>
 					</div>
 				</Animate>
@@ -207,99 +203,105 @@
 
 
 <section class="reputation" >
-	<Animate>
 		<Container>
 			<Row>
 				<Col md="7" class="">
-					<div class="reputation__content">
-						<div class="reputation__content__wrapper" in:fly={{duration: 2000, y: 50, delay: 0}}>
-							<span>{home.reputation.preHeading ? home.reputation.preHeading : ''}</span>
-							<h2>{home.reputation.heading ? home.reputation.heading : ''}</h2>
-							<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
-							<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
+					<Animate>
+						<div class="reputation__content">
+							<div class="reputation__content__wrapper">
+								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
+								<h2 class="text-animate secondary-font" in:textAnimate id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
+								<div in:fly id="reputation-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
+									<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
+									<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
+								</div>
+							</div>
 						</div>
-					</div>
+					</Animate>
 				</Col>
 				<Col md="5" class="my-auto" >
-					<div in:fly={{duration: 2000, y: 50, delay: 0}}>
+					<div>
 						{#if home.reputation.image.data}
-						<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" 
-						in:fade={{delay: 0, duration: 1000}}>
+						<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						{/if}
 					</div>
 				</Col>
 			</Row>
 		</Container>
-	</Animate>
 </section>
 
 <section class="process">
-	<Animate>
-		<Container>
-			<Row>
-				<Col md="6">
-					<div class="process__top-image" in:fly={{duration: 2000, x: -100, delay: 0 }}>
-						{#if home.ourProcessTopImage.data[0]}
-						<img in:fade={{delay: 0, duration: 1000}}  src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
-						{/if}
-					</div>
-				</Col>
-			</Row>
-			<Row>
-				<Col md="7" class="">
+	<Container>
+		<Row>
+			<Col md="6">
+				<div class="process__top-image" >
+					{#if home.ourProcessTopImage.data[0]}
+					<Animate>
+						<img in:slide id="process-top-img" gsap-duration="2" gsap-x="20" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+					</Animate>
+					{/if}
+				</div>
+			</Col>
+		</Row>
+		<Row>
+			<Col md="7" class="">
+				<Animate>
 					<div class="process__content">
-						<div class="process__content__wrapper" in:fly={{duration: 2000, y: 50, delay: 0 }} >
-							<span>{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</span>
-							<h2>{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
-							{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
-							<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
+						<div class="process__content__wrapper">
+							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
+							<h2 class="text-animate secondary-font" in:textAnimate id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
+							<div in:fly id="process-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
+								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
+								<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
+							</div>
 						</div>
 					</div>
-				</Col>
-				<Col md="5" class="my-auto ">
-					<div class="process__bottom" in:fly={{duration: 2000, y: 50, delay: 0 }}>
-						{#if home.ourProcessRightImage.data}
-						<img in:fade={{delay: 0, duration: 1000}}  src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
-						{/if}
-					</div>
-				</Col>
-			</Row>
-		</Container>
-	</Animate>
+				</Animate>
+			</Col>
+			<Col md="5" class="my-auto ">
+				<div class="process__bottom">
+					{#if home.ourProcessRightImage.data}
+					<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+					{/if}
+				</div>
+			</Col>
+		</Row>
+	</Container>
 </section>
 
 
 <section class="story" >
-	<Animate>
 		<Container>
 			<Row>
 				<Col md="7" class="">
-					<div class="story__content">
-						<div class="story__content__wrapper" in:fly={{duration: 2000,y: 50, delay: 0}} >
-							<span>{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</span>
-							<h2>{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
-							{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
-							
-							<!-- <Accordion>
-								<AccordionItem active>
-									<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
-									<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
-								</AccordionItem>							
-							</Accordion>						 -->
+					<Animate>
+						<div class="story__content">
+							<div class="story__content__wrapper">
+								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
+								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+								<div in:fly id="story-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
+									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
+								</div>
+								
+								<!-- <Accordion>
+									<AccordionItem active>
+										<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
+										<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
+									</AccordionItem>							
+								</Accordion>						 -->
+							</div>
 						</div>
-					</div>
+					</Animate>
 				</Col>
 				<Col md="5" class="my-auto">
-					<div in:fly={{duration: 2000, y: 50, delay: 0}}>
+					<div>
 						{#if home.ourStoryRightImage.data}
-						<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}"
-						in:fade={{delay: 0, duration: 1000}}>
+						<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 						{/if}
 					</div>	
 				</Col>
 			</Row>
 		</Container>
-	</Animate>	
 </section>
 
 <section class="m-0 article-wrapper">
@@ -375,6 +377,7 @@
 			margin-bottom: 3rem;
 			text-align: center;
 			font-size: 3rem;
+			justify-content: center;
 			@include media-max(sm){
 				text-align: center;
 				font-size: 2.813rem;
@@ -415,12 +418,15 @@
 	}
 
 	.categories{
-		margin-top: 0;
+		// margin-top: 0;
+		margin: 0;
+		padding: 0 0 3.75rem;
 		// :global(.categories_wrapper) {
 		// 	max-width: 1440px;
 		// }
 		h2{
 			margin-bottom: 2rem;
+			justify-content: center;
 		}
 		.view-all{
 			margin-bottom: 2rem;
@@ -437,8 +443,7 @@
 					display: flex;
 					// flex-wrap: wrap;
 					width: 90%;
-					margin: auto;
-					margin-bottom: 2rem;
+					margin: 2rem auto;
 					padding-left: 0;	
 					
 					@include media-max(lg){
@@ -616,8 +621,9 @@
 			z-index: 2;
 			position: relative;     
 			color: #fff;
-			span{
+			p{
 				font-size: 1.5rem;
+				opacity: 0;
 			}
 			h2{
 				font-family: $primary-font;
@@ -627,26 +633,31 @@
 				@include media-max(sm){
 					font-size: 2rem;
 				}
+				opacity: 0;
+			}
+			#tnr-button {
+				opacity: 0;
 			}
 			.btn{
 				// background-color: #1E2D39;
+				//opacity: 0;
 			}				
 		}
 	}
 
 	.featured-projects{
-		margin: 10rem 0 5rem;
-		padding-bottom: 5rem;
+		padding: 10rem 0;
+		// padding-bottom: 5rem;
 		overflow: hidden;
 		@include media-max(sm){
 			// margin: 5rem 0;
 			margin: 0;
-			padding-bottom: 0;
+			padding: 0;
 		}
 	}
 
 	.reputation{
-		margin: 7rem 0 3.75rem;
+		padding: 7rem 0 3.75rem;
 		// :global(.container){
 		// 	@include media-max(md){
 		// 		padding-left: 1.8rem;
@@ -713,15 +724,21 @@
 				@include media-max(sm){
 					padding-left: 0;
 					margin-bottom: 2rem;
+				}
+				#reputation-cont {
+					opacity: 0;
 				}						
-				span{
+				.pre-head {
 					color: $primary-color;
 					margin-bottom: 1rem;
 					font-weight: 500;
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					line-height: 4rem;
+					line-height: 4.5rem;
+					opacity: 0;
+					flex-wrap: wrap;
+					width: 25rem;
 					@include media-max(lg){
 						line-height: 3rem;
 						margin: 1rem 0;
@@ -846,14 +863,16 @@
 				@include media-max(sm){
 					padding-left: 0;
 				}					
-				span{
+				.pre-head {
 					color: $primary-color;
 					margin-bottom: 1rem;
 					font-weight: 500;
 				}
 				h2{
 					margin: 1rem 0 2rem;
-					line-height: 4rem;
+					line-height: 4.5rem;
+					flex-wrap: wrap;
+					width: 41rem;
 					@include media-max(lg){
 						line-height: 3rem;
 						margin: 1rem 0;
@@ -869,6 +888,9 @@
 						margin: 3rem auto;
 					}							
 				}
+				#process-cont {
+					opacity: 0;
+				}	
 			}		
 		}
 		&__bottom{	
@@ -951,7 +973,7 @@
 				@include media-max(sm){
 					padding: 0;
 				}  				
-				span{
+				.pre-head {
 					color: $primary-color;
 					margin-bottom: 1rem;
 					font-weight: 500;
@@ -969,6 +991,9 @@
 						margin-bottom: 0;
 					}
 				}
+				#story-cont {
+					opacity: 0;
+				}	
 				.accordion{
 					.accordion-item{
 						background-color: transparent;
@@ -1011,20 +1036,26 @@
 	.living-room{
 		height: 30vw;		
 	}
-	
-	.section--bannerOnly{
-		background-image: var(--lrbg);
-		background-size: cover;
-		height: 100vh;
-		width: 100%;
-    	margin: 0 auto;
-		// padding-bottom: 3.75rem;
-		@include media-max(ipadmini){
-			height: 40vh;
+
+	.bannerOnly--Container {
+
+		padding: 5rem 0;
+
+		.section--bannerOnly{
+			background-image: var(--lrbg);
+			background-size: cover;
+			height: 100vh;
+			width: 100%;
+			margin: 0 auto;
+			// padding-bottom: 3.75rem;
+			@include media-max(ipadmini){
+				height: 40vh;
+			}
+			@include media-max(sm){
+				height: 40vh;
+			}
 		}
-		@include media-max(sm){
-			height: 40vh;
-		}
+
 	}
 
 	.lv-thropy{
