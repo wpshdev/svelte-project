@@ -76,7 +76,7 @@
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
 <section class="loc-gallery slow-scroll">
-	<ScrollingSection>
+	<!-- <ScrollingSection> -->
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -98,7 +98,7 @@
 			</Col>
 		</Row>
 	</Container>
-	</ScrollingSection>
+	<!-- </ScrollingSection> -->
 </section>	
 
 
@@ -118,7 +118,7 @@
 				</h2>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
-						<ul in:fly id="categories" gsap-duration="1" gsap-delay="1">
+						<ul in:fly id="categories" gsap-duration="1">
 							{#each home.categories.data as heading}
 								<li>
 									<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -132,7 +132,7 @@
 							{/each}
 						</ul>
 					</div>
-					<div class="categories__tabs__gallery" in:fadeIn id="categories_data" gsap-duration="1.5" gsap-delay="1.5">
+					<div class="categories__tabs__gallery" in:fadeIn id="categories_data" gsap-duration="1.5" gsap-delay="1">
 						{#key activeTab}
 							{#if loading}  <!-- show load -->
 								<div class="col text-center list-text-details">Loading...</div>
@@ -171,15 +171,16 @@
 
 <section class="featured-projects">	
 	<Container>
-		<Row>
-			<Carousel 
-			preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
-			heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
-			btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
-			btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-			featuredProjects={home.featuredProjects}
-	/>
-		</Row>
+		<Animate>
+			<Row>
+				<Carousel 
+				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
+				featuredProjects={home.featuredProjects}/>
+			</Row>
+		</Animate>
 	</Container>
 </section>
 
@@ -449,7 +450,7 @@
 					display: flex;
 					// flex-wrap: wrap;
 					width: 90%;
-					margin: 2rem auto;
+					margin: 3rem auto;
 					padding-left: 0;	
 					
 					@include media-max(lg){
@@ -652,7 +653,8 @@
 	}
 
 	.featured-projects{
-		padding: 10rem 0;
+		padding: 5rem 0 13.75rem;
+		margin: 0;
 		// padding-bottom: 5rem;
 		overflow: hidden;
 		@include media-max(sm){
@@ -827,7 +829,7 @@
 			}
 		}
 		&__content{
-			height: 51.536rem;
+			height: 43rem;
 			@include media-max(lg){
 				height: 35rem;
 			}	
@@ -1050,7 +1052,7 @@
 		.section--bannerOnly{
 			background-image: var(--lrbg);
 			background-size: cover;
-			height: 100vh;
+			height: 90vh;
 			width: 100%;
 			margin: 0 auto;
 			opacity: 0;
