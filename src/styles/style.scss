@@ -319,13 +319,13 @@ header{
                 color: $white-color;
             }
         }
-        .logo{
-            position: unset;
-            height: 3.5rem;
-        }
-        .navbar-brand {
-            height: auto;
-        }
+        // .logo{
+        //     position: unset;
+        //     height: 3.5rem;
+        // }
+        // .navbar-brand {
+        //     height: auto;
+        // }
     }
     .mobile-menu-header{
         text-align: left;
@@ -1011,9 +1011,15 @@ img {
     display: flex;
     visibility: hidden;
     overflow: hidden;
-}
-  
-.text-animate span{
-    display: block;
-    position: relative;
+
+    span {
+        display: block;
+        position: relative;
+    }
+
+    &.secondary-font {
+        span {
+			font-family: $secondary-font !important;
+        }
+    }
 }
