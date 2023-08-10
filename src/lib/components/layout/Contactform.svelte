@@ -7,7 +7,8 @@
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 	import Animate from '$lib/components/Animate.svelte';
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
+	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	let emailTo = '';
 	let emailSubject = '';
@@ -92,20 +93,19 @@
 </script>
 {#await promise}
 {:then contactSettings} 
-<Animate>
 <section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})">
 	<Container>
 		<Row>
 			<Col md="6">
 				<div class="contact__content">
-					<div class="contact__content__wrapper" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
-						<h2>{contactSettings.heading ? contactSettings.heading : ''}</h2>
-						<p>{contactSettings.subheading ? contactSettings.subheading : ''}</p>
+					<div class="contact__content__wrapper">
+						<h2 class="text-animate secondary-font" in:textAnimate id="global_contact_heading" gsap-duration="1">{contactSettings.heading ? contactSettings.heading : ''}</h2>
+						<p in:fly id="global_contact_cont" gsap-delay="0.5" gsap-duration="1.2">{contactSettings.subheading ? contactSettings.subheading : ''}</p>
 					</div>
 				</div>
 			</Col>
 			<Col md="6">
-				<div class="contact__form" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+				<div class="contact__form" in:fly id="global_contact_form" gsap-duration="1.2">
 					<Form method="post">
 						<FormGroup class="input-icon-box">
 							<Input class="input-user" placeholder="Full Name" bind:value={name} />
@@ -131,7 +131,6 @@
 		</Row>
 	</Container>
 </section>
-</Animate>
 {/await}
 <style lang="scss">
 .contact{
@@ -160,6 +159,8 @@
 		&__wrapper{
 			h2{
 				margin-bottom: 1rem;
+				flex-wrap: wrap;
+				width: 28rem;
 			}	
 			p {
 				font-size: 1.5rem;

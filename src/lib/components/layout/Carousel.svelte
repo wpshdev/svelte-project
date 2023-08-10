@@ -167,7 +167,7 @@ $: {
     flex-direction: column;
     gap: 5rem;
     &__heading{
-      padding-top: 5rem;
+      margin-top: 5rem;
       margin-bottom: 1rem;
       width: 100%;
       @include media-max(sm){
@@ -176,7 +176,7 @@ $: {
       }    
       p{
         font-size: 1.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         color: $primary-color;
         font-weight: 500;
       }
