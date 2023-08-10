@@ -52,7 +52,7 @@
 
 <section class="mw-1000 text-center about-heading">
     <Container>
-            <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="0.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
+            <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
             <p in:fly id="about_heading_cont" gsap-delay="0.5" gsap-duration="1.2">{@html about.abouttext ? about.abouttext : ''}</p>
     </Container>
 </section>
@@ -61,7 +61,7 @@
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
                     <div>
-                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="0.5">{@html about.Section1heading ? about.Section1heading : ''}</h3>
+                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1">{@html about.Section1heading ? about.Section1heading : ''}</h3>
                         <p in:fly id="cd-cont1" gsap-duration="1.2">{@html about.Section1text ? about.Section1text : ''}</p>
                     </div>
                 </Col>
@@ -89,7 +89,7 @@
             </Col>
             <Col md="5" class="align-self-center">
                 <div>
-                    <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="0.5">{@html about.Section2heading ? about.Section2heading : ''}</h3>
+                    <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1">{@html about.Section2heading ? about.Section2heading : ''}</h3>
                     <p in:fly id="cd-cont2" gsap-duration="1.2">{@html about.Section2text ? about.Section2text : ''}</p>
                 </div>
             </Col>
@@ -101,7 +101,7 @@
         <Row class="flex-md-row flex-column-reverse">
             <Col md="5" class="align-self-center">
                 <div>
-                    <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="0.5">{@html about.Section3heading ? about.Section3heading : ''}</h3>
+                    <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1">{@html about.Section3heading ? about.Section3heading : ''}</h3>
                     <p in:fly id="cd-cont3" gsap-duration="1.2"> {@html about.Section3text ? about.Section3text : ''}</p>
                 </div>
             </Col>
@@ -150,12 +150,12 @@
 <section class="sets-parts">
     <Container>
         <Row>
-            <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="0.5" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
+            <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
         </Row>
         <Row class="flex-md-row flex-column-reverse sets-parts__row">  
             <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                 <div >
-                    <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="0.5">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
+                    <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="1">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
                     <p class="text-right" in:fly id="sp-cont1" gsap-duration="1.2">{@html about.Section6text ? about.Section6text : ''}</p>
                 </div>
             </Col>
@@ -183,7 +183,7 @@
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
                     <div>
-                        <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="0.5">{@html about.Section7heading ? about.Section7heading : ''}</h3>
+                        <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="1">{@html about.Section7heading ? about.Section7heading : ''}</h3>
                         <p in:fly id="sp-cont2" gsap-duration="1.2">{@html about.Section7text ? about.Section7text : ''}</p>
                     </div>
                 </Col>
@@ -195,7 +195,7 @@
         <Row class="flex-md-row flex-column-reverse sets-parts__row">
             <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                 <div>
-                    <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="0.5">{@html about.Section8heading ? about.Section8heading : ''}</h3>
+                    <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="1">{@html about.Section8heading ? about.Section8heading : ''}</h3>
                     <p class="text-right" in:fly id="sp-cont3" gsap-duration="1.2">{@html about.Section8text ? about.Section8text : ''}</p>
                 </div>
             </Col>

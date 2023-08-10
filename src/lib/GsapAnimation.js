@@ -29,6 +29,7 @@ export function fadeIn(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    targetElement.style.opacity = '0';
     
     // FadeIn animation
     ScrollTrigger.create({
@@ -140,6 +141,7 @@ export function textAnimate(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    targetElement.style.opacity = '0';
 
     // Split text
     const text = targetElement.textContent;

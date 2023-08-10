@@ -1,7 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { fade, fly } from 'svelte/transition';
-	import Animate from "$lib/components/Animate.svelte";
+    // import { fade, fly } from 'svelte/transition';
+	// import Animate from "$lib/components/Animate.svelte";
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
     let flickityInstance;
     export let clientTestimonials;
@@ -35,8 +36,8 @@
 </script>
 
 <section class="our_client_say">
-    <div in:fly={{duration: 2000,y: 50, delay: 1000}}>
-        <h2>{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
+    <div>
+        <h2 >{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
         <div class="our_client_say__cards slider-container">
             {#each clientTestimonials as testimonial}
                 <div class="details">

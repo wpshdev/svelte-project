@@ -105,6 +105,7 @@
 {/if}
 
 <section class="categories" >
+	<Animate>
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
@@ -159,6 +160,7 @@
 			</Col>
 		</Row>
 	</Container>
+	</Animate>
 </section>
 
 
@@ -369,7 +371,7 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		min-height: 80rem;
+		// min-height: 80rem;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -1047,6 +1049,7 @@
 			height: 100vh;
 			width: 100%;
 			margin: 0 auto;
+			opacity: 0;
 			// padding-bottom: 3.75rem;
 			@include media-max(ipadmini){
 				height: 40vh;
