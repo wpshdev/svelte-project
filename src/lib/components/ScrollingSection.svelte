@@ -12,7 +12,7 @@ function handleScroll() {
   const scrollTop = window.scrollY;
   const speedMultiplier = 1.2; // Adjust the speed as needed
 
-  TweenMax.to(section, 0, { y: scrollTop * speedMultiplier });
+  TweenMax.to(section, 0.1, { y: scrollTop * speedMultiplier });
 }
   </script>
 
