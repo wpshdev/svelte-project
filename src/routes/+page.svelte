@@ -1,8 +1,6 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	import SmoothScroll from "$lib/components/SmoothScroll.svelte";
-  	import ScrollingSection from '$lib/components/ScrollingSection.svelte';
 	// import banner from "$lib/img/first-section.svg";
 	// import { fade, fly } from 'svelte/transition';
 	import { onMount } from "svelte";
