@@ -76,7 +76,7 @@
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
 <section class="loc-gallery">
-	<ScrollingSection>
+	<!-- <ScrollingSection> -->
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -98,7 +98,7 @@
 			</Col>
 		</Row>
 	</Container>
-	</ScrollingSection>
+	<!-- </ScrollingSection> -->
 </section>	
 
 
@@ -109,7 +109,7 @@
 {/if}
 
 <section class="categories" >
-	<Animate>
+	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
@@ -164,14 +164,14 @@
 			</Col>
 		</Row>
 	</Container>
-	</Animate>
+	<!-- </Animate> -->
 </section>
 
 
 
 <section class="featured-projects">	
 	<Container>
-		<Animate>
+		<!-- <Animate> -->
 			<Row>
 				<Carousel 
 				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -180,7 +180,7 @@
 				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 				featuredProjects={home.featuredProjects}/>
 			</Row>
-		</Animate>
+		<!-- </Animate> -->
 	</Container>
 </section>
 
@@ -322,7 +322,7 @@
 		<Cta />
 	</Animate>
 </section>
-<SmoothScroll />
+<!-- <SmoothScroll /> -->
 <style lang="scss">
 	section{
 		min-height: 20vh;
@@ -376,7 +376,7 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		min-height: 80rem;
+		// min-height: 80rem;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -769,6 +769,7 @@
 			z-index: 5;
 			height: 31.25rem;
 			width: 100%;
+			object-fit: cover;
 			@include media-max(lg){
 				height: 25rem;
 			}
@@ -814,6 +815,7 @@
 				// @include media-max(sm){
 				// 	max-width: 70vw;
 				// }	
+				object-fit: cover;
 				height: 27.5rem;
 				width: 80%;
 				@include media-max(lg){
@@ -911,6 +913,7 @@
 				// }	
 				height: 31.25rem;
 				width: 100%;
+				object-fit: cover;
 				@include media-max(lg){
 					height: 25rem;
 				}
@@ -1025,6 +1028,7 @@
 			z-index: 5;
 			height: 31.25rem;
 			width: 100%;
+			object-fit: cover;
 			@include media-max(lg){
 				height: 25rem;
 			}

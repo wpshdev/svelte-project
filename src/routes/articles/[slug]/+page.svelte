@@ -2,7 +2,8 @@
     import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
 	import Animate from '$lib/components/Animate.svelte';
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     export let data;
     const url = 'https://strapi.ulfbuilt.com:1337';
 
@@ -25,50 +26,51 @@
 <div class="cover" style="background:#1E2D39;">
 <Container>
     <div class="cover__covertitle">
-        <p class="pfont ptc mb-1 pt-3 article" in:fly={{ y: 50,duration: 2000, delay: 500 }}>Article</p>
-        <h2 class="pfont stc mb-4" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>{title ? title : ''}</h2>
-        <p class="ptc pb-5" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
+        <p class="pfont ptc mb-1 pt-3 article" in:slide id="single_article_pre" gsap-duration="1" gsap-delay="0.5">Article</p>
+        <!-- class="text-animate" in:textAnimate id="single_article_heading" gsap-duration="0.5" -->
+        <h2 class="pfont stc mb-4" in:slide id="single_article_title" gsap-duration="1.5" gsap-x="-5">{title ? title : ''}</h2>
+        <p class="ptc pb-5" in:fly id="single_article_detail" gsap-duration="1" gsap-delay="0.5" gsap-y="10">{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
     </div>
 </Container>
     
- <div in:fade={{delay: 2500, duration: 500}} class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url ? data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url : data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
+ <div class="cover__coverimg" style="background-image:url({url}{data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url ? data.page.data[0].attributes.featuredimage.data.attributes.formats.large.url : data.page.data[0].attributes.featuredimage.data.attributes.url});"></div>
  
 </div>
 <section class="content">
-    <Animate>
+    <!-- <Animate> -->
         <Container class="py-4">
-            <h2 class="pb-3 sblue" in:fly={{ y: 50,duration: 2000, delay: 500 }}>{title ? title : ''}</h2>
-            <div class="two-columns" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
+            <h2 class="pb-3 sblue text-animate secondary-font" in:textAnimate id="single_article_content_heading" gsap-duration="0.5">{title ? title : ''}</h2>
+            <div class="two-columns">
                 {@html content ? content : ''}
             </div>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="related-articles">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
-            <h2 class="text-center pb-4" in:fly={{ y: 50,duration: 2000, delay: 500 }}>Related Articles</h2>
+            <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="about_related_title" gsap-duration="1">Related Articles</h2>
             <Row>
                 {#each filteredItems as blog,i (blog.id)}
                 <Col md="4" class="pb-5">
-                    <Animate>
+                    <!-- <Animate> -->
                         {#if blog.attributes.featuredimage.data}
                         <div class="related-articles__easein-container">
                             <div class="easein-img">
                                 <a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}" class="zoomImg"> 
-                                    <img in:fade={{delay: 1500, duration: 500}} src="{url}{blog.attributes.featuredimage.data.attributes.formats.large.url ? blog.attributes.featuredimage.data.attributes.formats.large.url : blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
+                                    <img src="{url}{blog.attributes.featuredimage.data.attributes.formats.large.url ? blog.attributes.featuredimage.data.attributes.formats.large.url : blog.attributes.featuredimage.data.attributes.url}" alt="blogtitle" class="blog-img w-100">
                                 </a>
                             </div>
                         </div>
                         {/if}
-                        <h3 class="pt-3" in:fly={{ y: 50,duration: 2000, delay: 2000 }}><a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}">{blog.attributes.title ? blog.attributes.title : ''}</a></h3>
-                        <p class="ptc" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'mins' : 'min'}. read</p>
-                    </Animate>
+                        <h3 class="pt-3"><a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}">{blog.attributes.title ? blog.attributes.title : ''}</a></h3>
+                        <p class="ptc">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'mins' : 'min'}. read</p>
+                    <!-- </Animate> -->
                 </Col>
                 {/each}
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <Cta/>
 <style lang="scss">
@@ -114,6 +116,7 @@
             font-size: 3.438rem;
             font-weight: 400;
             color: $white-color;
+            flex-wrap: wrap;
             @include media-max(xs){
                 font-size: 2.125rem;
                 padding-top: 0;
@@ -168,6 +171,7 @@
     }
     h2 {
         font-size: 2.813rem;
+        justify-content: center;
     }
     h3{
         margin: 0.5rem 0 1.5rem 0;

@@ -58,7 +58,7 @@
         
             </slot>
     </main>
-    <SmoothScroll />
+    <!-- <SmoothScroll /> -->
     <footer>
         <Footer />
     </footer>
