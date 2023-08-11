@@ -75,7 +75,6 @@
 
 	}
 
-
 	onMount(() => {
 		promise = fetchSiteSettings();
 		window.addEventListener('resize', () => {
@@ -95,11 +94,7 @@
 {:then siteSettings} 
   <Navbar expand="md">
 	<NavbarBrand href="/">
-		<Animate>
-			<a href="/" in:fly>
-				<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo" width="330" height="170" />
-			</a>	
-		</Animate>
+		<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo" width="330" height="170" />
 	</NavbarBrand>
 	{#if !isOpen}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->

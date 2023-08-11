@@ -75,8 +75,8 @@
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 
-<section class="loc-gallery slow-scroll">
-	<!-- <ScrollingSection> -->
+<section class="loc-gallery">
+	<ScrollingSection>
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -98,7 +98,7 @@
 			</Col>
 		</Row>
 	</Container>
-	<!-- </ScrollingSection> -->
+	</ScrollingSection>
 </section>	
 
 
@@ -376,7 +376,7 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// min-height: 80rem;
+		min-height: 80rem;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -1055,7 +1055,7 @@
 			height: 90vh;
 			width: 100%;
 			margin: 0 auto;
-			opacity: 0;
+			opacity: 1;
 			// padding-bottom: 3.75rem;
 			@include media-max(ipadmini){
 				height: 40vh;
