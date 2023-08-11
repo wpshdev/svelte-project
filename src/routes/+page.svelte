@@ -49,7 +49,7 @@
     }
 
 
-// Written by parth for image different speed
+// Written by parth for different section speed
 import { onMount } from "svelte";
 let scrollY = 0;
 onMount(() => {
@@ -67,6 +67,7 @@ function calculateMaxTranslateY() {
 function handleScroll() {
     scrollY = window.scrollY;
     updateChildPosition();
+	updateChildPositionimg();
   }
 
   function updateChildPosition() {
@@ -78,6 +79,19 @@ function handleScroll() {
     const child = document.querySelector(".child");
     child.style.transform = `translateY(${translateY}px)`;
   }
+  function updateChildPositionimg() {
+	const containertop = document.querySelector(".containerimg").offsetTop;
+	let scrollYval = scrollY + screen.height;
+	if(scrollYval - containertop){
+		let invalue = scrollYval - containertop;
+		const scrollSpeedMultiplier = 0.2; // Adjust this value for slower scrolling
+		const translateY = invalue * scrollSpeedMultiplier;
+		const child = document.querySelector(".childimg");
+		child.style.transform = `translateY(-${translateY}px)`;
+	}
+  }
+  // Written by parth for different image speed
+
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
@@ -218,7 +232,7 @@ function handleScroll() {
 
 
 
-<section class="reputation" >
+<section class="reputation containerimg" >
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -236,7 +250,7 @@ function handleScroll() {
 					</Animate>
 				</Col>
 				<Col md="5" class="my-auto" >
-					<div>
+					<div class="childimg">
 						{#if home.reputation.image.data}
 						<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						{/if}
@@ -246,11 +260,11 @@ function handleScroll() {
 		</Container>
 </section>
 
-<section class="process">
+<section class="process containerimg">
 	<Container>
 		<Row>
 			<Col md="6">
-				<div class="process__top-image" >
+				<div class="process__top-image childimg" >
 					{#if home.ourProcessTopImage.data[0]}
 					<Animate>
 						<img in:slide id="process-top-img" gsap-duration="2" gsap-x="20" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
@@ -275,7 +289,7 @@ function handleScroll() {
 				</Animate>
 			</Col>
 			<Col md="5" class="my-auto ">
-				<div class="process__bottom">
+				<div class="process__bottom childimg">
 					{#if home.ourProcessRightImage.data}
 					<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					{/if}
