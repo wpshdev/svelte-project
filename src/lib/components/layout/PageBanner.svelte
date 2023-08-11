@@ -57,7 +57,7 @@
 		background-image: var(--banner);
 		background-size: cover;
 		min-height: 68vh;
-		background-position: bottom;
+		background-position: center;
 		background-size: cover;
 		margin: 0;
 		text-align: center;
