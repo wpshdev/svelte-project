@@ -48,6 +48,36 @@
         })();
     }
 
+
+// Written by parth for image different speed
+import { onMount } from "svelte";
+let scrollY = 0;
+onMount(() => {
+  window.addEventListener("scroll", handleScroll);
+  calculateMaxTranslateY();
+});
+let maxTranslateY;
+function calculateMaxTranslateY() {
+	const container = document.querySelector(".loc-gallery");
+	const child = document.querySelector(".child");
+    const containerHeight = container.clientHeight;
+    const childHeight = child.clientHeight;
+    maxTranslateY = containerHeight - childHeight - 100;
+}
+function handleScroll() {
+    scrollY = window.scrollY;
+    updateChildPosition();
+  }
+
+  function updateChildPosition() {
+    const scrollSpeedMultiplier = 0.5; // Adjust this value for slower scrolling
+    let translateY = scrollY * scrollSpeedMultiplier;
+    
+    // Ensure translateY does not exceed maxTranslateY
+    translateY = Math.min(translateY, maxTranslateY);
+    const child = document.querySelector(".child");
+    child.style.transform = `translateY(${translateY}px)`;
+  }
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
@@ -56,8 +86,7 @@
 </svelte:head>
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
 <section class="loc-gallery">
-	<!-- <ScrollingSection> -->
-	<Container>
+	<Container class="child">
 		<Row>
 			<Col xs="12" class="pb-4">
 				<h2>
@@ -356,7 +385,8 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// min-height: 80rem;
+		min-height: 80rem;
+		padding: 5rem 0;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;

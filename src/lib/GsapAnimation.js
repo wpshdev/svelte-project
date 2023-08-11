@@ -196,3 +196,8 @@ export function textAnimate(node) {
     });
 
 }
+
+
+
+// Written by parth
+// for minus scroll animation where section is going upwards
