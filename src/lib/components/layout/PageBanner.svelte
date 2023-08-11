@@ -3,6 +3,8 @@
     import Animate from "../Animate.svelte";
     // import { fly } from "svelte/transition";
     import TextTransition from "$lib/TextTransition.svelte";
+	import { onMount } from "svelte";
+	import { gsap } from "gsap/dist/gsap";
 	import { textAnimate, fly } from '$lib/GsapAnimation.js';
     export let banner;
 	export let bannerMobile;
@@ -16,12 +18,24 @@
 			pageBanner = bannerMobile;
 		}
 	}
+
+	// page banner
+	let pageBannerheight = 100;
+    let divElement;
+    onMount(() => {
+      window.addEventListener("scroll", handleScroll);
+    });
+    function handleScroll() {
+      const scrollProgress = window.scrollY / window.innerHeight;
+      const newHeight = 100 - scrollProgress * 50;
+      gsap.to(divElement, { height: `${newHeight}vh`, duration: 0.3 });
+    }
 </script>
 
 <svelte:window 
 	bind:innerWidth
 />
-<section class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner})">
+<section class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
 	<Container>
 		<Row>
 			<Col >

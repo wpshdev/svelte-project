@@ -1,24 +1,11 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	// import banner from "$lib/img/first-section.svg";
-	// import { fade, fly } from 'svelte/transition';
-	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
-	// import TextTransition from "$lib/TextTransition.svelte";
-	// import ImageSlider from '$lib/ImageSlider.svelte';
 	import Carousel from "$lib/components/layout/Carousel.svelte";
-	// import modern from "$lib/img/modern.svg";
-	// import mountain from "$lib/img/mountain.svg";
-	// import traditional from "$lib/img/traditional.svg";
-	import tr from "$lib/img/tnr.svg";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	//import MasonryCard from "$lib/components/MasonryCard.svelte";
-	//import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
-	//import gsap from 'gsap';
-	// import { lazyload } from '$lib/lazyload.js'
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
@@ -60,9 +47,6 @@
             }
         })();
     }
-	// $: listener = {propCount , activeTab};
-	
-	// let height;
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -70,9 +54,7 @@
 	<title>{home.title ? home.title : 'Home'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
-
 <section class="loc-gallery">
 	<!-- <ScrollingSection> -->
 	<Container>
