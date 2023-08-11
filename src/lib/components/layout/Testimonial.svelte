@@ -1,8 +1,9 @@
 <script>
     export let testimonial;
     import {Container, Row, Col} from "sveltestrap";
-	import { fade, fly } from 'svelte/transition';
+	// import { fade, fly } from 'svelte/transition';
 	import Animate from "$lib/components/Animate.svelte";
+	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 </script>
 
 <section class="testimonial testimonialA">
@@ -10,7 +11,7 @@
 		<Container>
 			<Row>
 				<Col >
-					<p class="text-center" in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+					<p class="text-center" in:fly id="testimonial-portfolio-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
 						{ testimonial ? testimonial : '' }
 					</p>
 				</Col>

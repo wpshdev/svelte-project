@@ -3,7 +3,8 @@
     import {Container} from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
-    import { fade, fly } from "svelte/transition";
+    // import { fade, fly } from "svelte/transition";
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     const url = "https://strapi.ulfbuilt.com:1337/";
 </script>
 <svelte:head>
@@ -14,8 +15,8 @@
 
 <section class="content" >
     <Container class="mw-1000 h-text">
-        <h2 class="text-center mb-5" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
-        <div in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{@html data.data.attributes.Content ? data.data.attributes.Content : ''}</div>
+        <h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="privacy_heading" gsap-duration="0.5">{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
+        <div in:fadeIn id="privacy_content" gsap-duration="1" gsap-delay="0.5">{@html data.data.attributes.Content ? data.data.attributes.Content : ''}</div>
     </Container>
 </section>
 <Cta/>
@@ -23,6 +24,7 @@
 .content{
     h2 {
         color: $secondary-color;
+        justify-content: center;
     }
     :global(p){
         line-height: 1.7rem !important;        

@@ -3,7 +3,7 @@
     import {Container, Row, Col} from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
     import Animate from '$lib/components/Animate.svelte';
-    import { fade, fly } from "svelte/transition";
+    // import { fade, fly } from "svelte/transition";
     import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import { onMount } from "svelte";
     import axios from "axios";
@@ -12,6 +12,7 @@
     let featuredProjects = data.portfolios.data
     import noFeatured from "$lib/img/blog-empty.svg"
     let fallback = data.fallback.data.attributes.fallbackImage.data;
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
     // export let pdata;
     // export let featuredProjects;
@@ -39,201 +40,213 @@
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 
 <section class="service-b">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
-            <h2 class="text-center mb-5 py-3" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{page.section1heading ? page.section1heading : ''}</h2>
-            <div in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+            <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_s1_title" gsap-duration="1">{page.section1heading ? page.section1heading : ''}</h2>
                 <Row>
                     <Col md=4 sm=6 xs=12>
-                        <Animate>
+                        <!-- <Animate> -->
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                         <div class="service-b__service-box__service-box-inner__service-icon">
-                                            <img src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
+                                            <img in:fadeIn id="about_icon1" gsap-duration="1" src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
                                         </div>
-                                    <h4>{page.section1item1heading ? page.section1item1heading : ''}</h4>
+                                    <h4 in:slide id="about_title_icon1" gsap-duration="1">{page.section1item1heading ? page.section1item1heading : ''}</h4>
                                 </div>
-                                <p>{page.section1item1text ? page.section1item1text : ''}</p>
+                                <p in:fadeIn id="about_content_icon1" gsap-duration="1">{page.section1item1text ? page.section1item1text : ''}</p>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>
                     <Col md=4 sm=6 xs=12>
-                        <Animate>
+                        <!-- <Animate> -->
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
+                                        <img in:fadeIn id="about_icon2" gsap-duration="1" src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
                                     </div>
-                                    <h4>{page.section1item2heading ? page.section1item2heading : ''}</h4>
+                                    <h4 in:slide id="about_title_icon2" gsap-duration="1">{page.section1item2heading ? page.section1item2heading : ''}</h4>
                                 </div>
-                                <p>{page.section1item2text ? page.section1item2text : ''}</p>
+                                <p in:fadeIn id="about_content_icon2" gsap-duration="1">{page.section1item2text ? page.section1item2text : ''}</p>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>
                     <Col md=4 sm=6 xs=12>
-                        <Animate>
+                        <!-- <Animate> -->
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
+                                        <img in:fadeIn id="about_icon3" gsap-duration="1" src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
                                     </div>
-                                    <h4>{page.section1item3heading ? page.section1item3heading : ''}</h4>
+                                    <h4 in:slide id="about_title_icon3" gsap-duration="1">{page.section1item3heading ? page.section1item3heading : ''}</h4>
                                 </div>
-                                <p>{page.section1item3text ? page.section1item3text : ''}</p>
+                                <p in:fadeIn id="about_content_icon3" gsap-duration="1">{page.section1item3text ? page.section1item3text : ''}</p>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>
                     <Col md=4 sm=6 xs=12>
-                        <Animate>
+                        <!-- <Animate> -->
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
+                                        <img in:fadeIn id="about_icon4" gsap-duration="1" src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
                                     </div>
-                                    <h4>{page.section1item4heading ? page.section1item4heading : ''}</h4>
+                                    <h4 in:slide id="about_title_icon4" gsap-duration="1">{page.section1item4heading ? page.section1item4heading : ''}</h4>
                                 </div>
-                                <p>{page.section1item4text ? page.section1item4text : ''}</p>
+                                <p in:fadeIn id="about_content_icon4" gsap-duration="1">{page.section1item4text ? page.section1item4text : ''}</p>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>
                     <Col md=4 sm=6 xs=12>
-                        <Animate>
+                        <!-- <Animate> -->
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
+                                        <img in:fadeIn id="about_icon5" gsap-duration="1" src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
                                     </div>
-                                    <h4>{page.section1item5heading ? page.section1item5heading : ''}</h4>
+                                    <h4 in:slide id="about_title_icon5" gsap-duration="1">{page.section1item5heading ? page.section1item5heading : ''}</h4>
                                 </div>
-                                <p>{page.section1item5text ? page.section1item5text : ''}</p>
+                                <p in:fadeIn id="about_content_icon5" gsap-duration="1">{page.section1item5text ? page.section1item5text : ''}</p>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>
                     <Col md=4 sm=6 xs=12>
-                        <Animate>
+                        <!-- <Animate> -->
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
+                                        <img in:fadeIn id="about_icon6" gsap-duration="1" src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
                                     </div>
-                                    <h4>{page.section1item6heading ? page.section1item6heading : ''}</h4>
+                                    <h4 in:slide id="about_title_icon6" gsap-duration="1">{page.section1item6heading ? page.section1item6heading : ''}</h4>
                                 </div>
-                                <p>{page.section1item6text ? page.section1item6text : ''}</p>
+                                <p in:fadeIn id="about_content_icon6" gsap-duration="1">{page.section1item6text ? page.section1item6text : ''}</p>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>
                 </Row>
-            </div>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="mx-10 sets-us-apart">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
-            <h2 class="text-center mb-5 py-3" in:fly={{ y: 50,duration: 2000, delay: 500 }}>{page.section2mainheading ? page.section2mainheading : ''}</h2>
+            <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_sua_title" gsap-duration="1">{page.section2mainheading ? page.section2mainheading : ''}</h2>
                 <Row noGutters class="justify-content-center sets-us-apart__row">
                     <Col md="6" class="sets-us-apart__content">
-                        <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
-                            <h4 class="text-right pfont py-3">{@html page.section2heading ? page.section2heading : ''}</h4>
-                            <p class="text-right px-5 py-5 blue-color-background">{@html page.section2text ? page.section2text : ''}</p>
+                        <div>
+                            <h4 class="text-right pfont py-3 text-animate" in:textAnimate id="about_sua_title1" gsap-duration="1">{@html page.section2heading ? page.section2heading : ''}</h4>
+                            <div class="blue-color-background">
+                                <p class="text-right px-5 py-5" in:fly id="about_sua_cont1" gsap-duration="1.2" gsap-y="20">
+                                    {@html page.section2text ? page.section2text : ''}
+                                </p>
+                            </div>
                         </div>
                     </Col>
                     <Col md="6" class="imageCont">
                         {#if page.section2image.data}
-                        <img in:fade={{delay: 1000, duration: 1000}} src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
+                        <img in:fadeIn id="about_sua_img1" gsap-duration="1" src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
                         {/if}
                     </Col>
                 </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="mx-10 sets-us-apart">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row noGutters class="justify-content-center flex-md-row flex-column-reverse sets-us-apart__row">
                 <Col md="6" class="imageCont">
                     {#if page.section3image.data}
-                    <img in:fade={{delay: 1000, duration: 1000}} src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
+                    <img in:fadeIn id="about_sua_img2" gsap-duration="1" gsap-x="-7" src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
                     {/if}
                 </Col>
                 <Col md="6" class="sets-us-apart__content">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
-                        <h4 class="txt-center py-3 pfont">{@html page.section3heading ? page.section3heading : ''}</h4>
-                        <p class="px-5 txt-center py-5 blue-color-background">{@html page.section3text ? page.section3text : ''}</p>
+                    <div >
+                        <h4 class="txt-center py-3 pfont text-animate" in:textAnimate id="about_sua_title2" gsap-duration="1">{@html page.section3heading ? page.section3heading : ''}</h4>
+                        <!-- <p class="px-5 txt-center py-5 blue-color-background">{@html page.section3text ? page.section3text : ''}</p> -->
+                        <div class="blue-color-background">
+                            <p class="txt-center px-5 py-5" in:fly id="about_sua_cont2" gsap-duration="1.2" gsap-y="20">
+                                {@html page.section3text ? page.section3text : ''}
+                            </p>
+                        </div>
                     </div>
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="mx-10 sets-us-apart">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row noGutters class="justify-content-center sets-us-apart__row">
                 <Col md="6" class="sets-us-apart__content">
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
-                        <h4 class="text-right pfont py-3">{@html page.section4heading ? page.section4heading : ''}</h4>
-                        <p class="text-right px-5 py-5 blue-color-background">{@html page.section4text ? page.section4text : ''}</p>
+                    <div>
+                        <h4 class="text-right pfont py-3 text-animate" in:textAnimate id="about_sua_title3" gsap-duration="1">{@html page.section4heading ? page.section4heading : ''}</h4>
+                        <!-- <p class="text-right px-5 py-5 blue-color-background">{@html page.section4text ? page.section4text : ''}</p> -->
+                        <div class="blue-color-background">
+                            <p class="text-right px-5 py-5" in:fly id="about_sua_cont3" gsap-duration="1.2" gsap-y="20">
+                                {@html page.section4text ? page.section4text : ''}
+                            </p>
+                        </div>
                     </div>
                 </Col>
                 <Col md="6" class="imageCont">
                     {#if page.section4image.data}
-                    <img in:fade={{delay: 1000, duration: 1000}} src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
+                    <img in:fadeIn id="about_sua_img3" gsap-duration="1" src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
                     {/if}
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="height-100vh fullwidth">
-    <Animate>
+    <!-- <Animate> -->
         {#if page.section5image.data}
-        <img in:fade={{delay: 500, duration: 1000}} src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
+        <img in:fly id="about_banneronly_img" gsap-duration="1.5" gsap-y="10" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
         {/if}
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="reimagine">
     <Animate>
         <Container>
-            <h2 class="text-center mb-3 py-3" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>{page.section6heading ? page.section6heading : ''}</h2>
-            <p class="mb-2 py-3 two-columns" in:fly={{ y: 50,duration: 2000, delay: 1500 }}> {@html page.section6text ? page.section6text : ''}</p>
-            <div class="text-right" in:fly={{ y: 50,duration: 2000, delay: 2000 }}><a class="btn btn-secondary" href="{page.section6btnUrl ? page.section6btnUrl : '#'}">{page.section6btn ? page.section6btn : 'Button'}</a></div>
+            <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" >{page.section6heading ? page.section6heading : ''}</h2>
+            <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-delay="0.5" gsap-y="20"> {@html page.section6text ? page.section6text : ''}</p>
+            <div class="text-right" ><a class="btn btn-secondary" href="{page.section6btnUrl ? page.section6btnUrl : '#'}">{page.section6btn ? page.section6btn : 'Button'}</a></div>
         </Container>
     </Animate>
 </section>
 
 <section class="explore">
-	<Animate>
-		<Container>
-			<Row>
-				<Col md="12">
-					<h2 class="text-center" in:fly={{ y: 50,duration: 2000, delay: 500 }}>{page.ExploreProjects.Heading ? page.ExploreProjects.Heading : 'Explore our Projects...'}</h2>
-				</Col>			
-				{#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
-					<Col md="6">
-						<div class="explore__article" in:fade={{delay: 1000*index, duration: 1000}}>
-							<a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
-								<!-- <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}"> -->
-								{#if featuredProject.attributes.featuredImage.data != null}
-                                <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.formats.large.url ? featuredProject.attributes.featuredImage.data.attributes.formats.large.url : featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
-                                {:else}
-                                <img src="{fallback ? url+fallback.attribute.url : noFeatured}" alt="{featuredProject.attributes.title}" >
-                                {/if}
-                                <div class="explore__article__text">
-									<span>{('0' + (index + 1)).slice(-2)}</span>
-									{featuredProject.attributes.title ? featuredProject.attributes.title : ''}
-                                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                    </i>
-								</div>
-							</a>
-						</div>
-					</Col>
-				{/each}
-			</Row>
-		</Container>
-	</Animate>
+    <Container>
+        <Row>
+            <Animate>
+                <Col md="12">
+                    <h2 class="text-center text-animate secondary-font" in:textAnimate id="about_explore_title" gsap-duration="1">{page.ExploreProjects.Heading ? page.ExploreProjects.Heading : 'Explore our Projects...'}</h2>
+                </Col>	
+            </Animate>		
+            {#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
+                <Col md="6">
+                    <div class="explore__article">
+                        <a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
+                            <!-- <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}"> -->
+                            {#if featuredProject.attributes.featuredImage.data != null}
+                            <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.formats.large.url ? featuredProject.attributes.featuredImage.data.attributes.formats.large.url : featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}" />
+                            {:else}
+                            <img src="{fallback ? url+fallback.attribute.url : noFeatured}" alt="{featuredProject.attributes.title}" >
+                            {/if}
+                            <div class="explore__article__text">
+                                <span>{('0' + (index + 1)).slice(-2)}</span>
+                                {featuredProject.attributes.title ? featuredProject.attributes.title : ''}
+                                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </i>
+                            </div>
+                        </a>
+                    </div>
+                </Col>
+            {/each}
+        </Row>
+    </Container>
 </section> 
 
 <Animate>
@@ -259,6 +272,7 @@
         }
         h2 {
             color: $secondary-color;
+            justify-content: center;
         }
         // for bg bars
         :global(.row:after) {
@@ -281,6 +295,7 @@
         }
         :global(.row) {
             position: relative;
+            // padding: 3rem 0;
         }
         :global(.row .col-md-4) {
             min-height: 40vh;
@@ -356,6 +371,9 @@
         padding: 0;
     }
     .reimagine {
+        h2 {
+            justify-content: center;
+        }
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
@@ -393,9 +411,12 @@
         }
         h2 {
             color: $secondary-color;
+            justify-content: center;
+            padding: 3rem 0 5rem;
         }
         img {
             height: 40rem;
+            object-fit: cover;
             @include media-max(lg){
 				height: 30rem;
 			}
@@ -450,6 +471,7 @@
             font-weight: 600;
             &.text-right {
                 padding-right: 3rem;
+                justify-content: end;
             }
             &.txt-center {
                 padding-left: 3rem;
@@ -514,6 +536,7 @@
             margin-bottom: 3rem;
             font-size: 2.8rem;
             color: $secondary-color;
+            justify-content: center;
         }
         &__article{
             overflow: hidden;

@@ -8,7 +8,8 @@
 	import Animate from '$lib/components/Animate.svelte';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from "axios";
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     // let blogs = data.blogs.data;
     let url = "https://strapi.ulfbuilt.com:1337";
     let title = data.page.data.attributes.title;
@@ -66,10 +67,10 @@
 
 <PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url ? data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url  : data.page.data.attributes.Cover.data[0].attributes.url}"/>
 <section class="category">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
-                <ul class="cat-list" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+                <ul class="cat-list" in:slide id="article_cat" gsap-duration="1.5" gsap-x="-5">
                     <li>
                         <div class="category-list-content category-container">
                             <p class="category-list">CATEGORY</p>
@@ -92,15 +93,15 @@
                 </ul>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="mw-1000 text-center article-section">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
-            <h2 class="mb-2 text-center" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{data.page.data.attributes.section2heading ? data.page.data.attributes.section2heading : ''}</h2>
-            <p class="text-left" in:fly={{ y: 50,duration: 2000, delay: 2500 }}>{@html data.page.data.attributes.section2description ? data.page.data.attributes.section2description : ''}</p>
+            <h2 class="mb-2 text-center text-animate secondary-font" in:textAnimate id="article_heading" gsap-duration="0.5">{data.page.data.attributes.section2heading ? data.page.data.attributes.section2heading : ''}</h2>
+            <p class="text-left" in:fly id="article_content" gsap-duration="1" gsap-delay="0.5">{@html data.page.data.attributes.section2description ? data.page.data.attributes.section2description : ''}</p>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="article-blog">
 <Container>
@@ -112,26 +113,22 @@
                     <div class="col text-center list-text-details">No Articles Found...</div>
                 {:else}
                 {@const items = articleList}
-                    <Animate>
-                        <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
-                            <!-- Pagination -->
-                            <LightPaginationNav
-                            totalItems="{articleList.length}"
-                            pageSize="{pageSize}"
-                            currentPage="{currentPage}"
-                            limit="{1}"
-                            showStepOptions="{true}"
-                            on:setPage="{(e) => currentPage = e.detail.page}"
-                            />
-                            <!-- End Pagination -->
-                        </div>
-                    </Animate>
+                    <!-- Pagination -->
+                    <LightPaginationNav
+                    totalItems="{articleList.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                    <!-- End Pagination -->
                     <div class="mx-8"></div>
                     {#each paginate({ items, pageSize, currentPage }) as blog,i (blog.id)}
                         <Row class="{i%2 === 1 ? 'flex-md-row flex-column-reverse' : ''} blog-card">
                             <Col md="6" style="padding:0;" class="{i%2 === 1 ? 'order-1' : ''}">
-                                <Animate>
-                                    <div class="blogsection7 zoomImg" in:fade={{delay: 500, duration: 1000}}>
+                                <!-- <Animate> -->
+                                    <div class="blogsection7 zoomImg">
                                         {#if blog.attributes.featuredimage.data != null}
                                             {#if blog.attributes.featuredimage.data.attributes.formats != null}
                                                 <img width="{blog.attributes.featuredimage.data.attributes.width}" height="{blog.attributes.featuredimage.data.attributes.height}" src="{blog.attributes.featuredimage.data.attributes.formats.large.url ? url+blog.attributes.featuredimage.data.attributes.formats.large.url : url+blog.attributes.featuredimage.data.attributes.url}" alt="{blog.attributes.title}" class="blog-img w-100">
@@ -142,17 +139,19 @@
                                             <img alt="{blog.attributes.title}" src="{fallback ? url+fallback.attributes.url : blogempty}" class="blog-img w-100">
                                         {/if}
                                     </div>
-                                </Animate>
+                                <!-- </Animate> -->
                             </Col>
                 
                             <Col md="5">
                                 <Animate>
                                     <div class="blogsection5">
-                                        <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
-                                            <span>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</span>
-                                            <h2>{blog.attributes.title}</h2>
-                                            <p>{blog.attributes.shorttext}</p>
-                                            <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
+                                        <div>
+                                            <p class="pre-head" in:slide id="article_detail{i}" gsap-duration="1">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</p>
+                                            <h2 in:slide id="article_title{i}" gsap-duration="1">{blog.attributes.title}</h2>
+                                            <div in:fly id="article_text{i}" gsap-duration="1" gsap-delay="0.5" gsap-y="20">
+                                                <p>{blog.attributes.shorttext}</p>
+                                                <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </Animate>
@@ -163,20 +162,16 @@
                     <div class="mx-8"></div>
                     {/each}
 
-                    <Animate>
-                        <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
-                            <!-- Pagination -->
-                            <LightPaginationNav
-                            totalItems="{articleList.length}"
-                            pageSize="{pageSize}"
-                            currentPage="{currentPage}"
-                            limit="{1}"
-                            showStepOptions="{true}"
-                            on:setPage="{(e) => currentPage = e.detail.page}"
-                            />
-                            <!-- End Pagination -->
-                        </div>
-                    </Animate>
+                    <!-- Pagination -->
+                    <LightPaginationNav
+                    totalItems="{articleList.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
+                    <!-- End Pagination -->
                 {/if}
             {/if}
         {/key}
@@ -297,7 +292,7 @@
                 align-items: center;
             } 
         }
-        span {
+        .pre-head {
             font-feature-settings: 'pnum' on, 'lnum' on;
             font-weight: 600;
             @include media-max(sm){
@@ -347,6 +342,7 @@
     .article-section{
         h2 {
             color: $secondary-color;
+            justify-content: center;
         }
         padding: 0 0 1rem 0;
         min-height: 15vh;

@@ -12,8 +12,9 @@
     // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
     // import { onMount } from 'svelte';
     import noFeatured from "$lib/img/blog-empty.svg"
-    import { fade, fly } from "svelte/transition";
+    import { fade } from "svelte/transition";
     import { paginate, LightPaginationNav } from 'svelte-paginate';
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	let domain = "https://strapi.ulfbuilt.com:1337";
 	let portfolio =  data.portfolio.data.attributes; 
@@ -88,10 +89,10 @@
     <Container>
         <Row>
             <Col class="text-center">
-                <h2 in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
+                <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
-                <div class="categories__tabs__heading" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+                <div class="categories__tabs__heading" in:fly id="portfolio_cat" gsap-delay="0.5" gsap-duration="1.2">
                     <ul>
                         {#each portfolio.masonryGallery.masonryItems.data as heading}
                             <li>
@@ -147,18 +148,16 @@
                                     </div>			
                                 {/each}
                             </div>
-                            <Animate>
-                                <div class="paginate-section" in:fly={{ y: 50,duration: 2000, delay: 500 }}>
-                                    <LightPaginationNav
-                                    totalItems="{portfolioList.length}"
-                                    pageSize="{pageSize}"
-                                    currentPage="{currentPage}"
-                                    limit="{1}"
-                                    showStepOptions="{true}"
-                                    on:setPage="{(e) => currentPage = e.detail.page}"
-                                    />
-                                </div>
-                            </Animate>
+                            <div class="paginate-section" >
+                                <LightPaginationNav
+                                totalItems="{portfolioList.length}"
+                                pageSize="{pageSize}"
+                                currentPage="{currentPage}"
+                                limit="{1}"
+                                showStepOptions="{true}"
+                                on:setPage="{(e) => currentPage = e.detail.page}"
+                                />
+                            </div>
                         {/if}
                     {/if}
                 {/key}
@@ -172,10 +171,10 @@
             <Row>
                 <Col class="text-center ">
                     <div class="portfolio-cta__content">
-                        <span in:fly={{ y: 50,duration: 2000, delay:1000 }}>{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</span>
-                        <h2 in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
+                        <p in:slide id="portfolio-cta-preheading" gsap-duration="1">{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</p>
+                        <h2 class="text-animate secondary-font" in:textAnimate id="portfolio-cta-heading">{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
                     </div>
-                    <div class="portfolio-cta__btns" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+                    <div class="portfolio-cta__btns" in:fly id="portfolio-cta-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
                         <a href="{portfolio.ourApproachLeftBtnUrl ? portfolio.ourApproachLeftBtnUrl : '#'}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle ? portfolio.ourApproachLeftBtnTitle : 'Button'}</a>
                         <a href="{portfolio.ourApproachRightBtnUrl ? portfolio.ourApproachRightBtnUrl : '#'}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle ? portfolio.ourApproachRightBtnTitle : 'Button'}</a>
                     </div>                   
@@ -213,6 +212,7 @@
         h2{
             margin-bottom: 1.5rem;
             color: $secondary-color;
+            justify-content: center;
             @include media-max(sm){
                 display: none;
             }
@@ -419,9 +419,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;        
+        position: relative;  
+              
         &__content{
-            span{
+            h2 {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 39rem;
+            }
+            p{
                 color: $primary-color;
                 font-weight: 500;
             }

@@ -6,7 +6,8 @@
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import Contactform from "$lib/components/layout/Contactform.svelte";
     import Modal from "$lib/components/layout/Modal.svelte";
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
@@ -32,72 +33,75 @@
 </svelte:head>
 <PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large_x2.url ? data.data.attributes.Cover.data.attributes.formats.large_x2.url : data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
 <section class="our-team">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="10" class="mx-auto">
-                    <h2 class="stc pb-4 text-center" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
-                    <p class="two-columns" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>{@html ourTeam.content ? ourTeam.content : ''}</p>
+                    <h2 class="stc pb-4 text-center text-animate secondary-font" in:textAnimate id="team_heading" gsap-duration="0.5">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
+                    <p class="two-columns" in:fadeIn id="team_content" gsap-duration="1" gsap-delay="0.5">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
-                    <Animate>
+                    <!-- <Animate> -->
                         <div class="heading-image">
-                            <img in:fade={{duration: 1000, delay: 1000}} src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
+                            <img in:fadeIn id="team_image" gsap-duration="1.5" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                         </div>
-                    </Animate>
+                    <!-- </Animate> -->
                     {/if}
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="owner">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row noGutters>
                 <Col md=6 class="tm-img">
-                    <div in:fade={{duration: 1000,  delay: 1000}}>
-                        <img alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
+                    <div>
+                        <img in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                         <div class="tm-box wtc">
-                            <h3 class="pfont">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
-                            <h4 class="pfont">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
+                            <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
+                            <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
                         </div>
                     </div>
                 </Col>
                 <Col md=6 class="owner-quote-container">
-                <div class="owner-quote" ><h3 class="stc line-height-2 text-center" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
+                <div class="owner-quote" ><h3 class="stc line-height-2 text-center" in:fly id="owner_quote" gsap-duration="1.5" gsap-y="20">{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="paragraph1">
     <Animate>
         <Container>
-            <h4 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
+            <h4 in:fadeIn id="team_paragraph" gsap-duration="1.5">{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
         </Container>
-      </Animate>
+    </Animate>
 </section>
 <section class="team-members">
-    <Animate>
-        <Container>
-            <Row>
-                <h2 class="sfont stc mb-5 text-center" in:fly={{ y: 50,duration: 2000, delay: 500 }}>{ourTeam.title ? ourTeam.title : ''}</h2>
-                <Col md={{ size: 8, offset: 2 }} class="inner-col">
+    <Container>
+        <Row>
+            <Animate>
+                <h2 class="sfont stc mb-5 text-center text-animate secondary-font" in:textAnimate id="member_heading" gsap-duration="0.5">{ourTeam.title ? ourTeam.title : ''}</h2>
+            </Animate>
+            <Col md={{ size: 8, offset: 2 }} class="inner-col">
                 <Row>
                     {#each ourTeam.team_members.data as member,index}
                         <Col md="6">
                             <!-- <a href="/our-team/{member.attributes.slug}"> -->
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
                             <div class="our-team__member" 
                             on:click={() => getMemberIndex(index)}
                             on:click={() => (showModal = true)}
-                            in:fade={{duration: 1000,  delay: 1000*index}}
                             >
-                                <img width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                                <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
-                                    <!-- our-team__member_caption class removed -->
-                                    <h5 class="pfont">{member.attributes.name}</h5>
-                                    <span class="pfont gtc">{member.attributes.position}</span>
-                                </div>
+                                <img in:fadeIn id="member_image{index}" gsap-duration="1.5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                                <Animate>
+                                    <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
+                                        <!-- our-team__member_caption class removed -->
+                                        <h5 class="pfont" in:slide id="member_name{index}" gsap-duration="1.5" gsap-x="-10">{member.attributes.name}</h5>
+                                        <p class="pfont gtc" in:slide id="member_title{index}" gsap-duration="1.5" gsap-x="-10">{member.attributes.position}</p>
+                                    </div>
+                                </Animate>
                             </div>
                             <!-- </a> -->
                         </Col>                    
@@ -124,18 +128,17 @@
             </Col>
         </Row>
     </Container>
-</Animate>
 </section>
 <section class="ourteam5">
-   <Animate>
+   <!-- <Animate> -->
     <Container>
-        <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+        <div in:fly id="team_paragraph1" gsap-duration="1.5">
             <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
             <h4>{ourTeam.para3 ? ourTeam.para3 : ''}</h4>
             <h4>{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h4>
         </div>
     </Container>
-  </Animate>
+  <!-- </Animate> -->
 </section>
 <Animate>
   <Contactform/>
@@ -149,6 +152,9 @@
     }
     .our-team{
         margin-top: 5rem;
+        #team_heading {
+            justify-content: center;
+        }
         :global(p) {
             font-size: 1.25rem;
             line-height: 2rem;
@@ -285,6 +291,12 @@
     }
     h4:last-child{
         text-align: right;
+    }
+}
+
+.team-members {
+    h2 {
+        justify-content: center;
     }
 }
 

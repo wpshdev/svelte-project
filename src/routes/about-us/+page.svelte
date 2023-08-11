@@ -51,15 +51,15 @@
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
 <section class="mw-1000 text-center about-heading">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-delay="0.5" gsap-duration="1.2">{@html about.abouttext ? about.abouttext : ''}</p>
+                <p in:fadeIn id="about_heading_cont" gsap-delay="0.5" gsap-duration="1.2">{@html about.abouttext ? about.abouttext : ''}</p>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="contractor-details">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
@@ -79,10 +79,10 @@
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="contractor-details">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="6">
@@ -100,10 +100,10 @@
                 </Col>
             </Row>
         </Container> 
-    </Animate>  
+    <!-- </Animate>   -->
 </section>
 <section class="contractor-details">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
@@ -121,10 +121,10 @@
                 </Col>
             </Row>
         </Container> 
-    </Animate>  
+    <!-- </Animate>   -->
 </section>
 
-<Animate>
+<!-- <Animate> -->
 <section class="mx-8 remodel" in:fadeIn id="remodel-img" gsap-duration="2.5">
     <div class="remodel__bgimage" >
         {#if about.Section4image.data}
@@ -133,10 +133,10 @@
         <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
     </div>  
 </section>
-</Animate>
+<!-- </Animate> -->
 
 <section class="certificate mx-8">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             
                 <!-- <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
@@ -159,10 +159,10 @@
                 </div>
                 {/if}
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="sets-parts">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
@@ -184,10 +184,10 @@
                 </Col>
             </Row>
         </Container>  
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="sets-parts"> 
-    <Animate>
+    <!-- <Animate> -->
         <Container class="mx-10">
             <Row class="sets-parts__row">
                 <Col md="6" style="z-index: 1;">
@@ -206,10 +206,10 @@
                 </Col>
             </Row>
         </Container> 
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="sets-parts">
-    <Animate>
+    <!-- <Animate> -->
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
@@ -228,15 +228,15 @@
                 </Col>
             </Row>
         </Container> 
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
 <section id="clientSays">
-    <Animate>
+    <!-- <Animate> -->
         {#if testimonialsData}
         <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/>
         {/if}
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
 <section class="talktous">
@@ -252,9 +252,9 @@
     </Animate>
 </section>
 
-<Animate>
+<!-- <Animate> -->
 <Contactform/>
-</Animate>
+<!-- </Animate> -->
 
 
 <style lang="scss">
@@ -382,6 +382,7 @@
         }
         img {
             height: 40rem;
+            object-fit: cover;
             @include media-max(lg){
 				height: 30rem;
 			}
@@ -488,6 +489,7 @@
         }
         img {
             height: 40rem;
+            object-fit: cover;
             @include media-max(lg){
 				height: 30rem;
 			}

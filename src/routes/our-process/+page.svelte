@@ -3,7 +3,8 @@
     import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import { Col, Container, Row } from "sveltestrap";
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
+    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
@@ -17,24 +18,24 @@
 <PageBanner title="{processData.section1heading ? processData.section1heading : 'Our Process'}" subTitle="{processData.bannerSub ? processData.bannerSub : ''}" banner="{domain}{processData.Cover.data[0].attributes.formats.large_x2 ? processData.Cover.data[0].attributes.formats.large_x2.url : processData.Cover.data[0].attributes.url}" />
 <section class="our-process">
         <Container>
-            <Animate>
+            <!-- <Animate> -->
                 <Row>
                     <Col class="md-12 text-center">
                         <div class="our-process__heading">
-                            <h2 in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{processData.section1heading ? processData.section1heading : ''}</h2>
-                            <div in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+                            <h2 class="text-animate secondary-font" in:textAnimate id="process_title" gsap-duration="1">{processData.section1heading ? processData.section1heading : ''}</h2>
+                            <div in:fadeIn id="process_sub" gsap-duration="1" gsap-delay="0.5">
                                 {@html processData.section1text ? processData.section1text : ''}
                             </div>
                         </div>
                     </Col>
                 </Row>
-            </Animate>
-            <Animate>
+            <!-- </Animate> -->
+            <!-- <Animate> -->
                 <Row>
                     <Col class="md-12">
-                        <Animate>
+                        <!-- <Animate> -->
                             {#if processData.section2image.data}
-                            <img in:fade={{duration: 1000,  delay: 1000}} src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
+                            <img in:fadeIn id="process_img" gsap-duration="1.5" src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
                             srcset="{domain}{processData.section2image.data.attributes.url} 330w,
                                     {domain}{processData.section2image.data.attributes.url} 660w,
                                     {domain}{processData.section2image.data.attributes.url} 990w"
@@ -46,160 +47,188 @@
                             alt="{processData.section2image.data.attributes.alternativeText}"/>
                             {/if}
                             <div class="our-process__paragraph mx-auto">
-                                <div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>{@html processData.section2text ? processData.section2text : ''}</div>
+                                <div in:fly id="process_content" gsap-duration="1" gsap-y="20">{@html processData.section2text ? processData.section2text : ''}</div>
                             </div>
-                        </Animate>
+                        <!-- </Animate> -->
                     </Col>            
                 </Row>
-            </Animate>
+            <!-- </Animate> -->
         </Container>
 </section>
 
 <section class="phase-heading">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="{{ size: '6', offset: 3 }}" class="text-center">
-                    <h3 in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+                    <h3 in:fly id="ph_heading" gsap-duration="1" gsap-y="20">
                         {@html processData.section3heading ? processData.section3heading : ''}                  
                     </h3>
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
-<Animate>
-<section class="phase1-img" in:fade={{duration: 1000,  delay: 1000}} style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
-</Animate>
+<!-- <Animate> -->
+<section class="phase1-img" in:fadeIn id="phase1_img1" gsap-duration="2" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
+<!-- </Animate> -->
 
 <section class="phase">
-    <Animate>
+    <!-- <Animate> -->
         <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="2">
-                    <span class="num"  in:fly={{ y: 50,duration: 2000, delay: 500 }}>1</span>
+                    <span class="num" in:slide id="phase1_num" gsap-duration="2" gsap-x="-15">1</span>
                 </Col>
                 <Col xs="10">
-                    <div class="phase__heading"  in:fly={{ y: 50,duration: 2000, delay: 1000 }}><h3>{processData.section3phase1mainheading ? processData.section3phase1mainheading : ''}</h3></div>
+                    <div class="phase__heading"><h3 class="text-animate" in:textAnimate id="phase1_heading" gsap-duration="1">{processData.section3phase1mainheading ? processData.section3phase1mainheading : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
-    </Animate>
-    <Animate>
-        <div class="phase__grid" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+    <!-- </Animate> -->
+    <!-- <Animate> -->
+        <div class="phase__grid">
             <div class="phase__grid__item">
-                <span>{processData.section4heading ? processData.section4heading : ''}</span>
-                <h4>{processData.section4subheading ? processData.section4subheading : ''}</h4>
-                {@html processData.section4text ? processData.section4text : ''}
+                <p class="pre-head" in:slide id="phase1_pre1" gsap-duration="1" gsap-x="-7">{processData.section4heading ? processData.section4heading : ''}</p>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title1" gsap-duration="0.5">{processData.section4subheading ? processData.section4subheading : ''}</h4>
+                <div in:fly id="phase1_sub1" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section4text ? processData.section4text : ''}
+                </div>
             </div>
             <div class="phase__grid__item">
-                {@html processData.section4righttext ? processData.section4righttext : ''}
+                <div in:fly id="phase1_cont1" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section4righttext ? processData.section4righttext : ''}
+                </div>
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section5heading ? processData.section5heading : ''}</span>
-                <h4>{processData.section5subheading ? processData.section5subheading : ''}</h4>
-                {@html processData.section5text ? processData.section5text : '' }
+                <p class="pre-head" in:slide id="phase1_pre2" gsap-duration="1" gsap-x="-7">{processData.section5heading ? processData.section5heading : ''}</p>
+                <h4  class="text-animate secondary-font" in:textAnimate id="phase1_title2" gsap-duration="0.5">{processData.section5subheading ? processData.section5subheading : ''}</h4>
+                <div in:fly id="phase1_sub2" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section5text ? processData.section5text : '' }
+                </div>
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section5righttext ? processData.section5righttext : ''}
+                <div in:fly id="phase1_cont2" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section5righttext ? processData.section5righttext : ''}
+                </div>
             </div>                                 
         </div>  
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
-<Animate>
-    <section class="phase__banner" in:fade={{duration: 1000,  delay: 1000}} style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
+<!-- <Animate> -->
+    <section class="phase__banner" in:fadeIn id="phase1_img2" gsap-duration="2" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
     </section>  
-</Animate>
+<!-- </Animate> -->
    
 <section class="phase no-margin-top">
-   <Animate>
-        <div class="phase__grid scnd-row" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+   <!-- <Animate> -->
+        <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
-                <span>{processData.section7heading ? processData.section7heading : ''}</span>
-                <h4>{processData.section7subheading ? processData.section7subheading : ''}</h4>
-                {@html processData.section7text ? processData.section7text : ''}
+                <p class="pre-head" in:slide id="phase1_pre3" gsap-duration="1" gsap-x="-7">{processData.section7heading ? processData.section7heading : ''}</p>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title3" gsap-duration="0.5">{processData.section7subheading ? processData.section7subheading : ''}</h4>
+                <div in:fly id="phase1_sub3" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section7text ? processData.section7text : ''}
+                </div>
             </div>
             <div class="phase__grid__item">
-                {@html processData.section7righttext ? processData.section7righttext : ''}
+                <div in:fly id="phase1_cont3" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section7righttext ? processData.section7righttext : ''}
+                </div>
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section8heading ? processData.section8heading : ''}</span>
-                <h4>{processData.section8subheading ? processData.section8subheading : ''}</h4>
-                {@html processData.section8text ? processData.section8text : ''}
+                <p class="pre-head" in:slide id="phase1_pre4" gsap-duration="1" gsap-x="-7">{processData.section8heading ? processData.section8heading : ''}</p>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title4" gsap-duration="0.5">{processData.section8subheading ? processData.section8subheading : ''}</h4>
+                <div in:fly id="phase1_sub4" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section8text ? processData.section8text : ''}
+                </div>
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section8righttext ? processData.section8righttext : ''}
+                <div in:fly id="phase1_cont4" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section8righttext ? processData.section8righttext : ''}
+                </div>
             </div>                                 
         </div>        
-   </Animate>
+   <!-- </Animate> -->
 </section>
 
-<Animate>
-    <section class="phase-banner-separator" in:fade={{duration: 1000,  delay: 1000}}  style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url })">
+<!-- <Animate> -->
+    <section class="phase-banner-separator" in:fadeIn id="phase_separator" gsap-duration="2" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url })">
     </section>
-</Animate>
+<!-- </Animate> -->
 
 <section class="phase-banner-paragraph">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col>
-                    <div in:fly={{ y: 50,duration: 2000, delay: 500 }}>
+                    <div in:fly id="phase_separator_cont" gsap-duration="1">
                         {@html processData.section9text ? processData.section9text : ''}
                     </div>
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
-<Animate>
-    <section class="phase2-img" in:fade={{duration: 1000,  delay: 1000}} style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section> 
-</Animate>
+<!-- <Animate> -->
+    <section class="phase2-img" in:fadeIn id="phase2_img1" gsap-duration="2" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section> 
+<!-- </Animate> -->
 
 <section class="phase">
-    <Animate>
+    <!-- <Animate> -->
         <Container class="phase-container">
             <Row class="text-center phase__row">
                 <Col xs="9" md="10">
-                    <div class="phase__heading" in:fly={{ y: 50,duration: 2000, delay: 1000 }}><h3>{processData.section10phase2heading ? processData.section10phase2heading : ''}</h3></div>
+                    <div class="phase__heading"><h3 class="text-animate" in:textAnimate id="phase2_heading" gsap-duration="1">{processData.section10phase2heading ? processData.section10phase2heading : ''}</h3></div>
                 </Col>            
                 <Col xs="3" md="2">
-                    <span class="num" in:fly={{ y: 50,duration: 2000, delay: 500 }}>2</span>
+                    <span class="num" in:slide id="phase2_num" gsap-duration="2" gsap-x="15">2</span>
                 </Col>
             </Row>
         </Container>
-    </Animate>
-    <Animate>
-        <div class="phase__grid" in:fly={{ y: 50,duration: 2000, delay: 2000 }}>
+    <!-- </Animate> -->
+    <!-- <Animate> -->
+        <div class="phase__grid">
             <div class="phase__grid__item">
-                <span>{processData.section11heading ? processData.section11heading : ''}</span>
-                <h4>{processData.section11subheading ? processData.section11subheading : ''}</h4>
-                {@html processData.section11text ? processData.section11text : ''}
+                <p class="pre-head" in:slide id="phase2_pre1" gsap-duration="1" gsap-x="-7">{processData.section11heading ? processData.section11heading : ''}</p>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title1" gsap-duration="0.5">{processData.section11subheading ? processData.section11subheading : ''}</h4>
+                <div in:fly id="phase2_sub1" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section11text ? processData.section11text : ''}
+                </div>
             </div>
             <div class="phase__grid__item">
-                {@html processData.section11righttext ? processData.section11righttext : ''}
+                <div in:fly id="phase2_cont1" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section11righttext ? processData.section11righttext : ''}
+                </div>
             </div>     
             <div class="phase__grid__item">
-                <span>{processData.section12heading ? processData.section12heading : ''} </span>
-                <h4>{processData.section12subheading ? processData.section12subheading : ''}</h4>
-                {@html processData.section12text ? processData.section12text : ''}
+                <p class="pre-head" in:slide id="phase2_pre2" gsap-duration="1" gsap-x="-7">{processData.section12heading ? processData.section12heading : ''} </p>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title2" gsap-duration="0.5">{processData.section12subheading ? processData.section12subheading : ''}</h4>
+                <div in:fly id="phase2_sub2" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section12text ? processData.section12text : ''}
+                </div>
             </div>  
             <div class="phase__grid__item">
-                {@html processData.section12righttext ? processData.section12righttext : ''}
+                <div in:fly id="phase2_cont2" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section12righttext ? processData.section12righttext : ''}
+                </div>
             </div>  
             <div class="phase__grid__item">
-                <span>{processData.section13heading ? processData.section13heading : ''}</span>
-                <h4>{processData.section13subheading ? processData.section13subheading : ''}</h4>
-                {@html processData.section13text ? processData.section13text : ''}
+                <p class="pre-head" in:slide id="phase2_pre3" gsap-duration="1" gsap-x="-7">{processData.section13heading ? processData.section13heading : ''}</p>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title3" gsap-duration="0.5">{processData.section13subheading ? processData.section13subheading : ''}</h4>
+                <div in:fly id="phase2_sub3" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section13text ? processData.section13text : ''}
+                </div>
             </div>  
             <div class="phase__grid__item last-even">
-                {@html processData.section13righttext ? processData.section13righttext : ''}
+                <div in:fly id="phase2_cont3" gsap-duration="1" gsap-delay="0.5">
+                    {@html processData.section13righttext ? processData.section13righttext : ''}
+                </div>
             </div>                                            
         </div>    
-    </Animate>
+    <!-- </Animate> -->
 </section>
     <!-- <Animate>
         <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
@@ -233,10 +262,10 @@
             </div>                                       
         </div>     
     </Animate> -->
-    <Animate>
-        <div class="phase__banner banner3" in:fade={{duration: 1000,  delay: 1000}} style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url })">
+    <!-- <Animate> -->
+        <div class="phase__banner banner3" in:fadeIn id="phase_separator1" gsap-duration="2" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url })">
         </div>   
-    </Animate>
+    <!-- </Animate> -->
     <!-- <Animate>
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
@@ -250,21 +279,21 @@
         </div>     
     </Animate> -->
 <section class="phase-banner-paragraph">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col>
-                    <div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
+                    <div in:fly id="phase_separator_cont1" gsap-duration="1">
                         {@html processData.section20text ? processData.section20text : '' }
                     </div>
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
-<Animate>
+<!-- <Animate> -->
     <Cta />
-</Animate>
+<!-- </Animate> -->
 <style lang="scss">
     :global(p) {
         font-size: 1.125rem;
@@ -284,6 +313,7 @@
                 font-size: 4rem;
                 margin: 3rem 0 2rem;
                 color: $secondary-color;
+                justify-content: center;
             }
             p{
                 span{
@@ -415,6 +445,7 @@
                 font-family: $primary-font;
                 color: #fff;
                 margin-bottom: 0;
+                justify-content: center;
             }
         }
         @include media-max(sm){
@@ -461,7 +492,7 @@
                         margin-left: calc(50% - 50vw);
                         margin-right: calc(50% - 50vw);                        
                     }                                 
-                    span{
+                    .pre-head{
                         color: $primary-color;
                         font-style: normal;
                         font-size: 1.4em;

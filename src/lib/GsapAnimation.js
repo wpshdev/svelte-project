@@ -34,6 +34,8 @@ export function fadeIn(node) {
     // FadeIn animation
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
+        start: 'top bottom',
+        // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
             tl.set(
@@ -71,6 +73,8 @@ export function fly(node) {
 
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
+        start: 'top bottom',
+        // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
             tl.set(
@@ -109,6 +113,7 @@ export function slide(node) {
 
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
+        start: 'top bottom',
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
@@ -155,6 +160,7 @@ export function textAnimate(node) {
     // Text animation
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
+        start: 'top bottom',
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();

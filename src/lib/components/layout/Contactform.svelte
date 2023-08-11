@@ -160,7 +160,7 @@
 			h2{
 				margin-bottom: 1rem;
 				flex-wrap: wrap;
-				width: 28rem;
+				width: 27rem;
 			}	
 			p {
 				font-size: 1.5rem;

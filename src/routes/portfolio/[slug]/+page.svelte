@@ -4,7 +4,7 @@
 	// import { fade, fly } from 'svelte/transition';
 	// import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
-	import { fade, fly } from "svelte/transition";
+	// import { fade, fly } from "svelte/transition";
 	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
 	import Contactform from "$lib/components/layout/Contactform.svelte";
@@ -15,6 +15,7 @@
 	// import contactBG from "$lib/img/ContactBG.jpg";
 	import noFeatured from "$lib/img/blog-empty.svg"
 	// import ImageLoader from "$lib/components/imageLazy/ImageLoader.svelte";
+	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	export let data;
 	const domain = "https://strapi.ulfbuilt.com:1337"
@@ -52,9 +53,9 @@
 			<Row>
 				<Col class="text-center">
 					<div class="portfolio-gallery__content">
-						<span in:fly={{ y: 50,duration: 2000, delay: 500 }}>Project</span>
-						<h1 class="h2" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>{title ? title : ''}</h1>
-						<div in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+						<p class="pre-head" in:slide id="single-portfolio-preheading" gsap-duration="1">Project</p>
+						<h1 class="h2 text-animate secondary-font" in:textAnimate id="single-portfolio-heading">{title ? title : ''}</h1>
+						<div in:fly id="single-portfolio-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
 						</div>
 					</div>
@@ -70,12 +71,12 @@
 	<Animate>
 		<Container>
 			<Row>
-				<Col><h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{projectHeading ? projectHeading : ''}</h2></Col>
+				<Col><h2 in:slide id="about-property-preheading" gsap-duration="1">{projectHeading ? projectHeading : ''}</h2></Col>
 			</Row>
 			<Row>
 				<Col md="12">
 					<div class="about-property__content">
-						<div class="about-property__content__heading" in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
+						<div class="about-property__content__heading">
 							<div>
 								<i>
 									<svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +98,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="about-property__content__paragraph" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+						<div class="about-property__content__paragraph">
 							{@html data.portfolio.data[0].attributes.projectDetails ? data.portfolio.data[0].attributes.projectDetails : ''}
 						</div>
 					</div>
@@ -111,7 +112,7 @@
 	<Animate>
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
-				<section in:fade="{{ duration: 1000, delay:1000*index}}" class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
+				<section in:fadeIn id="single-portfolio-bannerOnly{index}" gsap-duration="1.5"  gsap-delay="0.5"  class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
 				{/if}
 				<Testimonial testimonial="{bannerQuote.quote}" />
 		{/each}
@@ -124,12 +125,12 @@
 			<Row>
 				<Col class="text-center" md={{ size: 8, offset: 2 }} xs="12">
 					<div class="portfolio-cta__content">
-						<h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
-						<div in:fly={{ y: 50,duration: 2000, delay: 1000 }}>
+						<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-cta-heading">{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
+						<div in:fly id="single-portfolio-cta-cont" gsap-duration="1.2"  gsap-y="50" >
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
 						</div>
 					</div>
-					<div class="portfolio-cta__btns" in:fly={{ y: 50,duration: 2000, delay: 1500 }}>
+					<div class="portfolio-cta__btns" in:fly id="single-portfolio-cta-buttons" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
 						<a href="{data.portfolio.ctaLeftBtnUrl ? data.portfolio.ctaLeftBtnUrl : '/contact-us'}" class="btn btn-secondary">{data.portfolio.ctaLeftBtnTitle ? data.portfolio.ctaLeftBtnTitle : 'Talk to Us'}</a>
 						<a href="{data.portfolio.ctaRightUrl ? data.portfolio.ctaRightUrl : '/portfolio'}" class="btn btn-inverted">{data.portfolio.ctaRightBtnTitle ? data.portfolio.ctaRightBtnTitle : 'Back to Portfolio'}</a>
 					</div>                   
@@ -144,17 +145,17 @@
 		<Container>
 			<Row>
 				<Col md="12">
-					<h2 in:fly={{ y: 50,duration: 2000, delay: 500 }}>{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
-				</Col>			
+					<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-related-heading">{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
+				</Col>	
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
-						<div class="related__article" in:fade="{{ duration: 1000, delay:index * 1000}}">
+						<div class="related__article" in:fadeIn id="single-portfolio-related-image" gsap-duration="1.5">
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								{#if rPortfolio.attributes.featuredImage.data != null}
-                                <img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
-                                {:else}
-                                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{rPortfolio.attributes.title}" >
-                                {/if}
+								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
+								{:else}
+								<img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{rPortfolio.attributes.title}" >
+								{/if}
 								<div class="related__article__text">
 									<span>{('0' + (index + 1)).slice(-2)}</span>
 									{rPortfolio.attributes.title ? rPortfolio.attributes.title : ''}
@@ -230,7 +231,7 @@ section{
 	@include media-max(sm){
 		margin-top: 0;
 	}
-    span{
+    .pre-head{
       color: $primary-color;
 	  font-weight: 500;
     }
@@ -239,6 +240,7 @@ section{
 	  font-size: 4rem;
 	//   color: $secondary-color;
 	  color: $white-color;
+	  justify-content: center;
     }
 	:global(p){
 		line-height: 2;
@@ -251,8 +253,10 @@ section{
 
 .about-property{
 	background-color: #fff;
-	margin-top: -4rem;
+	// margin-top: -4rem;
+	margin: 0;
 	padding: 4rem 0;
+	min-height: unset;
 	h2{
 		margin-bottom: 2rem;
 		color: $secondary-color;
@@ -336,10 +340,12 @@ section{
 	// align-items: center;
 	// justify-content: center;
 	min-height: unset;
-	position: relative;      
+	position: relative;   
+	padding: 3rem 0;   
 	&__content{
 		h2{
 			margin-bottom: 2rem;
+			justify-content: center;
 		}
 		p{
 			max-width: 45rem;
@@ -377,6 +383,7 @@ section{
 	h2{
 		text-align: center;
 		margin-bottom: 2rem;
+		justify-content: center;
 	}
 	&__article{
 		overflow: hidden;
