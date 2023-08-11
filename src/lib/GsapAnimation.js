@@ -9,8 +9,8 @@
 // Add 'gsap-y' on the element to add starting position of fly in
 // Add 'gsap-x' on the element to add starting position of slide in
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import {gsap}  from "gsap/dist/gsap";        
+import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
 
 gsap.registerPlugin(ScrollTrigger);
 
