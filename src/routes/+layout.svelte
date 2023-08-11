@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import Headroom from "svelte-headroom";
-    import SmoothScroll from '$lib/components/SmoothScroll.svelte';
     const onPin = () => console.log("pin");
     import Footer from "./Footer.svelte";
     import Header from "./Header.svelte";
@@ -53,12 +52,11 @@
     
     {#key $page}
     <Animate>
-    <main data-scroll-container>
+    <main>
             <slot>
         
             </slot>
     </main>
-    <!-- <SmoothScroll /> -->
     <footer>
         <Footer />
     </footer>
