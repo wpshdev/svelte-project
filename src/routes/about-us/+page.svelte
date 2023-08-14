@@ -264,6 +264,12 @@
         background-position: top !important;
     } 
     .about-heading{
+        min-height: 80rem;
+		display: flex;
+		align-items: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}
         h2 {
             color:$secondary-color;
             justify-content: center;
@@ -284,6 +290,12 @@
         margin:7.5rem auto;
         &.certificate {
             text-align: center;
+            min-height: 80rem;
+            display: flex;
+            align-items: center;
+            @include media-max(ipadmini){
+                min-height: unset;
+            }
             img {
                 width: auto;
                 margin: auto;
@@ -352,6 +364,12 @@
         }
     }
     .contractor-details {
+        min-height: 80rem;
+		display: flex;
+		align-items: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}
         :global(.row) {
             justify-content: center;
             gap: 3rem;
@@ -365,13 +383,13 @@
         h3 {
             color:$secondary-color;
             font-size: 2.813rem;
-            flex-wrap: wrap;
-            &#cd-heading2 {
-                width: 37rem;
-            }
-            &#cd-heading3 {
-                width: 35rem;
-            }
+            // flex-wrap: wrap;
+            // &#cd-heading2 {
+            //     width: 37rem;
+            // }
+            // &#cd-heading3 {
+            //     width: 35rem;
+            // }
             @include media-max(ipadmini){ 
                 font-size: 2.3rem;
             }
@@ -415,6 +433,12 @@
         }
     }
     .sets-parts{
+        min-height: 60rem;
+		display: flex;
+		align-items: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}
         h2{
             color:$darkgrey-color;
             justify-content: center;
@@ -504,6 +528,13 @@
         }
     }
     .talktous{
+        min-height: 35rem;
+		display: flex;
+		align-items: center;
+        justify-content: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}
         @include media-max(ipadmini){ 
             margin-top: 15rem;
         }

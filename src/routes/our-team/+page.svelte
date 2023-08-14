@@ -140,9 +140,9 @@
     </Container>
   <!-- </Animate> -->
 </section>
-<Animate>
+<!-- <Animate> -->
   <Contactform/>
-</Animate>
+<!-- </Animate> -->
 <style lang="scss">
     section{
         margin: 10rem 0;
@@ -152,6 +152,13 @@
     }
     .our-team{
         margin-top: 5rem;
+        min-height: 80rem;
+		display: flex;
+		align-items: center;
+        justify-content: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+        }
         #team_heading {
             justify-content: center;
         }
@@ -231,6 +238,15 @@
     :global(.tm-img){
         position: relative;
     }
+    .owner {
+        min-height: 80rem;
+		display: flex;
+		align-items: center;
+        justify-content: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+        }
+    }
 .tm-box{
     position: absolute;
     z-index: 6;
@@ -271,6 +287,13 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
+    min-height: 70rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include media-max(ipadmini){
+        min-height: unset;
+    }
     h4{
         font-family: $primary-font;
         font-weight: 400;
@@ -283,6 +306,13 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
+    min-height: 80rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include media-max(ipadmini){
+        min-height: unset;
+    }
     h4{
         font-family: $primary-font;
         font-weight: 400;

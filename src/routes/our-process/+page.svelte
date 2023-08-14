@@ -303,7 +303,18 @@
         min-height: 20vh;
     }
     .our-process{
-        min-height: 40vh;
+        // min-height: 40vh;
+        min-height: 80rem;
+		display: flex;
+		align-items: center;
+        justify-content: center;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+		@include media-max(ipadmini){
+			min-height: unset;
+            padding-top: unset;
+            padding-bottom: unset;
+        }
         &__heading{
             margin-bottom: 7vh;
             :global(p span){

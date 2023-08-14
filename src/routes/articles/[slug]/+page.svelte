@@ -26,10 +26,10 @@
 <div class="cover" style="background:#1E2D39;">
 <Container>
     <div class="cover__covertitle">
-        <p class="pfont ptc mb-1 pt-3 article" in:slide id="single_article_pre" gsap-duration="1" gsap-delay="0.5">Article</p>
+        <p class="pfont ptc mb-1 pt-3 article" in:slide id="single_article_pre" gsap-duration="1">Article</p>
         <!-- class="text-animate" in:textAnimate id="single_article_heading" gsap-duration="0.5" -->
-        <h2 class="pfont stc mb-4" in:slide id="single_article_title" gsap-duration="1.5" gsap-x="-5">{title ? title : ''}</h2>
-        <p class="ptc pb-5" in:fly id="single_article_detail" gsap-duration="1" gsap-delay="0.5" gsap-y="10">{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
+        <h2 class="pfont stc mb-4 text-animate" in:textAnimate id="single_article_title" gsap-duration="1.5">{title ? title : ''}</h2>
+        <p class="ptc pb-5" in:fly id="single_article_detail" gsap-duration="1" gsap-delay="1" gsap-y="10">{location} | {published} · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read</p>
     </div>
 </Container>
     
@@ -116,7 +116,7 @@
             font-size: 3.438rem;
             font-weight: 400;
             color: $white-color;
-            flex-wrap: wrap;
+            // flex-wrap: wrap;
             @include media-max(xs){
                 font-size: 2.125rem;
                 padding-top: 0;

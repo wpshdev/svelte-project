@@ -315,8 +315,10 @@ header{
     }
     &.changeBG{
         .logo{
-            background: #1e2d39;
-            padding: 0.5rem;
+            // background: #1e2d39;
+            // padding: 0.5rem;
+            height: 5rem;
+            position: absolute;
         }
         background:$darkbluegreen;
         .dropdown.show, .dropdown-menu  {
@@ -326,13 +328,10 @@ header{
                 color: $white-color;
             }
         }
-        // .logo{
-        //     position: unset;
-        //     height: 3.5rem;
-        // }
-        // .navbar-brand {
-        //     height: auto;
-        // }
+        .navbar-brand {
+            height: 2.75rem;
+            position: relative;
+        }
     }
     .mobile-menu-header{
         text-align: left;
@@ -1015,12 +1014,12 @@ img {
 }
 
 .text-animate {
-    display: flex;
+    // display: flex;
     visibility: hidden;
     overflow: hidden;
 
     span {
-        display: block;
+        display: inline-block;
         position: relative;
     }
 

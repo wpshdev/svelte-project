@@ -126,9 +126,11 @@ function handleScroll() {
 
 
 {#if home.homeBuilderBanner.data}
+<!-- <Animate> -->
 	<section class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1.5" class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
 	</section>
+<!-- </Animate> -->
 {/if}
 
 <section class="categories" >
@@ -240,8 +242,8 @@ function handleScroll() {
 						<div class="reputation__content">
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
-								<h2 class="text-animate secondary-font" in:textAnimate id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
-								<div in:fly id="reputation-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
+								<h2 class="text-animate secondary-font" gsap-duration="2" in:textAnimate gsap-delay="0.5" id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
+								<div in:fly id="reputation-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
 									<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
 								</div>
@@ -252,7 +254,17 @@ function handleScroll() {
 				<Col md="5" class="my-auto" >
 					<div class="childimg">
 						{#if home.reputation.image.data}
-						<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+						<Animate>
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="10" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+						</Animate>
+						{/if}
+					</div>
+					<!-- mobile -->
+					<div class="mobileimg">
+						{#if home.reputation.image.data}
+						<Animate>
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="10" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+						</Animate>
 						{/if}
 					</div>
 				</Col>
@@ -267,7 +279,7 @@ function handleScroll() {
 				<div class="process__top-image childimg" >
 					{#if home.ourProcessTopImage.data[0]}
 					<Animate>
-						<img in:slide id="process-top-img" gsap-duration="2" gsap-x="20" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly id="process-top-img" gsap-delay="0.5" gsap-duration="2" gsap-y="10" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					</Animate>
 					{/if}
 				</div>
@@ -279,8 +291,8 @@ function handleScroll() {
 					<div class="process__content">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
-							<h2 class="text-animate secondary-font" in:textAnimate id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
-							<div in:fly id="process-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
+							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="2" gsap-delay="0.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
+							<div in:fly id="process-cont" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
 								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
 								<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
 							</div>
@@ -291,7 +303,9 @@ function handleScroll() {
 			<Col md="5" class="my-auto ">
 				<div class="process__bottom childimg">
 					{#if home.ourProcessRightImage.data}
-					<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+					<Animate>
+						<img in:fly id="process-bottom-img" gsap-duration="2" gsap-y="10" gsap-delay="0.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+					</Animate>
 					{/if}
 				</div>
 			</Col>
@@ -308,8 +322,8 @@ function handleScroll() {
 						<div class="story__content">
 							<div class="story__content__wrapper">
 								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
-								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
-								<div in:fly id="story-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
+								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-delay="0.5" gsap-duration="2">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+								<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 								</div>
 								
@@ -326,7 +340,9 @@ function handleScroll() {
 				<Col md="5" class="my-auto">
 					<div>
 						{#if home.ourStoryRightImage.data}
-						<img src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+						<Animate>
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="10" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+						</Animate>
 						{/if}
 					</div>	
 				</Col>
@@ -400,7 +416,11 @@ function handleScroll() {
 	}	
 	.loc-gallery{
 		min-height: 80rem;
-		padding: 5rem 0;
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}	
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -452,9 +472,15 @@ function handleScroll() {
 		// margin-top: 0;
 		margin: 0;
 		padding: 0 0 3.75rem;
+		min-height: 80rem;
+		display: flex;
+		align-items: center;
 		// :global(.categories_wrapper) {
 		// 	max-width: 1440px;
 		// }
+		@include media-max(ipadmini){
+			min-height: unset;
+		}	
 		h2{
 			margin-bottom: 2rem;
 			justify-content: center;
@@ -679,8 +705,14 @@ function handleScroll() {
 	.featured-projects{
 		padding: 5rem 0 13.75rem;
 		margin: 0;
+		min-height: 80rem;
+		display: flex;
+		align-items: center;
 		// padding-bottom: 5rem;
 		overflow: hidden;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}	
 		@include media-max(sm){
 			// margin: 5rem 0;
 			margin: 0;
@@ -689,7 +721,11 @@ function handleScroll() {
 	}
 
 	.reputation{
-		padding: 7rem 0 3.75rem;
+		padding-top: 7rem;
+		padding-bottom: 3.75rem;
+		min-height: 80rem;
+		display: flex;
+		align-items: center;
 		// :global(.container){
 		// 	@include media-max(md){
 		// 		padding-left: 1.8rem;
@@ -700,9 +736,13 @@ function handleScroll() {
 		// 		padding-right: 1.8rem;
 		// 	}			
 		// }
+		@include media-max(ipadmini){
+			min-height: unset;
+		}	
 		@include media-max(sm){
 			margin: 0;
-			padding: 5rem 0 1.5rem 0;
+			padding-top: 5rem;
+			padding-bottom: 1.5rem;
 		}		
 		@include media-max(xs){
 		}		
@@ -769,8 +809,8 @@ function handleScroll() {
 					margin: 1rem 0 2rem;
 					line-height: 4.5rem;
 					opacity: 0;
-					flex-wrap: wrap;
-					width: 25rem;
+					// flex-wrap: wrap;
+					// width: 25rem;
 					@include media-max(lg){
 						line-height: 3rem;
 						margin: 1rem 0;
@@ -788,6 +828,17 @@ function handleScroll() {
 				}
 			}		
 		}
+		.mobileimg {
+			display: none;
+		}
+		@include media-max(sm){
+			.mobileimg {
+				display: block;
+			}
+			.childimg {
+				display: none;
+			}
+		}	
 		img{
 			position: relative;
 			z-index: 5;
@@ -809,6 +860,12 @@ function handleScroll() {
 	.process{
 		margin: 7rem 0;	
 		padding-bottom: 7rem;
+		min-height: 80rem;
+		display: flex;
+		align-items: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}	
 		@include media-max(sm){
 			padding-bottom: 0;
 		}		
@@ -905,8 +962,8 @@ function handleScroll() {
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4.5rem;
-					flex-wrap: wrap;
-					width: 41rem;
+					// flex-wrap: wrap;
+					// width: 41rem;
 					@include media-max(lg){
 						line-height: 3rem;
 						margin: 1rem 0;
@@ -957,8 +1014,12 @@ function handleScroll() {
 
 	.story{
 		margin: 7rem 0 3.75rem;
+		min-height: 80rem;
+		display: flex;
+		align-items: center;
 		@include media-max(ipadmini){
 			padding-bottom: 7rem;
+			min-height: unset;
 		}
 		@include media-max(sm){
 			padding-bottom: 0;
