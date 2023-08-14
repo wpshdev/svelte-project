@@ -1,26 +1,11 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	import SmoothScroll from "$lib/components/SmoothScroll.svelte";
-  	import ScrollingSection from '$lib/components/ScrollingSection.svelte';
-	// import banner from "$lib/img/first-section.svg";
-	// import { fade, fly } from 'svelte/transition';
-	import { onMount } from "svelte";
 	import Animate from "$lib/components/Animate.svelte";
-	// import TextTransition from "$lib/TextTransition.svelte";
-	// import ImageSlider from '$lib/ImageSlider.svelte';
 	import Carousel from "$lib/components/layout/Carousel.svelte";
-	// import modern from "$lib/img/modern.svg";
-	// import mountain from "$lib/img/mountain.svg";
-	// import traditional from "$lib/img/traditional.svg";
-	import tr from "$lib/img/tnr.svg";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	//import MasonryCard from "$lib/components/MasonryCard.svelte";
-	//import MasonryCardGrid from "$lib/components/MasonryCardGrid.svelte";
-	//import gsap from 'gsap';
-	// import { lazyload } from '$lib/lazyload.js'
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
@@ -62,9 +47,50 @@
             }
         })();
     }
-	// $: listener = {propCount , activeTab};
-	
-	// let height;
+
+
+// Written by parth for different section speed
+import { onMount } from "svelte";
+let scrollY = 0;
+onMount(() => {
+  window.addEventListener("scroll", handleScroll);
+  calculateMaxTranslateY();
+});
+let maxTranslateY;
+function calculateMaxTranslateY() {
+	const container = document.querySelector(".loc-gallery");
+	const child = document.querySelector(".child");
+    const containerHeight = container.clientHeight;
+    const childHeight = child.clientHeight;
+    maxTranslateY = containerHeight - childHeight - 100;
+}
+function handleScroll() {
+    scrollY = window.scrollY;
+    updateChildPosition();
+	updateChildPositionimg();
+  }
+
+  function updateChildPosition() {
+    const scrollSpeedMultiplier = 0.5; // Adjust this value for slower scrolling
+    let translateY = scrollY * scrollSpeedMultiplier;
+    
+    // Ensure translateY does not exceed maxTranslateY
+    translateY = Math.min(translateY, maxTranslateY);
+    const child = document.querySelector(".child");
+    child.style.transform = `translateY(${translateY}px)`;
+  }
+  function updateChildPositionimg() {
+	const containertop = document.querySelector(".containerimg").offsetTop;
+	let scrollYval = scrollY + screen.height;
+	if(scrollYval - containertop){
+		let invalue = scrollYval - containertop;
+		const scrollSpeedMultiplier = 0.2; // Adjust this value for slower scrolling
+		const translateY = invalue * scrollSpeedMultiplier;
+		const child = document.querySelector(".childimg");
+		child.style.transform = `translateY(-${translateY}px)`;
+	}
+  }
+  // Written by parth for different image speed
 
 </script>
 <svelte:window bind:scrollY={y} />
@@ -72,12 +98,9 @@
 	<title>{home.title ? home.title : 'Home'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
-
 <section class="loc-gallery">
-	<!-- <ScrollingSection> -->
-	<Container>
+	<Container class="child">
 		<Row>
 			<Col xs="12" class="pb-4">
 				<h2>
@@ -209,7 +232,7 @@
 
 
 
-<section class="reputation" >
+<section class="reputation containerimg" >
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -227,7 +250,7 @@
 					</Animate>
 				</Col>
 				<Col md="5" class="my-auto" >
-					<div>
+					<div class="childimg">
 						{#if home.reputation.image.data}
 						<img src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						{/if}
@@ -237,11 +260,11 @@
 		</Container>
 </section>
 
-<section class="process">
+<section class="process containerimg">
 	<Container>
 		<Row>
 			<Col md="6">
-				<div class="process__top-image" >
+				<div class="process__top-image childimg" >
 					{#if home.ourProcessTopImage.data[0]}
 					<Animate>
 						<img in:slide id="process-top-img" gsap-duration="2" gsap-x="20" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
@@ -266,7 +289,7 @@
 				</Animate>
 			</Col>
 			<Col md="5" class="my-auto ">
-				<div class="process__bottom">
+				<div class="process__bottom childimg">
 					{#if home.ourProcessRightImage.data}
 					<img src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					{/if}
@@ -376,7 +399,8 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// min-height: 80rem;
+		min-height: 80rem;
+		padding: 5rem 0;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;

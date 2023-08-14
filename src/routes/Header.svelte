@@ -46,7 +46,6 @@
 			console.error('Error fetching data:', error);
 		}
 	}
-
 	let isOpen = false;
 	let isMobile;
 	// let innerWidth;
@@ -82,8 +81,7 @@
 					isOpen = false;
 			} 
 		});
-  	});	
-
+  	});
 </script>
 
 <svelte:window 
@@ -93,7 +91,7 @@
 {#await promise}
 {:then siteSettings} 
   <Navbar expand="md">
-	<NavbarBrand href="/">
+	<NavbarBrand href="/" rel="preload">
 		<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo" width="330" height="170" />
 	</NavbarBrand>
 	{#if !isOpen}

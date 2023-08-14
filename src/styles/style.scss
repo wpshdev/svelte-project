@@ -269,7 +269,10 @@ img{
 header.container-fluid{
     position: relative;
     padding: 5px 5px 5px 25px;
-    animation: 1.3s ease-out 0s 1 slideInFromTop;
+}
+header{
+    transition: top 1s ease-in-out; /* Smooth transition for top property */
+
 }
 @keyframes slideInFromTop {
     0% {

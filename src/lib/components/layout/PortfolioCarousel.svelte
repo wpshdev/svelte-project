@@ -1,7 +1,7 @@
 <script>
   import { afterUpdate, onMount, tick } from 'svelte';
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+  import {gsap}  from "gsap/dist/gsap";        
+  import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
   import { Col } from "sveltestrap";
 	import { browser } from '$app/environment';
   import Animate from '../Animate.svelte';
