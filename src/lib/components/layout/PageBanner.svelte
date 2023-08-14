@@ -35,6 +35,7 @@
 <svelte:window 
 	bind:innerWidth
 />
+
 <section class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
 	<Container>
 		<Row>

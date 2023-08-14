@@ -40,7 +40,7 @@
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 
 <section class="service-b">
-    <!-- <Animate> -->
+    <Animate>
         <Container>
             <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_s1_title" gsap-duration="1">{page.section1heading ? page.section1heading : ''}</h2>
                 <Row>
@@ -124,7 +124,7 @@
                     </Col>
                 </Row>
         </Container>
-    <!-- </Animate> -->
+    </Animate>
 </section>
 <section class="mx-10 sets-us-apart">
     <!-- <Animate> -->
@@ -262,6 +262,13 @@
         background-position: center !important;
     }
     .service-b{
+        min-height: 75rem;
+		display: flex;
+		align-items: center;
+        justify-content: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
@@ -371,6 +378,13 @@
         padding: 0;
     }
     .reimagine {
+        min-height: 80rem;
+		display: flex;
+		align-items: center;
+        justify-content: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+        }
         h2 {
             justify-content: center;
         }
@@ -401,6 +415,12 @@
         }
     }
     .sets-us-apart {
+        min-height: 60rem;
+		display: flex;
+		align-items: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+        }
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;

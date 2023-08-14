@@ -159,7 +159,7 @@
 		&__wrapper{
 			h2{
 				margin-bottom: 1rem;
-				flex-wrap: wrap;
+				// flex-wrap: wrap;
 				width: 27rem;
 			}	
 			p {

@@ -103,7 +103,7 @@ $: {
     </div>
   </Col>	
   <Col md=9>
-    <div class="slider-container" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10">
+    <div class="slider-container" in:fly id="carousel-image-container" gsap-duration="0.5" gsap-y="10">
       {#each featuredProjects.data as project, index}
         <div class="slider-container__carousel-cell">
           <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
@@ -181,8 +181,8 @@ $: {
         font-weight: 500;
       }
       h2{
-        flex-wrap: wrap;
-        width: 18rem;
+        // flex-wrap: wrap;
+        // width: 18rem;
       }
     }
   }

@@ -423,9 +423,9 @@
               
         &__content{
             h2 {
-                flex-wrap: wrap;
+                // flex-wrap: wrap;
                 justify-content: center;
-                width: 39rem;
+                // width: 39rem;
             }
             p{
                 color: $primary-color;

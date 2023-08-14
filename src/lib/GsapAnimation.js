@@ -35,6 +35,7 @@ export function fadeIn(node) {
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
         start: 'top bottom',
+        once: true,
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
@@ -53,7 +54,7 @@ export function fadeIn(node) {
                     delay: delay,
                 }
             );
-        },
+        }
     });
 
 }
@@ -74,6 +75,7 @@ export function fly(node) {
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
         start: 'top bottom',
+        once: true,
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
@@ -114,6 +116,7 @@ export function slide(node) {
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
         start: 'top bottom',
+        once: true,
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
@@ -151,20 +154,31 @@ export function textAnimate(node) {
     // Split text
     const text = targetElement.textContent;
     const charSplit = text.split('');
-    let splittedHTML = '';
-    charSplit.forEach((c)=> {
-      splittedHTML += `<span>${c === ' ' ? '&nbsp' : c}</span>`;
-    })
-    targetElement.innerHTML = splittedHTML;
+    let currentDiv = '';
+    let transformedHTML = '';
+    charSplit.forEach((c, index) => {
+        currentDiv += `<span class="letter">${c === ' ' ? '&nbsp;' : c}</span>`;
+      
+        if (c === ' ' || index === charSplit.length - 1) {
+          if (currentDiv.trim() !== '') {
+            transformedHTML += `<span>${currentDiv}</span>`;
+          } else {
+            transformedHTML += currentDiv; // Preserve the space as it is
+          }
+          currentDiv = ''; // Reset currentDiv for the next group
+        }
+      });
+    targetElement.innerHTML = transformedHTML;
 
     // Text animation
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
         start: 'top bottom',
+        once: true,
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
-            let letter = targetElement.querySelectorAll('span');
+            let letter = targetElement.querySelectorAll('span.letter');
             
             tl.set(
                 '#' + targetElementID,
