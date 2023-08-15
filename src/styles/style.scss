@@ -677,6 +677,9 @@ header{
     @include media-max(laptopS){
         padding: 3vw 1.5vw;
     }	
+    @include media-max(sm){
+        padding: 3rem 1rem;
+    }	
     margin: 0;
     a{
         color: #fff;
@@ -714,7 +717,14 @@ header{
         }	
         @include media-max(sm){
             flex: 100% !important;
+            &:nth-child(2) {
+                flex: 50% !important;
+            }
+            &:nth-child(3) {
+                flex: 50% !important;
+            }
         }	
+
     }
 }
 .cover{
@@ -861,9 +871,9 @@ header{
                     border-bottom: 0.5px solid #EFEFEF;
                     display: block;
                     width: 8rem;
-                    @include media-max(sm){
-                        width: 100%;
-                    }
+                    // @include media-max(sm){
+                    //     width: 100%;
+                    // }
                 }
             }
         }
@@ -1016,7 +1026,7 @@ img {
 .text-animate {
     // display: flex;
     visibility: hidden;
-    overflow: hidden;
+    // overflow: hidden;
 
     span {
         display: inline-block;
@@ -1028,4 +1038,8 @@ img {
 			font-family: $secondary-font !important;
         }
     }
+}
+
+.image-scale-up {
+    transform: scale(0.8);
 }

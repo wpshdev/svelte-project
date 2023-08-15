@@ -5,7 +5,8 @@
     import TextTransition from "$lib/TextTransition.svelte";
 	import { onMount } from "svelte";
 	import { gsap } from "gsap/dist/gsap";
-	import { textAnimate, fly } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
+	// import { fade } from "svelte/transition";
     export let banner;
 	export let bannerMobile;
     export let title;
@@ -35,14 +36,15 @@
 <svelte:window 
 	bind:innerWidth
 />
-
-<section class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
+<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
+	<!-- in:fadeIn id="banner_bg" -->
+	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="1.5"></div>
 	<Container>
 		<Row>
-			<Col >
+			<Col>
 				<div class="banner__content">
 					<div class="banner__content__text">
-						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate><span>{title ? title : ''}</span></h1>
+						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate gsap-delay="0.5" gsap-duration="1.5"><span>{title ? title : ''}</span></h1>
 					</div>
 					{#if subTitle != null}
 						<p class="banner__content__paragraph" in:fly id="banner_sub" gsap-delay="1" gsap-duration="0.7">{subTitle}</p>
@@ -56,7 +58,7 @@
 <style lang="scss">
 	.banner{
 		background-image: var(--banner);
-		background-size: cover;
+		// background-size: cover;
 		min-height: 68vh;
 		background-position: center;
 		background-size: cover;
@@ -66,12 +68,14 @@
 		justify-content: center;
 		align-items: center;
         position: relative;
+		box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
 		&.homebanner{
 			height: 100vh;
 		}
-        &:after{
+        .banner_overlay{
             content: "";
-            background-color: rgba(0,0,0,0.5);
+            background-color: $darkgray;
+            // background-color: $darkbluegreen;
             left: 0;
             top: 0;
             height: 100%;

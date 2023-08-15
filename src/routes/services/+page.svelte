@@ -12,7 +12,7 @@
     let featuredProjects = data.portfolios.data
     import noFeatured from "$lib/img/blog-empty.svg"
     let fallback = data.fallback.data.attributes.fallbackImage.data;
-    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
 
     // export let pdata;
     // export let featuredProjects;
@@ -198,10 +198,10 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="height-100vh fullwidth">
+<section class="height-100vh fullwidth" in:fly id="about_banneronly_img_section" gsap-y="10" >
     <!-- <Animate> -->
         {#if page.section5image.data}
-        <img in:fly id="about_banneronly_img" gsap-duration="1.5" gsap-y="10" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100">
+        <img in:scaleUp id="about_banneronly_img" gsap-start="top center" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100 image-scale-up">
         {/if}
     <!-- </Animate> -->
 </section>

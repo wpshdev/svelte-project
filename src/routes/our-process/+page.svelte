@@ -335,6 +335,7 @@
         img{
             margin-top: 1rem;
             height: auto;
+            object-fit: cover;
         }
         &__paragraph{
             background-color: #F2F2F2;

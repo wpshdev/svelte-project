@@ -3,7 +3,7 @@
     import { onMount } from 'svelte';
 	import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from 'svelte/transition';
-    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
@@ -65,14 +65,14 @@
                 <Col md="5" class="align-self-center">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1">{@html about.Section1heading ? about.Section1heading : ''}</h3>
-                        <p in:fly id="cd-cont1" gsap-duration="1.2">{@html about.Section1text ? about.Section1text : ''}</p>
+                        <p in:fadeIn id="cd-cont1" gsap-delay="1" gsap-duration="1">{@html about.Section1text ? about.Section1text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     
                         {#if about.Section1image.data}
                         <div>
-                            <img in:slide id="cd-image1" gsap-duration="2" gsap-x="20" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
+                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="20" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                         </div>
                         {/if}
                     
@@ -88,14 +88,14 @@
                 <Col md="6">
                     {#if about.Section2image.data}
                     <div>
-                        <img in:slide id="cd-image2" gsap-x="-20" gsap-duration="2" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
+                        <img in:fly id="cd-image2" gsap-y="20" gsap-duration="1" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
                 <Col md="5" class="align-self-center">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1">{@html about.Section2heading ? about.Section2heading : ''}</h3>
-                        <p in:fly id="cd-cont2" gsap-duration="1.2">{@html about.Section2text ? about.Section2text : ''}</p>
+                        <p in:fadeIn id="cd-cont2" gsap-delay="1" gsap-duration="2">{@html about.Section2text ? about.Section2text : ''}</p>
                     </div>
                 </Col>
             </Row>
@@ -109,13 +109,13 @@
                 <Col md="5" class="align-self-center">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1">{@html about.Section3heading ? about.Section3heading : ''}</h3>
-                        <p in:fly id="cd-cont3" gsap-duration="1.2"> {@html about.Section3text ? about.Section3text : ''}</p>
+                        <p in:fadeIn id="cd-cont3" gsap-delay="1" gsap-duration="2"> {@html about.Section3text ? about.Section3text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     {#if about.Section3image.data}
                     <div >
-                        <img in:slide id="cd-image3" gsap-x="20" gsap-duration="2" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
+                        <img in:fly id="cd-image3" gsap-y="20" gsap-duration="1" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -125,10 +125,10 @@
 </section>
 
 <!-- <Animate> -->
-<section class="mx-8 remodel" in:fadeIn id="remodel-img" gsap-duration="2.5">
-    <div class="remodel__bgimage" >
+<section class="mx-8 remodel" in:fly id="remodel-img-section" gsap-y="20">
+    <div class="remodel__bgimage">
         {#if about.Section4image.data}
-        <img  src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
+        <img class="image-scale-up" in:scaleUp id="remodel-img" gsap-start="top center" src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
         {/if}
         <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
     </div>  
@@ -171,14 +171,14 @@
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                     <div >
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="1">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
-                        <p class="text-right" in:fly id="sp-cont1" gsap-duration="1.2">{@html about.Section6text ? about.Section6text : ''}</p>
+                        <p class="text-right" in:fadeIn id="sp-cont1" gsap-delay="1" gsap-duration="2">{@html about.Section6text ? about.Section6text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
                         {#if about.Section6image.data}
-                        <img in:fadeIn id="sp-img1" gsap-duration="2" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
+                        <img in:fly id="sp-img1" gsap-duration="1" gsap-y="20" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -194,14 +194,14 @@
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                         {#if about.Section7image.data}
-                        <img in:fadeIn id="sp-img2" gsap-duration="2" src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
+                        <img in:fly gsap-y="20" id="sp-img2" gsap-duration="2" src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
                     <div>
                         <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="1">{@html about.Section7heading ? about.Section7heading : ''}</h3>
-                        <p in:fly id="sp-cont2" gsap-duration="1.2">{@html about.Section7text ? about.Section7text : ''}</p>
+                        <p in:fadeIn id="sp-cont2" gsap-delay="1" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
                     </div>
                 </Col>
             </Row>
@@ -215,14 +215,14 @@
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                     <div>
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="1">{@html about.Section8heading ? about.Section8heading : ''}</h3>
-                        <p class="text-right" in:fly id="sp-cont3" gsap-duration="1.2">{@html about.Section8text ? about.Section8text : ''}</p>
+                        <p class="text-right" in:fadeIn id="sp-cont3" gsap-delay="1" gsap-duration="2">{@html about.Section8text ? about.Section8text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
                         {#if about.Section8image.data}
-                        <img in:fadeIn id="sp-img3" gsap-duration="2" src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
+                        <img in:fly gsap-y="20" id="sp-img3" gsap-duration="1" src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -433,7 +433,7 @@
         }
     }
     .sets-parts{
-        min-height: 60rem;
+        min-height: 80rem;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){

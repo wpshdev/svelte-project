@@ -182,6 +182,7 @@
             width: 100%;
             max-width: 100%;
             height: auto;
+            object-fit: cover;
         }      
         &__member{
             position: relative;

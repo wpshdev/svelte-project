@@ -242,7 +242,7 @@ function handleScroll() {
 						<div class="reputation__content">
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
-								<h2 class="text-animate secondary-font" gsap-duration="2" in:textAnimate gsap-delay="0.5" id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
+								<h2 class="text-animate secondary-font" gsap-duration="1" in:textAnimate gsap-delay="0.5" id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
 								<div in:fly id="reputation-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
 									<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
@@ -255,7 +255,7 @@ function handleScroll() {
 					<div class="childimg">
 						{#if home.reputation.image.data}
 						<Animate>
-							<img in:fly id="story-img" gsap-duration="2" gsap-y="10" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						</Animate>
 						{/if}
 					</div>
@@ -263,7 +263,7 @@ function handleScroll() {
 					<div class="mobileimg">
 						{#if home.reputation.image.data}
 						<Animate>
-							<img in:fly id="story-img" gsap-duration="2" gsap-y="10" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						</Animate>
 						{/if}
 					</div>
@@ -279,7 +279,7 @@ function handleScroll() {
 				<div class="process__top-image childimg" >
 					{#if home.ourProcessTopImage.data[0]}
 					<Animate>
-						<img in:fly id="process-top-img" gsap-delay="0.5" gsap-duration="2" gsap-y="10" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly id="process-top-img" gsap-delay="0.5" gsap-duration="2" gsap-y="30" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					</Animate>
 					{/if}
 				</div>
@@ -291,7 +291,7 @@ function handleScroll() {
 					<div class="process__content">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
-							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="2" gsap-delay="0.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
+							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1" gsap-delay="0.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
 							<div in:fly id="process-cont" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
 								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
 								<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
@@ -304,7 +304,7 @@ function handleScroll() {
 				<div class="process__bottom childimg">
 					{#if home.ourProcessRightImage.data}
 					<Animate>
-						<img in:fly id="process-bottom-img" gsap-duration="2" gsap-y="10" gsap-delay="0.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly id="process-bottom-img" gsap-duration="2" gsap-y="30" gsap-delay="1.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					</Animate>
 					{/if}
 				</div>
@@ -322,7 +322,7 @@ function handleScroll() {
 						<div class="story__content">
 							<div class="story__content__wrapper">
 								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
-								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-delay="0.5" gsap-duration="2">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-delay="0.5" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
 								<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 								</div>
@@ -341,7 +341,7 @@ function handleScroll() {
 					<div>
 						{#if home.ourStoryRightImage.data}
 						<Animate>
-							<img in:fly id="story-img" gsap-duration="2" gsap-y="10" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 						</Animate>
 						{/if}
 					</div>	
@@ -418,9 +418,9 @@ function handleScroll() {
 		min-height: 80rem;
 		padding-top: 5rem;
 		padding-bottom: 5rem;
-		@include media-max(ipadmini){
-			min-height: unset;
-		}	
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+		// }	
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -599,7 +599,8 @@ function handleScroll() {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
 			@include media-max(sm){
-				gap: 0.5rem;
+				gap: 1rem;
+				grid-template-columns: repeat(1, 1fr);
 			}
             .masonry-items{
                 // width: 33%;   
@@ -609,11 +610,12 @@ function handleScroll() {
                 text-align: center;  
                 height: 30rem;
                 @include media-max(ipadmini){
-                    height: 20rem;
+                    // height: 20rem;
+					height: 50vh;
                 }
-                @include media-max(sm){
-                    height: 10rem;
-                }
+                // @include media-max(sm){
+                //     height: 10rem;
+                // }
                 a{
                     display: block;
                     height: 100%;
@@ -708,7 +710,7 @@ function handleScroll() {
 		min-height: 80rem;
 		display: flex;
 		align-items: center;
-		// padding-bottom: 5rem;
+		padding-bottom: 5rem;
 		overflow: hidden;
 		@include media-max(ipadmini){
 			min-height: unset;

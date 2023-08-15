@@ -1,7 +1,7 @@
 // To use: 
 // Import the needed animation functions
 // Use the function by adding it on element with 'in' attribute e.g in:textAnimate
-// NOTE: Need to always add ID on the element you want to animate
+// NOTE: Need to always add ID on the element you want to animate - to be specific on the element
 
 // Dynamic attributes
 // Add 'gsap-delay' on the element to add delay in seconds. e.g gsap-delay="1" (1s delay)
@@ -17,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Default Values
 
 const delayDefault = '0';
-const durationDefault = '1';
+const durationDefault = '0.5';
 const flyY = '70';
 const slideX = '7';
 
@@ -51,6 +51,43 @@ export function fadeIn(node) {
                 {
                     duration: duration,
                     opacity: 1,
+                    delay: delay,
+                }
+            );
+        }
+    });
+
+}
+
+// fadeOut
+
+export function fadeOut(node) {
+
+    const targetElement = node; // target element
+    const targetElementID = targetElement.id;
+    const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
+    const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    
+    // fadeOut animation
+    ScrollTrigger.create({
+        trigger: '#' + targetElementID,
+        start: 'top bottom',
+        once: true,
+        // markers: true,
+        onEnter: function() { 
+            const tl = gsap.timeline();
+            tl.set(
+                '#' + targetElementID,
+                {
+                    opacity: 1,
+                }
+            );
+
+            tl.to(
+                '#' + targetElementID,
+                {
+                    duration: duration,
+                    opacity: 0,
                     delay: delay,
                 }
             );
@@ -190,7 +227,7 @@ export function textAnimate(node) {
             tl.set(
                 letter, 
                 {
-                    yPercent: -20,
+                    yPercent: -50,
                     opacity: 0,
                 }
             );
@@ -215,3 +252,34 @@ export function textAnimate(node) {
 
 // Written by parth
 // for minus scroll animation where section is going upwards
+
+// Image scaleUp
+
+export function scaleUp(node) {
+
+    const targetElement = node; // target element
+    const targetElementID = targetElement.id;
+    const startDefault = "top bottom";
+    const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
+    const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
+    // scaleUp animation
+
+    ScrollTrigger.create({
+        trigger: '#' + targetElementID,
+        start: start,
+        once: true,
+        // markers: true,
+        onEnter: function() { 
+            const tl = gsap.timeline();
+            tl.to(
+                '#' + targetElementID,
+                {
+                    duration: duration,
+                    scale: 1,
+                    delay: delay,
+                }
+            ); 
+        }, 
+    })
+}
