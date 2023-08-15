@@ -105,7 +105,7 @@
 				</div>
 			</Col>
 			<Col md="6">
-				<div class="contact__form" in:fly id="global_contact_form" gsap-duration="1.2">
+				<div class="contact__form" in:fly id="global_contact_form" gsap-duration="1.2" gsap-y="30">
 					<Form method="post">
 						<FormGroup class="input-icon-box">
 							<Input class="input-user" placeholder="Full Name" bind:value={name} />
