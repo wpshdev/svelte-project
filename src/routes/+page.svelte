@@ -33,8 +33,7 @@
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
             const headers = {
                 Authorization: 'Bearer ' + PUBLIC_STRAPI_API
-            }  
-
+            }
             try {
                 const response = await axios.get(url, { headers });
 				portfolioList = response.data.data;
@@ -65,28 +64,28 @@ function calculateMaxTranslateY() {
 }
 function handleScroll() {
     scrollY = window.scrollY;
-    updateChildPosition();
-	updateChildPositionimg("containerimg", "childimg", 0);
-	updateChildPositionimg("containerimg2", "childimg2", 0);
-	updateChildPositionimg("containerimg3", "childimg3", 0);
+    updateChildPosition("child", 0.5);
+	updateChildPositionimg("containerimg", "childimg", 0, 0.2);
+	updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
+	updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
+	updateChildPositionimg("containerimg4", "childimg4", 0, 0.3);
   }
 
-  function updateChildPosition() {
-    const scrollSpeedMultiplier = 0.5; // Adjust this value for slower scrolling
+  function updateChildPosition(childclass, speed) {
+    const scrollSpeedMultiplier = speed;
     let translateY = scrollY * scrollSpeedMultiplier;
     
     // Ensure translateY does not exceed maxTranslateY
     translateY = Math.min(translateY, maxTranslateY);
-    const child = document.querySelector(".child");
+    const child = document.querySelector("."+ childclass);
     child.style.transform = `translateY(${translateY}px)`;
   }
-  function updateChildPositionimg(containerin, childin, offset) {
+  function updateChildPositionimg(containerin, childin, offset, speed) {
 	const containertop = document.querySelector("." + containerin).offsetTop;
 	let scrollYval = scrollY + screen.height;
 	if(scrollYval - containertop){
 		let invalue = scrollYval - containertop;
-		const scrollSpeedMultiplier = 0.2; // Adjust this value for slower scrolling
-		const translateY = (invalue * scrollSpeedMultiplier) - offset;
+		const translateY = (invalue * speed) - offset;
 		const child = document.querySelector("." + childin);
 		child.style.transform = `translateY(-${translateY}px)`;
 	}
@@ -338,8 +337,8 @@ function handleScroll() {
 						</div>
 					</Animate>
 				</Col>
-				<Col md="5" class="my-auto">
-					<div>
+				<Col md="5" class="my-auto containerimg4">
+					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
 						<Animate>
 							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
