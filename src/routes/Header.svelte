@@ -92,7 +92,9 @@
 {:then siteSettings} 
   <Navbar expand="md">
 	<NavbarBrand href="/" rel="preload">
-		<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo" width="330" height="170" />
+		<div class="logo-container">
+			<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo" width="330" height="170" />
+		</div>
 	</NavbarBrand>
 	{#if !isOpen}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
