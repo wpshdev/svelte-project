@@ -8,6 +8,7 @@
 // Add 'gsap-duration' on the element to add duration in seconds. e.g gsap-duration="1" (1s duration)
 // Add 'gsap-y' on the element to add starting position of fly in
 // Add 'gsap-x' on the element to add starting position of slide in
+// Add 'gsap-start' on the element to specify trigger point of scroll trigger
 
 import {gsap}  from "gsap/dist/gsap";        
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
@@ -20,6 +21,7 @@ const delayDefault = '0';
 const durationDefault = '0.5';
 const flyY = '70';
 const slideX = '7';
+const startDefault = "top bottom";
 
 // FadeIn
 
@@ -29,12 +31,13 @@ export function fadeIn(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
     targetElement.style.opacity = '0';
     
     // FadeIn animation
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
-        start: 'top bottom',
+        start: start,
         once: true,
         // markers: true,
         onEnter: function() { 
@@ -67,11 +70,12 @@ export function fadeOut(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
     
     // fadeOut animation
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
-        start: 'top bottom',
+        start: start,
         once: true,
         // markers: true,
         onEnter: function() { 
@@ -105,13 +109,14 @@ export function fly(node) {
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
     const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : flyY;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
     targetElement.style.opacity = '0';
 
     // Fly animation
 
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
-        start: 'top bottom',
+        start: start,
         once: true,
         // markers: true,
         onEnter: function() { 
@@ -146,13 +151,14 @@ export function slide(node) {
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
     const x = targetElement.getAttribute("gsap-x") ? targetElement.getAttribute("gsap-x") : slideX;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
     targetElement.style.opacity = '0';
 
     // slide animation
 
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
-        start: 'top bottom',
+        start: start,
         once: true,
         // markers: true,
         onEnter: function() { 
@@ -186,6 +192,7 @@ export function textAnimate(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
     targetElement.style.opacity = '0';
 
     // Split text
@@ -210,7 +217,7 @@ export function textAnimate(node) {
     // Text animation
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
-        start: 'top bottom',
+        start: start,
         once: true,
         // markers: true,
         onEnter: function() { 
@@ -259,7 +266,6 @@ export function scaleUp(node) {
 
     const targetElement = node; // target element
     const targetElementID = targetElement.id;
-    const startDefault = "top bottom";
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
@@ -282,4 +288,52 @@ export function scaleUp(node) {
             ); 
         }, 
     })
+}
+
+// slowDownSection
+
+export function slowDownSection(node) {
+
+    const parentElement = node; // target element
+    const parentElementID = parentElement.id;
+
+    // Parallax/slowdown effect on the main container
+
+    // function updatePosition() {
+    //     const scrollY = window.scrollY;
+        
+    //     gsap.to('#' + parentElementID, {
+    //       y: -scrollY * 0.1, // Adjust the factor as needed
+    //       duration: 0.5,
+    //       ease: 'linear'
+    //     });
+    // }
+      
+
+    ScrollTrigger.create({
+        trigger: '#' + parentElementID,
+        start: 'center center',
+        end: "+=" + (window.innerHeight * 10),
+        // anticipatePin: 1,
+        pin: true,
+        scrub: false,
+        // markers: true,
+        // onLeave: function() {
+        //     const tl = gsap.timeline();
+        //     tl.to('#' + parentElementID, {
+        //         yPercent: -70,
+        //         duration: 0.5,
+        //         ease: 'Linear.easeInOut'
+        //     });
+        // },
+        // onEnterBack: function() {  
+        //     const tl = gsap.timeline();
+        //     tl.to('#' + parentElementID, {
+        //         yPercent: 0,
+        //         duration: 1,
+        //         ease: 'Linear.easeInOut'
+        //     });
+        // },
+    })
+
 }
