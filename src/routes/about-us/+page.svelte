@@ -3,7 +3,7 @@
     import { onMount } from 'svelte';
 	import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from 'svelte/transition';
-    import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
@@ -50,29 +50,29 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading">
+<section class="mw-1000 text-center about-heading" in:slowDownSection id="about_heading_section">
     <!-- <Animate> -->
         <Container>
-                <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fadeIn id="about_heading_cont" gsap-delay="0.5" gsap-duration="1.2">{@html about.abouttext ? about.abouttext : ''}</p>
+                <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1" gsap-start="top center">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
+                <p in:fly id="about_heading_cont" gsap-delay="1" gsap-start="top top" gsap-y="100">{@html about.abouttext ? about.abouttext : ''}</p>
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details">
+<section class="contractor-details" in:slowDownSection id="contractor_details_section1">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
                     <div>
-                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1">{@html about.Section1heading ? about.Section1heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont1" gsap-delay="1" gsap-duration="1">{@html about.Section1text ? about.Section1text : ''}</p>
+                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1" gsap-start="top top">{@html about.Section1heading ? about.Section1heading : ''}</h3>
+                        <p in:fadeIn id="cd-cont1" gsap-duration="1" gsap-delay="0.5" gsap-start="top top">{@html about.Section1text ? about.Section1text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     
                         {#if about.Section1image.data}
                         <div>
-                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="20" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
+                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="20" gsap-start="top top" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                         </div>
                         {/if}
                     
@@ -81,41 +81,41 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details">
+<section class="contractor-details" in:slowDownSection id="contractor_details_section2">
     <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="6">
                     {#if about.Section2image.data}
                     <div>
-                        <img in:fly id="cd-image2" gsap-y="20" gsap-duration="1" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
+                        <img in:fly id="cd-image2" gsap-y="20" gsap-duration="1" gsap-start="top top" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
                 <Col md="5" class="align-self-center">
                     <div>
-                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1">{@html about.Section2heading ? about.Section2heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont2" gsap-delay="1" gsap-duration="2">{@html about.Section2text ? about.Section2text : ''}</p>
+                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1" gsap-start="top top">{@html about.Section2heading ? about.Section2heading : ''}</h3>
+                        <p in:fadeIn id="cd-cont2" gsap-delay="0.5" gsap-duration="1" gsap-start="top top">{@html about.Section2text ? about.Section2text : ''}</p>
                     </div>
                 </Col>
             </Row>
         </Container> 
     <!-- </Animate>   -->
 </section>
-<section class="contractor-details">
+<section class="contractor-details" in:slowDownSection id="contractor_details_section3">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5" class="align-self-center">
                     <div>
-                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1">{@html about.Section3heading ? about.Section3heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont3" gsap-delay="1" gsap-duration="2"> {@html about.Section3text ? about.Section3text : ''}</p>
+                        <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1" gsap-start="top top">{@html about.Section3heading ? about.Section3heading : ''}</h3>
+                        <p in:fadeIn id="cd-cont3" gsap-delay="0.5" gsap-duration="1" gsap-start="top top"> {@html about.Section3text ? about.Section3text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
                     {#if about.Section3image.data}
                     <div >
-                        <img in:fly id="cd-image3" gsap-y="20" gsap-duration="1" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
+                        <img in:fly id="cd-image3" gsap-start="top top" gsap-y="20" gsap-duration="1" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -171,7 +171,7 @@
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                     <div >
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="1">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
-                        <p class="text-right" in:fadeIn id="sp-cont1" gsap-delay="1" gsap-duration="2">{@html about.Section6text ? about.Section6text : ''}</p>
+                        <p class="text-right" in:fadeIn id="sp-cont1" gsap-delay="0.5" gsap-duration="1">{@html about.Section6text ? about.Section6text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
@@ -201,7 +201,7 @@
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
                     <div>
                         <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="1">{@html about.Section7heading ? about.Section7heading : ''}</h3>
-                        <p in:fadeIn id="sp-cont2" gsap-delay="1" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
+                        <p in:fadeIn id="sp-cont2" gsap-delay="0.5" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
                     </div>
                 </Col>
             </Row>
@@ -215,7 +215,7 @@
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                     <div>
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="1">{@html about.Section8heading ? about.Section8heading : ''}</h3>
-                        <p class="text-right" in:fadeIn id="sp-cont3" gsap-delay="1" gsap-duration="2">{@html about.Section8text ? about.Section8text : ''}</p>
+                        <p class="text-right" in:fadeIn id="sp-cont3" gsap-delay="0.5" gsap-duration="1">{@html about.Section8text ? about.Section8text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
@@ -264,7 +264,7 @@
         background-position: top !important;
     } 
     .about-heading{
-        min-height: 80rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -290,7 +290,7 @@
         margin:7.5rem auto;
         &.certificate {
             text-align: center;
-            min-height: 80rem;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             @include media-max(ipadmini){
@@ -364,7 +364,7 @@
         }
     }
     .contractor-details {
-        min-height: 80rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -410,6 +410,12 @@
         }
     }
     .remodel {
+        min-height: 100vh;
+		display: flex;
+		align-items: center;
+		@include media-max(ipadmini){
+			min-height: unset;
+		}
         &__bgimage {
             width:100%;
             margin:auto;
@@ -433,7 +439,7 @@
         }
     }
     .sets-parts{
-        min-height: 80rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -528,7 +534,7 @@
         }
     }
     .talktous{
-        min-height: 35rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
         justify-content: center;
