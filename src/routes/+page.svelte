@@ -33,8 +33,7 @@
             const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+activeTab+"&populate=deep,2";
             const headers = {
                 Authorization: 'Bearer ' + PUBLIC_STRAPI_API
-            }  
-
+            }
             try {
                 const response = await axios.get(url, { headers });
 				portfolioList = response.data.data;
@@ -47,7 +46,6 @@
             }
         })();
     }
-
 
 // Written by parth for different section speed
 import { onMount } from "svelte";
@@ -66,27 +64,29 @@ function calculateMaxTranslateY() {
 }
 function handleScroll() {
     scrollY = window.scrollY;
-    updateChildPosition();
-	updateChildPositionimg();
+    updateChildPosition("child", 0.5);
+	updateChildPositionimg("containerimg", "childimg", 0, 0.2);
+	updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
+	updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
+	updateChildPositionimg("containerimg4", "childimg4", 0, 0.3);
   }
 
-  function updateChildPosition() {
-    const scrollSpeedMultiplier = 0.5; // Adjust this value for slower scrolling
+  function updateChildPosition(childclass, speed) {
+    const scrollSpeedMultiplier = speed;
     let translateY = scrollY * scrollSpeedMultiplier;
     
     // Ensure translateY does not exceed maxTranslateY
     translateY = Math.min(translateY, maxTranslateY);
-    const child = document.querySelector(".child");
+    const child = document.querySelector("."+ childclass);
     child.style.transform = `translateY(${translateY}px)`;
   }
-  function updateChildPositionimg() {
-	const containertop = document.querySelector(".containerimg").offsetTop;
+  function updateChildPositionimg(containerin, childin, offset, speed) {
+	const containertop = document.querySelector("." + containerin).offsetTop;
 	let scrollYval = scrollY + screen.height;
 	if(scrollYval - containertop){
 		let invalue = scrollYval - containertop;
-		const scrollSpeedMultiplier = 0.2; // Adjust this value for slower scrolling
-		const translateY = invalue * scrollSpeedMultiplier;
-		const child = document.querySelector(".childimg");
+		const translateY = (invalue * speed) - offset;
+		const child = document.querySelector("." + childin);
 		child.style.transform = `translateY(-${translateY}px)`;
 	}
   }
@@ -234,7 +234,7 @@ function handleScroll() {
 
 
 
-<section class="reputation containerimg" >
+<section class="reputation" >
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -251,7 +251,7 @@ function handleScroll() {
 						</div>
 					</Animate>
 				</Col>
-				<Col md="5" class="my-auto" >
+				<Col md="5" class="my-auto containerimg" >
 					<div class="childimg">
 						{#if home.reputation.image.data}
 						<Animate>
@@ -272,11 +272,11 @@ function handleScroll() {
 		</Container>
 </section>
 
-<section class="process containerimg">
+<section class="process">
 	<Container>
 		<Row>
-			<Col md="6">
-				<div class="process__top-image childimg" >
+			<Col md="6" class="">
+				<div class="process__top-image childimg2" >
 					{#if home.ourProcessTopImage.data[0]}
 					<Animate>
 						<img in:fly id="process-top-img" gsap-delay="0.5" gsap-duration="2" gsap-y="30" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
@@ -288,7 +288,7 @@ function handleScroll() {
 		<Row>
 			<Col md="7" class="">
 				<Animate>
-					<div class="process__content">
+					<div class="process__content containerimg2">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
 							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1" gsap-delay="0.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
@@ -300,8 +300,8 @@ function handleScroll() {
 					</div>
 				</Animate>
 			</Col>
-			<Col md="5" class="my-auto ">
-				<div class="process__bottom childimg">
+			<Col md="5" class="my-auto containerimg3">
+				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
 					<Animate>
 						<img in:fly id="process-bottom-img" gsap-duration="2" gsap-y="30" gsap-delay="1.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
@@ -337,8 +337,8 @@ function handleScroll() {
 						</div>
 					</Animate>
 				</Col>
-				<Col md="5" class="my-auto">
-					<div>
+				<Col md="5" class="my-auto containerimg4">
+					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
 						<Animate>
 							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
