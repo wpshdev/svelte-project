@@ -50,11 +50,11 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading" in:slowDownSection id="about_heading_section">
+<section class="mw-1000 text-center about-heading" in:slowDownSection id="about_heading_section" gsap-ydistance="-210">
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1" gsap-start="top center">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-delay="1" gsap-start="top top" gsap-y="100">{@html about.abouttext ? about.abouttext : ''}</p>
+                <p in:fly id="about_heading_cont" gsap-delay="1" gsap-duration="2" gsap-start="top top" gsap-y="100">{@html about.abouttext ? about.abouttext : ''}</p>
         </Container>
     <!-- </Animate> -->
 </section>
@@ -72,7 +72,7 @@
                     
                         {#if about.Section1image.data}
                         <div>
-                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="20" gsap-start="top top" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
+                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="30" gsap-start="top top" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                         </div>
                         {/if}
                     
@@ -88,7 +88,7 @@
                 <Col md="6">
                     {#if about.Section2image.data}
                     <div>
-                        <img in:fly id="cd-image2" gsap-y="20" gsap-duration="1" gsap-start="top top" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
+                        <img in:fly id="cd-image2" gsap-y="30" gsap-duration="2" gsap-start="top top" src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -115,7 +115,7 @@
                 <Col md="6">
                     {#if about.Section3image.data}
                     <div >
-                        <img in:fly id="cd-image3" gsap-start="top top" gsap-y="20" gsap-duration="1" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
+                        <img in:fly id="cd-image3" gsap-start="top top" gsap-y="30" gsap-duration="2" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -178,7 +178,7 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
                         {#if about.Section6image.data}
-                        <img in:fly id="sp-img1" gsap-duration="1" gsap-y="20" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
+                        <img in:fly id="sp-img1" gsap-y="30" gsap-duration="2" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -194,7 +194,7 @@
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                         {#if about.Section7image.data}
-                        <img in:fly gsap-y="20" id="sp-img2" gsap-duration="2" src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
+                        <img in:fly gsap-y="30" gsap-duration="2" id="sp-img2" src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -222,7 +222,7 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
                         {#if about.Section8image.data}
-                        <img in:fly gsap-y="20" id="sp-img3" gsap-duration="1" src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
+                        <img in:fly gsap-y="30" gsap-duration="2" id="sp-img3" src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
                         {/if}
                     </div>
                 </Col>
@@ -290,7 +290,7 @@
         margin:7.5rem auto;
         &.certificate {
             text-align: center;
-            min-height: 100vh;
+            min-height: 80rem;
             display: flex;
             align-items: center;
             @include media-max(ipadmini){
@@ -364,7 +364,7 @@
         }
     }
     .contractor-details {
-        min-height: 100vh;
+        min-height: 80rem;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -410,7 +410,7 @@
         }
     }
     .remodel {
-        min-height: 100vh;
+        min-height: 80rem;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -439,7 +439,7 @@
         }
     }
     .sets-parts{
-        min-height: 100vh;
+        min-height: 80rem;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){

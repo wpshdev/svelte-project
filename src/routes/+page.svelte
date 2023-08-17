@@ -9,7 +9,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
-	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide, slowDownSection } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -53,6 +53,7 @@ let scrollY = 0;
 onMount(() => {
   window.addEventListener("scroll", handleScroll);
   calculateMaxTranslateY();
+//   calculateMaxTranslateY("reputation", "reputation_child");
 });
 let maxTranslateY;
 function calculateMaxTranslateY() {
@@ -62,9 +63,17 @@ function calculateMaxTranslateY() {
     const childHeight = child.clientHeight;
     maxTranslateY = containerHeight - childHeight - 100;
 }
+// function calculateMaxTranslateY(containerClass, childClass) {
+// 	const container = document.querySelector("." + containerClass);
+// 	const child = document.querySelector("." + childClass);
+//     const containerHeight = container.clientHeight;
+//     const childHeight = child.clientHeight;
+//     maxTranslateY = containerHeight - childHeight - 100;
+// }
 function handleScroll() {
     scrollY = window.scrollY;
     updateChildPosition("child", 0.5);
+    // updateChildPosition("reputation_child", 0.5);
 	updateChildPositionimg("containerimg", "childimg", 0, 0.2);
 	updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
 	updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
@@ -235,14 +244,14 @@ function handleScroll() {
 
 
 <section class="reputation" >
-		<Container>
+		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
 					<Animate>
 						<div class="reputation__content">
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
-								<h2 class="text-animate secondary-font" gsap-duration="1" in:textAnimate gsap-delay="0.5" id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
+								<h2 class="text-animate secondary-font" gsap-duration="1.5" in:textAnimate gsap-delay="0.5" id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
 								<div in:fly id="reputation-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
 									<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
@@ -291,7 +300,7 @@ function handleScroll() {
 					<div class="process__content containerimg2">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
-							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1" gsap-delay="0.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
+							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" gsap-delay="0.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
 							<div in:fly id="process-cont" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
 								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
 								<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
@@ -322,7 +331,7 @@ function handleScroll() {
 						<div class="story__content">
 							<div class="story__content__wrapper">
 								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
-								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-delay="0.5" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-delay="0.5" gsap-duration="1.5">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
 								<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 								</div>

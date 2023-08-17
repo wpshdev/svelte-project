@@ -133,9 +133,9 @@
                 <Row noGutters class="justify-content-center sets-us-apart__row">
                     <Col md="6" class="sets-us-apart__content">
                         <div>
-                            <h4 class="text-right pfont py-3 text-animate" in:textAnimate id="about_sua_title1" gsap-duration="1">{@html page.section2heading ? page.section2heading : ''}</h4>
+                            <h4 class="text-right pfont py-3 text-animate" in:textAnimate id="about_sua_title1" gsap-duration="1.5">{@html page.section2heading ? page.section2heading : ''}</h4>
                             <div class="blue-color-background">
-                                <p class="text-right px-5 py-5" in:fly id="about_sua_cont1" gsap-duration="1.2" gsap-y="20">
+                                <p class="text-right px-5 py-5" gsap-delay="1" in:fly id="about_sua_cont1" gsap-duration="2" gsap-y="20">
                                     {@html page.section2text ? page.section2text : ''}
                                 </p>
                             </div>
@@ -143,7 +143,7 @@
                     </Col>
                     <Col md="6" class="imageCont">
                         {#if page.section2image.data}
-                        <img in:fadeIn id="about_sua_img1" gsap-duration="1" src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
+                        <img in:fly id="about_sua_img1" gsap-duration="2" gsap-y="30" gsap-delay="0.5" src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
                         {/if}
                     </Col>
                 </Row>
@@ -156,15 +156,15 @@
             <Row noGutters class="justify-content-center flex-md-row flex-column-reverse sets-us-apart__row">
                 <Col md="6" class="imageCont">
                     {#if page.section3image.data}
-                    <img in:fadeIn id="about_sua_img2" gsap-duration="1" gsap-x="-7" src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
+                    <img in:fly id="about_sua_img2" gsap-duration="2" gsap-y="30" gsap-delay="0.5" src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
                     {/if}
                 </Col>
                 <Col md="6" class="sets-us-apart__content">
                     <div >
-                        <h4 class="txt-center py-3 pfont text-animate" in:textAnimate id="about_sua_title2" gsap-duration="1">{@html page.section3heading ? page.section3heading : ''}</h4>
+                        <h4 class="txt-center py-3 pfont text-animate" in:textAnimate id="about_sua_title2" gsap-duration="1.5">{@html page.section3heading ? page.section3heading : ''}</h4>
                         <!-- <p class="px-5 txt-center py-5 blue-color-background">{@html page.section3text ? page.section3text : ''}</p> -->
                         <div class="blue-color-background">
-                            <p class="txt-center px-5 py-5" in:fly id="about_sua_cont2" gsap-duration="1.2" gsap-y="20">
+                            <p class="txt-center px-5 py-5" in:fly id="about_sua_cont2" gsap-delay="1"  gsap-duration="2" gsap-y="20">
                                 {@html page.section3text ? page.section3text : ''}
                             </p>
                         </div>
@@ -180,10 +180,10 @@
             <Row noGutters class="justify-content-center sets-us-apart__row">
                 <Col md="6" class="sets-us-apart__content">
                     <div>
-                        <h4 class="text-right pfont py-3 text-animate" in:textAnimate id="about_sua_title3" gsap-duration="1">{@html page.section4heading ? page.section4heading : ''}</h4>
+                        <h4 class="text-right pfont py-3 text-animate" in:textAnimate id="about_sua_title3" gsap-duration="1.5">{@html page.section4heading ? page.section4heading : ''}</h4>
                         <!-- <p class="text-right px-5 py-5 blue-color-background">{@html page.section4text ? page.section4text : ''}</p> -->
                         <div class="blue-color-background">
-                            <p class="text-right px-5 py-5" in:fly id="about_sua_cont3" gsap-duration="1.2" gsap-y="20">
+                            <p class="text-right px-5 py-5" in:fly id="about_sua_cont3" gsap-duration="2" gsap-delay="1" gsap-y="20">
                                 {@html page.section4text ? page.section4text : ''}
                             </p>
                         </div>
@@ -191,7 +191,7 @@
                 </Col>
                 <Col md="6" class="imageCont">
                     {#if page.section4image.data}
-                    <img in:fadeIn id="about_sua_img3" gsap-duration="1" src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
+                    <img in:fly id="about_sua_img3" gsap-duration="2" gsap-delay="0.5" gsap-y="30" src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
                     {/if}
                 </Col>
             </Row>
