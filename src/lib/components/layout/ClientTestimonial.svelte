@@ -38,7 +38,7 @@
 <section class="our_client_say">
     <div>
         <h2 class="text-animate secondary-font" in:textAnimate id="testimonial-heading" gsap-duration="1" >{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
-        <div class="our_client_say__cards slider-container" in:fly id="testimonial-cont" gsap-duration="1.2">
+        <div class="our_client_say__cards slider-container" in:fly id="testimonial-cont" gsap-duration="2">
             {#each clientTestimonials as testimonial}
                 <div class="details">
                     <p>{testimonial.attributes.testimonialText ? testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "") : ''}</p>

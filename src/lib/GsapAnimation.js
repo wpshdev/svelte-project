@@ -296,27 +296,49 @@ export function slowDownSection(node) {
 
     const parentElement = node; // target element
     const parentElementID = parentElement.id;
+    const container = parentElement.querySelector('.container');
+
+    const defaultDistance = '-120';
+    const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
 
     // Parallax/slowdown effect on the main container
 
-    // function updatePosition() {
-    //     const scrollY = window.scrollY;
-        
-    //     gsap.to('#' + parentElementID, {
-    //       y: -scrollY * 0.1, // Adjust the factor as needed
-    //       duration: 0.5,
-    //       ease: 'linear'
-    //     });
-    // }
-      
-
-    ScrollTrigger.create({
-        trigger: '#' + parentElementID,
-        start: 'center center',
-        end: "+=" + (window.innerHeight * 10),
-        // anticipatePin: 1,
+	gsap.to(container, {
+      yPercent: yDistance, 
+      ease: "none", 
+      scrollTrigger: {
+        trigger: '#' + parentElementID, 
+        scrub: true,
+        start: 'top top',
+        end: "+=" + (window.innerHeight * 7),
         pin: true,
-        scrub: false,
+        // markers: true,
+        onEnter: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 1,
+            });
+        },
+        onLeave: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 0,
+                duration: 0.5,
+            });
+        },
+        onEnterBack: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 1,
+            });
+        },
+      }
+    });
+
+    // ScrollTrigger.create({
+    //     trigger: '#' + parentElementID,
+    //     start: 'center center',
+    //     end: "+=" + (window.innerHeight * 10),
+    //     anticipatePin: 1,
+    //     pin: true,
+    //     scrub: false,
         // markers: true,
         // onLeave: function() {
         //     const tl = gsap.timeline();
@@ -334,6 +356,6 @@ export function slowDownSection(node) {
         //         ease: 'Linear.easeInOut'
         //     });
         // },
-    })
+    // });
 
 }
