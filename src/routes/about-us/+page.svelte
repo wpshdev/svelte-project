@@ -54,7 +54,7 @@
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1" gsap-start="top center">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-delay="1" gsap-duration="2" gsap-start="top top" gsap-y="100">{@html about.abouttext ? about.abouttext : ''}</p>
+                <p in:fly id="about_heading_cont" gsap-delay="0.5" gsap-duration="2" gsap-start="top top" gsap-y="100">{@html about.abouttext ? about.abouttext : ''}</p>
         </Container>
     <!-- </Animate> -->
 </section>
@@ -367,9 +367,9 @@
         min-height: 80rem;
 		display: flex;
 		align-items: center;
-		@include media-max(ipadmini){
-			min-height: unset;
-		}
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+		// }
         :global(.row) {
             justify-content: center;
             gap: 3rem;

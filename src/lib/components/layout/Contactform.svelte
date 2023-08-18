@@ -161,6 +161,9 @@
 				margin-bottom: 1rem;
 				// flex-wrap: wrap;
 				width: 27rem;
+				@include media-max(laptopS){
+					width: unset;
+				}
 			}	
 			p {
 				font-size: 1.5rem;

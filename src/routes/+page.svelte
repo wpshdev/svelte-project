@@ -9,7 +9,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
-	import { textAnimate, fly, fadeIn, slide, slowDownSection } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide, slowDownSection, } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -243,7 +243,7 @@ function handleScroll() {
 
 
 
-<section class="reputation" >
+<section class="reputation">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -292,6 +292,14 @@ function handleScroll() {
 					</Animate>
 					{/if}
 				</div>
+				<!-- Mobile -->
+				<div class="process__top-image mobileimg" >
+					{#if home.ourProcessTopImage.data[0]}
+					<Animate>
+						<img in:fly id="process-top-img" gsap-delay="0.5" gsap-duration="2" gsap-y="30" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+					</Animate>
+					{/if}
+				</div>
 			</Col>
 		</Row>
 		<Row>
@@ -311,6 +319,14 @@ function handleScroll() {
 			</Col>
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
+					{#if home.ourProcessRightImage.data}
+					<Animate>
+						<img in:fly id="process-bottom-img" gsap-duration="2" gsap-y="30" gsap-delay="1.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+					</Animate>
+					{/if}
+				</div>
+				<!-- mobile -->
+				<div class="process__bottom mobileimg">
 					{#if home.ourProcessRightImage.data}
 					<Animate>
 						<img in:fly id="process-bottom-img" gsap-duration="2" gsap-y="30" gsap-delay="1.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
@@ -348,6 +364,14 @@ function handleScroll() {
 				</Col>
 				<Col md="5" class="my-auto containerimg4">
 					<div class="childimg4">
+						{#if home.ourStoryRightImage.data}
+						<Animate>
+							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+						</Animate>
+						{/if}
+					</div>	
+					<!-- mobile -->
+					<div class="mobileimg">
 						{#if home.ourStoryRightImage.data}
 						<Animate>
 							<img in:fly id="story-img" gsap-duration="2" gsap-y="30" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
@@ -1017,6 +1041,17 @@ function handleScroll() {
 				}	
 			}			
 		}
+		.mobileimg {
+			display: none;
+		}
+		@include media-max(sm){
+			.mobileimg {
+				display: block;
+			}
+			.childimg2, .childimg3 {
+				display: none;
+			}
+		}	
 		img{
 			position: relative;
 		}		
@@ -1118,6 +1153,17 @@ function handleScroll() {
 					}
 				}
 			}		
+		}
+		.mobileimg {
+			display: none;
+		}
+		@include media-max(sm){
+			.mobileimg {
+				display: block;
+			}
+			.childimg4 {
+				display: none;
+			}
 		}
 		img{
 			position: relative;
