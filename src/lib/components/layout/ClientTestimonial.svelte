@@ -8,6 +8,7 @@
     export let clientTestimonials;
     export let testimonialHeading;
 
+
     onMount(() => {
         flickityInstance = new Flickity('.slider-container', {
             cellAlign: 'center',

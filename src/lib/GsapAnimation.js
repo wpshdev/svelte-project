@@ -23,6 +23,8 @@ const flyY = '70';
 const slideX = '7';
 const startDefault = "top bottom";
 
+let mm = gsap.matchMedia();
+
 // FadeIn
 
 export function fadeIn(node) {
@@ -35,29 +37,58 @@ export function fadeIn(node) {
     targetElement.style.opacity = '0';
     
     // FadeIn animation
-    ScrollTrigger.create({
-        trigger: '#' + targetElementID,
-        start: start,
-        once: true,
-        // markers: true,
-        onEnter: function() { 
-            const tl = gsap.timeline();
-            tl.set(
-                '#' + targetElementID,
-                {
-                    opacity: 0,
-                }
-            );
+    mm.add("(min-width: 769px)", () => {
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: start,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                    }
+                );
 
-            tl.to(
-                '#' + targetElementID,
-                {
-                    duration: duration,
-                    opacity: 1,
-                    delay: delay,
-                }
-            );
-        }
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        opacity: 1,
+                        delay: delay,
+                    }
+                );
+            }
+        });
+    });
+
+    mm.add("(max-width: 768px)", () => { // default start on tablet and below
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: startDefault,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                    }
+                );
+
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        opacity: 1,
+                        delay: delay,
+                    }
+                );
+            }
+        });
     });
 
 }
@@ -113,31 +144,60 @@ export function fly(node) {
     targetElement.style.opacity = '0';
 
     // Fly animation
+    mm.add("(min-width: 769px)", () => {
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: start,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                        yPercent: y,
+                    }
+                );
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        opacity: 1,
+                        yPercent: 0,
+                        delay: delay,
+                    }
+                ); 
+            }, 
+        })
+    })
 
-    ScrollTrigger.create({
-        trigger: '#' + targetElementID,
-        start: start,
-        once: true,
-        // markers: true,
-        onEnter: function() { 
-            const tl = gsap.timeline();
-            tl.set(
-                '#' + targetElementID,
-                {
-                    opacity: 0,
-                    yPercent: y,
-                }
-            );
-            tl.to(
-                '#' + targetElementID,
-                {
-                    duration: duration,
-                    opacity: 1,
-                    yPercent: 0,
-                    delay: delay,
-                }
-            ); 
-        }, 
+    mm.add("(max-width: 768px)", () => { // default start on tablet and below
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: startDefault,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                        yPercent: y,
+                    }
+                );
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        opacity: 1,
+                        yPercent: 0,
+                        delay: delay,
+                    }
+                ); 
+            }, 
+        })
     })
 }
 
@@ -155,31 +215,60 @@ export function slide(node) {
     targetElement.style.opacity = '0';
 
     // slide animation
+    mm.add("(min-width: 769px)", () => {
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: start,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                        xPercent: x,
+                    }
+                );
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        xPercent: 0,
+                        opacity: 1,
+                        delay: delay,
+                    }
+                ); 
+            },
+        });
+    });
 
-    ScrollTrigger.create({
-        trigger: '#' + targetElementID,
-        start: start,
-        once: true,
-        // markers: true,
-        onEnter: function() { 
-            const tl = gsap.timeline();
-            tl.set(
-                '#' + targetElementID,
-                {
-                    opacity: 0,
-                    xPercent: x,
-                }
-            );
-            tl.to(
-                '#' + targetElementID,
-                {
-                    duration: duration,
-                    xPercent: 0,
-                    opacity: 1,
-                    delay: delay,
-                }
-            ); 
-        },
+    mm.add("(max-width: 768px)", () => { // default start on tablet and below
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: startDefault,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                        xPercent: x,
+                    }
+                );
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        xPercent: 0,
+                        opacity: 1,
+                        delay: delay,
+                    }
+                ); 
+            },
+        });
     });
 }
 
@@ -215,42 +304,84 @@ export function textAnimate(node) {
     targetElement.innerHTML = transformedHTML;
 
     // Text animation
-    ScrollTrigger.create({
-        trigger: '#' + targetElementID,
-        start: start,
-        once: true,
-        // markers: true,
-        onEnter: function() { 
-            const tl = gsap.timeline();
-            let letter = targetElement.querySelectorAll('span.letter');
-            
-            tl.set(
-                '#' + targetElementID,
-                {
-                    autoAlpha: 1,
-                }
-            );
+    mm.add("(min-width: 769px)", () => {
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: start,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                let letter = targetElement.querySelectorAll('span.letter');
+                
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        autoAlpha: 1,
+                    }
+                );
 
-            tl.set(
-                letter, 
-                {
-                    yPercent: -50,
-                    opacity: 0,
-                }
-            );
+                tl.set(
+                    letter, 
+                    {
+                        yPercent: -50,
+                        opacity: 0,
+                    }
+                );
 
-            tl.to(
-                letter,
-                {
-                    duration: duration,
-                    yPercent: 0,
-                    opacity: 1,
-                    stagger: 0.03,
-                    delay: delay,
-                    ease: "ease"
-                }
-            );
-        },
+                tl.to(
+                    letter,
+                    {
+                        duration: duration,
+                        yPercent: 0,
+                        opacity: 1,
+                        stagger: 0.03,
+                        delay: delay,
+                        ease: "ease"
+                    }
+                );
+            },
+        });
+    });
+
+    mm.add("(max-width: 768px)", () => { // default start on tablet and below
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: startDefault,
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                let letter = targetElement.querySelectorAll('span.letter');
+                
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        autoAlpha: 1,
+                    }
+                );
+
+                tl.set(
+                    letter, 
+                    {
+                        yPercent: -50,
+                        opacity: 0,
+                    }
+                );
+
+                tl.to(
+                    letter,
+                    {
+                        duration: duration,
+                        yPercent: 0,
+                        opacity: 1,
+                        stagger: 0.03,
+                        delay: delay,
+                        ease: "ease"
+                    }
+                );
+            },
+        });
     });
 
 }
@@ -301,36 +432,38 @@ export function slowDownSection(node) {
     const defaultDistance = '-120';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
 
-    // Parallax/slowdown effect on the main container
-
-	gsap.to(container, {
-      yPercent: yDistance, 
-      ease: "none", 
-      scrollTrigger: {
-        trigger: '#' + parentElementID, 
-        scrub: true,
-        start: 'top top',
-        end: "+=" + (window.innerHeight * 7),
-        pin: true,
-        // markers: true,
-        onEnter: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 1,
-            });
-        },
-        onLeave: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 0,
-                duration: 0.5,
-            });
-        },
-        onEnterBack: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 1,
-            });
-        },
-      }
+    // slowdown effect on the main container on desktop
+    mm.add("(min-width: 769px)", () => {
+        gsap.to(container, {
+            yPercent: yDistance, 
+            ease: "none", 
+            scrollTrigger: {
+                trigger: '#' + parentElementID, 
+                scrub: true,
+                start: 'top top',
+                end: "+=" + (window.innerHeight * 7),
+                pin: true,
+                // markers: true,
+                onEnter: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                    });
+                },
+                onLeave: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 0,
+                        duration: 0.5,
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                    });
+                },
+            }
+        });
     });
+
 
     // ScrollTrigger.create({
     //     trigger: '#' + parentElementID,
@@ -359,3 +492,48 @@ export function slowDownSection(node) {
     // });
 
 }
+
+// Slowdown no pin
+
+// export function slowNoPin(node) {
+
+//     const parentElement = node; // target element
+//     const parentElementID = parentElement.id;
+//     const container = parentElement.querySelector('.container');
+
+//     const defaultDistance = '-120';
+//     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
+
+//     // slowdown effect on the main container on desktop
+//     mm.add("(min-width: 769px)", () => {
+//         gsap.to(container, {
+//             yPercent: yDistance, 
+//             ease: "none", 
+//             scrollTrigger: {
+//                 trigger: '#' + parentElementID, 
+//                 scrub: true,
+//                 // start: 'top top',
+//                 // end: "+=" + (window.innerHeight * 7),
+//                 // pin: true,
+//                 // markers: true,
+//                 onEnter: () => {
+//                     gsap.to('#' + parentElementID, {
+//                         opacity: 1,
+//                     });
+//                 },
+//                 onLeave: () => {
+//                     gsap.to('#' + parentElementID, {
+//                         opacity: 0,
+//                         duration: 0.5,
+//                     });
+//                 },
+//                 onEnterBack: () => {
+//                     gsap.to('#' + parentElementID, {
+//                         opacity: 1,
+//                     });
+//                 },
+//             }
+//         });
+//     });
+
+// }
