@@ -240,7 +240,7 @@
 </section>
 
 <section class="talktous">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <h2 class="text-animate secondary-font" in:textAnimate id="talktous-heading" gsap-duration="1">{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
             <p in:fly id="talktous-cont" gsap-duration="1.2">{about.talkTous.talkTous_content ? about.talkTous.talkTous_content : ''}</p>
@@ -249,7 +249,7 @@
                 <a href="{about.talkTous.talkTous_btn2Link ? about.talkTous.talkTous_btn2Link  : '#'}" class="btn btn-inverted">{about.talkTous.talkTous_btn2 ? about.talkTous.talkTous_btn2 : 'Button'}</a>
             </div>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
 <!-- <Animate> -->

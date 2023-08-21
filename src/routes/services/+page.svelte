@@ -206,23 +206,23 @@
     <!-- </Animate> -->
 </section>
 <section class="reimagine">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" >{page.section6heading ? page.section6heading : ''}</h2>
             <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-delay="0.5" gsap-y="20"> {@html page.section6text ? page.section6text : ''}</p>
             <div class="text-right" ><a class="btn btn-secondary" href="{page.section6btnUrl ? page.section6btnUrl : '#'}">{page.section6btn ? page.section6btn : 'Button'}</a></div>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
 <section class="explore">
     <Container>
         <Row>
-            <Animate>
+            <!-- <Animate> -->
                 <Col md="12">
                     <h2 class="text-center text-animate secondary-font" in:textAnimate id="about_explore_title" gsap-duration="1">{page.ExploreProjects.Heading ? page.ExploreProjects.Heading : 'Explore our Projects...'}</h2>
                 </Col>	
-            </Animate>		
+            <!-- </Animate>		 -->
             {#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
                 <Col md="6">
                     <div class="explore__article">
@@ -249,9 +249,9 @@
     </Container>
 </section> 
 
-<Animate>
+<!-- <Animate> -->
     <Cta/>
-</Animate>
+<!-- </Animate> -->
 <style lang="scss">
     :global(.banner__content__paragraph) {
         @include media-max(sm){

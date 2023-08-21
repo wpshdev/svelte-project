@@ -65,25 +65,25 @@
                     </div>
                 </Col>
                 <Col md=6 class="owner-quote-container">
-                <div class="owner-quote" ><h3 class="stc line-height-2 text-center" in:fly id="owner_quote" gsap-duration="1.5" gsap-y="20">{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
+                <div class="owner-quote" in:fadeIn id="owner-quote-wrapper" gsap-duration="1.5"><h3 class="stc line-height-2 text-center" in:fly id="owner_quote" gsap-duration="1.5" gsap-y="20">{@html ourTeam.ownerquote ? ourTeam.ownerquote : ''}</h3></div>
                 </Col>
             </Row>
         </Container>
     <!-- </Animate> -->
 </section>
 <section class="paragraph1">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <h4 in:fadeIn id="team_paragraph" gsap-duration="1.5">{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 <section class="team-members">
     <Container>
         <Row>
-            <Animate>
+            <!-- <Animate> -->
                 <h2 class="sfont stc mb-5 text-center text-animate secondary-font" in:textAnimate id="member_heading" gsap-duration="0.5">{ourTeam.title ? ourTeam.title : ''}</h2>
-            </Animate>
+            <!-- </Animate> -->
             <Col md={{ size: 8, offset: 2 }} class="inner-col">
                 <Row>
                     {#each ourTeam.team_members.data as member,index}

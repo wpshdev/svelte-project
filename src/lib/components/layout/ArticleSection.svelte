@@ -42,7 +42,7 @@
 				<Col md="6" class="">
 					<div >
 						{#if insight.image.data}
-						<img in:slide id="global_article_img" gsap-x="-30" gsap-duration="2" src="{domain}{insight.image.data.attributes.formats.large.url ? insight.image.data.attributes.formats.large.url : insight.image.data.attributes.url}" alt="Stair">
+						<img in:slide id="global_article_img" gsap-x="-30" gsap-duration="1.2" src="{domain}{insight.image.data.attributes.formats.large.url ? insight.image.data.attributes.formats.large.url : insight.image.data.attributes.url}" alt="Stair">
 						{/if}
 					</div>
 				</Col>
@@ -50,8 +50,8 @@
 					<div class="insight__content">
 						<div class="insight__content__wrapper">
 							<!-- <div class="insight__content__wrapper__pre-heading">{insight.rightPreHeading ? insight.rightPreHeading : ''}</div> -->
-							<h2 class="text-animate secondary-font" in:textAnimate id="global_article_title">{insight.Heading ? insight.Heading : ''}</h2>
-							<div in:fly id="global_article_cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
+							<h2 class="text-animate secondary-font" in:textAnimate id="global_article_title" gsap-duration="1.5">{insight.Heading ? insight.Heading : ''}</h2>
+							<div in:fly id="global_article_cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
 								{@html insight.paragprah ? insight.paragprah : ''}
 								<div class="insight__content__wrapper__btns">
 									<a href="{insight.leftBtnUrl ? insight.leftBtnUrl : '#'}/" class="btn btn-secondary">{insight.leftBtnTitle ? insight.leftBtnTitle : 'Button'}</a> <a href="{insight.rightBtnUrl ? insight.rightBtnUrl : '#'}/" class="btn btn-inverted">{insight.rightBtnTitle ? insight.rightBtnTitle : 'Button'}</a>

@@ -144,61 +144,63 @@ export function fly(node) {
     targetElement.style.opacity = '0';
 
     // Fly animation
-    mm.add("(min-width: 769px)", () => {
-        ScrollTrigger.create({
-            trigger: '#' + targetElementID,
-            start: start,
-            once: true,
-            // markers: true,
-            onEnter: function() { 
-                const tl = gsap.timeline();
-                tl.set(
-                    '#' + targetElementID,
-                    {
-                        opacity: 0,
-                        yPercent: y,
-                    }
-                );
-                tl.to(
-                    '#' + targetElementID,
-                    {
-                        duration: duration,
-                        opacity: 1,
-                        yPercent: 0,
-                        delay: delay,
-                    }
-                ); 
-            }, 
+    setTimeout(() => {
+        mm.add("(min-width: 769px)", () => {
+            ScrollTrigger.create({
+                trigger: '#' + targetElementID,
+                start: start,
+                once: true,
+                // markers: true,
+                onEnter: function() { 
+                    const tl = gsap.timeline();
+                    tl.set(
+                        '#' + targetElementID,
+                        {
+                            opacity: 0,
+                            yPercent: y,
+                        }
+                    );
+                    tl.to(
+                        '#' + targetElementID,
+                        {
+                            duration: duration,
+                            opacity: 1,
+                            yPercent: 0,
+                            delay: delay,
+                        }
+                    );
+                }, 
+            })
         })
-    })
 
-    mm.add("(max-width: 768px)", () => { // default start on tablet and below
-        ScrollTrigger.create({
-            trigger: '#' + targetElementID,
-            start: startDefault,
-            once: true,
-            // markers: true,
-            onEnter: function() { 
-                const tl = gsap.timeline();
-                tl.set(
-                    '#' + targetElementID,
-                    {
-                        opacity: 0,
-                        yPercent: y,
-                    }
-                );
-                tl.to(
-                    '#' + targetElementID,
-                    {
-                        duration: duration,
-                        opacity: 1,
-                        yPercent: 0,
-                        delay: delay,
-                    }
-                ); 
-            }, 
+        mm.add("(max-width: 768px)", () => { // default start on tablet and below
+            ScrollTrigger.create({
+                trigger: '#' + targetElementID,
+                start: startDefault,
+                once: true,
+                // markers: true,
+                onEnter: function() { 
+                    const tl = gsap.timeline();
+                    tl.set(
+                        '#' + targetElementID,
+                        {
+                            opacity: 0,
+                            yPercent: y,
+                        }
+                    );
+                    tl.to(
+                        '#' + targetElementID,
+                        {
+                            duration: duration,
+                            opacity: 1,
+                            yPercent: 0,
+                            delay: delay,
+                        }
+                    );
+                }, 
+            })
         })
-    })
+    }, 100);
 }
 
 
@@ -472,7 +474,7 @@ export function slowDownSection(node) {
     //     anticipatePin: 1,
     //     pin: true,
     //     scrub: false,
-        // markers: true,
+      //  // markers: true,
         // onLeave: function() {
         //     const tl = gsap.timeline();
         //     tl.to('#' + parentElementID, {
