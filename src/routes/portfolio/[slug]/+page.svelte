@@ -68,7 +68,7 @@
 </section>
 {#if isFeatured && projectHeading}
 <section class="about-property">
-	<Animate>
+	<!-- <Animate> -->
 		<Container>
 			<Row>
 				<Col><h2 in:slide id="about-property-preheading" gsap-duration="1">{projectHeading ? projectHeading : ''}</h2></Col>
@@ -105,22 +105,22 @@
 				</Col>
 			</Row>
 		</Container>
-	</Animate>
+	<!-- </Animate> -->
 </section>
 
 <section>
-	<Animate>
+	<!-- <Animate> -->
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
 				<section in:fadeIn id="single-portfolio-bannerOnly{index}" gsap-duration="1.5"  gsap-delay="0.5"  class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
 				{/if}
 				<Testimonial testimonial="{bannerQuote.quote}" />
 		{/each}
-	</Animate>
+	<!-- </Animate> -->
 </section>
 
 <section class="portfolio-cta">
-	<Animate>
+	<!-- <Animate> -->
 		<Container>
 			<Row>
 				<Col class="text-center" md={{ size: 8, offset: 2 }} xs="12">
@@ -137,11 +137,11 @@
 				</Col>
 			</Row>
 		</Container>
-	</Animate>
+	<!-- </Animate> -->
 </section>
 {/if}
 <section class="related {!projectHeading ? "my-0" : ""}">
-	<Animate>
+	<!-- <Animate> -->
 		<Container>
 			<Row>
 				<Col md="12">
@@ -181,13 +181,13 @@
 				</Col>		 -->
 			</Row>
 		</Container>
-	</Animate>
+	<!-- </Animate> -->
 </section>
 
 
-<Animate>
+<!-- <Animate> -->
   <Contactform/>
-</Animate>
+<!-- </Animate> -->
 
 <style lang="scss">
 	:global(.portfolio-page .dropdown.show, .portfolio-page .dropdown-menu) {

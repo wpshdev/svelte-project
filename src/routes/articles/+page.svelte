@@ -149,7 +149,7 @@
                                             <p class="pre-head" in:slide id="article_detail{i}" gsap-duration="1">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</p>
                                             <h2 class="text-animate secondary-font" in:textAnimate id="article_title{i}" gsap-duration="0.5">{blog.attributes.title}</h2>
                                             <p in:slide id="article_text{i}" gsap-duration="1" gsap-delay="1" gsap-y="20">{blog.attributes.shorttext}</p>
-                                            <div in:fly id="article_btn{i}" gsap-duration="1" gsap-delay="2" gsap-y="20" >
+                                            <div in:fly id="article_btn{i}" gsap-duration="1" gsap-delay="1.3" gsap-y="20" >
                                              <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
                                             </div>
                                         </div>

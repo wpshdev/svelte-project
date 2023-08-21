@@ -166,7 +166,7 @@
     </Container>
 </section>
 <section class="portfolio-cta">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col class="text-center ">
@@ -181,19 +181,19 @@
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
 
 <section class="m-0 article-wrapper">
-	<Animate>
+	<!-- <Animate> -->
 		<ArticleSection />
-	</Animate>
+	<!-- </Animate> -->
 </section>
 
 <section class="m-0 cta-wrapper">
-	<Animate>
+	<!-- <Animate> -->
 		<Cta />
-	</Animate>
+	<!-- </Animate> -->
 </section>
 
 <style lang="scss">
