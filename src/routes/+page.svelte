@@ -9,7 +9,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
-	import { textAnimate, fly, fadeIn, slide, slowDownSection, } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";

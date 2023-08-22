@@ -1,11 +1,11 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.min.css';
-    import { page } from '$app/stores';
-	import {Styles} from 'sveltestrap';
+    // import { page } from '$app/stores';
+	// import {Styles} from 'sveltestrap';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
     import "../styles/style.scss";		
-	import Animate from "$lib/components/Animate.svelte";
+	// import Animate from "$lib/components/Animate.svelte";
 	import HamburgerLight from "$lib/img/HamburgerLight.svg"
 	import HamburgerDark from "$lib/img/HamburgerDark.svg"
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
@@ -83,7 +83,6 @@
 		});
   	});
 </script>
-
 <svelte:window 
 	bind:innerWidth
 	on:scroll={hideDropdownOnScroll}
@@ -91,7 +90,7 @@
 {#await promise}
 {:then siteSettings} 
   <Navbar expand="md">
-	<NavbarBrand href="/" rel="preload">
+	<NavbarBrand href="/">
 		<div class="logo-container">
 			<img src={siteSettings.Header.Logo.data ? domain+siteSettings.Header.Logo.data.attributes.url : logo} alt="ULFBUILT" class="logo" width="330" height="170" />
 		</div>

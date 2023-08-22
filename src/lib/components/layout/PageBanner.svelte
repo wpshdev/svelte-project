@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Container, Row, Col } from "sveltestrap";
-    import Animate from "../Animate.svelte";
+    // import Animate from "../Animate.svelte";
     // import { fly } from "svelte/transition";
-    import TextTransition from "$lib/TextTransition.svelte";
+    // import TextTransition from "$lib/TextTransition.svelte";
 	import { onMount } from "svelte";
 	import { gsap } from "gsap/dist/gsap";
 	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
@@ -33,12 +33,8 @@
     }
 </script>
 
-<svelte:window 
-	bind:innerWidth
-/>
 <section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
-	<!-- in:fadeIn id="banner_bg" -->
-	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="1.5"></div>
+	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="0"></div>
 	<Container>
 		<Row>
 			<Col>

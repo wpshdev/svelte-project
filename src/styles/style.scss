@@ -2,11 +2,11 @@
 @import 'mixins';
 // @import 'flickity/css/flickity.css';
 
-*{
-    font-family: $primary-font;
-}
+// *{
+//     font-family: $primary-font;
+// }
 h1, h2, h3, h4, h5, h6{
-    font-family: $secondary-font;
+    font-family: $primary-font;
 }
 html{
     @include media-max(lg){
@@ -612,7 +612,6 @@ header{
                     color: $white-color;
                 }
                 font-size: 1.125rem;
-                font-weight: 500;
             }         
         }
         .dropdown.show{
