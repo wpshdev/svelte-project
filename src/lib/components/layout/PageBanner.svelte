@@ -34,7 +34,7 @@
 </script>
 
 <section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
-	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="0"></div>
+	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="3" gsap-delay="0"></div>
 	<Container>
 		<Row>
 			<Col>

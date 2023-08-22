@@ -4,7 +4,7 @@ import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
 import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
-// import Flickity from "flickity";
+import Flickity from "flickity";
 import noFeatured from "$lib/img/blog-empty.svg"
 // import { fade, fly } from 'svelte/transition';
 
@@ -194,7 +194,7 @@ $: {
 
   &__carousel-cell {
     width: 42%;
-    position: relative;   
+    position: absolute;   
     height: auto;
     margin: 0 0.5rem;
     box-sizing: border-box;
@@ -231,7 +231,7 @@ $: {
           max-width: 90%;
           text-align: left;
           transition: 1.5s;
-
+          display: flex;
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;
@@ -312,6 +312,4 @@ $: {
     }
   }
 }
-
-
 </style>
