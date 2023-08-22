@@ -11,7 +11,7 @@
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     import { fade, fly } from 'svelte/transition';
     import { gsap } from 'gsap';
-    import Flickity from "flickity";
+    // import Flickity from "flickity";
 
     // let isHomePage = false;
     function isHome(url) {
