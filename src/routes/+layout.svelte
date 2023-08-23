@@ -51,18 +51,20 @@
         </Headroom>
     </div>
     
+    
+    
     {#key $page}
     <Animate>
-    <ScrollSmoother>
-    <main>
-            <slot>
-        
-            </slot>
-    </main>
-    <footer>
-        <Footer />
-    </footer>
-    </ScrollSmoother>
+        <ScrollSmoother>
+            <main>
+                    <slot>
+                
+                    </slot>
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </ScrollSmoother>
     </Animate>
     {/key}
 <svelte:window bind:scrollY={yaxis} />

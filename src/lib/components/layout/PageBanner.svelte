@@ -44,7 +44,7 @@
 			<Col>
 				<div class="banner__content">
 					<div class="banner__content__text">
-						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate gsap-delay="0.5" gsap-duration="1.5"><span>{title ? title : ''}</span></h1>
+						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate gsap-delay="0.5" gsap-duration="0.5"><span>{title ? title : ''}</span></h1>
 					</div>
 					{#if subTitle != null}
 						<p class="banner__content__paragraph" in:fly id="banner_sub" gsap-delay="1" gsap-duration="0.7">{subTitle}</p>

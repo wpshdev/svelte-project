@@ -16,7 +16,6 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 // Default Values
 
 const delayDefault = '0';
@@ -146,7 +145,7 @@ export function fly(node) {
     targetElement.style.opacity = '0';
 
     // Fly animation
-    setTimeout(() => {
+    // setTimeout(() => {
         mm.add("(min-width: 769px)", () => {
             ScrollTrigger.create({
                 trigger: '#' + targetElementID,
@@ -202,7 +201,7 @@ export function fly(node) {
                 }, 
             })
         })
-    }, 100);
+    // }, 100);
 }
 
 

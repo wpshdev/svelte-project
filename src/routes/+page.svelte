@@ -75,10 +75,10 @@ function handleScroll() {
     scrollY = window.scrollY;
     updateChildPosition("child", 0.5);
     // updateChildPosition("reputation_child", 0.5);
-	updateChildPositionimg("containerimg", "childimg", 0, 0.2);
-	updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
-	updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
-	updateChildPositionimg("containerimg4", "childimg4", 0, 0.3);
+	// updateChildPositionimg("containerimg", "childimg", 0, 0.2);
+	// updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
+	// updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
+	// updateChildPositionimg("containerimg4", "childimg4", 0, 0.3);
   }
 
   function updateChildPosition(childclass, speed) {
@@ -143,18 +143,18 @@ function handleScroll() {
 <!-- </Animate> -->
 {/if}
 
-<section class="categories" >
+<section class="categories">
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
-				<Animate>
+				<!-- <Animate> -->
 				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1.5">
 					{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
 				</h2>
-				</Animate>
+				<!-- </Animate> -->
 				<div class="categories__tabs">
-					<Animate>
+					<!-- <Animate> -->
 					<div class="categories__tabs__heading">
 						<ul in:fly id="categories" gsap-duration="1">
 							{#each home.categories.data as heading}
@@ -170,7 +170,7 @@ function handleScroll() {
 							{/each}
 						</ul>
 					</div>
-					</Animate>
+					<!-- </Animate> -->
 					<div class="categories__tabs__gallery" in:fadeIn id="categories_data" gsap-duration="1" gsap-delay="0.5">
 						<!-- {#key activeTab} -->
 							{#if loading}  <!-- show load -->
@@ -208,7 +208,7 @@ function handleScroll() {
 
 
 
-<section class="featured-projects">	
+<section class="featured-projects section-slow">	
 	<Container>
 		<!-- <Animate> -->
 			<Row>
@@ -224,11 +224,11 @@ function handleScroll() {
 </section>
 
 
-<section class="tnr" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url})" > 
+<section class="tnr section-fast" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url})" > 
 	<Container>
 		<Row>
 			<Col>
-				<Animate>
+				<!-- <Animate> -->
 					<div class="tnr__wrapper">
 						<div class="tnr__wrapper__captions">
 							<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
@@ -240,7 +240,7 @@ function handleScroll() {
 							</div>
 						</div>
 					</div>
-				</Animate>
+				<!-- </Animate> -->
 			</Col>
 		</Row>
 	</Container>
@@ -252,7 +252,7 @@ function handleScroll() {
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
-					<Animate>
+					<!-- <Animate> -->
 						<div class="reputation__content">
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
@@ -263,7 +263,7 @@ function handleScroll() {
 								</div>
 							</div>
 						</div>
-					</Animate>
+					<!-- </Animate> -->
 				</Col>
 				<Col md="5" class="my-auto containerimg" >
 					<div class="childimg">
@@ -309,7 +309,7 @@ function handleScroll() {
 		</Row>
 		<Row>
 			<Col md="7" class="">
-				<Animate>
+				<!-- <Animate> -->
 					<div class="process__content containerimg2">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
@@ -320,7 +320,7 @@ function handleScroll() {
 							</div>
 						</div>
 					</div>
-				</Animate>
+				<!-- </Animate> -->
 			</Col>
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
@@ -344,11 +344,11 @@ function handleScroll() {
 </section>
 
 
-<section class="story" >
+<section class="story">
 		<Container>
 			<Row>
 				<Col md="7" class="">
-					<Animate>
+					<!-- <Animate> -->
 						<div class="story__content">
 							<div class="story__content__wrapper">
 								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
@@ -365,7 +365,7 @@ function handleScroll() {
 								</Accordion>						 -->
 							</div>
 						</div>
-					</Animate>
+					<!-- </Animate> -->
 				</Col>
 				<Col md="5" class="my-auto containerimg4">
 					<div class="childimg4">
@@ -388,7 +388,7 @@ function handleScroll() {
 		</Container>
 </section>
 
-<section class="m-0 article-wrapper">
+<section class="m-0 article-wrapper" data-lag="5">
 	<!-- <Animate> -->
 		<ArticleSection />
 	<!-- </Animate> -->
@@ -513,6 +513,7 @@ function handleScroll() {
 		min-height: 80rem;
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		// :global(.categories_wrapper) {
 		// 	max-width: 1440px;
 		// }
@@ -1199,11 +1200,12 @@ function handleScroll() {
 	.bannerOnly--Container {
 
 		padding: 5rem 0;
+		overflow: hidden;
 
 		.section--bannerOnly{
 			background-image: var(--lrbg);
 			background-size: cover;
-			height: 90vh;
+			height: 100vh;
 			width: 100%;
 			margin: 0 auto;
 			opacity: 1;
@@ -1245,6 +1247,10 @@ function handleScroll() {
 			padding-right: 0;
 		}
 	}
+
+	// .article-wrapper {
+	// 	padding-top: 10rem;
+	// }
 
 	.cta-wrapper, .article-wrapper {
 		padding-left: unset;
