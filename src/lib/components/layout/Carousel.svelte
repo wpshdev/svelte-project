@@ -4,7 +4,7 @@ import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
 import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
-// import Flickity from "flickity";
+// import Flickity from "flickity"
 import noFeatured from "$lib/img/blog-empty.svg"
 // import { fade, fly } from 'svelte/transition';
 
