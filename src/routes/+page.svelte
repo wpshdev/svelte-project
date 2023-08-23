@@ -130,7 +130,6 @@ function handleScroll() {
 			</Col>
 		</Row>
 	</Container>
-	<!-- </ScrollingSection> -->
 </section>	
 
 
