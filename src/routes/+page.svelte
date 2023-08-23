@@ -10,6 +10,7 @@
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
 	import { textAnimate, fly, fadeIn, slide, slowDownSection, } from '$lib/GsapAnimation.js';
+	// import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -325,7 +326,7 @@ function handleScroll() {
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
-						<img in:fly id="process-bottom-img" gsap-duration="1.2" gsap-y="25" gsap-delay="0.7" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly id="process-bottom-img" gsap-duration="1.2" gsap-y="25" gsap-delay="0.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -333,7 +334,7 @@ function handleScroll() {
 				<div class="process__bottom mobileimg">
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
-						<img in:fly id="process-bottom-img" gsap-duration="1.2" gsap-y="25" gsap-delay="0.7" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly id="process-bottom-img" gsap-duration="1.2" gsap-y="25" gsap-delay="0.5" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>

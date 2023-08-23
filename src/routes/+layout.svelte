@@ -11,6 +11,7 @@
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     import { fade, fly } from 'svelte/transition';
     import { gsap } from 'gsap';
+    import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
     // let isHomePage = false;
     function isHome(url) {
@@ -52,6 +53,7 @@
     
     {#key $page}
     <Animate>
+    <ScrollSmoother>
     <main>
             <slot>
         
@@ -60,6 +62,7 @@
     <footer>
         <Footer />
     </footer>
+    </ScrollSmoother>
     </Animate>
     {/key}
 <svelte:window bind:scrollY={yaxis} />
