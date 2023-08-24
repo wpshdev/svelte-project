@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	// import { browser } from '$app/environment';
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
 import axios from "axios";
@@ -38,19 +38,19 @@ onMount(() => {
   promise = fetchFallback();
   innerWidth = window.innerWidth;
   
-  flickityInstance = new Flickity('.slider-container', {
-    cellAlign: 'left',
-    contain: true,
-    wrapAround: true,
-    prevNextButtons: false,
-    pageDots: false,
-    autoPlay: false,
-    groupCells: 1,
-    draggable: true,
-    on: {
-      change: updateProgress,
-    },
-  });
+  // flickityInstance = new Flickity('.slider-container', {
+  //   cellAlign: 'left',
+  //   contain: true,
+  //   wrapAround: true,
+  //   prevNextButtons: false,
+  //   pageDots: false,
+  //   autoPlay: false,
+  //   groupCells: 1,
+  //   draggable: true,
+  //   on: {
+  //     change: updateProgress,
+  //   },
+  // });
 })
 
 
