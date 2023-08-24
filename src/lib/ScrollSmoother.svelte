@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import {gsap}  from "gsap/dist/gsap";        
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
-    import {ScrollSmoother} from "gsap/dist/ScrollSmoother";   
+    import {ScrollSmoother} from "gsap/dist/ScrollSmoother"; 
   
     onMount(() => {
       gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -19,9 +19,10 @@
 
       // speed for the section display/scrolling
 
-      smoother.effects(".section-fast", { lag: 0, speed: 3 });
-
-      smoother.effects(".section-slow", { lag: 5 });
+      // setTimeout(() => {
+      //   smoother.effects(".section-fast", { lag: 0, speed: 3 });
+      //   smoother.effects(".section-slow", { lag: 10 });
+      // }, 1000);
 
     });
 
@@ -31,9 +32,10 @@
     /* Add global styles for your layout here */
   </style>
   
+
   <div id="wrapper">
     <div id="content">
       <!-- Your common layout elements go here -->
-      <slot />
+        <slot />
     </div>
   </div>

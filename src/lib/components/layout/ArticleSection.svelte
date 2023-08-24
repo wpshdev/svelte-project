@@ -4,7 +4,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	// import { fade, fly } from 'svelte/transition';
-	import Animate from "$lib/components/Animate.svelte";
+	// import Animate from "$lib/components/Animate.svelte";
 	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	const domain = "https://strapi.ulfbuilt.com:1337"

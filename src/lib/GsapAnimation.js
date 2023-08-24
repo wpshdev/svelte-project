@@ -12,9 +12,10 @@
 
 import {gsap}  from "gsap/dist/gsap";        
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
+import {SplitText} from "gsap/dist/SplitText";   
 // import {ScrollSmoother} from "gsap/dist/ScrollSmoother";   
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 // Default Values
 
@@ -141,8 +142,10 @@ export function fly(node) {
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
     const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : flyY;
+    const endY = targetElement.getAttribute("gsap-endY") ? targetElement.getAttribute("gsap-endY") : 0;
+    const element_opacity = targetElement.getAttribute("gsap-opacity") ? targetElement.getAttribute("gsap-opacity") : 0;
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
-    targetElement.style.opacity = '0';
+    targetElement.style.opacity = element_opacity;
 
     // Fly animation
     // setTimeout(() => {
@@ -157,7 +160,7 @@ export function fly(node) {
                     tl.set(
                         '#' + targetElementID,
                         {
-                            opacity: 0,
+                            opacity: element_opacity,
                             yPercent: y,
                         }
                     );
@@ -166,7 +169,7 @@ export function fly(node) {
                         {
                             duration: duration,
                             opacity: 1,
-                            yPercent: 0,
+                            yPercent: endY,
                             delay: delay,
                         }
                     );
@@ -327,7 +330,7 @@ export function textAnimate(node) {
                 tl.set(
                     letter, 
                     {
-                        yPercent: -50,
+                        yPercent: 100,
                         opacity: 0,
                     }
                 );
@@ -338,9 +341,9 @@ export function textAnimate(node) {
                         duration: duration,
                         yPercent: 0,
                         opacity: 1,
-                        stagger: 0.03,
+                        stagger: 0.05,
                         delay: delay,
-                        ease: "ease"
+                        ease: "back"
                     }
                 );
             },
@@ -367,7 +370,7 @@ export function textAnimate(node) {
                 tl.set(
                     letter, 
                     {
-                        yPercent: -50,
+                        yPercent: 100,
                         opacity: 0,
                     }
                 );
@@ -378,9 +381,9 @@ export function textAnimate(node) {
                         duration: duration,
                         yPercent: 0,
                         opacity: 1,
-                        stagger: 0.03,
+                        stagger: 0.05,
                         delay: delay,
-                        ease: "ease"
+                        ease: "back"
                     }
                 );
             },
@@ -388,8 +391,6 @@ export function textAnimate(node) {
     });
 
 }
-
-
 
 // Written by parth
 // for minus scroll animation where section is going upwards
@@ -424,6 +425,8 @@ export function scaleUp(node) {
     })
 }
 
+
+
 // slowDownSection
 
 export function slowDownSection(node) {
@@ -432,7 +435,7 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const defaultDistance = '-120';
+    const defaultDistance = '-100';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
 
     // slowdown effect on the main container on desktop
@@ -443,100 +446,60 @@ export function slowDownSection(node) {
             scrollTrigger: {
                 trigger: '#' + parentElementID, 
                 scrub: true,
-                start: 'top top',
-                end: "+=" + (window.innerHeight * 7),
+                start: 'clamp(top 25% top)',
+                // end: 'clamp(bottom top)',
+                end: "+=" + (window.innerHeight * 4.5),
                 pin: true,
                 // markers: true,
                 onEnter: () => {
                     gsap.to('#' + parentElementID, {
                         opacity: 1,
+                        yPercent: 0,
                     });
                 },
                 onLeave: () => {
                     gsap.to('#' + parentElementID, {
                         opacity: 0,
+                        yPercent: -100,
                         duration: 0.5,
                     });
                 },
                 onEnterBack: () => {
                     gsap.to('#' + parentElementID, {
                         opacity: 1,
+                        yPercent: 0,
                     });
                 },
             }
         });
     });
 
-
-    // ScrollTrigger.create({
-    //     trigger: '#' + parentElementID,
-    //     start: 'center center',
-    //     end: "+=" + (window.innerHeight * 10),
-    //     anticipatePin: 1,
-    //     pin: true,
-    //     scrub: false,
-      //  // markers: true,
-        // onLeave: function() {
-        //     const tl = gsap.timeline();
-        //     tl.to('#' + parentElementID, {
-        //         yPercent: -70,
-        //         duration: 0.5,
-        //         ease: 'Linear.easeInOut'
-        //     });
-        // },
-        // onEnterBack: function() {  
-        //     const tl = gsap.timeline();
-        //     tl.to('#' + parentElementID, {
-        //         yPercent: 0,
-        //         duration: 1,
-        //         ease: 'Linear.easeInOut'
-        //     });
-        // },
-    // });
-
 }
 
-// Slowdown no pin
+// Fly 2 new fly animation to move the element same with scrolling - usually for image
 
-// export function slowNoPin(node) {
 
-//     const parentElement = node; // target element
-//     const parentElementID = parentElement.id;
-//     const container = parentElement.querySelector('.container');
+export function fly2(node) {
 
-//     const defaultDistance = '-120';
-//     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
+    const targetElement = node; // target element
+    const targetElementID = targetElement.id;
+    const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
+    const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : flyY;
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
 
-//     // slowdown effect on the main container on desktop
-//     mm.add("(min-width: 769px)", () => {
-//         gsap.to(container, {
-//             yPercent: yDistance, 
-//             ease: "none", 
-//             scrollTrigger: {
-//                 trigger: '#' + parentElementID, 
-//                 scrub: true,
-//                 // start: 'top top',
-//                 // end: "+=" + (window.innerHeight * 7),
-//                 // pin: true,
-//                 // markers: true,
-//                 onEnter: () => {
-//                     gsap.to('#' + parentElementID, {
-//                         opacity: 1,
-//                     });
-//                 },
-//                 onLeave: () => {
-//                     gsap.to('#' + parentElementID, {
-//                         opacity: 0,
-//                         duration: 0.5,
-//                     });
-//                 },
-//                 onEnterBack: () => {
-//                     gsap.to('#' + parentElementID, {
-//                         opacity: 1,
-//                     });
-//                 },
-//             }
-//         });
-//     });
-
-// }
+    // Fly2 animation
+    gsap.to('#' + targetElementID, {
+        yPercent: y, 
+        ease: "none", 
+        scrollTrigger: {
+            trigger: '#' + targetElementID, 
+            scrub: true,
+            start: "top center",
+            // end: "bottom top",
+            end: "+=" + (window.innerHeight * 3.5),
+            // pin: true,
+            // markers: true,
+        }
+    });
+}
