@@ -9,7 +9,7 @@
 	import { Container } from "sveltestrap";  
     import Animate from "$lib/components/Animate.svelte";
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
-    import { fade, fly } from 'svelte/transition';
+    // import { fade, fly } from 'svelte/transition';
     import { gsap } from 'gsap';
     import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
@@ -53,9 +53,9 @@
     
     
     
-    {#key $page}
-    <Animate>
-        <ScrollSmoother>
+{#key $page}
+    <ScrollSmoother>
+        <Animate>
             <main>
                     <slot>
                 
@@ -64,7 +64,7 @@
             <footer>
                 <Footer />
             </footer>
-        </ScrollSmoother>
-    </Animate>
-    {/key}
+        </Animate>
+    </ScrollSmoother>
+{/key}
 <svelte:window bind:scrollY={yaxis} />
