@@ -4,6 +4,7 @@
 	// import Animate from "$lib/components/Animate.svelte";
 	import Carousel from "$lib/components/layout/Carousel.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
+	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import axios from "axios";
@@ -138,7 +139,9 @@ function handleScroll() {
 {#if home.homeBuilderBanner.data}
 <!-- <Animate> -->
 	<section class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly">
+		<ParallaxImage imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url}" scrollOffset={100} translationSpeed={7}></ParallaxImage>
+		</div>
 	</section>
 <!-- </Animate> -->
 {/if}
