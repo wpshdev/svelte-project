@@ -24,7 +24,7 @@
     gsap.to(target, {
       y: () => translateY,
       scrollTrigger: {
-        markers: true,
+        // markers: true,
         trigger: target,
         start: 'top bottom',
         end: 'bottom top',
