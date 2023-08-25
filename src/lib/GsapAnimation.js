@@ -188,8 +188,8 @@ export function fly(node) {
                     tl.set(
                         '#' + targetElementID,
                         {
-                            opacity: 0,
-                            yPercent: y,
+                            opacity: element_opacity,
+                            yPercent: 30,
                         }
                     );
                     tl.to(
@@ -435,7 +435,7 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const defaultDistance = '-100';
+    const defaultDistance = '-120';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
 
     // slowdown effect on the main container on desktop
@@ -445,10 +445,10 @@ export function slowDownSection(node) {
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + parentElementID, 
-                scrub: true,
-                start: 'clamp(top 25% top)',
+                scrub: 7,
+                start: 'clamp(top 30% top)',
                 // end: 'clamp(bottom top)',
-                end: "+=" + (window.innerHeight * 4.5),
+                end: "+=" + (window.innerHeight * 5),
                 pin: true,
                 // markers: true,
                 onEnter: () => {
@@ -486,20 +486,50 @@ export function fly2(node) {
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
     const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : flyY;
-    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
+    // const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
 
     // Fly2 animation
-    gsap.to('#' + targetElementID, {
-        yPercent: y, 
-        ease: "none", 
-        scrollTrigger: {
-            trigger: '#' + targetElementID, 
-            scrub: true,
-            start: "top center",
-            // end: "bottom top",
-            end: "+=" + (window.innerHeight * 3.5),
-            // pin: true,
-            // markers: true,
-        }
+    mm.add("(min-width: 769px)", () => {
+        gsap.to('#' + targetElementID, {
+            yPercent: y, 
+            ease: "none", 
+            scrollTrigger: {
+                trigger: '#' + targetElementID, 
+                scrub: true,
+                start: "top center",
+                // end: "bottom top",
+                end: "+=" + (window.innerHeight * 3.5),
+                // pin: true,
+                // markers: true,
+            }
+        });
     });
+
+    mm.add("(max-width: 768px)", () => { // default start on tablet and below
+        ScrollTrigger.create({
+            trigger: '#' + targetElementID,
+            start: 'startDefault',
+            once: true,
+            // markers: true,
+            onEnter: function() { 
+                const tl = gsap.timeline();
+                tl.set(
+                    '#' + targetElementID,
+                    {
+                        opacity: 0,
+                        yPercent: 30,
+                    }
+                );
+                tl.to(
+                    '#' + targetElementID,
+                    {
+                        duration: duration,
+                        opacity: 1,
+                        yPercent: 0,
+                        delay: delay,
+                    }
+                );
+            }, 
+        })
+    })
 }

@@ -38,7 +38,7 @@
 				<Col class="text-center">
 					<div class="home-cta__container">
 						<div class="home-cta__wrapper">
-							<h2 class="text-animate secondary-font" in:textAnimate id="global_cta_title" gsap-duration="0.5">{ctaData.heading ? ctaData.heading : ''}</h2>
+							<h2 class="text-animate secondary-font" in:textAnimate id="global_cta_title" gsap-duration="1">{ctaData.heading ? ctaData.heading : ''}</h2>
 							<div in:fly id="global_cta_cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="30">
 								{@html ctaData.paragraph ? ctaData.paragraph : ''}
 								<a href="{ctaData.btnUrl ? ctaData.btnUrl : '#'}" class="btn btn-secondary">{ctaData.btnTitle ? ctaData.btnTitle : 'Button'}</a>

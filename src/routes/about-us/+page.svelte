@@ -50,15 +50,15 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading" data-lag="5">
+<section class="mw-1000 text-center about-heading" in:slowDownSection id="about-heading-section" gsap-ydistance="-200">
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-delay="0.5" gsap-duration="2"  gsap-y="100">{@html about.abouttext ? about.abouttext : ''}</p>
+                <p in:fly id="about_heading_cont" gsap-delay="0.5" gsap-duration="2"  gsap-y="100" gsap-start="top center">{@html about.abouttext ? about.abouttext : ''}</p>
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details" data-lag="5">
+<section class="contractor-details" in:slowDownSection id="cd-section1">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -81,7 +81,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details"  data-lag="5">
+<section class="contractor-details"  >
     <!-- <Animate> -->
         <Container>
             <Row>
@@ -102,7 +102,7 @@
         </Container> 
     <!-- </Animate>   -->
 </section>
-<section class="contractor-details"  data-lag="5">
+<section class="contractor-details"  >
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -264,7 +264,7 @@
         background-position: top !important;
     } 
     .about-heading{
-        min-height: 100vh;
+        min-height: 50rem;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){

@@ -183,6 +183,9 @@ $: {
       h2{
         // flex-wrap: wrap;
         // width: 18rem;
+        @include media-max(ipadmini){
+            line-height: 2rem;
+        }    
       }
     }
   }
