@@ -315,8 +315,10 @@ header{
     }
     &.changeBG{
         .logo-container {
-            background: #1e2d39;
+            background: $newheader;
             padding: 0.75rem;
+            box-shadow: 0 0 10px #333;
+            margin-top: -0.75rem;
         }
         .logo{
             // background: #1e2d39;
@@ -324,7 +326,7 @@ header{
             height: 5rem;
             position: relative;
         }
-        background:$darkbluegreen;
+        background:$newheader;
         .dropdown.show, .dropdown-menu  {
             // background-color: $gray;
             background-color: $darkbluegreen;
@@ -768,24 +770,12 @@ header{
 
 .contact-form{
     padding: 4rem;
+    background-color: #f9f7f7;
     border: 1px solid #D8D7D7;
     // max-width: 600px;
     margin: auto;
     @include media-max(sm){
         padding: 2rem;
-    }
-}
-.contact-img{
-    height: 400px;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.contact-box{
-    margin-top: -10rem;
-    margin-bottom: 7rem;
-    button{
-        display: flex;
-        margin: auto;
     }
 }
 

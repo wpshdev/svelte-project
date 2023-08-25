@@ -1,27 +1,28 @@
 <script lang="ts">
     import { Container, Row, Col } from "sveltestrap";
-    // import Animate from "../Animate.svelte";
-    // import { fly } from "svelte/transition";
-    // import TextTransition from "$lib/TextTransition.svelte";
 	import { onMount } from "svelte";
 	import { gsap } from "gsap/dist/gsap";
 	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
-	// import { fade } from "svelte/transition";
     export let banner;
 	export let bannerMobile;
     export let title;
+	export let bannerheight;
     export let subTitle;
     export let extraClass;
 	let pageBanner = banner;
 	let innerWidth;
+	let pageBannerheight = 60;
 	$: {
 		if(innerWidth < 768 && bannerMobile){
 			pageBanner = bannerMobile;
 		}
 	}
-
-	// page banner
-	let pageBannerheight = 100;
+	if(bannerheight === 'undefined'){
+		pageBannerheight = 60;
+	}else{
+		pageBannerheight = bannerheight;
+	}
+	
     let divElement;
     onMount(() => {
       window.addEventListener("scroll", handleScroll);
@@ -66,7 +67,7 @@
         position: relative;
 		box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
 		&.homebanner{
-			height: 100vh;
+			height: 60vh;
 		}
         .banner_overlay{
             content: "";
