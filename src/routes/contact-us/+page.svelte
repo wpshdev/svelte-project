@@ -188,7 +188,7 @@
                 text-align: center;
         }
         :global(.contact-form textarea) {
-            height: 10rem;
+            height: 8rem;
         }
         :global(.contact-form button) {
             padding: 0.7rem 3.125rem;

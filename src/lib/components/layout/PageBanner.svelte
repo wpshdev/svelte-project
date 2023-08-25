@@ -29,7 +29,7 @@
     });
     function handleScroll() {
       const scrollProgress = window.scrollY / window.innerHeight;
-      const newHeight = 100 - scrollProgress * 50;
+      const newHeight = pageBannerheight - scrollProgress * 50;
       gsap.to(divElement, { height: `${newHeight}vh`, duration: 0.3 });
     }
 </script>
