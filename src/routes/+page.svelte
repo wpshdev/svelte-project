@@ -143,13 +143,13 @@ function handleScroll() {
 <!-- </Animate> -->
 {/if}
 
-<section class="categories">
+<section class="categories" in:slowDownSection id="categories-section">
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
 				<!-- <Animate> -->
-				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1.5">
+				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1">
 					{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
 				</h2>
 				<!-- </Animate> -->
@@ -171,7 +171,7 @@ function handleScroll() {
 						</ul>
 					</div>
 					<!-- </Animate> -->
-					<div class="categories__tabs__gallery" in:fadeIn id="categories_data" gsap-duration="1" gsap-delay="0.5">
+					<div class="categories__tabs__gallery" >
 						<!-- {#key activeTab} -->
 							{#if loading}  <!-- show load -->
 								<div class="col text-center list-text-details">Loading...</div>
@@ -182,7 +182,7 @@ function handleScroll() {
 									<div class="container masonry_container">       
 										{#each portfolioList as project, index}				
 											{#if index < propCount}
-											<div class="masonry-items"> 
+											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-start="center center" gsap-y="30"> 
 												<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
 												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
 													{#if project.attributes.featuredImage.data != null}
@@ -256,7 +256,7 @@ function handleScroll() {
 						<div class="reputation__content">
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
-								<h2 class="text-animate secondary-font" gsap-duration="1.5" in:textAnimate id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
+								<h2 class="text-animate secondary-font" gsap-duration="1" in:textAnimate id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
 								<div in:fly id="reputation-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
 									<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
@@ -273,14 +273,13 @@ function handleScroll() {
 						<!-- </Animate> -->
 						{/if}
 					</div>
-					<!-- mobile -->
+					<!-- mobile 
 					<div class="mobileimg">
 						{#if home.reputation.image.data}
-						<!-- <Animate> -->
 							<img in:fly2 id="reputation-img" gsap-y="-60" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
-						<!-- </Animate> -->
+						
 						{/if}
-					</div>
+					</div>-->
 				</Col>
 			</Row>
 		</Container>
@@ -297,14 +296,13 @@ function handleScroll() {
 					<!-- </Animate> -->
 					{/if}
 				</div>
-				<!-- Mobile -->
+				<!-- Mobile 
 				<div class="process__top-image mobileimg" >
 					{#if home.ourProcessTopImage.data[0]}
-					<!-- <Animate> -->
 						<img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
-					<!-- </Animate> -->
+					
 					{/if}
-				</div>
+				</div>-->
 			</Col>
 		</Row>
 		<Row>
@@ -313,7 +311,7 @@ function handleScroll() {
 					<div class="process__content containerimg2">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
-							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
+							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
 							<div in:fly id="process-cont" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
 								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
 								<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
@@ -326,18 +324,17 @@ function handleScroll() {
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
-						<img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1.5" gsap-opacity="1" gsap-start="top top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>
-				<!-- mobile -->
+				<!-- mobile 
 				<div class="process__bottom mobileimg">
 					{#if home.ourProcessRightImage.data}
-					<!-- <Animate> -->
-						<img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1.5" gsap-opacity="1" gsap-start="top top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
-					<!-- </Animate> -->
+						<img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+					
 					{/if}
-				</div>
+				</div>-->
 			</Col>
 		</Row>
 	</Container>
@@ -352,7 +349,7 @@ function handleScroll() {
 						<div class="story__content">
 							<div class="story__content__wrapper">
 								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
-								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1.5">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
 								<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 								</div>
@@ -375,14 +372,12 @@ function handleScroll() {
 						<!-- </Animate> -->
 						{/if}
 					</div>	
-					<!-- mobile -->
+					<!-- mobile 
 					<div class="mobileimg">
 						{#if home.ourStoryRightImage.data}
-						<!-- <Animate> -->
 							<img in:fly2 id="story-img" gsap-y="-60" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
-						<!-- </Animate> -->
 						{/if}
-					</div>	
+					</div> -->
 				</Col>
 			</Row>
 		</Container>
@@ -509,8 +504,9 @@ function handleScroll() {
 	.categories{
 		// margin-top: 0;
 		margin: 0;
-		padding: 0 0 3.75rem;
-		min-height: 80rem;
+		// padding: 0 0 3.75rem;
+		min-height: 100vh;
+		padding-top: 30rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -519,6 +515,7 @@ function handleScroll() {
 		// }
 		@include media-max(ipadmini){
 			min-height: unset;
+			padding: 0 0 3.75rem;
 		}	
 		h2{
 			margin-bottom: 2rem;
@@ -602,7 +599,7 @@ function handleScroll() {
 				}
 			}
 			&__gallery{
-				min-height: 60vh;
+				// min-height: 60vh;
 				position: relative;
 				@include media-max(ipadmini){
 					min-height: auto;
@@ -744,7 +741,7 @@ function handleScroll() {
 	}
 
 	.featured-projects{
-		padding: 5rem 0 13.75rem;
+		// padding: 5rem 0 13.75rem;
 		margin: 0;
 		min-height: 80rem;
 		display: flex;
@@ -753,6 +750,7 @@ function handleScroll() {
 		overflow: hidden;
 		@include media-max(ipadmini){
 			min-height: unset;
+			padding-top: 5rem;
 		}	
 		@include media-max(sm){
 			// margin: 5rem 0;
@@ -762,9 +760,9 @@ function handleScroll() {
 	}
 
 	.reputation{
-		padding-top: 7rem;
-		padding-bottom: 3.75rem;
-		min-height: 80rem;
+		padding-top: 20rem;
+		// padding-bottom: 3.75rem;
+		min-height: 100vh;
 		display: flex;
 		align-items: center;
 		// :global(.container){
@@ -779,6 +777,7 @@ function handleScroll() {
 		// }
 		@include media-max(ipadmini){
 			min-height: unset;
+			padding-top: 7rem;
 		}	
 		@include media-max(sm){
 			margin: 0;
@@ -869,17 +868,17 @@ function handleScroll() {
 				}
 			}		
 		}
-		.mobileimg {
-			display: none;
-		}
-		@include media-max(sm){
-			.mobileimg {
-				display: block;
-			}
-			.childimg {
-				display: none;
-			}
-		}	
+		// .mobileimg {
+		// 	display: none;
+		// }
+		// @include media-max(sm){
+		// 	.mobileimg {
+		// 		display: block;
+		// 	}
+		// 	.childimg {
+		// 		display: none;
+		// 	}
+		// }	
 		img{
 			position: relative;
 			z-index: 5;
@@ -899,8 +898,8 @@ function handleScroll() {
 	}	
 
 	.process{
-		margin: 7rem 0;	
-		padding-bottom: 7rem;
+		padding-top: 10rem;	
+		// padding-bottom: 3.75rem;
 		min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -1047,17 +1046,17 @@ function handleScroll() {
 				}	
 			}			
 		}
-		.mobileimg {
-			display: none;
-		}
-		@include media-max(sm){
-			.mobileimg {
-				display: block;
-			}
-			.childimg2, .childimg3 {
-				display: none;
-			}
-		}	
+		// .mobileimg {
+		// 	display: none;
+		// }
+		// @include media-max(sm){
+		// 	.mobileimg {
+		// 		display: block;
+		// 	}
+		// 	.childimg2, .childimg3 {
+		// 		display: none;
+		// 	}
+		// }	
 		img{
 			position: relative;
 		}		
@@ -1065,8 +1064,8 @@ function handleScroll() {
 	}	
 
 	.story{
-		margin: 7rem 0 3.75rem;
-		min-height: 80rem;
+		padding-top: 10rem;
+		min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -1160,17 +1159,17 @@ function handleScroll() {
 				}
 			}		
 		}
-		.mobileimg {
-			display: none;
-		}
-		@include media-max(sm){
-			.mobileimg {
-				display: block;
-			}
-			.childimg4 {
-				display: none;
-			}
-		}
+		// .mobileimg {
+		// 	display: none;
+		// }
+		// @include media-max(sm){
+		// 	.mobileimg {
+		// 		display: block;
+		// 	}
+		// 	.childimg4 {
+		// 		display: none;
+		// 	}
+		// }
 		img{
 			position: relative;
 			z-index: 5;
@@ -1199,7 +1198,7 @@ function handleScroll() {
 
 	.bannerOnly--Container {
 
-		padding: 5rem 0;
+		padding: 5rem 0 0;
 		overflow: hidden;
 
 		.section--bannerOnly{

@@ -30,7 +30,7 @@
 
     let header: gsap.TweenTarget;
     onMount(() => {
-        gsap.from(header, { y: -100, duration: 2, opacity: 0, ease: 'power2.out' });
+        gsap.from(header, { y: -100, duration: 1.5, opacity: 0, delay: 2.5, ease: 'power2.out' });
     });
 
     let yaxis: any;
@@ -40,6 +40,7 @@
         <link rel="preconnect" href="https://strapi.ulfbuilt.com:1337/">
         <!-- <script async src="/flickity/flickity.pkgd.min.js"></script>     -->
     </svelte:head>
+    
     <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">
         <Headroom on:pin={onPin} duration="400ms" offset={50} tolerance={5}>  
             <!-- <header class="d-block" class:changeBG={yaxis >= 250 || isHome($page.url.pathname)} > -->
@@ -50,7 +51,6 @@
             </header>
         </Headroom>
     </div>
-    
     
     
 {#key $page}
