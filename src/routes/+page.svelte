@@ -453,6 +453,7 @@ import { onMount } from "svelte";
 	}	
 	.loc-gallery{
 		min-height: 80vh;
+		padding-top: 40rem !important;
 		display: flex;
 		align-items: center;
 		justify-content: center;
