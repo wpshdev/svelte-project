@@ -461,7 +461,7 @@ export function slowDownSection(node) {
                     gsap.to('#' + parentElementID, {
                         opacity: 0,
                         yPercent: -100,
-                        duration: 0.5,
+                        duration: 1,
                     });
                 },
                 onEnterBack: () => {
