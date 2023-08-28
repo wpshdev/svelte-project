@@ -18,8 +18,8 @@
       end: 'bottom',
     });
 
-    let translateY = -300; // Initial translation value
-    const defaultTranslationSpeed = 5;
+    let translateY = -500; // Initial translation value
+    const defaultTranslationSpeed = 100;
 
     gsap.to(target, {
       y: () => translateY,
@@ -45,14 +45,18 @@
   }
   .target {
     width: 100%;
-    height: 150%;
+    height: 200%;
     margin-left: 0;
-    margin-top: 0px;
-    background-position: center;
+    margin-top: -150px;
+    background-position: center !important;
     background-size: cover !important;
   }
 </style>
 
 <div class="container-div">
-  <div class="target" bind:this={target} style="background:url({imageUrl})"></div>
+  <div class="target" bind:this={target} style="background:url({imageUrl})">
+  <slot>
+
+  </slot>
+</div>
 </div>
