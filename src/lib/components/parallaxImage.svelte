@@ -47,9 +47,9 @@
     width: 100%;
     height: 200%;
     margin-left: 0;
-    margin-top: -150px;
+    margin-top: -100px;
     background-position: center !important;
-    background-size: cover !important;
+    background-size: 130% !important;
   }
 </style>
 
