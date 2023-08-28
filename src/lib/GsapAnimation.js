@@ -445,7 +445,7 @@ export function slowDownSection(node) {
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + parentElementID, 
-                scrub: 5,
+                scrub: 4,
                 start: 'clamp(top 30% top)',
                 // end: 'clamp(bottom top)',
                 end: "+=" + (window.innerHeight * 5),
