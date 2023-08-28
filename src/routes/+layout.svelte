@@ -38,7 +38,7 @@
     </script>
     <svelte:head>
         <link rel="preconnect" href="https://strapi.ulfbuilt.com:1337/">
-        <!-- <script async src="/flickity/flickity.pkgd.min.js"></script>     -->
+        <script src="/flickity/flickity.pkgd.min.js"></script>    
     </svelte:head>
     
     <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">
