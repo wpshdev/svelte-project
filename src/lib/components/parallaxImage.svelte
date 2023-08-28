@@ -40,7 +40,7 @@
 <style>
   .container-div {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
   }
   .target {
