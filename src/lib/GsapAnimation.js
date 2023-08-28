@@ -441,14 +441,15 @@ export function slowDownSection(node) {
     // slowdown effect on the main container on desktop
     mm.add("(min-width: 769px)", () => {
         gsap.to(container, {
-            yPercent: yDistance, 
+            // yPercent: yDistance,
+            y: -300, 
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + parentElementID, 
                 scrub: 4,
                 start: 'clamp(top 30% top)',
                 // end: 'clamp(bottom top)',
-                end: "+=" + (window.innerHeight * 5),
+                end: "+=" + (window.innerHeight * 4),
                 pin: true,
                 // markers: true,
                 onEnter: () => {
