@@ -138,7 +138,8 @@ import { onMount } from "svelte";
 <!-- <Animate> -->
 	<section class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly">
-		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
+			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
+		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</section>
 <!-- </Animate> -->
