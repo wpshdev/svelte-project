@@ -120,11 +120,11 @@
 	<Container class="child">
 		<Row>
 			<Col xs="12" class="pb-4">
-				<h2>
-					<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
-					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
-				</h2>
 				<div class="loc-gallery__cwrapper" id="build-trust">
+					<h2>
+						<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
+						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+					</h2>
 					<!-- gsap-delay="1" gsap-duration="1.5" -->
 						<div class="h3">
 							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
@@ -472,7 +472,6 @@
 			margin-bottom: 1rem;
 			color: $secondary-color;
 			margin-bottom: 3rem;
-			text-align: center;
 			font-size: 3rem;
 			justify-content: center;
 			@include media-max(sm){
