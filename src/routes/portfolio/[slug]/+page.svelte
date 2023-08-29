@@ -40,6 +40,13 @@
     async function doContact () {
 
 	}
+
+	import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 </script>
 
 <svelte:head>
@@ -54,7 +61,7 @@
 				<Col class="text-center">
 					<div class="portfolio-gallery__content">
 						<p class="pre-head" in:slide id="single-portfolio-preheading" gsap-duration="1">Project</p>
-						<h1 class="h2 text-animate secondary-font" in:textAnimate id="single-portfolio-heading">{title ? title : ''}</h1>
+						<h1 class="h2 text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-heading">{title ? title : ''}</h1>
 						<div in:fly id="single-portfolio-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
 						</div>
@@ -66,7 +73,7 @@
 			</Row>		
 		</Container>
 </section>
-{#if isFeatured && projectHeading}
+
 <section class="about-property">
 	<!-- <Animate> -->
 		<Container>
@@ -107,6 +114,8 @@
 		</Container>
 	<!-- </Animate> -->
 </section>
+
+{#if isFeatured && projectHeading}
 
 <section>
 	<!-- <Animate> -->
@@ -207,7 +216,7 @@ section{
 		display: block;
 		background: #1E2D39;
 		width: 100%;
-		height: 55rem;
+		height: 60rem;
 		position: absolute;
 		top: 0;
 		z-index: 0;
@@ -247,6 +256,7 @@ section{
 		max-width: 800px;
     	margin: 0 auto;	
 		color: $white-color;	
+		margin-bottom: 1.5rem;
 	}
   }
 }

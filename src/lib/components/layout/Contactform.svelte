@@ -8,7 +8,7 @@
 	import axios from 'axios';
 	import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from 'svelte/transition';
-	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide, bgZoom } from '$lib/GsapAnimation.js';
 
 	let emailTo = '';
 	let emailSubject = '';
@@ -93,7 +93,8 @@
 </script>
 {#await promise}
 {:then contactSettings} 
-<section class="contact" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})">
+<section class="contact" in:bgZoom id="form-section-bg" gsap-start="center center">
+	<div class="contact-form-bg bg" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})" ></div>
 	<Container>
 		<Row>
 			<Col md="6">
@@ -135,11 +136,20 @@
 <style lang="scss">
 .contact{
 	padding: 10rem 0;
-	background-image: var(--contactBG);
-	background-size: cover;
 	// box-shadow: inset 0 0 0 2000px rgb(237 234 220 / 85%);
 	margin: 0;
 	min-height: 20vh;
+	position: relative;
+	overflow: hidden;
+	.contact-form-bg {
+		background-image: var(--contactBG);
+		background-size: cover;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
 	@include media-max(md){
        padding-left: 3rem;
 	   padding-right: 3rem;

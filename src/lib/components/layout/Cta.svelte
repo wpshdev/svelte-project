@@ -6,7 +6,7 @@
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	// import { fade, fly } from 'svelte/transition';
 	// import Animate from "$lib/components/Animate.svelte";
-	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide, bgZoom } from '$lib/GsapAnimation.js';
 
 	const domain = "https://strapi.ulfbuilt.com:1337"
 	let promise = fetchCta();
@@ -32,7 +32,8 @@
 </script>
 {#await promise}
 {:then ctaData} 
-	<section class="home-cta" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.formats.large_x2.url ? ctaData.backgroundImage.data.attributes.formats.large_x2.url : ctaData.backgroundImage.data.attributes.url})">
+	<section class="home-cta" id="cta-section" in:bgZoom>
+		<div class="home-cta-bg bg" id="cta-section-bg" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.formats.large_x2.url ? ctaData.backgroundImage.data.attributes.formats.large_x2.url : ctaData.backgroundImage.data.attributes.url})"></div>
 		<Container>
 			<Row>
 				<Col class="text-center">
@@ -53,11 +54,24 @@
 <style lang="scss">
 	.home-cta{
 		margin: 0;
-		background-image: var(--cta-banner);
-		background-size: cover;
-		min-height: 20vh;
-		background-attachment: fixed;
-		background-position: center;
+		position: relative;
+		min-height: 100vh;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		.home-cta-bg {
+			background-image: var(--cta-banner);
+			background-size: cover;
+			// min-height: 20vh;
+			// background-attachment: fixed;
+			background-position: center;
+			position: absolute;
+			left: 0;
+            top: 0;
+            height: inherit;
+            width: 100%;
+		}
+
 		@include media-max(sm){
 			padding-left: 1rem;
 			padding-right: 1rem;

@@ -55,6 +55,13 @@
         }
         }
 	}
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 </script>
 <svelte:head>
 	<title>{data.contact.data.attributes.title ? data.contact.data.attributes.title : 'Contact Us'}</title>
@@ -166,6 +173,12 @@
             }
         }
     }
+
+    :global(.contact_inner__details h4 a) {
+        color: $secondary-color;
+        text-decoration: none;
+    }
+
     .contact-box {
         display: flex;
         @include media-max(xs) { 

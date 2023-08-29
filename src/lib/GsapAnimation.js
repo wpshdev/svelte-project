@@ -409,7 +409,7 @@ export function scaleUp(node) {
     ScrollTrigger.create({
         trigger: '#' + targetElementID,
         start: start,
-        once: true,
+        // once: true,
         // markers: true,
         onEnter: function() { 
             const tl = gsap.timeline();
@@ -422,6 +422,17 @@ export function scaleUp(node) {
                 }
             ); 
         }, 
+        onEnterBack: () => {
+            const tl = gsap.timeline();
+            tl.to(
+                '#' + targetElementID,
+                {
+                    duration: duration,
+                    scale: 0.8,
+                    delay: delay,
+                }
+            ); 
+        },
     })
 }
 
@@ -435,7 +446,7 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const defaultDistance = '-120';
+    const defaultDistance = '-300';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
 
     // slowdown effect on the main container on desktop
@@ -449,7 +460,7 @@ export function slowDownSection(node) {
                 scrub: 4,
                 start: 'clamp(top 30% top)',
                 // end: 'clamp(bottom top)',
-                end: "+=" + (window.innerHeight * 4),
+                end: "+=" + (window.innerHeight * 5),
                 pin: true,
                 // markers: true,
                 onEnter: () => {
@@ -460,9 +471,9 @@ export function slowDownSection(node) {
                 },
                 onLeave: () => {
                     gsap.to('#' + parentElementID, {
-                        opacity: 0,
+                        // opacity: 0,
                         yPercent: -100,
-                        duration: 1,
+                        duration: 1.3,
                     });
                 },
                 onEnterBack: () => {
@@ -533,4 +544,40 @@ export function fly2(node) {
             }, 
         })
     })
+}
+
+
+// BG Zoom
+
+export function bgZoom(node) {
+
+    const targetElement = node; // target element
+    const targetElementID = targetElement.id;
+    const bg = targetElement.querySelector('.bg');
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : 'center 80% bottom';
+
+    const masterTL = gsap.timeline({
+        // duration: DUR,
+        ease: "none",
+        scrollTrigger: {
+            trigger: '#' + targetElementID,
+            start: start,
+            //end: '50%',
+            end: "+=" + (window.innerHeight * 4),
+            pin: true,
+            scrub: 4,
+            // markers: true,
+            // once: true,
+        }
+    })
+
+    const zoomBGAnimate = () => {
+        return gsap.to(bg, {
+            scale: 2,
+            duration: 5,
+        });
+    }
+
+    masterTL.add(zoomBGAnimate())
+
 }
