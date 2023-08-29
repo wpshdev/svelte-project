@@ -6,7 +6,7 @@
     import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
-    const color = "white";
+    const color = "darkblue";
     import { Col, Container, Row } from 'sveltestrap';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     const url = "https://strapi.ulfbuilt.com:1337/";
@@ -100,14 +100,9 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<!-- <Animate> -->
-    <div class="contact-img" style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});"></div>
-<!-- </Animate> -->
-<Animate>
+    <div class="contact-img" style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});">
     <div class="contact-box container-fluid">
-        <Container>
-            <Row>
-                <Col sm="12" class="contact-form tbc wtc border-radius">
+                <div class="contact-form border-radius">
                     <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-duration="0.5">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
                     <Form method="post">
                         <FormGroup class="input-icon-box">
@@ -125,14 +120,12 @@
                         <FormGroup>
                             <Input type="textarea" id="yourMessage" placeholder="Tell us about your project..." bind:value={message}/>
                         </FormGroup>
-                        <Button type="button" {color} on:click={doContact}>Send</Button>
+                        <Button type="button" class="btn btn-secondary" on:click={doContact}>Send</Button>
                     </Form>
                     {result}
-                </Col>
-            </Row>
-        </Container>
-    </div>    
-</Animate>
+                </div>
+    </div>
+</div>
 
 <style lang="scss">
     :global(.banner.contact) {
@@ -148,7 +141,7 @@
         }
     }
     :global(.container.contact_inner__details) {
-        @include media-max(sm) { 
+        @include media-max(sm) {
             text-align: center;
         }
     }
@@ -174,26 +167,28 @@
         }
     }
     .contact-box {
-        margin-top: -6rem;
+        display: flex;
         @include media-max(xs) { 
             padding: 0 1.25rem;
         }
         h2 {
             font-size: 2.25rem;
-            margin-bottom: 3.125rem;
             justify-content: center;
         }
         :global(.contact-form) {
-            max-width: 52.602rem;
-            padding: 4rem 10rem;
+            max-width: 44rem;
+            width: 100%;
+            padding: 4rem 6rem;
             @include media-max(ipadmini) { 
                 max-width: 45rem;
                 padding: 4rem;
             }
         }
+        :global(.contact-form form) {
+                text-align: center;
+        }
         :global(.contact-form textarea) {
-            height: 13rem;
-            margin: 2rem 0;
+            height: 8rem;
         }
         :global(.contact-form button) {
             padding: 0.7rem 3.125rem;
@@ -203,13 +198,20 @@
             color: #fff;
             border-color: #fff;
         }
+        button{
+            display: flex;
+            margin: auto;
+        }
     }
     .contact-img {
-        height: 31.313rem;
+        min-height: 100vh;
         background-position: center;
-        @include media-max(sm) { 
-            height: 18.75rem;
-        }
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        // @include media-max(sm) { 
+        //     height: 18.75rem;
+        // }
     }
     
     

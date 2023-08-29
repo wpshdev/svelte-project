@@ -4,6 +4,7 @@
 	// import Animate from "$lib/components/Animate.svelte";
 	import Carousel from "$lib/components/layout/Carousel.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
+	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import axios from "axios";
@@ -50,20 +51,20 @@
 
 // Written by parth for different section speed
 import { onMount } from "svelte";
-let scrollY = 0;
-onMount(() => {
-  window.addEventListener("scroll", handleScroll);
-  calculateMaxTranslateY();
-//   calculateMaxTranslateY("reputation", "reputation_child");
-});
-let maxTranslateY;
-function calculateMaxTranslateY() {
-	const container = document.querySelector(".loc-gallery");
-	const child = document.querySelector(".child");
-    const containerHeight = container.clientHeight;
-    const childHeight = child.clientHeight;
-    maxTranslateY = containerHeight - childHeight - 100;
-}
+// let scrollY = 0;
+// onMount(() => {
+//   window.addEventListener("scroll", handleScroll);
+//   calculateMaxTranslateY();
+// //   calculateMaxTranslateY("reputation", "reputation_child");
+// });
+// let maxTranslateY;
+// function calculateMaxTranslateY() {
+// 	const container = document.querySelector(".loc-gallery");
+// 	const child = document.querySelector(".child");
+//     const containerHeight = container.clientHeight;
+//     const childHeight = child.clientHeight;
+//     maxTranslateY = containerHeight - childHeight - 100;
+// }
 // function calculateMaxTranslateY(containerClass, childClass) {
 // 	const container = document.querySelector("." + containerClass);
 // 	const child = document.querySelector("." + childClass);
@@ -71,35 +72,35 @@ function calculateMaxTranslateY() {
 //     const childHeight = child.clientHeight;
 //     maxTranslateY = containerHeight - childHeight - 100;
 // }
-function handleScroll() {
-    scrollY = window.scrollY;
-    updateChildPosition("child", 0.5);
+// function handleScroll() {
+    // scrollY = window.scrollY;
+    // updateChildPosition("child", 0.5);
     // updateChildPosition("reputation_child", 0.5);
 	// updateChildPositionimg("containerimg", "childimg", 0, 0.2);
 	// updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
 	// updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
 	// updateChildPositionimg("containerimg4", "childimg4", 0, 0.3);
-  }
+//   }
 
-  function updateChildPosition(childclass, speed) {
-    const scrollSpeedMultiplier = speed;
-    let translateY = scrollY * scrollSpeedMultiplier;
+//   function updateChildPosition(childclass, speed) {
+//     const scrollSpeedMultiplier = speed;
+//     let translateY = scrollY * scrollSpeedMultiplier;
     
-    // Ensure translateY does not exceed maxTranslateY
-    translateY = Math.min(translateY, maxTranslateY);
-    const child = document.querySelector("."+ childclass);
-    child.style.transform = `translateY(${translateY}px)`;
-  }
-  function updateChildPositionimg(containerin, childin, offset, speed) {
-	const containertop = document.querySelector("." + containerin).offsetTop;
-	let scrollYval = scrollY + screen.height;
-	if(scrollYval - containertop){
-		let invalue = scrollYval - containertop;
-		const translateY = (invalue * speed) - offset;
-		const child = document.querySelector("." + childin);
-		child.style.transform = `translateY(-${translateY}px)`;
-	}
-  }
+//     // Ensure translateY does not exceed maxTranslateY
+//     translateY = Math.min(translateY, maxTranslateY);
+//     const child = document.querySelector("."+ childclass);
+//     child.style.transform = `translateY(${translateY}px)`;
+//   }
+//   function updateChildPositionimg(containerin, childin, offset, speed) {
+// 	const containertop = document.querySelector("." + containerin).offsetTop;
+// 	let scrollYval = scrollY + screen.height;
+// 	if(scrollYval - containertop){
+// 		let invalue = scrollYval - containertop;
+// 		const translateY = (invalue * speed) - offset;
+// 		const child = document.querySelector("." + childin);
+// 		child.style.transform = `translateY(-${translateY}px)`;
+// 	}
+//   }
   // Written by parth for different image speed
 
 </script>
@@ -109,8 +110,8 @@ function handleScroll() {
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <!-- <ScrollSmoother> -->
-<PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" />
-<section class="loc-gallery">
+<PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
+<section class="loc-gallery" in:slowDownSection id="loc-gallery">
 	<Container class="child">
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -118,8 +119,6 @@ function handleScroll() {
 					<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
 					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 				</h2>
-			</Col>
-			<Col xs="12">
 				<div class="loc-gallery__cwrapper" id="build-trust">
 					<!-- gsap-delay="1" gsap-duration="1.5" -->
 						<div class="h3">
@@ -138,7 +137,10 @@ function handleScroll() {
 {#if home.homeBuilderBanner.data}
 <!-- <Animate> -->
 	<section class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly" style="--lrbg: url({domain}{home.homeBuilderBanner.data.attributes.formats.large.url ? home.homeBuilderBanner.data.attributes.formats.large.url : home.homeBuilderBanner.data.attributes.url})"></div>
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly">
+			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
+		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
+		</div>
 	</section>
 <!-- </Animate> -->
 {/if}
@@ -224,7 +226,9 @@ function handleScroll() {
 </section>
 
 
-<section class="tnr" style="--tp-banner: url({domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url})" > 
+<section class="tnr" >
+	<ParallaxImage scrollOffset={100} translationSpeed={10} imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
+	</ParallaxImage> 
 	<Container>
 		<Row>
 			<Col>
@@ -448,9 +452,11 @@ function handleScroll() {
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		min-height: 80rem;
-		padding-top: 5rem;
-		padding-bottom: 5rem;
+		min-height: 80vh;
+		padding-top: 30rem !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		// @include media-max(ipadmini){
 		// 	min-height: unset;
 		// }	
@@ -696,6 +702,13 @@ function handleScroll() {
 		background-position: center;
 		background-size: cover;
 		position: relative;
+		overflow: hidden;
+		padding-left: 0;
+		padding-right: 0;
+		justify-content: center;
+		:global(.container){
+			position: absolute;
+		}
 		@include media-max(sm){
 			height: 80vh;
 			align-items: end;

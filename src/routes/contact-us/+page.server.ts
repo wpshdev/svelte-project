@@ -1,5 +1,5 @@
 import { STRAPI_API } from '$env/static/private';
-import axios from '$lib/axios';
+import axios from 'axios';
 
 export async function load() {
     const url = 'https://strapi.ulfbuilt.com:1337/api/contact-page?populate=*';
