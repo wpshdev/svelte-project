@@ -36,9 +36,12 @@
         }
     }
 
+    
+	import { loadingCursor } from '$lib/cursorChange.js';
     onMount(() => {
         setTimeout(scrollToDiv, 1000);
         // scrollToDiv();
+		loadingCursor();
     });	
 
 </script>

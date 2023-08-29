@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
-    import { LazyImage } from 'svelte-lazy-image';
+    // import { LazyImage } from 'svelte-lazy-image';
 
 	import Animate from "$lib/components/Animate.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
@@ -25,6 +25,13 @@
         memberPosition = ourTeam.team_members.data[index].attributes.position;
         memberContent = ourTeam.team_members.data[index].attributes.content;
 	}
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
     
 </script>
 <svelte:head>
@@ -37,7 +44,7 @@
         <Container>
             <Row>
                 <Col md="10" class="mx-auto">
-                    <h2 class="stc pb-4 text-center text-animate secondary-font" in:textAnimate id="team_heading" gsap-duration="0.5">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
+                    <h2 class="stc pb-4 text-center text-animate secondary-font" in:textAnimate id="team_heading" gsap-duration="1.5">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
                     <p class="two-columns" in:fadeIn id="team_content" gsap-duration="1" gsap-delay="0.5">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
                     <!-- <Animate> -->
@@ -82,7 +89,7 @@
     <Container>
         <Row>
             <!-- <Animate> -->
-                <h2 class="sfont stc mb-5 text-center text-animate secondary-font" in:textAnimate id="member_heading" gsap-duration="0.5">{ourTeam.title ? ourTeam.title : ''}</h2>
+                <h2 class="sfont stc mb-5 text-center text-animate secondary-font" in:textAnimate id="member_heading" gsap-duration="1.5">{ourTeam.title ? ourTeam.title : ''}</h2>
             <!-- </Animate> -->
             <Col md={{ size: 8, offset: 2 }} class="inner-col">
                 <Row>

@@ -48,9 +48,14 @@
             }
         })();
     }
+	
+	import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
 
 // Written by parth for different section speed
-import { onMount } from "svelte";
 // let scrollY = 0;
 // onMount(() => {
 //   window.addEventListener("scroll", handleScroll);
@@ -174,7 +179,7 @@ import { onMount } from "svelte";
 					</div>
 					<!-- </Animate> -->
 					<div class="categories__tabs__gallery" >
-						<!-- {#key activeTab} -->
+						{#key activeTab}
 							{#if loading}  <!-- show load -->
 								<div class="col text-center list-text-details">Loading...</div>
 							{:else}
@@ -184,7 +189,7 @@ import { onMount } from "svelte";
 									<div class="container masonry_container">       
 										{#each portfolioList as project, index}				
 											{#if index < propCount}
-											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-start="center center" gsap-y="30"> 
+											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30"> 
 												<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
 												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
 													{#if project.attributes.featuredImage.data != null}
@@ -199,7 +204,7 @@ import { onMount } from "svelte";
 									</div>
 								{/if}
 							{/if}
-						<!-- {/key} -->
+						{/key}
 					</div>					
 				</div>	
 			</Col>
@@ -296,7 +301,8 @@ import { onMount } from "svelte";
 				<div class="process__top-image childimg2" >
 					{#if home.ourProcessTopImage.data[0]}
 					<!-- <Animate> -->
-						<img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<!-- <img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/> -->
+						<img in:fly2 id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -328,7 +334,8 @@ import { onMount } from "svelte";
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
-						<img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<!-- <img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}"> -->
+						<img in:fly2 id="process-bottom-img" gsap-y="-60" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -605,7 +612,7 @@ import { onMount } from "svelte";
 				}
 			}
 			&__gallery{
-				// min-height: 60vh;
+				min-height: 100vh;
 				position: relative;
 				@include media-max(ipadmini){
 					min-height: auto;
@@ -775,7 +782,7 @@ import { onMount } from "svelte";
 	.reputation{
 		padding-top: 20rem;
 		// padding-bottom: 3.75rem;
-		min-height: 100vh;
+		// min-height: 100vh;
 		display: flex;
 		align-items: center;
 		// :global(.container){
@@ -913,7 +920,7 @@ import { onMount } from "svelte";
 	.process{
 		padding-top: 10rem;	
 		// padding-bottom: 3.75rem;
-		min-height: 100vh;
+		// min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -924,7 +931,7 @@ import { onMount } from "svelte";
 		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -5rem;
+    		margin-bottom: -3rem;
 			z-index: 5;
 			position: relative;
 			@include media-max(default){
@@ -965,10 +972,10 @@ import { onMount } from "svelte";
 			}
 		}
 		&__content{
-			height: 43rem;
-			@include media-max(lg){
-				height: 35rem;
-			}	
+			height: 35rem;
+			// @include media-max(lg){
+			// 	height: 35rem;
+			// }	
 			@include media-max(ipadmini){
 				height: 30rem;
 			}	
@@ -1078,7 +1085,7 @@ import { onMount } from "svelte";
 
 	.story{
 		padding-top: 10rem;
-		min-height: 100vh;
+		// min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){

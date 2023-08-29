@@ -6,6 +6,13 @@
     // import { fade, fly } from "svelte/transition";
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     const url = "https://strapi.ulfbuilt.com:1337/";
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 </script>
 <svelte:head>
 	<title>{data.data.attributes.title ? data.data.attributes.title : 'Privacy Policy'}</title>

@@ -8,6 +8,13 @@
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 </script>
 
 <svelte:head>

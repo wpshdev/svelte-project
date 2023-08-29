@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
-	import Animate from '$lib/components/Animate.svelte';
+	// import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     export let data;
@@ -17,6 +17,13 @@
     $: published = new Date(Date.parse(data.page.data[0].attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' });
     $: location = data.page.data[0].attributes.location ? data.page.data[0].attributes.location : 'Vail, Colorado';
     $: minutesRead = data.page.data[0].attributes.minutesRead ? data.page.data[0].attributes.minutesRead : '2';
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 </script>
 <svelte:head>
 	<title>{title} - Article</title>

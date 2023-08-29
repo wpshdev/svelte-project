@@ -5,8 +5,8 @@
     import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from "svelte/transition";
     import PageBanner from '$lib/components/layout/PageBanner.svelte';
-    import { onMount } from "svelte";
-    import axios from "axios";
+    // import { onMount } from "svelte";
+    // import axios from "axios";
     const url = "https://strapi.ulfbuilt.com:1337/";
     let page = data.services.data.attributes
     let featuredProjects = data.portfolios.data
@@ -30,6 +30,13 @@
     // onMount(() => {
     //     promise = fetchProject();
     // });	
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 
 </script>
 <svelte:head>
@@ -201,15 +208,15 @@
 <section class="height-100vh fullwidth" in:fly id="about_banneronly_img_section" gsap-y="10" >
     <!-- <Animate> -->
         {#if page.section5image.data}
-        <img in:scaleUp id="about_banneronly_img" gsap-start="top center" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100 image-scale-up">
+        <img in:scaleUp id="about_banneronly_img" gsap-start="top center" gsap-duration="1.5" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100 image-scale-up">
         {/if}
     <!-- </Animate> -->
 </section>
 <section class="reimagine">
     <!-- <Animate> -->
         <Container>
-            <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" >{page.section6heading ? page.section6heading : ''}</h2>
-            <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-delay="0.5" gsap-y="20"> {@html page.section6text ? page.section6text : ''}</p>
+            <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" gsap-start="top top" >{page.section6heading ? page.section6heading : ''}</h2>
+            <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-delay="0.5" gsap-y="20" gsap-start="top top"> {@html page.section6text ? page.section6text : ''}</p>
             <div class="text-right" ><a class="btn btn-secondary" href="{page.section6btnUrl ? page.section6btnUrl : '#'}">{page.section6btn ? page.section6btn : 'Button'}</a></div>
         </Container>
     <!-- </Animate> -->
@@ -378,12 +385,14 @@
         padding: 0;
     }
     .reimagine {
-        min-height: 80rem;
+        min-height: 100vh;
+        padding: 10rem 0;
 		display: flex;
 		align-items: center;
         justify-content: center;
 		@include media-max(ipadmini){
 			min-height: unset;
+            padding: 0;
         }
         h2 {
             justify-content: center;

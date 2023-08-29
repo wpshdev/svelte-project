@@ -59,6 +59,24 @@
     
     // variable for {#key} to check if has new data in either activeDate or activeCategoryTab, to recreate their contents 
     $: listener = {activeDate, activeCategoryTab};
+
+    function scrollToTop() {
+        const element = document.getElementById('articleblog');
+        // element.scrollIntoView({
+        //         behavior: 'smooth'
+        // });
+        const y = element.offsetTop + 1500;
+        console.log(y);
+        window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
+
 </script>
 <svelte:head>
 	<title>{title ? title : 'Articles & Press'}</title>
@@ -103,7 +121,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="article-blog">
+<section class="article-blog" id="articleblog">
 <Container>
         {#key listener}
             {#if loadingArticle}  <!-- show load -->
@@ -147,7 +165,7 @@
                                     <div class="blogsection5">
                                         <div>
                                             <p class="pre-head" in:slide id="article_detail{i}" gsap-duration="1">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</p>
-                                            <h2 class="text-animate secondary-font" in:textAnimate id="article_title{i}" gsap-duration="0.5">{blog.attributes.title}</h2>
+                                            <h2 class="text-animate secondary-font" in:textAnimate id="article_title{i}" gsap-duration="1.5">{blog.attributes.title}</h2>
                                             <p in:slide id="article_text{i}" gsap-duration="1" gsap-delay="1" gsap-y="20">{blog.attributes.shorttext}</p>
                                             <div in:fly id="article_btn{i}" gsap-duration="1" gsap-delay="1.3" gsap-y="20" >
                                              <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
@@ -169,7 +187,10 @@
                     currentPage="{currentPage}"
                     limit="{1}"
                     showStepOptions="{true}"
-                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    on:setPage="{(e) => {
+                        scrollToTop(); // Scroll to the top after setting the new page
+                        currentPage = e.detail.page;
+                    }}"
                     />
                     <!-- End Pagination -->
                 {/if}
@@ -177,7 +198,7 @@
         {/key}
     <div class="divider">
         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.9931 22.2157L3.45312 12.9257L12.9931 3.63574L22.5431 12.9257L12.9931 22.2157Z" stroke="#D8D7D7" stroke-width="3.89" stroke-miterlimit="10"/>
+            <path d="M12.9931 22.2157L3.45312 12.9257L12.9931 3.63574L22.5431 12.9257L12.9931 22.2157Z" stroke="#D8D7D7" stroke-width="2.5" stroke-miterlimit="10"/>
         </svg>
     </div>
 </Container>
@@ -387,7 +408,7 @@
             justify-content: center;
             &:before, &:after {
                 content: '';
-                border-top: 3.89px solid $gray;
+                border-top: 2.5px solid $gray;
                 width: 40%;
                 display: block;
             }

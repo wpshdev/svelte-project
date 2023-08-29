@@ -29,8 +29,11 @@
 
 
     let header: gsap.TweenTarget;
+    
+	import { loadingCursor } from '$lib/cursorChange.js';
     onMount(() => {
         gsap.from(header, { y: -100, duration: 1.5, opacity: 0, delay: 2.5, ease: 'power2.out' });
+        loadingCursor();
     });
 
     let yaxis: any;
@@ -68,3 +71,9 @@
     </ScrollSmoother>
 {/key}
 <svelte:window bind:scrollY={yaxis} />
+
+<!-- <style lang="scss">
+    body {
+      cursor: {isLoading ? 'wait' : 'default'};
+    }
+</style> -->

@@ -6,7 +6,7 @@
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	import Animate from "$lib/components/Animate.svelte";
+	// import Animate from "$lib/components/Animate.svelte";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from "axios";
     // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
@@ -76,6 +76,13 @@
     }
 
     $: listener = {pageSize, activeTab};
+
+    import { onMount } from "svelte";
+	import { loadingCursor } from '$lib/cursorChange.js';
+	onMount(() => {
+		loadingCursor();
+	});
+
 </script>
 <svelte:head>
 	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
@@ -171,10 +178,10 @@
             <Row>
                 <Col class="text-center ">
                     <div class="portfolio-cta__content">
-                        <p in:slide id="portfolio-cta-preheading" gsap-duration="1">{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</p>
-                        <h2 class="text-animate secondary-font" in:textAnimate id="portfolio-cta-heading">{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
+                        <p in:slide id="portfolio-cta-preheading" gsap-duration="1" gsap-start="top center">{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</p>
+                        <h2 class="text-animate secondary-font" in:textAnimate id="portfolio-cta-heading" gsap-start="top center">{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
                     </div>
-                    <div class="portfolio-cta__btns" in:fly id="portfolio-cta-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+                    <div class="portfolio-cta__btns" in:fly id="portfolio-cta-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50" gsap-start="top center">
                         <a href="{portfolio.ourApproachLeftBtnUrl ? portfolio.ourApproachLeftBtnUrl : '#'}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle ? portfolio.ourApproachLeftBtnTitle : 'Button'}</a>
                         <a href="{portfolio.ourApproachRightBtnUrl ? portfolio.ourApproachRightBtnUrl : '#'}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle ? portfolio.ourApproachRightBtnTitle : 'Button'}</a>
                     </div>                   

@@ -656,10 +656,12 @@ header{
 
 .svelte-1ql6gaa {
     opacity: 1;
+    // transition: all 0.5s ease !important;
 }
 
 .svelte-headroom--unpin {
     opacity: 0;
+    transition: all 0.5s ease !important;
     @include media-max(sm){
         opacity: 1;
     }
