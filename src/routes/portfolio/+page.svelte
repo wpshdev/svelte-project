@@ -6,7 +6,7 @@
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	// import Animate from "$lib/components/Animate.svelte";
+	import Animate from "$lib/components/Animate.svelte";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from "axios";
     // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
@@ -124,50 +124,52 @@
                         <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
                 </p>
-                {#key listener}
-                    {#if loading}  <!-- show load -->
-                        <div class="col text-center list-text-details">Loading...</div>
-                    {:else}
-                        {#if portfolioList.length == 0} 
-                            <div class="col text-center list-text-details">No Portfolios Found...</div>
+                <div class="portfolio-results-container">
+                    {#key listener}
+                        {#if loading}  <!-- show load -->
+                            <div class="col text-center list-text-details">Loading...</div>
                         {:else}
-                        {@const items = portfolioList}
-                            <div class="container masonry-wrapper">       
-                                {#each paginate({ items, pageSize, currentPage }) as project, index}			
-                                    <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                    in:fade="{{ duration: 1000, delay:index * 500}}" 
-                                    out:fade="{{ duration:1000 }}"> 
-                                        <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
-                                            {#if project.attributes.featuredImage.data != null}
-                                                <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
-                                            {:else}
-                                                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
-                                            {/if}
-                                            <div class="masonry-items__text">
-                                                <span>{('0' + (index + 1)).slice(-2)}</span>
-                                                {project.attributes.title ? project.attributes.title : ''}
-                                                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                                                    </svg>
-                                                </i>
-                                            </div>
-                                        </a>
-                                    </div>			
-                                {/each}
-                            </div>
-                            <div class="paginate-section" >
-                                <LightPaginationNav
-                                totalItems="{portfolioList.length}"
-                                pageSize="{pageSize}"
-                                currentPage="{currentPage}"
-                                limit="{1}"
-                                showStepOptions="{true}"
-                                on:setPage="{(e) => currentPage = e.detail.page}"
-                                />
-                            </div>
+                            {#if portfolioList.length == 0} 
+                                <div class="col text-center list-text-details">No Portfolios Found...</div>
+                            {:else}
+                            {@const items = portfolioList}
+                                <div class="container masonry-wrapper">       
+                                    {#each paginate({ items, pageSize, currentPage }) as project, index}			
+                                        <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
+                                        in:fade="{{ duration: 1000, delay:index * 500}}" 
+                                        out:fade="{{ duration:1000 }}"> 
+                                            <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
+                                                {#if project.attributes.featuredImage.data != null}
+                                                    <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                                {:else}
+                                                    <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
+                                                {/if}
+                                                <div class="masonry-items__text">
+                                                    <span>{('0' + (index + 1)).slice(-2)}</span>
+                                                    {project.attributes.title ? project.attributes.title : ''}
+                                                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </i>
+                                                </div>
+                                            </a>
+                                        </div>			
+                                    {/each}
+                                </div>
+                                <div class="paginate-section" >
+                                    <LightPaginationNav
+                                    totalItems="{portfolioList.length}"
+                                    pageSize="{pageSize}"
+                                    currentPage="{currentPage}"
+                                    limit="{1}"
+                                    showStepOptions="{true}"
+                                    on:setPage="{(e) => currentPage = e.detail.page}"
+                                    />
+                                </div>
+                            {/if}
                         {/if}
-                    {/if}
-                {/key}
+                    {/key}
+                </div>
             </Col>
         </Row>
     </Container>
@@ -178,10 +180,10 @@
             <Row>
                 <Col class="text-center ">
                     <div class="portfolio-cta__content">
-                        <p in:slide id="portfolio-cta-preheading" gsap-duration="1" gsap-start="top center">{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</p>
-                        <h2 class="text-animate secondary-font" in:textAnimate id="portfolio-cta-heading" gsap-start="top center">{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
+                        <p in:slide id="portfolio-cta-preheading" gsap-duration="1.5" gsap-start="top center">{portfolio.ourApproachPreHeading ? portfolio.ourApproachPreHeading : ''}</p>
+                        <h2 class="text-animate secondary-font" in:textAnimate id="portfolio-cta-heading" gsap-duration="1.5" gsap-start="top center">{@html portfolio.ourApproachHeading ? portfolio.ourApproachHeading : ''}</h2>                 
                     </div>
-                    <div class="portfolio-cta__btns" in:fly id="portfolio-cta-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50" gsap-start="top center">
+                    <div class="portfolio-cta__btns" gsap-start="top top" in:fly id="portfolio-cta-button" gsap-delay="1" gsap-duration="1.5" >
                         <a href="{portfolio.ourApproachLeftBtnUrl ? portfolio.ourApproachLeftBtnUrl : '#'}" class="btn btn-secondary">{portfolio.ourApproachLeftBtnTitle ? portfolio.ourApproachLeftBtnTitle : 'Button'}</a>
                         <a href="{portfolio.ourApproachRightBtnUrl ? portfolio.ourApproachRightBtnUrl : '#'}" class="btn btn-inverted">{portfolio.ourApproachRightBtnTitle ? portfolio.ourApproachRightBtnTitle : 'Button'}</a>
                     </div>                   
@@ -202,7 +204,6 @@
 		<Cta />
 	<!-- </Animate> -->
 </section>
-
 <style lang="scss">
     section{
         min-height: 20vh;
@@ -289,6 +290,9 @@
 				}
 			}
 		}
+        .portfolio-results-container {
+            min-height: 100rem;
+        }
         .masonry-wrapper {
             min-height: 31rem;
             // column-count: 2;

@@ -62,7 +62,7 @@
 					<div class="portfolio-gallery__content">
 						<p class="pre-head" in:slide id="single-portfolio-preheading" gsap-duration="1">Project</p>
 						<h1 class="h2 text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-heading">{title ? title : ''}</h1>
-						<div in:fly id="single-portfolio-cont" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+						<div in:fadeIn id="single-portfolio-cont" gsap-delay="0.5" gsap-duration="1.5">
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
 						</div>
 					</div>
@@ -78,7 +78,7 @@
 	<!-- <Animate> -->
 		<Container>
 			<Row>
-				<Col><h2 in:slide id="about-property-preheading" gsap-duration="1">{projectHeading ? projectHeading : ''}</h2></Col>
+				<Col><h2 in:slide id="about-property-preheading" gsap-start="top center" gsap-duration="1">{projectHeading ? projectHeading : ''}</h2></Col>
 			</Row>
 			<Row>
 				<Col md="12">
@@ -121,7 +121,7 @@
 	<!-- <Animate> -->
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
-				<section in:fadeIn id="single-portfolio-bannerOnly{index}" gsap-duration="1.5"  gsap-delay="0.5"  class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
+				<section in:fadeIn id="single-portfolio-bannerOnly{index}" gsap-duration="1.5"  gsap-delay="1.5"  class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
 				{/if}
 				<Testimonial testimonial="{bannerQuote.quote}" />
 		{/each}
@@ -154,7 +154,7 @@
 		<Container>
 			<Row>
 				<Col md="12">
-					<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-related-heading">{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
+					<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-related-heading">{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
 				</Col>	
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">

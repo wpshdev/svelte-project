@@ -68,7 +68,7 @@
         <Container>
             <Row>
                 <Col md="{{ size: '6', offset: 3 }}" class="text-center">
-                    <h3 in:fly id="ph_heading" gsap-duration="1" gsap-y="20">
+                    <h3 in:fly id="ph_heading" gsap-duration="1.5" gsap-y="30">
                         {@html processData.section3heading ? processData.section3heading : ''}                  
                     </h3>
                 </Col>
@@ -98,7 +98,7 @@
         <div class="phase__grid">
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase1_pre1" gsap-duration="1" gsap-x="-7">{processData.section4heading ? processData.section4heading : ''}</p>
-                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title1" gsap-duration="0.5">{processData.section4subheading ? processData.section4subheading : ''}</h4>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title1" gsap-duration="1.5">{processData.section4subheading ? processData.section4subheading : ''}</h4>
                 <div in:fly id="phase1_sub1" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section4text ? processData.section4text : ''}
                 </div>
@@ -110,7 +110,7 @@
             </div>     
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase1_pre2" gsap-duration="1" gsap-x="-7">{processData.section5heading ? processData.section5heading : ''}</p>
-                <h4  class="text-animate secondary-font" in:textAnimate id="phase1_title2" gsap-duration="0.5">{processData.section5subheading ? processData.section5subheading : ''}</h4>
+                <h4  class="text-animate secondary-font" in:textAnimate id="phase1_title2" gsap-duration="1.5">{processData.section5subheading ? processData.section5subheading : ''}</h4>
                 <div in:fly id="phase1_sub2" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section5text ? processData.section5text : '' }
                 </div>
@@ -134,7 +134,7 @@
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase1_pre3" gsap-duration="1" gsap-x="-7">{processData.section7heading ? processData.section7heading : ''}</p>
-                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title3" gsap-duration="0.5">{processData.section7subheading ? processData.section7subheading : ''}</h4>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title3" gsap-duration="1.5">{processData.section7subheading ? processData.section7subheading : ''}</h4>
                 <div in:fly id="phase1_sub3" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section7text ? processData.section7text : ''}
                 </div>
@@ -146,7 +146,7 @@
             </div>     
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase1_pre4" gsap-duration="1" gsap-x="-7">{processData.section8heading ? processData.section8heading : ''}</p>
-                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title4" gsap-duration="0.5">{processData.section8subheading ? processData.section8subheading : ''}</h4>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase1_title4" gsap-duration="1.5">{processData.section8subheading ? processData.section8subheading : ''}</h4>
                 <div in:fly id="phase1_sub4" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section8text ? processData.section8text : ''}
                 </div>
@@ -200,7 +200,7 @@
         <div class="phase__grid">
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase2_pre1" gsap-duration="1" gsap-x="-7">{processData.section11heading ? processData.section11heading : ''}</p>
-                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title1" gsap-duration="0.5">{processData.section11subheading ? processData.section11subheading : ''}</h4>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title1" gsap-duration="1.5">{processData.section11subheading ? processData.section11subheading : ''}</h4>
                 <div in:fly id="phase2_sub1" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section11text ? processData.section11text : ''}
                 </div>
@@ -212,7 +212,7 @@
             </div>     
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase2_pre2" gsap-duration="1" gsap-x="-7">{processData.section12heading ? processData.section12heading : ''} </p>
-                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title2" gsap-duration="0.5">{processData.section12subheading ? processData.section12subheading : ''}</h4>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title2" gsap-duration="1.5">{processData.section12subheading ? processData.section12subheading : ''}</h4>
                 <div in:fly id="phase2_sub2" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section12text ? processData.section12text : ''}
                 </div>
@@ -224,7 +224,7 @@
             </div>  
             <div class="phase__grid__item">
                 <p class="pre-head" in:slide id="phase2_pre3" gsap-duration="1" gsap-x="-7">{processData.section13heading ? processData.section13heading : ''}</p>
-                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title3" gsap-duration="0.5">{processData.section13subheading ? processData.section13subheading : ''}</h4>
+                <h4 class="text-animate secondary-font" in:textAnimate id="phase2_title3" gsap-duration="1.5">{processData.section13subheading ? processData.section13subheading : ''}</h4>
                 <div in:fly id="phase2_sub3" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section13text ? processData.section13text : ''}
                 </div>
