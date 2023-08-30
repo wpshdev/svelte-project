@@ -234,7 +234,8 @@ $: {
           max-width: 90%;
           text-align: left;
           transition: 1.5s;
-
+          display: flex;
+          align-items: center;
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;
