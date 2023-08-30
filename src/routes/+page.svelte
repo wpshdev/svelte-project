@@ -150,7 +150,7 @@
 <!-- </Animate> -->
 {/if}
 
-<section class="categories" in:slowDownSection id="categories-section">
+<section class="categories" in:slowDownSection id="categories-section" gsap-start="clamp(top top)">
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
@@ -294,7 +294,7 @@
 		</Container>
 </section>
 
-<section class="process" in:slowDownSection id="process-section">
+<section class="process" in:slowDownSection id="process-section" gsap-start="clamp(top 20% top)">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -302,7 +302,7 @@
 					{#if home.ourProcessTopImage.data[0]}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/> -->
-						<img in:fly2 id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly2 id="process-top-img" gsap-y="-30" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					<!-- </Animate> -->
 					{/if}
 				</div>

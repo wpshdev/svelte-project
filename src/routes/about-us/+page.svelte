@@ -3,7 +3,7 @@
     import { onMount } from 'svelte';
 	import Animate from '$lib/components/Animate.svelte';
     // import { fade, fly } from 'svelte/transition';
-    import { textAnimate, fly, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fly2, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
@@ -53,7 +53,7 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading" in:slowDownSection id="about-heading-section" gsap-ydistance="-200">
+<section class="mw-1000 text-center about-heading" in:slowDownSection id="about-heading-section" gsap-start="clamp(center center)">
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
@@ -61,7 +61,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details" in:slowDownSection id="cd-section1">
+<section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="clamp(center 60% center)">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -75,7 +75,7 @@
                     
                         {#if about.Section1image.data}
                         <div>
-                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="30"  src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
+                            <img in:fly id="cd-image1" gsap-duration="2" gsap-y="50"  src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                         </div>
                         {/if}
                     
@@ -84,14 +84,14 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details"  >
+<section class="contractor-details" in:slowDownSection id="cd-section2" gsap-start="clamp(center 60% center)">
     <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="6">
                     {#if about.Section2image.data}
                     <div>
-                        <img in:fly id="cd-image2" gsap-y="30" gsap-duration="2"  src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
+                        <img in:fly id="cd-image2" gsap-y="50" gsap-duration="2"  src="{about.Section2image.data.attributes.formats.large.url ? url+about.Section2image.data.attributes.formats.large.url : url+about.Section2image.data.attributes.url}" alt="{about.Section2heading}" class="w-100" width="{about.Section2image.data.attributes.width}" height="{about.Section2image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -105,7 +105,7 @@
         </Container> 
     <!-- </Animate>   -->
 </section>
-<section class="contractor-details"  >
+<section class="contractor-details" in:slowDownSection id="cd-section3" gsap-start="clamp(center 60% center)">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -118,7 +118,7 @@
                 <Col md="6">
                     {#if about.Section3image.data}
                     <div >
-                        <img in:fly id="cd-image3"  gsap-y="30" gsap-duration="2" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
+                        <img in:fly id="cd-image3"  gsap-y="50" gsap-duration="2" src="{about.Section3image.data.attributes.formats.large.url ? url+about.Section3image.data.attributes.formats.large.url : url+about.Section3image.data.attributes.url}" alt="{about.Section3heading}" class="w-100 2col-image" width="{about.Section3image.data.attributes.width}" height="{about.Section3image.data.attributes.height}">
                     </div>
                     {/if}
                 </Col>
@@ -367,7 +367,7 @@
         }
     }
     .contractor-details {
-        min-height: 80rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
 		// @include media-max(ipadmini){
@@ -442,7 +442,7 @@
         }
     }
     .sets-parts{
-        min-height: 80rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){

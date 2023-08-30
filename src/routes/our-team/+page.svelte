@@ -2,7 +2,7 @@
 	import { Col, Container, Row } from "sveltestrap";
     // import { LazyImage } from 'svelte-lazy-image';
 
-	import Animate from "$lib/components/Animate.svelte";
+	// import Animate from "$lib/components/Animate.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import Contactform from "$lib/components/layout/Contactform.svelte";
     import Modal from "$lib/components/layout/Modal.svelte";
@@ -49,7 +49,7 @@
                     {#if ourTeam.SecondSectionImage.data}
                     <!-- <Animate> -->
                         <div class="heading-image">
-                            <img in:fadeIn id="team_image" gsap-duration="1.5" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
+                            <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                         </div>
                     <!-- </Animate> -->
                     {/if}
@@ -66,8 +66,8 @@
                     <div>
                         <img in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                         <div class="tm-box wtc">
-                            <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
-                            <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
+                            <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5" gsap-start="top center">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
+                            <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5" gsap-start="top center">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
                         </div>
                     </div>
                 </Col>
@@ -78,10 +78,10 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="paragraph1">
+<section class="paragraph1" in:fadeIn id="team_paragraph" gsap-duration="2" gsap-start="top center">
     <!-- <Animate> -->
         <Container>
-            <h4 in:fadeIn id="team_paragraph" gsap-duration="1.5">{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
+            <h4>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
         </Container>
     <!-- </Animate> -->
 </section>
@@ -102,13 +102,13 @@
                             on:click={() => (showModal = true)}
                             >
                                 <img in:fadeIn id="member_image{index}" gsap-duration="1.5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                                <Animate>
+                                <!-- <Animate> -->
                                     <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                                         <!-- our-team__member_caption class removed -->
                                         <h5 class="pfont" in:slide id="member_name{index}" gsap-duration="1.5" gsap-x="-10">{member.attributes.name}</h5>
                                         <p class="pfont gtc" in:slide id="member_title{index}" gsap-duration="1.5" gsap-x="-10">{member.attributes.position}</p>
                                     </div>
-                                </Animate>
+                                <!-- </Animate> -->
                             </div>
                             <!-- </a> -->
                         </Col>                    
@@ -136,10 +136,10 @@
         </Row>
     </Container>
 </section>
-<section class="ourteam5">
+<section class="ourteam5" in:fadeIn id="team_paragraph1" gsap-duration="2" gsap-start="top center">
    <!-- <Animate> -->
     <Container>
-        <div in:fly id="team_paragraph1" gsap-duration="1.5">
+        <div >
             <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
             <h4>{ourTeam.para3 ? ourTeam.para3 : ''}</h4>
             <h4>{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h4>
@@ -247,7 +247,7 @@
         position: relative;
     }
     .owner {
-        min-height: 80rem;
+        min-height: 100vh;
 		display: flex;
 		align-items: center;
         justify-content: center;
@@ -295,7 +295,7 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
-    min-height: 70rem;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,7 +314,7 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
-    min-height: 80rem;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;

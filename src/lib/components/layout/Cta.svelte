@@ -32,7 +32,8 @@
 </script>
 {#await promise}
 {:then ctaData} 
-	<section class="home-cta" id="cta-section" in:bgZoom>
+<!-- <Animate> -->
+	<section class="home-cta" id="cta-section" in:bgZoom gsap-scale="1.5">
 		<div class="home-cta-bg bg" id="cta-section-bg" style="--cta-banner: url({domain}{ctaData.backgroundImage.data.attributes.formats.large_x2.url ? ctaData.backgroundImage.data.attributes.formats.large_x2.url : ctaData.backgroundImage.data.attributes.url})"></div>
 		<Container>
 			<Row>
@@ -49,7 +50,8 @@
 				</Col>
 			</Row>
 		</Container>
-	</section>	
+	</section>
+<!-- </Animate>	 -->
 {/await}
 <style lang="scss">
 	.home-cta{
@@ -68,7 +70,7 @@
 			position: absolute;
 			left: 0;
             top: 0;
-            height: inherit;
+            height: 100%;
             width: 100%;
 		}
 

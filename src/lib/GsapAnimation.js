@@ -448,6 +448,7 @@ export function slowDownSection(node) {
 
     const defaultDistance = '-300';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
+    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : 'clamp(top 30% top)';
 
     // slowdown effect on the main container on desktop
     mm.add("(min-width: 769px)", () => {
@@ -458,7 +459,7 @@ export function slowDownSection(node) {
             scrollTrigger: {
                 trigger: '#' + parentElementID, 
                 scrub: 4,
-                start: 'clamp(top 30% top)',
+                start: start,
                 // end: 'clamp(bottom top)',
                 end: "+=" + (window.innerHeight * 5),
                 pin: true,
@@ -507,7 +508,7 @@ export function fly2(node) {
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + targetElementID, 
-                scrub: true,
+                scrub: 2,
                 start: "top center",
                 // end: "bottom top",
                 end: "+=" + (window.innerHeight * 3.5),
@@ -554,30 +555,43 @@ export function bgZoom(node) {
     const targetElement = node; // target element
     const targetElementID = targetElement.id;
     const bg = targetElement.querySelector('.bg');
-    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : 'center 80% bottom';
+    const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : 'center center';
+    const scale = targetElement.getAttribute("gsap-scale") ? targetElement.getAttribute("gsap-scale") : 1.3;
 
-    const masterTL = gsap.timeline({
-        // duration: DUR,
-        ease: "none",
+    // const masterTL = gsap.timeline({
+    //     ease: "none",
+    //     scrollTrigger: {
+    //         trigger: '#' + targetElementID,
+    //         start: start,
+    //         //end: '50%',
+    //         end: "+=" + (window.innerHeight * 3),
+    //         pin: true,
+    //         scrub: 4,
+    //         // markers: true,
+    //         // once: true,
+    //     }
+    // })
+
+    // const zoomBGAnimate = () => {
+    //     return gsap.to(bg, {
+    //         scale: scale,
+    //     });
+    // }
+
+    // masterTL.add(zoomBGAnimate())
+
+    gsap.to(bg, {
+        scale: scale, 
+        ease: "none", 
         scrollTrigger: {
-            trigger: '#' + targetElementID,
-            start: start,
-            //end: '50%',
-            end: "+=" + (window.innerHeight * 4),
-            pin: true,
-            scrub: 4,
+            trigger: '#' + targetElementID, 
+            scrub: 2,
+            start: "top bottom",
+            // end: "bottom top",
+            end: "+=" + (window.innerHeight * 1),
+            // pin: true,
             // markers: true,
-            // once: true,
         }
-    })
-
-    const zoomBGAnimate = () => {
-        return gsap.to(bg, {
-            scale: 2,
-            duration: 5,
-        });
-    }
-
-    masterTL.add(zoomBGAnimate())
+    });
 
 }

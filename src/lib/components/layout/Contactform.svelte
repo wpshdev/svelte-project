@@ -93,7 +93,8 @@
 </script>
 {#await promise}
 {:then contactSettings} 
-<section class="contact" in:bgZoom id="form-section-bg" gsap-start="center center">
+<!-- <Animate> -->
+<section class="contact" in:bgZoom id="form-section-bg">
 	<div class="contact-form-bg bg" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})" ></div>
 	<Container>
 		<Row>
@@ -132,6 +133,7 @@
 		</Row>
 	</Container>
 </section>
+<!-- </Animate> -->
 {/await}
 <style lang="scss">
 .contact{

@@ -75,7 +75,7 @@
         <Container class="mb-5 contact_inner__content">
             <Row>
                 <Col md="12">
-                    <h2 class="text-center text-animate secondary-font" in:textAnimate id="contact_heading" gsap-duration="0.5" >{data.contact.data.attributes.section1Title ? data.contact.data.attributes.section1Title : ''}</h2>
+                    <h2 class="text-center text-animate secondary-font" in:textAnimate id="contact_heading" gsap-duration="1.5" >{data.contact.data.attributes.section1Title ? data.contact.data.attributes.section1Title : ''}</h2>
                     <h4 class="text-center pfont">{data.contact.data.attributes.Section1SubAuthor ? '-' : ''} <span class="ptc"><i>{data.contact.data.attributes.Section1SubAuthor ? data.data.attributes.Section1SubAuthor : ''}</i></span></h4>
                     <p class="two-columns pt-3" in:fadeIn id="contact_content" gsap-duration="1.5" gsap-delay="0.5">{@html data.contact.data.attributes.Subheading2 ? data.contact.data.attributes.Subheading2 : ''}</p>
                 </Col>
@@ -110,7 +110,7 @@
     <div class="contact-img" style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});">
     <div class="contact-box container-fluid">
                 <div class="contact-form border-radius">
-                    <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-duration="0.5">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
+                    <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-duration="1.5">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
                     <Form method="post">
                         <FormGroup class="input-icon-box">
                             <Input class="input-user" placeholder="Full Name" bind:value={name} />
