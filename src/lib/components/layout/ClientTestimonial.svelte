@@ -10,15 +10,15 @@
 
 
     onMount(() => {
-        // flickityInstance = new Flickity('.slider-container', {
-        //     cellAlign: 'center',
-        //     wrapAround: true,
-        //     prevNextButtons: false,
-        //     pageDots: true,
-        //     autoPlay: false,
-        //     groupCells: 1,
-        //     draggable: true,
-        // });
+        flickityInstance = new Flickity('.slider-container', {
+            cellAlign: 'center',
+            wrapAround: true,
+            prevNextButtons: false,
+            pageDots: true,
+            autoPlay: false,
+            groupCells: 1,
+            draggable: true,
+        });
     })
 
     // let progressPercentage = 100 / clientTestimonials.length;

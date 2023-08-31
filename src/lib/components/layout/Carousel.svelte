@@ -38,19 +38,19 @@ onMount(() => {
   promise = fetchFallback();
   innerWidth = window.innerWidth;
   
-  // flickityInstance = new Flickity('.slider-container', {
-  //   cellAlign: 'left',
-  //   contain: true,
-  //   wrapAround: true,
-  //   prevNextButtons: false,
-  //   pageDots: false,
-  //   autoPlay: false,
-  //   groupCells: 1,
-  //   draggable: true,
-  //   on: {
-  //     change: updateProgress,
-  //   },
-  // });
+  flickityInstance = new Flickity('.slider-container', {
+    cellAlign: 'left',
+    contain: true,
+    wrapAround: true,
+    prevNextButtons: false,
+    pageDots: false,
+    autoPlay: false,
+    groupCells: 1,
+    draggable: true,
+    on: {
+      change: updateProgress,
+    },
+  });
 })
 
 
@@ -234,7 +234,8 @@ $: {
           max-width: 90%;
           text-align: left;
           transition: 1.5s;
-
+          display: flex;
+          align-items: center;
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;
