@@ -11,7 +11,6 @@
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
 	import { textAnimate, fly, fadeIn, slide, fly2, slowDownSection } from '$lib/GsapAnimation.js';
-	// import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -707,7 +706,7 @@
 
 	.tnr{
 		background-image: var(--tp-banner);
-		height: 40vw;
+		height: 50vw;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
