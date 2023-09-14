@@ -444,7 +444,7 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const defaultDistance = '-70';
+    const defaultDistance = '-80';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
     const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : 'clamp(top 30% top)';
     const end = parentElement.getAttribute("gsap-end") ? parentElement.getAttribute("gsap-end") : '2';

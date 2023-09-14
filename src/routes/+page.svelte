@@ -216,9 +216,8 @@
 
 
 
-<section class="featured-projects">	
+<!-- <section class="featured-projects">	
 	<Container>
-		<!-- <Animate> -->
 			<Row>
 				<Carousel 
 				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -227,9 +226,8 @@
 				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 				featuredProjects={home.featuredProjects}/>
 			</Row>
-		<!-- </Animate> -->
 	</Container>
-</section>
+</section> -->
 
 
 <section class="tnr" >
