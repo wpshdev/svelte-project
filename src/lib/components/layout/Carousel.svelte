@@ -10,7 +10,7 @@ import noFeatured from "$lib/img/blog-empty.svg"
 
 import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
-let flickityInstance;
+// let flickityInstance;
 export let preHeading; 
 export let heading; 
 export let btnTitle;
@@ -33,7 +33,7 @@ function nextSlide() {
     let object = document.getElementById("carousel-image-container");
     let objectsl = document.getElementById("carousel-item");
     let obwidth = objectsl.clientWidth + 16;
-    console.log(obwidth);
+    console.log(obwidth * currentIndex);
     object.style.transform = `translateX(-${obwidth * currentIndex}px)`;
     
     // let object2 = document.querySelectorAll("[id='carousel-slide']");
@@ -48,7 +48,7 @@ function nextSlide() {
     let object = document.getElementById("carousel-image-container");
     let objectsl = document.getElementById("carousel-item");
     let obwidth = objectsl.clientWidth + 16;
-    console.log(obwidth);
+    console.log(obwidth * currentIndex);
     object.style.transform = `translateX(${obwidth * currentIndex}px)`;
   }
 
@@ -72,19 +72,19 @@ onMount(() => {
   promise = fetchFallback();
   innerWidth = window.innerWidth;
   
-  flickityInstance = new Flickity('.slider-container', {
-    cellAlign: 'left',
-    contain: true,
-    wrapAround: true,
-    prevNextButtons: false,
-    pageDots: false,
-    autoPlay: false,
-    groupCells: 1,
-    draggable: true,
-    on: {
-      change: updateProgress,
-    },
-  });
+  // flickityInstance = new Flickity('.slider-container', {
+  //   cellAlign: 'left',
+  //   contain: true,
+  //   wrapAround: true,
+  //   prevNextButtons: false,
+  //   pageDots: false,
+  //   autoPlay: false,
+  //   groupCells: 1,
+  //   draggable: true,
+  //   on: {
+  //     change: updateProgress,
+  //   },
+  // });
 })
 
 
