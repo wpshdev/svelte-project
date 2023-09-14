@@ -4,7 +4,7 @@
 	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 </script>
 <div style="margin-top:100px;"></div>
-<Carousel2 autoplay="2000">
+<Carousel2>
 	{#each colors as color, index (index)}
 	  <div style="background-color: {color}">{color}</div>
 	{/each}
