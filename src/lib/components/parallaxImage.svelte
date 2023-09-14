@@ -18,7 +18,7 @@
       end: 'bottom',
     });
 
-    let translateY = -500; // Initial translation value
+    let translateY = -150; // Initial translation value
     const defaultTranslationSpeed = 100;
 
     gsap.to(target, {
@@ -37,7 +37,7 @@
   });
 </script>
 
-<style>
+<style lang="scss">
   .container-div {
     width: 100%;
     height: 90vh;
@@ -50,6 +50,9 @@
     margin-top: -100px;
     background-position: center !important;
     background-size: 130% !important;
+    @include media-max(laptopS){
+			background-size: cover !important;
+		}	
   }
 </style>
 
