@@ -115,7 +115,7 @@
 </svelte:head>
 <!-- <ScrollSmoother> -->
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
-<section class="loc-gallery" in:slowDownSection id="loc-gallery">
+<section class="loc-gallery" in:slowDownSection id="loc-gallery" gsap-end="2.5">
 	<Container class="child">
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -141,7 +141,7 @@
 {#if home.homeBuilderBanner.data}
 <!-- <Animate> -->
 	<section class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1" class="section--bannerOnly">
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1.5" class="section--bannerOnly">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
 		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
@@ -149,7 +149,9 @@
 <!-- </Animate> -->
 {/if}
 
-<section class="categories" in:slowDownSection id="categories-section" gsap-start="clamp(top top)">
+<!-- gsap-start="clamp(top top)"  -->
+
+<section class="categories" in:slowDownSection id="categories-section" gsap-end="3.25" gsap-ydistance="-50" gsap-start="clamp(top 25% top)" >
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
@@ -214,9 +216,8 @@
 
 
 
-<section class="featured-projects">	
+<!-- <section class="featured-projects">	
 	<Container>
-		<!-- <Animate> -->
 			<Row>
 				<Carousel 
 				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -225,9 +226,8 @@
 				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 				featuredProjects={home.featuredProjects}/>
 			</Row>
-		<!-- </Animate> -->
 	</Container>
-</section>
+</section> -->
 
 
 <section class="tnr" >
@@ -256,7 +256,7 @@
 
 
 
-<section class="reputation" in:slowDownSection id="reputation-section">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-end="3.5" gsap-ydistance="-60">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -277,7 +277,7 @@
 					<div class="childimg">
 						{#if home.reputation.image.data}
 						<!-- <Animate> -->
-							<img in:fly2 id="reputation-img" gsap-y="-60" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+							<img in:fly2 id="reputation-img" gsap-y="-100" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						<!-- </Animate> -->
 						{/if}
 					</div>
@@ -293,7 +293,8 @@
 		</Container>
 </section>
 
-<section class="process" in:slowDownSection id="process-section" gsap-start="clamp(top 20% top)">
+<!-- gsap-start="clamp(top 20% top)" -->
+<section class="process" in:slowDownSection id="process-section" gsap-end="5" gsap-ydistance="-60" gsap-start="clamp(top 20% top)">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -301,7 +302,7 @@
 					{#if home.ourProcessTopImage.data[0]}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/> -->
-						<img in:fly2 id="process-top-img" gsap-y="-30" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly2 id="process-top-img" gsap-start="top top" gsap-y="-100" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -334,7 +335,7 @@
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}"> -->
-						<img in:fly2 id="process-bottom-img" gsap-y="-60" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly2 id="process-bottom-img" gsap-start="top top" gsap-y="-100" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -351,7 +352,7 @@
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section">
+<section class="story" in:slowDownSection id="story-section" gsap-end="3.5" gsap-ydistance="-60">
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -378,7 +379,7 @@
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
 						<!-- <Animate> -->
-							<img in:fly2 id="story-img" gsap-y="-60" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+							<img in:fly2 id="story-img" gsap-y="-100" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 						<!-- </Animate> -->
 						{/if}
 					</div>	
@@ -458,14 +459,16 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		min-height: 80vh;
-		padding-top: 30rem !important;
+		min-height: 100vh;
+		padding-top: 15rem;
+		padding-bottom: 110rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		// @include media-max(ipadmini){
-		// 	min-height: unset;
-		// }	
+		@include media-max(ipadmini){
+			min-height: unset;
+			padding-top: 5rem !important;
+		}	
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -516,8 +519,9 @@
 		// margin-top: 0;
 		margin: 0;
 		// padding: 0 0 3.75rem;
+		padding-bottom: 125rem;
 		min-height: 100vh;
-		padding-top: 30rem;
+		padding-top: 25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -525,7 +529,7 @@
 		// 	max-width: 1440px;
 		// }
 		@include media-max(ipadmini){
-			min-height: unset;
+			// min-height: unset;
 			padding: 0 0 3.75rem;
 		}	
 		h2{
@@ -761,7 +765,7 @@
 	.featured-projects{
 		// padding: 5rem 0 13.75rem;
 		margin: 0;
-		min-height: 80rem;
+		min-height: 100vh;
 		display: flex;
 		align-items: center;
 		padding-bottom: 5rem;
@@ -779,6 +783,7 @@
 
 	.reputation{
 		padding-top: 20rem;
+		padding-bottom: 125rem;
 		// padding-bottom: 3.75rem;
 		// min-height: 100vh;
 		display: flex;
@@ -796,6 +801,7 @@
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 7rem;
+			padding-bottom: 1.5rem;
 		}	
 		@include media-max(sm){
 			margin: 0;
@@ -886,17 +892,14 @@
 				}
 			}		
 		}
-		// .mobileimg {
-		// 	display: none;
-		// }
-		// @include media-max(sm){
-		// 	.mobileimg {
-		// 		display: block;
-		// 	}
-		// 	.childimg {
-		// 		display: none;
-		// 	}
-		// }	
+		.childimg {
+			padding-top: 15rem;
+		}
+		@include media-max(sm){
+			.childimg {
+				padding-top: unset;
+			}
+		}	
 		img{
 			position: relative;
 			z-index: 5;
@@ -917,19 +920,21 @@
 
 	.process{
 		padding-top: 10rem;	
+		padding-bottom: 150rem;
 		// padding-bottom: 3.75rem;
 		// min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
 			min-height: unset;
+			padding-bottom: 1rem;
 		}	
 		@include media-max(sm){
 			padding-bottom: 0;
 		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -3rem;
+    		margin-bottom: -5rem;
 			z-index: 5;
 			position: relative;
 			@include media-max(default){
@@ -1064,17 +1069,18 @@
 				}	
 			}			
 		}
+
+		.childimg2, .childimg3 {
+			padding-top: 15rem;
+		}
 		// .mobileimg {
 		// 	display: none;
 		// }
-		// @include media-max(sm){
-		// 	.mobileimg {
-		// 		display: block;
-		// 	}
-		// 	.childimg2, .childimg3 {
-		// 		display: none;
-		// 	}
-		// }	
+		@include media-max(sm){
+			.childimg2, .childimg3 {
+				padding-top: unset;
+			}
+		}	
 		img{
 			position: relative;
 		}		
@@ -1083,6 +1089,7 @@
 
 	.story{
 		padding-top: 10rem;
+		padding-bottom: 125rem;
 		// min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -1177,17 +1184,17 @@
 				}
 			}		
 		}
+		.childimg4 {
+			padding-top: 15rem;
+		}
 		// .mobileimg {
 		// 	display: none;
 		// }
-		// @include media-max(sm){
-		// 	.mobileimg {
-		// 		display: block;
-		// 	}
-		// 	.childimg4 {
-		// 		display: none;
-		// 	}
-		// }
+		@include media-max(sm){
+			.childimg4 {
+				padding-top: unset;
+			}
+		}
 		img{
 			position: relative;
 			z-index: 5;
@@ -1216,22 +1223,20 @@
 
 	.bannerOnly--Container {
 
-		padding: 5rem 0 0;
+		// padding: 5rem 0 0;
 		overflow: hidden;
 
 		.section--bannerOnly{
 			background-image: var(--lrbg);
 			background-size: cover;
-			height: 100vh;
+			// height: 100vh;
+			height: 40vw;
 			width: 100%;
 			margin: 0 auto;
 			opacity: 1;
 			// padding-bottom: 3.75rem;
 			@include media-max(ipadmini){
-				height: 40vh;
-			}
-			@include media-max(sm){
-				height: 40vh;
+				height: 60vh;
 			}
 		}
 
@@ -1265,9 +1270,15 @@
 		}
 	}
 
-	// .article-wrapper {
-	// 	padding-top: 10rem;
-	// }
+	.article-wrapper {
+		padding-top: 25rem;
+	}
+
+	@include media-max(ipadmini){
+		.article-wrapper {
+			padding-top: unset;
+		}
+	}
 
 	.cta-wrapper, .article-wrapper {
 		padding-left: unset;

@@ -663,6 +663,7 @@ header{
     transition: all 0.5s ease !important;
     @include media-max(sm){
         opacity: 1;
+        transform: translateY(-200%) !important;
     }
     .mobile-nav {
         top: 100% !important;

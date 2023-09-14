@@ -3,9 +3,11 @@ import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
 import axios from "axios";
 import Animate from "$lib/components/Animate.svelte"
-import { fly } from "svelte/transition";
+// import { fly } from "svelte/transition";
+import { fadeIn } from '$lib/GsapAnimation.js';
 const domain = "https://strapi.ulfbuilt.com:1337"
 import { PUBLIC_STRAPI_API } from '$env/static/public';
+	// import { fadeIn } from '$lib/GsapAnimation';
 
 let promise = fetchCta();
 async function fetchCta(){
@@ -48,7 +50,7 @@ function scrollToTop() {
 
 </script>
 
-<section class="pre-footer" in:fly={{delay:500, duration: 2000}}>
+<section class="pre-footer">
     <Container>
         <Row>
             <Col>
@@ -70,7 +72,7 @@ function scrollToTop() {
                 {:then widgets}     
                     {#each widgets as widget, index}
                         <Col class="footer__col">
-                            <div class="footer__widget1 footer--widget">
+                            <div class="footer__widget1 footer--widget" in:fadeIn id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2}>
                                 {#if widget.title }
                                     <div class="footer__widget__heading">
                                         <h4>{widget.title}</h4>
