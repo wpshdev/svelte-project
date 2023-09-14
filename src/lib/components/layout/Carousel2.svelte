@@ -4,8 +4,8 @@
 	
 	export let perPage = 3
 	export let loop = true
-	// export let autoplay = 0
-	// export let duration = 200
+	export let autoplay = 0
+	export let duration = 200
 	export let easing = 'ease-in-out'
 	export let startIndex = 0
 	export let draggable = true
@@ -23,7 +23,7 @@
 	
 	$: pips = controller ? controller.innerElements : []
 	$: currentPerPage = controller ? controller.perPage : perPage
-	// $: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
+	$: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
 	
 	onMount(() => {
 		controller = new Siema({
@@ -70,11 +70,11 @@
 		clearInterval(timer);
 	}
 	
-	// export function resume() {
-	// 	if (autoplay) {
-	// 		// timer = setInterval(right, autoplay);
-	// 	}
-	// }
+	export function resume() {
+		if (autoplay) {
+			// timer = setInterval(right, autoplay);
+		}
+	}
 	
 	function handleChange (event) {
 		currentIndex = controller.currentSlide
@@ -84,20 +84,21 @@
 		} )
 	}
 	
-	// function resetInterval(node, condition) {
-	// 	function handleReset(event) {
-	// 		pause();
-	// 		resume();
-	// 	}
-	// 	if(condition) {
-	// 		node.addEventListener('click', handleReset);
-	// 	}	
-	// 	return {
-    //         destroy() {
-    //             node.removeEventListener('click', handleReset);
-    //         }
-	//     }
-    // }
+	function resetInterval(node, condition) {
+		function handleReset(event) {
+			pause();
+			resume();
+		}
+		if(condition) {
+			node.addEventListener('click', handleReset);
+		}
+		
+		return {
+        destroy() {
+            node.removeEventListener('click', handleReset);
+        }
+	    }
+    }
 </script>
 <div class="carousel">
 	<div class="slides" bind:this={siema}>
