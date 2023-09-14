@@ -23,7 +23,7 @@
 	
 	$: pips = controller ? controller.innerElements : []
 	$: currentPerPage = controller ? controller.perPage : perPage
-	$: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
+	// $: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
 	
 	onMount(() => {
 		controller = new Siema({
@@ -70,11 +70,11 @@
 		clearInterval(timer);
 	}
 	
-	export function resume() {
-		if (autoplay) {
-			// timer = setInterval(right, autoplay);
-		}
-	}
+	// export function resume() {
+	// 	if (autoplay) {
+	// 		// timer = setInterval(right, autoplay);
+	// 	}
+	// }
 	
 	function handleChange (event) {
 		currentIndex = controller.currentSlide
@@ -84,22 +84,20 @@
 		} )
 	}
 	
-	function resetInterval(node, condition) {
-		function handleReset(event) {
-			pause();
-			resume();
-		}
-		
-		if(condition) {
-			node.addEventListener('click', handleReset);
-		}
-		
-		return {
-		  destroy() {
-			  node.removeEventListener('click', handleReset);
-		  }
-	  }
-  }
+	// function resetInterval(node, condition) {
+	// 	function handleReset(event) {
+	// 		pause();
+	// 		resume();
+	// 	}
+	// 	if(condition) {
+	// 		node.addEventListener('click', handleReset);
+	// 	}	
+	// 	return {
+    //         destroy() {
+    //             node.removeEventListener('click', handleReset);
+    //         }
+	//     }
+    // }
 </script>
 <div class="carousel">
 	<div class="slides" bind:this={siema}>
