@@ -194,7 +194,7 @@ $: {
   width: 100%;
   overflow: hidden;
   position: relative;
-
+  white-space: nowrap;
   &__carousel-cell {
     width: 42%;
     position: relative;   
@@ -203,6 +203,7 @@ $: {
     box-sizing: border-box;
     height: 32rem;
     overflow: hidden;
+    display: inline-block;
     &:hover{
         .slider-container__carousel-cell__text{
           background: $primary-color;

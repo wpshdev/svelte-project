@@ -701,7 +701,7 @@
 
 	.tnr{
 		background-image: var(--tp-banner);
-		height: 40vw;
+		height: 50vw;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
