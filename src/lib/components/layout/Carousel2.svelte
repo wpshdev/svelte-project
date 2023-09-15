@@ -2,6 +2,8 @@
 	import Siema from 'siema'
 	import { onMount, createEventDispatcher } from 'svelte'
     import { textAnimate, slide } from '$lib/GsapAnimation.js';
+    import leftar from '$lib/img/left-ar.svg';
+    import rightar from '$lib/img/right-ar.svg';
 
     import {Col} from 'sveltestrap'
 	export let perPage = 3
@@ -108,10 +110,14 @@
         <h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="carousel-heading">{heading ? heading : ''}</h2>
       </div>
     {#if controls}
-    <button class="left" on:click={left}>left
-    </button>
-    <button class="right" on:click={right}>right
-    </button>
+    <div class="left-right">
+        <button class="left" on:click={left}>
+            <img src="{leftar}">
+        </button>
+        <button class="right" on:click={right}>
+            <img src="{rightar}">
+        </button>
+    </div>
     {/if}
       <!-- {#if innerWidth > 767}
         <div class="progress-ring-container">
@@ -183,11 +189,22 @@
     justify-content: center;
     align-items: center;
 }
+.left-right{
+    display: flex;
+    box-shadow: 0 0 5px #aaa;
+    border-radius: 40px;
+    background-color: $white-color;
+
+}
+.left, .right{
+    border: 0px;
+    padding: 1.25rem;
+    background-color: transparent;
+    margin: 0px;
+}
 .left {
-    left: 2vw;
 }
 .right {
-    right: 2vw;
 }
 
   .progress-ring__arrow rect {
