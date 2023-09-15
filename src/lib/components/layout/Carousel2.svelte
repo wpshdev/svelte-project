@@ -202,11 +202,9 @@
     background-color: transparent;
     margin: 0px;
 }
-.left {
+.left-right img{
+    height: 30px;
 }
-.right {
-}
-
   .progress-ring__arrow rect {
     transition: fill 1s;
   }
