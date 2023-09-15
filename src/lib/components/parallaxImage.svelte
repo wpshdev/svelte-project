@@ -40,7 +40,8 @@
 <style lang="scss">
   .container-div {
     width: 100%;
-    height: 90vh;
+    height: 40vw;
+    min-height: 40rem;
     overflow: hidden;
   }
   .target {

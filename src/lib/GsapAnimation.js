@@ -464,7 +464,7 @@ export function slowDownSection(node) {
                 // end: 'clamp(bottom top)',
                 end: "+=" + (window.innerHeight * end),
                 pin: true,
-                pinSpacing: false,
+                // pinSpacing: false,
                 // markers: true,
                 onEnter: () => {
                     gsap.to('#' + parentElementID, {
