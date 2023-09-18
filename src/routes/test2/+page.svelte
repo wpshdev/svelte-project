@@ -1,56 +1,25 @@
 <script>
-  import { onMount } from "svelte";
-
-  let section;
-  let isInViewport = false;
-  let isAboveViewport = false;
-  let isBelowViewport = false;
-
-  onMount(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0, 1], // Trigger at the top and bottom of the section
-    };
-
-    const observer = new IntersectionObserver(handleIntersect, options);
-    observer.observe(section);
-  });
-
-  function handleIntersect(entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        isInViewport = true;
-        isAboveViewport = false;
-        isBelowViewport = false;
-      } else if (entry.boundingClientRect.top >= 0) {
-        isAboveViewport = false;
-        isBelowViewport = true;
-        isInViewport = false;
-      } else if (entry.boundingClientRect.bottom <= window.innerHeight) {
-        isAboveViewport = true;
-        isBelowViewport = false;
-        isInViewport = false;
-      } else {
-        isAboveViewport = false;
-        isBelowViewport = false;
-        isInViewport = false;
-      }
-    });
-  }
+	import Carousel2 from '$lib/components/layout/Carousel2.svelte'
+	
+	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 </script>
-<section style="height: 100vh; background-color: yellow;"></section>
-<section bind:this={section} style="height: 100vh; background-color: #f0f0f0;">
-  <!-- Your section content goes here -->
-</section>
-<section style="height: 100vh; background-color: lightblue;"></section>
-<div style="position:fixed;bottom:0px;right:0px;">
-<p>Is in viewport: {isInViewport ? "Yes" : "No"}</p>
-<p>Is above viewport: {isAboveViewport ? "Yes" : "No"}</p>
-<p>Is below viewport: {isBelowViewport ? "Yes" : "No"}</p>
-</div>
+<div style="margin-top:100px;"></div>
+<Carousel2 autoplay="2000">
+	{#each colors as color, index (index)}
+	  <div style="background-color: {color}">{color}</div>
+	{/each}
+	<span slot="left-control">prev</span>
+	<span slot="right-control">next</span>
+</Carousel2>
+<div style="margin-top:100px;"></div>
 <style>
-  section {
-    transition: transform 0.5s ease;
-  }
+	div {
+		height: 8rem;
+		/* width: 8rem; */
+	}
+	
+	span {
+		display: inline-block;
+		margin-top: 6rem;
+	}
 </style>

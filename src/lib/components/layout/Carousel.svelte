@@ -10,7 +10,7 @@ import noFeatured from "$lib/img/blog-empty.svg"
 
 import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
-let flickityInstance;
+// let flickityInstance;
 export let preHeading; 
 export let heading; 
 export let btnTitle;
@@ -33,7 +33,7 @@ function nextSlide() {
     let object = document.getElementById("carousel-image-container");
     let objectsl = document.getElementById("carousel-item");
     let obwidth = objectsl.clientWidth + 16;
-    console.log(obwidth);
+    console.log(obwidth * currentIndex);
     object.style.transform = `translateX(-${obwidth * currentIndex}px)`;
     
     // let object2 = document.querySelectorAll("[id='carousel-slide']");
@@ -48,7 +48,7 @@ function nextSlide() {
     let object = document.getElementById("carousel-image-container");
     let objectsl = document.getElementById("carousel-item");
     let obwidth = objectsl.clientWidth + 16;
-    console.log(obwidth);
+    console.log(obwidth * currentIndex);
     object.style.transform = `translateX(${obwidth * currentIndex}px)`;
   }
 
@@ -72,19 +72,19 @@ onMount(() => {
   promise = fetchFallback();
   innerWidth = window.innerWidth;
   
-  flickityInstance = new Flickity('.slider-container', {
-    cellAlign: 'left',
-    contain: true,
-    wrapAround: true,
-    prevNextButtons: false,
-    pageDots: false,
-    autoPlay: false,
-    groupCells: 1,
-    draggable: true,
-    on: {
-      change: updateProgress,
-    },
-  });
+  // flickityInstance = new Flickity('.slider-container', {
+  //   cellAlign: 'left',
+  //   contain: true,
+  //   wrapAround: true,
+  //   prevNextButtons: false,
+  //   pageDots: false,
+  //   autoPlay: false,
+  //   groupCells: 1,
+  //   draggable: true,
+  //   on: {
+  //     change: updateProgress,
+  //   },
+  // });
 })
 
 
@@ -124,12 +124,10 @@ $: {
             <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
             <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="2" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
             <g class="progress-ring__arrow progress-ring__arrow--left" on:click={previousSlide}>
-            <!-- on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }} -->
               <rect x="2" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
               <text x="33" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&larr;</text>
             </g>
             <g class="progress-ring__arrow progress-ring__arrow--right" on:click={nextSlide}>
-               <!-- on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }} -->
               <rect x="56" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
               <text x="77" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&rarr;</text>
             </g>

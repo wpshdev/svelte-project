@@ -65,7 +65,7 @@ $: listener = {propCount, activeTab};
         min-height: 30vw;
 		h2{
 			margin-bottom: 3rem;
-			font-size: 3rem;			
+			font-size: 3rem;
 		}
 		&__tabs{
 			&__heading{

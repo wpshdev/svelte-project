@@ -2,7 +2,7 @@
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	// import Animate from "$lib/components/Animate.svelte";
-	import Carousel from "$lib/components/layout/Carousel.svelte";
+	import Carousel2 from "$lib/components/layout/Carousel2.svelte";
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
@@ -216,18 +216,27 @@
 
 
 
-<!-- <section class="featured-projects">	
+<section class="featured-projects">	
 	<Container>
 			<Row>
-				<Carousel 
+				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
+				featuredProjects={home.featuredProjects}>
+					<span slot="left-control">prev</span>
+					<span slot="right-control">next</span>
+				</Carousel2>
+
+				<!-- <Carousel 
 				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
 				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
 				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
 				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-				featuredProjects={home.featuredProjects}/>
+				featuredProjects={home.featuredProjects}/> -->
 			</Row>
 	</Container>
-</section> -->
+</section>
 
 
 <section class="tnr" >
@@ -461,7 +470,7 @@
 	.loc-gallery{
 		min-height: 100vh;
 		padding-top: 15rem;
-		padding-bottom: 110rem;
+		//Trial Padding padding-bottom: 110rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -518,8 +527,8 @@
 	.categories{
 		// margin-top: 0;
 		margin: 0;
-		// padding: 0 0 3.75rem;
-		padding-bottom: 125rem;
+		padding: 0 0 3.75rem;
+		//Trial Padding padding-bottom: 125rem;
 		min-height: 100vh;
 		padding-top: 25rem;
 		display: flex;
@@ -704,7 +713,7 @@
 
 	.tnr{
 		background-image: var(--tp-banner);
-		height: 50vw;
+		// height: 50vw;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -783,8 +792,8 @@
 
 	.reputation{
 		padding-top: 20rem;
-		padding-bottom: 125rem;
-		// padding-bottom: 3.75rem;
+		//Trial Padding padding-bottom: 125rem;
+		padding-bottom: 3.75rem;
 		// min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -920,8 +929,8 @@
 
 	.process{
 		padding-top: 10rem;	
-		padding-bottom: 150rem;
-		// padding-bottom: 3.75rem;
+		//Trial Padding padding-bottom: 150rem;
+		padding-bottom: 3.75rem;
 		// min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -1089,7 +1098,7 @@
 
 	.story{
 		padding-top: 10rem;
-		padding-bottom: 125rem;
+		//Trial Padding padding-bottom: 125rem;
 		// min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -1234,7 +1243,7 @@
 			width: 100%;
 			margin: 0 auto;
 			opacity: 1;
-			// padding-bottom: 3.75rem;
+			padding-bottom: 3.75rem;
 			@include media-max(ipadmini){
 				height: 60vh;
 			}
