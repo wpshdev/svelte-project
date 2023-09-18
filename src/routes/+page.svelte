@@ -62,7 +62,7 @@
 </svelte:head>
 <!-- <ScrollSmoother> -->
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
-<section class="loc-gallery" in:slowDownSection id="loc-gallery" gsap-end="2.5">
+<section class="loc-gallery" in:slowDownSection id="loc-gal" gsap-end="3" gsap-start="top 75% bottom">
 	<Container class="child">
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -88,7 +88,7 @@
 {#if home.homeBuilderBanner.data}
 <!-- <Animate> -->
 	<section class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="1.5" class="section--bannerOnly">
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
 		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
@@ -98,7 +98,7 @@
 
 <!-- gsap-start="clamp(top top)"  -->
 
-<section class="categories" in:slowDownSection id="categories-section" gsap-end="3" gsap-start="top center">
+<section class="categories" in:slowDownSection id="categories-section" gsap-end="3">
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
@@ -163,7 +163,7 @@
 
 
 
-<section class="featured-projects" in:slowDownSection id="featured-section" gsap-end="3.2" gsap-start="top center">	
+<section class="featured-projects" in:slowDownSection id="featured-section" gsap-end="3">	
 	<Container>
 			<Row>
 				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -212,7 +212,7 @@
 
 
 
-<section class="reputation" in:slowDownSection id="reputation-section" gsap-end="3" gsap-start="top center">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-end="3.5">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -233,7 +233,7 @@
 					<div class="childimg">
 						{#if home.reputation.image.data}
 						<!-- <Animate> -->
-							<img in:fly2 id="reputation-img" gsap-y="-170" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+							<img in:fly2 id="reputation-img" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						<!-- </Animate> -->
 						{/if}
 					</div>
@@ -250,7 +250,7 @@
 </section>
 
 <!-- gsap-start="clamp(top 20% top)" -->
-<section class="process" in:slowDownSection id="process-section" gsap-end="4" gsap-start="top center">
+<section class="process" in:slowDownSection id="process-section" gsap-end="4.5">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -258,7 +258,7 @@
 					{#if home.ourProcessTopImage.data[0]}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/> -->
-						<img in:fly2 id="process-top-img" gsap-start="top top" gsap-y="-170" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly2 id="process-top-img" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -291,7 +291,7 @@
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}"> -->
-						<img in:fly2 id="process-bottom-img" gsap-start="top top" gsap-y="-170" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly2 id="process-bottom-img"  src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -308,7 +308,7 @@
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-end="3" gsap-start="top center">
+<section class="story" in:slowDownSection id="story-section" gsap-end="3.5">
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -335,7 +335,7 @@
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
 						<!-- <Animate> -->
-							<img in:fly2 id="story-img" gsap-y="-170" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+							<img in:fly2 id="story-img"  src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 						<!-- </Animate> -->
 						{/if}
 					</div>	
@@ -416,7 +416,7 @@
 	}	
 	.loc-gallery{
 		// //min-height: 100vh;
-		padding-top: 15rem;
+		padding-top: 5rem;
 		//Trial Padding padding-bottom: 110rem;
 		display: flex;
 		align-items: center;
@@ -721,6 +721,7 @@
 	.featured-projects{
 		// padding: 5rem 0 13.75rem;
 		margin: 0;
+		padding-top: 15rem;
 		//min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -738,7 +739,7 @@
 	}
 
 	.reputation{
-		padding-top: 15rem;
+		padding-top: 10rem;
 		//Trial Padding padding-bottom: 125rem;
 		padding-bottom: 3.75rem;
 		// //min-height: 100vh;
@@ -1026,7 +1027,11 @@
 			}			
 		}
 
-		.childimg2, .childimg3 {
+		.childimg2 {
+			padding-top: 3rem;
+		}
+
+		.childimg3 {
 			padding-top: 15rem;
 		}
 		// .mobileimg {
@@ -1044,7 +1049,7 @@
 	}	
 
 	.story{
-		// padding-top: 10rem;
+		padding-top: 10rem;
 		//Trial Padding padding-bottom: 125rem;
 		// //min-height: 100vh;
 		display: flex;

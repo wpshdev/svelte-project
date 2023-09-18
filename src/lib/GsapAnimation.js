@@ -446,7 +446,7 @@ export function slowDownSection(node) {
 
     const defaultDistance = '-50';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
-    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : 'clamp(top 30% top)';
+    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : 'top center';
     const end = parentElement.getAttribute("gsap-end") ? parentElement.getAttribute("gsap-end") : '1.5';
     parentElement.style.opacity = '0';
     // parentElement.style.paddingBottom  = '60rem';
@@ -454,7 +454,6 @@ export function slowDownSection(node) {
     // slowdown effect on the main container on desktop
     mm.add("(min-width: 769px)", () => {
         gsap.to(container, {
-            // yPercent: yDistance,
             yPercent: yDistance,
             ease: "none", 
             scrollTrigger: {
@@ -465,7 +464,7 @@ export function slowDownSection(node) {
                 end: "+=" + (window.innerHeight * end),
                 pin: true,
                 // pinSpacing: false,
-                markers: true,
+                // markers: true,
                 // anticipatePin: 1,
                 onEnter: () => {
                     gsap.to('#' + parentElementID, {
@@ -510,7 +509,7 @@ export function fly2(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
-    const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : flyY;
+    const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : '-170';
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : "top bottom";
 
     // Fly2 animation
@@ -523,9 +522,15 @@ export function fly2(node) {
                 scrub: 4,
                 start: start,
                 // end: "bottom top",
-                end: "+=" + (window.innerHeight * 2),
+                // end: "+=" + (window.innerHeight * 10),
+                end: '+=2500px',
                 // pin: true,
                 // markers: true,
+                // onEnter: () => {
+                //     gsap.to('#' + targetElementID, {
+                //         yPercent: -50,
+                //     });
+                // },
             }
         });
     });
