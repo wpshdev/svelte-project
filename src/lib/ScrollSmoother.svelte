@@ -3,18 +3,25 @@
     import {gsap}  from "gsap/dist/gsap";        
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
     import {ScrollSmoother} from "gsap/dist/ScrollSmoother"; 
-  
+    let smoothValue;
+
     onMount(() => {
       gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+      if(window.innerWidth < 768) {
+        smoothValue = 0;
+      } else {
+        smoothValue = 2;
+      }
 
       const smoother = ScrollSmoother.create({
         wrapper: "#wrapper",
         content: "#content",
-        smooth: 2,
+        smooth: smoothValue,
         effects: true,
         normalizeScroll: true,
         smoothTouch: 10, 
-        speed: 0.2, // speed for the whole page scrolling
+        // speed: 1, // speed for the whole page scrolling
       });
 
       // speed for the section display/scrolling

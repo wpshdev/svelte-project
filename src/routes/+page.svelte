@@ -54,59 +54,6 @@
 		loadingCursor();
 	});
 
-// Written by parth for different section speed
-// let scrollY = 0;
-// onMount(() => {
-//   window.addEventListener("scroll", handleScroll);
-//   calculateMaxTranslateY();
-// //   calculateMaxTranslateY("reputation", "reputation_child");
-// });
-// let maxTranslateY;
-// function calculateMaxTranslateY() {
-// 	const container = document.querySelector(".loc-gallery");
-// 	const child = document.querySelector(".child");
-//     const containerHeight = container.clientHeight;
-//     const childHeight = child.clientHeight;
-//     maxTranslateY = containerHeight - childHeight - 100;
-// }
-// function calculateMaxTranslateY(containerClass, childClass) {
-// 	const container = document.querySelector("." + containerClass);
-// 	const child = document.querySelector("." + childClass);
-//     const containerHeight = container.clientHeight;
-//     const childHeight = child.clientHeight;
-//     maxTranslateY = containerHeight - childHeight - 100;
-// }
-// function handleScroll() {
-    // scrollY = window.scrollY;
-    // updateChildPosition("child", 0.5);
-    // updateChildPosition("reputation_child", 0.5);
-	// updateChildPositionimg("containerimg", "childimg", 0, 0.2);
-	// updateChildPositionimg("containerimg2", "childimg2", 0, 0.1);
-	// updateChildPositionimg("containerimg3", "childimg3", 0, 0.3);
-	// updateChildPositionimg("containerimg4", "childimg4", 0, 0.3);
-//   }
-
-//   function updateChildPosition(childclass, speed) {
-//     const scrollSpeedMultiplier = speed;
-//     let translateY = scrollY * scrollSpeedMultiplier;
-    
-//     // Ensure translateY does not exceed maxTranslateY
-//     translateY = Math.min(translateY, maxTranslateY);
-//     const child = document.querySelector("."+ childclass);
-//     child.style.transform = `translateY(${translateY}px)`;
-//   }
-//   function updateChildPositionimg(containerin, childin, offset, speed) {
-// 	const containertop = document.querySelector("." + containerin).offsetTop;
-// 	let scrollYval = scrollY + screen.height;
-// 	if(scrollYval - containertop){
-// 		let invalue = scrollYval - containertop;
-// 		const translateY = (invalue * speed) - offset;
-// 		const child = document.querySelector("." + childin);
-// 		child.style.transform = `translateY(-${translateY}px)`;
-// 	}
-//   }
-  // Written by parth for different image speed
-
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
@@ -151,7 +98,7 @@
 
 <!-- gsap-start="clamp(top top)"  -->
 
-<section class="categories" in:slowDownSection id="categories-section" gsap-end="3.25" gsap-ydistance="-50" gsap-start="clamp(top 25% top)" >
+<section class="categories" in:slowDownSection id="categories-section" gsap-end="3" gsap-start="top center">
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
@@ -216,7 +163,7 @@
 
 
 
-<section class="featured-projects">	
+<section class="featured-projects" in:slowDownSection id="featured-section" gsap-end="3.2" gsap-start="top center">	
 	<Container>
 			<Row>
 				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -265,7 +212,7 @@
 
 
 
-<section class="reputation" in:slowDownSection id="reputation-section" gsap-end="3.5" gsap-ydistance="-60">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-end="3" gsap-start="top center">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -286,7 +233,7 @@
 					<div class="childimg">
 						{#if home.reputation.image.data}
 						<!-- <Animate> -->
-							<img in:fly2 id="reputation-img" gsap-y="-100" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+							<img in:fly2 id="reputation-img" gsap-y="-170" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
 						<!-- </Animate> -->
 						{/if}
 					</div>
@@ -303,7 +250,7 @@
 </section>
 
 <!-- gsap-start="clamp(top 20% top)" -->
-<section class="process" in:slowDownSection id="process-section" gsap-end="5" gsap-ydistance="-60" gsap-start="clamp(top 20% top)">
+<section class="process" in:slowDownSection id="process-section" gsap-end="4" gsap-start="top center">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -311,7 +258,7 @@
 					{#if home.ourProcessTopImage.data[0]}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/> -->
-						<img in:fly2 id="process-top-img" gsap-start="top top" gsap-y="-100" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly2 id="process-top-img" gsap-start="top top" gsap-y="-170" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -344,7 +291,7 @@
 					{#if home.ourProcessRightImage.data}
 					<!-- <Animate> -->
 						<!-- <img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}"> -->
-						<img in:fly2 id="process-bottom-img" gsap-start="top top" gsap-y="-100" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly2 id="process-bottom-img" gsap-start="top top" gsap-y="-170" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					<!-- </Animate> -->
 					{/if}
 				</div>
@@ -361,7 +308,7 @@
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-end="3.5" gsap-ydistance="-60">
+<section class="story" in:slowDownSection id="story-section" gsap-end="3" gsap-start="top center">
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -388,7 +335,7 @@
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
 						<!-- <Animate> -->
-							<img in:fly2 id="story-img" gsap-y="-100" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+							<img in:fly2 id="story-img" gsap-y="-170" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 						<!-- </Animate> -->
 						{/if}
 					</div>	
@@ -422,7 +369,7 @@
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
-		min-height: 100vh;
+		//min-height: 100vh;
 		background-position: bottom;
 		background-size: cover;
 		padding-top: 9rem;		
@@ -468,7 +415,7 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		min-height: 100vh;
+		// //min-height: 100vh;
 		padding-top: 15rem;
 		//Trial Padding padding-bottom: 110rem;
 		display: flex;
@@ -529,7 +476,7 @@
 		margin: 0;
 		padding: 0 0 3.75rem;
 		//Trial Padding padding-bottom: 125rem;
-		min-height: 100vh;
+		//min-height: 100vh;
 		padding-top: 25rem;
 		display: flex;
 		align-items: center;
@@ -623,7 +570,7 @@
 				}
 			}
 			&__gallery{
-				min-height: 100vh;
+				//min-height: 100vh;
 				position: relative;
 				@include media-max(ipadmini){
 					min-height: auto;
@@ -774,11 +721,11 @@
 	.featured-projects{
 		// padding: 5rem 0 13.75rem;
 		margin: 0;
-		min-height: 100vh;
+		//min-height: 100vh;
 		display: flex;
 		align-items: center;
 		padding-bottom: 5rem;
-		overflow: hidden;
+		// overflow: hidden;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 5rem;
@@ -791,10 +738,10 @@
 	}
 
 	.reputation{
-		padding-top: 20rem;
+		padding-top: 15rem;
 		//Trial Padding padding-bottom: 125rem;
 		padding-bottom: 3.75rem;
-		// min-height: 100vh;
+		// //min-height: 100vh;
 		display: flex;
 		align-items: center;
 		// :global(.container){
@@ -928,10 +875,10 @@
 	}	
 
 	.process{
-		padding-top: 10rem;	
+		// padding-top: 10rem;	
 		//Trial Padding padding-bottom: 150rem;
 		padding-bottom: 3.75rem;
-		// min-height: 100vh;
+		// //min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -1097,9 +1044,9 @@
 	}	
 
 	.story{
-		padding-top: 10rem;
+		// padding-top: 10rem;
 		//Trial Padding padding-bottom: 125rem;
-		// min-height: 100vh;
+		// //min-height: 100vh;
 		display: flex;
 		align-items: center;
 		@include media-max(ipadmini){
@@ -1279,15 +1226,15 @@
 		}
 	}
 
-	.article-wrapper {
-		padding-top: 25rem;
-	}
+	// .article-wrapper {
+	// 	padding-top: 25rem;
+	// }
 
-	@include media-max(ipadmini){
-		.article-wrapper {
-			padding-top: unset;
-		}
-	}
+	// @include media-max(ipadmini){
+	// 	.article-wrapper {
+	// 		padding-top: unset;
+	// 	}
+	// }
 
 	.cta-wrapper, .article-wrapper {
 		padding-left: unset;

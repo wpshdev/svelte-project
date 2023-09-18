@@ -444,10 +444,10 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const defaultDistance = '-80';
+    const defaultDistance = '-50';
     const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
     const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : 'clamp(top 30% top)';
-    const end = parentElement.getAttribute("gsap-end") ? parentElement.getAttribute("gsap-end") : '2';
+    const end = parentElement.getAttribute("gsap-end") ? parentElement.getAttribute("gsap-end") : '1.5';
     parentElement.style.opacity = '0';
     // parentElement.style.paddingBottom  = '60rem';
 
@@ -459,18 +459,19 @@ export function slowDownSection(node) {
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + parentElementID, 
-                scrub: 1,
+                scrub: 4,
                 start: start,
                 // end: 'clamp(bottom top)',
                 end: "+=" + (window.innerHeight * end),
                 pin: true,
                 // pinSpacing: false,
-                // markers: true,
+                markers: true,
+                // anticipatePin: 1,
                 onEnter: () => {
                     gsap.to('#' + parentElementID, {
                         opacity: 1,
                         // yPercent: 0,
-                        duration: 1,
+                        // duration: 1,
                     });
                 },
                 onLeave: () => {
@@ -519,7 +520,7 @@ export function fly2(node) {
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + targetElementID, 
-                scrub: 2,
+                scrub: 4,
                 start: start,
                 // end: "bottom top",
                 end: "+=" + (window.innerHeight * 2),

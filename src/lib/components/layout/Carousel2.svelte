@@ -1,7 +1,7 @@
 <script>
 	import Siema from 'siema'
 	import { onMount, createEventDispatcher } from 'svelte'
-    import { textAnimate, slide } from '$lib/GsapAnimation.js';
+    import { textAnimate, slide, fly } from '$lib/GsapAnimation.js';
     import leftar from '$lib/img/left-ar.svg';
     import rightar from '$lib/img/right-ar.svg';
 
@@ -147,7 +147,7 @@
     {/if} -->
 <Col md=9 style="overflow: hidden;padding-left:0px;">
 <div class="carousel">
-	<div class="slides" bind:this={siema}>
+	<div class="slides" bind:this={siema} in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10">
             {#each featuredProjects.data as project, index}
               <div class="slider-container__carousel-cell" id="carousel-item">
                 <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
