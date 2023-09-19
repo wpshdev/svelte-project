@@ -25,8 +25,8 @@ const flyY = '70';
 const slideX = '7';
 const scroller_start = "70%";
 const scroller_end = "30%";
-const startDefaultSlow = "10% " + scroller_start;
-const startDefault = "top bottom";
+const startDefaultSlow = "10% " + scroller_start; // start default for slow section
+const startDefault = "top bottom"; // start default for other animations
 
 let mm = gsap.matchMedia();
 
@@ -47,7 +47,7 @@ export function fadeIn(node) {
             trigger: '#' + targetElementID,
             start: start,
             once: true,
-            markers: true,
+            // markers: true,
             onEnter: function() { 
                 const tl = gsap.timeline();
                 tl.set(
@@ -454,7 +454,7 @@ export function slowDownSection(node) {
     let previousScrollY = 0; // Previous scroll position
 
     const containerHeight = container.offsetHeight;
-    const parentHeight = containerHeight * 2.5;
+    const parentHeight = containerHeight * 2.3;
     parentElement.style.height = parentHeight + 'px';
     parentElement.style.opacity = 0;
 
@@ -509,7 +509,7 @@ export function fly2(node) {
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
     const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
-    const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : '-170';
+    const y = targetElement.getAttribute("gsap-y") ? targetElement.getAttribute("gsap-y") : '-100';
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : "top bottom";
 
     // Fly2 animation
@@ -519,18 +519,9 @@ export function fly2(node) {
             ease: "none", 
             scrollTrigger: {
                 trigger: '#' + targetElementID, 
-                scrub: 4,
+                scrub: true,
                 start: start,
-                // end: "bottom top",
-                // end: "+=" + (window.innerHeight * 10),
                 end: '+=2500px',
-                // pin: true,
-                // markers: true,
-                // onEnter: () => {
-                //     gsap.to('#' + targetElementID, {
-                //         yPercent: -50,
-                //     });
-                // },
             }
         });
     });
