@@ -109,7 +109,8 @@ input:focus{
     box-shadow: none;
 }
 section{
-    margin: 3.75rem 0;
+    // margin: 3.75rem 0;
+    // overflow: hidden;
     min-height: 20vh;
     @include media-max(lg){
         padding-left: 3rem;

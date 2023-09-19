@@ -62,8 +62,8 @@
 </svelte:head>
 <!-- <ScrollSmoother> -->
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
-<section class="loc-gallery" in:slowDownSection id="loc-gal" gsap-end="3" gsap-start="top 75% bottom">
-	<Container class="child">
+<section class="loc-gallery" in:slowDownSection id="loc-gallery">
+	<Container class="inner">
 		<Row>
 			<Col xs="12" class="pb-4">
 				<div class="loc-gallery__cwrapper" id="build-trust">
@@ -369,7 +369,7 @@
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
-		//min-height: 100vh;
+		min-height: 100vh;
 		background-position: bottom;
 		background-size: cover;
 		padding-top: 9rem;		
@@ -415,12 +415,19 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// //min-height: 100vh;
-		padding-top: 5rem;
+		min-height: 200vh;
+		// padding-top: 5rem;
+		margin: unset;
+		background-color: yellow;
+		border: 1px solid red;
 		//Trial Padding padding-bottom: 110rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		// display: flex;
+		// align-items: center;
+		// justify-content: center;
+		:global(.inner) {
+			border: 1px solid red;
+			min-height: 100vh;
+		}
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 5rem !important;
