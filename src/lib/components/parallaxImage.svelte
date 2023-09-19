@@ -40,13 +40,13 @@
 <style lang="scss">
   .container-div {
     width: 100%;
-    height: 40vw;
+    height: 50vw;
     min-height: 40rem;
     overflow: hidden;
   }
   .target {
     width: 100%;
-    height: 200%;
+    height: 100%;
     margin-left: 0;
     margin-top: -100px;
     background-position: center !important;

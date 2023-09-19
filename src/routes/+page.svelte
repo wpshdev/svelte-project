@@ -91,7 +91,7 @@
 	<section class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly"  gsap-start="10% 70%">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
-		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
+		<ParallaxImage scrollOffset={200} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</section>
 <!-- </Animate> -->
@@ -321,13 +321,7 @@
 								<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 								</div>
-								
-								<!-- <Accordion>
-									<AccordionItem active>
-										<h4 class="m-0" slot="header"><span>1</span>Custom Homes</h4>
-										<p>Lorem ipsum dolor sit amet consectetur. Vitae fringilla velit eros dictumst in amet.</p>
-									</AccordionItem>							
-								</Accordion>						 -->
+
 							</div>
 						</div>
 					<!-- </Animate> -->
@@ -340,12 +334,6 @@
 						<!-- </Animate> -->
 						{/if}
 					</div>	
-					<!-- mobile 
-					<div class="mobileimg">
-						{#if home.ourStoryRightImage.data}
-							<img in:fly2 id="story-img" gsap-y="-60" src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
-						{/if}
-					</div> -->
 				</Col>
 			</Row>
 		</Container>
@@ -437,7 +425,6 @@
 			margin: auto;
 			.h3{
 				text-transform: uppercase;
-				// margin-bottom: 2rem;
 				font-size: 2.5rem;
 				font-weight: 600;
 				@include media-max(sm){
@@ -450,19 +437,12 @@
 			p{
 				max-width: 36rem;
 				margin: 0 auto;
-				text-align: left;
-				// margin-bottom: 2rem;							
+				text-align: left;						
 			}
 			:global(a) {
 				color: $primary-color;
 				text-decoration: none;
 			}
-			// &__btns{
-			// 	margin: 2rem 0;
-			// 	.btn-primary{
-			// 		margin-right: 1.5rem;
-			// 	}
-			// }
 		}
 	}
 
@@ -487,7 +467,6 @@
 			&__heading{
 				ul{
 					display: flex;
-					// flex-wrap: wrap;
 					width: 90%;
 					margin: 3rem auto;
 					padding-left: 0;	
@@ -534,15 +513,11 @@
 							color: #D8D7D7;
 							text-transform: uppercase;
 							margin-bottom: 2em;
-							// border-bottom: 3px solid #D8D7D7;
 							font-weight: 500;
 							cursor: pointer;
 							@include media-max(lg){
 								font-size: 1.2rem;
-							}								
-							// @include media-max(sm){
-							// 	font-size: 1.2rem;
-							// }
+							}
 							&.active{
 								color: $secondary-color;
 								border-bottom-color: $secondary-color;
@@ -564,26 +539,9 @@
 					-webkit-transform: translateX(-50%);
 					transform: translateX(-50%)
 				}
-				// &__imgs{
-				// 	// display: none;
-				// 	&.active{
-				// 		display: flex;
-				// 	}
-				// 	div{
-				// 		width: 33.33%;
-				// 		margin: 0 1rem;
-				// 		&:first-child{
-				// 			margin-left: 0;
-				// 		}
-				// 		&:last-child{
-				// 			margin-right: 0;
-				// 		}						
-				// 	}
-				// }
 			}
 		}
 		.masonry_container {
-            // display: flex;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
@@ -592,24 +550,16 @@
 				grid-template-columns: repeat(1, 1fr);
 			}
             .masonry-items{
-                // width: 33%;   
-                // overflow: hidden;
-                // position: absolute;
                 color: white;
                 text-align: center;  
                 height: 30rem;
                 @include media-max(ipadmini){
-                    // height: 20rem;
 					height: 50vh;
                 }
-                // @include media-max(sm){
-                //     height: 10rem;
-                // }
                 a{
                     display: block;
                     height: 100%;
                     width: 100%;
-                    // margin: 0 1.125rem;
                     overflow: hidden;
                     img{
                         height: 100%;
@@ -644,7 +594,6 @@
 		margin-top: 7rem;
 		padding: 0;
 		background-image: var(--tp-banner);
-		// height: 50vw;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -692,13 +641,6 @@
 				}
 				opacity: 0;
 			}
-			#tnr-button {
-				// opacity: 0;
-			}
-			.btn{
-				// background-color: #1E2D39;
-				//opacity: 0;
-			}				
 		}
 	}
 
@@ -709,7 +651,6 @@
 			padding-top: 5rem;
 		}	
 		@include media-max(sm){
-			// margin: 5rem 0;
 			margin: 0;
 			padding: 0;
 		}
@@ -761,7 +702,6 @@
 					width: 100vw;
 					top: -5rem;
 					margin-left: calc(50% - 50vw);
-					// margin-right: calc(50% - 50vw);			
 					height: 160%;		
 				}		
 			}
@@ -779,9 +719,6 @@
 					padding-left: 0;
 					margin-bottom: 2rem;
 				}
-				#reputation-cont {
-					// opacity: 0;
-				}						
 				.pre-head {
 					color: $primary-color;
 					margin-bottom: 1rem;
@@ -791,8 +728,6 @@
 					margin: 1rem 0 2rem;
 					line-height: 4.5rem;
 					opacity: 0;
-					// flex-wrap: wrap;
-					// width: 25rem;
 					@include media-max(lg){
 						line-height: 3rem;
 						margin: 1rem 0;
@@ -864,14 +799,6 @@
 				margin-left: 0;
 			}				
 			img{
-				// max-width: 30rem;
-				// height: 28.125rem;
-				// @include media-max(lg){
-				// 	height: auto;
-				// }	
-				// @include media-max(sm){
-				// 	max-width: 70vw;
-				// }	
 				object-fit: cover;
 				height: 27.5rem;
 				width: 80%;
@@ -889,9 +816,6 @@
 		}
 		&__content{
 			height: 35rem;
-			// @include media-max(lg){
-			// 	height: 35rem;
-			// }	
 			@include media-max(ipadmini){
 				height: 30rem;
 			}	
@@ -910,10 +834,7 @@
 				height: 100%;
 				@include media-max(xl){	
 					height: 120%;
-				}	
-				// @include media-max(ipadmini){	
-				// 	height: 140%;
-				// }			
+				}			
 				@include media-max(sm){
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
@@ -938,8 +859,6 @@
 				h2{
 					margin: 1rem 0 2rem;
 					line-height: 4.5rem;
-					// flex-wrap: wrap;
-					// width: 41rem;
 					@include media-max(lg){
 						line-height: 3rem;
 						margin: 1rem 0;
@@ -955,9 +874,6 @@
 						margin: 3rem auto;
 					}							
 				}
-				#process-cont {
-					// opacity: 0;
-				}	
 			}		
 		}
 		&__bottom{	
@@ -965,9 +881,6 @@
 				text-align: right;
 			}							
 			img{
-				// @include media-max(sm){
-				// 	max-width: 70vw;
-				// }	
 				height: 31.25rem;
 				width: 100%;
 				object-fit: cover;
@@ -982,13 +895,9 @@
 				}	
 			}			
 		}
-
 		.childimg3 {
 			padding-top: 15rem;
 		}
-		// .mobileimg {
-		// 	display: none;
-		// }
 		@include media-max(sm){
 			.childimg2, .childimg3 {
 				padding-top: unset;
@@ -998,8 +907,7 @@
 			position: relative;
 		}		
 
-	}	
-
+	}
 	.story{
 		padding: 0;
 		@include media-max(ipadmini){
@@ -1072,9 +980,6 @@
 						margin-bottom: 0;
 					}
 				}
-				#story-cont {
-					// opacity: 0;
-				}	
 				.accordion{
 					.accordion-item{
 						background-color: transparent;
@@ -1096,9 +1001,6 @@
 		.childimg4 {
 			padding-top: 15rem;
 		}
-		// .mobileimg {
-		// 	display: none;
-		// }
 		@include media-max(sm){
 			.childimg4 {
 				padding-top: unset;
@@ -1119,22 +1021,15 @@
 			@include media-max(sm){
 				height: auto;
 				margin-top: 2rem;
-			}	
-			// @include media-max(ipadmini){
-			// 	margin-top: 2rem;
-			// }
+			}
 		}		
 	}	
-
 	.living-room{
 		height: 30vw;		
 	}
-
 	.bannerOnly--Container {
-		
 		overflow: hidden;
 		padding-top: 5rem;
-
 		.section--bannerOnly{
 			background-image: var(--lrbg);
 			background-size: cover;
@@ -1150,11 +1045,9 @@
 		}
 
 	}
-
 	.lv-thropy{
 		height: 45vw;
 	}
-
 	.contact-form{
 		&__form{
 		padding: 2rem;
@@ -1168,7 +1061,6 @@
 			}
 		}
 	}
-
 	.img-section{
 		margin: 5rem 0;
 	}
@@ -1178,27 +1070,7 @@
 			padding-right: 0;
 		}
 	}
-
-	// .article-wrapper {
-	// 	padding-top: 25rem;
-	// }
-
-	// @include media-max(ipadmini){
-	// 	.article-wrapper {
-	// 		padding-top: unset;
-	// 	}
-	// }
-
 	.cta-wrapper, .article-wrapper {
 		padding: unset;
 	}
-	
-	// .contact-form{
-	// 	&__form{
-	// 	padding: 2rem;
-	// 	margin: 0 auto;
-	// 	max-width: 400px;
-	// 	}
-	// }
-	
 </style>
