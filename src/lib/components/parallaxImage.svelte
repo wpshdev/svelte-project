@@ -1,67 +1,71 @@
+<!-- ParallaxImage.svelte -->
 <script>
-  import { onMount } from 'svelte';
-  import { gsap } from 'gsap/dist/gsap';
-  import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+  // Import Svelte dependencies
+  import { onMount, onDestroy } from "svelte";
+  import {gsap}  from "gsap/dist/gsap";        
+import {ScrollTrigger} from "gsap/dist/ScrollTrigger";  
 
+  let parallaxImage;
   export let imageUrl;
-  export let scrollOffset;
-  export let translationSpeed;
-
-  let target;
-
+  // Initialize GSAP and ScrollTrigger when the component is mounted
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    new ScrollTrigger({
-      trigger: target,
-      start: 'bottom - scrollOffset',
-      end: 'bottom',
+    // Create a GSAP timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: parallaxImage,
+        start: "top bottom",
+        end: "50vh",
+        scrub: true,
+      },
     });
 
-    let translateY = -150; // Initial translation value
-    const defaultTranslationSpeed = 100;
+    // Define the parallax animation
+    tl.to(parallaxImage, {
+      y: -200, // Adjust this value for the parallax effect intensity
+      ease: "none", // Linear motion
+    });
 
-    gsap.to(target, {
-      y: () => translateY,
-      scrollTrigger: {
-        // markers: true,
-        trigger: target,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-        onUpdate: (self) => {
-          translateY = self.progress * window.innerHeight * (translationSpeed || defaultTranslationSpeed);
-        },
-      },
+    // Initialize ScrollTrigger
+    ScrollTrigger.create({
+      trigger: parallaxImage,
+      start: "top bottom",
+      end: "bottom",
+      markers: true,
+      scrub: true,
+      animation: tl,
+    });
+
+    // Cleanup when the component is destroyed
+    onDestroy(() => {
+      ScrollTrigger.remove(parallaxImage);
     });
   });
 </script>
 
-<style lang="scss">
-  .container-div {
-    width: 100%;
-    height: 50vw;
-    min-height: 40rem;
+<style>
+  /* Add your CSS styles here */
+  .parallax-container {
+    height: 100vh; /* Adjust to your preference */
     overflow: hidden;
+    position: relative;
   }
-  .target {
+
+  .parallax-img {
     width: 100%;
-    height: 100%;
-    margin-left: 0;
-    margin-top: -100px;
-    background-position: center !important;
-    background-size: 130% !important;
-    @include media-max(laptopS){
-			background-size: cover !important;
-		}	
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 </style>
 
-<div class="container-div">
-  <div class="target" bind:this={target}>
-    <img src="{imageUrl}" alt="">
-  <slot>
-
-  </slot>
-</div>
+<div class="parallax-container">
+  <img
+    src="{imageUrl}"
+    alt="Parallax Image"
+    class="parallax-img"
+    bind:this={parallaxImage}
+  />
 </div>

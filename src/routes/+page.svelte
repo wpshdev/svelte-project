@@ -91,7 +91,7 @@
 	<section class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly"  gsap-start="10% 70%">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
-		<ParallaxImage scrollOffset={200} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
+		<ParallaxImage imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</section>
 <!-- </Animate> -->
@@ -188,7 +188,7 @@
 
 
 <section class="tnr" >
-	<ParallaxImage scrollOffset={100} translationSpeed={10} imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
+	<ParallaxImage imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
 	</ParallaxImage> 
 	<Container>
 		<Row>
