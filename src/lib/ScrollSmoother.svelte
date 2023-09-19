@@ -21,7 +21,7 @@
         effects: true,
         normalizeScroll: true,
         smoothTouch: 10, 
-        // speed: 1, // speed for the whole page scrolling
+        // speed: 0.2, // speed for the whole page scrolling
       });
 
       // speed for the section display/scrolling

@@ -1,25 +1,23 @@
 <script>
-	import Carousel2 from '$lib/components/layout/Carousel2.svelte'
-	
-	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+	import { slowDownSection } from '$lib/GsapAnimation.js';
+	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 </script>
-<div style="margin-top:100px;"></div>
-<Carousel2 autoplay="2000">
-	{#each colors as color, index (index)}
-	  <div style="background-color: {color}">{color}</div>
-	{/each}
-	<span slot="left-control">prev</span>
-	<span slot="right-control">next</span>
-</Carousel2>
-<div style="margin-top:100px;"></div>
+
+<div style="height: 100vh; background-color: gray;">
+	<h1>gray</h1>
+</div>
+<section in:slowDownSection id="test" style="height: 200vh;  background-color: #ffc300; position relative; padding: 50px;" >
+	<!-- <div data-speed="1.3" data-lag="0.5" style="background-color: green; width: 300px; height: 300px;"> -->
+		<div style="width: 500px; height: 100vh; background-color: yellow;" class="container"></div>
+	<!-- </div> -->
+</section>
+<div style="height: 100vh; background-color: blue;">
+	<h1>blue</h1>
+</div>
+
 <style>
-	div {
-		height: 8rem;
-		/* width: 8rem; */
-	}
-	
-	span {
-		display: inline-block;
-		margin-top: 6rem;
+	section {
+		min-height: unset;
+		margin: unset;
 	}
 </style>
