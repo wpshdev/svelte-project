@@ -62,33 +62,28 @@
 </svelte:head>
 <!-- <ScrollSmoother> -->
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
+
 <section class="loc-gallery" in:slowDownSection id="loc-gallery">
-	<Container class="inner">
-		<Row>
-			<Col xs="12" class="pb-4">
-				<div class="loc-gallery__cwrapper" id="build-trust">
-					<h2>
-						<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
-						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
-					</h2>
-					<!-- gsap-delay="1" gsap-duration="1.5" -->
-						<div class="h3">
-							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
-						</div>
-					<div>
-						{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
-					</div>
-				</div>
-			</Col>
-		</Row>
-	</Container>
+	<div class="loc-gallery__cwrapper container" id="build-trust">
+		<h2>
+			<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
+			{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+		</h2>
+		<!-- gsap-delay="1" gsap-duration="1.5" -->
+			<div class="h3">
+				{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
+			</div>
+		<div>
+			{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
+		</div>
+	</div>
 </section>	
 
 
 {#if home.homeBuilderBanner.data}
 <!-- <Animate> -->
 	<section class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly"  gsap-start="10% 70%">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
 		<ParallaxImage scrollOffset={100} translationSpeed={100} imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
@@ -98,7 +93,7 @@
 
 <!-- gsap-start="clamp(top top)"  -->
 
-<section class="categories" in:slowDownSection id="categories-section" gsap-end="3">
+<section class="categories" in:slowDownSection id="categories-section">
 	<!-- <Animate> -->
 	<Container class="categories_wrapper">
 		<Row>
@@ -163,7 +158,7 @@
 
 
 
-<section class="featured-projects" in:slowDownSection id="featured-section" gsap-end="3">	
+<section class="featured-projects" in:slowDownSection id="featured-section">	
 	<Container>
 			<Row>
 				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -415,19 +410,6 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		min-height: 200vh;
-		// padding-top: 5rem;
-		margin: unset;
-		background-color: yellow;
-		border: 1px solid red;
-		//Trial Padding padding-bottom: 110rem;
-		// display: flex;
-		// align-items: center;
-		// justify-content: center;
-		:global(.inner) {
-			border: 1px solid red;
-			min-height: 100vh;
-		}
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 5rem !important;
@@ -449,7 +431,7 @@
 			margin: auto;
 			.h3{
 				text-transform: uppercase;
-				margin-bottom: 2rem;
+				// margin-bottom: 2rem;
 				font-size: 2.5rem;
 				font-weight: 600;
 				@include media-max(sm){
@@ -463,36 +445,23 @@
 				max-width: 36rem;
 				margin: 0 auto;
 				text-align: left;
-				margin-bottom: 2rem;							
+				// margin-bottom: 2rem;							
 			}
 			:global(a) {
 				color: $primary-color;
 				text-decoration: none;
 			}
-			&__btns{
-				margin: 2rem 0;
-				.btn-primary{
-					margin-right: 1.5rem;
-				}
-			}
+			// &__btns{
+			// 	margin: 2rem 0;
+			// 	.btn-primary{
+			// 		margin-right: 1.5rem;
+			// 	}
+			// }
 		}
 	}
 
 	.categories{
-		// margin-top: 0;
-		margin: 0;
-		padding: 0 0 3.75rem;
-		//Trial Padding padding-bottom: 125rem;
-		//min-height: 100vh;
-		padding-top: 25rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		// :global(.categories_wrapper) {
-		// 	max-width: 1440px;
-		// }
 		@include media-max(ipadmini){
-			// min-height: unset;
 			padding: 0 0 3.75rem;
 		}	
 		h2{
@@ -577,7 +546,7 @@
 				}
 			}
 			&__gallery{
-				//min-height: 100vh;
+				min-height: 65vh;
 				position: relative;
 				@include media-max(ipadmini){
 					min-height: auto;
@@ -726,14 +695,6 @@
 	}
 
 	.featured-projects{
-		// padding: 5rem 0 13.75rem;
-		margin: 0;
-		padding-top: 15rem;
-		//min-height: 100vh;
-		display: flex;
-		align-items: center;
-		padding-bottom: 5rem;
-		// overflow: hidden;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 5rem;
@@ -1192,6 +1153,7 @@
 	.bannerOnly--Container {
 
 		// padding: 5rem 0 0;
+		// padding: 2rem 0;
 		overflow: hidden;
 
 		.section--bannerOnly{

@@ -12,29 +12,29 @@
 	let pageBanner = banner;
 	let innerWidth;
 	let pageBannerheight = 60;
-	$: {
-		if(innerWidth < 768 && bannerMobile){
-			pageBanner = bannerMobile;
-		}
-	}
-	if(bannerheight === 'undefined'){
-		pageBannerheight = 60;
-	}else{
-		pageBannerheight = bannerheight;
-	}
+	// $: {
+	// 	if(innerWidth < 768 && bannerMobile){
+	// 		pageBanner = bannerMobile;
+	// 	}
+	// }
+	// if(bannerheight === 'undefined'){
+	// 	pageBannerheight = 60;
+	// }else{
+	// 	pageBannerheight = bannerheight;
+	// }
 	
-    let divElement;
-    onMount(() => {
-      window.addEventListener("scroll", handleScroll);
-    });
-    function handleScroll() {
-      const scrollProgress = window.scrollY / window.innerHeight;
-      const newHeight = pageBannerheight - scrollProgress * 10;
-      gsap.to(divElement, { height: `${newHeight}vh`, duration: 0.3 });
-    }
+    // let divElement;
+    // onMount(() => {
+    //   window.addEventListener("scroll", handleScroll);
+    // });
+    // function handleScroll() {
+    //   const scrollProgress = window.scrollY / window.innerHeight;
+    //   const newHeight = pageBannerheight - scrollProgress * 10;
+    //   gsap.to(divElement, { height: `${newHeight}vh`, duration: 0.3 });
+    // }
 </script>
 
-<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" bind:this={divElement}>
+<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;">
 	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="0"></div>
 	<Container>
 		<Row>
@@ -67,7 +67,7 @@
         position: relative;
 		box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
 		&.homebanner{
-			height: 60vh;
+			height: 100vh !important;
 		}
         .banner_overlay{
             content: "";
