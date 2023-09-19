@@ -58,7 +58,8 @@
 </style>
 
 <div class="container-div">
-  <div class="target" bind:this={target} style="background:url({imageUrl})">
+  <div class="target" bind:this={target}>
+    <img src="{imageUrl}" alt="">
   <slot>
 
   </slot>
