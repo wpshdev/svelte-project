@@ -64,19 +64,25 @@
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
 
 <section class="loc-gallery" in:slowDownSection id="loc-gallery">
-	<div class="loc-gallery__cwrapper container" id="build-trust">
-		<h2>
-			<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
-			{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
-		</h2>
-		<!-- gsap-delay="1" gsap-duration="1.5" -->
-			<div class="h3">
-				{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
-			</div>
-		<div>
-			{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
-		</div>
-	</div>
+	<Container>
+		<Row>
+			<Col xs="12" class="pb-4">
+				<div class="loc-gallery__cwrapper" id="build-trust">
+					<h2>
+						<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
+						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+					</h2>
+					<!-- gsap-delay="1" gsap-duration="1.5" -->
+						<div class="h3">
+							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
+						</div>
+					<div>
+						{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
+					</div>
+				</div>
+			</Col>
+		</Row>
+	</Container>
 </section>	
 
 
@@ -207,7 +213,7 @@
 
 
 
-<section class="reputation" in:slowDownSection id="reputation-section" gsap-end="3.5">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 70%">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -245,7 +251,7 @@
 </section>
 
 <!-- gsap-start="clamp(top 20% top)" -->
-<section class="process" in:slowDownSection id="process-section" gsap-end="4.5">
+<section class="process" in:slowDownSection id="process-section" gsap-start="top 70%">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -303,7 +309,7 @@
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-end="3.5">
+<section class="story" in:slowDownSection id="story-section" gsap-start="top 70%">
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -635,6 +641,8 @@
 	}
 
 	.tnr{
+		margin-top: 7rem;
+		padding: 0;
 		background-image: var(--tp-banner);
 		// height: 50vw;
 		display: flex;
@@ -695,6 +703,7 @@
 	}
 
 	.featured-projects{
+		padding-bottom: 7rem;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 5rem;
@@ -707,22 +716,6 @@
 	}
 
 	.reputation{
-		padding-top: 10rem;
-		//Trial Padding padding-bottom: 125rem;
-		padding-bottom: 3.75rem;
-		// //min-height: 100vh;
-		display: flex;
-		align-items: center;
-		// :global(.container){
-		// 	@include media-max(md){
-		// 		padding-left: 1.8rem;
-		// 		padding-right: 1.8rem;
-		// 	}	
-		// 	@include media-max(sm){
-		// 		padding-left: 1.8rem;
-		// 		padding-right: 1.8rem;
-		// 	}			
-		// }
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 7rem;
@@ -844,12 +837,7 @@
 	}	
 
 	.process{
-		// padding-top: 10rem;	
-		//Trial Padding padding-bottom: 150rem;
-		padding-bottom: 3.75rem;
-		// //min-height: 100vh;
-		display: flex;
-		align-items: center;
+		padding: 0;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-bottom: 1rem;
@@ -859,7 +847,7 @@
 		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -5rem;
+    		margin-bottom: -4rem;
 			z-index: 5;
 			position: relative;
 			@include media-max(default){
@@ -995,10 +983,6 @@
 			}			
 		}
 
-		.childimg2 {
-			padding-top: 3rem;
-		}
-
 		.childimg3 {
 			padding-top: 15rem;
 		}
@@ -1017,11 +1001,7 @@
 	}	
 
 	.story{
-		padding-top: 10rem;
-		//Trial Padding padding-bottom: 125rem;
-		// //min-height: 100vh;
-		display: flex;
-		align-items: center;
+		padding: 0;
 		@include media-max(ipadmini){
 			padding-bottom: 7rem;
 			min-height: unset;
@@ -1151,10 +1131,9 @@
 	}
 
 	.bannerOnly--Container {
-
-		// padding: 5rem 0 0;
-		// padding: 2rem 0;
+		
 		overflow: hidden;
+		padding-top: 5rem;
 
 		.section--bannerOnly{
 			background-image: var(--lrbg);
@@ -1211,8 +1190,7 @@
 	// }
 
 	.cta-wrapper, .article-wrapper {
-		padding-left: unset;
-		padding-right: unset;
+		padding: unset;
 	}
 	
 	// .contact-form{
