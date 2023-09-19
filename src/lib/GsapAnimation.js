@@ -23,6 +23,9 @@ const delayDefault = '0';
 const durationDefault = '0.5';
 const flyY = '70';
 const slideX = '7';
+const scroller_start = "70%";
+const scroller_end = "30%";
+const startDefaultSlow = "10% " + scroller_start;
 const startDefault = "top bottom";
 
 let mm = gsap.matchMedia();
@@ -44,7 +47,7 @@ export function fadeIn(node) {
             trigger: '#' + targetElementID,
             start: start,
             once: true,
-            // markers: true,
+            markers: true,
             onEnter: function() { 
                 const tl = gsap.timeline();
                 tl.set(
@@ -444,98 +447,56 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const defaultDistance = '-50';
-    const yDistance = parentElement.getAttribute("gsap-ydistance") ? parentElement.getAttribute("gsap-ydistance") : defaultDistance;
-    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : 'top center';
-    //const end = parentElement.getAttribute("gsap-end") ? parentElement.getAttribute("gsap-end") : 'bottom 10% top';
-    // parentElement.style.opacity = '0';
-    // parentElement.style.paddingBottom  = '60rem';
+    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : startDefaultSlow;
 
-    // gsap.to(container, {
-    //     alpha: 1,
-    //     yPercent: -50,
-    //     scrollTrigger: {
-    //         trigger: '#' + parentElementID, 
-    //         start: 'clamp(top 70% bottom)',
-    //         end: 'bottom 30% top',
-    //         scrub: -1,
-    //         markers: true,
-    //     }
-    // })
 
     let scrollY = 0; // Initial scroll position
     let previousScrollY = 0; // Previous scroll position
-  
+
+    const containerHeight = container.offsetHeight;
+    const parentHeight = containerHeight * 2.5;
+    parentElement.style.height = parentHeight + 'px';
+    parentElement.style.opacity = 0;
+
     gsap.to(container, {
       y: () => {
-        // Calculate the scroll direction (up or down)
         const direction = scrollY > previousScrollY ? -1 : 1;
-        
-        // Update the previous scroll position
         previousScrollY = scrollY;
-        
-        // Adjust the image position based on scroll direction
         return container.getBoundingClientRect().height * direction;
       },
       scrollTrigger: {
         trigger: '#' + parentElementID,
-        start: 'top 70%',
-        end: 'bottom 30%',
+        start: start,
+        end: '90% 30%',
         scrub: true, // Use scrub to smooth the animation
-        // pin: true,
         onUpdate: (self) => {
           scrollY = self.scroll();
+        },
+        onEnter: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 1,
+                duration: 2,
+            });
+        },
+        onLeave: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 0,
+            });
+        },
+        onLeaveBack: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 0,
+            });
+        },
+        onEnterBack: () => {
+            gsap.to('#' + parentElementID, {
+                opacity: 1,
+                duration: 2,
+            });
         },
         markers: true,
       },
     });
-
-    // slowdown effect on the main container on desktop
-    // mm.add("(min-width: 769px)", () => {
-    //     gsap.to('#' + parentElementID, {
-    //         yPercent: yDistance,
-    //         ease: "none", 
-    //         scrollTrigger: {
-    //             trigger: '#' + parentElementID, 
-    //             scrub: 4,
-    //             start: start,
-    //             end: 'bottom 20% top',
-    //             // end: "+=" + (window.innerHeight * end),
-    //             pin: true,
-    //             // pinSpacing: false,
-    //             markers: true,
-    //             // anticipatePin: 1,
-    //             // onEnter: () => {
-    //             //     gsap.to('#' + parentElementID, {
-    //             //         opacity: 1,
-    //             //         // yPercent: 0,
-    //             //         // duration: 1,
-    //             //     });
-    //             // },
-    //             // onLeave: () => {
-    //             //     gsap.to('#' + parentElementID, {
-    //             //         opacity: 0,
-    //             //         // yPercent: -100,
-    //             //         // duration: 5,
-    //             //     });
-    //             // },
-    //             // onLeaveBack: () => {
-    //             //     gsap.to('#' + parentElementID, {
-    //             //         opacity: 0,
-    //             //         // yPercent: -100,
-    //             //         // duration: 5,
-    //             //     });
-    //             // },
-    //             // onEnterBack: () => {
-    //             //     gsap.to('#' + parentElementID, {
-    //             //         opacity: 1,
-    //             //         // yPercent: 0,
-    //             //         // duration: 1,
-    //             //     });
-    //             // },
-    //         }
-    //     });
-    // });
 
 }
 
