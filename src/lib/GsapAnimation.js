@@ -481,11 +481,13 @@ export function slowDownSection(node) {
         onLeave: () => {
             gsap.to('#' + parentElementID, {
                 opacity: 0,
+                duration: 1.5,
             });
         },
         onLeaveBack: () => {
             gsap.to('#' + parentElementID, {
                 opacity: 0,
+                duration: 1.5,
             });
         },
         onEnterBack: () => {

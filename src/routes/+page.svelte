@@ -60,19 +60,17 @@
 	<title>{home.title ? home.title : 'Home'}</title>
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
-<!-- <ScrollSmoother> -->
+
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
 
-<section class="loc-gallery" in:slowDownSection id="loc-gallery">
+<section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery">
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
 				<div class="loc-gallery__cwrapper" id="build-trust">
 					<h2>
-						<!-- in:textAnimate id="home-builder" gsap-duration="0.5" -->
 						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 					</h2>
-					<!-- gsap-delay="1" gsap-duration="1.5" -->
 						<div class="h3">
 							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 						</div>
@@ -87,32 +85,24 @@
 
 
 {#if home.homeBuilderBanner.data}
-<!-- <Animate> -->
 	<section class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly"  gsap-start="10% 70%">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
 		<ParallaxImage imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</section>
-<!-- </Animate> -->
 {/if}
 
-<!-- gsap-start="clamp(top top)"  -->
-
-<section class="categories" in:slowDownSection id="categories-section">
-	<!-- <Animate> -->
+<section class="categories mvw-10" in:slowDownSection id="categories-section">
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
-				<!-- <Animate> -->
-				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1">
+				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1" gsap-start="top center">
 					{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
 				</h2>
-				<!-- </Animate> -->
 				<div class="categories__tabs">
-					<!-- <Animate> -->
 					<div class="categories__tabs__heading">
-						<ul in:fly id="categories" gsap-duration="1" gsap-delay="0.5">
+						<ul in:fly id="categories" gsap-duration="1" gsap-start="top center">
 							{#each home.categories.data as heading}
 								<li>
 									<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -126,7 +116,7 @@
 							{/each}
 						</ul>
 					</div>
-					<!-- </Animate> -->
+					
 					<div class="categories__tabs__gallery" >
 						{#key activeTab}
 							{#if loading}  <!-- show load -->
@@ -159,12 +149,9 @@
 			</Col>
 		</Row>
 	</Container>
-	<!-- </Animate> -->
 </section>
 
-
-
-<section class="featured-projects" in:slowDownSection id="featured-section">	
+<section class="featured-projects mvw-10" in:slowDownSection id="featured-section" gsap-start="top 70%">	
 	<Container>
 			<Row>
 				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -193,19 +180,17 @@
 	<Container>
 		<Row>
 			<Col>
-				<!-- <Animate> -->
-					<div class="tnr__wrapper">
-						<div class="tnr__wrapper__captions">
-							<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
-							<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
-							<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
-								<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
-									{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
-								</a>
-							</div>
+				<div class="tnr__wrapper">
+					<div class="tnr__wrapper__captions">
+						<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
+						<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+						<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+							<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+								{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
+							</a>
 						</div>
 					</div>
-				<!-- </Animate> -->
+				</div>
 			</Col>
 		</Row>
 	</Container>
@@ -213,11 +198,10 @@
 
 
 
-<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 70%">
+<section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top 70%">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
-					<!-- <Animate> -->
 						<div class="reputation__content">
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
@@ -228,53 +212,31 @@
 								</div>
 							</div>
 						</div>
-					<!-- </Animate> -->
 				</Col>
 				<Col md="5" class="my-auto containerimg" >
 					<div class="childimg">
 						{#if home.reputation.image.data}
-						<!-- <Animate> -->
 							<img in:fly2 id="reputation-img" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
-						<!-- </Animate> -->
 						{/if}
 					</div>
-					<!-- mobile 
-					<div class="mobileimg">
-						{#if home.reputation.image.data}
-							<img in:fly2 id="reputation-img" gsap-y="-60" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
-						
-						{/if}
-					</div>-->
 				</Col>
 			</Row>
 		</Container>
 </section>
 
-<!-- gsap-start="clamp(top 20% top)" -->
 <section class="process" in:slowDownSection id="process-section" gsap-start="top 70%">
 	<Container>
 		<Row>
 			<Col md="6" class="">
 				<div class="process__top-image childimg2" >
 					{#if home.ourProcessTopImage.data[0]}
-					<!-- <Animate> -->
-						<!-- <img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/> -->
-						<img in:fly2 id="process-top-img" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
-					<!-- </Animate> -->
+						<img in:fly2 id="process-top-img" gsap-y="-75" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					{/if}
 				</div>
-				<!-- Mobile 
-				<div class="process__top-image mobileimg" >
-					{#if home.ourProcessTopImage.data[0]}
-						<img in:fly id="process-top-img" gsap-y="0" gsap-endY="-40" gsap-duration="1.5" gsap-delay="0.5" gsap-opacity="1" gsap-start="center bottom" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
-					
-					{/if}
-				</div>-->
 			</Col>
 		</Row>
 		<Row>
 			<Col md="7" class="">
-				<!-- <Animate> -->
 					<div class="process__content containerimg2">
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
@@ -285,24 +247,13 @@
 							</div>
 						</div>
 					</div>
-				<!-- </Animate> -->
 			</Col>
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
-					<!-- <Animate> -->
-						<!-- <img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}"> -->
 						<img in:fly2 id="process-bottom-img"  src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
-					<!-- </Animate> -->
 					{/if}
 				</div>
-				<!-- mobile 
-				<div class="process__bottom mobileimg">
-					{#if home.ourProcessRightImage.data}
-						<img in:fly id="process-bottom-img" gsap-y="0" gsap-endY="50" gsap-duration="1" gsap-opacity="1" gsap-start="bottom top" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
-					
-					{/if}
-				</div>-->
 			</Col>
 		</Row>
 	</Container>
@@ -313,25 +264,21 @@
 		<Container>
 			<Row>
 				<Col md="7" class="">
-					<!-- <Animate> -->
-						<div class="story__content">
-							<div class="story__content__wrapper">
-								<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
-								<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
-								<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
-									{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
-								</div>
-
+					<div class="story__content">
+						<div class="story__content__wrapper">
+							<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
+							<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
+							<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
+								{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 							</div>
+
 						</div>
-					<!-- </Animate> -->
+					</div>
 				</Col>
 				<Col md="5" class="my-auto containerimg4">
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
-						<!-- <Animate> -->
 							<img in:fly2 id="story-img"  src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
-						<!-- </Animate> -->
 						{/if}
 					</div>	
 				</Col>
@@ -340,17 +287,13 @@
 </section>
 
 <section class="m-0 article-wrapper">
-	<!-- <Animate> -->
-		<ArticleSection />
-	<!-- </Animate> -->
+	<ArticleSection />
 </section>
 
 <section class="m-0 cta-wrapper">
-	<!-- <Animate> -->
-		<Cta />
-	<!-- </Animate> -->
+	<Cta />
 </section>
-<!-- </ScrollSmoother> -->
+
 <style lang="scss">
 	section{
 		min-height: 20vh;
@@ -470,6 +413,7 @@
 					width: 90%;
 					margin: 3rem auto;
 					padding-left: 0;	
+					justify-content: center;
 					
 					@include media-max(lg){
 						flex-wrap: nowrap;
@@ -591,8 +535,6 @@
 	}
 
 	.tnr{
-		margin-top: 7rem;
-		padding: 0;
 		background-image: var(--tp-banner);
 		display: flex;
 		flex-wrap: wrap;
@@ -645,7 +587,6 @@
 	}
 
 	.featured-projects{
-		padding-bottom: 7rem;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 5rem;
@@ -657,6 +598,7 @@
 	}
 
 	.reputation{
+		margin-top: 15vw;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-top: 7rem;
@@ -772,7 +714,6 @@
 	}	
 
 	.process{
-		padding: 0;
 		@include media-max(ipadmini){
 			min-height: unset;
 			padding-bottom: 1rem;
@@ -782,7 +723,7 @@
 		}		
 		&__top-image{
 			text-align: right;
-    		margin-bottom: -4rem;
+    		margin-bottom: -9rem;
 			z-index: 5;
 			position: relative;
 			@include media-max(default){
@@ -909,7 +850,6 @@
 
 	}
 	.story{
-		padding: 0;
 		@include media-max(ipadmini){
 			padding-bottom: 7rem;
 			min-height: unset;
@@ -1029,7 +969,6 @@
 	}
 	.bannerOnly--Container {
 		overflow: hidden;
-		padding-top: 5rem;
 		.section--bannerOnly{
 			background-image: var(--lrbg);
 			background-size: cover;
