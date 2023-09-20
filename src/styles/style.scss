@@ -111,11 +111,7 @@ input:focus{
 section{
     // margin: 3.75rem 0;
     // overflow: hidden;
-    padding-top: 7rem;
     min-height: 20vh;
-    @include media-max(w1440) {
-        padding-top: 4rem;
-    } 
     @include media-max(lg){
         padding-left: 3rem;
         padding-right: 3rem;
@@ -128,6 +124,9 @@ section{
         padding-left: 1rem;
         padding-right: 1rem;
     }
+}
+.mvw-10 {
+    margin: 10vw 0;
 }
 img{
     width: 100%;
