@@ -70,19 +70,23 @@ style="--height: {imageHeight}vh">
     /* position: relative; */
     @include media-max(default){
       height: 60vh;
-    }	
+    }
   }
 
   .parallax-img {
     width: 100%;
     height: auto;
+    min-width: 1000px;
     position: absolute;
     top: 0;
     left: 0;
 
     @include media-max(default){
       width: 100%;
-    }	
-
+    }
+    @include media-max(sm){
+      left: 50%;
+      margin-left: -500px;
+    }
   }
 </style>
