@@ -23,9 +23,6 @@ const delayDefault = '0';
 const durationDefault = '0.5';
 const flyY = '70';
 const slideX = '7';
-const scroller_start = "70%";
-const scroller_end = "30%";
-const startDefaultSlow = "10% " + scroller_start; // start default for slow section
 const startDefault = "top bottom"; // start default for other animations
 
 let mm = gsap.matchMedia();
@@ -447,11 +444,11 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : startDefaultSlow;
-
+    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : '10vw';
 
     let scrollY = 0; // Initial scroll position
     let previousScrollY = 0; // Previous scroll position
+    let direction;
 
     const containerHeight = container.offsetHeight;
     const parentHeight = containerHeight * 2.3;
@@ -460,14 +457,20 @@ export function slowDownSection(node) {
 
     gsap.to(container, {
       y: () => {
-        const direction = scrollY > previousScrollY ? -1 : 1;
+
+        if(window.innerWidth <= 768) { // 768 below
+            direction = scrollY > previousScrollY ? -0.7 : 0.7;
+        } else { // desktop
+            direction = scrollY > previousScrollY ? -1 : 1;
+        }
+
         previousScrollY = scrollY;
         return container.getBoundingClientRect().height * direction;
       },
       scrollTrigger: {
         trigger: '#' + parentElementID,
-        start: start,
-        end: '90% 30%',
+        start: () => start + ' ' + window.innerHeight*0.7,
+        end: () => '90% ' + window.innerHeight*0.3,
         scrub: true, // Use scrub to smooth the animation
         onUpdate: (self) => {
           scrollY = self.scroll();
@@ -515,7 +518,7 @@ export function fly2(node) {
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : "top bottom";
 
     // Fly2 animation
-    mm.add("(min-width: 769px)", () => {
+    mm.add("(min-width: 768px)", () => {
         gsap.to('#' + targetElementID, {
             yPercent: y, 
             ease: "none", 
@@ -528,10 +531,11 @@ export function fly2(node) {
         });
     });
 
-    mm.add("(max-width: 768px)", () => { // default start on tablet and below
+    mm.add("(max-width: 767px)", () => { // default start on tablet and below
+        targetElement.style.opacity = 0;
         ScrollTrigger.create({
             trigger: '#' + targetElementID,
-            start: 'startDefault',
+            start: 'top bottom',
             once: true,
             // markers: true,
             onEnter: function() { 
@@ -540,16 +544,15 @@ export function fly2(node) {
                     '#' + targetElementID,
                     {
                         opacity: 0,
-                        yPercent: 30,
+                        yPercent: 50,
                     }
                 );
                 tl.to(
                     '#' + targetElementID,
                     {
-                        duration: duration,
                         opacity: 1,
                         yPercent: 0,
-                        delay: delay,
+                        duration: 2,
                     }
                 );
             }, 

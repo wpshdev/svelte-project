@@ -94,7 +94,8 @@
 			&__wrapper{
 				padding-left: 4rem;		
 				@include media-max(ipadmini){
-					padding: 1rem 0 0;
+					// padding: 1rem 0 0;
+					padding: 0;
 				}					
 				&__pre-heading{
 					color: $secondary-color;

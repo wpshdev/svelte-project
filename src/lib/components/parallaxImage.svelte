@@ -6,32 +6,35 @@
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";  
 
   let parallaxImage;
+  let parallaxImageCont;
   export let imageUrl;
+  export let imageHeight;
   // Initialize GSAP and ScrollTrigger when the component is mounted
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Create a GSAP timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: parallaxImage,
-        start: "top bottom",
-        end: "50vh",
-        scrub: true,
-      },
-    });
+    const tl = gsap.timeline();
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: parallaxImage,
+    //     start: "top bottom",
+    //     end: "50vh",
+    //     scrub: true,
+    //   },
+    // });
 
     // Define the parallax animation
     tl.to(parallaxImage, {
-      y: -200, // Adjust this value for the parallax effect intensity
+      y: -300, // Adjust this value for the parallax effect intensity
       ease: "none", // Linear motion
     });
 
     // Initialize ScrollTrigger
     ScrollTrigger.create({
-      trigger: parallaxImage,
+      trigger: parallaxImageCont,
       start: "top bottom",
-      end: "bottom",
+      end: "bottom top",
       markers: true,
       scrub: true,
       animation: tl,
@@ -39,17 +42,33 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
     // Cleanup when the component is destroyed
     onDestroy(() => {
-      ScrollTrigger.remove(parallaxImage);
+      ScrollTrigger.remove(parallaxImageCont);
     });
   });
 </script>
 
-<style>
+
+<div class="parallax-container" 
+bind:this={parallaxImageCont}
+style="--height: {imageHeight}vh">
+  <img
+    src="{imageUrl}"
+    alt="Parallax Image"
+    class="parallax-img"
+    bind:this={parallaxImage}
+  />
+</div>
+
+
+<style lang="scss">
   /* Add your CSS styles here */
   .parallax-container {
-    height: 100vh; /* Adjust to your preference */
     overflow: hidden;
-    position: relative;
+    height: var(--height);
+    /* position: relative; */
+    @include media-max(default){
+      height: 60vh;
+    }	
   }
 
   .parallax-img {
@@ -58,14 +77,11 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     position: absolute;
     top: 0;
     left: 0;
+
+    @include media-max(default){
+      width: auto;
+      height: 100vh;
+    }	
+
   }
 </style>
-
-<div class="parallax-container">
-  <img
-    src="{imageUrl}"
-    alt="Parallax Image"
-    class="parallax-img"
-    bind:this={parallaxImage}
-  />
-</div>

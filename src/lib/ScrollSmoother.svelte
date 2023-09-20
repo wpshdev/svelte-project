@@ -8,7 +8,7 @@
     onMount(() => {
       gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-      if(window.innerWidth < 768) {
+      if(window.innerWidth <= 768) {
         smoothValue = 0;
       } else {
         smoothValue = 2;
@@ -20,7 +20,7 @@
         smooth: smoothValue,
         effects: true,
         normalizeScroll: true,
-        smoothTouch: 10, 
+        smoothTouch: 2, 
         // speed: 0.2, // speed for the whole page scrolling
       });
 

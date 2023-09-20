@@ -86,9 +86,9 @@
 
 {#if home.homeBuilderBanner.data}
 	<section class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly"  gsap-start="10% 70%">
+		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
-		<ParallaxImage imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
+		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</section>
 {/if}
@@ -128,7 +128,7 @@
 									<div class="container masonry_container">       
 										{#each portfolioList as project, index}				
 											{#if index < propCount}
-											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30"> 
+											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center"> 
 												<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
 												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
 													{#if project.attributes.featuredImage.data != null}
@@ -151,7 +151,7 @@
 	</Container>
 </section>
 
-<section class="featured-projects mvw-10" in:slowDownSection id="featured-section" gsap-start="top 70%">	
+<section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
 	<Container>
 			<Row>
 				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
@@ -175,30 +175,26 @@
 
 
 <section class="tnr" >
-	<ParallaxImage imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
-	</ParallaxImage> 
-	<Container>
-		<Row>
-			<Col>
-				<div class="tnr__wrapper">
-					<div class="tnr__wrapper__captions">
-						<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
-						<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
-						<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
-							<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
-								{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
-							</a>
-						</div>
-					</div>
+	<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
+	</ParallaxImage>
+	<div class="tnr__wrapper">
+		<Container>
+			<div class="tnr__wrapper__captions">
+				<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
+				<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+				<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+					<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+						{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
+					</a>
 				</div>
-			</Col>
-		</Row>
-	</Container>
+			</div>
+		</Container> 
+	</div>
 </section>
 
 
 
-<section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top 70%">
+<section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -224,7 +220,7 @@
 		</Container>
 </section>
 
-<section class="process" in:slowDownSection id="process-section" gsap-start="top 70%">
+<section class="process" in:slowDownSection id="process-section" gsap-start="top">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -260,7 +256,7 @@
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-start="top 70%">
+<section class="story" in:slowDownSection id="story-section" gsap-start="top">
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -390,9 +386,11 @@
 	}
 
 	.categories{
+		margin-top: 15vw;
 		@include media-max(ipadmini){
-			padding: 0 0 3.75rem;
-		}	
+			padding-right: 0;
+			padding-left: 0;
+		}
 		h2{
 			margin-bottom: 2rem;
 			justify-content: center;
@@ -472,10 +470,13 @@
 			}
 			&__gallery{
 				min-height: 65vh;
-				position: relative;
 				@include media-max(ipadmini){
-					min-height: auto;
-				}	
+					min-height: 50vh
+				}
+				@include media-max(sm){
+					min-height: 100vh
+				}
+				position: relative;
 				.list-text-details {
 					position: absolute;
 					top: 0;
@@ -535,40 +536,57 @@
 	}
 
 	.tnr{
-		background-image: var(--tp-banner);
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		background-position: center;
-		background-size: cover;
+		// background-image: var(--tp-banner);
+		// display: flex;
+		// flex-wrap: wrap;
+		// align-items: center;
+		// background-position: center;
+		// background-size: cover;
+		// padding-left: 0;
+		// padding-right: 0;
+		// justify-content: center;
+
 		position: relative;
 		overflow: hidden;
-		padding-left: 0;
-		padding-right: 0;
-		justify-content: center;
 		:global(.container){
-			position: absolute;
+			position: relative;
+			display: flex;
+    		align-items: center;
 		}
 		@include media-max(sm){
-			height: 80vh;
+			// height: 80vh;
 			align-items: end;
 			padding-bottom: 2rem;
 			margin-bottom: 0;
 		}
-		&::before{
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-color: rgba(0, 0, 0, 0.5);			
-			z-index: 1;
-		}
+		// &::before{
+		// 	content: "";
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	right: 0;
+		// 	bottom: 0;
+		// 	background-color: rgba(0, 0, 0, 0.5);			
+		// 	z-index: 1;
+		// }
 		.tnr__wrapper{
 			z-index: 2;
-			position: relative;     
+			position: absolute;
 			color: #fff;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 80vh;
+			display: flex;
+			justify-content: center;
+			background-color: rgba(0, 0, 0, 0.5);
+			&__captions {
+				display: flex;
+    			flex-direction: column;
+				@include media-max(ipadmini){
+					padding: 3rem;
+				}
+			}
 			p{
 				font-size: 1.5rem;
 				opacity: 0;
@@ -600,17 +618,12 @@
 	.reputation{
 		margin-top: 15vw;
 		@include media-max(ipadmini){
-			min-height: unset;
-			padding-top: 7rem;
-			padding-bottom: 1.5rem;
-		}	
+			margin: 20vw 0 15vw;
+		}		
 		@include media-max(sm){
-			margin: 0;
-			padding-top: 5rem;
-			padding-bottom: 1.5rem;
-		}		
-		@include media-max(xs){
-		}		
+			margin: unset;
+			padding-top: 10vw;
+		}	
 		&__content{
 			height: 41.875rem;
 			@include media-max(lg){
@@ -689,12 +702,15 @@
 		}
 		.childimg {
 			padding-top: 15rem;
-		}
-		@include media-max(sm){
-			.childimg {
-				padding-top: unset;
+			@include media-max(ipadmini){
+				padding-top: 7rem;
 			}
-		}	
+			@include media-max(sm){
+				padding-top: unset;
+				padding-bottom: 5rem;
+			}
+		}
+		
 		img{
 			position: relative;
 			z-index: 5;
@@ -713,27 +729,29 @@
 		}		
 	}	
 
-	.process{
+	.process{	
 		@include media-max(ipadmini){
-			min-height: unset;
-			padding-bottom: 1rem;
-		}	
+			margin: 5vw 0;
+		}
 		@include media-max(sm){
-			padding-bottom: 0;
-		}		
+			height: 110rem !important;
+			margin: unset;
+			padding-top: 10vw;
+		}
 		&__top-image{
 			text-align: right;
     		margin-bottom: -9rem;
 			z-index: 5;
 			position: relative;
 			@include media-max(default){
-				margin-bottom: 0rem;	
 				text-align: center;
 			}	
 			@include media-max(lg){
-				margin-bottom: 1rem;	
 				margin-left: 1.5rem;
-			}		
+			}	
+			@include media-max(ipadmini){
+				margin-bottom: -3rem;
+			}	
 			@include media-max(sm){
 				text-align: left;
 				margin-bottom: 0;	
@@ -838,12 +856,15 @@
 		}
 		.childimg3 {
 			padding-top: 15rem;
-		}
-		@include media-max(sm){
-			.childimg2, .childimg3 {
-				padding-top: unset;
+			@include media-max(ipadmini){
+				padding-top: 7rem;
 			}
-		}	
+			@include media-max(sm){
+				padding-top: unset;
+				padding-bottom: 5rem;
+			}
+		}
+		
 		img{
 			position: relative;
 		}		
@@ -851,12 +872,12 @@
 	}
 	.story{
 		@include media-max(ipadmini){
-			padding-bottom: 7rem;
-			min-height: unset;
+			margin: 5vw 0;
 		}
 		@include media-max(sm){
-			padding-bottom: 0;
-		}	
+			margin: unset;
+			padding-top: 10vw;
+		}
 		&__content{
 			height: 41.875rem;
 			@include media-max(lg){
@@ -940,12 +961,15 @@
 		}
 		.childimg4 {
 			padding-top: 15rem;
-		}
-		@include media-max(sm){
-			.childimg4 {
+			@include media-max(ipadmini){
+				padding-top: 7rem;
+			}
+			@include media-max(sm){
 				padding-top: unset;
+				padding-bottom: 15rem;
 			}
 		}
+		
 		img{
 			position: relative;
 			z-index: 5;
@@ -969,15 +993,16 @@
 	}
 	.bannerOnly--Container {
 		overflow: hidden;
+		position: relative;
 		.section--bannerOnly{
 			background-image: var(--lrbg);
 			background-size: cover;
 			// height: 100vh;
-			height: 40vw;
+			// height: 40vw;
 			width: 100%;
 			margin: 0 auto;
 			opacity: 1;
-			padding-bottom: 3.75rem;
+			// padding-bottom: 3.75rem;
 			@include media-max(ipadmini){
 				height: 60vh;
 			}
