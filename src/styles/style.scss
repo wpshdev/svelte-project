@@ -109,7 +109,7 @@ input:focus{
     box-shadow: none;
 }
 section{
-    // margin: 3.75rem 0;
+    margin: 3.75rem 0;
     // overflow: hidden;
     min-height: 20vh;
     @include media-max(lg){
@@ -127,9 +127,9 @@ section{
 }
 .mvw-10 {
     margin: 10vw 0;
-    @include media-max(lg){
-        margin: 5vw 0;
-    }
+    // @include media-max(lg){
+    //     margin: 5vw 0;
+    // }
 }
 img{
     width: 100%;

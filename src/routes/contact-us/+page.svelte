@@ -100,7 +100,7 @@
                 </Col>
                 <Col md="8">
                     <!-- <Animate> -->
-                        <iframe title="ULF BUILT" in:fly id="contact_map" gsap-duration="1.5" gsap-y="20" src="{data.contact.data.attributes.map_url ? data.contact.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe title="ULF BUILT" in:fadeIn id="contact_map" gsap-duration="1.5" src="{data.contact.data.attributes.map_url ? data.contact.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <!-- </Animate> -->
                 </Col>
             </Row>
@@ -110,26 +110,28 @@
     <div class="contact-img" style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});">
     <div class="contact-box container-fluid">
                 <div class="contact-form border-radius">
-                    <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-duration="1.5">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
-                    <Form method="post">
-                        <FormGroup class="input-icon-box">
-                            <Input class="input-user" placeholder="Full Name" bind:value={name} />
-                            <div class="input-icon input-icon-user"></div>
-                        </FormGroup>
-                        <FormGroup class="input-icon-box">
-                            <Input class="input-email" placeholder="Email address" bind:value={email} />
-                            <div class="input-icon input-icon-email"></div>
-                        </FormGroup>
-                        <FormGroup class="input-icon-box">
-                            <Input class="input-phone" placeholder="Phone Number" bind:value={formPhone} />
-                            <div class="input-icon input-icon-phone"></div>
-                        </FormGroup>
-                        <FormGroup>
-                            <Input type="textarea" id="yourMessage" placeholder="Tell us about your project..." bind:value={message}/>
-                        </FormGroup>
-                        <Button type="button" class="btn btn-secondary" on:click={doContact}>Send</Button>
-                    </Form>
-                    {result}
+                    <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-start="center bottom" gsap-duration="1.5">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
+                    <div in:fadeIn id="form_cont" gsap-start="center bottom" gsap-duration="1.5">
+                        <Form method="post">
+                            <FormGroup class="input-icon-box">
+                                <Input class="input-user" placeholder="Full Name" bind:value={name} />
+                                <div class="input-icon input-icon-user"></div>
+                            </FormGroup>
+                            <FormGroup class="input-icon-box">
+                                <Input class="input-email" placeholder="Email address" bind:value={email} />
+                                <div class="input-icon input-icon-email"></div>
+                            </FormGroup>
+                            <FormGroup class="input-icon-box">
+                                <Input class="input-phone" placeholder="Phone Number" bind:value={formPhone} />
+                                <div class="input-icon input-icon-phone"></div>
+                            </FormGroup>
+                            <FormGroup>
+                                <Input type="textarea" id="yourMessage" placeholder="Tell us about your project..." bind:value={message}/>
+                            </FormGroup>
+                            <Button type="button" class="btn btn-secondary" on:click={doContact}>Send</Button>
+                        </Form>
+                        {result}
+                    </div>
                 </div>
     </div>
 </div>
@@ -153,6 +155,7 @@
         }
     }
     .contact_inner {
+        
         .contact_inner__content {
             h2 {
                 font-size: 2.813rem;
