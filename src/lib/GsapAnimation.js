@@ -449,9 +449,16 @@ export function slowDownSection(node) {
     let scrollY = 0; // Initial scroll position
     let previousScrollY = 0; // Previous scroll position
     let direction;
+    let parentHeight;
 
     const containerHeight = container.offsetHeight;
-    const parentHeight = containerHeight * 2.3;
+
+    if(window.innerWidth <= 768) { // 768 below
+        parentHeight = containerHeight * 2;
+    } else { // desktop
+        parentHeight = containerHeight * 2.3;
+    }
+
     parentElement.style.height = parentHeight + 'px';
     parentElement.style.opacity = 0;
 
@@ -531,11 +538,11 @@ export function fly2(node) {
         });
     });
 
-    mm.add("(max-width: 767px)", () => { // default start on tablet and below
+    mm.add("(max-width: 767px)", () => { // different animation
         targetElement.style.opacity = 0;
         ScrollTrigger.create({
             trigger: '#' + targetElementID,
-            start: 'top bottom',
+            start: 'top center',
             once: true,
             // markers: true,
             onEnter: function() { 
@@ -552,7 +559,7 @@ export function fly2(node) {
                     {
                         opacity: 1,
                         yPercent: 0,
-                        duration: 2,
+                        duration: 1,
                     }
                 );
             }, 

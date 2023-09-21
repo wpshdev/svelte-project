@@ -226,7 +226,7 @@
 			<Col md="6" class="">
 				<div class="process__top-image childimg2" >
 					{#if home.ourProcessTopImage.data[0]}
-						<img in:fly2 id="process-top-img" gsap-y="-75" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly2 id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
 					{/if}
 				</div>
 			</Col>
@@ -247,7 +247,7 @@
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
-						<img in:fly2 id="process-bottom-img"  src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly2 id="process-bottom-img" gsap-y="-150" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
 					{/if}
 				</div>
 			</Col>
@@ -343,10 +343,6 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		@include media-max(ipadmini){
-			min-height: unset;
-			padding-top: 5rem !important;
-		}	
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -474,7 +470,7 @@
 					min-height: 50vh
 				}
 				@include media-max(sm){
-					min-height: 100vh
+					min-height: 120vh
 				}
 				position: relative;
 				.list-text-details {
@@ -556,7 +552,7 @@
 		@include media-max(sm){
 			// height: 80vh;
 			align-items: end;
-			padding-bottom: 2rem;
+			// padding-bottom: 2rem;
 			margin-bottom: 0;
 		}
 		// &::before{
@@ -605,24 +601,18 @@
 	}
 
 	.featured-projects{
-		@include media-max(ipadmini){
-			min-height: unset;
-			padding-top: 5rem;
-		}	
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+		// }	
 		@include media-max(sm){
-			margin: 0;
-			padding: 0;
-		}
+			margin-top: 10vw;
+		}	
 	}
 
 	.reputation{
-		margin-top: 15vw;
-		@include media-max(ipadmini){
-			margin: 20vw 0 15vw;
-		}		
+		margin-top: 15vw;	
 		@include media-max(sm){
-			margin: unset;
-			padding-top: 10vw;
+			padding-top: 5rem;
 		}	
 		&__content{
 			height: 41.875rem;
@@ -707,7 +697,7 @@
 			}
 			@include media-max(sm){
 				padding-top: unset;
-				padding-bottom: 5rem;
+				padding-bottom: 15rem;
 			}
 		}
 		
@@ -731,12 +721,10 @@
 
 	.process{	
 		@include media-max(ipadmini){
-			margin: 5vw 0;
+			margin: 10vw 0;
 		}
 		@include media-max(sm){
-			height: 110rem !important;
-			margin: unset;
-			padding-top: 10vw;
+			height: 115rem !important;
 		}
 		&__top-image{
 			text-align: right;
@@ -861,7 +849,7 @@
 			}
 			@include media-max(sm){
 				padding-top: unset;
-				padding-bottom: 5rem;
+				padding-bottom: 15rem;
 			}
 		}
 		
@@ -872,10 +860,9 @@
 	}
 	.story{
 		@include media-max(ipadmini){
-			margin: 5vw 0;
+			margin: 10vw 0;
 		}
 		@include media-max(sm){
-			margin: unset;
 			padding-top: 10vw;
 		}
 		&__content{

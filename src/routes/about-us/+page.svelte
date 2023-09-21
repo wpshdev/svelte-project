@@ -53,7 +53,7 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading mvw-10" in:slowDownSection id="about-heading-section">
+<section class="mw-1000 text-center about-heading mvw-10" in:slowDownSection id="about-heading-section" >
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1" gsap-start="top center">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
@@ -61,7 +61,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details mvw-10" in:slowDownSection id="cd-section1">
+<section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -84,7 +84,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details mvw-10" in:slowDownSection id="cd-section2">
+<section class="contractor-details" in:slowDownSection id="cd-section2" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <Row>
@@ -105,7 +105,7 @@
         </Container> 
     <!-- </Animate>   -->
 </section>
-<section class="contractor-details mvw-10" in:slowDownSection id="cd-section3">
+<section class="contractor-details" in:slowDownSection id="cd-section3" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -131,7 +131,7 @@
 <section class="mx-8 remodel" in:fly id="remodel-img-section" gsap-y="20">
     <div class="remodel__bgimage">
         {#if about.Section4image.data}
-        <img class="image-scale-up" in:scaleUp id="remodel-img" src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
+        <img class="image-scale-up" in:scaleUp id="remodel-img" gsap-duration="2" src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
         {/if}
         <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
     </div>  
@@ -164,7 +164,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="sets-parts">
+<section class="sets-parts" in:slowDownSection id="sp-section1" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <Row>
@@ -181,7 +181,9 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)}px, 0)`} -->
                         {#if about.Section6image.data}
-                        <img in:fly id="sp-img1" gsap-y="30" gsap-duration="2" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
+                        <div class="imgcont">
+                            <img in:fly id="sp-img1" gsap-y="30" gsap-duration="2" gsap-start="top 70%" src="{about.Section6image.data.attributes.formats.large.url ? url+about.Section6image.data.attributes.formats.large.url : url+about.Section6image.data.attributes.url}" alt="{about.Section6subheading}" class="w-100" width="{about.Section6image.data.attributes.width}" height="{about.Section6image.data.attributes.height}">
+                        </div>
                         {/if}
                     </div>
                 </Col>
@@ -189,7 +191,7 @@
         </Container>  
     <!-- </Animate> -->
 </section>
-<section class="sets-parts"> 
+<section class="sets-parts"  in:slowDownSection id="sp-section2" gsap-start="top"> 
     <!-- <Animate> -->
         <Container class="mx-10">
             <Row class="sets-parts__row">
@@ -197,7 +199,9 @@
                     <div class="sets-parts__mr-r">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.15)+450}px, 0)`} -->
                         {#if about.Section7image.data}
-                        <img in:fly gsap-y="30" gsap-duration="2" id="sp-img2" src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
+                        <div class="imgcont">
+                            <img in:fly gsap-y="30" gsap-duration="2" id="sp-img2" gsap-start="top 70%"  src="{about.Section7image.data.attributes.formats.large.url ? url+about.Section7image.data.attributes.formats.large.url : url+about.Section7image.data.attributes.url}" alt="{about.Section7heading}" class="w-100" width="{about.Section7image.data.attributes.width}" height="{about.Section7image.data.attributes.height}">
+                        </div>
                         {/if}
                     </div>
                 </Col>
@@ -211,7 +215,7 @@
         </Container> 
     <!-- </Animate> -->
 </section>
-<section class="sets-parts">
+<section class="sets-parts"  in:slowDownSection id="sp-section3" gsap-start="top">
     <!-- <Animate> -->
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
@@ -225,7 +229,9 @@
                     <div class="sets-parts__mr-l">
                         <!-- style:transform={`translate3d(0, ${(scroll * -0.1)+500}px, 0)`} -->
                         {#if about.Section8image.data}
-                        <img in:fly gsap-y="30" gsap-duration="2" id="sp-img3" src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
+                        <div class="imgcont">
+                            <img in:fly gsap-y="30" gsap-duration="2" id="sp-img3"  gsap-start="top 70%"  src="{about.Section8image.data.attributes.formats.large.url ? url+about.Section8image.data.attributes.formats.large.url : url+about.Section8image.data.attributes.url}" alt="{about.Section8heading}" class="w-100" width="{about.Section8image.data.attributes.width}" height="{about.Section8image.data.attributes.height}">
+                        </div>
                         {/if}
                     </div>
                 </Col>
@@ -361,7 +367,7 @@
         }
     }
     .contractor-details {
-        margin: 5vw 0;
+        // margin: 5vw 0;
         :global(.row) {
             justify-content: center;
             gap: 3rem;
@@ -440,12 +446,12 @@
         }
     }
     .sets-parts{
-        min-height: 100vh;
-		display: flex;
-		align-items: center;
-		@include media-max(ipadmini){
-			min-height: unset;
-		}
+        // min-height: 100vh;
+		// display: flex;
+		// align-items: center;
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+		// }
         h2{
             color:$darkgrey-color;
             justify-content: center;
@@ -528,6 +534,7 @@
 				height: auto;
 			}
         }
+
     } 
     @include media-max(sm){ 
         .mr-t {
