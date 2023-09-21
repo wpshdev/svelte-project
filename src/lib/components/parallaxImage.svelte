@@ -26,7 +26,7 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
     // Define the parallax animation
     tl.to(parallaxImage, {
-      y: -300, // Adjust this value for the parallax effect intensity
+      y: -350, // Adjust this value for the parallax effect intensity
       ease: "none", // Linear motion
     });
 
@@ -65,23 +65,28 @@ style="--height: {imageHeight}vh">
   .parallax-container {
     overflow: hidden;
     height: var(--height);
+    object-fit: cover;
+    object-position: center;
     /* position: relative; */
     @include media-max(default){
       height: 60vh;
-    }	
+    }
   }
 
   .parallax-img {
     width: 100%;
     height: auto;
+    min-width: 1000px;
     position: absolute;
     top: 0;
     left: 0;
 
     @include media-max(default){
-      width: auto;
-      height: 100vh;
-    }	
-
+      width: 100%;
+    }
+    @include media-max(sm){
+      left: 50%;
+      margin-left: -500px;
+    }
   }
 </style>

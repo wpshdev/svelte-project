@@ -183,6 +183,11 @@
 
 
 <style lang="scss">
+    .slides{
+        :global(div){
+            min-width:300px;
+        }
+    }
 .carousel {
     position: relative;
     width: 100%;
@@ -274,11 +279,9 @@
     }    
     @include media-max(ipadmini){
       height: 50vh;
-      width: 80%;      
     }   
     @include media-max(sm){
       height: 50vh;
-      width: 80%;      
     }   
     &__text{
           background-color: $secondary-color;
