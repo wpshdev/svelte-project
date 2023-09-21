@@ -11,31 +11,30 @@
     export let btnUrl;
     export let featuredProjects;
     
-    let boxes = featuredProjects.data;
-    console.log(boxes);
         
     function nextslide() {
-
-    //   const firstBox = boxes.shift();
-    //   boxes.push(firstBox);
-  
-    //     const container = document.querySelector('.slider-container');
-    //     container.classList.add('transition-left');
-  
-    //     setTimeout(() => {
-    //     container.classList.remove('transition-left'); 
-    //     container.innerHTML = '';
-    //     boxes.forEach(box => {
-    //       const div = document.createElement('div');
-    //       div.classList.add('box');
-    //       console.log(box);
-    //       div.textContent = box;
-    //       container.appendChild(div);
-    //     });
-    //   }, 500);
+        const container = document.querySelector('.slider-container');
+        container.classList.add('transition-left');
+        setTimeout(() => {
+            container.classList.remove('transition-left');
+            const firstDiv = container.firstElementChild; // Get the first div element
+            container.appendChild(firstDiv);
+        }, 500);
     }
   
     function prevslide() {
+        const container = document.querySelector('.slider-container');
+        container.classList.add('transition-left-no-dur');
+        const lastDiv = container.lastElementChild; // Get the first div element
+        container.insertBefore(lastDiv, container?.firstElementChild);
+        
+        setTimeout(() => {
+            container.classList.add('transition-right');
+        }, 1000);
+        setTimeout(() => {
+            container.classList.remove('transition-left-no-dur');
+            container.classList.remove('transition-right');
+        }, 3000);
     //   const firstBox = boxes.pop();
     //   boxes.unshift(firstBox);
   
@@ -95,13 +94,13 @@
       {/if} -->
     </div>
   </Col>
-<Col md=9 style="overflow: hidden;padding-left:0px;">
-<div class="carousel">
+<Col md=9 style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
+<div class="carousel" style="position:absolute;left:0;top:0;">
 	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
             <div class="slider-container" draggable="true">
             <!-- on:dragstart={handleMouseDown}
             on:dragend={handleMouseUp}> -->
-            {#each boxes as project, index}
+            {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
               <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">
                 {#if project.attributes.featuredImage.data != null}
@@ -150,7 +149,7 @@
 <style lang="scss">
   :global(.box) {
     width: 400px;
-    height: 520px;
+    height: 32rem;
     white-space: nowrap; /* Prevent text from wrapping */
     text-overflow: ellipsis; /* Show ellipsis (...) if content overflows */
   }
@@ -232,7 +231,7 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 100%;
+    width: 2000px;
     transition-property: transform; /* Specify the property to transition */
     transition-timing-function: ease-in-out;
     position: relative;
@@ -240,8 +239,7 @@
   white-space: nowrap;
   &__carousel-cell {
     max-width: 25rem;
-    position: relative;   
-    height: auto;
+    position: relative;
     margin: 0 0.5rem;
     box-sizing: border-box;
     height: 32rem;
