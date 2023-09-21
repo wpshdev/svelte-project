@@ -453,7 +453,7 @@ export function slowDownSection(node) {
 
     const containerHeight = container.offsetHeight;
 
-    if(window.innerWidth <= 768) { // 768 below
+    if(window.innerWidth <= 1024) { // 1024 below
         parentHeight = containerHeight * 2;
     } else { // desktop
         parentHeight = containerHeight * 2.3;
@@ -465,7 +465,7 @@ export function slowDownSection(node) {
     gsap.to(container, {
       y: () => {
 
-        if(window.innerWidth <= 768) { // 768 below
+        if(window.innerWidth <= 1024) { // 1024 below
             direction = scrollY > previousScrollY ? -0.7 : 0.7;
         } else { // desktop
             direction = scrollY > previousScrollY ? -1 : 1;
@@ -525,7 +525,7 @@ export function fly2(node) {
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : "top bottom";
 
     // Fly2 animation
-    mm.add("(min-width: 768px)", () => {
+    mm.add("(min-width: 769px)", () => {
         gsap.to('#' + targetElementID, {
             yPercent: y, 
             ease: "none", 
@@ -538,7 +538,7 @@ export function fly2(node) {
         });
     });
 
-    mm.add("(max-width: 767px)", () => { // different animation
+    mm.add("(max-width: 768px)", () => { // different animation
         targetElement.style.opacity = 0;
         ScrollTrigger.create({
             trigger: '#' + targetElementID,
@@ -559,7 +559,7 @@ export function fly2(node) {
                     {
                         opacity: 1,
                         yPercent: 0,
-                        duration: 1,
+                        duration: 2,
                     }
                 );
             }, 

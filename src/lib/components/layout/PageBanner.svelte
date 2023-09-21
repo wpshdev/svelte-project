@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Container, Row, Col } from "sveltestrap";
-	import { onMount } from "svelte";
-	import { gsap } from "gsap/dist/gsap";
+	// import { onMount } from "svelte";
+	// import { gsap } from "gsap/dist/gsap";
 	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
     export let banner;
 	export let bannerMobile;
@@ -10,7 +10,7 @@
     export let subTitle;
     export let extraClass;
 	let pageBanner = banner;
-	let innerWidth;
+	// let innerWidth;
 	let pageBannerheight = 60;
 	// $: {
 	// 	if(innerWidth < 768 && bannerMobile){
