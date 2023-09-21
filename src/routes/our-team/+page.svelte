@@ -7,7 +7,7 @@
     import Contactform from "$lib/components/layout/Contactform.svelte";
     import Modal from "$lib/components/layout/Modal.svelte";
     // import { fade, fly } from 'svelte/transition';
-    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fadeIn, slide, slowDownSection } from '$lib/GsapAnimation.js';
 
 	export let data;
 	let domain = "https://strapi.ulfbuilt.com:1337";
@@ -39,7 +39,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large_x2.url ? data.data.attributes.Cover.data.attributes.formats.large_x2.url : data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
-<section class="our-team">
+<section class="our-team mvw-10" in:slowDownSection id="our-team">
     <!-- <Animate> -->
         <Container>
             <Row>
@@ -66,8 +66,8 @@
                     <div>
                         <img in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                         <div class="tm-box wtc">
-                            <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5" gsap-start="top center">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
-                            <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5" gsap-start="top center">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
+                            <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
+                            <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
                         </div>
                     </div>
                 </Col>
@@ -78,7 +78,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="paragraph1" in:fadeIn id="team_paragraph" gsap-duration="2" gsap-start="top center">
+<section class="paragraph1 mvw-10" in:slowDownSection id="paragraph1">
     <!-- <Animate> -->
         <Container>
             <h4>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
@@ -136,7 +136,7 @@
         </Row>
     </Container>
 </section>
-<section class="ourteam5" in:fadeIn id="team_paragraph1" gsap-duration="2" gsap-start="top center">
+<section class="ourteam5 mvw-10" in:slowDownSection id="ourteam5">
    <!-- <Animate> -->
     <Container>
         <div >
@@ -151,21 +151,21 @@
   <Contactform/>
 <!-- </Animate> -->
 <style lang="scss">
-    section{
-        margin: 10rem 0;
-            @include media-max(sm){
-                margin: 5rem 0;
-            }
-    }
+    // section{
+    //     margin: 10rem 0;
+    //         @include media-max(sm){
+    //             margin: 5rem 0;
+    //         }
+    // }
     .our-team{
-        margin-top: 5rem;
-        min-height: 80rem;
-		display: flex;
-		align-items: center;
-        justify-content: center;
-		@include media-max(ipadmini){
-			min-height: unset;
-        }
+        // margin-top: 5rem;
+        // min-height: 80rem;
+		// display: flex;
+		// align-items: center;
+        // justify-content: center;
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+        // }
         #team_heading {
             justify-content: center;
         }
@@ -295,13 +295,13 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @include media-max(ipadmini){
-        min-height: unset;
-    }
+    // min-height: 100vh;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // @include media-max(ipadmini){
+    //     min-height: unset;
+    // }
     h4{
         font-family: $primary-font;
         font-weight: 400;
@@ -314,13 +314,13 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @include media-max(ipadmini){
-        min-height: unset;
-    }
+    // min-height: 100vh;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // @include media-max(ipadmini){
+    //     min-height: unset;
+    // }
     h4{
         font-family: $primary-font;
         font-weight: 400;

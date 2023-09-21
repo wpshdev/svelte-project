@@ -15,7 +15,8 @@
 	// import contactBG from "$lib/img/ContactBG.jpg";
 	import noFeatured from "$lib/img/blog-empty.svg"
 	// import ImageLoader from "$lib/components/imageLazy/ImageLoader.svelte";
-	import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
+	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 
 	export let data;
 	const domain = "https://strapi.ulfbuilt.com:1337"
@@ -121,7 +122,11 @@
 	<!-- <Animate> -->
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
-				<section in:fadeIn id="single-portfolio-bannerOnly{index}" gsap-duration="1.5"  gsap-delay="1.5"  class="fireplace section--bannerOnly" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
+				<section in:scaleUp id="single-portfolio-bannerOnly{index}" gsap-start="top center" gsap-duration="2" class="fireplace section--bannerOnly image-scale-up" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
+				<!-- <div class="parallax-wrapper">
+					<ParallaxImage imageHeight="100" imageUrl="{domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url}">
+					</ParallaxImage>
+				</div> -->
 				{/if}
 				<Testimonial testimonial="{bannerQuote.quote}" />
 		{/each}
@@ -134,7 +139,7 @@
 			<Row>
 				<Col class="text-center" md={{ size: 8, offset: 2 }} xs="12">
 					<div class="portfolio-cta__content">
-						<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-cta-heading">{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
+						<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-cta-heading">{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
 						<div in:fly id="single-portfolio-cta-cont" gsap-duration="1.2"  gsap-y="50" >
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
 						</div>
@@ -158,7 +163,7 @@
 				</Col>	
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
-						<div class="related__article" in:fadeIn id="single-portfolio-related-image" gsap-duration="1.5">
+						<div class="related__article"  in:fly id="related-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center">
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								{#if rPortfolio.attributes.featuredImage.data != null}
 								<img src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />
@@ -473,6 +478,11 @@ section{
         }	
 	}
 }
+
+// .parallax-wrapper {
+// 	position: relative;
+// 	overflow: hidden;
+// }
 
 // .contact{
 // 	padding: 10rem 0;

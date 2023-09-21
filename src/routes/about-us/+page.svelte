@@ -53,11 +53,11 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading mvw-10" in:slowDownSection id="about-heading-section" >
+<section class="mw-1000 text-center about-heading" >
     <!-- <Animate> -->
         <Container>
-                <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1" gsap-start="top center">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-duration="2"  gsap-y="100" gsap-start="top center">{@html about.abouttext ? about.abouttext : ''}</p>
+                <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
+                <p in:fly id="about_heading_cont" gsap-duration="2"  gsap-y="80">{@html about.abouttext ? about.abouttext : ''}</p>
         </Container>
     <!-- </Animate> -->
 </section>
@@ -273,6 +273,16 @@
         background-position: top !important;
     } 
     .about-heading{
+        min-height: 100vh;
+		display: flex;
+		align-items: center;
+        @include media-max(default){
+            min-height: 50vh;
+        }
+		@include media-max(ipadmini){
+            min-height: unset;
+        }
+			
         h2 {
             color:$secondary-color;
             justify-content: center;

@@ -3,8 +3,9 @@
     import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import { Col, Container, Row } from "sveltestrap";
+    import ParallaxImage from "$lib/components/parallaxImage.svelte";
     // import { fade, fly } from 'svelte/transition';
-    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
     const domain = "https://strapi.ulfbuilt.com:1337";
     export let data;
     const processData = data.data.attributes;
@@ -29,8 +30,8 @@
                 <Row>
                     <Col class="md-12 text-center">
                         <div class="our-process__heading">
-                            <h2 class="text-animate secondary-font" in:textAnimate id="process_title" gsap-duration="1">{processData.section1heading ? processData.section1heading : ''}</h2>
-                            <div in:fadeIn id="process_sub" gsap-duration="1" gsap-delay="0.5">
+                            <h2 class="text-animate secondary-font" in:textAnimate id="process_title" gsap-duration="1" gsap-start="top center">{processData.section1heading ? processData.section1heading : ''}</h2>
+                            <div in:fadeIn id="process_sub" gsap-duration="1" gsap-delay="0.5" gsap-start="top center">
                                 {@html processData.section1text ? processData.section1text : ''}
                             </div>
                         </div>
@@ -42,7 +43,7 @@
                     <Col class="md-12">
                         <!-- <Animate> -->
                             {#if processData.section2image.data}
-                            <img in:fadeIn id="process_img" gsap-duration="1.5" src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
+                            <img in:fadeIn id="process_img" gsap-duration="1.5" gsap-start="top center"  src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
                             srcset="{domain}{processData.section2image.data.attributes.url} 330w,
                                     {domain}{processData.section2image.data.attributes.url} 660w,
                                     {domain}{processData.section2image.data.attributes.url} 990w"
@@ -52,9 +53,11 @@
                             width="330"
                             height="170"
                             alt="{processData.section2image.data.attributes.alternativeText}"/>
+                                <!-- <ParallaxImage imageHeight="60" imageUrl="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}">
+                                </ParallaxImage> -->
                             {/if}
                             <div class="our-process__paragraph mx-auto">
-                                <div in:fly id="process_content" gsap-duration="1" gsap-y="20">{@html processData.section2text ? processData.section2text : ''}</div>
+                                <div in:fly id="process_content" gsap-start="top center" gsap-duration="1" gsap-y="50">{@html processData.section2text ? processData.section2text : ''}</div>
                             </div>
                         <!-- </Animate> -->
                     </Col>            
@@ -68,7 +71,7 @@
         <Container>
             <Row>
                 <Col md="{{ size: '6', offset: 3 }}" class="text-center">
-                    <h3 in:fly id="ph_heading" gsap-duration="1.5" gsap-y="30">
+                    <h3 in:fly id="ph_heading" gsap-duration="1.5" gsap-y="50">
                         {@html processData.section3heading ? processData.section3heading : ''}                  
                     </h3>
                 </Col>
@@ -78,7 +81,12 @@
 </section>
 
 <!-- <Animate> -->
-<section class="phase1-img" in:fadeIn id="phase1_img1" gsap-duration="2" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section> 
+<!-- <section class="phase1-img" in:fadeIn id="phase1_img1" gsap-duration="2" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section>  -->
+
+<div class="parallax-wrapper">
+<ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url}">
+</ParallaxImage> 
+</div>
 <!-- </Animate> -->
 
 <section class="phase">
@@ -104,7 +112,7 @@
                 </div>
             </div>
             <div class="phase__grid__item">
-                <div in:fly id="phase1_cont1" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase1_cont1" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section4righttext ? processData.section4righttext : ''}
                 </div>
             </div>     
@@ -116,7 +124,7 @@
                 </div>
             </div>  
             <div class="phase__grid__item last-even">
-                <div in:fly id="phase1_cont2" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase1_cont2" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section5righttext ? processData.section5righttext : ''}
                 </div>
             </div>                                 
@@ -125,8 +133,12 @@
 </section>
 
 <!-- <Animate> -->
-    <section class="phase__banner" in:fadeIn id="phase1_img2" gsap-duration="2" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
+    <section class="phase__banner image-scale-up" in:scaleUp id="phase1_img2" gsap-duration="2" style="--phs1Banner: url({domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url })">
     </section>  
+    <!-- <div class="parallax-wrapper">
+        <ParallaxImage imageHeight="100" imageUrl="{domain}{processData.section6image.data.attributes.formats.large_x2 ? processData.section6image.data.attributes.formats.large_x2.url : processData.section6image.data.attributes.url }">
+        </ParallaxImage> 
+    </div> -->
 <!-- </Animate> -->
    
 <section class="phase no-margin-top">
@@ -140,7 +152,7 @@
                 </div>
             </div>
             <div class="phase__grid__item">
-                <div in:fly id="phase1_cont3" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase1_cont3" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section7righttext ? processData.section7righttext : ''}
                 </div>
             </div>     
@@ -152,7 +164,7 @@
                 </div>
             </div>  
             <div class="phase__grid__item last-even">
-                <div in:fly id="phase1_cont4" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase1_cont4" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section8righttext ? processData.section8righttext : ''}
                 </div>
             </div>                                 
@@ -161,8 +173,12 @@
 </section>
 
 <!-- <Animate> -->
-    <section class="phase-banner-separator" in:fadeIn id="phase_separator" gsap-duration="2" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url })">
+    <section class="phase-banner-separator image-scale-up" in:scaleUp id="phase_separator" gsap-duration="2" style="--phsSeparator: url({domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url })">
     </section>
+    <!-- <div class="parallax-wrapper">
+        <ParallaxImage imageHeight="100" imageUrl="{domain}{processData.section9image.data.attributes.formats.large ? processData.section9image.data.attributes.formats.large.url : processData.section9image.data.attributes.url }">
+        </ParallaxImage> 
+    </div> -->
 <!-- </Animate> -->
 
 <section class="phase-banner-paragraph">
@@ -180,7 +196,11 @@
 </section>
 
 <!-- <Animate> -->
-    <section class="phase2-img" in:fadeIn id="phase2_img1" gsap-duration="2" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section> 
+    <!-- <section class="phase2-img" in:fadeIn id="phase2_img1" gsap-duration="2" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section>  -->
+    <div class="parallax-wrapper">
+        <ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url }">
+        </ParallaxImage> 
+    </div>
 <!-- </Animate> -->
 
 <section class="phase">
@@ -206,7 +226,7 @@
                 </div>
             </div>
             <div class="phase__grid__item">
-                <div in:fly id="phase2_cont1" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase2_cont1" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section11righttext ? processData.section11righttext : ''}
                 </div>
             </div>     
@@ -218,7 +238,7 @@
                 </div>
             </div>  
             <div class="phase__grid__item">
-                <div in:fly id="phase2_cont2" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase2_cont2" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section12righttext ? processData.section12righttext : ''}
                 </div>
             </div>  
@@ -230,7 +250,7 @@
                 </div>
             </div>  
             <div class="phase__grid__item last-even">
-                <div in:fly id="phase2_cont3" gsap-duration="1" gsap-delay="0.5">
+                <div in:fly id="phase2_cont3" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section13righttext ? processData.section13righttext : ''}
                 </div>
             </div>                                            
@@ -270,8 +290,12 @@
         </div>     
     </Animate> -->
     <!-- <Animate> -->
-        <div class="phase__banner banner3" in:fadeIn id="phase_separator1" gsap-duration="2" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url })">
+        <div class="phase__banner banner3 image-scale-up" in:scaleUp id="phase_separator1" gsap-duration="2" style="--phs2Banner2: url({domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url })">
         </div>   
+        <!-- <div class="parallax-wrapper">
+            <ParallaxImage imageHeight="100" imageUrl="{domain}{processData.section18image.data.attributes.formats.large ? processData.section18image.data.attributes.formats.large.url : processData.section18image.data.attributes.url }">
+            </ParallaxImage> 
+        </div> -->
     <!-- </Animate> -->
     <!-- <Animate>
         <div class="phase__grid scnd-row">
@@ -311,17 +335,17 @@
     }
     .our-process{
         // min-height: 40vh;
-        min-height: 80rem;
-		display: flex;
-		align-items: center;
-        justify-content: center;
-        padding-top: 10rem;
-        padding-bottom: 10rem;
-		@include media-max(ipadmini){
-			min-height: unset;
-            padding-top: unset;
-            padding-bottom: unset;
-        }
+        // min-height: 80rem;
+		// display: flex;
+		// align-items: center;
+        // justify-content: center;
+        // padding-top: 10rem;
+        // padding-bottom: 10rem;
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+        //     padding-top: unset;
+        //     padding-bottom: unset;
+        // }
         &__heading{
             margin-bottom: 7vh;
             :global(p span){
@@ -617,5 +641,19 @@
             height: 30vh;
         }
     }
+
+    .parallax-wrapper {
+        position: relative;
+        overflow: hidden;
+
+        @include media-max(ipadmini){
+            :global(.parallax-container) {
+                height: 25vh !important;
+            }
+        }
+
+    }
+
+    
     
 </style>

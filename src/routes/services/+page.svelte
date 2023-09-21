@@ -12,7 +12,7 @@
     let featuredProjects = data.portfolios.data
     import noFeatured from "$lib/img/blog-empty.svg"
     let fallback = data.fallback.data.attributes.fallbackImage.data;
-    import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 
     // export let pdata;
     // export let featuredProjects;
@@ -46,8 +46,8 @@
 </svelte:head>
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 
-<section class="service-b">
-    <Animate>
+<section class="service-b mvw-10" in:slowDownSection id="service-b">
+    <!-- <Animate> -->
         <Container>
             <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_s1_title" gsap-duration="1">{page.section1heading ? page.section1heading : ''}</h2>
                 <Row>
@@ -56,11 +56,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                         <div class="service-b__service-box__service-box-inner__service-icon">
-                                            <img in:fadeIn gsap-start="top center" id="about_icon1" gsap-duration="1" src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
+                                            <img in:fadeIn gsap-start="center top" id="about_icon1" gsap-duration="2" src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
                                         </div>
-                                    <h4 in:slide gsap-start="top center" id="about_title_icon1" gsap-duration="1">{page.section1item1heading ? page.section1item1heading : ''}</h4>
+                                    <h4 in:slide gsap-start="center top" id="about_title_icon1" gsap-duration="2">{page.section1item1heading ? page.section1item1heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="top center" id="about_content_icon1" gsap-duration="1">{page.section1item1text ? page.section1item1text : ''}</p>
+                                <p in:fadeIn gsap-start="center top" id="about_content_icon1" gsap-duration="2">{page.section1item1text ? page.section1item1text : ''}</p>
                             </div>
                         <!-- </Animate> -->
                     </Col>
@@ -69,11 +69,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img in:fadeIn gsap-start="top center" id="about_icon2" gsap-duration="1" src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
+                                        <img in:fadeIn gsap-start="center top" id="about_icon2" gsap-duration="2" src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="top center" id="about_title_icon2" gsap-duration="1">{page.section1item2heading ? page.section1item2heading : ''}</h4>
+                                    <h4 in:slide gsap-start="center top" id="about_title_icon2" gsap-duration="2">{page.section1item2heading ? page.section1item2heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="top center" id="about_content_icon2" gsap-duration="1">{page.section1item2text ? page.section1item2text : ''}</p>
+                                <p in:fadeIn gsap-start="center top" id="about_content_icon2" gsap-duration="2">{page.section1item2text ? page.section1item2text : ''}</p>
                             </div>
                         <!-- </Animate> -->
                     </Col>
@@ -82,11 +82,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img in:fadeIn gsap-start="top center" id="about_icon3" gsap-duration="1" src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
+                                        <img in:fadeIn gsap-start="center top" id="about_icon3" gsap-duration="2" src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
                                     </div>
-                                    <h4 in:slide gsap-start="top center" id="about_title_icon3" gsap-duration="1">{page.section1item3heading ? page.section1item3heading : ''}</h4>
+                                    <h4 in:slide gsap-start="center top" id="about_title_icon3" gsap-duration="2">{page.section1item3heading ? page.section1item3heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="top center" id="about_content_icon3" gsap-duration="1">{page.section1item3text ? page.section1item3text : ''}</p>
+                                <p in:fadeIn gsap-start="center top" id="about_content_icon3" gsap-duration="2">{page.section1item3text ? page.section1item3text : ''}</p>
                             </div>
                         <!-- </Animate> -->
                     </Col>
@@ -95,11 +95,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img in:fadeIn gsap-start="top center" id="about_icon4" gsap-duration="1" src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
+                                        <img in:fadeIn gsap-start="center top" id="about_icon4" gsap-duration="2" src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="top center" id="about_title_icon4" gsap-duration="1">{page.section1item4heading ? page.section1item4heading : ''}</h4>
+                                    <h4 in:slide gsap-start="center top" id="about_title_icon4" gsap-duration="2">{page.section1item4heading ? page.section1item4heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="top center" id="about_content_icon4" gsap-duration="1">{page.section1item4text ? page.section1item4text : ''}</p>
+                                <p in:fadeIn gsap-start="center top" id="about_content_icon4" gsap-duration="2">{page.section1item4text ? page.section1item4text : ''}</p>
                             </div>
                         <!-- </Animate> -->
                     </Col>
@@ -108,11 +108,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img in:fadeIn gsap-start="top center" id="about_icon5" gsap-duration="1" src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
+                                        <img in:fadeIn gsap-start="center top" id="about_icon5" gsap-duration="2" src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="top center" id="about_title_icon5" gsap-duration="1">{page.section1item5heading ? page.section1item5heading : ''}</h4>
+                                    <h4 in:slide gsap-start="center top" id="about_title_icon5" gsap-duration="2">{page.section1item5heading ? page.section1item5heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="top center" id="about_content_icon5" gsap-duration="1">{page.section1item5text ? page.section1item5text : ''}</p>
+                                <p in:fadeIn gsap-start="center top" id="about_content_icon5" gsap-duration="2">{page.section1item5text ? page.section1item5text : ''}</p>
                             </div>
                         <!-- </Animate> -->
                     </Col>
@@ -121,19 +121,19 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img in:fadeIn gsap-start="top center" id="about_icon6" gsap-duration="1" src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
+                                        <img in:fadeIn gsap-start="center top" id="about_icon6" gsap-duration="2" src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="top center" id="about_title_icon6" gsap-duration="1">{page.section1item6heading ? page.section1item6heading : ''}</h4>
+                                    <h4 in:slide gsap-start="center top" id="about_title_icon6" gsap-duration="2">{page.section1item6heading ? page.section1item6heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="top center" id="about_content_icon6" gsap-duration="1">{page.section1item6text ? page.section1item6text : ''}</p>
+                                <p in:fadeIn gsap-start="center top" id="about_content_icon6" gsap-duration="2">{page.section1item6text ? page.section1item6text : ''}</p>
                             </div>
                         <!-- </Animate> -->
                     </Col>
                 </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </section>
-<section class="mx-10 sets-us-apart">
+<section class="mx-10 sets-us-apart" in:slowDownSection id="sp-section1" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_sua_title" gsap-duration="1">{page.section2mainheading ? page.section2mainheading : ''}</h2>
@@ -150,20 +150,20 @@
                     </Col>
                     <Col md="6" class="imageCont">
                         {#if page.section2image.data}
-                        <img in:fly id="about_sua_img1" gsap-duration="2" gsap-y="30" gsap-delay="0.5" src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
+                        <img in:fly id="about_sua_img1" gsap-duration="3" gsap-y="50" gsap-delay="0.5" src="{url}{page.section2image.data.attributes.formats.large.url ? page.section2image.data.attributes.formats.large.url : page.section2image.data.attributes.url}" alt="{page.section2heading}" class="w-100" width="{page.section2image.data.attributes.width}" height="{page.section2image.data.attributes.height}">
                         {/if}
                     </Col>
                 </Row>
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="mx-10 sets-us-apart">
+<section class="mx-10 sets-us-apart" in:slowDownSection id="sp-section2" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <Row noGutters class="justify-content-center flex-md-row flex-column-reverse sets-us-apart__row">
                 <Col md="6" class="imageCont">
                     {#if page.section3image.data}
-                    <img in:fly id="about_sua_img2" gsap-duration="2" gsap-y="30" gsap-delay="0.5" src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
+                    <img in:fly id="about_sua_img2" gsap-duration="3" gsap-y="50" gsap-delay="0.5" src="{url}{page.section3image.data.attributes.formats.large.url ? page.section3image.data.attributes.formats.large.url : page.section3image.data.attributes.url}" alt="{page.section3heading}" class="w-100">
                     {/if}
                 </Col>
                 <Col md="6" class="sets-us-apart__content">
@@ -181,7 +181,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="mx-10 sets-us-apart">
+<section class="mx-10 sets-us-apart" in:slowDownSection id="sp-section3" gsap-start="top">
     <!-- <Animate> -->
         <Container>
             <Row noGutters class="justify-content-center sets-us-apart__row">
@@ -198,7 +198,7 @@
                 </Col>
                 <Col md="6" class="imageCont">
                     {#if page.section4image.data}
-                    <img in:fly id="about_sua_img3" gsap-duration="2" gsap-delay="0.5" gsap-y="30" src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
+                    <img in:fly id="about_sua_img3" gsap-duration="3" gsap-delay="0.5" gsap-y="50" src="{url}{page.section4image.data.attributes.formats.large.url ? page.section4image.data.attributes.formats.large.url : page.section4image.data.attributes.url}" alt="{page.section4heading}" class="w-100">
                     {/if}
                 </Col>
             </Row>
@@ -208,15 +208,15 @@
 <section class="height-100vh fullwidth" in:fly id="about_banneronly_img_section" gsap-y="10" >
     <!-- <Animate> -->
         {#if page.section5image.data}
-        <img in:scaleUp id="about_banneronly_img" gsap-start="top center" gsap-duration="1.5" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100 image-scale-up">
+        <img in:scaleUp id="about_banneronly_img" gsap-duration="1.5" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100 image-scale-up">
         {/if}
     <!-- </Animate> -->
 </section>
 <section class="reimagine">
     <!-- <Animate> -->
         <Container>
-            <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" gsap-start="top top" >{page.section6heading ? page.section6heading : ''}</h2>
-            <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-delay="0.5" gsap-y="20" gsap-start="top top"> {@html page.section6text ? page.section6text : ''}</p>
+            <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" gsap-start="top 20%">{page.section6heading ? page.section6heading : ''}</h2>
+            <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-y="20" gsap-start="top 20%"> {@html page.section6text ? page.section6text : ''}</p>
             <div class="text-right" ><a class="btn btn-secondary" href="{page.section6btnUrl ? page.section6btnUrl : '#'}">{page.section6btn ? page.section6btn : 'Button'}</a></div>
         </Container>
     <!-- </Animate> -->
@@ -232,7 +232,7 @@
             <!-- </Animate>		 -->
             {#each featuredProjects.sort(() => 0.5 - Math.random()).slice(0, 2) as featuredProject, index}
                 <Col md="6">
-                    <div class="explore__article">
+                    <div class="explore__article" in:fly id="related-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center">
                         <a href="portfolio/{featuredProject.attributes.slug}" data-sveltekit-reload class="zoomImg">
                             <!-- <img src="{url}{featuredProject.attributes.featuredImage.data.attributes.url}" alt="{featuredProject.attributes.featuredImage.data.attributes.alternativeText}"> -->
                             {#if featuredProject.attributes.featuredImage.data != null}
@@ -269,13 +269,13 @@
         background-position: center !important;
     }
     .service-b{
-        min-height: 75rem;
-		display: flex;
-		align-items: center;
-        justify-content: center;
-		@include media-max(ipadmini){
-			min-height: unset;
-		}
+        // min-height: 75rem;
+		// display: flex;
+		// align-items: center;
+        // justify-content: center;
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+		// }
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
@@ -424,12 +424,12 @@
         }
     }
     .sets-us-apart {
-        min-height: 60rem;
-		display: flex;
-		align-items: center;
-		@include media-max(ipadmini){
-			min-height: unset;
-        }
+        // min-height: 60rem;
+		// display: flex;
+		// align-items: center;
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+        // }
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
@@ -463,6 +463,14 @@
             //     width: 90% !important;
             // }
         }
+
+        @include media-max(ipadmini){
+            :global(.col-md-6) {
+                width: 100%;
+            }
+        }
+
+        
     }
     :global(.sets-us-apart__row){
         @include media-max(lg){
@@ -526,7 +534,15 @@
             &.txt-center {
                 padding-right: 7rem !important;
             }
-            @include media-between(xs, md){
+            // @include media-between(xs, md){
+            //     &.text-right {
+            //         padding-left: 3rem !important;
+            //     }
+            //     &.txt-center {
+            //         padding-right: 3rem !important;
+            //     }
+            // }
+            @include media-max(sm){ 
                 &.text-right {
                     padding-left: 3rem !important;
                 }

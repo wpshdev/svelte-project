@@ -97,12 +97,12 @@
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
-				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1" gsap-start="top center">
+				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1" >
 					{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
 				</h2>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
-						<ul in:fly id="categories" gsap-duration="1" gsap-start="top center">
+						<ul in:fly id="categories" gsap-duration="1">
 							{#each home.categories.data as heading}
 								<li>
 									<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -466,7 +466,7 @@
 			}
 			&__gallery{
 				min-height: 65vh;
-				@include media-max(ipadmini){
+				@include media-max(default){
 					min-height: 50vh
 				}
 				@include media-max(sm){
@@ -493,8 +493,8 @@
             .masonry-items{
                 color: white;
                 text-align: center;  
-                height: 30rem;
-                @include media-max(ipadmini){
+                height: 65vh;
+                @include media-max(default){
 					height: 50vh;
                 }
                 a{

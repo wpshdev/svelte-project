@@ -12,7 +12,7 @@
     // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
     // import { onMount } from 'svelte';
     import noFeatured from "$lib/img/blog-empty.svg"
-    import { fade } from "svelte/transition";
+    // import { fade } from "svelte/transition";
     import { paginate, LightPaginationNav } from 'svelte-paginate';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
@@ -96,10 +96,10 @@
     <Container>
         <Row>
             <Col class="text-center">
-                <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
+                <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1" gsap-start="top center">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
-                <div class="categories__tabs__heading" in:fly id="portfolio_cat" gsap-delay="0.5" gsap-duration="1.2">
+                <div class="categories__tabs__heading" in:fly id="portfolio_cat" gsap-duration="1.2" gsap-start="top center">
                     <ul>
                         {#each portfolio.masonryGallery.masonryItems.data as heading}
                             <li>
@@ -136,8 +136,7 @@
                                 <div class="container masonry-wrapper">       
                                     {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                         <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                        in:fade="{{ duration: 1000, delay:index * 500}}" 
-                                        out:fade="{{ duration:1000 }}"> 
+                                        in:fly id="masonry-items{index}" gsap-delay={index/3}  gsap-duration="2" gsap-y="10" gsap-start="top center"> 
                                             <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                                 {#if project.attributes.featuredImage.data != null}
                                                     <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
@@ -236,6 +235,7 @@
                 margin: auto;
                 margin-bottom: 2rem;
                 padding-left: 0;	
+                justify-content: center;
                 
                 @include media-max(lg){
                     flex-wrap: nowrap;
