@@ -14,46 +14,34 @@
         
     function nextslide() {
         const container = document.querySelector('.slider-container');
-        container.classList.add('transition-left');
+        container.style.transition = 'transform 0.5s ease-in-out';
+        container.style.transform = 'translateX(-410px)';
         setTimeout(() => {
-            container.classList.remove('transition-left');
             const firstDiv = container.firstElementChild; // Get the first div element
             container.appendChild(firstDiv);
+            container.style.transition = 'none';
+            container.style.transform = 'translateX(0px)';
         }, 500);
+
+
+        // const container = document.querySelector('.slider-container');
+        // container.classList.add('transition-left');
+        // setTimeout(() => {
+        //     container.classList.remove('transition-left');
+        //     const firstDiv = container.firstElementChild; // Get the first div element
+        //     container.appendChild(firstDiv);
+        // }, 500);
     }
-  
     function prevslide() {
         const container = document.querySelector('.slider-container');
-        container.classList.add('transition-left-no-dur');
-        const lastDiv = container.lastElementChild; // Get the first div element
+        container.style.transform = 'translateX(-415px)';
+        container.style.transition = 'none';
+        const lastDiv = container.lastElementChild;
         container.insertBefore(lastDiv, container?.firstElementChild);
-        
         setTimeout(() => {
-            container.classList.add('transition-right');
-        }, 1000);
-        setTimeout(() => {
-            container.classList.remove('transition-left-no-dur');
-            container.classList.remove('transition-right');
-        }, 3000);
-    //   const firstBox = boxes.pop();
-    //   boxes.unshift(firstBox);
-  
-    //   const container = document.querySelector('.slider-container');
-    //   container.classList.add('transition-left-no-dur');
-    //     container.innerHTML = '';
-    //     boxes.forEach(box => {
-    //       const div = document.createElement('div');
-    //       div.classList.add('box');
-    //       div.textContent = box;
-    //       container.appendChild(div);
-    //     });
-    //     setTimeout(() => {
-    //       container.classList.add('transition-right');
-    //     },50);
-    //   setTimeout(() => {
-    //     container.classList.remove('transition-right');
-    //     container.classList.remove('transition-left-no-dur');
-    //   }, 500);
+            container.style.transition = 'transform 0.5s ease-in-out';
+            container.style.transform = 'translateX(0px)';
+        }, 500);
     }
   
 
@@ -97,10 +85,32 @@
 <Col md=9 style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
 <div class="carousel" style="position:absolute;left:0;top:0;">
 	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
-            <div class="slider-container" draggable="true">
+            <div class="slider-container">
             <!-- on:dragstart={handleMouseDown}
             on:dragend={handleMouseUp}> -->
             {#each featuredProjects.data as project, index}
+            <div class="slider-container__carousel-cell" id="carousel-item">
+              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+                {#if project.attributes.featuredImage.data != null}
+                  <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+                {:else}
+                {#await promise}
+                {:then fallback} 
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+                {/await}
+                {/if}
+                <div class="slider-container__carousel-cell__text">
+                  <span>{('0' + (index + 1)).slice(-2)}</span>
+                  {project.attributes.title ? project.attributes.title : ''}
+                  <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    </i>
+                </div>
+              </a>  
+            </div>
+          {/each}
+          {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
               <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">
                 {#if project.attributes.featuredImage.data != null}
@@ -147,12 +157,6 @@
 
 
 <style lang="scss">
-  :global(.box) {
-    width: 400px;
-    height: 32rem;
-    white-space: nowrap; /* Prevent text from wrapping */
-    text-overflow: ellipsis; /* Show ellipsis (...) if content overflows */
-  }
   :global(.transition-left) {
     transform: translateX(-410px) !important; /* Adjust the value as needed */
     transition-duration: 0.5s;
@@ -235,7 +239,8 @@
     transition-property: transform; /* Specify the property to transition */
     transition-timing-function: ease-in-out;
     position: relative;
-
+    cursor: grab;
+    user-drag: none;
   white-space: nowrap;
   &__carousel-cell {
     max-width: 25rem;
