@@ -1,107 +1,64 @@
 <script>
-	import Siema from 'siema'
-	import { onMount, createEventDispatcher } from 'svelte'
     import { textAnimate, slide, fly } from '$lib/GsapAnimation.js';
     import leftar from '$lib/img/left-ar.svg';
     import rightar from '$lib/img/right-ar.svg';
+    import {Col} from 'sveltestrap';
 
-    import {Col} from 'sveltestrap'
-	export let perPage = 3
-	export let loop = true
-	export let autoplay = 0
-	export let duration = 200
-	export let easing = 'ease-in-out'
-	export let startIndex = 0
-	export let draggable = true
-	export let multipleDrag = true	
-	export let dots = false	
-	export let controls = true
-	export let threshold = 20
-	export let rtl = false
-    
-	let currentIndex = startIndex;
-	let siema
-	let controller
-	let timer
-
+    const domain = "https://strapi.ulfbuilt.com:1337"
     export let preHeading; 
     export let heading; 
     export let btnTitle;
     export let btnUrl;
     export let featuredProjects;
-    const domain = "https://strapi.ulfbuilt.com:1337"
-	const dispatch = createEventDispatcher()
-	$: pips = controller ? controller.innerElements : []
-	$: currentPerPage = controller ? controller.perPage : perPage
-	// $: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
-	
-	onMount(() => {
-		controller = new Siema({
-			selector: siema,
-			perPage: typeof perPage === 'object' ? perPage : Number(perPage),
-			loop,
-  			duration,
-  			easing,
-  			startIndex,
-  			draggable,
- 			multipleDrag,
-  			threshold,
-  			rtl,
-			onChange: handleChange
-		})
-		if(autoplay) {
-			// timer = setInterval(right, autoplay);
-		}
-		return () => {
-			autoplay && clearInterval(timer)
-			controller.destroy()
-		}
-	})
-	
-	export function isDotActive (currentIndex, dotIndex) {
-        if (currentIndex < 0) currentIndex = pips.length + currentIndex;
-        return currentIndex >= dotIndex*currentPerPage && currentIndex < (dotIndex*currentPerPage)+currentPerPage
+    
+        
+    function nextslide() {
+        const container = document.querySelector('.slider-container');
+        container.classList.add('transition-left');
+        setTimeout(() => {
+            container.classList.remove('transition-left');
+            const firstDiv = container.firstElementChild; // Get the first div element
+            container.appendChild(firstDiv);
+        }, 500);
     }
-	
-	export function left () {
-		controller.prev()
-	}
-	export function right () {
-		controller.next()
-	}
-	export function go (index) {
-		controller.goTo(index)
-	}
-	export function pause() {
-		clearInterval(timer);
-	}
-	export function resume() {
-		if (autoplay) {
-			// timer = setInterval(right, autoplay);
-		}
-	}
-	function handleChange (event) {
-		currentIndex = controller.currentSlide
-		dispatch('change', {
-			currentSlide: controller.currentSlide,
-			slideCount: controller.innerElements.length
-		} )
-	}
-	function resetInterval(node, condition) {
-		function handleReset(event) {
-			pause();
-			resume();
-		}
-		if(condition) {
-			node.addEventListener('click', handleReset);
-		}
-		
-		return {
-        destroy() {
-            node.removeEventListener('click', handleReset);
-        }
-	    }
+  
+    function prevslide() {
+        const container = document.querySelector('.slider-container');
+        container.classList.add('transition-left-no-dur');
+        const lastDiv = container.lastElementChild; // Get the first div element
+        container.insertBefore(lastDiv, container?.firstElementChild);
+        
+        setTimeout(() => {
+            container.classList.add('transition-right');
+        }, 1000);
+        setTimeout(() => {
+            container.classList.remove('transition-left-no-dur');
+            container.classList.remove('transition-right');
+        }, 3000);
+    //   const firstBox = boxes.pop();
+    //   boxes.unshift(firstBox);
+  
+    //   const container = document.querySelector('.slider-container');
+    //   container.classList.add('transition-left-no-dur');
+    //     container.innerHTML = '';
+    //     boxes.forEach(box => {
+    //       const div = document.createElement('div');
+    //       div.classList.add('box');
+    //       div.textContent = box;
+    //       container.appendChild(div);
+    //     });
+    //     setTimeout(() => {
+    //       container.classList.add('transition-right');
+    //     },50);
+    //   setTimeout(() => {
+    //     container.classList.remove('transition-right');
+    //     container.classList.remove('transition-left-no-dur');
+    //   }, 500);
     }
+  
+
+
+
 </script>
 <Col md="3">
     <div class="slider-caption">
@@ -109,16 +66,16 @@
         <p in:slide id="carousel-preheading" gsap-duration="1.5">{preHeading ? preHeading : ''}</p>
         <h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="carousel-heading">{heading ? heading : ''}</h2>
       </div>
-    {#if controls}
+    <!-- {#if controls} -->
     <div class="left-right">
-        <button class="left" on:click={left}>
+        <button class="left" on:click={prevslide}>
             <img src="{leftar}">
         </button>
-        <button class="right" on:click={right}>
+        <button class="right" on:click={nextslide}>
             <img src="{rightar}">
         </button>
     </div>
-    {/if}
+    <!-- {/if} -->
       <!-- {#if innerWidth > 767}
         <div class="progress-ring-container">
           <svg class="progress-ring" width="110" height="49">
@@ -137,42 +94,49 @@
       {/if} -->
     </div>
   </Col>
-    <!-- {#if controls}
-    <button class="left" >
-        <slot name="left-control"></slot>
-    </button>
-    <button class="right">
-        <slot name="right-control"></slot>
-    </button>
-    {/if} -->
-<Col md=9 style="overflow: hidden;padding-left:0px;">
-<div class="carousel">
-	<div class="slides" bind:this={siema} in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
+<Col md=9 style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
+<div class="carousel" style="position:absolute;left:0;top:0;">
+	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
+            <div class="slider-container" draggable="true">
+            <!-- on:dragstart={handleMouseDown}
+            on:dragend={handleMouseUp}> -->
             {#each featuredProjects.data as project, index}
-              <div class="slider-container__carousel-cell" id="carousel-item">
-                <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
-                  {#if project.attributes.featuredImage.data != null}
-                    <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-                  {:else}
-                  {#await promise}
-                  {:then fallback} 
-                    <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
-                  {/await}
-                  {/if}
-                  <div class="slider-container__carousel-cell__text">
-                    <span>{('0' + (index + 1)).slice(-2)}</span>
-                    {project.attributes.title ? project.attributes.title : ''}
-                    <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                      </i>
-                  </div>      
-                </a>  
-              </div>
-            {/each}
+            <div class="slider-container__carousel-cell" id="carousel-item">
+              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">
+                {#if project.attributes.featuredImage.data != null}
+                  <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+                {:else}
+                {#await promise}
+                {:then fallback} 
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+                {/await}
+                {/if}
+                <div class="slider-container__carousel-cell__text">
+                  <span>{('0' + (index + 1)).slice(-2)}</span>
+                  {project.attributes.title ? project.attributes.title : ''}
+                  <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    </i>
+                </div>
+              </a>  
+            </div>
+          {/each}
+            </div>
 	</div>
 </div>
 </Col>
+
+
+<!-- {#if project.attributes.featuredImage.data != null}
+                  <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+                {:else}
+                {#await promise}
+                {:then fallback} 
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+                {/await}
+                {/if} -->
+
     <!-- {#if dots}
 	<ul>
 		{#each {length: totalDots} as _, i}
@@ -183,23 +147,33 @@
 
 
 <style lang="scss">
+  :global(.box) {
+    width: 400px;
+    height: 32rem;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Show ellipsis (...) if content overflows */
+  }
+  :global(.transition-left) {
+    transform: translateX(-410px) !important; /* Adjust the value as needed */
+    transition-duration: 0.5s;
+  }
+  :global(.transition-left-no-dur) {
+    transform: translateX(-410px) !important; /* Adjust the value as needed */
+  }
+  :global(.transition-right) {
+    transform: translateX(410px) !important; /* Adjust the value as needed */
+    transition-duration: 0.5s;
+  }
     .slides{
         :global(div){
             min-width:300px;
         }
     }
-.carousel {
-    position: relative;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
 .left-right{
-    display: flex;
+    display: inline-flex;
     box-shadow: 0 0 5px #aaa;
     border-radius: 40px;
     background-color: $white-color;
-
 }
 .left, .right{
     border: 0px;
@@ -210,13 +184,13 @@
 .left-right img{
     height: 30px;
 }
-  .progress-ring__arrow rect {
-    transition: fill 1s;
-  }
+//   .progress-ring__arrow rect {
+//     transition: fill 1s;
+//   }
 
-  .progress-ring__arrow:hover rect {
-    fill: rgba(129, 129, 129, 0.191);
-  }
+//   .progress-ring__arrow:hover rect {
+//     fill: rgba(129, 129, 129, 0.191);
+//   }
     
   .slider-caption{
     height: 100%;
@@ -252,14 +226,20 @@
   }
 
 .slider-container {
-  width: 100%;
-  position: relative;
-  transition: transform 0.5s ease-in-out;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 2000px;
+    transition-property: transform; /* Specify the property to transition */
+    transition-timing-function: ease-in-out;
+    position: relative;
 
   white-space: nowrap;
   &__carousel-cell {
-    position: relative;   
-    height: auto;
+    max-width: 25rem;
+    position: relative;
     margin: 0 0.5rem;
     box-sizing: border-box;
     height: 32rem;
@@ -326,56 +306,56 @@
   }
 }
 
-.slider-btn{
-  margin: 3rem 5rem 0;
-  text-align: right;
-  height: 0;
-  @include media-max(sm){
-    text-align: center;
-    margin: 2rem 0 0;
-  }
-}
+// .slider-btn{
+//   margin: 3rem 5rem 0;
+//   text-align: right;
+//   height: 0;
+//   @include media-max(sm){
+//     text-align: center;
+//     margin: 2rem 0 0;
+//   }
+// }
 
-.progress-ring-container {
-  margin-top: 1rem;
-  position: relative;
-  bottom: 10px;
-  left: 10px;
-  z-index: 1;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  display: inline-block;
-  border-radius: 2rem;  
-  @include media-max(sm){
-    margin-top: 3rem;
-    left: 0;
-  }
-}
+// .progress-ring-container {
+//   margin-top: 1rem;
+//   position: relative;
+//   bottom: 10px;
+//   left: 10px;
+//   z-index: 1;
+//   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+//   display: inline-block;
+//   border-radius: 2rem;  
+//   @include media-max(sm){
+//     margin-top: 3rem;
+//     left: 0;
+//   }
+// }
 
-.progress-ring {
-  &__border {
-    transition: stroke-dashoffset 0.5s ease-out;
-  }
+// .progress-ring {
+//   &__border {
+//     transition: stroke-dashoffset 0.5s ease-out;
+//   }
 
-  &__arrow {
-    font-family: Arial, sans-serif;
-    cursor: pointer;
-    user-select: none;
-    fill: $primary-color;
+//   &__arrow {
+//     font-family: Arial, sans-serif;
+//     cursor: pointer;
+//     user-select: none;
+//     fill: $primary-color;
 
-    &--left,
-    &--right {
-      // Add any common styles for left and right arrows here
-    }
+//     &--left,
+//     &--right {
+//       // Add any common styles for left and right arrows here
+//     }
 
-    &--left {
-      // Add any specific styles for left arrow here
-    }
+//     &--left {
+//       // Add any specific styles for left arrow here
+//     }
 
-    &--right {
-      // Add any specific styles for right arrow here
-    }
-  }
-}
+//     &--right {
+//       // Add any specific styles for right arrow here
+//     }
+//   }
+// }
 
 
 </style>

@@ -159,8 +159,8 @@
 				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
 				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 				featuredProjects={home.featuredProjects}>
-					<span slot="left-control">prev</span>
-					<span slot="right-control">next</span>
+					<!-- <span slot="left-control">prev</span>
+					<span slot="right-control">next</span> -->
 				</Carousel2>
 
 				<!-- <Carousel 
