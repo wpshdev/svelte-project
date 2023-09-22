@@ -14,6 +14,8 @@
         
     function nextslide() {
         const container = document.querySelector('.slider-container');
+        container.style.left = '0px';
+
         container.style.transition = 'transform 0.5s ease-in-out';
         container.style.transform = 'translateX(-410px)';
         setTimeout(() => {
@@ -33,6 +35,7 @@
         // }, 500);
     }
     function prevslide() {
+        container.style.left = '0px';
         const container = document.querySelector('.slider-container');
         container.style.transform = 'translateX(-415px)';
         container.style.transition = 'none';
@@ -45,8 +48,55 @@
     }
   
 
+  let isDragging = false;
+  let startX = 0;
+  let initialLeft = 0;
+  let startt = 0;
+  let endt = 0;
 
+  function handleStart(event) {
+    startt = event.clientX;
+    isDragging = true;
+    if (event.touches) {
+      startX = event.touches[0].clientX - initialLeft;
+    } else {
+      startX = event.clientX - initialLeft;
+    }
+  }
 
+  function handleMove(event) {
+    if (isDragging) {
+      let clientX;
+      if (event.touches) {
+        clientX = event.touches[0].clientX;
+      } else {
+        clientX = event.clientX;
+      }
+      const newX = clientX - startX;
+      const container = document.querySelector('.slider-container');
+      container.style.left = newX + 'px';
+    }
+  }
+
+  function handleEnd(event) {
+    endt = event.clientX;
+    if(startt > endt){
+        nextslide();
+    }
+    if(startt < endt){
+        prevslide();
+    }
+    console.log("end"+event.clientX);
+    if (isDragging) {
+      isDragging = false;
+    }
+  }
+  function preventClick(event) {
+    // Prevent default click behavior only when dragging or touching
+    if (isDragging || event.touches) {
+      event.preventDefault();
+    }
+  }
 </script>
 <Col md="3">
     <div class="slider-caption">
@@ -84,13 +134,19 @@
   </Col>
 <Col md=9 style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
 <div class="carousel" style="position:absolute;left:0;top:0;">
-	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
+	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center"
+    on:mousedown={handleStart}
+    on:mousemove={handleMove}
+    on:mouseup={handleEnd}
+    on:touchstart={handleStart}
+    on:touchmove={handleMove}
+    on:touchend={handleEnd}>
             <div class="slider-container">
             <!-- on:dragstart={handleMouseDown}
             on:dragend={handleMouseUp}> -->
             {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
-              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mouseup={preventClick}>
                 {#if project.attributes.featuredImage.data != null}
                   <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
                 {:else}
@@ -188,13 +244,6 @@
 .left-right img{
     height: 30px;
 }
-//   .progress-ring__arrow rect {
-//     transition: fill 1s;
-//   }
-
-//   .progress-ring__arrow:hover rect {
-//     fill: rgba(129, 129, 129, 0.191);
-//   }
     
   .slider-caption{
     height: 100%;
@@ -239,8 +288,8 @@
     transition-property: transform; /* Specify the property to transition */
     transition-timing-function: ease-in-out;
     position: relative;
-    cursor: grab;
     user-drag: none;
+    cursor: grab;
   white-space: nowrap;
   &__carousel-cell {
     max-width: 25rem;
