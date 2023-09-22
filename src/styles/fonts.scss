@@ -54,13 +54,13 @@
 //     src: url(/fonts/Raleway-LightItalic.ttf) format("truetype");
 //     font-display: swap;
 // }
-// @font-face {
-//     font-family: 'Raleway';
-//     font-style: normal;
-//     font-weight: 500;
-//     src: url(/fonts/Raleway-Medium.ttf) format("truetype");
-//     font-display: swap;
-// }
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    src: url(/fonts/Raleway-Medium.ttf) format("truetype");
+    font-display: swap;
+}
 // @font-face {
 //     font-family: 'Raleway';
 //     font-style: italic;

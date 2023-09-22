@@ -2,7 +2,7 @@
 import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
 import axios from "axios";
-import Animate from "$lib/components/Animate.svelte"
+// import Animate from "$lib/components/Animate.svelte"
 // import { fly } from "svelte/transition";
 import { fadeIn } from '$lib/GsapAnimation.js';
 const domain = "https://strapi.ulfbuilt.com:1337"
@@ -65,14 +65,14 @@ function scrollToTop() {
     </Container>
 </section>
 <footer class="footer">
-    <Animate>
+    <!-- <Animate> -->
         <Container>
             <Row>
                 {#await promise}
                 {:then widgets}     
                     {#each widgets as widget, index}
                         <Col class="footer__col">
-                            <div class="footer__widget1 footer--widget" in:fadeIn id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2}>
+                            <div class="footer__widget1 footer--widget" in:fadeIn id="footer-items{index}" gsap-duration="1" gsap-delay={index/2}>
                                 {#if widget.title }
                                     <div class="footer__widget__heading">
                                         <h4>{widget.title}</h4>
@@ -126,7 +126,7 @@ function scrollToTop() {
                 </Col>
             </Row>
         </Container>
-    </Animate>
+    <!-- </Animate> -->
 </footer>
 
 <style lang="scss">

@@ -57,7 +57,7 @@
                                 </ParallaxImage> -->
                             {/if}
                             <div class="our-process__paragraph mx-auto">
-                                <div in:fly id="process_content" gsap-start="top center" gsap-duration="1" gsap-y="50">{@html processData.section2text ? processData.section2text : ''}</div>
+                                <div in:fly id="process_content" gsap-duration="2" gsap-y="50">{@html processData.section2text ? processData.section2text : ''}</div>
                             </div>
                         <!-- </Animate> -->
                     </Col>            
@@ -483,6 +483,9 @@
             padding: 1rem 0;
             width: 100%;
             margin-top: 1rem;
+            @include media-max(ipadmini){
+                padding: 1rem;
+            }
             h3{
                 text-transform: uppercase;
                 font-family: $primary-font;

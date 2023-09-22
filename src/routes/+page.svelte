@@ -343,6 +343,9 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
+		@include media-max(ipadmini){
+			margin-bottom: unset;
+		}
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -582,6 +585,9 @@
 				@include media-max(ipadmini){
 					padding: 3rem;
 				}
+				@include media-max(sm){
+					padding: 1rem;
+				}
 			}
 			p{
 				font-size: 1.5rem;
@@ -611,7 +617,7 @@
 
 	.reputation{
 		margin-top: 15vw;	
-		@include media-max(sm){
+		@include media-max(ipadmini){
 			padding-top: 5rem;
 		}	
 		&__content{
@@ -990,9 +996,9 @@
 			margin: 0 auto;
 			opacity: 1;
 			// padding-bottom: 3.75rem;
-			@include media-max(ipadmini){
-				height: 60vh;
-			}
+			// @include media-max(ipadmini){
+			// 	height: 60vh;
+			// }
 		}
 
 	}

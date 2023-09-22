@@ -273,9 +273,10 @@
 		// display: flex;
 		// align-items: center;
         // justify-content: center;
-		// @include media-max(ipadmini){
-		// 	min-height: unset;
-		// }
+        @include media-max(xs){
+            padding-top: 5rem;
+			height: 235rem !important;
+		}
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
@@ -430,6 +431,9 @@
 		// @include media-max(ipadmini){
 		// 	min-height: unset;
         // }
+        @include media-max(sm){
+			margin: unset;
+		}
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
@@ -453,7 +457,7 @@
 				height: 20rem;
 			}
             @include media-max(sm){
-				height: auto;
+				height: 15rem;
 			}
             // @include media-max(md){
             //     width: 90% !important;
@@ -518,9 +522,9 @@
                     padding-left: 2rem;
                     padding-right: 2rem;
                 }
+                text-align: left;
             }
             @include media-max(sm){ 
-                text-align: left;
                 z-index: 1;
                 margin-bottom: -5rem;
             }
@@ -542,22 +546,24 @@
             //         padding-right: 3rem !important;
             //     }
             // }
-            @include media-max(sm){ 
+            @include media-max(ipadmini){ 
+                // &.blue-color-background {
+                //     padding-left: 2rem !important;
+                //     padding-right: 2rem !important;
+                // }
+                
+                text-align: left;
+
                 &.text-right {
-                    padding-left: 3rem !important;
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
                 }
                 &.txt-center {
-                    padding-right: 3rem !important;
-                }
-            }
-            @include media-max(ipadmini){ 
-                &.blue-color-background {
                     padding-left: 2rem !important;
                     padding-right: 2rem !important;
                 }
             }
             @include media-max(sm){ 
-                text-align: left;
                 padding-top: 15rem !important;
                 margin-top: -15rem;
             }

@@ -22,8 +22,8 @@
 
 <section class="content" >
     <Container class="mw-1000 h-text">
-        <h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="privacy_heading" gsap-duration="0.5">{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
-        <div in:fadeIn id="privacy_content" gsap-duration="1" gsap-delay="0.5">{@html data.data.attributes.Content ? data.data.attributes.Content : ''}</div>
+        <h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="privacy_heading" gsap-duration="1.5" gsap-start="top center">{data.data.attributes.Heading ? data.data.attributes.Heading : ''}</h2>
+        <div in:fadeIn id="privacy_content" gsap-duration="1" gsap-start="top center">{@html data.data.attributes.Content ? data.data.attributes.Content : ''}</div>
     </Container>
 </section>
 <Cta/>

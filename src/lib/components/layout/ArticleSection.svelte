@@ -114,6 +114,12 @@
 					font-weight: 400;
 					// flex-wrap: wrap;
 					// width: 35rem;
+					@include media-max(ipadmini){
+						margin-top: 0;
+					}
+					@include media-max(xs){
+						margin-top: 2rem;
+					}
 				}
 				:global(p){
 					line-height: 2.125rem;
