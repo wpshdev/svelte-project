@@ -11,12 +11,11 @@
     export let btnUrl;
     export let featuredProjects;
         
-    function nextslide(posi) {
-        if( typeof posi == 'number'){
-            console.log(posi);
-        }else{
+    function nextslide(posi, dragntouch) {
+
+      if(dragntouch == 1){
+      }else{
             posi = 410;
-        }
         const container = document.querySelector('.slider-container');
 
         container.style.transition = 'transform 0.5s ease-in-out';
@@ -28,7 +27,7 @@
             container.style.transition = 'none';
             container.style.transform = 'translateX(0px)';
         }, 500);
-
+      }
 
         // const container = document.querySelector('.slider-container');
         // container.classList.add('transition-left');
@@ -38,12 +37,11 @@
         //     container.appendChild(firstDiv);
         // }, 500);
     }
-    function prevslide(posi) {
-        if( typeof posi == 'number'){
+    function prevslide(posi, dragntouch) {
+        if(dragntouch == 1){
             console.log(posi);
         }else{
             posi = 424;
-        }
         const container = document.querySelector('.slider-container');
         container.style.transform = 'translateX(-'+posi+'px)';
         container.style.transition = 'none';
@@ -52,7 +50,8 @@
         setTimeout(() => {
             container.style.transition = 'transform 0.5s ease-in-out';
             container.style.transform = 'translateX(0px)';
-        }, 500);
+        }, 10);
+      }
     }
   
 
@@ -98,11 +97,12 @@
     endt = event.clientX;
     const container = document.querySelector('.carousel-section');
     let position = endt - container.getBoundingClientRect().left;
+    let dragntouch = 1;
     if(startt > endt){
-        nextslide(position);
+        nextslide(position, dragntouch);
     }
     if(startt < endt){
-        prevslide(position);
+        prevslide(position, dragntouch);
     }
     if (isDragging) {
       isDragging = false;
