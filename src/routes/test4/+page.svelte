@@ -3,21 +3,30 @@
   let startX = 0;
   let initialLeft = 0;
 
-
-  function handleMouseDown(event) {
+  function handleStart(event) {
     isDragging = true;
-    startX = event.clientX - initialLeft;
-  }
-
-  function handleMouseMove(event) {
-    if (isDragging) {
-      const newX = event.clientX - startX;
-      const container = document.querySelector('.movable-div');
-      container.style.left = newX + "px";
+    if (event.touches) {
+      startX = event.touches[0].clientX - initialLeft;
+    } else {
+      startX = event.clientX - initialLeft;
     }
   }
 
-  function handleMouseUp() {
+  function handleMove(event) {
+    if (isDragging) {
+      let clientX;
+      if (event.touches) {
+        clientX = event.touches[0].clientX;
+      } else {
+        clientX = event.clientX;
+      }
+      const newX = clientX - startX;
+      const container = document.querySelector('.movable-div');
+      container.style.left = newX + 'px';
+    }
+  }
+
+  function handleEnd() {
     if (isDragging) {
       isDragging = false;
     }
@@ -37,16 +46,18 @@
     background-color: #3498db;
     position: absolute;
     top: 50%;
-    /* transform: translateY(-50%); */
     cursor: grab;
   }
 </style>
 
 <div
   class="container"
-  on:mousedown={handleMouseDown}
-  on:mousemove={handleMouseMove}
-  on:mouseup={handleMouseUp}
+  on:mousedown={handleStart}
+  on:mousemove={handleMove}
+  on:mouseup={handleEnd}
+  on:touchstart={handleStart}
+  on:touchmove={handleMove}
+  on:touchend={handleEnd}
 >
   <div class="movable-div"></div>
 </div>
