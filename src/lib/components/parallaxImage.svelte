@@ -41,9 +41,10 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     });
 
     // Cleanup when the component is destroyed
-    onDestroy(() => {
-      ScrollTrigger.remove(parallaxImageCont);
-    });
+    // onDestroy(() => {
+    //   ScrollTrigger.remove(parallaxImageCont);
+    // });
+    // Commented this one for the meantime since it has weird error when navigating back to home page: https://prnt.sc/ONovd8XX0B6-
   });
 </script>
 

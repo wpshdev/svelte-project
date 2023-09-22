@@ -6,7 +6,8 @@
 	import { browser } from '$app/environment';
   import Animate from '../Animate.svelte';
   import ImageLoader from '../imageLazy/ImageLoader.svelte';
-  import { fade, fly } from "svelte/transition";
+  // import { fade, fly } from "svelte/transition";
+  import { fly, fadeIn } from '$lib/GsapAnimation.js';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -115,9 +116,9 @@ function lazy(node, data) {
           <div class="slider-container" >
             {#each images as image, index}
               {@const highRes = image.attributes.formats.large.url ? image.attributes.formats.large.url : image.attributes.url}
-                <div class="slider-container__carousel-cell">
+                <div in:fly id="items{index}" gsap-duration="1.5" gsap-y="10" class="slider-container__carousel-cell">
                   <div class="image-wrapper">
-                    <img in:fade="{{ duration: 1000, delay:index * 500}}" src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://strapi.ulfbuilt.com:1337'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
+                    <img src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://strapi.ulfbuilt.com:1337'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
                     <!-- <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader> -->
                     <a href="{domain}{image.attributes.url}?download" class="download" download>
                       <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,9 +134,9 @@ function lazy(node, data) {
   {:else}
     <Col>
       <div class="mobile-image">
-        {#each images as image}
+        {#each images as image, index}
           <Animate>
-            <div class="slider-container__carousel-cell">
+            <div class="slider-container__carousel-cell" in:fadeIn id="mobile-items{index}" gsap-duration="2" gsap-start="top center">
               <img src="{domain}{image.attributes.formats.large.url ? image.attributes.formats.large.url : image.attributes.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
               <a href="{domain}{image.attributes.url}?download" class="download" download>
                 <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -290,7 +291,6 @@ body {
     }
   }
 }
-
 
 </style>
 

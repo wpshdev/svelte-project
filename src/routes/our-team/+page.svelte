@@ -105,8 +105,8 @@
                                 <!-- <Animate> -->
                                     <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                                         <!-- our-team__member_caption class removed -->
-                                        <h5 class="pfont" in:slide id="member_name{index}" gsap-duration="1.5" gsap-x="-10">{member.attributes.name}</h5>
-                                        <p class="pfont gtc" in:slide id="member_title{index}" gsap-duration="1.5" gsap-x="-10">{member.attributes.position}</p>
+                                        <h5 class="pfont" in:slide id="member_name{index}" gsap-duration="2" gsap-x="-10">{member.attributes.name}</h5>
+                                        <p class="pfont gtc" in:slide id="member_title{index}" gsap-duration="2" gsap-x="-10">{member.attributes.position}</p>
                                     </div>
                                 <!-- </Animate> -->
                             </div>

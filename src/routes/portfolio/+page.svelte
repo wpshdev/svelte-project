@@ -136,7 +136,7 @@
                                 <div class="container masonry-wrapper">       
                                     {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                         <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                        in:fly id="masonry-items{index}" gsap-delay={index/3}  gsap-duration="2" gsap-y="10" gsap-start="top center"> 
+                                        in:fly id="masonry-items{index}" gsap-duration="2" gsap-y="10" gsap-start="top center"> 
                                             <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                                 {#if project.attributes.featuredImage.data != null}
                                                     <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
@@ -155,19 +155,19 @@
                                         </div>			
                                     {/each}
                                 </div>
-                                <div class="paginate-section" >
-                                    <LightPaginationNav
-                                    totalItems="{portfolioList.length}"
-                                    pageSize="{pageSize}"
-                                    currentPage="{currentPage}"
-                                    limit="{1}"
-                                    showStepOptions="{true}"
-                                    on:setPage="{(e) => currentPage = e.detail.page}"
-                                    />
-                                </div>
                             {/if}
                         {/if}
                     {/key}
+                </div>
+                <div class="paginate-section" >
+                    <LightPaginationNav
+                    totalItems="{portfolioList.length}"
+                    pageSize="{pageSize}"
+                    currentPage="{currentPage}"
+                    limit="{1}"
+                    showStepOptions="{true}"
+                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    />
                 </div>
             </Col>
         </Row>
@@ -291,7 +291,7 @@
 			}
 		}
         .portfolio-results-container {
-            min-height: 100rem;
+            min-height: 200vh;
         }
         .masonry-wrapper {
             min-height: 31rem;
@@ -458,6 +458,10 @@
             }
         } 
     }
+
+    .cta-wrapper, .article-wrapper {
+		padding: unset;
+	}
 
     :global(.option.prev path, .option.next path) {
         fill: $primary-color;

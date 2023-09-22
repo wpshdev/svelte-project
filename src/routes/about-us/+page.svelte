@@ -127,8 +127,8 @@
     <!-- </Animate>   -->
 </section>
 
-<!-- <Animate> -->
-<section class="mx-8 remodel" in:fly id="remodel-img-section" gsap-y="20">
+<!-- <Animate> mx-8 -->
+<section class="remodel" in:fly id="remodel-img-section" gsap-y="20">
     <div class="remodel__bgimage">
         {#if about.Section4image.data}
         <img class="image-scale-up" in:scaleUp id="remodel-img" gsap-duration="2" src="{about.Section4image.data.attributes.formats.large_x2.url ? url+about.Section4image.data.attributes.formats.large_x2.url : url+about.Section4image.data.attributes.url}" alt="{about.Section3heading}" width="{about.Section4image.data.attributes.width}" height="{about.Section4image.data.attributes.height}">
@@ -139,7 +139,7 @@
 <!-- </Animate> -->
 
 <section class="certificate mx-8">
-    <!-- <Animate> -->
+    <!-- <Animate>-->
         <Container>
             
                 <!-- <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
@@ -276,11 +276,11 @@
         min-height: 100vh;
 		display: flex;
 		align-items: center;
-        @include media-max(default){
-            min-height: 50vh;
-        }
+        // @include media-max(default){
+        //     min-height: 50vh;
+        // }
 		@include media-max(ipadmini){
-            min-height: unset;
+            min-height: 50vh;
         }
 			
         h2 {
@@ -300,7 +300,7 @@
         }
     }
     section{
-        margin:7.5rem auto;
+        // margin:7.5rem auto;
         &.certificate {
             text-align: center;
             min-height: 80rem;
@@ -383,10 +383,11 @@
             gap: 3rem;
         }
         @include media-max(ipadmini){
-            :global(.row>*) {
-                width: 100%;
-                max-width: 100%;
-            }
+            // :global(.row>*) {
+            //     width: 100%;
+            //     max-width: 100%;
+            // }
+            margin: unset;
         }
         h3 {
             color:$secondary-color;
@@ -409,7 +410,7 @@
 
         .imgcont {
             padding-top: 7rem;
-            @include media-max(ipadmini){
+            @include media-max(sm){
                 padding-top: unset
 			}
         } 
@@ -420,9 +421,9 @@
             @include media-max(lg){
 				height: 30rem;
 			}
-            @include media-max(ipadmini){
-				height: auto;
-			}
+            // @include media-max(ipadmini){
+			// 	height: auto;
+			// }
         }
     }
     .remodel {
@@ -472,6 +473,7 @@
                 width: 100%;
                 max-width: 100%;
             }
+            margin: unset;
         }
         :global(.sets-parts__row) {
             justify-content: center;
@@ -491,8 +493,6 @@
             font-size: 2.813rem;
             @include media-max(ipadmini){ 
                 font-size: 2.3rem;
-            }
-            @include media-max(xs) {
                 text-align: left !important;
             }
         }
@@ -503,7 +503,7 @@
             font-size: 1.25rem;
             // text-wrap: balance;
             hyphens: auto;
-            @include media-max(xs) {
+            @include media-max(ipadmini) {
                 text-align: left !important;
             }
         }
@@ -540,9 +540,9 @@
             @include media-max(lg){
 				height: 30rem;
 			}
-            @include media-max(ipadmini){
-				height: auto;
-			}
+            // @include media-max(ipadmini){
+			// 	height: auto;
+			// }
         }
 
     } 

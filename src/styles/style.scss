@@ -838,6 +838,8 @@ header{
     margin: 0;
     padding: 0.5rem 0;
     min-height: 0;
+    z-index: 9;
+    position: relative;
     &__btt{
         text-align: center;
         cursor: pointer;
@@ -855,7 +857,7 @@ header{
     }
 }
 .footer{
-  
+    // min-height: 100vh;
     &__widget{
         &__heading{
             h4{

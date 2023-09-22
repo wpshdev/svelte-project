@@ -79,7 +79,7 @@
 	<!-- <Animate> -->
 		<Container>
 			<Row>
-				<Col><h2 in:slide id="about-property-preheading" gsap-start="top center" gsap-duration="1">{projectHeading ? projectHeading : ''}</h2></Col>
+				<Col><h2 in:slide id="about-property-preheading" gsap-start="top 80%" gsap-duration="1">{projectHeading ? projectHeading : ''}</h2></Col>
 			</Row>
 			<Row>
 				<Col md="12">
@@ -118,7 +118,7 @@
 
 {#if isFeatured && projectHeading}
 
-<section>
+<section class="banners">
 	<!-- <Animate> -->
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
@@ -128,7 +128,7 @@
 					</ParallaxImage>
 				</div> -->
 				{/if}
-				<Testimonial testimonial="{bannerQuote.quote}" />
+				<Testimonial testimonial="{bannerQuote.quote}" testimonial_id="testimonial{index}" />
 		{/each}
 	<!-- </Animate> -->
 </section>
@@ -264,6 +264,19 @@ section{
 		margin-bottom: 1.5rem;
 	}
   }
+}
+
+:global(.portfolio-gallery__slider) {
+	@include media-max(ipadmini){
+		min-height: 500vh;
+	}
+}
+
+.banners {
+	@include media-max(ipadmini){
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
 .about-property{

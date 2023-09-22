@@ -525,7 +525,7 @@ export function fly2(node) {
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : "top bottom";
 
     // Fly2 animation
-    mm.add("(min-width: 769px)", () => {
+    mm.add("(min-width: 768px)", () => {
         gsap.to('#' + targetElementID, {
             yPercent: y, 
             ease: "none", 
@@ -538,7 +538,7 @@ export function fly2(node) {
         });
     });
 
-    mm.add("(max-width: 768px)", () => { // different animation
+    mm.add("(max-width: 767px)", () => { // different animation
         targetElement.style.opacity = 0;
         ScrollTrigger.create({
             trigger: '#' + targetElementID,

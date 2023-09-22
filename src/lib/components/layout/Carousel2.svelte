@@ -94,7 +94,7 @@
       {/if} -->
     </div>
   </Col>
-<Col md=9 style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
+<Col md=9 class="carousel-col">
 <div class="carousel" style="position:absolute;left:0;top:0;">
 	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
             <div class="slider-container" draggable="true">
@@ -201,6 +201,11 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 5rem;
+    @include media-max(sm){
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
     &__heading{
       margin-top: 5rem;
       margin-bottom: 1rem;
@@ -304,6 +309,16 @@
       height: 100%;
     }
   }
+}
+
+:global(.carousel-col) {
+  overflow: hidden;
+  padding-left:0px;
+  position: relative;
+  height: 32rem;
+  @include media-max(sm){
+      height: 50vh;
+  } 
 }
 
 // .slider-btn{

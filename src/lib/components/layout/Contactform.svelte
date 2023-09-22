@@ -180,6 +180,7 @@
 			p {
 				font-size: 1.5rem;
 				font-weight: 500;
+				font-family: $primary-font;
 			}
 		}
 	}
