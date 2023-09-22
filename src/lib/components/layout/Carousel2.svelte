@@ -10,14 +10,18 @@
     export let btnTitle;
     export let btnUrl;
     export let featuredProjects;
-    
         
-    function nextslide() {
+    function nextslide(posi) {
+        if( typeof posi == 'number'){
+            console.log(posi);
+        }else{
+            posi = 410;
+        }
         const container = document.querySelector('.slider-container');
-        container.style.left = '0px';
 
         container.style.transition = 'transform 0.5s ease-in-out';
-        container.style.transform = 'translateX(-410px)';
+        container.style.transform = 'translateX(-'+posi+'px)';
+        console.log(posi);
         setTimeout(() => {
             const firstDiv = container.firstElementChild; // Get the first div element
             container.appendChild(firstDiv);
@@ -34,10 +38,14 @@
         //     container.appendChild(firstDiv);
         // }, 500);
     }
-    function prevslide() {
-        container.style.left = '0px';
+    function prevslide(posi) {
+        if( typeof posi == 'number'){
+            console.log(posi);
+        }else{
+            posi = 424;
+        }
         const container = document.querySelector('.slider-container');
-        container.style.transform = 'translateX(-415px)';
+        container.style.transform = 'translateX(-'+posi+'px)';
         container.style.transition = 'none';
         const lastDiv = container.lastElementChild;
         container.insertBefore(lastDiv, container?.firstElementChild);
@@ -55,6 +63,9 @@
   let endt = 0;
 
   function handleStart(event) {
+    const anchor = document.querySelector('.zoomImg');
+    anchor.addEventListener('click', preventAnchorClick, { once: true });
+
     startt = event.clientX;
     isDragging = true;
     if (event.touches) {
@@ -65,6 +76,9 @@
   }
 
   function handleMove(event) {
+    const anchor = document.querySelector('.zoomImg');
+    anchor.addEventListener('click', preventAnchorClick, { once: true });
+
     if (isDragging) {
       let clientX;
       if (event.touches) {
@@ -73,29 +87,30 @@
         clientX = event.clientX;
       }
       const newX = clientX - startX;
-      const container = document.querySelector('.slider-container');
+      const container = document.querySelector('.carousel');
       container.style.left = newX + 'px';
     }
   }
-
   function handleEnd(event) {
+    const anchor = document.querySelector('.zoomImg');
+    anchor.addEventListener('click', preventAnchorClick, { once: true });
+
     endt = event.clientX;
+    const container = document.querySelector('.carousel-section');
+    let position = endt - container.getBoundingClientRect().left;
     if(startt > endt){
-        nextslide();
+        nextslide(position);
     }
     if(startt < endt){
-        prevslide();
+        prevslide(position);
     }
-    console.log("end"+event.clientX);
     if (isDragging) {
       isDragging = false;
     }
   }
-  function preventClick(event) {
-    // Prevent default click behavior only when dragging or touching
-    if (isDragging || event.touches) {
-      event.preventDefault();
-    }
+  function preventAnchorClick(event) {
+    event.preventDefault();
+    console.log('Anchor click prevented');
   }
 </script>
 <Col md="3">
@@ -132,7 +147,7 @@
       {/if} -->
     </div>
   </Col>
-<Col md=9 class="carousel-col">
+<Col md=9 class="carousel-section" style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
 <div class="carousel" style="position:absolute;left:0;top:0;">
 	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center"
     on:mousedown={handleStart}
@@ -146,13 +161,13 @@
             on:dragend={handleMouseUp}> -->
             {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
-              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mouseup={preventClick}>
+              <a href="javascript:void();" ahref="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
                 {#if project.attributes.featuredImage.data != null}
                   <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
                 {:else}
                 {#await promise}
                 {:then fallback} 
-                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
                 {/await}
                 {/if}
                 <div class="slider-container__carousel-cell__text">
@@ -166,15 +181,15 @@
               </a>  
             </div>
           {/each}
-          {#each featuredProjects.data as project, index}
+          <!-- {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
-              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">
+              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
                 {#if project.attributes.featuredImage.data != null}
-                  <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+                  <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
                 {:else}
                 {#await promise}
                 {:then fallback} 
-                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" draggable="false">
                 {/await}
                 {/if}
                 <div class="slider-container__carousel-cell__text">
@@ -187,7 +202,7 @@
                 </div>
               </a>  
             </div>
-          {/each}
+          {/each} -->
             </div>
 	</div>
 </div>
@@ -254,11 +269,6 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 5rem;
-    @include media-max(sm){
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
     &__heading{
       margin-top: 5rem;
       margin-bottom: 1rem;
@@ -299,7 +309,7 @@
   &__carousel-cell {
     max-width: 25rem;
     position: relative;
-    margin: 0 0.5rem;
+    margin-right: 1.5rem;
     box-sizing: border-box;
     height: 32rem;
     overflow: hidden;
@@ -363,16 +373,6 @@
       height: 100%;
     }
   }
-}
-
-:global(.carousel-col) {
-  overflow: hidden;
-  padding-left:0px;
-  position: relative;
-  height: 32rem;
-  @include media-max(sm){
-      height: 50vh;
-  } 
 }
 
 // .slider-btn{
