@@ -155,6 +155,8 @@
         }
     }
     .contact_inner {
+
+        margin-top: 10vw;
         
         .contact_inner__content {
             h2 {
@@ -220,6 +222,7 @@
         }
     }
     .contact-img {
+        margin-top: 15vw;
         min-height: 100vh;
         background-position: center;
         background-size: cover;

@@ -35,7 +35,7 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
       trigger: parallaxImageCont,
       start: "top bottom",
       end: "bottom top",
-      markers: true,
+      // markers: true,
       scrub: true,
       animation: tl,
     });
@@ -84,6 +84,7 @@ style="--height: {imageHeight}vh">
 
     @include media-max(default){
       width: 100%;
+      height: 100vh;
     }
     @include media-max(sm){
       left: 50%;
