@@ -10,55 +10,108 @@
     export let btnTitle;
     export let btnUrl;
     export let featuredProjects;
-    
         
-    function nextslide() {
+    function nextslide(posi, dragntouch) {
+
+      if(dragntouch == 1){
+      }else{
+            posi = 410;
         const container = document.querySelector('.slider-container');
-        container.classList.add('transition-left');
+
+        container.style.transition = 'transform 0.5s ease-in-out';
+        container.style.transform = 'translateX(-'+posi+'px)';
+        console.log(posi);
         setTimeout(() => {
-            container.classList.remove('transition-left');
             const firstDiv = container.firstElementChild; // Get the first div element
             container.appendChild(firstDiv);
+            container.style.transition = 'none';
+            container.style.transform = 'translateX(0px)';
         }, 500);
+      }
+
+        // const container = document.querySelector('.slider-container');
+        // container.classList.add('transition-left');
+        // setTimeout(() => {
+        //     container.classList.remove('transition-left');
+        //     const firstDiv = container.firstElementChild; // Get the first div element
+        //     container.appendChild(firstDiv);
+        // }, 500);
     }
-  
-    function prevslide() {
+    function prevslide(posi, dragntouch) {
+        if(dragntouch == 1){
+            console.log(posi);
+        }else{
+            posi = 424;
         const container = document.querySelector('.slider-container');
-        container.classList.add('transition-left-no-dur');
-        const lastDiv = container.lastElementChild; // Get the first div element
+        container.style.transform = 'translateX(-'+posi+'px)';
+        container.style.transition = 'none';
+        const lastDiv = container.lastElementChild;
         container.insertBefore(lastDiv, container?.firstElementChild);
-        
         setTimeout(() => {
-            container.classList.add('transition-right');
-        }, 1000);
-        setTimeout(() => {
-            container.classList.remove('transition-left-no-dur');
-            container.classList.remove('transition-right');
-        }, 3000);
-    //   const firstBox = boxes.pop();
-    //   boxes.unshift(firstBox);
-  
-    //   const container = document.querySelector('.slider-container');
-    //   container.classList.add('transition-left-no-dur');
-    //     container.innerHTML = '';
-    //     boxes.forEach(box => {
-    //       const div = document.createElement('div');
-    //       div.classList.add('box');
-    //       div.textContent = box;
-    //       container.appendChild(div);
-    //     });
-    //     setTimeout(() => {
-    //       container.classList.add('transition-right');
-    //     },50);
-    //   setTimeout(() => {
-    //     container.classList.remove('transition-right');
-    //     container.classList.remove('transition-left-no-dur');
-    //   }, 500);
+            container.style.transition = 'transform 0.5s ease-in-out';
+            container.style.transform = 'translateX(0px)';
+        }, 10);
+      }
     }
   
 
+  let isDragging = false;
+  let startX = 0;
+  let initialLeft = 0;
+  let startt = 0;
+  let endt = 0;
 
+  function handleStart(event) {
+    const anchor = document.querySelector('.zoomImg');
+    anchor.addEventListener('click', preventAnchorClick, { once: true });
 
+    startt = event.clientX;
+    isDragging = true;
+    if (event.touches) {
+      startX = event.touches[0].clientX - initialLeft;
+    } else {
+      startX = event.clientX - initialLeft;
+    }
+  }
+
+  function handleMove(event) {
+    const anchor = document.querySelector('.zoomImg');
+    anchor.addEventListener('click', preventAnchorClick, { once: true });
+
+    if (isDragging) {
+      let clientX;
+      if (event.touches) {
+        clientX = event.touches[0].clientX;
+      } else {
+        clientX = event.clientX;
+      }
+      const newX = clientX - startX;
+      const container = document.querySelector('.carousel');
+      container.style.left = newX + 'px';
+    }
+  }
+  function handleEnd(event) {
+    const anchor = document.querySelector('.zoomImg');
+    anchor.addEventListener('click', preventAnchorClick, { once: true });
+
+    endt = event.clientX;
+    const container = document.querySelector('.carousel-section');
+    let position = endt - container.getBoundingClientRect().left;
+    let dragntouch = 1;
+    if(startt > endt){
+        nextslide(position, dragntouch);
+    }
+    if(startt < endt){
+        prevslide(position, dragntouch);
+    }
+    if (isDragging) {
+      isDragging = false;
+    }
+  }
+  function preventAnchorClick(event) {
+    event.preventDefault();
+    console.log('Anchor click prevented');
+  }
 </script>
 <Col md="3">
     <div class="slider-caption">
@@ -94,21 +147,27 @@
       {/if} -->
     </div>
   </Col>
-<Col md=9 class="carousel-col">
+<Col md=9 class="carousel-section" style="overflow: hidden;padding-left:0px;position: relative;height: 32rem;">
 <div class="carousel" style="position:absolute;left:0;top:0;">
-	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center">
-            <div class="slider-container" draggable="true">
+	<div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center"
+    on:mousedown={handleStart}
+    on:mousemove={handleMove}
+    on:mouseup={handleEnd}
+    on:touchstart={handleStart}
+    on:touchmove={handleMove}
+    on:touchend={handleEnd}>
+            <div class="slider-container">
             <!-- on:dragstart={handleMouseDown}
             on:dragend={handleMouseUp}> -->
             {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
-              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">
+              <a href="javascript:void();" ahref="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
                 {#if project.attributes.featuredImage.data != null}
-                  <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+                  <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
                 {:else}
                 {#await promise}
                 {:then fallback} 
-                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
                 {/await}
                 {/if}
                 <div class="slider-container__carousel-cell__text">
@@ -122,6 +181,28 @@
               </a>  
             </div>
           {/each}
+          <!-- {#each featuredProjects.data as project, index}
+            <div class="slider-container__carousel-cell" id="carousel-item">
+              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+                {#if project.attributes.featuredImage.data != null}
+                  <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+                {:else}
+                {#await promise}
+                {:then fallback} 
+                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" draggable="false">
+                {/await}
+                {/if}
+                <div class="slider-container__carousel-cell__text">
+                  <span>{('0' + (index + 1)).slice(-2)}</span>
+                  {project.attributes.title ? project.attributes.title : ''}
+                  <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    </i>
+                </div>
+              </a>  
+            </div>
+          {/each} -->
             </div>
 	</div>
 </div>
@@ -147,12 +228,6 @@
 
 
 <style lang="scss">
-  :global(.box) {
-    width: 400px;
-    height: 32rem;
-    white-space: nowrap; /* Prevent text from wrapping */
-    text-overflow: ellipsis; /* Show ellipsis (...) if content overflows */
-  }
   :global(.transition-left) {
     transform: translateX(-410px) !important; /* Adjust the value as needed */
     transition-duration: 0.5s;
@@ -184,13 +259,6 @@
 .left-right img{
     height: 30px;
 }
-//   .progress-ring__arrow rect {
-//     transition: fill 1s;
-//   }
-
-//   .progress-ring__arrow:hover rect {
-//     fill: rgba(129, 129, 129, 0.191);
-//   }
     
   .slider-caption{
     height: 100%;
@@ -201,11 +269,6 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 5rem;
-    @include media-max(sm){
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
     &__heading{
       margin-top: 5rem;
       margin-bottom: 1rem;
@@ -240,12 +303,13 @@
     transition-property: transform; /* Specify the property to transition */
     transition-timing-function: ease-in-out;
     position: relative;
-
+    user-drag: none;
+    cursor: grab;
   white-space: nowrap;
   &__carousel-cell {
     max-width: 25rem;
     position: relative;
-    margin: 0 0.5rem;
+    margin-right: 1.5rem;
     box-sizing: border-box;
     height: 32rem;
     overflow: hidden;
@@ -309,16 +373,6 @@
       height: 100%;
     }
   }
-}
-
-:global(.carousel-col) {
-  overflow: hidden;
-  padding-left:0px;
-  position: relative;
-  height: 32rem;
-  @include media-max(sm){
-      height: 50vh;
-  } 
 }
 
 // .slider-btn{
