@@ -1,19 +1,74 @@
 <script>
 	import { slowDownSection } from '$lib/GsapAnimation.js';
-	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
+	// import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
+
+	import { onMount } from 'svelte';
+    import {gsap}  from "gsap/dist/gsap";        
+    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
+    import {ScrollToPlugin} from "gsap/dist/ScrollToPlugin";   
+	gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+	onMount(() => {
+		//:not(:last-child)
+		let panels = gsap.utils.toArray("section.test"),
+		observer = ScrollTrigger.normalizeScroll(true),
+		scrollTween;
+
+		// on touch devices, ignore touchstart events if there's an in-progress tween so that touch-scrolling doesn't interrupt and make it wonky
+		document.addEventListener("touchstart", e => {
+			if (scrollTween) {
+				e.preventDefault();
+				e.stopImmediatePropagation();
+			}
+		}, {capture: true, passive: false})
+
+		function goToSection(i) {
+			scrollTween = gsap.to(window, {
+				scrollTo: {y: i * innerHeight, autoKill: false},
+				onStart: () => {
+					observer.disable(); // for touch devices, as soon as we start forcing scroll it should stop any current touch-scrolling, so we just disable() and enable() the normalizeScroll observer
+					observer.enable();
+				},
+				duration: 1,
+				markers: true,
+				onComplete: () => scrollTween = null,
+				overwrite: true
+			});
+		}
+
+		panels.forEach((panel, i) => {
+			ScrollTrigger.create({
+				trigger: panel,
+				start: "top bottom",
+				end: "bottom top",
+				onToggle: self => self.isActive && !scrollTween && goToSection(i)
+			});
+		});
+
+		// just in case the user forces the scroll to an inbetween spot (like a momentum scroll on a Mac that ends AFTER the scrollTo tween finishes):
+		ScrollTrigger.create({
+			start: 0, 
+			end: "max",
+			snap: 1 / (panels.length - 1)
+		})
+
+	});
+
 </script>
 
-<div style="height: 100vh; background-color: gray;">
+<section class="test" style="height: 100vh; background-color: gray;">
 	<h1>gray</h1>
-</div>
-<section in:slowDownSection id="test" style="height: 200vh;  background-color: #ffc300; position relative; padding: 50px;" >
-	<!-- <div data-speed="1.3" data-lag="0.5" style="background-color: green; width: 300px; height: 300px;"> -->
-		<div style="width: 500px; height: 100vh; background-color: yellow;" class="container"></div>
-	<!-- </div> -->
 </section>
-<div style="height: 100vh; background-color: blue;">
+<section class="test" style="height: 100vh; background-color: #ffc300; position relative; padding: 50px;" >
+	<!-- in:slowDownSection id="test"-->
+	<div style="width: 500px; height: 100vh; background-color: yellow;" class="container"></div>
+</section>
+<section class="test" style="height: 100vh; background-color: blue;">
 	<h1>blue</h1>
-</div>
+</section>
+<section class="test" style="height: 100vh; background-color: orange;">
+	<h1>orange</h1>
+</section>
 
 <style>
 	section {

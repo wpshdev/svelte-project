@@ -269,6 +269,11 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 5rem;
+    @include media-max(sm){
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }  
     &__heading{
       margin-top: 5rem;
       margin-bottom: 1rem;
@@ -329,9 +334,9 @@
     @include media-max(ipadmini){
       height: 50vh;
     }   
-    @include media-max(sm){
-      height: 50vh;
-    }   
+    // @include media-max(sm){
+    //   height: 50vh;
+    // }   
     &__text{
           background-color: $secondary-color;
           color: #fff;

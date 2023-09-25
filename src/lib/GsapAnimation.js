@@ -476,8 +476,8 @@ export function slowDownSection(node) {
       },
       scrollTrigger: {
         trigger: '#' + parentElementID,
-        start: () => start + ' ' + window.innerHeight*0.7,
-        end: () => '90% ' + window.innerHeight*0.3,
+        start: () => start + ' ' + window.innerHeight * 0.7,
+        end: () => '90% ' + window.innerHeight * 0.3,
         scrub: true, // Use scrub to smooth the animation
         onUpdate: (self) => {
           scrollY = self.scroll();
@@ -493,6 +493,7 @@ export function slowDownSection(node) {
                 opacity: 0,
                 duration: 1.5,
             });
+           
         },
         onLeaveBack: () => {
             gsap.to('#' + parentElementID, {
@@ -509,7 +510,7 @@ export function slowDownSection(node) {
         markers: true,
       },
     });
-
+    
 }
 
 // Fly 2 new fly animation to move the element same with scrolling - usually for image
@@ -607,11 +608,20 @@ export function bgZoom(node) {
             trigger: '#' + targetElementID, 
             scrub: 2,
             start: "top bottom",
-            // end: "bottom top",
-            end: "+=" + (window.innerHeight * 1),
+            end: "bottom top",
+            // end: "+=" + (window.innerHeight * 1),
             // pin: true,
             // markers: true,
         }
     });
 
 }
+
+// Snap for testing
+//  ScrollTrigger.create({
+//     snap: {
+//         snapTo: 1,
+//         delay: 0,
+//     },
+// });
+// End snap for testing
