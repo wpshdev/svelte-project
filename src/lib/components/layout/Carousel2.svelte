@@ -51,17 +51,17 @@ function handleStart(event) {
   const container = document.querySelector('.slider-container');
   const lastDiv = container.lastElementChild;
   container.style.transition = 'transform 0s ease-in-out';
-  container.style.transform = 'translateX(-410px)';
+  container.style.transform = 'translateX(-424px)';
   container.insertBefore(lastDiv, container?.firstElementChild);
 
   startt = event.clientX;
   isDragging = true;
   if (event.touches) {
     startX = event.touches[0].clientX - initialLeft;
-    console.log("start>event-touch");
+    // console.log("start>event-touch");
   } else {
     startX = event.clientX - initialLeft;
-    console.log("start>event");
+    // console.log("start>event");
   }
 }
 
@@ -72,28 +72,35 @@ function handleMove(event) {
     let clientX;
     if (event.touches) {
       clientX = event.touches[0].clientX;
-      console.log("move>event-touch");
+      // console.log("move>event-touch");
     } else {
       clientX = event.clientX;
-      console.log("move>event");
+      // console.log("move>event");
     }
     const newX = clientX - startX;
-    const carousel = document.querySelector('.carousel');
-    carousel.style.left = newX + 'px';
+    console.log("N" + newX + " C" + clientX + " S" + startX);
+    const container = document.querySelector('.slider-container');
+    let newX2 = newX - 424;
+    container.style.transform = 'translateX('+newX2+'px)';
+
+    // const carousel = document.querySelector('.carousel');
+    // carousel.style.left = newX + 'px';
+    // console.log(newX +" "+ newX2);
   }
 }
 
 function handleEnd(event) {
+
     setTimeout(() => {
       //moving container to 0 auto when exit
       const container = document.querySelector('.slider-container');
       container.style.transition = 'transform 0.5s ease-in-out';
       container.style.transform = 'translateX(0px)';
-      //Moving carousel to 0
-      const carousel = document.querySelector('.carousel');
-      carousel.style.left =  '0px';
+
+        //Moving carousel to 0
+  const carousel = document.querySelector('.carousel');
+  carousel.style.left = '0px';
     }, 500);
-    
 
 
   if (isDragging) {
@@ -236,14 +243,14 @@ function preventAnchorClick(event) {
 
 <style lang="scss">
 :global(.transition-left) {
-  transform: translateX(-410px) !important; /* Adjust the value as needed */
+  transform: translateX(-424px) !important; /* Adjust the value as needed */
   transition-duration: 0.5s;
 }
 :global(.transition-left-no-dur) {
-  transform: translateX(-410px) !important; /* Adjust the value as needed */
+  transform: translateX(-424px) !important; /* Adjust the value as needed */
 }
 :global(.transition-right) {
-  transform: translateX(410px) !important; /* Adjust the value as needed */
+  transform: translateX(424px) !important; /* Adjust the value as needed */
   transition-duration: 0.5s;
 }
   .slides{
