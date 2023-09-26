@@ -53,7 +53,7 @@
 
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
-<section class="mw-1000 text-center about-heading" >
+<section class="mw-1000 text-center about-heading" id="about-heading">
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>

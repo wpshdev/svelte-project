@@ -49,8 +49,7 @@ function scrollToTop() {
 }
 
 </script>
-
-<section class="pre-footer">
+<div class="pre-footer">
     <Container>
         <Row>
             <Col>
@@ -63,7 +62,7 @@ function scrollToTop() {
             </Col>
         </Row>
     </Container>
-</section>
+</div>
 <footer class="footer">
     <!-- <Animate> -->
         <Container>
@@ -128,7 +127,6 @@ function scrollToTop() {
         </Container>
     <!-- </Animate> -->
 </footer>
-
 <style lang="scss">
     :global(.col.footer__col){
         @include media-max(sm){

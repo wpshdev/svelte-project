@@ -85,12 +85,14 @@
 
 
 {#if home.homeBuilderBanner.data}
-	<section class="bannerOnly--Container">
+<section class="bannerOnly autoscroll-exception" id="bannerOnly">
+	<div class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
 		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
-	</section>
+	</div>
+</section>
 {/if}
 
 <section class="categories mvw-10" in:slowDownSection id="categories-section">
@@ -173,25 +175,25 @@
 	</Container>
 </section>
 
-
-<section class="tnr" >
-	<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
-	</ParallaxImage>
-	<div class="tnr__wrapper">
-		<Container>
-			<div class="tnr__wrapper__captions">
-				<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
-				<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
-				<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
-					<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
-						{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
-					</a>
+<section class="autoscroll-exception" id="tnr">
+	<div class="tnr">
+		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
+		</ParallaxImage>
+		<div class="tnr__wrapper">
+			<Container>
+				<div class="tnr__wrapper__captions">
+					<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
+					<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+					<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+						<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+							{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
+						</a>
+					</div>
 				</div>
-			</div>
-		</Container> 
+			</Container> 
+		</div>
 	</div>
 </section>
-
 
 
 <section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top">
@@ -282,18 +284,18 @@
 		</Container>
 </section>
 
-<section class="m-0 article-wrapper">
+<section class="m-0 article-wrapper" id="article-wrapper">
 	<ArticleSection />
 </section>
 
-<section class="m-0 cta-wrapper">
+<section class="m-0 cta-wrapper autoscroll-exception" id="cta-wrapper">
 	<Cta />
 </section>
 
 <style lang="scss">
-	section{
-		min-height: 20vh;
-	}
+	// section{
+	// 	min-height: 20vh;
+	// }
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
@@ -534,77 +536,83 @@
         }
 	}
 
-	.tnr{
-		// background-image: var(--tp-banner);
-		// display: flex;
-		// flex-wrap: wrap;
-		// align-items: center;
-		// background-position: center;
-		// background-size: cover;
-		// padding-left: 0;
-		// padding-right: 0;
-		// justify-content: center;
+	#tnr {
+		display: grid;
+		align-items: center;
 
-		position: relative;
-		overflow: hidden;
-		:global(.container){
+		.tnr{
+			// background-image: var(--tp-banner);
+			// display: flex;
+			// flex-wrap: wrap;
+			// align-items: center;
+			// background-position: center;
+			// background-size: cover;
+			// padding-left: 0;
+			// padding-right: 0;
+			// justify-content: center;
+
 			position: relative;
-			display: flex;
-    		align-items: center;
-		}
-		@include media-max(sm){
-			// height: 80vh;
-			align-items: end;
-			// padding-bottom: 2rem;
-			margin-bottom: 0;
-		}
-		// &::before{
-		// 	content: "";
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 0;
-		// 	right: 0;
-		// 	bottom: 0;
-		// 	background-color: rgba(0, 0, 0, 0.5);			
-		// 	z-index: 1;
-		// }
-		.tnr__wrapper{
-			z-index: 2;
-			position: absolute;
-			color: #fff;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 80vh;
-			display: flex;
-			justify-content: center;
-			background-color: rgba(0, 0, 0, 0.5);
-			&__captions {
+			overflow: hidden;
+			:global(.container){
+				position: relative;
 				display: flex;
-    			flex-direction: column;
-				@include media-max(ipadmini){
-					padding: 3rem;
-				}
-				@include media-max(sm){
-					padding: 1rem;
-				}
+				align-items: center;
 			}
-			p{
-				font-size: 1.5rem;
-				opacity: 0;
+			@include media-max(sm){
+				// height: 80vh;
+				align-items: end;
+				// padding-bottom: 2rem;
+				margin-bottom: 0;
 			}
-			h2{
-				font-family: $primary-font;
-				margin: 1rem 0 2rem;
-				text-transform: uppercase;
-				font-size: 2.688rem;
-				@include media-max(sm){
-					font-size: 2rem;
+			// &::before{
+			// 	content: "";
+			// 	position: absolute;
+			// 	top: 0;
+			// 	left: 0;
+			// 	right: 0;
+			// 	bottom: 0;
+			// 	background-color: rgba(0, 0, 0, 0.5);			
+			// 	z-index: 1;
+			// }
+			.tnr__wrapper{
+				z-index: 2;
+				position: absolute;
+				color: #fff;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 80vh;
+				display: flex;
+				justify-content: center;
+				background-color: rgba(0, 0, 0, 0.5);
+				&__captions {
+					display: flex;
+					flex-direction: column;
+					@include media-max(ipadmini){
+						padding: 3rem;
+					}
+					@include media-max(sm){
+						padding: 1rem;
+					}
 				}
-				opacity: 0;
+				p{
+					font-size: 1.5rem;
+					opacity: 0;
+				}
+				h2{
+					font-family: $primary-font;
+					margin: 1rem 0 2rem;
+					text-transform: uppercase;
+					font-size: 2.688rem;
+					@include media-max(sm){
+						font-size: 2rem;
+					}
+					opacity: 0;
+				}
 			}
 		}
 	}
+
 
 	.featured-projects{
 		// @include media-max(ipadmini){
@@ -984,21 +992,27 @@
 	.living-room{
 		height: 30vw;		
 	}
-	.bannerOnly--Container {
-		overflow: hidden;
-		position: relative;
-		.section--bannerOnly{
-			background-image: var(--lrbg);
-			background-size: cover;
-			// height: 100vh;
-			// height: 40vw;
-			width: 100%;
-			margin: 0 auto;
-			opacity: 1;
-			// padding-bottom: 3.75rem;
-			// @include media-max(ipadmini){
-			// 	height: 60vh;
-			// }
+	.bannerOnly {
+		display: grid;
+    	align-items: center;
+
+		.bannerOnly--Container {
+			overflow: hidden;
+			position: relative;
+			.section--bannerOnly{
+				background-image: var(--lrbg);
+				background-size: cover;
+				// height: 100vh;
+				// height: 40vw;
+				width: 100%;
+				margin: 0 auto;
+				opacity: 1;
+				// padding-bottom: 3.75rem;
+				// @include media-max(ipadmini){
+				// 	height: 60vh;
+				// }
+			}
+
 		}
 
 	}

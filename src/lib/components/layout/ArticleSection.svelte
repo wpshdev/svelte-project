@@ -31,7 +31,7 @@
 </script>
 {#await promise}
 {:then insight} 
-	<section class="insight">
+	<section class="insight" id="article-component">
 		<Container>
 			<Row>
 				<Col>
