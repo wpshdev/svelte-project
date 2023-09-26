@@ -11,31 +11,21 @@
   export let btnUrl;
   export let featuredProjects;
       
-  function nextslide(posi, dragntouch) {
-
-    if(dragntouch == 1){
-    }else{
-          posi = 410;
+  function nextslide() {
       const container = document.querySelector('.slider-container');
-
       container.style.transition = 'transform 0.5s ease-in-out';
-      container.style.transform = 'translateX(-'+ posi +'px)';
-      console.log(posi);
+      container.style.transform = 'translateX(-424px)';
+      console.log();
       setTimeout(() => {
           const firstDiv = container.firstElementChild; // Get the first div element
           container.appendChild(firstDiv);
           container.style.transition = 'none';
           container.style.transform = 'translateX(0px)';
       }, 500);
-    }
   }
-  function prevslide(posi, dragntouch) {
-      if(dragntouch == 1){
-          console.log(posi);
-      }else{
-          posi = 424;
+  function prevslide() {
       const container = document.querySelector('.slider-container');
-      container.style.transform = 'translateX(-'+posi+'px)';
+      container.style.transform = 'translateX(-424px)';
       container.style.transition = 'none';
       const lastDiv = container.lastElementChild;
       container.insertBefore(lastDiv, container?.firstElementChild);
@@ -43,9 +33,7 @@
           container.style.transition = 'transform 0.5s ease-in-out';
           container.style.transform = 'translateX(0px)';
       }, 10);
-    }
   }
-
 
 let isDragging = false;
 let startX = 0;
@@ -57,12 +45,20 @@ function handleStart(event) {
   const anchor = document.querySelector('.zoomImg');
   anchor.addEventListener('click', preventAnchorClick, { once: true });
 
+  const container = document.querySelector('.slider-container');
+  const lastDiv = container.lastElementChild;
+  container.style.transition = 'transform 0s ease-in-out';
+  container.style.transform = 'translateX(-410px)';
+  container.insertBefore(lastDiv, container?.firstElementChild);
+
   startt = event.clientX;
   isDragging = true;
   if (event.touches) {
     startX = event.touches[0].clientX - initialLeft;
+    console.log("start>event-touch");
   } else {
     startX = event.clientX - initialLeft;
+    console.log("start>event");
   }
 }
 
@@ -74,29 +70,33 @@ function handleMove(event) {
     let clientX;
     if (event.touches) {
       clientX = event.touches[0].clientX;
+      console.log("move>event-touch");
     } else {
       clientX = event.clientX;
+      console.log("move>event");
     }
     const newX = clientX - startX;
-    const container = document.querySelector('.carousel');
-    container.style.left = newX + 'px';
+    const carousel = document.querySelector('.carousel');
+    carousel.style.left = newX + 'px';
   }
 }
+
 function handleEnd(event) {
   const anchor = document.querySelector('.zoomImg');
   anchor.addEventListener('click', preventAnchorClick, { once: true });
+  
+    //moving container to 0 auto when exit
+    const container = document.querySelector('.slider-container');
+    container.style.transition = 'transform 0.5s ease-in-out';
+    container.style.transform = 'translateX(0px)';
 
-  endt = event.clientX;
-  const container = document.querySelector('.carousel-section');
-  let position = endt - container.getBoundingClientRect().left;
-  console.log(position);
-  let dragntouch = 1;
-  if(startt > endt){
-      nextslide(position, dragntouch);
-  }
-  if(startt < endt){
-      prevslide(position, dragntouch);
-  }
+    //Moving carousel to 0
+    const carousel = document.querySelector('.carousel');
+    carousel.style.left =  '0px';
+  // endt = event.clientX;
+  // const carouselsection = document.querySelector('.carousel-section');
+  // let position = endt - carouselsection.getBoundingClientRect().left;
+  // console.log(position);
   if (isDragging) {
     isDragging = false;
   }

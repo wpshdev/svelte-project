@@ -84,7 +84,7 @@ style="--height: {imageHeight}vh">
 
     @include media-max(default){
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
     }
     @include media-max(sm){
       left: 50%;
