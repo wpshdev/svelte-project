@@ -91,16 +91,16 @@ function handleMove(event) {
 
 function handleEnd(event) {
 
-    setTimeout(() => {
+    // setTimeout(() => {
       //moving container to 0 auto when exit
       const container = document.querySelector('.slider-container');
       container.style.transition = 'transform 0.5s ease-in-out';
       container.style.transform = 'translateX(0px)';
 
         //Moving carousel to 0
-  const carousel = document.querySelector('.carousel');
-  carousel.style.left = '0px';
-    }, 500);
+      // const carousel = document.querySelector('.carousel');
+      // carousel.style.left = '0px';
+    // }, 500);
 
 
   if (isDragging) {
