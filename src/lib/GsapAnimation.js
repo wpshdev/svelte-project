@@ -493,7 +493,6 @@ export function slowDownSection(node) {
                 opacity: 0,
                 duration: 1.5,
             });
-           
         },
         onLeaveBack: () => {
             gsap.to('#' + parentElementID, {
@@ -507,7 +506,7 @@ export function slowDownSection(node) {
                 duration: 2,
             });
         },
-        markers: true,
+        // markers: true,
       },
     });
     

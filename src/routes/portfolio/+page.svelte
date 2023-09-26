@@ -92,7 +92,7 @@
 
 <PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url ? portfolio.featuredImage.data.attributes.formats.large.url : portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
 
-<section class="portfolio-masonry">
+<section class="portfolio-masonry" id="portfolio-masonry">
     <Container>
         <Row>
             <Col class="text-center">
@@ -173,7 +173,7 @@
         </Row>
     </Container>
 </section>
-<section class="portfolio-cta">
+<section class="portfolio-cta" id="portfolio-cta">
     <!-- <Animate> -->
         <Container>
             <Row>
@@ -192,16 +192,12 @@
     <!-- </Animate> -->
 </section>
 
-<section class="m-0 article-wrapper">
-	<!-- <Animate> -->
-		<ArticleSection />
-	<!-- </Animate> -->
+<section class="m-0 article-wrapper" id="article-wrapper">
+	<ArticleSection />
 </section>
 
-<section class="m-0 cta-wrapper">
-	<!-- <Animate> -->
-		<Cta />
-	<!-- </Animate> -->
+<section class="m-0 cta-wrapper autoscroll-exception" id="cta-wrapper">
+	<Cta />
 </section>
 <style lang="scss">
     section{

@@ -15,9 +15,9 @@ html{
         font-size: 14px;
     }
 }
-body {
-    scroll-behavior: smooth;
-}
+// body {
+//     scroll-behavior: smooth;
+// }
 
 h1,.h1{
     font-size: 5rem;
@@ -111,7 +111,7 @@ input:focus{
 section{
     margin: 3.75rem 0;
     // overflow: hidden;
-    min-height: 20vh;
+    min-height: 100vh;
     @include media-max(lg){
         padding-left: 3rem;
         padding-right: 3rem;
