@@ -42,8 +42,11 @@ let startt = 0;
 let endt = 0;
 
 function handleStart(event) {
-  const anchor = document.querySelector('.zoomImg');
+
+  const anchors = document.querySelectorAll('.zoomImg');
+  anchors.forEach(anchor => {
   anchor.addEventListener('click', preventAnchorClick, { once: true });
+  });
 
   const container = document.querySelector('.slider-container');
   const lastDiv = container.lastElementChild;
@@ -63,8 +66,7 @@ function handleStart(event) {
 }
 
 function handleMove(event) {
-  const anchor = document.querySelector('.zoomImg');
-  anchor.addEventListener('click', preventAnchorClick, { once: true });
+
 
   if (isDragging) {
     let clientX;
@@ -82,25 +84,28 @@ function handleMove(event) {
 }
 
 function handleEnd(event) {
-  const anchor = document.querySelector('.zoomImg');
-  anchor.addEventListener('click', preventAnchorClick, { once: true });
-  
-    //moving container to 0 auto when exit
-    const container = document.querySelector('.slider-container');
-    container.style.transition = 'transform 0.5s ease-in-out';
-    container.style.transform = 'translateX(0px)';
+    setTimeout(() => {
+      //moving container to 0 auto when exit
+      const container = document.querySelector('.slider-container');
+      container.style.transition = 'transform 0.5s ease-in-out';
+      container.style.transform = 'translateX(0px)';
+      //Moving carousel to 0
+      const carousel = document.querySelector('.carousel');
+      carousel.style.left =  '0px';
+    }, 500);
+    
 
-    //Moving carousel to 0
-    const carousel = document.querySelector('.carousel');
-    carousel.style.left =  '0px';
-  // endt = event.clientX;
-  // const carouselsection = document.querySelector('.carousel-section');
-  // let position = endt - carouselsection.getBoundingClientRect().left;
-  // console.log(position);
+
   if (isDragging) {
     isDragging = false;
   }
 }
+
+  // endt = event.clientX;
+  // const carouselsection = document.querySelector('.carousel-section');
+  // let position = endt - carouselsection.getBoundingClientRect().left;
+  // console.log(position);
+
 function preventAnchorClick(event) {
   event.preventDefault();
   console.log('Anchor click prevented');
@@ -154,7 +159,7 @@ function preventAnchorClick(event) {
           on:dragend={handleMouseUp}> -->
           {#each featuredProjects.data as project, index}
           <div class="slider-container__carousel-cell" id="carousel-item">
-            <a href="javascript:void();" ahref="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+            <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
               {#if project.attributes.featuredImage.data != null}
                 <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
               {:else}

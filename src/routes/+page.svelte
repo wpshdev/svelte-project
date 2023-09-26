@@ -581,7 +581,7 @@
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 80vh;
+				height: 60vh;
 				display: flex;
 				justify-content: center;
 				background-color: rgba(0, 0, 0, 0.5);
