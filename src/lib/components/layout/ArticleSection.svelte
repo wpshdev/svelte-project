@@ -31,7 +31,7 @@
 </script>
 {#await promise}
 {:then insight} 
-	<section class="insight" id="article-component">
+	<div class="insight">
 		<Container>
 			<Row>
 				<Col>
@@ -62,7 +62,7 @@
 				</Col>
 			</Row>
 		</Container>
-	</section>
+	</div>
 {/await}
 
 
@@ -72,7 +72,9 @@
 		// padding: 12rem 0;
 		padding: 8rem 0;
 		margin-bottom: 0;
-		min-height: 20vh;
+		min-height: 100vh;
+		display: flex;
+    	align-items: center;
 		@include media-max(md){
 			padding-left: 3rem;
 			padding-right: 3rem;
