@@ -84,7 +84,7 @@ function handleMove(event) {
 
       var style = window.getComputedStyle(container);
       var matrix = new WebKitCSSMatrix(style.transform);
-      console.log('translateX: ', matrix.m41);
+      // console.log('translateX: ', matrix.m41);
     if(startX > clientX){
       //2341 -- 3412
       //if start of drag point is bigger than client than it considered as swipe right to left or swipe left or previous
@@ -94,16 +94,23 @@ function handleMove(event) {
           container.style.transition = 'none';
           container.style.transform = 'translateX(0px)';
 
-        console.log("previous2");
+        // console.log("previous2");
       }
-      console.log("previous");
+      // console.log("previous");
     }
     if(clientX > startX){
       //4123 -- 3412
       //if start of client point is bigger than start point than it considered as swipe left to right or swipe right
-      console.log("next");
+      // console.log("next");
     }
   
+    if(matrix.m41 == 1){
+          const lastDiv = container.lastElementChild;
+          container.style.transition = 'transform 0s ease-in-out';
+          container.style.transform = 'translateX(-424px)';
+          container.insertBefore(lastDiv, container?.firstElementChild);
+          console.log(matrix.m41);
+      }
 
 
     // const carousel = document.querySelector('.carousel');
