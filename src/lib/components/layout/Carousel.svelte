@@ -38,20 +38,20 @@ onMount(() => {
   promise = fetchFallback();
   innerWidth = window.innerWidth;
   
-  flickityInstance = new Flickity('.slider-container', {
-    cellAlign: 'left',
-    contain: true,
-    wrapAround: true,
-    prevNextButtons: false,
-    pageDots: false,
-    autoPlay: false,
-    groupCells: 1,
-    draggable: true,
-    on: {
-      change: updateProgress,
-    },
-  });
-})
+//   flickityInstance = new Flickity('.slider-container', {
+//     cellAlign: 'left',
+//     contain: true,
+//     wrapAround: true,
+//     prevNextButtons: false,
+//     pageDots: false,
+//     autoPlay: false,
+//     groupCells: 1,
+//     draggable: true,
+//     on: {
+//       change: updateProgress,
+//     },
+//   });
+// })
 
 
 

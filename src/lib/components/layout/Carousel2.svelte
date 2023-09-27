@@ -156,11 +156,6 @@ function handleEnd(event) {
   }
 }
 
-  // endt = event.clientX;
-  // const carouselsection = document.querySelector('.carousel-section');
-  // let position = endt - carouselsection.getBoundingClientRect().left;
-  // console.log(position);
-
 function preventAnchorClick(event) {
   event.preventDefault();
   console.log('Anchor click prevented');
@@ -181,23 +176,6 @@ function preventAnchorClick(event) {
           <img src="{rightar}">
       </button>
   </div>
-  <!-- {/if} -->
-    <!-- {#if innerWidth > 767}
-      <div class="progress-ring-container">
-        <svg class="progress-ring" width="110" height="49">
-          <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
-          <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="2" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
-          <g class="progress-ring__arrow progress-ring__arrow--left" on:click={left} use:resetInterval={autoplay} aria-label="left">
-            <rect x="2" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
-            <text x="33" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&larr;</text>
-          </g>
-          <g class="progress-ring__arrow progress-ring__arrow--right" on:click={right} use:resetInterval={autoplay} aria-label="right">
-            <rect x="56" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
-            <text x="77" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&rarr;</text>
-          </g>
-        </svg>
-      </div> 
-    {/if} -->
   </div>
 </Col>
 <Col md=9 class="carousel-section" style="overflow: hidden;padding-left:0px;position: relative;height: 40rem;">
@@ -210,8 +188,6 @@ function preventAnchorClick(event) {
   on:touchmove={handleMove}
   on:touchend={handleEnd}>
           <div class="slider-container">
-          <!-- on:dragstart={handleMouseDown}
-          on:dragend={handleMouseUp}> -->
           {#each featuredProjects.data as project, index}
           <div class="slider-container__carousel-cell" id="carousel-item">
             <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
@@ -234,28 +210,7 @@ function preventAnchorClick(event) {
             </a>  
           </div>
         {/each}
-        <!-- {#each featuredProjects.data as project, index}
-          <div class="slider-container__carousel-cell" id="carousel-item">
-            <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
-              {#if project.attributes.featuredImage.data != null}
-                <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-              {:else}
-              {#await promise}
-              {:then fallback} 
-                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" draggable="false">
-              {/await}
-              {/if}
-              <div class="slider-container__carousel-cell__text">
-                <span>{('0' + (index + 1)).slice(-2)}</span>
-                {project.attributes.title ? project.attributes.title : ''}
-                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                  </i>
-              </div>
-            </a>  
-          </div>
-        {/each} -->
+
   </div>
 </div>
 </div>
@@ -270,24 +225,6 @@ function preventAnchorClick(event) {
 </button>
 </div>
 </div>
-
-<!-- {#if project.attributes.featuredImage.data != null}
-                <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-              {:else}
-              {#await promise}
-              {:then fallback} 
-                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
-              {/await}
-              {/if} -->
-
-  <!-- {#if dots}
-<ul>
-  {#each {length: totalDots} as _, i}
-  <li on:click={() => go(i*currentPerPage)} class={isDotActive(currentIndex, i) ? "active" : ""}></li>
-  {/each}
-</ul>
-  {/if} -->
-
 
 <style lang="scss">
 :global(.transition-left) {
