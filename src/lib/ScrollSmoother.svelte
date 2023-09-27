@@ -28,59 +28,59 @@
 
       // auto scroll
 
-      setTimeout(() => {
-        let sections = gsap.utils.toArray("section");
+      // setTimeout(() => {
+      //   let sections = gsap.utils.toArray("section");
         
-        sections.forEach((section, i) => {
+      //   sections.forEach((section, i) => {
 
-          // Calculate the index of the next section
-          const nextSectionIndex = i + 1;
+      //     // Calculate the index of the next section
+      //     const nextSectionIndex = i + 1;
 
-          if (nextSectionIndex < sections.length) {  // Check if there is a next section
+      //     if (nextSectionIndex < sections.length) {  // Check if there is a next section
 
-            const nextSection = sections[nextSectionIndex];
+      //       const nextSection = sections[nextSectionIndex];
 
-            if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
+      //       if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
              
-              ScrollTrigger.create({
-                trigger: section,
-                start: "top bottom",
-                end: "60% 30%",
-                markers: true,
-                onLeave: () => {
-                  console.log('Leaving section:', section.id);
-                  console.log('Scrolling to next section:', nextSection.id);
-                  // smoother.scrollTo("#"+nextSection.id, true, "top 10vw");
+      //         ScrollTrigger.create({
+      //           trigger: section,
+      //           start: "top bottom",
+      //           end: "60% 30%",
+      //           markers: true,
+      //           onLeave: () => {
+      //             console.log('Leaving section:', section.id);
+      //             console.log('Scrolling to next section:', nextSection.id);
+      //             // smoother.scrollTo("#"+nextSection.id, true, "top 10vw");
 
-                  // gsap.to(smoother, {
-                  //   // don't let it go beyond the maximum scrollable area
-                  //   scrollTop: Math.min(ScrollTrigger.maxScroll(window), smoother.offset("#"+nextSection.id, 'top 10vw')),
-                  //   duration: 2
-                  // });
-                  gsap.to(window, {
-                    duration: 2, 
-                    scrollTo: {
-                      y: "#"+nextSection.id, 
-                      offsetY: 50,
-                      autoKill: true
-                    }
-                  });
+      //             // gsap.to(smoother, {
+      //             //   // don't let it go beyond the maximum scrollable area
+      //             //   scrollTop: Math.min(ScrollTrigger.maxScroll(window), smoother.offset("#"+nextSection.id, 'top 10vw')),
+      //             //   duration: 2
+      //             // });
+      //             gsap.to(window, {
+      //               duration: 2, 
+      //               scrollTo: {
+      //                 y: "#"+nextSection.id, 
+      //                 offsetY: 50,
+      //                 autoKill: true
+      //               }
+      //             });
 
-                  // disable
-                  // window.addEventListener('wheel', { passive: false });
+      //             // disable
+      //             // window.addEventListener('wheel', { passive: false });
 
-                  // setTimeout(() => {
-                  //   console.log('re enable scroll');
-                  // },2000)
-                },
-              });
+      //             // setTimeout(() => {
+      //             //   console.log('re enable scroll');
+      //             // },2000)
+      //           },
+      //         });
 
-            } 
+      //       } 
 
-          }
+      //     }
           
-        });
-      }, 1000);
+      //   });
+      // }, 1000);
 
     });
 
