@@ -49,10 +49,10 @@ function handleStart(event) {
   });
 
   const container = document.querySelector('.slider-container');
-  const lastDiv = container.lastElementChild;
-  container.style.transition = 'transform 0s ease-in-out';
-  container.style.transform = 'translateX(-424px)';
-  container.insertBefore(lastDiv, container?.firstElementChild);
+  // const lastDiv = container.lastElementChild;
+  // container.style.transition = 'transform 0s ease-in-out';
+  // container.style.transform = 'translateX(-424px)';
+  // container.insertBefore(lastDiv, container?.firstElementChild);
 
   startt = event.clientX;
   isDragging = true;
@@ -72,16 +72,39 @@ function handleMove(event) {
     let clientX;
     if (event.touches) {
       clientX = event.touches[0].clientX;
-      // console.log("move>event-touch");
     } else {
       clientX = event.clientX;
-      // console.log("move>event");
     }
+
+    //This is moving touch or movement
     const newX = clientX - startX;
-    console.log("N" + newX + " C" + clientX + " S" + startX);
     const container = document.querySelector('.slider-container');
-    let newX2 = newX - 424;
-    container.style.transform = 'translateX('+newX2+'px)';
+    container.style.transform = 'translateX('+newX+'px)';
+
+
+      var style = window.getComputedStyle(container);
+      var matrix = new WebKitCSSMatrix(style.transform);
+      console.log('translateX: ', matrix.m41);
+    if(startX > clientX){
+      //2341 -- 3412
+      //if start of drag point is bigger than client than it considered as swipe right to left or swipe left or previous
+      if(matrix.m41 == -424 ){
+          const firstDiv = container.firstElementChild; // Get the first div element
+          container.appendChild(firstDiv);
+          container.style.transition = 'none';
+          container.style.transform = 'translateX(0px)';
+
+        console.log("previous2");
+      }
+      console.log("previous");
+    }
+    if(clientX > startX){
+      //4123 -- 3412
+      //if start of client point is bigger than start point than it considered as swipe left to right or swipe right
+      console.log("next");
+    }
+  
+
 
     // const carousel = document.querySelector('.carousel');
     // carousel.style.left = newX + 'px';
@@ -91,16 +114,34 @@ function handleMove(event) {
 
 function handleEnd(event) {
 
-    // setTimeout(() => {
-      //moving container to 0 auto when exit
-      const container = document.querySelector('.slider-container');
-      container.style.transition = 'transform 0.5s ease-in-out';
-      container.style.transform = 'translateX(0px)';
-
-        //Moving carousel to 0
-      // const carousel = document.querySelector('.carousel');
-      // carousel.style.left = '0px';
-    // }, 500);
+    let clientX;
+    if (event.touches) {
+      clientX = event.touches[0].clientX;
+    } else {
+      clientX = event.clientX;
+    }
+    const container = document.querySelector('.slider-container');
+      // if(startX > clientX){
+      //   // 2341
+      //   console.log("this one");
+      //     container.style.transition = 'transform 0.5s ease-in-out';
+      //     container.style.transform = 'translateX(-424px)';
+          
+      //     setTimeout(() => {
+      //       console.log("executed");
+      //       const firstDiv = container.firstElementChild;
+      //       container.appendChild(firstDiv);
+      //       container.style.transition = 'none';
+      //       container.style.transform = 'translateX(0px)';
+      //     }, 5000);
+      // }
+      // if(clientX > startX){
+      //   container.style.transition = 'transform 0.5s ease-in-out';
+      //   container.style.transform = 'translateX(0px)';
+      // }
+         container.style.transition = 'transform 0.5s ease-in-out';
+        container.style.transform = 'translateX(0px)';
+      console.log(" C" + clientX + " S" + startX);
 
 
   if (isDragging) {
