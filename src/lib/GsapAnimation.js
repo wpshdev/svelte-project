@@ -624,3 +624,51 @@ export function bgZoom(node) {
 //     },
 // });
 // End snap for testing
+
+// Auto scroll
+
+export function jumpToSection() {
+    
+    let sections = gsap.utils.toArray("section");
+        
+    sections.forEach((section, i) => {
+
+        // Calculate the index of the next section
+        const nextSectionIndex = i + 1;
+
+        if (nextSectionIndex < sections.length) {  // Check if there is a next section
+
+            const nextSection = sections[nextSectionIndex];
+
+            if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
+                
+                ScrollTrigger.create({
+                    trigger: section,
+                    // start: "top bottom",
+                    end: "80% 60%",
+                    markers: true,
+                    onLeave: () => {
+                        console.log('Leaving section:', section.id);
+                        console.log('Scrolling to next section:', nextSection.id);
+                        
+                        gsap.to(window, {
+                            duration: 2, 
+                            scrollTo: {
+                                y: "#" + nextSection.id, 
+                                offsetY: 0,
+                                // autoKill: true
+                            }
+                        });
+
+                        // disable
+                        // window.addEventListener('wheel', { passive: false });
+
+                    },
+                });
+
+            } 
+
+        }
+        
+    });
+}

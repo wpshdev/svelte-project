@@ -69,7 +69,8 @@
 <style lang="scss">
 	.insight{
 		background-color: #F2F2F2;
-		padding: 12rem 0;
+		// padding: 12rem 0;
+		padding: 8rem 0;
 		margin-bottom: 0;
 		min-height: 20vh;
 		@include media-max(md){
