@@ -11,31 +11,21 @@
   export let btnUrl;
   export let featuredProjects;
       
-  function nextslide(posi, dragntouch) {
-
-    if(dragntouch == 1){
-    }else{
-          posi = 410;
+  function nextslide() {
       const container = document.querySelector('.slider-container');
-
       container.style.transition = 'transform 0.5s ease-in-out';
-      container.style.transform = 'translateX(-'+ posi +'px)';
-      console.log(posi);
+      container.style.transform = 'translateX(-424px)';
+      console.log();
       setTimeout(() => {
           const firstDiv = container.firstElementChild; // Get the first div element
           container.appendChild(firstDiv);
           container.style.transition = 'none';
           container.style.transform = 'translateX(0px)';
       }, 500);
-    }
   }
-  function prevslide(posi, dragntouch) {
-      if(dragntouch == 1){
-          console.log(posi);
-      }else{
-          posi = 424;
+  function prevslide() {
       const container = document.querySelector('.slider-container');
-      container.style.transform = 'translateX(-'+posi+'px)';
+      container.style.transform = 'translateX(-424px)';
       container.style.transition = 'none';
       const lastDiv = container.lastElementChild;
       container.insertBefore(lastDiv, container?.firstElementChild);
@@ -43,9 +33,7 @@
           container.style.transition = 'transform 0.5s ease-in-out';
           container.style.transform = 'translateX(0px)';
       }, 10);
-    }
   }
-
 
 let isDragging = false;
 let startX = 0;
@@ -54,53 +42,77 @@ let startt = 0;
 let endt = 0;
 
 function handleStart(event) {
-  const anchor = document.querySelector('.zoomImg');
+
+  const anchors = document.querySelectorAll('.zoomImg');
+  anchors.forEach(anchor => {
   anchor.addEventListener('click', preventAnchorClick, { once: true });
+  });
+
+  const container = document.querySelector('.slider-container');
+  const lastDiv = container.lastElementChild;
+  container.style.transition = 'transform 0s ease-in-out';
+  container.style.transform = 'translateX(-424px)';
+  container.insertBefore(lastDiv, container?.firstElementChild);
 
   startt = event.clientX;
   isDragging = true;
   if (event.touches) {
     startX = event.touches[0].clientX - initialLeft;
+    // console.log("start>event-touch");
   } else {
     startX = event.clientX - initialLeft;
+    // console.log("start>event");
   }
 }
 
 function handleMove(event) {
-  const anchor = document.querySelector('.zoomImg');
-  anchor.addEventListener('click', preventAnchorClick, { once: true });
+
 
   if (isDragging) {
     let clientX;
     if (event.touches) {
       clientX = event.touches[0].clientX;
+      // console.log("move>event-touch");
     } else {
       clientX = event.clientX;
+      // console.log("move>event");
     }
     const newX = clientX - startX;
-    const container = document.querySelector('.carousel');
-    container.style.left = newX + 'px';
+    console.log("N" + newX + " C" + clientX + " S" + startX);
+    const container = document.querySelector('.slider-container');
+    let newX2 = newX - 424;
+    container.style.transform = 'translateX('+newX2+'px)';
+
+    // const carousel = document.querySelector('.carousel');
+    // carousel.style.left = newX + 'px';
+    // console.log(newX +" "+ newX2);
   }
 }
-function handleEnd(event) {
-  const anchor = document.querySelector('.zoomImg');
-  anchor.addEventListener('click', preventAnchorClick, { once: true });
 
-  endt = event.clientX;
-  const container = document.querySelector('.carousel-section');
-  let position = endt - container.getBoundingClientRect().left;
-  console.log(position);
-  let dragntouch = 1;
-  if(startt > endt){
-      nextslide(position, dragntouch);
-  }
-  if(startt < endt){
-      prevslide(position, dragntouch);
-  }
+function handleEnd(event) {
+
+    // setTimeout(() => {
+      //moving container to 0 auto when exit
+      const container = document.querySelector('.slider-container');
+      container.style.transition = 'transform 0.5s ease-in-out';
+      container.style.transform = 'translateX(0px)';
+
+        //Moving carousel to 0
+      // const carousel = document.querySelector('.carousel');
+      // carousel.style.left = '0px';
+    // }, 500);
+
+
   if (isDragging) {
     isDragging = false;
   }
 }
+
+  // endt = event.clientX;
+  // const carouselsection = document.querySelector('.carousel-section');
+  // let position = endt - carouselsection.getBoundingClientRect().left;
+  // console.log(position);
+
 function preventAnchorClick(event) {
   event.preventDefault();
   console.log('Anchor click prevented');
@@ -154,7 +166,7 @@ function preventAnchorClick(event) {
           on:dragend={handleMouseUp}> -->
           {#each featuredProjects.data as project, index}
           <div class="slider-container__carousel-cell" id="carousel-item">
-            <a href="javascript:void();" ahref="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+            <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
               {#if project.attributes.featuredImage.data != null}
                 <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
               {:else}
@@ -231,14 +243,14 @@ function preventAnchorClick(event) {
 
 <style lang="scss">
 :global(.transition-left) {
-  transform: translateX(-410px) !important; /* Adjust the value as needed */
+  transform: translateX(-424px) !important; /* Adjust the value as needed */
   transition-duration: 0.5s;
 }
 :global(.transition-left-no-dur) {
-  transform: translateX(-410px) !important; /* Adjust the value as needed */
+  transform: translateX(-424px) !important; /* Adjust the value as needed */
 }
 :global(.transition-right) {
-  transform: translateX(410px) !important; /* Adjust the value as needed */
+  transform: translateX(424px) !important; /* Adjust the value as needed */
   transition-duration: 0.5s;
 }
   .slides{
