@@ -285,7 +285,7 @@
 		</Container>
 </section>
 
-<section class="m-0 article-wrapper" id="article-wrapper">
+<section class="m-0 article-wrapper autoscroll-exception" id="article-wrapper">
 	<ArticleSection />
 </section>
 
@@ -539,7 +539,12 @@
 
 	#tnr {
 		display: grid;
-		align-items: center;
+		align-items: end;
+
+		@include media-max(md){
+			padding: unset;
+			// align-items: center;
+		}   
 
 		.tnr{
 			// background-image: var(--tp-banner);
@@ -582,7 +587,7 @@
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 60vh;
+				height: 100vh;
 				display: flex;
 				justify-content: center;
 				background-color: rgba(0, 0, 0, 0.5);
@@ -599,6 +604,9 @@
 				p{
 					font-size: 1.5rem;
 					opacity: 0;
+					@include media-max(ipadmini){
+						font-size: 1rem;
+					}
 				}
 				h2{
 					font-family: $primary-font;
@@ -656,7 +664,7 @@
 				}
 				@include media-max(ipadmini){	
 					top: unset;
-					height: 140%;
+					height: 175%;
 				}
 				@include media-max(sm){
 					width: 100vw;
@@ -995,7 +1003,12 @@
 	}
 	.bannerOnly {
 		display: grid;
-    	align-items: center;
+    	align-items: end;
+
+		@include media-max(md){
+			padding: unset;
+			// align-items: center;
+		}   
 
 		.bannerOnly--Container {
 			overflow: hidden;

@@ -630,6 +630,7 @@ export function bgZoom(node) {
 export function jumpToSection() {
     
     let sections = gsap.utils.toArray("section");
+    let endTrigger;
         
     sections.forEach((section, i) => {
 
@@ -642,26 +643,31 @@ export function jumpToSection() {
 
             if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
                 
+                if(window.innerWidth <= 768) { // 768 below
+                    endTrigger = "90% 75%";
+                } else { // desktop
+                    endTrigger = "70% center";
+                }
+
+
                 ScrollTrigger.create({
                     trigger: section,
-                    // start: "top bottom",
-                    end: "80% 60%",
+                    start: "top top",
+                    end: endTrigger,
                     markers: true,
                     onLeave: () => {
                         console.log('Leaving section:', section.id);
                         console.log('Scrolling to next section:', nextSection.id);
                         
+                        // gsap.set(document.body, {overflow: "hidden"});
                         gsap.to(window, {
-                            duration: 2, 
+                            duration: 1, 
                             scrollTo: {
                                 y: "#" + nextSection.id, 
-                                offsetY: 0,
+                                offsetY: 50,
                                 // autoKill: true
                             }
                         });
-
-                        // disable
-                        // window.addEventListener('wheel', { passive: false });
 
                     },
                 });
