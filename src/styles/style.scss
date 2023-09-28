@@ -121,7 +121,7 @@ section{
         padding-right: 3rem;
     }
     @include media-max(ipadmini){	
-        min-height: 80vh;
+        min-height: auto;
     }
     @include media-max(sm){
         padding-left: 1rem;
@@ -130,9 +130,9 @@ section{
 }
 .mvw-10 {
     margin: 10vw 0;
-    // @include media-max(lg){
-    //     margin: 5vw 0;
-    // }
+    @include media-max(ipadmini){
+        margin: 20vw 0;
+    }
 }
 img{
     width: 100%;

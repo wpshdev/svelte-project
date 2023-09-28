@@ -390,6 +390,7 @@ white-space: nowrap;
 }
 }
 
+
 // .slider-btn{
 //   margin: 3rem 5rem 0;
 //   text-align: right;

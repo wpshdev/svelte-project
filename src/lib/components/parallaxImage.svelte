@@ -72,6 +72,9 @@ style="--height: {imageHeight}vh">
     @include media-max(default){
       height: 60vh;
     }
+    // @include media-max(sm){
+    //   height: 100vh;
+    // }
   }
 
   .parallax-img {
@@ -84,7 +87,7 @@ style="--height: {imageHeight}vh">
 
     @include media-max(default){
       width: 100%;
-      min-height: 100vh;
+      // min-height: 100vh;
     }
     @include media-max(sm){
       left: 50%;

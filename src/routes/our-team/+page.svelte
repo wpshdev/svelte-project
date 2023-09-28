@@ -251,9 +251,9 @@
 		display: flex;
 		align-items: center;
         justify-content: center;
-		@include media-max(ipadmini){
-			min-height: unset;
-        }
+		// @include media-max(ipadmini){
+		// 	min-height: unset;
+        // }
     }
 .tm-box{
     position: absolute;
@@ -335,6 +335,9 @@
 .team-members {
     h2 {
         justify-content: center;
+    }
+    @include media-max(sm){ 
+        min-height: 100vh;
     }
 }
 
@@ -461,12 +464,13 @@
     }
 
 }
+:global(.team-members .inner-col) {
 
-@include media-max(lg){ 
-    :global(.team-members .inner-col) {
+    @include media-max(lg){
         margin-left: unset;
         width: 100%;
     }
+
 }
 
 </style>
