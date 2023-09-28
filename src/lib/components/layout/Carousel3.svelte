@@ -2,6 +2,7 @@
     import { textAnimate, slide, fly } from '$lib/GsapAnimation.js';
     import leftar from '$lib/img/left-ar.svg';
     import rightar from '$lib/img/right-ar.svg';
+    import rightarrow from '$lib/img/right-arrow-sky.svg';
     import {Row,Col} from 'sveltestrap';
 	import Siema from 'siema';
 	import { onMount, createEventDispatcher } from 'svelte';
@@ -138,10 +139,11 @@
         <button class="right" on:click={right}>
             <img src="{rightar}">
         </button>
+        
     </div>
     </div>
   </Col>
-<Col md=9 class="carousel-section" style="overflow: hidden;padding-left:0px;position: relative;height: 40rem;">
+<Col md=9 class="carousel-section">
     <div class="carousel" style="position:absolute;left:0;top:0;">
         <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown={handleStart}>
             {#each featuredProjects.data as project, index}
@@ -165,9 +167,15 @@
           {/each}
         </div>
     </div>
+    <button class="left-mobil" on:click={right}>
+        <img src="{rightarrow}">
+    </button>
+    <button class="right-mobil" on:click={right}>
+        <img src="{rightarrow}">
+    </button>
 </Col>
 </Row>
-  <div class="slider-caption">
+  <!-- <div class="slider-caption">
     <div class="left-right mobile">
         <button class="left" on:click={left}>
             <img src="{leftar}">
@@ -176,7 +184,7 @@
             <img src="{rightar}">
         </button>
     </div>
-  </div>
+  </div> -->
 
 
     <!-- <div class="carousel">
@@ -202,17 +210,54 @@
 
 
 <style lang="scss">
-	.carousel {
-		position: relative;
-		width: 25rem;
-		justify-content: center;
-		align-items: center;
-	}
-	.slides{
-        overflow: visible !important;
+.right-mobil{
+    display: none;
+    max-width: 70px;
+    @include media-max(sm){
+        display: block;
+        position: absolute;
+        right: 0px;
+        background: none;
+        border: 0;
+        height: 100%;
     }
-
-    .left-right{
+}
+.left-mobil{
+    display: none;
+    max-width: 70px;
+    @include media-max(sm){
+        display: block;
+        position: absolute;
+        left: 0px;
+        background: none;
+        border: 0;
+        height: 100%;
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+    }
+}
+.carousel {
+    position: relative;
+    width: 25rem;
+    justify-content: center;
+    align-items: center;
+}
+.slides{
+    overflow: visible !important;
+}
+:global(.carousel-section){
+    overflow: hidden;
+    padding-left:0px;
+    position: relative;
+    height: 31.5rem;
+    @include media-max(sm){
+        height: 24rem;
+    }
+}
+.left-right{
   display: inline-flex;
   box-shadow: 0 0 5px #aaa;
   border-radius: 40px;
@@ -235,7 +280,7 @@ margin: 40px 0;
 }
 .left, .right{
   border: 0px;
-  padding: 1.25rem;
+  padding: 1rem;
   background-color: transparent;
   margin: 0px;
 }
@@ -244,7 +289,7 @@ margin: 40px 0;
 }
 
 
-    .slider-caption{
+.slider-caption{
   height: 100%;
   // display: flex;
   // align-items: center;
@@ -334,7 +379,8 @@ white-space: nowrap;
               margin: 0;
               // font-size: 0.6rem;
               width: 90%;
-              bottom: 0.5rem
+              bottom: 0.5rem;
+              gap: 10px;
           } 
           span{
               color: $primary-color;
