@@ -253,9 +253,9 @@
     padding-left:0px;
     position: relative;
     height: 31.5rem;
-    @include media-max(sm){
-        height: 24rem;
-    }
+    // @include media-max(sm){
+    //     height: 24rem;
+    // }
 }
 .left-right{
   display: inline-flex;
