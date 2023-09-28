@@ -1,16 +1,16 @@
 <script lang="ts">
-	// import { browser } from '$app/environment';
+	import { browser } from '$app/environment';
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
 import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
-// import Flickity from "flickity"
+// import Flickity from "flickity";
 import noFeatured from "$lib/img/blog-empty.svg"
 // import { fade, fly } from 'svelte/transition';
 
 import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
-// let flickityInstance;
+let flickityInstance;
 export let preHeading; 
 export let heading; 
 export let btnTitle;
@@ -18,40 +18,6 @@ export let btnUrl;
 export let featuredProjects;
 
 let innerWidth;
-
-let slides = [
-    'Slide 1',
-    'Slide 2',
-    'Slide 3',
-    'Slide 4',
-  ];
-let currentIndex=0;
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    console.log(currentIndex);
-    // previousIndex = currentIndex - 1;
-    let object = document.getElementById("carousel-image-container");
-    let objectsl = document.getElementById("carousel-item");
-    let obwidth = objectsl.clientWidth + 16;
-    console.log(obwidth * currentIndex);
-    object.style.transform = `translateX(-${obwidth * currentIndex}px)`;
-    
-    // let object2 = document.querySelectorAll("[id='carousel-slide']");
-    // object2.forEach(function(item){
-    //   item.style.transform = `translateX(-${260 * currentIndex}px)`;
-    // });
-    // setTimeout(function(){ object2[previousIndex].style.transform = `translateX(${260 * 4}px)`; }, 500);
-  }
-  function previousSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    console.log(currentIndex);
-    let object = document.getElementById("carousel-image-container");
-    let objectsl = document.getElementById("carousel-item");
-    let obwidth = objectsl.clientWidth + 16;
-    console.log(obwidth * currentIndex);
-    object.style.transform = `translateX(${obwidth * currentIndex}px)`;
-  }
-
 
   let promise = fetchFallback();
 	async function fetchFallback(){
@@ -72,20 +38,20 @@ onMount(() => {
   promise = fetchFallback();
   innerWidth = window.innerWidth;
   
-  // flickityInstance = new Flickity('.slider-container', {
-  //   cellAlign: 'left',
-  //   contain: true,
-  //   wrapAround: true,
-  //   prevNextButtons: false,
-  //   pageDots: false,
-  //   autoPlay: false,
-  //   groupCells: 1,
-  //   draggable: true,
-  //   on: {
-  //     change: updateProgress,
-  //   },
-  // });
-})
+//   flickityInstance = new Flickity('.slider-container', {
+//     cellAlign: 'left',
+//     contain: true,
+//     wrapAround: true,
+//     prevNextButtons: false,
+//     pageDots: false,
+//     autoPlay: false,
+//     groupCells: 1,
+//     draggable: true,
+//     on: {
+//       change: updateProgress,
+//     },
+//   });
+// })
 
 
 
@@ -123,11 +89,11 @@ $: {
           <svg class="progress-ring" width="110" height="49">
             <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
             <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="2" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
-            <g class="progress-ring__arrow progress-ring__arrow--left" on:click={previousSlide}>
+            <g class="progress-ring__arrow progress-ring__arrow--left" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>
               <rect x="2" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
               <text x="33" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&larr;</text>
             </g>
-            <g class="progress-ring__arrow progress-ring__arrow--right" on:click={nextSlide}>
+            <g class="progress-ring__arrow progress-ring__arrow--right" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>
               <rect x="56" y="2" width="52" height="45" rx="25" ry="25" fill="transparent" />
               <text x="77" y="25" font-size="26" text-anchor="middle" dominant-baseline="central">&rarr;</text>
             </g>
@@ -136,10 +102,10 @@ $: {
       {/if}
     </div>
   </Col>	
-  <Col md=9 style="overflow: hidden;padding-left:0px;">
+  <Col md=9>
     <div class="slider-container" in:fly id="carousel-image-container" gsap-duration="0.5" gsap-y="10">
       {#each featuredProjects.data as project, index}
-        <div class="slider-container__carousel-cell" id="carousel-item">
+        <div class="slider-container__carousel-cell">
           <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg">      
             {#if project.attributes.featuredImage.data != null}
               <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
@@ -167,14 +133,12 @@ $: {
           <svg class="progress-ring" width="110" height="49">
             <rect class="progress-ring__bg" x="2" y="2" rx="25" ry="25" width="106" height="45" fill="white" />
             <rect class="progress-ring__border" x="2" y="2" width="106" height="45" rx="25" ry="25" fill="transparent" stroke-width="2" stroke="#00ADEE" stroke-dasharray="305" stroke-dashoffset="{305 * (1 - progressPercentage / 100)}" />
-            <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={previousSlide}>&larr;</text>
-            <!-- on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }} -->
-            <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={nextSlide}>&rarr;</text>
-            <!-- on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }} -->
+            <text class="progress-ring__arrow progress-ring__arrow--left" x="27" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.previous(); updateProgress(flickityInstance.selectedIndex); }}>&larr;</text>
+            <text class="progress-ring__arrow progress-ring__arrow--right" x="82" y="25" font-size="16" text-anchor="middle" dominant-baseline="central" on:click={() => { flickityInstance.next(); updateProgress(flickityInstance.selectedIndex); }}>&rarr;</text>
           </svg>
         </div> 
       </div>
-    {/if} 
+    {/if}       
     <div class="slider-btn">
       <a href="{btnUrl ? btnUrl : '#'}" class="btn btn-secondary scaleLarge">{btnTitle ? btnTitle : 'Button'}</a>
     </div>    
@@ -219,19 +183,15 @@ $: {
       h2{
         // flex-wrap: wrap;
         // width: 18rem;
-        @include media-max(ipadmini){
-            line-height: 2rem;
-        }    
       }
     }
   }
 
 .slider-container {
   width: 100%;
+  overflow: hidden;
   position: relative;
-  transition: transform 0.5s ease-in-out;
 
-  white-space: nowrap;
   &__carousel-cell {
     width: 42%;
     position: relative;   
@@ -240,7 +200,6 @@ $: {
     box-sizing: border-box;
     height: 32rem;
     overflow: hidden;
-    display: inline-block;
     &:hover{
         .slider-container__carousel-cell__text{
           background: $primary-color;
@@ -274,6 +233,8 @@ $: {
           transition: 1.5s;
           display: flex;
           align-items: center;
+          column-gap: 0.75rem;
+
             @include media-max(sm){
                 margin: 0;
                 // font-size: 0.6rem;

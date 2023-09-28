@@ -2,7 +2,10 @@
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 	// import Animate from "$lib/components/Animate.svelte";
-	import Carousel2 from "$lib/components/layout/Carousel2.svelte";
+	// import Carousel from "$lib/components/layout/Carousel.svelte";
+	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
+	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+
 	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
@@ -157,16 +160,25 @@
 <section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
 	<Container>
 			<Row>
-				<Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+				<!-- <Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
 				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
 				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
 				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 				featuredProjects={home.featuredProjects}>
-					<!-- <span slot="left-control">prev</span>
-					<span slot="right-control">next</span> -->
-				</Carousel2>
-
-				<!-- <Carousel 
+				</Carousel2> -->
+				<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
+				featuredProjects={home.featuredProjects}>
+					{#each colors as color, index (index)}
+					  <div style="background-color: {color};height: 31.25rem;width: 25rem;" />
+					{/each}
+					<span slot="left-control">Left</span>
+					<span slot="right-control">Right</span>
+				</Carousel3>
+<!-- 
+				<Carousel 
 				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
 				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
 				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
