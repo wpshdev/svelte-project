@@ -274,8 +274,8 @@
 		// align-items: center;
         // justify-content: center;
         @include media-max(xs){
-            padding-top: 5rem;
-			height: 235rem !important;
+            // padding-top: 5rem;
+			height: 150rem;
 		}
         @include media-between(xs, md){
             padding-left: 0;
@@ -428,12 +428,12 @@
         // min-height: 60rem;
 		// display: flex;
 		// align-items: center;
-		// @include media-max(ipadmini){
-		// 	min-height: unset;
-        // }
-        @include media-max(sm){
-			margin: unset;
-		}
+		@include media-max(ipadmini){
+			margin: 20vw 0;
+        }
+        // @include media-max(sm){
+		// 	margin: unset;
+		// }
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;

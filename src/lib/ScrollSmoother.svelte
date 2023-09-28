@@ -22,7 +22,7 @@
         smooth: smoothValue,
         effects: true,
         normalizeScroll: true,
-        smoothTouch: 2, 
+        smoothTouch: 1.5, 
         // speed: 0.2, // speed for the whole page scrolling
       });
 

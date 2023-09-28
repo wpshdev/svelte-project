@@ -387,7 +387,8 @@
             //     width: 100%;
             //     max-width: 100%;
             // }
-            margin: unset;
+            // margin: unset;
+			margin: 20vw 0;
         }
         h3 {
             color:$secondary-color;
@@ -473,7 +474,8 @@
                 width: 100%;
                 max-width: 100%;
             }
-            margin: unset;
+            // margin: unset;
+            margin: 20vw 0;
         }
         :global(.sets-parts__row) {
             justify-content: center;

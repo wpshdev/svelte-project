@@ -358,9 +358,9 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		@include media-max(ipadmini){
-			margin-bottom: unset;
-		}
+		// @include media-max(ipadmini){
+		// 	margin-bottom: unset;
+		// }
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -404,6 +404,7 @@
 		@include media-max(ipadmini){
 			padding-right: 0;
 			padding-left: 0;
+			margin: 20vw 0;
 		}
 		h2{
 			margin-bottom: 2rem;
@@ -488,7 +489,7 @@
 					min-height: 50vh
 				}
 				@include media-max(sm){
-					min-height: 120vh
+					min-height: 150vh
 				}
 				position: relative;
 				.list-text-details {
@@ -551,11 +552,21 @@
 
 	#tnr {
 		display: grid;
-		align-items: end;
+		align-items: center;
 
-		@include media-max(md){
-			padding: unset;
+		@include media-max(xl){
+			align-items: end;
+		}   
+
+		@include media-max(laptopS){
+			padding-left: unset;
+			padding-right: unset;
+			min-height: unset;
 			// align-items: center;
+		}   
+
+		@include media-max(ipadmini){
+			display: block;
 		}   
 
 		.tnr{
@@ -575,11 +586,16 @@
 				position: relative;
 				display: flex;
 				align-items: center;
+				@include media-max(default){
+					align-items: unset;
+					padding-top: 10vw;
+				}
+				@include media-max(sm){
+					padding-top: 10vw;
+				}
 			}
 			@include media-max(sm){
 				// height: 80vh;
-				align-items: end;
-				// padding-bottom: 2rem;
 				margin-bottom: 0;
 			}
 			// &::before{
@@ -599,7 +615,7 @@
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 100vh;
+				height: 100%;
 				display: flex;
 				justify-content: center;
 				background-color: rgba(0, 0, 0, 0.5);
@@ -635,19 +651,22 @@
 	}
 
 
-	.featured-projects{
-		// @include media-max(ipadmini){
-		// 	min-height: unset;
-		// }	
-		@include media-max(sm){
-			margin-top: 10vw;
-		}	
-	}
+	// .featured-projects{
+	// 	// @include media-max(ipadmini){
+	// 	// 	min-height: unset;
+	// 	// }	
+	// 	// @include media-max(sm){
+	// 	// 	margin-top: 10vw;
+	// 	// }	
+	// }
 
 	.reputation{
 		margin-top: 15vw;	
 		@include media-max(ipadmini){
-			padding-top: 5rem;
+			margin: 35vw 0;
+		}
+		@include media-max(sm){
+			min-height: 50rem;
 		}	
 		&__content{
 			height: 41.875rem;
@@ -732,7 +751,7 @@
 			}
 			@include media-max(sm){
 				padding-top: unset;
-				padding-bottom: 15rem;
+				// padding-bottom: 15rem;
 			}
 		}
 		
@@ -755,11 +774,14 @@
 	}	
 
 	.process{	
+		// @include media-max(ipadmini){
+		// 	margin: 20vw 0 15vw;
+		// }
 		@include media-max(ipadmini){
-			margin: 10vw 0;
+			margin: 35vw 0;
 		}
 		@include media-max(sm){
-			height: 115rem !important;
+			min-height: 75rem;
 		}
 		&__top-image{
 			text-align: right;
@@ -884,7 +906,7 @@
 			}
 			@include media-max(sm){
 				padding-top: unset;
-				padding-bottom: 15rem;
+				// padding-bottom: 15rem;
 			}
 		}
 		
@@ -894,11 +916,12 @@
 
 	}
 	.story{
+		// @include media-max(ipadmini){
+		// 	margin-top: 15vw;
+		// }
 		@include media-max(ipadmini){
-			margin: 10vw 0;
-		}
-		@include media-max(sm){
-			padding-top: 10vw;
+			// padding-bottom: 25vw;
+			margin: 35vw 0;
 		}
 		&__content{
 			height: 41.875rem;
@@ -988,7 +1011,7 @@
 			}
 			@include media-max(sm){
 				padding-top: unset;
-				padding-bottom: 15rem;
+				// padding-bottom: 15rem;
 			}
 		}
 		
@@ -1015,11 +1038,21 @@
 	}
 	.bannerOnly {
 		display: grid;
-    	align-items: end;
+    	align-items: center;
 
-		@include media-max(md){
-			padding: unset;
+		@include media-max(xl){
+			align-items: end;
+		}   
+
+		@include media-max(laptopS){
+			padding-left: unset;
+			padding-right: unset;
 			// align-items: center;
+			min-height: unset;
+		}   
+
+		@include media-max(ipadmini){
+			display: block;
 		}   
 
 		.bannerOnly--Container {
@@ -1069,5 +1102,6 @@
 	}
 	.cta-wrapper, .article-wrapper {
 		padding: unset;
+		margin: 0;
 	}
 </style>

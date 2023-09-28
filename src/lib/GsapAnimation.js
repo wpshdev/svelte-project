@@ -450,64 +450,105 @@ export function slowDownSection(node) {
     let previousScrollY = 0; // Previous scroll position
     let direction;
     let parentHeight;
-
-    const containerHeight = container.offsetHeight;
-
-    if(window.innerWidth <= 1024) { // 1024 below
-        parentHeight = containerHeight * 2;
-    } else { // desktop
-        parentHeight = containerHeight * 2.3;
-    }
-
-    parentElement.style.height = parentHeight + 'px';
     parentElement.style.opacity = 0;
 
-    gsap.to(container, {
-      y: () => {
+    mm.add("(min-width: 769px)", () => { // 769px up
 
-        if(window.innerWidth <= 1024) { // 1024 below
-            direction = scrollY > previousScrollY ? -0.7 : 0.7;
-        } else { // desktop
-            direction = scrollY > previousScrollY ? -1 : 1;
-        }
+        const containerHeight = container.offsetHeight;
 
-        previousScrollY = scrollY;
-        return container.getBoundingClientRect().height * direction;
-      },
-      scrollTrigger: {
-        trigger: '#' + parentElementID,
-        start: () => start + ' ' + window.innerHeight * 0.7,
-        end: () => '90% ' + window.innerHeight * 0.3,
-        scrub: true, // Use scrub to smooth the animation
-        onUpdate: (self) => {
-          scrollY = self.scroll();
-        },
-        onEnter: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 1,
-                duration: 2,
-            });
-        },
-        onLeave: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 0,
-                duration: 1.5,
-            });
-        },
-        onLeaveBack: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 0,
-                duration: 1.5,
-            });
-        },
-        onEnterBack: () => {
-            gsap.to('#' + parentElementID, {
-                opacity: 1,
-                duration: 2,
-            });
-        },
-        // markers: true,
-      },
+        // if(window.innerWidth <= 1024) { // 1024 below
+        //     parentHeight = containerHeight * 2;
+        // } else { // desktop
+        //     parentHeight = containerHeight * 2.3;
+        // }
+
+        parentHeight = containerHeight * 2;
+
+        parentElement.style.height = parentHeight + 'px';
+        
+        gsap.to(container, {
+            y: () => {
+
+                if(window.innerWidth <= 1024) { // 1024 below
+                    direction = scrollY > previousScrollY ? -0.7 : 0.7;
+                } else { // desktop
+                    direction = scrollY > previousScrollY ? -1 : 1;
+                }
+
+                previousScrollY = scrollY;
+                return container.getBoundingClientRect().height * direction;
+            },
+            scrollTrigger: {
+                trigger: '#' + parentElementID,
+                start: () => start + ' ' + window.innerHeight * 0.7,
+                end: () => '90% ' + window.innerHeight * 0.3,
+                scrub: true, // Use scrub to smooth the animation
+                onUpdate: (self) => {
+                scrollY = self.scroll();
+                },
+                onEnter: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 2,
+                    });
+                },
+                onLeave: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 0,
+                        duration: 1.5,
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 0,
+                        duration: 1.5,
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 2,
+                    });
+                },
+                // markers: true,
+            },
+        });
+    });
+
+    mm.add("(max-width: 768px)", () => { // no y on 768 below
+        gsap.to(container, {
+            scrollTrigger: {
+                trigger: '#' + parentElementID,
+                start: () => start + ' ' + window.innerHeight * 0.7,
+                end: () => '90% ' + window.innerHeight * 0.3,
+                scrub: true, // Use scrub to smooth the animation
+                onEnter: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 2,
+                    });
+                },
+                onLeave: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 0,
+                        duration: 2,
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 0,
+                        duration: 2,
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 2,
+                    });
+                },
+                // markers: true,
+            },
+        });
     });
     
 }
@@ -542,7 +583,7 @@ export function fly2(node) {
         targetElement.style.opacity = 0;
         ScrollTrigger.create({
             trigger: '#' + targetElementID,
-            start: 'top center',
+            start: 'top bottom',
             once: true,
             // markers: true,
             onEnter: function() { 
@@ -630,7 +671,7 @@ export function bgZoom(node) {
 export function jumpToSection() {
     
     let sections = gsap.utils.toArray("section");
-    let endTrigger;
+    // let endTrigger;
         
     sections.forEach((section, i) => {
 
@@ -643,33 +684,34 @@ export function jumpToSection() {
 
             if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
                 
-                if(window.innerWidth <= 768) { // 768 below
-                    endTrigger = "90% 75%";
-                } else { // desktop
-                    endTrigger = "70% center";
-                }
+                // if(window.innerWidth <= 768) { // 768 below
+                //     endTrigger = "90% 75%";
+                // } else { // desktop
+                //     endTrigger = "70% center";
+                // }
 
+                mm.add("(min-width: 769px)", () => {
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: "top top",
+                        end: "80% center",
+                        // markers: true,
+                        onLeave: () => {
+                            console.log('Leaving section:', section.id);
+                            console.log('Scrolling to next section:', nextSection.id);
+                            
+                            // gsap.set(document.body, {overflow: "hidden"});
+                            gsap.to(window, {
+                                duration: 1, 
+                                scrollTo: {
+                                    y: "#" + nextSection.id, 
+                                    offsetY: 50,
+                                    // autoKill: true
+                                }
+                            });
 
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: "top top",
-                    end: endTrigger,
-                    markers: true,
-                    onLeave: () => {
-                        console.log('Leaving section:', section.id);
-                        console.log('Scrolling to next section:', nextSection.id);
-                        
-                        // gsap.set(document.body, {overflow: "hidden"});
-                        gsap.to(window, {
-                            duration: 1, 
-                            scrollTo: {
-                                y: "#" + nextSection.id, 
-                                offsetY: 50,
-                                // autoKill: true
-                            }
-                        });
-
-                    },
+                        },
+                    });
                 });
 
             } 
