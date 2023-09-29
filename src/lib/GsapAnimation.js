@@ -13,9 +13,10 @@
 import {gsap}  from "gsap/dist/gsap";        
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";   
 import {SplitText} from "gsap/dist/SplitText";   
+import {Observer} from "gsap/dist/Observer";   
 // import {ScrollSmoother} from "gsap/dist/ScrollSmoother";   
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText, Observer);
 
 // Default Values
 
@@ -668,55 +669,92 @@ export function bgZoom(node) {
 
 // Auto scroll
 
-export function jumpToSection() {
+export function stopSection() {
     
     let sections = gsap.utils.toArray("section");
-    // let endTrigger;
         
     sections.forEach((section, i) => {
 
         // Calculate the index of the next section
         const nextSectionIndex = i + 1;
+        // const prevSectionIndex = i - 1;
 
-        if (nextSectionIndex < sections.length) {  // Check if there is a next section
+        // if (nextSectionIndex < sections.length) {  // Check if there is a next section
 
             const nextSection = sections[nextSectionIndex];
+            // const prevSection = sections[prevSectionIndex];
+
+            const offsetHeight = nextSection ? nextSection.getBoundingClientRect() : '';
+
+            // Scroll down
+            function down() {
+                // console.log('down')
+                gsap.to(window, {
+                    duration: 2, 
+                    scrollTo: {
+                        // y: "#" + nextSection.id, 
+                        y: offsetHeight.top,
+                        // offsetY: 80,
+                        autoKill: true
+                    }
+                });
+            }
 
             if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
                 
-                // if(window.innerWidth <= 768) { // 768 below
-                //     endTrigger = "90% 75%";
-                // } else { // desktop
-                //     endTrigger = "70% center";
-                // }
+                mm.add("(max-width: 768px)", () => {
 
-                mm.add("(min-width: 769px)", () => {
+                    // observer that will be triggered by the onEnter
+                    // Touch
+                    let scrollObserverTouch = Observer.create({
+                        target: window,    
+                        type: "touch",
+                        onUp: () => down(), 
+                    });
+                    scrollObserverTouch.disable();
+
+                    // Scroll
+                    let scrollObserverScroll = Observer.create({
+                        target: window,    
+                        type: "wheel",
+                        onDown: () => down(),
+                    });
+                    scrollObserverScroll.disable();
+
+                    // Scroll trigger for stop and observer
+                    // section.style.opacity = 0;
                     ScrollTrigger.create({
                         trigger: section,
-                        start: "top top",
-                        end: "80% center",
+                        start: "bottom 90%", // start of stop then enable the observer
+                        end: "bottom center",
                         // markers: true,
-                        onLeave: () => {
-                            console.log('Leaving section:', section.id);
-                            console.log('Scrolling to next section:', nextSection.id);
-                            
-                            // gsap.set(document.body, {overflow: "hidden"});
-                            gsap.to(window, {
-                                duration: 1, 
-                                scrollTo: {
-                                    y: "#" + nextSection.id, 
-                                    offsetY: 50,
-                                    // autoKill: true
-                                }
-                            });
+                        // pin: true,
+                        onEnter: self => {
+                            self.scroll(self.start + 1);
+                            scrollObserverTouch.enable();
+                            scrollObserverScroll.enable();
 
+                            // gsap.to(section, {
+                            //     opacity: 1,
+                            //     duration: 2,
+                            // });
                         },
+                        // onLeaveBack: self => {
+                        //     self.scroll(self.end - 1);
+                        //     scrollObserverTouch.enable();
+                        //     scrollObserverScroll.enable();
+                        // },
+                        onLeave: () => {
+                            scrollObserverTouch.disable();
+                            scrollObserverScroll.disable();
+                        }
                     });
+
                 });
 
             } 
 
-        }
+        // }
         
     });
 }

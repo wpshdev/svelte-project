@@ -1,5 +1,5 @@
 <script>
-	import { slowDownSection, jumpToSection } from '$lib/GsapAnimation.js';
+	import { slowDownSection, stopSection } from '$lib/GsapAnimation.js';
 	// import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
 
 	import { onMount } from 'svelte';
@@ -10,19 +10,20 @@
 	gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 	onMount(() => {
-        jumpToSection();
+        stopSection();
 	});
 
 </script>
 
-<section id="gray" style="height: 100vh; background-color: gray;">
+<section id="gray" class="autoscroll-exception" style="height: 100vh; background-color: gray;">
 	<h1>gray</h1>
 </section>
-<section id="orange" style="height: 100vh; background-color: #ffc300;" >
+<section id="orange" style="height: 200vh; background-color: #ffc300;" >
+	<h1>orange</h1>
 	<!-- in:slowDownSection id="test"-->
-	<!-- <div style="width: 500px; height: 100vh; background-color: yellow;" class="container"></div> -->
+	<div style="width: 500px; height: 100vh; background-color: yellow;" class="container"></div>
 </section>
-<section id="blue" style="height: 100vh; background-color: blue;">
+<section id="blue" style="height: 150vh; background-color: blue;">
 	<h1>blue</h1>
 </section>
 <section id="yellow" style="height: 100vh; background-color: yellow;">

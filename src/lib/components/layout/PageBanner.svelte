@@ -34,7 +34,7 @@
     // }
 </script>
 
-<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''}" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;">
+<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''} autoscroll-exception" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;">
 	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="0"></div>
 	<Container>
 		<Row>
