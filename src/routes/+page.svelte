@@ -180,8 +180,8 @@
 		<div class="tnr__wrapper">
 			<Container>
 				<div class="tnr__wrapper__captions">
-					<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
 					<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+					<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
 					<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
 						<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
 							{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
@@ -596,7 +596,7 @@
 					}
 				}
 				p{
-					font-size: 1.5rem;
+					font-size: 1.2rem;
 					opacity: 0;
 					@include media-max(ipadmini){
 						font-size: 1rem;
