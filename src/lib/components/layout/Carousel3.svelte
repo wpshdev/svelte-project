@@ -123,6 +123,31 @@
   event.preventDefault();
   console.log('Anchor click prevented');
 }
+
+
+document.querySelector('.slides').addEventListener('touchstart', (e) => {
+  // Record the starting Y position of the touch event
+  startY = e.touches[0].clientY;
+});
+document.querySelector('.slides').addEventListener('touchmove', (e) => {
+  if (startY === null) {
+    return; // Do nothing if startY is not set
+  }
+
+  const deltaY = e.touches[0].clientY - startY;
+
+  if (Math.abs(deltaY) > 20) {
+    // If the vertical swipe is more than 20 pixels, allow vertical scrolling
+    e.preventDefault();
+    mySiema.noDrag(); // Disable Siema's horizontal dragging
+  } else {
+    mySiema.yesDrag(); // Enable Siema's horizontal dragging
+  }
+
+  // Reset startY for the next touch event
+  startY = null;
+});
+
 </script>
 
 <Row>
@@ -259,10 +284,10 @@
     overflow: hidden;
     padding-left:0px;
     position: relative;
-    height: 31.5rem;
-    min-height: 31.5rem;
+    height: 32rem;
+    min-height: 32rem;
     @include media-max(sm){
-        height: 31.5rem;
+        height: 32rem;
         padding: 0rem;
     }
 }
@@ -351,6 +376,7 @@ white-space: nowrap;
   margin-right: 1.5rem;
   box-sizing: border-box;
   height: 32rem;
+  min-height: 32rem;
   overflow: hidden;
   display: inline-block;
   &:hover{
