@@ -13,7 +13,7 @@
 	import axios from "axios";
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
-	import { textAnimate, fly, fadeIn, slide, fly2, slowDownSection, jumpToSection } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn, slide, fly2, slowDownSection, stopSection } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://strapi.ulfbuilt.com:1337";
@@ -55,7 +55,7 @@
 	import { loadingCursor } from '$lib/cursorChange.js';
 	onMount(() => {
 		loadingCursor();
-		jumpToSection();
+		stopSection();
 	});
 
 </script>
@@ -89,7 +89,7 @@
 
 
 {#if home.homeBuilderBanner.data}
-<section class="bannerOnly autoscroll-exception" id="bannerOnly">
+<section class="bannerOnly " id="bannerOnly">
 	<div class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
 			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
@@ -188,7 +188,7 @@
 	</Container>
 </section>
 
-<section class="autoscroll-exception" id="tnr">
+<section class="" id="tnr">
 	<div class="tnr">
 		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
 		</ParallaxImage>
@@ -297,11 +297,11 @@
 		</Container>
 </section>
 
-<section class="m-0 article-wrapper autoscroll-exception" id="article-wrapper">
+<section class="m-0 article-wrapper" id="article-wrapper">
 	<ArticleSection />
 </section>
 
-<section class="m-0 cta-wrapper autoscroll-exception" id="cta-wrapper">
+<section class="m-0 cta-wrapper" id="cta-wrapper">
 	<Cta />
 </section>
 
@@ -358,9 +358,6 @@
 		color: $primary-color;
 	}	
 	.loc-gallery{
-		// @include media-max(ipadmini){
-		// 	margin-bottom: unset;
-		// }
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -405,6 +402,7 @@
 			padding-right: 0;
 			padding-left: 0;
 			margin: 20vw 0;
+			padding-top: 10vw;
 		}
 		h2{
 			margin-bottom: 2rem;
@@ -551,22 +549,21 @@
 	}
 
 	#tnr {
-		display: grid;
-		align-items: center;
+		// display: grid;
+		// align-items: center;
 
-		@include media-max(xl){
-			align-items: end;
-		}   
+		// @include media-max(xl){
+		// 	align-items: end;
+		// }   
 
 		@include media-max(laptopS){
 			padding-left: unset;
 			padding-right: unset;
-			min-height: unset;
-			// align-items: center;
-		}   
+		}
 
+		
 		@include media-max(ipadmini){
-			display: block;
+			min-height: auto;
 		}   
 
 		.tnr{
@@ -653,6 +650,9 @@
 
 	.featured-projects{
 		position: relative;
+		@include media-max(ipadmini){
+			padding-top: 10vw;
+		}
 	// 	// @include media-max(ipadmini){
 	// 	// 	min-height: unset;
 	// 	// }	
@@ -665,9 +665,11 @@
 		margin-top: 15vw;	
 		@include media-max(ipadmini){
 			margin: 35vw 0;
+			padding-top: 20vw;
 		}
 		@include media-max(sm){
 			min-height: 50rem;
+			padding-top: unset;
 		}	
 		&__content{
 			height: 41.875rem;
@@ -921,9 +923,13 @@
 		// 	margin-top: 15vw;
 		// }
 		@include media-max(ipadmini){
-			// padding-bottom: 25vw;
-			margin: 35vw 0;
-		}
+			padding-top: 25vw;
+			margin: 20vw 0;
+		}	
+		@include media-max(sm){
+			min-height: 70vh;
+			padding-top: unset;
+		}  
 		&__content{
 			height: 41.875rem;
 			@include media-max(lg){
@@ -1038,22 +1044,16 @@
 		height: 30vw;		
 	}
 	.bannerOnly {
-		display: grid;
-    	align-items: center;
-
-		@include media-max(xl){
-			align-items: end;
-		}   
+		// display: grid;
+    	// align-items: center;
 
 		@include media-max(laptopS){
 			padding-left: unset;
 			padding-right: unset;
-			// align-items: center;
-			min-height: unset;
-		}   
+		}  
 
 		@include media-max(ipadmini){
-			display: block;
+			min-height: auto;
 		}   
 
 		.bannerOnly--Container {
@@ -1104,5 +1104,10 @@
 	.cta-wrapper, .article-wrapper {
 		padding: unset;
 		margin: 0;
+	}
+	.article-wrapper {
+		@include media-max(ipadmini){
+			min-height: 140vh;
+		}
 	}
 </style>
