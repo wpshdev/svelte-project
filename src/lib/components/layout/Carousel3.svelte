@@ -124,29 +124,34 @@
   console.log('Anchor click prevented');
 }
 
-
-document.querySelector('.slides').addEventListener('touchstart', (e) => {
-  // Record the starting Y position of the touch event
+let startY = null;
+function touchvertical(e){  // Record the starting Y position of the touch event
   startY = e.touches[0].clientY;
-});
-document.querySelector('.slides').addEventListener('touchmove', (e) => {
-  if (startY === null) {
-    return; // Do nothing if startY is not set
-  }
-
-  const deltaY = e.touches[0].clientY - startY;
-
-  if (Math.abs(deltaY) > 20) {
-    // If the vertical swipe is more than 20 pixels, allow vertical scrolling
-    e.preventDefault();
-    mySiema.noDrag(); // Disable Siema's horizontal dragging
-  } else {
-    mySiema.yesDrag(); // Enable Siema's horizontal dragging
-  }
-
-  // Reset startY for the next touch event
-  startY = null;
-});
+}
+function touchmovevertical(e){
+  // if (startY == null) {
+  //   console.log("asdf");
+  //   return; // Do nothing if startY is not set
+  // }
+console.log();
+let clientY = e.touches[0].clientY;
+    if(startY > clientY){
+      const deltaY = startY - clientY;
+      console.log( startY +" "+ e.touches[0].clientY + "=" + deltaY);
+      if (Math.abs(deltaY) > 20) {
+        window.scrollBy(0, 100);
+        // startY = null; // Reset startY to allow horizontal swiping
+      }
+    }
+    if(startY < clientY){
+      const deltaY = clientY - startY;
+      console.log( startY +" "+ e.touches[0].clientY + "=" + deltaY);
+      if (Math.abs(deltaY) > 20) {
+        window.scrollBy(0, -100);
+        // startY = null; // Reset startY to allow horizontal swiping
+      }
+    }
+}
 
 </script>
 
@@ -170,7 +175,7 @@ document.querySelector('.slides').addEventListener('touchmove', (e) => {
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel" style="position:absolute;left:0;top:0;">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown={handleStart}>
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown={handleStart} on:touchstart={touchvertical} on:touchmove={touchmovevertical}>
             {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
               <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
