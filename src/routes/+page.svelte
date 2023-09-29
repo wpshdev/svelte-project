@@ -651,14 +651,15 @@
 	}
 
 
-	// .featured-projects{
+	.featured-projects{
+		position: relative;
 	// 	// @include media-max(ipadmini){
 	// 	// 	min-height: unset;
 	// 	// }	
 	// 	// @include media-max(sm){
 	// 	// 	margin-top: 10vw;
 	// 	// }	
-	// }
+	}
 
 	.reputation{
 		margin-top: 15vw;	
