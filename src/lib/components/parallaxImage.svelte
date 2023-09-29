@@ -16,14 +16,6 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
     // Create a GSAP timeline
     const tl = gsap.timeline();
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: parallaxImage,
-    //     start: "top bottom",
-    //     end: "50vh",
-    //     scrub: true,
-    //   },
-    // });
 
     // Define the parallax animation
     tl.to(parallaxImage, {
@@ -41,11 +33,6 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
       animation: tl,
     });
 
-    // Cleanup when the component is destroyed
-    // onDestroy(() => {
-    //   ScrollTrigger.remove(parallaxImageCont);
-    // });
-    // Commented this one for the meantime since it has weird error when navigating back to home page: https://prnt.sc/ONovd8XX0B6-
   });
 </script>
 
