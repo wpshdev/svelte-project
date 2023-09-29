@@ -167,7 +167,7 @@
           {/each}
         </div>
     </div>
-    <button class="left-mobil" on:click={right}>
+    <button class="left-mobil" on:click={left}>
         <img src="{rightarrow}">
     </button>
     <button class="right-mobil" on:click={right}>
@@ -210,16 +210,25 @@
 
 
 <style lang="scss">
+  
 .right-mobil{
     display: none;
     max-width: 70px;
     @include media-max(sm){
         display: block;
         position: absolute;
-        right: 0px;
+        right: 0.5rem;
         background: none;
         border: 0;
         height: 100%;
+        -webkit-transform:rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+    img{
+      width:24px;
     }
 }
 .left-mobil{
@@ -228,15 +237,13 @@
     @include media-max(sm){
         display: block;
         position: absolute;
-        left: 0px;
+        left: 0.5rem;
         background: none;
         border: 0;
         height: 100%;
-  -webkit-transform:rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+    }
+    img{
+      width:24px;
     }
 }
 .carousel {
@@ -253,9 +260,10 @@
     padding-left:0px;
     position: relative;
     height: 31.5rem;
-    // @include media-max(sm){
-    //     height: 24rem;
-    // }
+    @include media-max(sm){
+        height: 24rem;
+        padding: 0rem;
+    }
 }
 .left-right{
   display: inline-flex;

@@ -104,7 +104,7 @@
 		<Row>
 			<Col class="text-center">
 				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1" >
-					{home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
+					{@html home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
 				</h2>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
@@ -158,33 +158,18 @@
 </section>
 
 <section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
-	<Container>
-			<Row>
-				<!-- <Carousel2 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
-				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
-				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
-				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-				featuredProjects={home.featuredProjects}>
-				</Carousel2> -->
-				<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
-				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
-				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
-				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-				featuredProjects={home.featuredProjects}>
-					{#each colors as color, index (index)}
-					  <div style="background-color: {color};height: 31.25rem;width: 25rem;" />
-					{/each}
-					<span slot="left-control">Left</span>
-					<span slot="right-control">Right</span>
-				</Carousel3>
-<!-- 
-				<Carousel 
-				preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
-				heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
-				btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
-				btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-				featuredProjects={home.featuredProjects}/> -->
-			</Row>
+	<Container class="featured-container">
+		<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+		heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+		btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+		btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
+		featuredProjects={home.featuredProjects}>
+			{#each colors as color, index (index)}
+				<div style="background-color: {color};height: 31.25rem;width: 25rem;" />
+			{/each}
+			<span slot="left-control">Left</span>
+			<span slot="right-control">Right</span>
+		</Carousel3>
 	</Container>
 </section>
 
@@ -435,10 +420,12 @@
 								
 					@include media-max(xs){
 						flex-wrap: nowrap;
-						padding: 1rem 0
+						padding: 1rem 0;
+						justify-content: left;
 					}						
 					@include media-max(sm){
 						overflow-x: scroll;
+						justify-content: left;
 					}					
 					li{
 						list-style: none;
@@ -648,19 +635,33 @@
 	}
 
 
-	.featured-projects{
-		position: relative;
-		@include media-max(ipadmini){
-			padding-top: 10vw;
+.featured-projects{
+	position: relative;
+	@include media-max(ipadmini){
+		padding-top: 10vw;
+	}
+
+	@include media-max(sm){
+		padding: 0rem;
+	}
+}
+
+:global(.featured-container){
+		@include media-max(sm){
+			padding: 0rem;
 		}
+		.row{
+			@include media-max(sm){
+				padding: 0rem;
+			}
+		}
+	}
 	// 	// @include media-max(ipadmini){
 	// 	// 	min-height: unset;
 	// 	// }	
 	// 	// @include media-max(sm){
 	// 	// 	margin-top: 10vw;
-	// 	// }	
-	}
-
+	// 	// }
 	.reputation{
 		margin-top: 15vw;	
 		@include media-max(ipadmini){
