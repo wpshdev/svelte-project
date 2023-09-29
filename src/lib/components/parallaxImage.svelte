@@ -9,6 +9,7 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
   let parallaxImageCont;
   export let imageUrl;
   export let imageHeight;
+  export let overlay;
   // Initialize GSAP and ScrollTrigger when the component is mounted
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -49,7 +50,7 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 </script>
 
 
-<div class="parallax-container" 
+<div class="parallax-container {overlay ? 'parallax-with-overlay' : ''}" 
 bind:this={parallaxImageCont}
 style="--height: {imageHeight}vh">
   <img
@@ -63,6 +64,23 @@ style="--height: {imageHeight}vh">
 
 <style lang="scss">
   /* Add your CSS styles here */
+
+  .parallax-with-overlay{
+				.parallax-img {
+          @include media-max(sm){
+            min-width: 1300px;
+          }
+				}
+				&::after {
+					background-color: rgba(0, 0, 0, 0.5);
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+				}
+	}
   .parallax-container {
     overflow: hidden;
     height: var(--height);

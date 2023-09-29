@@ -175,7 +175,7 @@
 
 <section class="" id="tnr">
 	<div class="tnr">
-		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}">
+		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" overlay="1">
 		</ParallaxImage>
 		<div class="tnr__wrapper">
 			<Container>
@@ -291,9 +291,6 @@
 </section>
 
 <style lang="scss">
-	// section{
-	// 	min-height: 20vh;
-	// }
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
@@ -390,7 +387,7 @@
 			padding-top: 10vw;
 		}
 		h2{
-			margin-bottom: 2rem;
+			margin-bottom: 1rem;
 			justify-content: center;
 		}
 		.view-all{
@@ -407,7 +404,7 @@
 				ul{
 					display: flex;
 					width: 90%;
-					margin: 3rem auto;
+					margin: 1rem auto;
 					padding-left: 0;	
 					justify-content: center;
 					
@@ -554,16 +551,6 @@
 		}   
 
 		.tnr{
-			// background-image: var(--tp-banner);
-			// display: flex;
-			// flex-wrap: wrap;
-			// align-items: center;
-			// background-position: center;
-			// background-size: cover;
-			// padding-left: 0;
-			// padding-right: 0;
-			// justify-content: center;
-
 			position: relative;
 			overflow: hidden;
 			:global(.container){
