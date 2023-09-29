@@ -260,8 +260,9 @@
     padding-left:0px;
     position: relative;
     height: 31.5rem;
+    min-height: 31.5rem;
     @include media-max(sm){
-        height: 24rem;
+        height: 31.5rem;
         padding: 0rem;
     }
 }

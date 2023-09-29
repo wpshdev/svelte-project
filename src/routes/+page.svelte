@@ -571,11 +571,7 @@
 				display: flex;
 				align-items: center;
 				@include media-max(default){
-					align-items: unset;
-					padding-top: 10vw;
-				}
-				@include media-max(sm){
-					padding-top: 10vw;
+
 				}
 			}
 			@include media-max(sm){
@@ -602,7 +598,6 @@
 				height: 100%;
 				display: flex;
 				justify-content: center;
-				background-color: rgba(0, 0, 0, 0.5);
 				&__captions {
 					display: flex;
 					flex-direction: column;
