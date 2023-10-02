@@ -482,6 +482,7 @@
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
+			-webkit-overflow-scrolling: touch;
 			@include media-max(sm){
 				gap: 1rem;
 				overflow-y: hidden;
