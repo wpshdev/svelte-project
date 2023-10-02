@@ -125,19 +125,14 @@
 }
 
 let startY = null;
-function touchvertical(e){  // Record the starting Y position of the touch event
+function touchvertical(e){
   startY = e.touches[0].clientY;
 }
 function touchmovevertical(e){
-  // if (startY == null) {
-  //   console.log("asdf");
-  //   return; // Do nothing if startY is not set
-  // }
 console.log();
 let clientY = e.touches[0].clientY;
     if(startY > clientY){
       const deltaY = startY - clientY;
-      console.log( startY +" "+ e.touches[0].clientY + "=" + deltaY);
       if (Math.abs(deltaY) > 20) {
         window.scrollBy(0, 100);
         // startY = null; // Reset startY to allow horizontal swiping
@@ -145,7 +140,6 @@ let clientY = e.touches[0].clientY;
     }
     if(startY < clientY){
       const deltaY = clientY - startY;
-      console.log( startY +" "+ e.touches[0].clientY + "=" + deltaY);
       if (Math.abs(deltaY) > 20) {
         window.scrollBy(0, -100);
         // startY = null; // Reset startY to allow horizontal swiping

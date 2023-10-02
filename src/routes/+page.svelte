@@ -164,11 +164,6 @@
 		btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
 		btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 		featuredProjects={home.featuredProjects}>
-			{#each colors as color, index (index)}
-				<div style="background-color: {color};height: 31.25rem;width: 25rem;" />
-			{/each}
-			<span slot="left-control">Left</span>
-			<span slot="right-control">Right</span>
 		</Carousel3>
 	</Container>
 </section>
@@ -466,13 +461,13 @@
 				}
 			}
 			&__gallery{
-				min-height: 65vh;
-				@include media-max(default){
-					min-height: 50vh
-				}
-				@include media-max(sm){
-					min-height: 150vh
-				}
+				// min-height: 65vh; //for overflow scroll
+				// @include media-max(default){
+				// 	min-height: 50vh
+				// }
+				// @include media-max(sm){
+				// 	min-height: 150vh
+				// }
 				position: relative;
 				.list-text-details {
 					position: absolute;
@@ -489,12 +484,33 @@
 			gap: 1rem;
 			@include media-max(sm){
 				gap: 1rem;
-				grid-template-columns: repeat(1, 1fr);
+				overflow-y: hidden;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 10px;
+				&::-webkit-scrollbar {
+					width: 10px;
+				}
+				&::-webkit-scrollbar:horizontal {
+					height: 10px;
+				}
+				&::-webkit-scrollbar-track {
+					background-color: #ccc;
+				}
+				&::-webkit-scrollbar-thumb {
+					// border-radius: 10px;
+					background: #263a63;
+					// box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+				}
+				// grid-template-columns: repeat(1, 1fr); //for-horizontal scroll
 			}
             .masonry-items{
                 color: white;
                 text-align: center;  
                 height: 65vh;
+				@include media-max(sm){
+					min-width: 300px; //for-horizontal scroll
+				}
                 @include media-max(default){
 					height: 50vh;
                 }
