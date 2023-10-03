@@ -58,6 +58,51 @@
 		stopSection();
 	});
 
+
+//new slideup and down
+import arrowtop from '$lib/img/arrow-top.svg';
+let selectedIndex = 1;
+const updateSelectedOption = () => {
+  const options = document.querySelectorAll('.option');
+  options.forEach((option, index) => {
+    if (index === selectedIndex) {
+        option.classList.add('op-selected');
+
+      if(index === 0){
+        const container = document.querySelector('.options');
+        container.style.transform = 'translateY(25px)';
+		option.click();
+      }
+      if(index === 1){
+        const container = document.querySelector('.options');
+        container.style.transform = 'translateY(-25px)';
+		option.click();
+      }
+      if(index === 2){
+        const container = document.querySelector('.options');
+        container.style.transform = 'translateY(-75px)';
+		option.click();
+      }
+    } else {
+      option.classList.remove('op-selected');
+    }
+  });
+};
+const handleTopArrowClick = () => {
+  if (selectedIndex > 0) {
+    selectedIndex -= 1;
+    updateSelectedOption();
+  }
+};
+const handleBottomArrowClick = () => {
+  const options = document.querySelectorAll('.option');
+  if (selectedIndex < options.length - 1) {
+    selectedIndex += 1;
+    updateSelectedOption();
+  }
+};
+
+
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
@@ -108,6 +153,7 @@
 				</h2>
 				<div class="categories__tabs">
 					<div class="categories__tabs__heading">
+						{#if innerWidth > 767}
 						<ul in:fly id="categories" gsap-duration="1">
 							{#each home.categories.data as heading}
 								<li>
@@ -121,6 +167,28 @@
 								</li>
 							{/each}
 						</ul>
+						{/if}
+						{#if innerWidth <= 767}
+
+						<div class="options-container">
+							<div class="options">
+								{#each home.categories.data as heading}
+								<div class="option" 
+									data-category="{heading.id}"
+									class:active="{activeTab === heading.id}"
+									on:click="{() => handleTabClick(heading.id)}">
+									{heading.attributes.Title ? heading.attributes.Title : ''}
+								</div>
+							{/each}
+							</div>
+							<div class="arrow-top" on:click={handleTopArrowClick}>
+							  <img src="{arrowtop}" alt="arrowtop" />
+							</div>
+							<div class="arrow-bottom" on:click={handleBottomArrowClick}>
+							  <img src="{arrowtop}" alt="arrowbottom" />
+							</div>
+						  </div>
+						{/if}
 					</div>
 					
 					<div class="categories__tabs__gallery" >
@@ -286,6 +354,58 @@
 </section>
 
 <style lang="scss">
+	//new slide up down
+
+.options-container{
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+  font-family: $secondary-font;
+}
+.options{
+  transform: translateY(-25px);
+  font-size: 1.75rem;
+  transition: all 0.5s ease-in-out, font-size 0.5s ease-in-out;
+}
+.option{
+  height: 50px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.options .op-selected{
+  font-size: 2.35rem;
+  transition: font-size 0.5s ease-in-out;
+}
+.arrow-top, .arrow-bottom{
+  position: absolute;
+  height: 25px;
+  width: 100%;
+  text-align: center;
+}
+.arrow-top{
+  top: 0;
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+}
+.arrow-top img{
+  height: 18px;
+}
+.arrow-bottom{
+  bottom: 0;
+  background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+  background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+}
+.arrow-bottom img{
+  height: 18px;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+	//new slide up down
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
