@@ -8,11 +8,12 @@
 
     import Siema from 'siema'
 	import { onMount, createEventDispatcher } from 'svelte'
+	import { Container } from 'sveltestrap';
 	
 	export let perPage = 3
 	export let loop = true
 	export let autoplay = 0
-	export let duration = 200
+	export let duration = 500
 	export let easing = 'ease-out'
 	export let startIndex = 0
 	export let draggable = true
@@ -113,9 +114,7 @@
 <section class="our_client_say">
     <div>
         <h2 class="text-animate secondary-font" in:textAnimate id="testimonial-heading" gsap-duration="1" >{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
-
-
-
+        <Container>
         <div class="carousel our_client_say__cards slider-container">
             <div class="slides" bind:this={siema}>
                 <slot></slot>
@@ -136,7 +135,7 @@
             </ul>
             {/if}
         </div>
-
+    </Container>
 <!-- 
         <div class="our_client_say__cards slider-container" in:fly id="testimonial-cont" gsap-duration="2">
             {#each clientTestimonials as testimonial}
@@ -150,8 +149,11 @@
 </section>
 
 <style lang="scss">
+    :global(.slides){
+        overflow: visible !important;
+    }
 :global(.slides > div){
-    width: 12000px !important;
+    width: 17000px !important;
 }
 :global(.slides > div > div){
 
@@ -160,7 +162,10 @@
             border-radius: 8px;
             min-height: 100%;
             height: auto;
-            min-width: 600px;
+            width: 100%;
+            min-width: 700px;
+            max-width: 700px;
+
             padding: 4rem 6rem;
             margin: 2rem;
             overflow: hidden;
