@@ -494,6 +494,14 @@ const handleBottomArrowClick = () => {
 	}
 
 	.categories{
+			.row{
+				.col{
+					@include media-max(sm){
+						padding-left: 0px !important;
+						padding-right: 0px !important;
+					}
+				}
+			}
 		margin-top: 15vw;
 		@include media-max(ipadmini){
 			padding-right: 0;
@@ -610,20 +618,18 @@ const handleBottomArrowClick = () => {
 				-webkit-overflow-scrolling: touch;
 				scrolling: touch;
 				padding-bottom: 10px;
-				&::-webkit-scrollbar {
-					width: 10px;
-				}
-				&::-webkit-scrollbar:horizontal {
-					height: 10px;
-				}
-				&::-webkit-scrollbar-track {
-					background-color: #ccc;
-				}
-				&::-webkit-scrollbar-thumb {
-					// border-radius: 10px;
-					background: #263a63;
-					// box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-				}
+				// &::-webkit-scrollbar {
+				// 	width: 10px;
+				// }
+				// &::-webkit-scrollbar:horizontal {
+				// 	height: 10px;
+				// }
+				// &::-webkit-scrollbar-track {
+				// 	background-color: #ccc;
+				// }
+				// &::-webkit-scrollbar-thumb {
+				// 	background: #263a63;
+				// }
 				// grid-template-columns: repeat(1, 1fr); //for-horizontal scroll
 			}
             .masonry-items{
