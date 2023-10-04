@@ -163,9 +163,7 @@
             min-height: 100%;
             height: auto;
             width: 100%;
-            min-width: 700px;
             max-width: 700px;
-
             padding: 4rem 6rem;
             margin: 2rem;
             overflow: hidden;
