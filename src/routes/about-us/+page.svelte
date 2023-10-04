@@ -6,7 +6,7 @@
     import { textAnimate, fly, fly2, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
-    import ClientTestimonial from '$lib/components/layout/ClientTestimonial.svelte';
+    import ClientTestimonial from '$lib/components/layout/ClientTestimonial2.svelte';
     // import tempBG from '$lib/img/certificate.png';
     import certBG from '$lib/img/BlankCertBg.png';
     import certBGMobile from '$lib/img/CertBGMobileBlank.png';
@@ -243,7 +243,15 @@
 <section id="clientSays">
     <!-- <Animate> -->
         {#if testimonialsData}
-        <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/>
+        <!-- <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/> -->
+        <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}>
+            {#each testimonialsData as testimonial}
+            <div class="details">
+                <p>{testimonial.attributes.testimonialText ? testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "") : ''}</p>
+                <h3>{testimonial.attributes.Name ? testimonial.attributes.Name : ''}</h3>
+            </div>
+            {/each}
+        </ClientTestimonial>
         {/if}
     <!-- </Animate> -->
 </section>
@@ -267,7 +275,59 @@
 
 
 <style lang="scss">
-    @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+
+	.carousel {
+		position: relative;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	button {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		top: 50%;
+		z-index: 50;
+		margin-top: -20px;
+		border: none;
+		background-color: transparent;
+	}
+  button:focus {
+    outline: none;
+  }
+	
+	.left {
+		left: 2vw;
+	}
+	
+	.right {
+		right: 2vw;
+	}
+	ul {
+		list-style-type: none;
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin-top: -30px;
+		padding: 0;
+	}
+	ul li {
+		margin: 6px;
+		border-radius: 100%;
+		background-color: rgba(255,255,255,0.5);
+		height: 8px;
+		width: 8px;
+	}
+	ul li:hover {
+		background-color: rgba(255,255,255,0.85);
+	}
+	ul li.active {
+		background-color: rgba(255,255,255,1);
+	}
+
+    // @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
     $darkgrey-color: #3E3636;   
     :global(.banner.about) {
         background-position: top !important;
