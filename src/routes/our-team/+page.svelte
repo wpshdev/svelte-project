@@ -1,12 +1,8 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
-    // import { LazyImage } from 'svelte-lazy-image';
-
-	// import Animate from "$lib/components/Animate.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import Contactform from "$lib/components/layout/Contactform.svelte";
     import Modal from "$lib/components/layout/Modal.svelte";
-    // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide, slowDownSection } from '$lib/GsapAnimation.js';
 
 	export let data;
@@ -40,26 +36,21 @@
 </svelte:head>
 <PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large_x2.url ? data.data.attributes.Cover.data.attributes.formats.large_x2.url : data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
 <section class="our-team mvw-10" in:slowDownSection id="our-team">
-    <!-- <Animate> -->
         <Container>
             <Row>
                 <Col md="10" class="mx-auto">
                     <h2 class="stc pb-4 text-center text-animate secondary-font" in:textAnimate id="team_heading" gsap-duration="1.5">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
                     <p class="two-columns" in:fadeIn id="team_content" gsap-duration="1" gsap-delay="0.5">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
-                    <!-- <Animate> -->
                         <div class="heading-image">
                             <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                         </div>
-                    <!-- </Animate> -->
                     {/if}
                 </Col>
             </Row>
         </Container>
-    <!-- </Animate> -->
 </section>
 <section class="owner">
-    <!-- <Animate> -->
         <Container>
             <Row noGutters>
                 <Col md=6 class="tm-img">
@@ -76,21 +67,17 @@
                 </Col>
             </Row>
         </Container>
-    <!-- </Animate> -->
 </section>
 <section class="paragraph1 mvw-10" in:slowDownSection id="paragraph1">
-    <!-- <Animate> -->
         <Container>
-            <h4>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4>
+            <h4>{@html ourTeam.team_member_owner.data.attributes.content ? ourTeam.team_member_owner.data.attributes.content : ''}</h4>
+            <!-- <h4>{@html ourTeam.para1 ? ourTeam.para1 : ''}</h4> -->
         </Container>
-    <!-- </Animate> -->
 </section>
 <section class="team-members">
     <Container>
         <Row>
-            <!-- <Animate> -->
                 <h2 class="sfont stc mb-5 text-center text-animate secondary-font" in:textAnimate id="member_heading" gsap-duration="1.5">{ourTeam.title ? ourTeam.title : ''}</h2>
-            <!-- </Animate> -->
             <Col md={{ size: 8, offset: 2 }} class="inner-col">
                 <Row>
                     {#each ourTeam.team_members.data as member,index}
@@ -102,13 +89,13 @@
                             on:click={() => (showModal = true)}
                             >
                                 <img in:fadeIn id="member_image{index}" gsap-duration="1.5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
-                                <!-- <Animate> -->
+                                
                                     <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                                         <!-- our-team__member_caption class removed -->
                                         <h5 class="pfont" in:slide id="member_name{index}" gsap-duration="2" gsap-x="-10">{member.attributes.name}</h5>
                                         <p class="pfont gtc" in:slide id="member_title{index}" gsap-duration="2" gsap-x="-10">{member.attributes.position}</p>
                                     </div>
-                                <!-- </Animate> -->
+                                
                             </div>
                             <!-- </a> -->
                         </Col>                    
@@ -137,7 +124,7 @@
     </Container>
 </section>
 <section class="ourteam5 mvw-10" in:slowDownSection id="ourteam5">
-   <!-- <Animate> -->
+   
     <Container>
         <div >
             <h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
@@ -145,11 +132,11 @@
             <h4>{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h4>
         </div>
     </Container>
-  <!-- </Animate> -->
+  
 </section>
-<!-- <Animate> -->
+
   <Contactform/>
-<!-- </Animate> -->
+
 <style lang="scss">
     // section{
     //     margin: 10rem 0;
@@ -314,6 +301,9 @@
     max-width: 960px;
     margin-left:auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     // min-height: 100vh;
     // display: flex;
     // align-items: center;
@@ -381,10 +371,10 @@
         box-shadow: 6px 8px 9px rgba(166, 184, 191, 0.2);
         margin-left: -3rem;
         margin-top: 3.563rem;
-        height: 36.888rem;
+        height: 55vh;
 
         @include media-max(xl){
-            height: 30rem;
+            height: 45vh;
         }
 
         @include media-max(md){

@@ -1,7 +1,5 @@
 <script lang="ts">
     import { Container, Row, Col } from "sveltestrap";
-	// import { onMount } from "svelte";
-	// import { gsap } from "gsap/dist/gsap";
 	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
     export let banner;
 	export let bannerMobile;
@@ -10,28 +8,8 @@
     export let subTitle;
     export let extraClass;
 	let pageBanner = banner;
-	// let innerWidth;
 	let pageBannerheight = 60;
-	// $: {
-	// 	if(innerWidth < 768 && bannerMobile){
-	// 		pageBanner = bannerMobile;
-	// 	}
-	// }
-	// if(bannerheight === 'undefined'){
-	// 	pageBannerheight = 60;
-	// }else{
-	// 	pageBannerheight = bannerheight;
-	// }
 	
-    // let divElement;
-    // onMount(() => {
-    //   window.addEventListener("scroll", handleScroll);
-    // });
-    // function handleScroll() {
-    //   const scrollProgress = window.scrollY / window.innerHeight;
-    //   const newHeight = pageBannerheight - scrollProgress * 10;
-    //   gsap.to(divElement, { height: `${newHeight}vh`, duration: 0.3 });
-    // }
 </script>
 
 <section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''} autoscroll-exception" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;">
@@ -84,6 +62,7 @@
 		&__content{
             position: relative;
             z-index: 2;
+			margin-top: -5rem;
 			&__text{
 				h1{
 					color:#fff;

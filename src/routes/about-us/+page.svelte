@@ -347,6 +347,9 @@
             color:$secondary-color;
             justify-content: center;
         }
+        p{
+            font-size: 1.25rem;
+        }
     }
     .mw-1000{
         h2{
