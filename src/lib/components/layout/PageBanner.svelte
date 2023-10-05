@@ -33,7 +33,6 @@
 <style lang="scss">
 	.banner{
 		background-image: var(--banner);
-		// background-size: cover;
 		min-height: 68vh;
 		background-position: center;
 		background-size: cover;
@@ -43,7 +42,7 @@
 		justify-content: center;
 		align-items: center;
         position: relative;
-		box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
+		// box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
 		padding: unset;
 		&.homebanner{
 			height: 100vh !important;

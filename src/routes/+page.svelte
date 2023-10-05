@@ -4,9 +4,8 @@
 	// import Animate from "$lib/components/Animate.svelte";
 	// import Carousel from "$lib/components/layout/Carousel.svelte";
 	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
-	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 
-	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
+	// import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
