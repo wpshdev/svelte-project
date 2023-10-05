@@ -130,18 +130,29 @@ const handleBottomArrowClick = () => {
 			</Col>
 		</Row>
 	</Container>
-</section>	
+</section>
+
+<section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
+	<Container class="featured-container">
+		<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+		heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
+		btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
+		btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
+		featuredProjects={home.featuredProjects}>
+		</Carousel3>
+	</Container>
+</section>
 
 
-{#if home.homeBuilderBanner.data}
-<!-- <section class="bannerOnly " id="bannerOnly">
+<!-- {#if home.homeBuilderBanner.data}
+<section class="bannerOnly flex-column-center" id="bannerOnly">
 	<div class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
 		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</div>
-</section> -->
-{/if}
+</section>
+{/if} -->
 
 <!-- <section class="categories mvw-10" in:slowDownSection id="categories-section">
 	<Container class="categories_wrapper">
@@ -222,16 +233,6 @@ const handleBottomArrowClick = () => {
 	</Container>
 </section> -->
 
-<section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
-	<Container class="featured-container">
-		<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
-		heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
-		btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
-		btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
-		featuredProjects={home.featuredProjects}>
-		</Carousel3>
-	</Container>
-</section>
 
 <section class="" id="tnr">
 	<div class="tnr">
@@ -342,9 +343,9 @@ const handleBottomArrowClick = () => {
 		</Container>
 </section>
 
-<section class="m-0 article-wrapper" id="article-wrapper">
+<!-- <section class="m-0 article-wrapper" id="article-wrapper">
 	<ArticleSection />
-</section>
+</section> -->
 
 <section class="m-0 cta-wrapper" id="cta-wrapper">
 	<Cta />
@@ -737,6 +738,9 @@ align-items: end;
 					}
 					@include media-max(sm){
 						padding: 1rem;
+					}
+					#tnr-preheading{
+						max-width: 42rem;
 					}
 				}
 				p{

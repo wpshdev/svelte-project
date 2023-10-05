@@ -778,7 +778,11 @@ header{
     }
 }
 
-
+.flex-column-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .contact-form{
     padding: 4rem;
