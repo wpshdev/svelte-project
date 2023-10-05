@@ -134,17 +134,16 @@ const handleBottomArrowClick = () => {
 
 
 {#if home.homeBuilderBanner.data}
-<section class="bannerOnly " id="bannerOnly">
+<!-- <section class="bannerOnly " id="bannerOnly">
 	<div class="bannerOnly--Container">
 		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
-			<!-- {home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url} -->
 		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
 		</div>
 	</div>
-</section>
+</section> -->
 {/if}
 
-<section class="categories mvw-10" in:slowDownSection id="categories-section">
+<!-- <section class="categories mvw-10" in:slowDownSection id="categories-section">
 	<Container class="categories_wrapper">
 		<Row>
 			<Col class="text-center">
@@ -157,7 +156,6 @@ const handleBottomArrowClick = () => {
 						<ul in:fly id="categories" gsap-duration="1">
 							{#each home.categories.data as heading}
 								<li>
-									<!-- svelte-ignore a11y-click-events-have-key-events -->
 									<span
 									data-category="{heading.id}"
 									class:active="{activeTab === heading.id}"
@@ -193,7 +191,7 @@ const handleBottomArrowClick = () => {
 					
 					<div class="categories__tabs__gallery" >
 						{#key activeTab}
-							{#if loading}  <!-- show load -->
+							{#if loading}
 								<div class="col text-center list-text-details">Loading...</div>
 							{:else}
 								{#if portfolioList.length == 0} 
@@ -203,7 +201,6 @@ const handleBottomArrowClick = () => {
 										{#each portfolioList as project, index}				
 											{#if index < propCount}
 											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center"> 
-												<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
 												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
 													{#if project.attributes.featuredImage.data != null}
 													<img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
@@ -223,7 +220,7 @@ const handleBottomArrowClick = () => {
 			</Col>
 		</Row>
 	</Container>
-</section>
+</section> -->
 
 <section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
 	<Container class="featured-container">
