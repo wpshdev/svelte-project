@@ -128,11 +128,11 @@
               </button>
             {/if}
             {#if dots}
-            <ul>
+            <!-- <ul>
                 {#each {length: totalDots} as _, i}
                 <li on:click={() => go(i*currentPerPage)} class={isDotActive(currentIndex, i) ? "active" : ""}></li>
                 {/each}
-            </ul>
+            </ul> -->
             {/if}
         </div>
     </Container>
@@ -163,13 +163,34 @@
             min-height: 100%;
             height: auto;
             width: 100%;
-            max-width: 700px;
+            min-width: 280px;
+            max-width: 45vw;
             padding: 4rem 6rem;
             margin: 2rem;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            @include media-max(w1400){
+                width: 100%;
+                max-width: 45vw;
+                padding: 2rem 3rem;
+            }
+            @include media-max(md){
+                max-width: 40vw;
+                margin: 1rem;
+                padding: 2rem;
+            }
+            @include media-max(sm){
+                max-width: 87vw;
+                margin: 1rem;
+                padding: 2rem;
+            }
+            @include media-min(w1400){
+                width: 100%;
+                max-width: 37vw;
+                padding: 2rem 3rem;
+            }
 
 }
 .carousel {

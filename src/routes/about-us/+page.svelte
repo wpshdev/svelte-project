@@ -439,6 +439,9 @@
             }
         }
     }
+    #clientSays{
+        padding:0px;
+    }
     .contractor-details {
         // margin: 5vw 0;
         :global(.row) {

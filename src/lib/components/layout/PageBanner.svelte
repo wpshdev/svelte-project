@@ -42,7 +42,6 @@
 		justify-content: center;
 		align-items: center;
         position: relative;
-		// box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
 		padding: unset;
 		&.homebanner{
 			height: 100vh !important;
