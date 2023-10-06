@@ -22,7 +22,7 @@
 	export let easing = 'ease-out';
 	export let startIndex = 0;
 	export let draggable = true
-	export let multipleDrag = false;	
+	export let multipleDrag = true;	
 	export let dots = false;
 	export let controls = true;
 	export let threshold = 20;
