@@ -61,7 +61,7 @@
 		&__content{
             position: relative;
             z-index: 2;
-			margin-top: -5rem;
+			margin-top: -8rem;
 			&__text{
 				h1{
 					color:#fff;

@@ -233,7 +233,7 @@ const handleBottomArrowClick = () => {
 </section> -->
 
 
-<section class="" id="tnr">
+<section class="flex-column-center" id="tnr">
 	<div class="tnr">
 		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" overlay="1">
 		</ParallaxImage>
@@ -701,9 +701,8 @@ align-items: end;
 				position: relative;
 				display: flex;
 				align-items: center;
-				@include media-max(default){
-
-				}
+				justify-content: end;
+    			text-align: right;
 			}
 			@include media-max(sm){
 				// height: 80vh;
@@ -740,6 +739,8 @@ align-items: end;
 					}
 					#tnr-preheading{
 						max-width: 42rem;
+						margin-bottom: 2rem;
+						line-height: 1.75;
 					}
 				}
 				p{

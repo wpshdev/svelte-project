@@ -59,7 +59,10 @@ style="--height: {imageHeight}vh">
           }
 				}
 				&::after {
-					background-color: rgba(0, 0, 0, 0.5);
+          background: linear-gradient(to left, rgba(0,0,0,0.8) 40%,rgba(255,255,255,0) 100%);
+          @include media-max(sm){
+            background: rgba(0, 0, 0, 0.5);
+          }
 					content: "";
 					position: absolute;
 					top: 0;
@@ -75,11 +78,11 @@ style="--height: {imageHeight}vh">
     object-position: center;
     /* position: relative; */
     @include media-max(default){
-      height: 60vh;
+      height: 70vh;
     }
-    // @include media-max(sm){
-    //   height: 100vh;
-    // }
+    @include media-max(sm){
+      height: 80vh;
+    }
   }
 
   .parallax-img {
