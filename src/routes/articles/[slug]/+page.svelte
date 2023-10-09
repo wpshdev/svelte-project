@@ -5,7 +5,7 @@
     // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     export let data;
-    const url = 'https://strapi.ulfbuilt.com:1337';
+    const url = 'https://api.ulfbuilt.com';
 
     $: num = data.num;
     $: num2 = data.num+3;

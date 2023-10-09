@@ -21,7 +21,7 @@ let innerWidth;
 
   let promise = fetchFallback();
 	async function fetchFallback(){
-		const url = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
+		const url = 'https://api.ulfbuilt.com/api/site-setting?populate=deep,3';
 		const headers = {
 			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
 		};
@@ -55,7 +55,7 @@ onMount(() => {
 
 
 
-const domain = "https://strapi.ulfbuilt.com:1337"
+const domain = "https://api.ulfbuilt.com"
 
 let progressPercentage = 0;
 

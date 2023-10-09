@@ -40,7 +40,7 @@
     export let data;
     </script>
     <svelte:head>
-        <link rel="preconnect" href="https://strapi.ulfbuilt.com:1337/">
+        <link rel="preconnect" href="https://api.ulfbuilt.com/">
         <!-- <script src="/flickity/flickity.pkgd.min.js"></script> -->
     </svelte:head>
     

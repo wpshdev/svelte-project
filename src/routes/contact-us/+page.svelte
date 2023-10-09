@@ -9,7 +9,7 @@
     const color = "darkblue";
     import { Col, Container, Row } from 'sveltestrap';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
-    const url = "https://strapi.ulfbuilt.com:1337/";
+    const url = "https://api.ulfbuilt.com/";
     
     let phone = data.contact.data.attributes.phone;
     let office_address = data.contact.data.attributes.office_address;
@@ -19,7 +19,7 @@
 	let emailResponse = data.contactDetails.data.attributes.contactDetails.emailResponse;
     let name = '', email = '', formPhone = '', message = '', result = ''
     async function doContact () {
-        const url = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
+        const url = 'https://api.ulfbuilt.com/api/contact-forms';
 		const res = await fetch(url, {
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
@@ -37,7 +37,7 @@
             result = json.error.message
         }else{
             result = 'Processing...'
-        const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
+        const url2 = 'https://api.ulfbuilt.com/api/email/';
 		const res2 = await fetch(url2, {
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },

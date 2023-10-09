@@ -11,7 +11,7 @@
     // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     // let blogs = data.blogs.data;
-    let url = "https://strapi.ulfbuilt.com:1337";
+    let url = "https://api.ulfbuilt.com";
     let title = data.page.data.attributes.title;
     let fallback = data.fallback.data.attributes.fallbackImage.data;
     // let items = blogs;
@@ -39,9 +39,9 @@
         (async () => {
             let apiUrl;
             if(activeCategoryTab || activeCategoryTab != '') { // if has activeCategoryTab, add it on the fetch url
-                apiUrl = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&filters[blog_category][id][$eq]="+activeCategoryTab+"&populate=deep";
+                apiUrl = "https://api.ulfbuilt.com/api/blogs?sort[0]=createdAt:"+activeDate+"&filters[blog_category][id][$eq]="+activeCategoryTab+"&populate=deep";
             } else {
-                apiUrl = "https://strapi.ulfbuilt.com:1337/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
+                apiUrl = "https://api.ulfbuilt.com/api/blogs?sort[0]=createdAt:"+activeDate+"&populate=deep";
             }
             const headers = {
                 Authorization: 'Bearer ' + PUBLIC_STRAPI_API

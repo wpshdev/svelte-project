@@ -3,7 +3,7 @@ import { STRAPI_API } from '$env/static/private';
 
 
 export async function load(params: { params: { slug: string; }; }) {
-    const url = 'https://strapi.ulfbuilt.com:1337/api/team-members?filters[slug][$eq]='+params.params.slug+'&populate=deep';
+    const url = 'https://api.ulfbuilt.com/api/team-members?filters[slug][$eq]='+params.params.slug+'&populate=deep';
     const headers = {
         Authorization: 'Bearer ' + STRAPI_API
     }

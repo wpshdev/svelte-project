@@ -19,7 +19,7 @@
     //let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
     let aboutsubheading = data.about.data.attributes.Aboutsubheading
     let about = data.about.data.attributes
-    let url = "https://strapi.ulfbuilt.com:1337/";
+    let url = "https://api.ulfbuilt.com/";
     let scroll: number;
 
     let testimonialsData = data.testimonials.data;

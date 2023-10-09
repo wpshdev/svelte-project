@@ -35,7 +35,7 @@ import ImageLoader from './imageLazy/ImageLoader.svelte';
 
 let promise = fetchPortfolios();
 async function fetchPortfolios(){
-    const url = "https://strapi.ulfbuilt.com:1337/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
+    const url = "https://api.ulfbuilt.com/api/portfolios?filters[categories][id][$eq]="+id+"&populate=deep,2";
     const headers = {
         Authorization: 'Bearer ' + PUBLIC_STRAPI_API
     }  
@@ -69,8 +69,8 @@ onMount(async () => {
             <div class="masonry-items" in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}"> 
                 <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                     {#if project.attributes.featuredImage.data != null}
-                    <ImageLoader src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader>
-                    <!-- <img src="https://strapi.ulfbuilt.com:1337/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >    -->
+                    <ImageLoader src="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader>
+                    <!-- <img src="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >    -->
                     {:else}
                     <ImageLoader src="{noFeatured}" lowRes="{noFeatured}" alt="{project.attributes.title}"></ImageLoader>
                     <!-- <img src="{noFeatured}" alt="{project.attributes.title}" > -->

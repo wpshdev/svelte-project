@@ -14,7 +14,7 @@
 	let emailSubject = '';
 	let emailResponse = '';
 	async function fetchContactDetails(){
-		const url = 'https://strapi.ulfbuilt.com:1337/api/site-setting?populate=deep,3';
+		const url = 'https://api.ulfbuilt.com/api/site-setting?populate=deep,3';
 		const headers = {
 			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
 		};
@@ -33,7 +33,7 @@
 
     let name = '', email = '', phone = '', message = '', result = ''
     async function doContact () {
-        const contactUrl = 'https://strapi.ulfbuilt.com:1337/api/contact-forms';
+        const contactUrl = 'https://api.ulfbuilt.com/api/contact-forms';
 		const res = await fetch(contactUrl, {
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
@@ -51,7 +51,7 @@
             result = json.error.message
         }else{
             result = 'Processing...'
-			const url2 = 'https://strapi.ulfbuilt.com:1337/api/email/';
+			const url2 = 'https://api.ulfbuilt.com/api/email/';
 			const res2 = await fetch(url2, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
@@ -71,9 +71,9 @@
 	}
 
 	let promise = fetchContactSettings();
-	const domain = "https://strapi.ulfbuilt.com:1337/";
+	const domain = "https://api.ulfbuilt.com/";
 	async function fetchContactSettings(){
-		const url = 'https://strapi.ulfbuilt.com:1337/api/contact-cta?populate=deep,3';
+		const url = 'https://api.ulfbuilt.com/api/contact-cta?populate=deep,3';
 		const headers = {
 			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
 		};

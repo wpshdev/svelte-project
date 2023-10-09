@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
-	let domain = "https://strapi.ulfbuilt.com:1337";
+	let domain = "https://api.ulfbuilt.com";
 	let member =  data.data[0].attributes;
 	console.log(data);
 </script>

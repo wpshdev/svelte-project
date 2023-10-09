@@ -5,7 +5,7 @@
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     // import { fade, fly } from "svelte/transition";
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
-    const url = "https://strapi.ulfbuilt.com:1337/";
+    const url = "https://api.ulfbuilt.com/";
 
     import { onMount } from "svelte";
 	import { loadingCursor } from '$lib/cursorChange.js';

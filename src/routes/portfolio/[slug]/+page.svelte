@@ -19,7 +19,7 @@
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 
 	export let data;
-	const domain = "https://strapi.ulfbuilt.com:1337"
+	const domain = "https://api.ulfbuilt.com"
 	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	
  	// const portfolio = data.portfolio.data[0].attributes;
