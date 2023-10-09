@@ -2,6 +2,8 @@
     import { Container, Row, Col } from "sveltestrap";
 	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
     export let banner;
+	export let customtop;
+	export let transparent;
 	export let bannerMobile;
     export let title;
 	export let bannerheight;
@@ -9,15 +11,14 @@
     export let extraClass;
 	let pageBanner = banner;
 	let pageBannerheight = 60;
-	
 </script>
 
-<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''} autoscroll-exception" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;">
+<section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''} {transparent ? transparent : 'transparent'} autoscroll-exception" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;">
 	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="1.5" gsap-delay="0"></div>
 	<Container>
 		<Row>
 			<Col>
-				<div class="banner__content">
+				<div class="banner__content {customtop}">
 					<div class="banner__content__text">
 						<h1 class="ml3 text-animate" id="bannerTitle" in:textAnimate gsap-delay="0.5" gsap-duration="1.5"><span>{title ? title : ''}</span></h1>
 					</div>
@@ -31,6 +32,9 @@
 </section>
 
 <style lang="scss">
+	.transparent{
+		box-shadow: inset 0 0 0 50vw rgba(0,0,0,0.5);
+	}
 	.banner{
 		background-image: var(--banner);
 		min-height: 68vh;
@@ -49,18 +53,19 @@
         .banner_overlay{
             content: "";
             background-color: $darkgray;
-            // background-color: $darkbluegreen;
             left: 0;
             top: 0;
             height: 100%;
             width: 100%;
             position: absolute;
             z-index: 0;
-        }        
+        }
+		.custom-top{
+			margin-top: -8rem;
+		}  
 		&__content{
             position: relative;
             z-index: 2;
-			margin-top: -8rem;
 			&__text{
 				h1{
 					color:#fff;

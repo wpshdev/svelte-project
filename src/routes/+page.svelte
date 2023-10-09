@@ -1,11 +1,7 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	// import Animate from "$lib/components/Animate.svelte";
-	// import Carousel from "$lib/components/layout/Carousel.svelte";
 	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
-
-	// import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
@@ -109,7 +105,7 @@ const handleBottomArrowClick = () => {
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" />
+<PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
 
 <section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery">
 	<Container>
@@ -352,7 +348,6 @@ const handleBottomArrowClick = () => {
 
 <style lang="scss">
 	//new slide up down
-
 .options-container{
   height: 100px;
   overflow: hidden;
@@ -406,6 +401,7 @@ align-items: end;
           transform: rotateX(180deg);
 }
 	//new slide up down
+
 	.homebanner{
 		background-image: var(--banner);
 		background-size: cover;
