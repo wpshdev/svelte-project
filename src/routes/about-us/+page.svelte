@@ -2,21 +2,17 @@
     import {Container, Row, Col} from 'sveltestrap';
     import { onMount } from 'svelte';
 	import Animate from '$lib/components/Animate.svelte';
-    // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fly2, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
-    import ClientTestimonial from '$lib/components/layout/ClientTestimonial2.svelte';
-    // import tempBG from '$lib/img/certificate.png';
+    import ClientTestimonial from '$lib/components/layout/ClientTestimonial3.svelte';
     import certBG from '$lib/img/BlankCertBg.png';
     import certBGMobile from '$lib/img/CertBGMobileBlank.png';
-    // import tempBgMobile from '$lib/img/certificate-mobile.png'; 
     import {page} from '$app/stores';
     export let data;
 
     let abouttitle = data.about.data.attributes.Title
-    let aboutimage = data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.about.data.attributes.featuredimage.data.attributes.url
-    //let aboutimageMobile = data.about.data.attributes.featuredimage.data.attributes.url    
+    let aboutimage = data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.about.data.attributes.featuredimage.data.attributes.url 
     let aboutsubheading = data.about.data.attributes.Aboutsubheading
     let about = data.about.data.attributes
     let url = "https://api.ulfbuilt.com/";
@@ -241,19 +237,9 @@
 </section>
 
 <section id="clientSays">
-    <!-- <Animate> -->
         {#if testimonialsData}
-        <!-- <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}/> -->
-        <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}>
-            {#each testimonialsData as testimonial}
-            <div class="details">
-                <p>{testimonial.attributes.testimonialText ? testimonial.attributes.testimonialText.replace(/(<([^>]+)>)/gi, "") : ''}</p>
-                <h3>{testimonial.attributes.Name ? testimonial.attributes.Name : ''}</h3>
-            </div>
-            {/each}
-        </ClientTestimonial>
+        <ClientTestimonial clientTestimonials={testimonialsData} testimonialHeading={about.testimonialHeading}></ClientTestimonial>
         {/if}
-    <!-- </Animate> -->
 </section>
 
 <section class="talktous">
@@ -441,6 +427,9 @@
     }
     #clientSays{
         padding:0px;
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
     }
     .contractor-details {
         // margin: 5vw 0;
@@ -627,9 +616,6 @@
 		@include media-max(ipadmini){
 			min-height: unset;
 		}
-        @include media-max(ipadmini){ 
-            margin-top: 15rem;
-        }
         h2 {
             color: $secondary-color;
             justify-content: center;

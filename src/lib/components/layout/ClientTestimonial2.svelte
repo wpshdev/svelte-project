@@ -162,9 +162,9 @@
             border-radius: 8px;
             min-height: 100%;
             height: auto;
-            width: 100%;
-            min-width: 280px;
-            max-width: 45vw;
+            width: 80vw !important;
+            min-width: 80vw;
+            // max-width: 45vw;
             padding: 4rem 6rem;
             margin: 2rem;
             overflow: hidden;
@@ -172,23 +172,23 @@
             flex-direction: column;
             justify-content: center;
             @include media-max(w1400){
-                width: 100%;
-                max-width: 45vw;
+                // width: 100%;
+                // max-width: 45vw;
                 padding: 2rem 3rem;
             }
             @include media-max(md){
-                max-width: 40vw;
+                // max-width: 40vw;
                 margin: 1rem;
                 padding: 2rem;
             }
             @include media-max(sm){
-                max-width: 87vw;
+                // max-width: 87vw;
                 margin: 1rem;
                 padding: 2rem;
             }
             @include media-min(w1400){
-                width: 100%;
-                max-width: 37vw;
+                // width: 100%;
+                // max-width: 37vw;
                 padding: 2rem 3rem;
             }
 
@@ -223,7 +223,7 @@
 	}
 	ul {
 		list-style-type: none;
-		position: absolute;
+		// position: absolute;
 		display: flex;
 		justify-content: center;
 		width: 100%;
@@ -251,7 +251,11 @@
 .our_client_say {
     background:  linear-gradient(180deg, rgba(255, 255, 255, 0) -40.92%, rgba(239, 239, 240, 0.83) 36.13%, #FFFFFF 76.97%, rgba(255, 255, 255, 0) 137.31%); ;
     mix-blend-mode: normal;
-    padding: 14rem 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 0;
     @include media-max(ipadmini){
         padding: 5rem 0 0;
     }
