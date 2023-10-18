@@ -173,7 +173,7 @@
         </Row>
     </Container>
 </section>
-<!-- <section class="portfolio-cta" id="portfolio-cta">
+<section class="portfolio-cta" id="portfolio-cta">
         <Container>
             <Row>
                 <Col class="text-center ">
@@ -188,11 +188,11 @@
                 </Col>
             </Row>
         </Container>
-</section> -->
-
+</section>
+<!-- 
 <section class="m-0 article-wrapper" id="article-wrapper">
 	<ArticleSection />
-</section>
+</section> -->
 
 <section class="m-0 cta-wrapper autoscroll-exception" id="cta-wrapper">
 	<Cta />
