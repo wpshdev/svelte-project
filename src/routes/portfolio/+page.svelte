@@ -96,10 +96,10 @@
     <Container>
         <Row>
             <Col class="text-center">
-                <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1" gsap-start="top center">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
+                <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1" gsap-start="top 90%">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
-                <div class="categories__tabs__heading" in:fly id="portfolio_cat" gsap-duration="1.2" gsap-start="top center">
+                <div class="categories__tabs__heading" in:fly id="portfolio_cat" gsap-duration="1.2" gsap-start="top 90%">
                     <ul>
                         {#each portfolio.masonryGallery.masonryItems.data as heading}
                             <li>
@@ -136,7 +136,7 @@
                                 <div class="container masonry-wrapper">       
                                     {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                         <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
-                                        in:fly id="masonry-items{index}" gsap-duration="2" gsap-y="10" gsap-start="top center"> 
+                                        in:fly id="masonry-items{index}" gsap-duration="2" gsap-y="10" gsap-start="top 90%"> 
                                             <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                                 {#if project.attributes.featuredImage.data != null}
                                                     <img src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
@@ -173,8 +173,7 @@
         </Row>
     </Container>
 </section>
-<section class="portfolio-cta" id="portfolio-cta">
-    <!-- <Animate> -->
+<!-- <section class="portfolio-cta" id="portfolio-cta">
         <Container>
             <Row>
                 <Col class="text-center ">
@@ -189,8 +188,7 @@
                 </Col>
             </Row>
         </Container>
-    <!-- </Animate> -->
-</section>
+</section> -->
 
 <section class="m-0 article-wrapper" id="article-wrapper">
 	<ArticleSection />
@@ -205,6 +203,7 @@
     }
     .portfolio-masonry{
         position: relative;
+        margin-top: 8rem;
         .list-text-details {
             position: absolute;
             top: 15rem;
@@ -254,7 +253,7 @@
                         width: 15rem;
                         padding: 0 1rem;
                     }
-                    border-right: 3px solid $gray;	
+                    border-right: 2px solid $gray;	
                     &:last-child {
                         border: none;
                     }
@@ -295,7 +294,7 @@
             // column-gap: 0.625rem;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            column-gap: 1rem;
+            column-gap: 2rem;
             @include media-max(sm){
                 grid-template-columns: 1fr;
             }
@@ -349,7 +348,7 @@
                     display: block;
                     height: 100%;
                     width: 100%;
-                    margin: .5rem;
+                    margin: 0;
                     overflow: hidden;
                     position: relative;
 
@@ -437,6 +436,9 @@
             p{
                 color: $primary-color;
                 font-weight: 500;
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                font-weight: 400;
             }
         }
         &__btns{
