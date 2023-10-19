@@ -111,10 +111,10 @@ const handleBottomArrowClick = () => {
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
+				<h2>
+					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+				</h2>
 				<div class="loc-gallery__cwrapper" id="build-trust">
-					<h2>
-						{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
-					</h2>
 						<div class="h3">
 							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 						</div>
@@ -451,6 +451,10 @@ align-items: end;
 		color: $primary-color;
 	}	
 	.loc-gallery{
+		background: #EEE;
+    padding: 10vw 0 30vw 0;
+	margin: 0 0 10vw 0;
+	min-height: 260vh;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -458,14 +462,19 @@ align-items: end;
 			margin-bottom: 3rem;
 			font-size: 3rem;
 			justify-content: center;
+			text-align: center;
 			@include media-max(sm){
 				text-align: center;
 				font-size: 2.813rem;
 			}
 		}		
 		&__cwrapper{
-			max-width: 42rem;
+			max-width: 48rem;
 			margin: auto;
+			padding: 4rem 4rem 5rem 4rem;
+			box-shadow: 0px 0px 10px #AAA;
+			border-radius: 0.5rem;
+			background: #fff;
 			.h3{
 				text-transform: uppercase;
 				font-size: 2.5rem;
