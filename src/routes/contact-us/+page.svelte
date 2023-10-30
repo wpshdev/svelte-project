@@ -201,6 +201,9 @@
                 max-width: 45rem;
                 padding: 4rem;
             }
+            @include media-max(sm) { 
+                padding: 1rem;
+            }
         }
         :global(.contact-form form) {
                 text-align: center;
