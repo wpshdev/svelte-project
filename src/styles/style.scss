@@ -481,7 +481,7 @@ header{
                 align-items: center;
             } 
             .navbar-nav{
-                width: 11rem;
+                width: 14rem;
             }
             .dropdown.show{
                 background-color: unset;
@@ -495,7 +495,7 @@ header{
                 background-color: unset;
                 a {
                     color: $darkgray;
-                    text-align: left;
+                    text-align: center;
                     &:before {
                         content: "";
                         border-top: 1px solid #ACA7A7;
