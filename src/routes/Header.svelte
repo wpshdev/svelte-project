@@ -98,7 +98,6 @@
 	{#if !isOpen}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div class="{isOpen ? "hamburger open" : "hamburger close" }" on:click={toggleMenu}>
-			<!-- <span class="icon"></span>		 -->
 			<img width="49" height="49" src="{siteSettings.Header.hamburgerLight.data ? domain+siteSettings.Header.hamburgerLight.data.attributes.url : HamburgerLight}" alt="hamburger" class="light-hamburger">
 			<img width="49" height="49" src="{siteSettings.Header.hamburgerDark.data ? domain+siteSettings.Header.hamburgerDark.data.attributes.url : HamburgerDark}" alt="hamburger" class="dark-hamburger">
 		</div>

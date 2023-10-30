@@ -914,7 +914,7 @@ align-items: end;
 			margin: 35vw 0;
 		}
 		@include media-max(sm){
-			min-height: 75rem;
+			min-height: 50rem;
 		}
 		&__top-image{
 			text-align: right;
