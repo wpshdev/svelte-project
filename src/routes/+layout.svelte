@@ -32,12 +32,34 @@
     
 	import { loadingCursor } from '$lib/cursorChange.js';
     onMount(() => {
-        gsap.from(header, { y: -100, duration: 1.5, opacity: 0, delay: 2.5, ease: 'power2.out' });
+        gsap.from(header, { y: -100, duration: 1, opacity: 0, delay: 2.5, ease: 'power2.out' });
         loadingCursor();
     });
 
     let yaxis: any;
     export let data;
+
+
+    import NProgress from 'nprogress'
+  import {navigating} from '$app/stores'
+
+  // NProgress css
+  import 'nprogress/nprogress.css'
+
+  NProgress.configure({
+        minimum: 0.16,
+    })
+
+  $: {
+    if ($navigating) {
+      NProgress.start();
+    }
+    if (!$navigating) {
+      NProgress.done();
+    }
+  }
+
+
     </script>
     <svelte:head>
         <link rel="preconnect" href="https://api.ulfbuilt.com/">

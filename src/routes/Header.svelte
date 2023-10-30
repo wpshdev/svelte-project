@@ -1,11 +1,8 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.min.css';
-    // import { page } from '$app/stores';
-	// import {Styles} from 'sveltestrap';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
-    import "../styles/style.scss";		
-	// import Animate from "$lib/components/Animate.svelte";
+    import "../styles/style.scss";
 	import HamburgerLight from "$lib/img/HamburgerLight.svg"
 	import HamburgerDark from "$lib/img/HamburgerDark.svg"
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
@@ -48,30 +45,23 @@
 	}
 	let isOpen = false;
 	let isMobile;
-	// let innerWidth;
 	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
 	}
 
-	function hideDropdownOnScroll() { // hide opened dropdown upon scrolling on desktop
-		
+	function hideDropdownOnScroll() {
 		const dropdownParent = document.querySelector('.dropdown.nav-item');
-
 		if (window.innerWidth >= 768 && dropdownParent) {
 			if(dropdownParent.classList.contains('show')) {
-
-				// Create a custom click event
 				const clickEvent = new MouseEvent('click', {
 					bubbles: true,
 					cancelable: true,
 					view: window
 				});
-
 				dropdownParent.dispatchEvent(clickEvent);
 			}
 		}
-
 	}
 
 	onMount(() => {
@@ -147,14 +137,14 @@
 					{#each menu.data.attributes.items.data as nav}
 						{#if nav.attributes.children.data.length === 0}
 							<NavItem>
-								<NavLink data-sveltekit-preload-data="tap" href="{nav.attributes.url ? nav.attributes.url : '#'}">{nav.attributes.title ? nav.attributes.title : ''}</NavLink>
+								<NavLink data-sveltekit-preload-data="tap" href="{nav.attributes.url ? nav.attributes.url : '#'}" on:click="{toggleMenu}">{nav.attributes.title ? nav.attributes.title : ''}</NavLink>
 							</NavItem>			
 						{:else}
 							<Dropdown nav inNavbar>
 								<DropdownToggle nav caret href="{nav.attributes.url ? nav.attributes.url : '#'}">{nav.attributes.title ? nav.attributes.title : ''}</DropdownToggle>
 								<DropdownMenu end>
 									{#each nav.attributes.children.data as child}
-										<DropdownItem href="{child.attributes.url ? child.attributes.url : '#'}">{child.attributes.title ? child.attributes.title : ''}</DropdownItem>
+										<DropdownItem href="{child.attributes.url ? child.attributes.url : '#'}" on:click="{toggleMenu}">{child.attributes.title ? child.attributes.title : ''}</DropdownItem>
 									{/each}			
 								</DropdownMenu>
 							</Dropdown>						

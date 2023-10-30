@@ -97,29 +97,30 @@
 		} )
 	}
 	
-	function resetInterval(node, condition) {
-		function handleReset(event) {
-			pause();
-			resume();
-		}
-		
-		if(condition) {
-			node.addEventListener('click', handleReset);
-		}
-		
-		return {
-		  destroy() {
-			  node.removeEventListener('click', handleReset);
-		  }
-	  }
+function resetInterval(node, condition) {
+  function handleReset(event) {
+    pause();
+    resume();
   }
-  function handleStart(event) {
-    const anchors = document.querySelectorAll('.zoomImg');
-    anchors.forEach(anchor => {
-    anchor.addEventListener('click', preventAnchorClick, { once: true });
-    });
+  
+  if(condition) {
+    node.addEventListener('click', handleReset);
   }
-  function preventAnchorClick(event) {
+  
+  return {
+    destroy() {
+      node.removeEventListener('click', handleReset);
+    }
+  }
+}
+
+function handleStart(event) {
+  const anchors = document.querySelectorAll('.zoomImg');
+  anchors.forEach(anchor => {
+  });
+}
+
+function preventAnchorClick(event) {
   event.preventDefault();
   console.log('Anchor click prevented');
 }
@@ -129,7 +130,6 @@ function touchvertical(e){
   startY = e.touches[0].clientY;
 }
 function touchmovevertical(e){
-console.log();
 let clientY = e.touches[0].clientY;
     if(startY > clientY){
       const deltaY = startY - clientY;
