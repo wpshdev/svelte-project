@@ -85,7 +85,7 @@
 <section class="portfolio-masonry" id="portfolio-masonry">
     <Container>
         <Row>
-            <Col class="text-center">
+            <Col class="text-center p-2">
                 <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1" gsap-start="top 90%">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
@@ -123,7 +123,7 @@
                                 <div class="col text-center list-text-details">No Portfolios Found...</div>
                             {:else}
                             {@const items = portfolioList}
-                                <div class="container masonry-wrapper">       
+                                <div class="container masonry-wrapper p-0">       
                                     {#each paginate({ items, pageSize, currentPage }) as project, index}			
                                         <div class="masonry-items {index + 1 == firstEven ? 'firstEven' : ''}{index + 1 == lastOdd ? 'lastOdd' : ''}" 
                                         in:fly id="masonry-items{index}" gsap-duration="2" gsap-y="10" gsap-start="top 90%"> 
@@ -205,9 +205,7 @@
             margin-bottom: 1.5rem;
             color: $secondary-color;
             justify-content: center;
-            @include media-max(sm){
-                display: none;
-            }
+            
         }
         p{
             max-width: 1100px;
@@ -235,6 +233,7 @@
                 }						
                 @include media-max(sm){
                     overflow-x: scroll;
+                    justify-content: left;
                 }					
                 li{
                     list-style: none;
