@@ -190,9 +190,9 @@
 							</a>
 						</span>                                         
 					</div>
-					<div class="footer__post-footer__paragraph">
+					<!-- <div class="footer__post-footer__paragraph">
 						<p>{@html siteSettings.SiteDetails.OperatingHours ? siteSettings.SiteDetails.OperatingHours : ''}</p>
-					</div>		
+					</div>		 -->
 				</div>	
 			</div>		
 		{/if}

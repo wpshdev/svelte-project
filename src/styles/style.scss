@@ -467,16 +467,13 @@ header{
             
         }
         .open.mobile-nav{
+            position: fixed;
             top: 0;
-            // left: 25vw;
             right: 0;
             background: #E5EEF2;
             width: 80vw;
-            height: 100vh;
-            position: fixed;    
-            padding-top: 6rem;        
-            // padding-left: 10vw;
-            // transition: 1s;
+            height: 100vh;  
+            padding-top: 6rem;
             text-align: left;
             @include media-max(sm){
                 display: flex;
