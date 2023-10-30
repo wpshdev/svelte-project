@@ -7,14 +7,11 @@
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
 	import Animate from '$lib/components/Animate.svelte';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
-    import axios from "axios";
-    // import { fade, fly } from 'svelte/transition';
+    import axios from '$lib/axios';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
-    // let blogs = data.blogs.data;
     let url = "https://api.ulfbuilt.com";
     let title = data.page.data.attributes.title;
     let fallback = data.fallback.data.attributes.fallbackImage.data;
-    // let items = blogs;
   let currentPage = 1;
   let pageSize = 5;
   let articleList = [];

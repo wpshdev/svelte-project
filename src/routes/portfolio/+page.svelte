@@ -1,31 +1,21 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
-    // import LazyImage from "$lib/LazyImage.svelte";
-    // import Masonry from "$lib/components/Masonry.svelte";
-	import ArticleSection from "$lib/components/layout/ArticleSection.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	import Animate from "$lib/components/Animate.svelte";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
-    import axios from "axios";
-    // import ImageLoader from '$lib/components/imageLazy/ImageLoader.svelte';
-    // import { onMount } from 'svelte';
+    import axios from '$lib/axios';
     import noFeatured from "$lib/img/blog-empty.svg"
-    // import { fade } from "svelte/transition";
     import { paginate, LightPaginationNav } from 'svelte-paginate';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
 	let domain = "https://api.ulfbuilt.com";
 	let portfolio =  data.portfolio.data.attributes; 
     let fallback = data.fallback.data.attributes.fallbackImage.data;
-    // let propCount = 10;
     let portfolioList = [];
     let pageSize = 9;
     let currentPage = 1;
     let loading;
-    // let properties = data.properties.data;
-    // console.log(portfolio);
 
     let activeTab = portfolio.masonryGallery.masonryItems.data[0].id;
     function handleTabClick(category) {

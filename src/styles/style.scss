@@ -7,18 +7,9 @@
 h1, h2, h3, h4, h5, h6{
     font-family: $primary-font;
 }
-html{
-    @include media-max(lg){
-        // font-size: 12px;
-    }
-    @include media-max(sm){
-        font-size: 14px;
-    }
+body{
+    font-size: 1.25rem;
 }
-// body {
-//     scroll-behavior: smooth;
-// }
-
 h1,.h1{
     font-size: 5rem;
     @include media-max(lg){
@@ -48,12 +39,6 @@ h3,.h3{
 }
 p:last-child{
     margin-bottom: 0;
-}
-.logo{
-    height: 5rem;
-    @include media-max(sm){
-        height: 3.5rem;
-    }  
 }
 .pfont{
     font-family: $primary-font;
@@ -110,7 +95,6 @@ input:focus{
 }
 section{
     margin: 3.75rem 0;
-    // overflow: hidden;
     min-height: 100vh;
     @include media-max(lg){
         padding-left: 3rem;
@@ -120,9 +104,6 @@ section{
         padding-left: 3rem;
         padding-right: 3rem;
     }
-    // @include media-max(ipadmini){	
-    //     min-height: auto;
-    // }
     @include media-max(sm){
         padding-left: 1rem;
         padding-right: 1rem;
@@ -155,7 +136,9 @@ img{
     z-index: 10;
     position: relative;
 }
-
+.navbar .container-fluid{
+    padding: 0;
+}
 .input-icon-box{
     position: relative;
 }
@@ -330,8 +313,6 @@ header{
             margin-top: -0.75rem;
         }
         .logo{
-            // background: #1e2d39;
-            // padding: 0.5rem;
             height: 5rem;
             position: relative;
         }
@@ -345,6 +326,7 @@ header{
         }
         .navbar-brand {
             height: 2.75rem;
+            width: 7.5rem;
             position: relative;
         }
     }
@@ -402,13 +384,9 @@ header{
             }       
         }
     }
-    // .logo{
-    //     position: absolute;
-    // }
     nav{
         .navbar-brand{
-            width: 7.5rem;
-            // height: 2.75rem;
+            width: 5.5rem;
             a{
                 img{
                     width: auto;
@@ -417,10 +395,6 @@ header{
         }
         .hamburger{
             order: 3;
-            // margin-top: 1rem;
-            // width: 10%;
-            // margin-left: auto;
-            // margin-right: 0;
             .dark-hamburger {
                 display: none;
             }
@@ -542,14 +516,13 @@ header{
                 img{
                     // text-align: left;
                     height: 6.5rem;
-                    padding-right: 3rem;
                     position: unset;
                 }
             }
             ul{
                 li{
                     a{
-                        text-align: left;
+                        text-align: center;
                         color: #3E3636;
                         font-size: 1.5rem;
                         text-transform: uppercase;
@@ -679,13 +652,6 @@ header{
         top: 100% !important;
     }
 }
-
-.logo{
-    img{
-        height: 70px;
-    }
-}
-
 .footer{
     font-weight: 300;
     background:#262626;

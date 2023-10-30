@@ -1,11 +1,11 @@
 <script lang="ts">
 	export let data;
-	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
+	import { Col, Container, Row } from "sveltestrap";
 	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	import axios from "axios";
+	import axios from '$lib/axios';
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import noFeatured from "$lib/img/blog-empty.svg"
 	import { textAnimate, fly, fadeIn, slide, fly2, slowDownSection, stopSection } from '$lib/GsapAnimation.js';
@@ -454,7 +454,11 @@ align-items: end;
 		background: #EEE;
     padding: 10vw 0 30vw 0;
 	margin: 0 0 10vw 0;
-	min-height: 260vh;
+	min-height: 300vh;
+	@include media-max(sm){
+		min-height: 150vh;
+		padding: 20vw 0;
+	}
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
@@ -475,6 +479,12 @@ align-items: end;
 			box-shadow: 0px 0px 10px #AAA;
 			border-radius: 0.5rem;
 			background: #fff;
+			@include media-max(sm){
+				margin: .75rem;
+			}
+			@include media-max(sm){
+				padding: 1.5rem;
+			}
 			.h3{
 				text-transform: uppercase;
 				font-size: 2.5rem;

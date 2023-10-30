@@ -62,9 +62,14 @@
         }
 		.custom-top{
 			margin-top: -8rem;
+			@include media-max(sm) {
+				margin-top: -12rem;
+			}
 		}  
 		&__content{
             position: relative;
+			padding-left: .5rem;
+			padding-right: .5rem;
             z-index: 2;
 			&__text{
 				h1{

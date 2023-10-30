@@ -41,7 +41,6 @@
     </script>
     <svelte:head>
         <link rel="preconnect" href="https://api.ulfbuilt.com/">
-        <!-- <script src="/flickity/flickity.pkgd.min.js"></script> -->
     </svelte:head>
     
     <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">

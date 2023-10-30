@@ -27,7 +27,7 @@
 
 	} from 'sveltestrap';
 	export let menu;
-	import axios from 'axios';
+	import axios from '$lib/axios';
 	import { onMount } from 'svelte';
 	import { fly, slide } from 'svelte/transition';
 
@@ -128,10 +128,10 @@
 		 {/if}
 		{#if isOpen && innerWidth < 767}
 			<div class="{isOpen ? "mobile-nav open" : "mobile-nav" }" in:fly={{
-				duration: 1000,
+				duration: 300,
 				x: 250							
 			}} out:fly={{
-				duration: 1000,
+				duration: 300,
 				x: 400							
 			}}>
 				
