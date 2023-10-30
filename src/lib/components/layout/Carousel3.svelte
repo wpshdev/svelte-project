@@ -478,7 +478,7 @@ white-space: nowrap;
         padding: 0.5rem 3rem 0.5rem 0.5rem;
         position: absolute;
         z-index: 2;
-        bottom: 1rem;
+        bottom: 2rem;
         left: 0;
         max-width: 90%;
         text-align: left;
@@ -489,7 +489,7 @@ white-space: nowrap;
               margin: 0;
               // font-size: 0.6rem;
               width: 90%;
-              bottom: 0.5rem;
+              bottom: 1rem;
               gap: 10px;
           } 
           span{
@@ -503,7 +503,7 @@ white-space: nowrap;
           }
           i{
             position: absolute;
-            top: 20%;
+            top: 0.4rem;
             right: 1rem;
           }
   }      
