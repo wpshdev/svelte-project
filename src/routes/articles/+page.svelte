@@ -7,7 +7,7 @@
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
 	import Animate from '$lib/components/Animate.svelte';
     import { PUBLIC_STRAPI_API } from '$env/static/public';
-    import axios from '$lib/axios';
+    import axios from 'axios';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     let url = "https://api.ulfbuilt.com";
     let title = data.page.data.attributes.title;

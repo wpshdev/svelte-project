@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 import { onMount } from 'svelte';
 import { Col } from "sveltestrap";
-import axios from '$lib/axios';
+import axios from 'axios';
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 // import Flickity from "flickity";
 import noFeatured from "$lib/img/blog-empty.svg"

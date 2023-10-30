@@ -11,7 +11,7 @@
     // const column = 3;
     // const columnSize = 0;
     // const columnSizeRatio = 0;
-    import axios from '$lib/axios';
+    import axios from 'axios';
     export let id;
     let projects;
     let duration = 1500;

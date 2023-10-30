@@ -1,4 +1,4 @@
-import axios from '$lib/axios';
+import axios from 'axios';
 import { STRAPI_API } from '$env/static/private';
 export const load: PageLoad = async ({ params, fetch }) => {
     const url = 'https://api.ulfbuilt.com/api/blogs?filters[slug][$eq]=' + params.slug + '&populate=deep';
