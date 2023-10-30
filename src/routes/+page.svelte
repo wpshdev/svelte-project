@@ -480,7 +480,7 @@ align-items: end;
 			border-radius: 0.5rem;
 			background: #fff;
 			@include media-max(sm){
-				margin: .75rem;
+				margin: 1rem;
 			}
 			@include media-max(sm){
 				padding: 1.5rem;

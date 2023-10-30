@@ -992,9 +992,18 @@ header{
 .container {
     @include media-max(md){
         max-width: 100%;
-    }		
+    }
+    @include media-max(sm){
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
 }
-
+header{
+    .container{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
 img {
     width:100%; 
     height: auto;
