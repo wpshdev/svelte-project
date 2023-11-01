@@ -119,7 +119,6 @@ function lazy(node, data) {
                 <div in:fly id="items{index}" gsap-duration="1.5" gsap-y="10" class="slider-container__carousel-cell">
                   <div class="image-wrapper">
                     <img src={domain}{image.attributes.formats.small.url} use:lazy="{{src: 'https://api.ulfbuilt.com'+highRes}}"  alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}" />         
-                    <!-- <ImageLoader src="{domain}{image.attributes.url}" lowRes="{domain}{image.attributes.formats.small.url}" alt="{image.attributes.alternativeText ? image.attributes.alternativeText : ''}"></ImageLoader> -->
                     <a href="{domain}{image.attributes.url}?download" class="download" download>
                       <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="27.501" cy="27.5" r="27.5" fill="#1E2D39"/>
@@ -205,9 +204,11 @@ body {
       }
     }
     @include media-max(ipadmini){
-      // margin: 30vh 0.5rem 30vh;
       margin: 1rem 0;
-    }      
+    }
+    @include media-max(ipadmini){
+      margin: 0 0 1.5rem 0;
+    }
     overflow: hidden;      
     transition: 0.5s; 
     position: relative;

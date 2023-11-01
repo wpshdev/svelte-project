@@ -93,9 +93,14 @@ input,textarea, .form-control{
 input:focus{
     box-shadow: none;
 }
+.grey-spacer{
+    background:#EEE;
+    margin: 0;
+    height: 10rem;
+}
 section{
     margin: 3.75rem 0;
-    min-height: 100vh;
+    min-height: 60vh;
     @include media-max(lg){
         padding-left: 3rem;
         padding-right: 3rem;
@@ -154,9 +159,6 @@ img{
     top: 11px;
     left: 11px;
     background-size: 60px;
-    @include media-max(ipadmini) { 
-        top: 6px;
-    }
 }
 .input-email:focus ~ .input-icon-email{
     background-position: 0px -30px;
@@ -751,7 +753,6 @@ header{
     padding: 4rem;
     background-color: #f9f7f7;
     border: 1px solid #D8D7D7;
-    // max-width: 600px;
     margin: auto;
     @include media-max(sm){
         padding: 2rem;
@@ -829,6 +830,9 @@ header{
 .footer{
     // min-height: 100vh;
     &__widget{
+        b{
+            font-weight: 700;
+        }
         &__heading{
             h4{
                 padding-bottom: .25rem;
@@ -837,9 +841,6 @@ header{
                 font-size: 1.125rem;
                 font-family: $primary-font;
                 line-height: 1.5rem;
-                @include media-max(sm){
-                    width: 50%;
-                }
                 &:after {
                     content: '';
                     border-bottom: 0.5px solid #EFEFEF;
@@ -857,7 +858,11 @@ header{
             line-height: 1.5rem;
             font-feature-settings: 'pnum' on, 'lnum' on;
             font-size: 1.125rem;
-
+            &:first-child{
+                @include media-max(sm){
+                    text-align: center;
+                }
+            }
             img{
                 width: auto;
                 @include media-max(sm){
@@ -870,6 +875,9 @@ header{
                 font-size: 1.125rem;
                 text-transform: none;
                 color:#ACA7A7;
+                @include media-max(sm){
+                    text-align: center;
+                }
             }
             a{
                 text-decoration: unset;
@@ -893,6 +901,11 @@ header{
         &__paragraph {
             p {
                 font-feature-settings: 'pnum' on, 'lnum' on;
+            }
+            p:last-child{
+                @include media-max(sm){
+                    text-align: center;
+                }
             }
         }
         margin-top: -2.5rem;

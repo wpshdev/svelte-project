@@ -1,29 +1,15 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
-    // import { Form, FormGroup, Input, Button } from 'sveltestrap';
-	// import { fade, fly } from 'svelte/transition';
-	// import { onMount } from "svelte";
-	import Animate from "$lib/components/Animate.svelte";
-	// import { fade, fly } from "svelte/transition";
-	// import TextTransition from "$lib/TextTransition.svelte";
 	import PortfolioCarousel from "$lib/components/layout/PortfolioCarousel.svelte";
 	import Contactform from "$lib/components/layout/Contactform.svelte";
-	// import livingRoom from "$lib/img/living-room.jpg";
-	// import lvThropy from "$lib/img/lvThropy.jpg";
-	// import firePlace from "$lib/img/firePlace.jpg";
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
-	// import contactBG from "$lib/img/ContactBG.jpg";
-	import noFeatured from "$lib/img/blog-empty.svg"
-	// import ImageLoader from "$lib/components/imageLazy/ImageLoader.svelte";
+	import noFeatured from "$lib/img/blog-empty.svg";
 	import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
-	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 
 	export let data;
 	const domain = "https://api.ulfbuilt.com"
 	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	
- 	// const portfolio = data.portfolio.data[0].attributes;
-
 	$: title = data.portfolio.data[0].attributes.title;
 	$: projectHeading = data.portfolio.data[0].attributes.projectDetailHeading;
 	$: images = data.portfolio.data[0].attributes.images.data;
@@ -55,14 +41,13 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 
-<section class="portfolio-gallery" >
-
+<section class="portfolio-gallery">
 		<Container>
 			<Row>
 				<Col class="text-center">
 					<div class="portfolio-gallery__content">
 						<p class="pre-head" in:slide id="single-portfolio-preheading" gsap-duration="1">Project</p>
-						<h1 class="h2 text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-heading">{title ? title : ''}</h1>
+						<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-heading">{title ? title : ''}</h2>
 						<div in:fadeIn id="single-portfolio-cont" gsap-delay="0.5" gsap-duration="1.5">
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : ""}
 						</div>
@@ -139,7 +124,7 @@
 			<Row>
 				<Col class="text-center" md={{ size: 8, offset: 2 }} xs="12">
 					<div class="portfolio-cta__content">
-						<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-cta-heading">{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
+						<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-cta-heading">{ctaHeading ? ctaHeading : "Experience Living your Dreams"}</h2>
 						<div in:fly id="single-portfolio-cta-cont" gsap-duration="1.2"  gsap-y="50" >
 							{@html data.portfolio.data[0].attributes.content ? data.portfolio.data[0].attributes.content : "<p>This Castle in Colorado exudes grandeur with its rugged, locally sourced stone walls and curved, wood and wrought iron staircases. Its traditional design is further enhanced by a mountain lion sculpture that guards the property.</p>"}         
 						</div>
@@ -159,7 +144,7 @@
 		<Container>
 			<Row>
 				<Col md="12">
-					<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="single-portfolio-related-heading">{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
+					<h2 class="text-animate secondary-font" in:textAnimate id="single-portfolio-related-heading">{relatedPortfolioHeading ? relatedPortfolioHeading : "Explore our Projects..."}</h2>
 				</Col>	
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
@@ -249,12 +234,14 @@ section{
       color: $primary-color;
 	  font-weight: 500;
     }
-    h1{
+    h2{
 	  margin: 1rem 0;
 	  font-size: 4rem;
-	//   color: $secondary-color;
 	  color: $white-color;
 	  justify-content: center;
+	  @include media-max(sm){
+		font-size: 2.5rem;
+	  }
     }
 	:global(p){
 		line-height: 2;

@@ -165,7 +165,7 @@ function preventAnchorClick(event) {
   <div class="slider-caption">
     <div class="slider-caption__heading">
       <p in:slide id="carousel-preheading" gsap-duration="1.5">{preHeading ? preHeading : ''}</p>
-      <h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="carousel-heading">{heading ? heading : ''}</h2>
+      <h2 class="text-animate secondary-font" in:textAnimate id="carousel-heading">{heading ? heading : ''}</h2>
     </div>
   <!-- {#if controls} -->
   <div class="left-right desktop">

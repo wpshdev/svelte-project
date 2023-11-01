@@ -7,15 +7,14 @@
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import axios from 'axios';
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
-	import noFeatured from "$lib/img/blog-empty.svg"
-	import { textAnimate, fly, fadeIn, slide, fly2, slowDownSection } from '$lib/GsapAnimation.js';
+	// import noFeatured from "$lib/img/blog-empty.svg"
+	import { textAnimate, fly, slide, fly2, slowDownSection } from '$lib/GsapAnimation.js';
 
 	let y=0;
 	const domain = "https://api.ulfbuilt.com";
 	const home = data.home.data.attributes;
 	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	let propCount = 3;
-	//let listener = {};
 
 	// Function for portfolio masonry
 	let portfolioList = [];
@@ -51,6 +50,18 @@
 	onMount(() => {
 		loadingCursor();
 		// stopSection();
+
+		let updatedHeight = 0;
+	    const screenWidth = window.innerWidth;
+
+    	if (screenWidth > 768) {
+			const myDiv = document.querySelector('.loc-gallery');
+			const initialHeight = myDiv ? myDiv.clientHeight : 0;
+			updatedHeight = initialHeight + 150;
+			if (myDiv) {
+			myDiv.style.height = updatedHeight + 'px';
+			}
+		}
 	});
 
 
@@ -106,7 +117,6 @@ const handleBottomArrowClick = () => {
 </svelte:head>
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
-
 <section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery">
 	<Container>
 		<Row>
@@ -137,97 +147,6 @@ const handleBottomArrowClick = () => {
 		</Carousel3>
 	</Container>
 </section>
-
-
-<!-- {#if home.homeBuilderBanner.data}
-<section class="bannerOnly flex-column-center" id="bannerOnly">
-	<div class="bannerOnly--Container">
-		<div in:fadeIn id="bannerOnlyImg" gsap-duration="2" class="section--bannerOnly">
-		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.homeBuilderBanner.data.attributes.formats.large_x2.url ? home.homeBuilderBanner.data.attributes.formats.large_x2.url : home.homeBuilderBanner.data.attributes.url}"></ParallaxImage>
-		</div>
-	</div>
-</section>
-{/if} -->
-
-<!-- <section class="categories mvw-10" in:slowDownSection id="categories-section">
-	<Container class="categories_wrapper">
-		<Row>
-			<Col class="text-center">
-				<h2 class="text-animate secondary-font" in:textAnimate id="category_title" gsap-duration="1" >
-					{@html home.categoryGalleryTabHeading ? home.categoryGalleryTabHeading : ''}
-				</h2>
-				<div class="categories__tabs">
-					<div class="categories__tabs__heading">
-						{#if innerWidth > 767}
-						<ul in:fly id="categories" gsap-duration="1">
-							{#each home.categories.data as heading}
-								<li>
-									<span
-									data-category="{heading.id}"
-									class:active="{activeTab === heading.id}"
-									on:click="{() => handleTabClick(heading.id)}">
-									{heading.attributes.Title ? heading.attributes.Title : ''}
-									</span>
-								</li>
-							{/each}
-						</ul>
-						{/if}
-						{#if innerWidth <= 767}
-
-						<div class="options-container">
-							<div class="options">
-								{#each home.categories.data as heading}
-								<div class="option" 
-									data-category="{heading.id}"
-									class:active="{activeTab === heading.id}"
-									on:click="{() => handleTabClick(heading.id)}">
-									{heading.attributes.Title ? heading.attributes.Title : ''}
-								</div>
-							{/each}
-							</div>
-							<div class="arrow-top" on:click={handleTopArrowClick}>
-							  <img src="{arrowtop}" alt="arrowtop" />
-							</div>
-							<div class="arrow-bottom" on:click={handleBottomArrowClick}>
-							  <img src="{arrowtop}" alt="arrowbottom" />
-							</div>
-						  </div>
-						{/if}
-					</div>
-					
-					<div class="categories__tabs__gallery" >
-						{#key activeTab}
-							{#if loading}
-								<div class="col text-center list-text-details">Loading...</div>
-							{:else}
-								{#if portfolioList.length == 0} 
-									<div class="col text-center list-text-details">No Project Found...</div>
-								{:else}
-									<div class="container masonry_container">       
-										{#each portfolioList as project, index}				
-											{#if index < propCount}
-											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center"> 
-												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
-													{#if project.attributes.featuredImage.data != null}
-													<img src="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >   
-													{:else}
-													<img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}" >
-													{/if}
-												</a>
-											</div>	                    
-											{/if}				
-										{/each}
-									</div>
-								{/if}
-							{/if}
-						{/key}
-					</div>					
-				</div>	
-			</Col>
-		</Row>
-	</Container>
-</section> -->
-
 
 <section class="flex-column-center" id="tnr">
 	<div class="tnr">
@@ -452,11 +371,9 @@ align-items: end;
 	}	
 	.loc-gallery{
 		background: #EEE;
-    padding: 10vw 0 30vw 0;
-	margin: 0 0 10vw 0;
-	min-height: 300vh;
+		padding: 10rem 0;
+		margin: 0;
 	@include media-max(sm){
-		min-height: 150vh;
 		padding: 20vw 0;
 	}
 		h2{

@@ -285,7 +285,7 @@ export function textAnimate(node) {
     const targetElement = node; // target element
     const targetElementID = targetElement.id;
     const delay = targetElement.getAttribute("gsap-delay") ? targetElement.getAttribute("gsap-delay") : delayDefault;
-    const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : durationDefault;
+    const duration = targetElement.getAttribute("gsap-duration") ? targetElement.getAttribute("gsap-duration") : 1;
     const start = targetElement.getAttribute("gsap-start") ? targetElement.getAttribute("gsap-start") : startDefault;
     targetElement.style.opacity = '0';
 
@@ -481,7 +481,7 @@ export function slowDownSection(node) {
             },
             scrollTrigger: {
                 trigger: '#' + parentElementID,
-                start: () => start + ' ' + window.innerHeight * 0.9,
+                start: () => start + ' ' + window.innerHeight * 0.7,
                 end: () => '90% ' + window.innerHeight * 0.1,
                 scrub: true, // Use scrub to smooth the animation
                 onUpdate: (self) => {

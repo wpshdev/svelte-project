@@ -154,7 +154,7 @@ let clientY = e.touches[0].clientY;
     <div class="slider-caption">
       <div class="slider-caption__heading">
         <p in:slide id="carousel-preheading" gsap-duration="1.5">{preHeading ? preHeading : ''}</p>
-        <h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1.5" id="carousel-heading">{heading ? heading : ''}</h2>
+        <h2 class="text-animate secondary-font" in:textAnimate id="carousel-heading">{heading ? heading : ''}</h2>
       </div>
     <div class="left-right desktop">
         <button class="left" on:click={left}>
@@ -168,7 +168,7 @@ let clientY = e.touches[0].clientY;
     </div>
   </Col>
 <Col md=9 class="carousel-section">
-    <div class="carousel" style="position:absolute;left:0;top:0;">
+    <div class="carousel">
         <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown={handleStart} on:touchstart={touchvertical} on:touchmove={touchmovevertical}>
             {#each featuredProjects.data as project, index}
             <div class="slider-container__carousel-cell" id="carousel-item">
@@ -321,11 +321,15 @@ let clientY = e.touches[0].clientY;
         background: none;
         border: 0;
         height: 100%;
+        opacity: 0.5;
         -webkit-transform:rotate(180deg);
         -moz-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
         -o-transform: rotate(180deg);
         transform: rotate(180deg);
+    }
+    &:hover{
+      opacity: 1;
     }
     img{
       width:24px;
@@ -341,29 +345,33 @@ let clientY = e.touches[0].clientY;
         background: none;
         border: 0;
         height: 100%;
+        opacity: 0.5;
+    }
+    &:hover{
+      opacity: 1;
     }
     img{
       width:24px;
     }
 }
-.carousel {
-    position: relative;
+.carousel{
+  position:absolute;
     width: 25rem;
     justify-content: center;
     align-items: center;
+    @include media-max(sm){
+      padding-left: 1rem;
+    }
 }
 .slides{
     overflow: visible !important;
 }
 :global(.carousel-section){
     overflow: hidden;
-    padding-left:0px;
     position: relative;
-    height: 32rem;
-    min-height: 32rem;
+    height: 34rem;
     @include media-max(sm){
-        height: 32rem;
-        padding: 0rem;
+        height: 34rem;
     }
 }
 .left-right{
@@ -471,6 +479,7 @@ white-space: nowrap;
   }   
   @include media-max(sm){
     height: 50vh;
+    margin-right: 1rem;
   }   
   &__text{
         background-color: $secondary-color;
