@@ -57,7 +57,7 @@
     	if (screenWidth > 768) {
 			const myDiv = document.querySelector('.loc-gallery');
 			const initialHeight = myDiv ? myDiv.clientHeight : 0;
-			updatedHeight = initialHeight + 150;
+			updatedHeight = initialHeight + 200;
 			if (myDiv) {
 			myDiv.style.height = updatedHeight + 'px';
 			}
