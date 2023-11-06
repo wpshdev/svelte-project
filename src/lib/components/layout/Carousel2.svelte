@@ -15,7 +15,6 @@
       const container = document.querySelector('.slider-container');
       container.style.transition = 'transform 0.5s ease-in-out';
       container.style.transform = 'translateX(-424px)';
-      console.log();
       setTimeout(() => {
           const firstDiv = container.firstElementChild; // Get the first div element
           container.appendChild(firstDiv);
@@ -58,10 +57,8 @@ function handleStart(event) {
   isDragging = true;
   if (event.touches) {
     startX = event.touches[0].clientX - initialLeft;
-    // console.log("start>event-touch");
   } else {
     startX = event.clientX - initialLeft;
-    // console.log("start>event");
   }
 }
 
@@ -84,7 +81,6 @@ function handleMove(event) {
 
       var style = window.getComputedStyle(container);
       var matrix = new WebKitCSSMatrix(style.transform);
-      // console.log('translateX: ', matrix.m41);
     if(startX > clientX){
       //2341 -- 3412
       //if start of drag point is bigger than client than it considered as swipe right to left or swipe left or previous
@@ -93,15 +89,11 @@ function handleMove(event) {
           container.appendChild(firstDiv);
           container.style.transition = 'none';
           container.style.transform = 'translateX(0px)';
-
-        // console.log("previous2");
       }
-      // console.log("previous");
     }
     if(clientX > startX){
       //4123 -- 3412
       //if start of client point is bigger than start point than it considered as swipe left to right or swipe right
-      // console.log("next");
     }
   
     if(matrix.m41 == 1){
@@ -109,13 +101,11 @@ function handleMove(event) {
           container.style.transition = 'transform 0s ease-in-out';
           container.style.transform = 'translateX(-424px)';
           container.insertBefore(lastDiv, container?.firstElementChild);
-          console.log(matrix.m41);
       }
 
 
     // const carousel = document.querySelector('.carousel');
     // carousel.style.left = newX + 'px';
-    // console.log(newX +" "+ newX2);
   }
 }
 
@@ -129,13 +119,9 @@ function handleEnd(event) {
     }
     const container = document.querySelector('.slider-container');
       // if(startX > clientX){
-      //   // 2341
-      //   console.log("this one");
       //     container.style.transition = 'transform 0.5s ease-in-out';
       //     container.style.transform = 'translateX(-424px)';
-          
       //     setTimeout(() => {
-      //       console.log("executed");
       //       const firstDiv = container.firstElementChild;
       //       container.appendChild(firstDiv);
       //       container.style.transition = 'none';
@@ -148,8 +134,6 @@ function handleEnd(event) {
       // }
          container.style.transition = 'transform 0.5s ease-in-out';
         container.style.transform = 'translateX(0px)';
-      console.log(" C" + clientX + " S" + startX);
-
 
   if (isDragging) {
     isDragging = false;
@@ -158,7 +142,6 @@ function handleEnd(event) {
 
 function preventAnchorClick(event) {
   event.preventDefault();
-  console.log('Anchor click prevented');
 }
 </script>
 <Col md="3">

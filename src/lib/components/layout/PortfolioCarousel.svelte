@@ -26,9 +26,6 @@
         const conwidth = container.scrollWidth - (window.innerWidth * 0.75);
         // Position of Container scrolling
         const conx = (-container.scrollWidth * progress);
-        // console.log(" ConWidth: " + conwidth + " ConX: " + conx);
-        // console.log("window.innerWidth: "+ window.innerWidth);
-        // console.log("container.scrollWidth: "+ container.scrollWidth);
           if(conx < -conwidth){
             return
           }else{
@@ -44,18 +41,15 @@
 
   onMount(async() => {
     await tick();
-    // console.log(document.querySelector('.slider-container'));
     if(innerWidth > 768){
       initScrollAnimations();
     }
     // isRetina = window.devicePixelRatio > 1;
-    // console.log(isRetina);
   });
 
 afterUpdate(() => {
   // ScrollTrigger.refresh();
   // initScrollAnimations();
-  // console.log()
 });
 let innerWidth;
 
@@ -74,14 +68,10 @@ const domain = "https://api.ulfbuilt.com";
 
 $: {
   if(scrollSlider){
-    console.log(scrollSlider);
-    
   }
 }
-  console.log(images);
 function log(){
-  // console.log("test");
-  // console.log( document.querySelector('.slider-container'));
+  
 }
 
 // Lazy Load - for checking and testing

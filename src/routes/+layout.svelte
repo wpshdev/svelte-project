@@ -4,12 +4,10 @@
     const onPin = () => console.log("pin");
     import Footer from "./Footer.svelte";
     import Header from "./Header.svelte";
-	// import { redirect } from "@sveltejs/kit";
     import {page} from '$app/stores'
 	import { Container } from "sveltestrap";  
     import Animate from "$lib/components/Animate.svelte";
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
-    // import { fade, fly } from 'svelte/transition';
     import { gsap } from 'gsap';
     import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 

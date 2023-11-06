@@ -122,7 +122,6 @@ function handleStart(event) {
 
 function preventAnchorClick(event) {
   event.preventDefault();
-  console.log('Anchor click prevented');
 }
 
 let startY = null;

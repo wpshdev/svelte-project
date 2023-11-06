@@ -48,8 +48,6 @@
       //           end: "60% 30%",
       //           markers: true,
       //           onLeave: () => {
-      //             console.log('Leaving section:', section.id);
-      //             console.log('Scrolling to next section:', nextSection.id);
       //             // smoother.scrollTo("#"+nextSection.id, true, "top 10vw");
 
       //             // gsap.to(smoother, {
@@ -70,7 +68,6 @@
       //             // window.addEventListener('wheel', { passive: false });
 
       //             // setTimeout(() => {
-      //             //   console.log('re enable scroll');
       //             // },2000)
       //           },
       //         });
