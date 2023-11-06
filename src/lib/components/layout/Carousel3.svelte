@@ -276,10 +276,10 @@ let clientY = e.touches[0].clientY;
         </div>
     </div>
     <button class="left-mobil" name="left-mobil" on:click={left}>
-        <img src="{rightarrow}" alt="left">
+        <img src="{rightarrow}" width="30" height="30" alt="left">
     </button>
     <button class="right-mobil" name="right-mobil" on:click={right}>
-        <img src="{rightarrow}" alt="right">
+        <img src="{rightarrow}" width="30" height="30" alt="right">
     </button>
 </Col>
 </Row>

@@ -8,6 +8,7 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
   let parallaxImage;
   let parallaxImageCont;
   export let imageUrl;
+  export let medUrl;
   export let imageHeight;
   export let overlay;
   // Initialize GSAP and ScrollTrigger when the component is mounted
@@ -45,6 +46,8 @@ style="--height: {imageHeight}vh">
     alt="Parallax Image"
     class="parallax-img"
     bind:this={parallaxImage}
+    srcset="{medUrl} 768w"
+		sizes="(max-width: 768px) 1024px"
   />
 </div>
 
