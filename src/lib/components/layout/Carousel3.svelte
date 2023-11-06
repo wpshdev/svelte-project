@@ -172,11 +172,11 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" />
+      <img width="376" height="512" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" />
     {:else}
     {#await promise}
     {:then fallback} 
-      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
+      <img width="376" height="512" src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
     {/await}
     {/if}
     <div class="slider-container__carousel-cell__text">
@@ -191,11 +191,11 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
+      <img width="376" height="512" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false">
+      <img width="376" height="512" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false">
     {/await}
     {/if}
     <div class="slider-container__carousel-cell__text">
@@ -210,11 +210,11 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
+      <img width="376" height="512" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
+      <img width="376" height="512" src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
     {/await}
     {/if}
     <div class="slider-container__carousel-cell__text">
@@ -229,11 +229,11 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
+      <img width="376" height="512" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
+      <img width="376" height="512" src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
     {/await}
     {/if}
     <div class="slider-container__carousel-cell__text">
@@ -248,11 +248,11 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
+      <img width="376" height="512" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
+      <img width="376" height="512" src="{fallback ? domain+fallback.attributes.url : noFeatured}"alt="{project.attributes.title ? project.attributes.title : "Image"}"  draggable="false">
     {/await}
     {/if}
     <div class="slider-container__carousel-cell__text">

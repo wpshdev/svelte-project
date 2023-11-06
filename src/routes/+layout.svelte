@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import Headroom from "svelte-headroom";
-    // const onPin = () => console.log("pin");
-    const onPin = ();
+    const onPin = () => console.log("pin");
+    // const onPin = ();
     import Footer from "./Footer.svelte";
     import Header from "./Header.svelte";
     import {page} from '$app/stores'

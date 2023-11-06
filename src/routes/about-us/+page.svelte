@@ -25,7 +25,6 @@
         if(clientSays) {
             const id = clientSays.substring(1);
             const element = document.getElementById(id);
-            console.log(element);
             element.scrollIntoView({
                 behavior: 'smooth'
             });

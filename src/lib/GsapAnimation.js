@@ -688,7 +688,6 @@ export function stopSection() {
 
             // Scroll down
             function down() {
-                // console.log('down')
                 gsap.to(window, {
                     duration: 2, 
                     scrollTo: {
