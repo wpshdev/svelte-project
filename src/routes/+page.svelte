@@ -187,7 +187,7 @@ const handleBottomArrowClick = () => {
 				<Col md="5" class="my-auto containerimg" >
 					<div class="childimg">
 						{#if home.reputation.image.data}
-							<img in:fly2 id="reputation-img" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText}" >
+							<img in:fly2 id="reputation-img" src="{domain}{home.reputation.image.data.attributes.formats.large.url ? home.reputation.image.data.attributes.formats.large.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText ? home.reputation.image.data.attributes.alternativeText : "image"}" >
 						{/if}
 					</div>
 				</Col>
@@ -201,7 +201,7 @@ const handleBottomArrowClick = () => {
 			<Col md="6" class="">
 				<div class="process__top-image childimg2" >
 					{#if home.ourProcessTopImage.data[0]}
-						<img in:fly2 id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText}"/>
+						<img in:fly2 id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText ? home.ourProcessTopImage.data[0].attributes.alternativeText : "image"}"/>
 					{/if}
 				</div>
 			</Col>
@@ -222,7 +222,7 @@ const handleBottomArrowClick = () => {
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
-						<img in:fly2 id="process-bottom-img" gsap-y="-150" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText}">
+						<img in:fly2 id="process-bottom-img" gsap-y="-150" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText ? home.ourProcessRightImage.data.attributes.alternativeText : "image"}">
 					{/if}
 				</div>
 			</Col>
@@ -249,7 +249,7 @@ const handleBottomArrowClick = () => {
 				<Col md="5" class="my-auto containerimg4">
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
-							<img in:fly2 id="story-img"  src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+							<img in:fly2 id="story-img"  src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText ? home.ourStoryRightImage.data.attributes.alternativeText : "Image"}">
 						{/if}
 					</div>	
 				</Col>

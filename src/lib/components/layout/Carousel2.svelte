@@ -181,12 +181,12 @@ function preventAnchorClick(event) {
 <Col md=9 class="carousel-section" style="overflow: hidden;padding-left:0px;position: relative;height: 40rem;">
 <div class="carousel" style="position:absolute;left:0;top:0;">
 <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center"
-  on:mousedown={handleStart}
-  on:mousemove={handleMove}
-  on:mouseup={handleEnd}
-  on:touchstart={handleStart}
-  on:touchmove={handleMove}
-  on:touchend={handleEnd}>
+  on:mousedown|passive={handleStart}
+  on:mousemove|passive={handleMove}
+  on:mouseup|passive={handleEnd}
+  on:touchstart|passive={handleStart}
+  on:touchmove|passive={handleMove}
+  on:touchend|passive={handleEnd}>
           <div class="slider-container">
           {#each featuredProjects.data as project, index}
           <div class="slider-container__carousel-cell" id="carousel-item">

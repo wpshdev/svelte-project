@@ -146,7 +146,6 @@ let clientY = e.touches[0].clientY;
       }
     }
 }
-
 </script>
 
 <Row>
@@ -158,10 +157,10 @@ let clientY = e.touches[0].clientY;
       </div>
     <div class="left-right desktop">
         <button class="left" on:click={left}>
-            <img src="{leftar}">
+            <img src="{leftar}" alt="left">
         </button>
         <button class="right" on:click={right}>
-            <img src="{rightar}">
+            <img src="{rightar}" alt="right">
         </button>
         
     </div>
@@ -169,109 +168,109 @@ let clientY = e.touches[0].clientY;
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown={handleStart} on:touchstart={touchvertical} on:touchmove={touchmovevertical}>
-            {#each featuredProjects.data as project, index}
-            <div class="slider-container__carousel-cell" id="carousel-item">
-              <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
-                {#if project.attributes.featuredImage.data != null}
-                  <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-                {:else}
-                {#await promise}
-                {:then fallback} 
-                  <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
-                {/await}
-                {/if}
-                <div class="slider-container__carousel-cell__text">
-                  <span>{('0' + (index + 1)).slice(-2)}</span>
-                  {project.attributes.title ? project.attributes.title : ''}
-                  <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-                </div>
-              </a>  
-            </div>
-          {/each}
-          {#each featuredProjects.data as project, index}
-          <div class="slider-container__carousel-cell" id="carousel-item">
-            <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
-              {#if project.attributes.featuredImage.data != null}
-                <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-              {:else}
-              {#await promise}
-              {:then fallback} 
-                <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
-              {/await}
-              {/if}
-              <div class="slider-container__carousel-cell__text">
-                <span>{('0' + (index + 1)).slice(-2)}</span>
-                {project.attributes.title ? project.attributes.title : ''}
-                <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-              </div>
-            </a>  
-          </div>
-        {/each}
-        {#each featuredProjects.data as project, index}
-        <div class="slider-container__carousel-cell" id="carousel-item">
-          <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
-            {#if project.attributes.featuredImage.data != null}
-              <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-            {:else}
-            {#await promise}
-            {:then fallback} 
-              <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
-            {/await}
-            {/if}
-            <div class="slider-container__carousel-cell__text">
-              <span>{('0' + (index + 1)).slice(-2)}</span>
-              {project.attributes.title ? project.attributes.title : ''}
-              <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-            </div>
-          </a>  
-        </div>
-      {/each}
-      {#each featuredProjects.data as project, index}
-      <div class="slider-container__carousel-cell" id="carousel-item">
-        <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
-          {#if project.attributes.featuredImage.data != null}
-            <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-          {:else}
-          {#await promise}
-          {:then fallback} 
-            <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
-          {/await}
-          {/if}
-          <div class="slider-container__carousel-cell__text">
-            <span>{('0' + (index + 1)).slice(-2)}</span>
-            {project.attributes.title ? project.attributes.title : ''}
-            <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-          </div>
-        </a>  
-      </div>
-    {/each}
-    {#each featuredProjects.data as project, index}
-    <div class="slider-container__carousel-cell" id="carousel-item">
-      <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
-        {#if project.attributes.featuredImage.data != null}
-          <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
-        {:else}
-        {#await promise}
-        {:then fallback} 
-          <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
-        {/await}
-        {/if}
-        <div class="slider-container__carousel-cell__text">
-          <span>{('0' + (index + 1)).slice(-2)}</span>
-          {project.attributes.title ? project.attributes.title : ''}
-          <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-        </div>
-      </a>  
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown|passive={handleStart} on:touchstart|passive={touchvertical} on:touchmove|passive={touchmovevertical}>
+{#each featuredProjects.data as project, index}
+<div class="slider-container__carousel-cell" id="carousel-item">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" alt="{project.attributes.title ? project.attributes.title : 'image'}">
+    {#if project.attributes.featuredImage.data != null}
+      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+    {:else}
+    {#await promise}
+    {:then fallback} 
+      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
+    {/await}
+    {/if}
+    <div class="slider-container__carousel-cell__text">
+      <span>{('0' + (index + 1)).slice(-2)}</span>
+      {project.attributes.title ? project.attributes.title : ''}
+      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
     </div>
-  {/each}
+  </a>  
+</div>
+{/each}
+{#each featuredProjects.data as project, index}
+<div class="slider-container__carousel-cell" id="carousel-item">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" alt="{project.attributes.title ? project.attributes.title : 'image'}">
+    {#if project.attributes.featuredImage.data != null}
+      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+    {:else}
+    {#await promise}
+    {:then fallback} 
+      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
+    {/await}
+    {/if}
+    <div class="slider-container__carousel-cell__text">
+      <span>{('0' + (index + 1)).slice(-2)}</span>
+      {project.attributes.title ? project.attributes.title : ''}
+      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
+    </div>
+  </a>  
+</div>
+{/each}
+{#each featuredProjects.data as project, index}
+<div class="slider-container__carousel-cell" id="carousel-item">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" alt="{project.attributes.title ? project.attributes.title : 'image'}">
+    {#if project.attributes.featuredImage.data != null}
+      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+    {:else}
+    {#await promise}
+    {:then fallback} 
+      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
+    {/await}
+    {/if}
+    <div class="slider-container__carousel-cell__text">
+      <span>{('0' + (index + 1)).slice(-2)}</span>
+      {project.attributes.title ? project.attributes.title : ''}
+      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
+    </div>
+  </a>  
+</div>
+{/each}
+{#each featuredProjects.data as project, index}
+<div class="slider-container__carousel-cell" id="carousel-item">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" alt="{project.attributes.title ? project.attributes.title : 'image'}">
+    {#if project.attributes.featuredImage.data != null}
+      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+    {:else}
+    {#await promise}
+    {:then fallback} 
+      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
+    {/await}
+    {/if}
+    <div class="slider-container__carousel-cell__text">
+      <span>{('0' + (index + 1)).slice(-2)}</span>
+      {project.attributes.title ? project.attributes.title : ''}
+      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
+    </div>
+  </a>  
+</div>
+{/each}
+{#each featuredProjects.data as project, index}
+<div class="slider-container__carousel-cell" id="carousel-item">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" alt="{project.attributes.title ? project.attributes.title : 'image'}">
+    {#if project.attributes.featuredImage.data != null}
+      <img draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText}" />
+    {:else}
+    {#await promise}
+    {:then fallback} 
+      <img src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}"  draggable="false">
+    {/await}
+    {/if}
+    <div class="slider-container__carousel-cell__text">
+      <span>{('0' + (index + 1)).slice(-2)}</span>
+      {project.attributes.title ? project.attributes.title : ''}
+      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
+    </div>
+  </a>  
+</div>
+{/each}
         </div>
     </div>
-    <button class="left-mobil" on:click={left}>
-        <img src="{rightarrow}">
+    <button class="left-mobil" name="left-mobil" on:click={left}>
+        <img src="{rightarrow}" alt="left">
     </button>
-    <button class="right-mobil" on:click={right}>
-        <img src="{rightarrow}">
+    <button class="right-mobil" name="right-mobil" on:click={right}>
+        <img src="{rightarrow}" alt="right">
     </button>
 </Col>
 </Row>
