@@ -14,9 +14,9 @@ export async function load() {
     const siteSettings = await axios.get(urlSiteSettings, { headers }); 
 
     if (response.fromCache) {
-        console.log("Response from cache");
+        // console.log("Response from cache");
       } else {
-        console.log("Response from server");
+        // console.log("Response from server");
       }    
 
     // return response.data;

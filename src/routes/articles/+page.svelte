@@ -63,7 +63,6 @@
         //         behavior: 'smooth'
         // });
         const y = element.offsetTop + 1500;
-        console.log(y);
         window.scrollTo({ top: y, behavior: 'smooth' });
     }
 
