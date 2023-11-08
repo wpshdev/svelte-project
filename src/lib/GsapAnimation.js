@@ -517,40 +517,39 @@ export function slowDownSection(node) {
     });
 
     mm.add("(max-width: 768px)", () => { // no y on 768 below
-        console.log("mobile");
-    //     gsap.to(container, {
-    //         scrollTrigger: {
-    //             trigger: '#' + parentElementID,
-    //             start: () => start + ' ' + window.innerHeight * 0.9,
-    //             end: () => '90% ' + window.innerHeight * 0.1,
-    //             scrub: true, // Use scrub to smooth the animation
-    //             onEnter: () => {
-    //                 gsap.to('#' + parentElementID, {
-    //                     opacity: 1,
-    //                     duration: 1,
-    //                 });
-    //             },
-    //             onLeave: () => {
-    //                 gsap.to('#' + parentElementID, {
-    //                     opacity: 0,
-    //                     duration: 1,
-    //                 });
-    //             },
-    //             onLeaveBack: () => {
-    //                 gsap.to('#' + parentElementID, {
-    //                     opacity: 0,
-    //                     duration: 1,
-    //                 });
-    //             },
-    //             onEnterBack: () => {
-    //                 gsap.to('#' + parentElementID, {
-    //                     opacity: 1,
-    //                     duration: 1,
-    //                 });
-    //             },
-    //             // markers: true,
-    //         },
-    //     });
+        gsap.to(container, {
+            scrollTrigger: {
+                trigger: '#' + parentElementID,
+                start: () => start + ' ' + window.innerHeight * 0.9,
+                end: () => '90% ' + window.innerHeight * 0.1,
+                scrub: true, // Use scrub to smooth the animation
+                onEnter: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 0,
+                    });
+                },
+                onLeave: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 0,
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 0,
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to('#' + parentElementID, {
+                        opacity: 1,
+                        duration: 0,
+                    });
+                },
+                // markers: true,
+            },
+        });
     });
     
 }
@@ -669,3 +668,92 @@ export function bgZoom(node) {
 // End snap for testing
 
 // Auto scroll
+
+export function stopSection() {
+    
+    let sections = gsap.utils.toArray("section");
+        
+    sections.forEach((section, i) => {
+
+        // Calculate the index of the next section
+        const nextSectionIndex = i + 1;
+        // const prevSectionIndex = i - 1;
+
+        // if (nextSectionIndex < sections.length) {  // Check if there is a next section
+
+            const nextSection = sections[nextSectionIndex];
+            // const prevSection = sections[prevSectionIndex];
+
+            const offsetHeight = nextSection ? nextSection.getBoundingClientRect() : '';
+
+            // Scroll down
+            function down() {
+                gsap.to(window, {
+                    duration: 2, 
+                    scrollTo: {
+                        // y: "#" + nextSection.id, 
+                        y: offsetHeight.top,
+                        // offsetY: 80,
+                        autoKill: true
+                    }
+                });
+            }
+
+            if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
+                
+                mm.add("(max-width: 768px)", () => {
+
+                    // observer that will be triggered by the onEnter
+                    // Touch
+                    let scrollObserverTouch = Observer.create({
+                        target: window,    
+                        type: "touch",
+                        onUp: () => down(), 
+                    });
+                    scrollObserverTouch.disable();
+
+                    // Scroll
+                    let scrollObserverScroll = Observer.create({
+                        target: window,    
+                        type: "wheel",
+                        onDown: () => down(),
+                    });
+                    scrollObserverScroll.disable();
+
+                    // Scroll trigger for stop and observer
+                    // section.style.opacity = 0;
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: "bottom 90%", // start of stop then enable the observer
+                        end: "bottom center",
+                        // markers: true,
+                        // pin: true,
+                        onEnter: self => {
+                            self.scroll(self.start + 1);
+                            scrollObserverTouch.enable();
+                            scrollObserverScroll.enable();
+
+                            // gsap.to(section, {
+                            //     opacity: 1,
+                            //     duration: 2,
+                            // });
+                        },
+                        // onLeaveBack: self => {
+                        //     self.scroll(self.end - 1);
+                        //     scrollObserverTouch.enable();
+                        //     scrollObserverScroll.enable();
+                        // },
+                        onLeave: () => {
+                            scrollObserverTouch.disable();
+                            scrollObserverScroll.disable();
+                        }
+                    });
+
+                });
+
+            } 
+
+        // }
+        
+    });
+}
