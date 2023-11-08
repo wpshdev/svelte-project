@@ -517,40 +517,40 @@ export function slowDownSection(node) {
     });
 
     mm.add("(max-width: 768px)", () => { // no y on 768 below
-        gsap.to(container, {
-            scrollTrigger: {
-                trigger: '#' + parentElementID,
-                start: () => start + ' ' + window.innerHeight * 0.9,
-                end: () => '90% ' + window.innerHeight * 0.1,
-                scrub: true, // Use scrub to smooth the animation
-                onEnter: () => {
-                    gsap.to('#' + parentElementID, {
-                        opacity: 1,
-                        duration: 1,
-                    });
-                },
-                onLeave: () => {
-                    gsap.to('#' + parentElementID, {
-                        opacity: 0,
-                        duration: 1,
-                    });
-                },
-                onLeaveBack: () => {
-                    gsap.to('#' + parentElementID, {
-                        opacity: 0,
-                        duration: 1,
-                    });
-                },
-                onEnterBack: () => {
-                    gsap.to('#' + parentElementID, {
-                        opacity: 1,
-                        duration: 1,
-                    });
-                },
-                // markers: true,
-            },
-        });
-    });
+    //     gsap.to(container, {
+    //         scrollTrigger: {
+    //             trigger: '#' + parentElementID,
+    //             start: () => start + ' ' + window.innerHeight * 0.9,
+    //             end: () => '90% ' + window.innerHeight * 0.1,
+    //             scrub: true, // Use scrub to smooth the animation
+    //             onEnter: () => {
+    //                 gsap.to('#' + parentElementID, {
+    //                     opacity: 1,
+    //                     duration: 1,
+    //                 });
+    //             },
+    //             onLeave: () => {
+    //                 gsap.to('#' + parentElementID, {
+    //                     opacity: 0,
+    //                     duration: 1,
+    //                 });
+    //             },
+    //             onLeaveBack: () => {
+    //                 gsap.to('#' + parentElementID, {
+    //                     opacity: 0,
+    //                     duration: 1,
+    //                 });
+    //             },
+    //             onEnterBack: () => {
+    //                 gsap.to('#' + parentElementID, {
+    //                     opacity: 1,
+    //                     duration: 1,
+    //                 });
+    //             },
+    //             // markers: true,
+    //         },
+    //     });
+    // });
     
 }
 
