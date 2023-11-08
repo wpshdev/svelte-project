@@ -85,7 +85,7 @@ export function fadeIn(node) {
                 tl.to(
                     '#' + targetElementID,
                     {
-                        duration: 0,
+                        duration: duration,
                         opacity: 1,
                         delay: delay,
                     }
@@ -124,7 +124,7 @@ export function fadeOut(node) {
             tl.to(
                 '#' + targetElementID,
                 {
-                    duration: 0,
+                    duration: duration,
                     opacity: 0,
                     delay: delay,
                 }
@@ -195,7 +195,7 @@ export function fly(node) {
                 tl.to(
                     '#' + targetElementID,
                     {
-                        duration: 0,
+                        duration: duration,
                         opacity: 1,
                         yPercent: 0,
                         delay: delay,
