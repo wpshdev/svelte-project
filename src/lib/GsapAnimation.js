@@ -517,6 +517,7 @@ export function slowDownSection(node) {
     });
 
     mm.add("(max-width: 768px)", () => { // no y on 768 below
+        console.log("mobile");
     //     gsap.to(container, {
     //         scrollTrigger: {
     //             trigger: '#' + parentElementID,
@@ -550,7 +551,7 @@ export function slowDownSection(node) {
     //             // markers: true,
     //         },
     //     });
-    // });
+    });
     
 }
 
