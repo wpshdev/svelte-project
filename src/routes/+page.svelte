@@ -137,7 +137,7 @@ const handleBottomArrowClick = () => {
 	</Container>
 </section>
 
-<section class="featured-projects mvw-10" in:slowDownSection id="featured-section">	
+<section class="featured-projects mvw-10" id="featured-section">	
 	<Container class="featured-container">
 		<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
 		heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
