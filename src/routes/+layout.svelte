@@ -43,7 +43,7 @@
   import {navigating} from '$app/stores'
 
   // NProgress css
-  import 'nprogress/nprogress.css'
+//   import 'nprogress/nprogress.css'
 
   NProgress.configure({
         minimum: 0.16,
