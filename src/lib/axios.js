@@ -1,5 +1,5 @@
 import axios from 'axios';
-import redis from 'redis';
+import redis from "$lib/redis";
 
 const instance = axios.create();
 
