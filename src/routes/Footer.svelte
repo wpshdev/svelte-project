@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
-import axios from '$lib/axios';
+import axios from 'axios';
 // import Animate from "$lib/components/Animate.svelte"
 // import { fly } from "svelte/transition";
 import { fadeIn } from '$lib/GsapAnimation.js';
