@@ -104,7 +104,7 @@ function resetInterval(node, condition) {
   }
   
   if(condition) {
-    node.addEventListener('click', handleReset);
+    node.addEventListener('click', handleReset, { passive: true });
   }
   
   return {
