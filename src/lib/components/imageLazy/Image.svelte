@@ -35,4 +35,4 @@
   <img loading="lazy" {src} {alt} class:loaded bind:this={thisImage} loading="lazy" />
   {/if} -->
 
-  <img loading="lazy" {src} {alt} class:loaded bind:this={thisImage} loading="lazy" />
+  <img loading="lazy" {src} {alt} class:loaded bind:this={thisImage} />
