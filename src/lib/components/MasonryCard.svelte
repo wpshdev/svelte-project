@@ -70,10 +70,10 @@ onMount(async () => {
                 <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                     {#if project.attributes.featuredImage.data != null}
                     <ImageLoader src="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.url}" lowRes="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.formats.small.url}" alt="{project.attributes.title}"></ImageLoader>
-                    <!-- <img src="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >    -->
+                    <!-- <img loading="lazy" src="https://api.ulfbuilt.com/{project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}" >    -->
                     {:else}
                     <ImageLoader src="{noFeatured}" lowRes="{noFeatured}" alt="{project.attributes.title}"></ImageLoader>
-                    <!-- <img src="{noFeatured}" alt="{project.attributes.title}" > -->
+                    <!-- <img loading="lazy" src="{noFeatured}" alt="{project.attributes.title}" > -->
                     {/if}
                     <div class="masonry-items__text">
                         <span>{('0' + (index + 1)).slice(-2)}</span>
