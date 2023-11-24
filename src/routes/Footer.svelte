@@ -2,12 +2,9 @@
 import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
 import axios from 'axios';
-// import Animate from "$lib/components/Animate.svelte"
-// import { fly } from "svelte/transition";
 import { fadeIn } from '$lib/GsapAnimation.js';
 const domain = "https://api.ulfbuilt.com"
 import { PUBLIC_STRAPI_API } from '$env/static/public';
-	// import { fadeIn } from '$lib/GsapAnimation';
 
 let promise = fetchCta();
 async function fetchCta(){
@@ -74,7 +71,7 @@ function scrollToTop() {
                             <div class="footer__widget1 footer--widget" in:fadeIn id="footer-items{index}" gsap-duration="1" gsap-delay={index/2}>
                                 {#if widget.title }
                                     <div class="footer__widget__heading">
-                                        <h4>{widget.title}</h4>
+                                        <h2>{widget.title}</h2>
                                     </div>
                                 {/if}
                                 {#each widget.item as item}
