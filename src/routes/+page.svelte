@@ -222,7 +222,7 @@ const handleBottomArrowClick = () => {
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
-						<img in:fly2 width="526" height="500" id="process-bottom-img" gsap-y="-150" src="{domain}{home.ourProcessRightImage.data.attributes.formats.large.url ? home.ourProcessRightImage.data.attributes.formats.large.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText ? home.ourProcessRightImage.data.attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessRightImage.data.attributes.formats.medium.url ? home.ourProcessRightImage.data.attributes.formats.medium.url : home.ourProcessRightImage.data.attributes.url} 768w" sizes="(max-width: 768px) 1024px">
+						<img in:fly2 width="526" height="500" id="process-bottom-img" gsap-y="-150" src="{domain}{home.ourProcessRightImage.data.attributes.formats.medium_x2.url ? home.ourProcessRightImage.data.attributes.formats.medium_x2.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText ? home.ourProcessRightImage.data.attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessRightImage.data.attributes.formats.medium.url ? home.ourProcessRightImage.data.attributes.formats.medium.url : home.ourProcessRightImage.data.attributes.url} 768w" sizes="(max-width: 768px) 1024px">
 					{/if}
 				</div>
 			</Col>
