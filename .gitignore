@@ -13,3 +13,5 @@ package-lock.json
 vite.config.ts
 svelte.config.js
 src/routes/+page.server.ts
+package-lock.json
+package.json
