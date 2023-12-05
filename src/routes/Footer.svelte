@@ -71,7 +71,7 @@ function scrollToTop() {
                             <div class="footer__widget1 footer--widget" in:fadeIn id="footer-items{index}" gsap-duration="1" gsap-delay={index/2}>
                                 {#if widget.title }
                                     <div class="footer__widget__heading">
-                                        <h4>{widget.title}</h4>
+                                        <p>{widget.title}</p>
                                     </div>
                                 {/if}
                                 {#each widget.item as item}
@@ -142,7 +142,7 @@ function scrollToTop() {
         @include media-max(sm){
             flex: 100%;
             margin-bottom: 3rem;
-            h4{
+            p{
                 max-width: 20rem;
             }
         }
