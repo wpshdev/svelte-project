@@ -199,7 +199,7 @@ const handleBottomArrowClick = () => {
 		<Row>
 			<Col md="6" class="">
 				<div class="process__top-image childimg2" >
-					{#if home.ourProcessTopImage.data[0]}
+					{#if home.ourProcessTopImage.data}
 						<img loading="lazy" in:fly2 width="509" height="440" id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.large.url ? home.ourProcessTopImage.data[0].attributes.formats.large.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText ? home.ourProcessTopImage.data[0].attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessTopImage.data[0].attributes.formats.medium.url ? home.ourProcessTopImage.data[0].attributes.formats.medium.url : home.ourProcessTopImage.data[0].attributes.url} 768w" sizes="(max-width: 768px) 1024px"/>
 					{/if}
 				</div>
