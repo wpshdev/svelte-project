@@ -155,7 +155,7 @@ const handleBottomArrowClick = () => {
 			<Container>
 				<div class="tnr__wrapper__captions">
 					<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
-					<p in:slide id="tnr-preheading" gsap-duration="1">{home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
+					<p in:slide id="tnr-preheading" gsap-duration="1">{@html home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
 					<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
 						<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
 							{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
@@ -367,13 +367,16 @@ align-items: end;
 	}
 	:global(.loc-gallery .h3 span){
 		color: $primary-color;
-	}	
+	}
 	.loc-gallery{
 		background: #EEE;
 		padding: 10rem 0;
 		margin: 0;
 	@include media-max(sm){
 		padding: 20vw 0;
+	}
+	.h3{
+		margin-bottom: 1.25rem;
 	}
 		h2{
 			font-family: $secondary-font;
@@ -669,7 +672,7 @@ align-items: end;
 						padding: 1rem;
 					}
 					#tnr-preheading{
-						max-width: 42rem;
+						max-width: 44rem;
 						margin-bottom: 2rem;
 						line-height: 1.75;
 					}

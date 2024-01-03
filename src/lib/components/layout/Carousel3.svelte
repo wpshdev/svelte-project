@@ -502,6 +502,7 @@ white-space: nowrap;
         transition: 1.5s;
         display: flex;
         align-items: center;
+        line-height:1.25;
           @include media-max(sm){
               margin: 0;
               // font-size: 0.6rem;
@@ -512,7 +513,7 @@ white-space: nowrap;
           span{
               color: $primary-color;
               font-size: 1.2rem;
-              margin: 0 0.8rem 0;
+              margin: 0 0.8rem;
               @include media-max(sm){
                   margin: 0;
                   // font-size: 0.6rem;
