@@ -829,7 +829,7 @@ header{
         }
         &__heading{
             p{
-                padding-bottom: .25rem;
+                padding-bottom: 1rem;
                 // width: 45%;
                 text-transform: uppercase;
                 font-size: 1.125rem;
@@ -847,7 +847,7 @@ header{
             }
         }
         &--item{
-            margin-bottom: 1rem;
+            margin-bottom: .75rem;
             text-align: left;
             line-height: 1.5rem;
             font-feature-settings: 'pnum' on, 'lnum' on;
