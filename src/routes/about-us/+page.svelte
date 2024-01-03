@@ -60,7 +60,7 @@
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
-                <Col md="5" class="align-self-center">
+                <Col md="5">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1" >{@html about.Section1heading ? about.Section1heading : ''}</h3>
                         <p in:fadeIn id="cd-cont1" gsap-duration="1" gsap-delay="0.5" >{@html about.Section1text ? about.Section1text : ''}</p>
@@ -464,7 +464,7 @@
         }
 
         .imgcont {
-            padding-top: 7rem;
+            padding-top: 4rem;
             @include media-max(sm){
                 padding-top: unset
 			}
