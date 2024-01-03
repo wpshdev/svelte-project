@@ -520,7 +520,7 @@ white-space: nowrap;
           }
           i{
             position: absolute;
-            top: 0.4rem;
+            top: 1.25rem;
             right: 1rem;
           }
   }      
