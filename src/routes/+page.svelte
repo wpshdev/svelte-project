@@ -392,7 +392,7 @@ align-items: end;
 			}
 		}		
 		&__cwrapper{
-			max-width: 48rem;
+			max-width: 60rem;
 			margin: auto;
 			padding: 4rem 4rem 5rem 4rem;
 			box-shadow: 0px 0px 10px #AAA;
@@ -663,6 +663,8 @@ align-items: end;
 				display: flex;
 				justify-content: center;
 				&__captions {
+					background: rgba(0,0,0,0.65);
+					padding: 20px 50px 40px;
 					display: flex;
 					flex-direction: column;
 					@include media-max(ipadmini){

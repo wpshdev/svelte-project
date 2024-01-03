@@ -492,7 +492,7 @@ white-space: nowrap;
   &__text{
         background-color: $secondary-color;
         color: #fff;
-        padding: 0.5rem 3rem 0.5rem 0.5rem;
+        padding: 0.5rem 1rem 0.5rem 0.5rem;
         position: absolute;
         z-index: 2;
         bottom: 2rem;
@@ -520,9 +520,8 @@ white-space: nowrap;
               }                
           }
           i{
-            position: absolute;
-            top: 1.25rem;
-            right: 1rem;
+            padding-left: 1rem;
+            margin-top: -0.25rem;
           }
   }      
   img {
