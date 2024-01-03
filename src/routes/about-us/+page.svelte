@@ -15,6 +15,7 @@
     let aboutimage = data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.about.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.about.data.attributes.featuredimage.data.attributes.url 
     let aboutsubheading = data.about.data.attributes.Aboutsubheading
     let about = data.about.data.attributes
+
     let url = "https://api.ulfbuilt.com/";
     let scroll: number;
 
@@ -52,7 +53,7 @@
     <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-duration="2"  gsap-y="80">{@html about.abouttext ? about.abouttext : ''}</p>
+                <p in:fly id="about_heading_cont" gsap-duration="2"  gsap-y="80">{@html about.AboutText ? about.AboutText : ''}</p>
         </Container>
     <!-- </Animate> -->
 </section>
