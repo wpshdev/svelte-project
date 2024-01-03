@@ -28,7 +28,6 @@
 		loadingCursor();
 	});
 
-    
 </script>
 <svelte:head>
 	<title>{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}</title>
