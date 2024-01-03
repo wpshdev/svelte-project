@@ -1,7 +1,7 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
     import { onMount } from 'svelte';
-	import Animate from '$lib/components/Animate.svelte';
+	// import Animate from '$lib/components/Animate.svelte';
     import { textAnimate, fly, fly2, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
@@ -56,7 +56,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="top">
+<section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="top bottom">
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
@@ -79,7 +79,7 @@
         </Container>
     <!-- </Animate> -->
 </section>
-<section class="contractor-details" in:slowDownSection id="cd-section2" gsap-start="top">
+<section class="contractor-details" in:slowDownSection id="cd-section2" gsap-start="top bottom">
     <!-- <Animate> -->
         <Container>
             <Row>
@@ -90,7 +90,7 @@
                     </div>
                     {/if}
                 </Col>
-                <Col md="5" class="align-self-center">
+                <Col md="5">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1" >{@html about.Section2heading ? about.Section2heading : ''}</h3>
                         <p in:fadeIn id="cd-cont2" gsap-delay="0.5" gsap-duration="1" >{@html about.Section2text ? about.Section2text : ''}</p>
@@ -104,7 +104,7 @@
     <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
-                <Col md="5" class="align-self-center">
+                <Col md="5">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1" >{@html about.Section3heading ? about.Section3heading : ''}</h3>
                         <p in:fadeIn id="cd-cont3" gsap-delay="0.5" gsap-duration="1" > {@html about.Section3text ? about.Section3text : ''}</p>
