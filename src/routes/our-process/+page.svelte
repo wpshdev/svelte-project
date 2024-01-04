@@ -85,7 +85,7 @@
 
 <div class="parallax-wrapper">
 <ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url}" medUrl="{domain}{processData.section3image.data.attributes.formats.medium ? processData.section3image.data.attributes.formats.medium.url : processData.section3image.data.attributes.url}">
-</ParallaxImage> 
+</ParallaxImage>
 </div>
 <!-- </Animate> -->
 
@@ -198,7 +198,7 @@
 <!-- <Animate> -->
     <!-- <section class="phase2-img" in:fadeIn id="phase2_img1" gsap-duration="2" style="--phs2: url({domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url })"></section>  -->
     <div class="parallax-wrapper">
-        <ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url }">
+        <ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section10phase2image.data.attributes.formats.large_x2 ? processData.section10phase2image.data.attributes.formats.large_x2.url : processData.section10phase2image.data.attributes.url }" medUrl="{domain}{processData.section10phase2image.data.attributes.formats.medium ? processData.section10phase2image.data.attributes.formats.medium.url : processData.section10phase2image.data.attributes.url }">
         </ParallaxImage> 
     </div>
 <!-- </Animate> -->
