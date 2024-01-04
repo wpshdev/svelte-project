@@ -43,10 +43,10 @@
                     <Col class="md-12">
                         <!-- <Animate> -->
                             {#if processData.section2image.data}
-                            <img loading="lazy" in:fadeIn id="process_img" gsap-duration="1.5" gsap-start="top center"  src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
-                            srcset="{domain}{processData.section2image.data.attributes.url} 330w,
-                                    {domain}{processData.section2image.data.attributes.url} 660w,
-                                    {domain}{processData.section2image.data.attributes.url} 990w"
+                            <img loading="lazy" in:fadeIn id="process_img" gsap-duration="1.5" gsap-start="top 90%"  src="{domain}{processData.section2image.data.attributes.formats.large.url ? processData.section2image.data.attributes.formats.large.url : processData.section2image.data.attributes.url}"
+                            srcset="1{domain}{processData.section2image.data.attributes.formats.small.url} 330w,
+                                    {domain}{processData.section2image.data.attributes.formats.medium.url} 660w,
+                                    {domain}{processData.section2image.data.attributes.formats.large.url} 990w"
                             sizes="(max-width: 480px) 330px,
                                 (max-width: 960px) 660px,
                                 990px"
@@ -84,7 +84,7 @@
 <!-- <section class="phase1-img" in:fadeIn id="phase1_img1" gsap-duration="2" style="--phs1: url({domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url })"></section>  -->
 
 <div class="parallax-wrapper">
-<ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url}">
+<ParallaxImage imageHeight="70" imageUrl="{domain}{processData.section3image.data.attributes.formats.large_x2 ? processData.section3image.data.attributes.formats.large_x2.url : processData.section3image.data.attributes.url}" medUrl="{domain}{processData.section3image.data.attributes.formats.medium ? processData.section3image.data.attributes.formats.medium.url : processData.section3image.data.attributes.url}">
 </ParallaxImage> 
 </div>
 <!-- </Animate> -->

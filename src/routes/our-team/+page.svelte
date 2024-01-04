@@ -246,7 +246,8 @@
     z-index: 6;
     bottom:2rem;
     background-color: #1E2D39;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 1.5rem !important;
+    line-height: .5;
     @include media-max(sm){
         position: relative;
         text-align: center;

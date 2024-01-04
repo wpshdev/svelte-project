@@ -274,9 +274,9 @@
 				}
 			}
 		}
-        .portfolio-results-container {
-            min-height: 200vh;
-        }
+        // .portfolio-results-container {
+        //     min-height: 200vh;
+        // }
         .masonry-wrapper {
             min-height: 31rem;
             // column-count: 2;
