@@ -53,9 +53,9 @@ $: listener = {propCount, activeTab};
 			{#key listener}
 				<div  id="modern" class="masonry__tabs__gallery__imgs "  data-test={activeTab} transition:fade >
 					<MasonryCard id={activeTab} {propCount} addPagination={paginate} pageSize=9 />
-				</div>			
-			{/key}																		
-		</div>					
+				</div>
+			{/key}
+		</div>
     </div>
 </div>
 

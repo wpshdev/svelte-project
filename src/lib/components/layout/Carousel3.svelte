@@ -441,6 +441,7 @@ margin: 40px 0;
     h2{
       // flex-wrap: wrap;
       // width: 18rem;
+      line-height:1;
       @include media-max(ipadmini){
           line-height: 2rem;
       }    
@@ -513,7 +514,7 @@ white-space: nowrap;
           span{
               color: $primary-color;
               font-size: 1.2rem;
-              margin: 0 0.8rem;
+              margin: 0 1.25rem 0 .8rem;
               @include media-max(sm){
                   margin: 0;
                   // font-size: 0.6rem;

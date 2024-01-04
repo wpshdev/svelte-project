@@ -127,7 +127,7 @@ const handleBottomArrowClick = () => {
 						<div class="h3">
 							{@html home.homeBuilderSubHeading ? home.homeBuilderSubHeading : ''}
 						</div>
-					<div>
+					<div class="text-justify">
 						{@html home.homeBuilderParagraph ? home.homeBuilderParagraph : ''}
 					</div>
 				</div>
@@ -176,7 +176,7 @@ const handleBottomArrowClick = () => {
 							<div class="reputation__content__wrapper">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
 								<h2 class="text-animate secondary-font" gsap-duration="1" in:textAnimate id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
-								<div in:fly id="reputation-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
+								<div in:fly id="reputation-cont" class="text-justify" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 									<p>{@html home.reputation.content ? home.reputation.content : ''}</p>
 									<a href="{home.reputation.btnUrl ? home.reputation.btnUrl : '#'}" class="btn btn-secondary">{home.reputation.btnTitle ? home.reputation.btnTitle : 'Button'}</a>
 								</div>
@@ -211,7 +211,7 @@ const handleBottomArrowClick = () => {
 						<div class="process__content__wrapper">
 							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
 							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
-							<div in:fly id="process-cont" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
+							<div in:fly id="process-cont" class="text-justify" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
 								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
 								<a href="{home.ourProcessButtonUrl ? home.ourProcessButtonUrl : '#'}" class="btn btn-secondary">{ home.ourProcessButtonTitle ? home.ourProcessButtonTitle : 'Button' }</a>
 							</div>
@@ -238,7 +238,7 @@ const handleBottomArrowClick = () => {
 						<div class="story__content__wrapper">
 							<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
 							<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
-							<div in:fly id="story-cont" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
+							<div in:fly id="story-cont" class="text-justify" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
 								{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 							</div>
 
@@ -677,6 +677,7 @@ align-items: end;
 						max-width: 44rem;
 						margin-bottom: 2rem;
 						line-height: 1.75;
+						text-align: justify;
 					}
 				}
 				p{
@@ -729,7 +730,7 @@ align-items: end;
 	// 	// 	margin-top: 10vw;
 	// 	// }
 	.reputation{
-		margin-top: 15vw;	
+		margin-top: 15vw;
 		@include media-max(ipadmini){
 			margin: 35vw 0;
 			padding-top: 20vw;
@@ -737,7 +738,7 @@ align-items: end;
 		@include media-max(sm){
 			min-height: 50rem;
 			padding-top: unset;
-		}	
+		}
 		&__content{
 			height: 41.875rem;
 			@include media-max(lg){

@@ -67,11 +67,24 @@
 
     $: listener = {pageSize, activeTab};
 
-    import { onMount } from "svelte";
+    import { onMount, afterUpdate } from "svelte";
 	import { loadingCursor } from '$lib/cursorChange.js';
 	onMount(() => {
 		loadingCursor();
 	});
+    let sectionElement;
+
+    afterUpdate(() => {
+    // Scroll to the top of the section after each update (e.g., when page changes)
+    scrollToTop();
+  });
+
+    function scrollToTop() {
+    if (sectionElement) {
+      // Scroll to the top of the section with a smooth behavior
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
 </script>
 <svelte:head>
@@ -114,7 +127,7 @@
                         <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
                 </p>
-                <div class="portfolio-results-container">
+                <div class="portfolio-results-container" id="portfolioSection" bind:this={sectionElement}>
                     {#key listener}
                         {#if loading}  <!-- show load -->
                             <div class="col text-center list-text-details">Loading...</div>
