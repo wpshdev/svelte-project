@@ -64,7 +64,7 @@
                 <Col md="5">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1" >{@html about.Section1heading ? about.Section1heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont1" gsap-duration="1" gsap-delay="0.5" >{@html about.Section1text ? about.Section1text : ''}</p>
+                        <p in:fadeIn id="cd-cont1" class="text-justify" gsap-duration="1" gsap-delay="0.5" >{@html about.Section1text ? about.Section1text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
@@ -94,7 +94,7 @@
                 <Col md="5">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1" >{@html about.Section2heading ? about.Section2heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont2" gsap-delay="0.5" gsap-duration="1" >{@html about.Section2text ? about.Section2text : ''}</p>
+                        <p in:fadeIn id="cd-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1" >{@html about.Section2text ? about.Section2text : ''}</p>
                     </div>
                 </Col>
             </Row>
@@ -108,7 +108,7 @@
                 <Col md="5">
                     <div>
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1" >{@html about.Section3heading ? about.Section3heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont3" gsap-delay="0.5" gsap-duration="1" > {@html about.Section3text ? about.Section3text : ''}</p>
+                        <p in:fadeIn id="cd-cont3" class="text-justify" gsap-delay="0.5" gsap-duration="1" > {@html about.Section3text ? about.Section3text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
@@ -170,7 +170,7 @@
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                     <div >
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="1">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
-                        <p class="text-right" in:fadeIn id="sp-cont1" gsap-delay="0.5" gsap-duration="1">{@html about.Section6text ? about.Section6text : ''}</p>
+                        <p class="text-justify" in:fadeIn id="sp-cont1" gsap-delay="0.5" gsap-duration="1">{@html about.Section6text ? about.Section6text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
@@ -204,7 +204,7 @@
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
                     <div>
                         <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="1">{@html about.Section7heading ? about.Section7heading : ''}</h3>
-                        <p in:fadeIn id="sp-cont2" gsap-delay="0.5" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
+                        <p in:fadeIn id="sp-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
                     </div>
                 </Col>
             </Row>
@@ -218,7 +218,7 @@
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
                     <div>
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="1">{@html about.Section8heading ? about.Section8heading : ''}</h3>
-                        <p class="text-right" in:fadeIn id="sp-cont3" gsap-delay="0.5" gsap-duration="1">{@html about.Section8text ? about.Section8text : ''}</p>
+                        <p class="text-justify" in:fadeIn id="sp-cont3" gsap-delay="0.5" gsap-duration="1">{@html about.Section8text ? about.Section8text : ''}</p>
                     </div>
                 </Col>
                 <Col md="6">
@@ -373,15 +373,15 @@
                 }
             }
             .certificate-container {
-                background-image: var(--cta-banner);
+                // background-image: var(--cta-banner);
                 // height: 100vh;
-                height: 50rem;
+                // height: 50rem;
                 background-repeat: no-repeat;
                 position: relative;
                 background-size: contain;
                 background-position: center;
                 @include media-max(md){ 
-                    background-image: var(--cta-banner-mobile);
+                    // background-image: var(--cta-banner-mobile);
                 }
                 .certificate-inner-container {
                     padding-top: 12.5rem;
@@ -393,13 +393,13 @@
                     }
                     .certificate-title {
                         color: $secondary-color;
-                        font-family: "Pinyon Script", cursive;
+                        // font-family: "Pinyon Script", cursive;
                         padding-bottom: 5rem;
                         @include media-max(lg){
                             padding-bottom: 3rem;
                         }
                         @include media-max(md){
-                            width: 14rem;
+                            // width: 14rem;
                             margin: auto;
                             padding-bottom: 1rem;
                         }
