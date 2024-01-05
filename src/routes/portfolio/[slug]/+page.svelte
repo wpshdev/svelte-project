@@ -5,8 +5,8 @@
     import Testimonial from "$lib/components/layout/Testimonial.svelte";
 	import noFeatured from "$lib/img/blog-empty.svg";
 	import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
-
 	export let data;
+	console.log(data.portfolios)
 	const domain = "https://api.ulfbuilt.com"
 	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	
