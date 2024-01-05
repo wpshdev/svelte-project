@@ -24,13 +24,13 @@
 </svelte:head>
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 
-<section class="service-b mvw-10" in:slowDownSection id="service-b">
-    <!-- <Animate> -->
+<section class="service-b" in:slowDownSection gsap-start="top bottom" id="service-b">
+    
         <Container>
             <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_s1_title" gsap-duration="1">{page.section1heading ? page.section1heading : ''}</h2>
                 <Row>
-                    <Col md=4 sm=6 xs=12>
-                        <!-- <Animate> -->
+                    <Col md=6 sm=6 xs=12>
+                        
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                         <div class="service-b__service-box__service-box-inner__service-icon">
@@ -40,10 +40,10 @@
                                 </div>
                                 <p in:fadeIn gsap-start="center top" id="about_content_icon1" gsap-duration="2">{page.section1item1text ? page.section1item1text : ''}</p>
                             </div>
-                        <!-- </Animate> -->
+                        
                     </Col>
-                    <Col md=4 sm=6 xs=12>
-                        <!-- <Animate> -->
+                    <Col md=6 sm=6 xs=12>
+                        
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
@@ -53,10 +53,10 @@
                                 </div>
                                 <p in:fadeIn gsap-start="center top" id="about_content_icon2" gsap-duration="2">{page.section1item2text ? page.section1item2text : ''}</p>
                             </div>
-                        <!-- </Animate> -->
+                        
                     </Col>
-                    <Col md=4 sm=6 xs=12>
-                        <!-- <Animate> -->
+                    <Col md=6 sm=6 xs=12>
+                        
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
@@ -66,10 +66,10 @@
                                 </div>
                                 <p in:fadeIn gsap-start="center top" id="about_content_icon3" gsap-duration="2">{page.section1item3text ? page.section1item3text : ''}</p>
                             </div>
-                        <!-- </Animate> -->
+                        
                     </Col>
-                    <Col md=4 sm=6 xs=12>
-                        <!-- <Animate> -->
+                    <Col md=6 sm=6 xs=12>
+                        
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
@@ -79,10 +79,10 @@
                                 </div>
                                 <p in:fadeIn gsap-start="center top" id="about_content_icon4" gsap-duration="2">{page.section1item4text ? page.section1item4text : ''}</p>
                             </div>
-                        <!-- </Animate> -->
+                        
                     </Col>
-                    <Col md=4 sm=6 xs=12>
-                        <!-- <Animate> -->
+                    <!-- <Col md=6 sm=6 xs=12>
+                        
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
@@ -92,10 +92,9 @@
                                 </div>
                                 <p in:fadeIn gsap-start="center top" id="about_content_icon5" gsap-duration="2">{page.section1item5text ? page.section1item5text : ''}</p>
                             </div>
-                        <!-- </Animate> -->
-                    </Col>
-                    <Col md=4 sm=6 xs=12>
-                        <!-- <Animate> -->
+                        
+                    </Col> -->
+                    <!-- <Col md=6 sm=6 xs=12>
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
@@ -105,14 +104,13 @@
                                 </div>
                                 <p in:fadeIn gsap-start="center top" id="about_content_icon6" gsap-duration="2">{page.section1item6text ? page.section1item6text : ''}</p>
                             </div>
-                        <!-- </Animate> -->
-                    </Col>
+                    </Col> -->
                 </Row>
         </Container>
-    <!-- </Animate> -->
+    
 </section>
 <section class="mx-10 sets-us-apart" in:slowDownSection id="sp-section1" gsap-start="top">
-    <!-- <Animate> -->
+    
         <Container>
             <h2 class="text-center mb-5 py-3 text-animate secondary-font" in:textAnimate id="about_sua_title" gsap-duration="1">{page.section2mainheading ? page.section2mainheading : ''}</h2>
                 <Row noGutters class="justify-content-center sets-us-apart__row">
@@ -133,10 +131,10 @@
                     </Col>
                 </Row>
         </Container>
-    <!-- </Animate> -->
+    
 </section>
 <section class="mx-10 sets-us-apart" in:slowDownSection id="sp-section2" gsap-start="top">
-    <!-- <Animate> -->
+    
         <Container>
             <Row noGutters class="justify-content-center flex-md-row flex-column-reverse sets-us-apart__row">
                 <Col md="6" class="imageCont">
@@ -157,10 +155,10 @@
                 </Col>
             </Row>
         </Container>
-    <!-- </Animate> -->
+    
 </section>
 <section class="mx-10 sets-us-apart" in:slowDownSection id="sp-section3" gsap-start="top">
-    <!-- <Animate> -->
+    
         <Container>
             <Row noGutters class="justify-content-center sets-us-apart__row">
                 <Col md="6" class="sets-us-apart__content">
@@ -181,29 +179,29 @@
                 </Col>
             </Row>
         </Container>
-    <!-- </Animate> -->
+    
 </section>
 <section class="height-100vh fullwidth" in:fly id="about_banneronly_img_section" gsap-y="10" >
-    <!-- <Animate> -->
+    
         {#if page.section5image.data}
         <img loading="lazy" in:scaleUp id="about_banneronly_img" gsap-duration="1.5" src="{url}{page.section5image.data.attributes.formats.large.url ? page.section5image.data.attributes.formats.large.url : page.section5image.data.attributes.url}" alt="{page.title}" class="w-100 image-scale-up">
         {/if}
-    <!-- </Animate> -->
+    
 </section>
 <section class="reimagine">
-    <!-- <Animate> -->
+    
         <Container>
             <h2 class="text-center mb-3 py-3 text-animate secondary-font" in:textAnimate id="about_reimagine_title" gsap-duration="1" gsap-start="top 20%">{page.section6heading ? page.section6heading : ''}</h2>
-            <p class="mb-2 py-3 two-columns" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-y="20" gsap-start="top 20%"> {@html page.section6text ? page.section6text : ''}</p>
+            <p class="mb-2 py-3 two-columns text-justify" in:fadeIn id="about_reimagine_cont" gsap-duration="1" gsap-y="20" gsap-start="top 20%"> {@html page.section6text ? page.section6text : ''}</p>
             <div class="text-right" ><a class="btn btn-secondary" href="{page.section6btnUrl ? page.section6btnUrl : '#'}">{page.section6btn ? page.section6btn : 'Button'}</a></div>
         </Container>
-    <!-- </Animate> -->
+    
 </section>
 
 <section class="explore">
     <Container>
         <Row>
-            <!-- <Animate> -->
+            
                 <Col md="12">
                     <h2 class="text-center text-animate secondary-font" in:textAnimate id="about_explore_title" gsap-duration="1">{page.ExploreProjects.Heading ? page.ExploreProjects.Heading : 'Explore our Projects...'}</h2>
                 </Col>	
@@ -234,9 +232,9 @@
     </Container>
 </section> 
 
-<!-- <Animate> -->
+
     <Cta/>
-<!-- </Animate> -->
+
 <style lang="scss">
     :global(.banner__content__paragraph) {
         @include media-max(sm){
@@ -598,7 +596,7 @@
             &__text{
                 background-color: $secondary-color;
                 color: #fff;
-                padding: 0.5rem 3rem 0.5rem 0.5rem;
+                padding: 0.5rem 1rem 0.5rem 0.5rem;
                 position: absolute;
                 z-index: 2;
                 bottom: 1rem;
@@ -606,6 +604,8 @@
                 max-width: 90%;
                 text-align: left;
                 transition: 1.5s;
+                display: flex;
+                align-items: center;
                 @include media-max(ipadmini){
                     margin: 0;
                     font-size: 1rem;
@@ -615,16 +615,14 @@
                 span{
                     color: $primary-color;
                     font-size: 1.2rem;
-                    margin: 0 0.8rem 0;
+                    margin: 0 1.25rem 0 0.8rem;
                     // @include media-max(sm){
                     //     margin: 0;
                     //     font-size: 1rem;
                     // }                
                 }
                 i {
-                    position: absolute;
-                    top: 20%;
-                    right: 1rem;
+                    margin-left: 1rem;
                 }
             }	
         }

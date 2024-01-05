@@ -251,7 +251,7 @@
                 }					
                 li{
                     list-style: none;
-                    width: 25%;
+                    padding: 0 2rem;
                     @include media-max(sm){
                         width: 15rem;
                         padding: 0 1rem;

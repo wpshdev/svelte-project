@@ -8,7 +8,8 @@ export async function load() {
     }  
     const response = await axios.get(url, { headers });
 
-    const urlPortfolios = 'https://api.ulfbuilt.com/api/portfolios?populate=deep';
+    const urlPortfolios = 'https://api.ulfbuilt.com/api/portfolios?fields[0]=title&fields[1]=slug&populate[2]=featuredImage';
+    // const urlPortfolios = 'https://api.ulfbuilt.com/api/portfolios?populate=deep';
     const portfolios = await axios.get(urlPortfolios, { headers }); 
 
     const urlSiteSettings = 'https://api.ulfbuilt.com/api/site-setting?populate=deep,3';
