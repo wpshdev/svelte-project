@@ -34,7 +34,7 @@
 	<meta name="description" content="ULF BUILT" />
 </svelte:head>
 <PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Our Team'}" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{domain}{data.data.attributes.Cover.data.attributes.formats.large_x2.url ? data.data.attributes.Cover.data.attributes.formats.large_x2.url : data.data.attributes.Cover.data.attributes.url}" bannerMobile="{domain}{data.data.attributes.Cover.data.attributes.formats.medium.url}"/>
-<section class="our-team mvw-10" in:slowDownSection id="our-team">
+<section class="our-team mvw-10" in:slowDownSection gsap-start="5% bottom" id="our-team">
         <Container>
             <Row>
                 <Col md="10" class="mx-auto">
@@ -42,7 +42,7 @@
                     <p class="two-columns" in:fadeIn id="team_content" gsap-duration="1" gsap-delay="0.5">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
                         <div class="heading-image">
-                            <img loading="lazy" in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
+                            <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                         </div>
                     {/if}
                 </Col>
@@ -54,7 +54,7 @@
             <Row noGutters>
                 <Col md=6 class="tm-img">
                     <div>
-                        <img loading="lazy" in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
+                        <img in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                         <div class="tm-box wtc">
                             <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
                             <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
@@ -87,12 +87,12 @@
                             on:click={() => getMemberIndex(index)}
                             on:click={() => (showModal = true)}
                             >
-                                <img loading="lazy" in:fadeIn id="member_image{index}" gsap-duration="1.5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                                <img in:fadeIn id="member_image{index}" gsap-start="top bottom" gsap-duration=".5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
                                 
                                     <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                                         <!-- our-team__member_caption class removed -->
-                                        <h5 class="pfont" in:slide id="member_name{index}" gsap-duration="2" gsap-x="-10">{member.attributes.name}</h5>
-                                        <p class="pfont gtc" in:slide id="member_title{index}" gsap-duration="2" gsap-x="-10">{member.attributes.position}</p>
+                                        <h5 class="pfont" in:slide id="member_name{index}" gsap-duration=".5" gsap-x="-10">{member.attributes.name}</h5>
+                                        <p class="pfont" in:slide id="member_title{index}" gsap-duration=".5" gsap-x="-10">{member.attributes.position}</p>
                                     </div>
                                 
                             </div>
@@ -104,7 +104,7 @@
                         <div class="memberModal">
                             <div class="memberModal__image">
                                 {#if memberImage}
-                                <img loading="lazy" src="{domain}{memberImage}" alt="member">
+                                <img src="{domain}{memberImage}" alt="member">
                                 {/if}
                             </div>
                             <div class="memberModal__details">
@@ -195,8 +195,8 @@
                 .tm-box{
                     background: $primary-color;
                     transition: 1.5s;
-                    h5, span {
-                        color: $white-color;
+                    h5, p {
+                        color: $figmablack;
                     }
                 }  
 
@@ -233,7 +233,6 @@
         position: relative;
     }
     .owner {
-        min-height: 100vh;
 		display: flex;
 		align-items: center;
         justify-content: center;

@@ -388,7 +388,7 @@
                 &__text{
                     background-color: $secondary-color;
                     color: #fff;
-                    padding: 0.5rem 3rem 0.5rem 0.5rem;
+                    padding: 0.5rem 1rem 0.5rem 0.5rem;
                     position: absolute;
                     z-index: 2;
                     bottom: 1rem;
@@ -396,6 +396,8 @@
                     max-width: 90%;
                     text-align: left;
                     transition: 1.5s;
+                    display: flex;
+                    align-items: center;
                     @include media-max(ipadmini){
                         margin: 0;
                         // font-size: 0.6rem;
@@ -405,15 +407,13 @@
                     span{
                         color: $primary-color;
                         font-size: 1.2rem;
-                        margin: 0 0.8rem 0;
+                        margin: 0 1.25rem 0 0.8rem;
                         @include media-max(sm){
                             margin: 0;
                         }                
                     }
                     i{
-                    position: absolute;
-                    top: 20%;
-                    right: 1rem;
+                        margin-left:.8rem;
                     }
                 }
             }

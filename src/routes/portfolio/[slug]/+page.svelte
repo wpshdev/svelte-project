@@ -280,7 +280,8 @@ section{
 	}
 	&__content{
 		background-color: #E5EEF2;
-		padding: 2rem;
+		padding: 2rem 3rem 3rem;
+    	text-align: justify;
 		@include media-max(sm){
 			padding: 2rem 0.5rem;
 		}		

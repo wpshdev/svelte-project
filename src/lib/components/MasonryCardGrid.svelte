@@ -118,7 +118,7 @@
                     left: 0;
                     width: 75%;
                     text-align: left;
-                
+                    
                     span{
                         color: $primary-color;
                         font-size: 1.2rem;
