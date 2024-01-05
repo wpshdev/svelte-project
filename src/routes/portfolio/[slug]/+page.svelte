@@ -436,6 +436,8 @@ section{
 			}  
         }
         &__text{
+			display: flex;
+            align-items: center;
             background-color: $secondary-color;
 			color: #fff;
 			padding: 0.5rem 3rem 0.5rem 0.5rem;

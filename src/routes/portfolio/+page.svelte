@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
+    console.log(data);
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from 'axios';
     import noFeatured from "$lib/img/blog-empty.svg"
     import { paginate, LightPaginationNav } from 'svelte-paginate';
-    import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, slide } from '$lib/GsapAnimation.js';
 
 	let domain = "https://api.ulfbuilt.com";
 	let portfolio =  data.portfolio.data.attributes; 
