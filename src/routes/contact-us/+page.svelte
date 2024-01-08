@@ -65,7 +65,7 @@
 </script>
 <svelte:head>
 	<title>{data.contact.data.attributes.title ? data.contact.data.attributes.title : 'Contact Us'}</title>
-	<meta name="description" content="ULF BUILT" />
+	
 </svelte:head>
 
 <PageBanner title="{data.contact.data.attributes.title ? data.contact.data.attributes.title : 'Contact Us'}" extraClass="contact" subTitle="{data.contact.data.attributes.Subheading ? data.contact.data.attributes.Subheading : ''}" banner="{url}{data.contact.data.attributes.featuredimage.data.attributes.formats.large_x2.url ? data.contact.data.attributes.featuredimage.data.attributes.formats.large_x2.url : data.contact.data.attributes.featuredimage.data.attributes.url}" />

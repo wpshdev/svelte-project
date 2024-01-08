@@ -38,7 +38,7 @@
 
 <svelte:head>
 	<title>{title ? title : 'Project'}</title>
-	<meta name="description" content="ULF BUILT" />
+	
 </svelte:head>
 
 <section class="portfolio-gallery">

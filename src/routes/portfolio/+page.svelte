@@ -74,28 +74,26 @@
 		loadingCursor();
 	});
 
-function totop(){
-console.log("test");
-const sectionElement = document.getElementById('portfolioSection');
+// function totop(){
+// console.log("test");
+// const sectionElement = document.getElementById('portfolioSection');
 
-// if (sectionElement) {
-  sectionElement.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  });
+// // if (sectionElement) {
+//   sectionElement.scrollIntoView({
+//     behavior: 'smooth',
+//     block: 'start',
+//   });
+// // }
+// console.log("test");
 // }
-console.log("test");
-}
 
 </script>
 <svelte:head>
 	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
-	<meta name="description" content="ULF BUILT" />
-
 </svelte:head>
 
 <PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url ? portfolio.featuredImage.data.attributes.formats.large.url : portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
-
+<!-- <button on:click={totop()}>test button</button> -->
 <section class="portfolio-masonry" id="portfolio-masonry">
     <Container>
         <Row>
@@ -171,7 +169,6 @@ console.log("test");
                     limit="{1}"
                     showStepOptions="{true}"
                     on:setPage="{(e) => currentPage = e.detail.page}"
-                    on:click={totop}
                     />
                 </div>
             </Col>

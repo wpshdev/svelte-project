@@ -7,7 +7,7 @@
 </script>
 <svelte:head>
 	<title>{member.name}</title>
-	<meta name="description" content="ULF BUILT" />
+	
 </svelte:head>
 
 <section class="member">

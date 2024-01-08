@@ -27,7 +27,7 @@
 </script>
 <svelte:head>
 	<title>{title} - Article</title>
-	<meta name="description" content="ULF BUILT" />
+	
 </svelte:head>
 
 <div class="cover" style="background:#1E2D39;">
