@@ -75,25 +75,43 @@
 	});
 
 // function totop(){
-// console.log("test");
-// const sectionElement = document.getElementById('portfolioSection');
-
-// // if (sectionElement) {
-//   sectionElement.scrollIntoView({
-//     behavior: 'smooth',
-//     block: 'start',
-//   });
-// // }
-// console.log("test");
+//     console.log("test");
+//     const sectionElement = document.getElementById('portfolioSection');
+//     if (sectionElement) {
+//         console.log("test2");
+//         console.log('Element:', sectionElement);
+//         console.log('Scroll Position:', window.scrollY);
+//         // console.log('Scroll Target:', sectionElement.clientY);
+//         sectionElement.scrollIntoView({
+//             behavior: 'smooth',
+//             block: 'nearest',
+//             inline: 'nearest',
+//         });
+//     }
 // }
+  let portfolioscroll = null;
+
+  const scrollToContainer = (container) => {
+    if (container) {
+      window.scrollTo({
+        top: container.offsetTop + 400,
+        behavior: 'smooth',
+      });
+    }
+  };
+  const handlePageChange = (e) => {
+    scrollToContainer(portfolioscroll);
+    setTimeout(() => {
+    currentPage = e.detail.page;    
+      }, 450);
+  };
 
 </script>
 <svelte:head>
 	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
 </svelte:head>
-
+<!-- <button on:click={totop}>top</button> -->
 <PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url ? portfolio.featuredImage.data.attributes.formats.large.url : portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
-<!-- <button on:click={totop()}>test button</button> -->
 <section class="portfolio-masonry" id="portfolio-masonry">
     <Container>
         <Row>
@@ -126,7 +144,7 @@
                         <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
                 </p>
-                <div class="portfolio-results-container" id="portfolioSection">
+                <div class="portfolio-results-container" id="portfolioSection" bind:this={portfolioscroll}>
                     {#key listener}
                         {#if loading}  <!-- show load -->
                             <div class="col text-center list-text-details">Loading...</div>
@@ -161,14 +179,14 @@
                         {/if}
                     {/key}
                 </div>
-                <div class="paginate-section">
+                <div class="paginate-section" >
                     <LightPaginationNav
                     totalItems="{portfolioList.length}"
                     pageSize="{pageSize}"
                     currentPage="{currentPage}"
                     limit="{1}"
                     showStepOptions="{true}"
-                    on:setPage="{(e) => currentPage = e.detail.page}"
+                    on:setPage="{handlePageChange}"
                     />
                 </div>
             </Col>
