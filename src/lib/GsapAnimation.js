@@ -484,7 +484,6 @@ export function slowDownSection(node) {
                 start: () => start + ' ' + window.innerHeight * 0.9,
                 end: () => '95% ' + window.innerHeight * 0.1,
                 scrub: true, // Use scrub to smooth the animation
-                markers: true,
                 onUpdate: (self) => {
                 scrollY = self.scroll();
                 },
