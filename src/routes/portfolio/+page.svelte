@@ -68,24 +68,24 @@
 
     $: listener = {pageSize, activeTab};
 
-    import { onMount, afterUpdate } from "svelte";
+    import { onMount } from "svelte";
 	import { loadingCursor } from '$lib/cursorChange.js';
 	onMount(() => {
 		loadingCursor();
 	});
-    let sectionElement;
 
-    afterUpdate(() => {
-    // Scroll to the top of the section after each update (e.g., when page changes)
-    scrollToTop();
+function totop(){
+console.log("test");
+const sectionElement = document.getElementById('portfolioSection');
+
+// if (sectionElement) {
+  sectionElement.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
   });
-
-    function scrollToTop() {
-    if (sectionElement) {
-      // Scroll to the top of the section with a smooth behavior
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+// }
+console.log("test");
+}
 
 </script>
 <svelte:head>
@@ -128,7 +128,7 @@
                         <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
                 </p>
-                <div class="portfolio-results-container" id="portfolioSection" bind:this={sectionElement}>
+                <div class="portfolio-results-container" id="portfolioSection">
                     {#key listener}
                         {#if loading}  <!-- show load -->
                             <div class="col text-center list-text-details">Loading...</div>
@@ -143,7 +143,7 @@
                                         in:fly id="masonry-items{index}" gsap-duration="2" gsap-y="10" gsap-start="top 90%"> 
                                             <a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">  
                                                 {#if project.attributes.featuredImage.data != null}
-                                                    <img loading="lazy" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
+                                                    <img loading="lazy" src="{domain}{project.attributes.featuredImage.data.attributes.formats.small.url ? project.attributes.featuredImage.data.attributes.formats.small.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.title}">
                                                 {:else}
                                                     <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
                                                 {/if}
@@ -163,7 +163,7 @@
                         {/if}
                     {/key}
                 </div>
-                <div class="paginate-section" >
+                <div class="paginate-section">
                     <LightPaginationNav
                     totalItems="{portfolioList.length}"
                     pageSize="{pageSize}"
@@ -171,6 +171,7 @@
                     limit="{1}"
                     showStepOptions="{true}"
                     on:setPage="{(e) => currentPage = e.detail.page}"
+                    on:click={totop}
                     />
                 </div>
             </Col>

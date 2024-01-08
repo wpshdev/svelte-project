@@ -445,7 +445,7 @@ export function slowDownSection(node) {
     const parentElementID = parentElement.id;
     const container = parentElement.querySelector('.container');
 
-    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : '10vw';
+    const start = parentElement.getAttribute("gsap-start") ? parentElement.getAttribute("gsap-start") : '5vw';
 
     let scrollY = 0; // Initial scroll position
     let previousScrollY = 0; // Previous scroll position
@@ -481,9 +481,10 @@ export function slowDownSection(node) {
             },
             scrollTrigger: {
                 trigger: '#' + parentElementID,
-                start: () => start + ' ' + window.innerHeight * 0.7,
-                end: () => '90% ' + window.innerHeight * 0.1,
+                start: () => start + ' ' + window.innerHeight * 0.9,
+                end: () => '95% ' + window.innerHeight * 0.1,
                 scrub: true, // Use scrub to smooth the animation
+                markers: true,
                 onUpdate: (self) => {
                 scrollY = self.scroll();
                 },

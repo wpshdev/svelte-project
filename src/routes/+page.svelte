@@ -116,7 +116,7 @@ const handleBottomArrowClick = () => {
 </svelte:head>
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
-<section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery">
+<section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery" gsap-start="top bottom">
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -168,7 +168,7 @@ const handleBottomArrowClick = () => {
 </section>
 
 
-<section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top">
+<section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top 95%">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -194,7 +194,7 @@ const handleBottomArrowClick = () => {
 		</Container>
 </section>
 
-<section class="process" in:slowDownSection id="process-section" gsap-start="top">
+<section class="process" in:slowDownSection id="process-section" gsap-start="top 95%">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -230,7 +230,7 @@ const handleBottomArrowClick = () => {
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-start="top">
+<section class="story" in:slowDownSection id="story-section" gsap-start="top 95%">
 		<Container>
 			<Row>
 				<Col md="7" class="">
