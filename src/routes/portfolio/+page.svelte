@@ -92,9 +92,13 @@
   let portfolioscroll = null;
 
   const scrollToContainer = (container) => {
+    const rect = container.getBoundingClientRect();
+    const topPosition = rect.top + window.scrollY;
+    console.log(topPosition);
+    console.log(window.scrollY);
     if (container) {
       window.scrollTo({
-        top: container.offsetTop + 400,
+        top: topPosition - 100,
         behavior: 'smooth',
       });
     }
@@ -112,7 +116,7 @@
 </svelte:head>
 <!-- <button on:click={totop}>top</button> -->
 <PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url ? portfolio.featuredImage.data.attributes.formats.large.url : portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
-<section class="portfolio-masonry" id="portfolio-masonry">
+<section class="portfolio-masonry" id="portfolio-masonry" bind:this={portfolioscroll}>
     <Container>
         <Row>
             <Col class="text-center p-2">
@@ -144,7 +148,7 @@
                         <span on:click="{() => pageSize = 9}">View Less Projects</span>
                     {/if}
                 </p>
-                <div class="portfolio-results-container" id="portfolioSection" bind:this={portfolioscroll}>
+                <div class="portfolio-results-container" id="portfolioSection">
                     {#key listener}
                         {#if loading}  <!-- show load -->
                             <div class="col text-center list-text-details">Loading...</div>
@@ -179,7 +183,7 @@
                         {/if}
                     {/key}
                 </div>
-                <div class="paginate-section" >
+                <div class="paginate-section">
                     <LightPaginationNav
                     totalItems="{portfolioList.length}"
                     pageSize="{pageSize}"
