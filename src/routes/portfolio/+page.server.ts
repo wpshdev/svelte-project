@@ -10,10 +10,6 @@ export async function load() {
     const response = await axios.get(url, { headers });
 
     const urlProperties = 'https://api.ulfbuilt.com/api/portfolios?fields[0]=title&fields[1]=slug';
-    // const params = {
-    //     populate: 'deep',
-    //     select: 'title,slug,featuredImage'
-    // };
     const properties = await axios.get(urlProperties, { headers }); 
 
     const urlSiteSettings = 'https://api.ulfbuilt.com/api/site-setting?populate=deep,3';

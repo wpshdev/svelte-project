@@ -9,18 +9,8 @@ export const load: PageLoad = async ({ params, fetch }) => {
     }    
     const response = await axios.get(url, { headers });
 
-
-
-    // const params1 = {
-    //     headers,
-    //     params: {
-    //         fields: ['title', 'slug', 'featuredImage'],
-    //         populate: 'deep',
-    //     },
-    // };
     const urlporfolios = 'https://api.ulfbuilt.com/api/portfolios?fields[0]=title&fields[1]=slug&populate[2]=featuredImage';
     const portfolios = await axios.get(urlporfolios, {headers});
-
 
     const urlSiteSettings = 'https://api.ulfbuilt.com/api/site-setting?populate=deep,3';
     const siteSettings = await axios.get(urlSiteSettings, { headers }); 
