@@ -1,7 +1,8 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row } from "sveltestrap";
-	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
+	import Seo from "$lib/components/Seo.svelte"
+ 	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
@@ -107,12 +108,23 @@ const handleBottomArrowClick = () => {
   }
 };
 
-
+let pageData = {
+    metaTitle: 'Page Title',
+    metaDescription: 'Page Description'
+  };
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
-	<title>{home.title ? home.title : 'Home'}</title>
-	
+	<!-- <title>{home.title ? home.title : 'Home'}</title> -->
+	<Seo metaTitle = {home.title}
+	metaDescription = {home.title}
+	metaImage = {home.title}
+	metaSocial = {home.title}
+	keywords = {home.title}
+	metarobots = {home.title}
+	structuredData = {home.title}
+	metaViewport = {home.title}
+	canonicalURL = {home.title} />
 </svelte:head>
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
@@ -149,7 +161,7 @@ const handleBottomArrowClick = () => {
 
 <section class="flex-column-center" id="tnr">
 	<div class="tnr">
-		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" medUrl="{domain}{home.midBanner.background.data.attributes.formats.medium.url ? home.midBanner.background.data.attributes.formats.medium.url : home.midBanner.background.data.attributes.url}" overlay="1">
+		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" medUrl="{domain}{home.midBanner.background.data.attributes.formats.large.url ? home.midBanner.background.data.attributes.formats.large.url : home.midBanner.background.data.attributes.url}" overlay="1">
 		</ParallaxImage>
 		<div class="tnr__wrapper">
 			<Container>
