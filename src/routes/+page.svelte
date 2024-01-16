@@ -57,7 +57,7 @@
     	if (screenWidth > 768) {
 			const myDiv = document.querySelector('.loc-gallery');
 			const initialHeight = myDiv ? myDiv.clientHeight : 0;
-			updatedHeight = initialHeight + 300;
+			updatedHeight = initialHeight + 200;
 			if (myDiv) {
 			myDiv.style.height = updatedHeight + 'px';
 			}
@@ -382,7 +382,7 @@ align-items: end;
 	}
 	.loc-gallery{
 		background: #EEE;
-		padding: 10rem 0;
+		padding: 0;
 		margin: 0;
 	@include media-max(sm){
 		padding: 20vw 0;

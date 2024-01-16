@@ -482,8 +482,9 @@ export function slowDownSection(node) {
             scrollTrigger: {
                 trigger: '#' + parentElementID,
                 start: () => start + ' ' + window.innerHeight * 0.9,
-                end: () => '95% ' + window.innerHeight * 0.1,
+                end: () => '95% ' + window.innerHeight * 0,
                 scrub: true, // Use scrub to smooth the animation
+                // markers: true,
                 onUpdate: (self) => {
                 scrollY = self.scroll();
                 },
@@ -496,7 +497,7 @@ export function slowDownSection(node) {
                 onLeave: () => {
                     gsap.to('#' + parentElementID, {
                         opacity: 0,
-                        duration: 0.5,
+                        duration: 1,
                     });
                 },
                 onLeaveBack: () => {
