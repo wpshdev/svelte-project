@@ -384,7 +384,7 @@
                     // background-image: var(--cta-banner-mobile);
                 }
                 .certificate-inner-container {
-                    padding-top: 12.5rem;
+                    padding-top: 5rem;
                     @include media-max(lg){
                         padding-top: 15rem;
                     }
