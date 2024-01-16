@@ -6,7 +6,6 @@
     export let keywords
     export let metarobots
     export let structuredData
-    export let metaViewport
     export let canonicalURL
   </script>
 
@@ -36,10 +35,6 @@
   
     {#if structuredData}
       <script type="application/ld+json">{structuredData}</script>
-    {/if}
-  
-    {#if metaViewport}
-      <meta name="viewport" content="{metaViewport}">
     {/if}
   
     {#if canonicalURL}

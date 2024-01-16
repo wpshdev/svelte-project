@@ -1,5 +1,8 @@
 <script lang="ts">
     export let data;
+    let page = data.data.attributes;
+    let seo = page.seo;
+    import Seo from "$lib/components/Seo.svelte"
     import {Container} from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
@@ -15,8 +18,14 @@
 
 </script>
 <svelte:head>
-	<title>{data.data.attributes.title ? data.data.attributes.title : 'Privacy Policy'}</title>
-	
+    <Seo metaTitle = {seo.metaTitle || page.title || 'Privacy Policy'}
+    metaDescription={seo.metaDescription}
+    metaImage={seo.metaImage}
+    metaSocial={seo.metaSocial}
+    keywords={seo.keywords}
+    metarobots={seo.metarobots}
+    structuredData={seo.structuredData}
+    canonicalURL={seo.canonicalURL} />
 </svelte:head>
 <PageBanner title="{data.data.attributes.title ? data.data.attributes.title : 'Privacy Policy'}" extraClass="privacy" subTitle="{data.data.attributes.Subheading ? data.data.attributes.Subheading : ''}"  banner="{url}{data.data.attributes.Cover.data.attributes.url}"/>
 

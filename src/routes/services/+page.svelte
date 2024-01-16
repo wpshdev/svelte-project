@@ -4,7 +4,9 @@
     import Cta from '$lib/components/layout/Cta.svelte';
     import PageBanner from '$lib/components/layout/PageBanner.svelte';
     const url = "https://api.ulfbuilt.com/";
-    let page = data.services.data.attributes
+    let page = data.services.data.attributes;
+    let seo = page.seo;
+    import Seo from "$lib/components/Seo.svelte"
     let featuredProjects = data.portfolios.data
     import noFeatured from "$lib/img/blog-empty.svg"
     let fallback = data.fallback.data.attributes.fallbackImage.data;
@@ -19,8 +21,14 @@
 
 </script>
 <svelte:head>
-	<title>{page.Title ? page.Title : 'Services'}</title>
-	<meta name="description" content="ULFBUILT" />
+	<Seo metaTitle = {seo.metaTitle || page.title}
+    metaDescription={seo.metaDescription}
+    metaImage={seo.metaImage}
+    metaSocial={seo.metaSocial}
+    keywords={seo.keywords}
+    metarobots={seo.metarobots}
+    structuredData={seo.structuredData}
+    canonicalURL={seo.canonicalURL} />
 </svelte:head>
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 
@@ -270,7 +278,7 @@
             @include media-max(xs){
                 content: '';
                 display: block;
-                background-image: url(/src/lib/img/service-mobile-bars1.svg);
+                // background-image: url(/src/lib/img/service-mobile-bars1.svg);
                 background-position: center;
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -280,7 +288,7 @@
                 z-index: -1;
             }
             @include media-max(mm){
-                background-image: url(/src/lib/img/service-mobile-bars.svg);
+                // background-image: url(/src/lib/img/service-mobile-bars.svg);
                 background-size: auto;
             }
         }
