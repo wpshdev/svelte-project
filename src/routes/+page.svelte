@@ -407,7 +407,7 @@ align-items: end;
 			max-width: 60rem;
 			margin: auto;
 			padding: 4rem 4rem 5rem 4rem;
-			box-shadow: 0px 0px 10px #AAA;
+			box-shadow: 0px 0px 10px #444;
 			border-radius: 0.5rem;
 			background: #fff;
 			@include media-max(sm){
@@ -742,6 +742,7 @@ align-items: end;
 	// 	// 	margin-top: 10vw;
 	// 	// }
 	.reputation{
+		margin: 0;
 		// margin-top: 15vw;
 		@include media-max(ipadmini){
 			margin: 35vw 0;
@@ -860,6 +861,7 @@ align-items: end;
 		// @include media-max(ipadmini){
 		// 	margin: 20vw 0 15vw;
 		// }
+		margin: 0;
 		@include media-max(ipadmini){
 			margin: 35vw 0;
 		}
@@ -1002,6 +1004,7 @@ align-items: end;
 		// @include media-max(ipadmini){
 		// 	margin-top: 15vw;
 		// }
+		margin: 0;
 		@include media-max(ipadmini){
 			padding-top: 25vw;
 			margin: 20vw 0;
