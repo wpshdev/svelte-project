@@ -394,7 +394,7 @@
                     .certificate-title {
                         color: $secondary-color;
                         // font-family: "Pinyon Script", cursive;
-                        padding-bottom: 5rem;
+                        padding-bottom: 2rem;
                         @include media-max(lg){
                             padding-bottom: 3rem;
                         }
