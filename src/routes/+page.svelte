@@ -180,7 +180,7 @@ let pageData = {
 </section>
 
 
-<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 95%">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 50%">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -206,7 +206,7 @@ let pageData = {
 		</Container>
 </section>
 
-<section class="process" in:slowDownSection id="process-section" gsap-start="top 95%">
+<section class="process" in:slowDownSection id="process-section" gsap-start="top 50%">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -242,7 +242,7 @@ let pageData = {
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-start="top 95%">
+<section class="story" in:slowDownSection id="story-section" gsap-start="top 50%">
 		<Container>
 			<Row>
 				<Col md="7" class="">
