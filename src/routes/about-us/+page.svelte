@@ -407,6 +407,7 @@
     flex-direction: column;
     justify-content: center;
     }
+    
     .contractor-details {
         // margin: 5vw 0;
         margin-top: -15rem;
@@ -459,6 +460,9 @@
 			// 	height: auto;
 			// }
         }
+    }
+    #cd-section1{
+        margin-top: -7.5rem;
     }
     .remodel {
         // min-height: 80rem;
