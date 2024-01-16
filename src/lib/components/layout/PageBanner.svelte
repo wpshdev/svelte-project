@@ -14,7 +14,7 @@
 </script>
 
 <section in:fadeIn id="banner_bg" class="banner {extraClass ? extraClass : ''} {transparent ? transparent : 'transparent'} autoscroll-exception" style="--banner: url({pageBanner}); height: {pageBannerheight}vh;" rel = "preload">
-	<div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="0" gsap-delay="0"></div>
+	<!-- <div class="banner_overlay" in:fadeOut id="banner_overlay" gsap-duration="0" gsap-delay="0"></div> -->
 	<Container>
 		<Row>
 			<Col>
