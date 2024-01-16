@@ -180,7 +180,7 @@ let pageData = {
 </section>
 
 
-<section class="reputation mvw-10" in:slowDownSection id="reputation-section" gsap-start="top 95%">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 95%">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -381,7 +381,7 @@ align-items: end;
 		color: $primary-color;
 	}
 	.loc-gallery{
-		background: #EEE;
+		background: $secondary-color;
 		padding: 0;
 		margin: 0;
 	@include media-max(sm){
@@ -393,7 +393,7 @@ align-items: end;
 		h2{
 			font-family: $secondary-font;
 			margin-bottom: 1rem;
-			color: $secondary-color;
+			color: $white-color;
 			margin-bottom: 3rem;
 			font-size: 3rem;
 			justify-content: center;
@@ -448,7 +448,7 @@ align-items: end;
 					}
 				}
 			}
-		margin-top: 15vw;
+		// margin-top: 15vw;
 		@include media-max(ipadmini){
 			padding-right: 0;
 			padding-left: 0;
@@ -742,7 +742,7 @@ align-items: end;
 	// 	// 	margin-top: 10vw;
 	// 	// }
 	.reputation{
-		margin-top: 15vw;
+		// margin-top: 15vw;
 		@include media-max(ipadmini){
 			margin: 35vw 0;
 			padding-top: 20vw;
