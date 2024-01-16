@@ -490,7 +490,6 @@
             margin-top: 3rem !important;
         }
         h4{
-            text-transform:uppercase;
             color: $secondary-color;
             font-size: 2.688rem;
             font-weight: 600;
