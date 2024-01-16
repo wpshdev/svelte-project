@@ -50,15 +50,12 @@
 <PageBanner title="{abouttitle ? abouttitle : 'About us'}" extraClass="about" subTitle="{aboutsubheading ? aboutsubheading : ''}" banner="{url}{aboutimage}" bannerMobile="{url}{aboutimage}"/>
 
 <section class="mw-1000 text-center about-heading" id="about-heading">
-    <!-- <Animate> -->
         <Container>
                 <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
                 <p in:fly id="about_heading_cont" gsap-duration="2"  gsap-y="80">{@html about.AboutText ? about.AboutText : ''}</p>
         </Container>
-    <!-- </Animate> -->
 </section>
-<section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="top bottom">
-    <!-- <Animate> -->
+<section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="top">
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5">
@@ -68,20 +65,16 @@
                     </div>
                 </Col>
                 <Col md="6">
-                    
                         {#if about.Section1image.data}
                         <div class="imgcont">
                             <img loading="lazy" in:fly2 id="cd-image1" gsap-y="-75" src="{about.Section1image.data.attributes.formats.large.url ? url+about.Section1image.data.attributes.formats.large.url : url+about.Section1image.data.attributes.url}" alt="{about.Section1heading}" class="w-100" width="{about.Section1image.data.attributes.width}" height="{about.Section1image.data.attributes.height}">
                         </div>
                         {/if}
-                    
                 </Col>
             </Row>
         </Container>
-    <!-- </Animate> -->
 </section>
-<section class="contractor-details" in:slowDownSection id="cd-section2" gsap-start="top bottom">
-    <!-- <Animate> -->
+<section class="contractor-details" in:slowDownSection id="cd-section2" gsap-start="top">
         <Container>
             <Row>
                 <Col md="6">
@@ -98,11 +91,9 @@
                     </div>
                 </Col>
             </Row>
-        </Container> 
-    <!-- </Animate>   -->
+        </Container>
 </section>
 <section class="contractor-details" in:slowDownSection id="cd-section3" gsap-start="top">
-    <!-- <Animate> -->
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5">
@@ -119,11 +110,8 @@
                     {/if}
                 </Col>
             </Row>
-        </Container> 
-    <!-- </Animate>   -->
+        </Container>
 </section>
-
-<!-- <Animate> mx-8 -->
 <section class="remodel" in:fly id="remodel-img-section" gsap-y="20">
     <div class="remodel__bgimage">
         {#if about.Section4image.data}
@@ -132,21 +120,10 @@
         <p class="text-center pt-3"><i><b>{about.Section4text ? about.Section4text : ''}</b></i></p>
     </div>  
 </section>
-<!-- </Animate> -->
+
 
 <section class="certificate mx-8">
-    <!-- <Animate>-->
         <Container>
-            
-                <!-- <div class="certificate-container" style="--cta-banner: url({about.Section5image.data ? url+about.Section5image.data.attributes.url : certBG}); --cta-banner-mobile: url({about.Section5MobileImage.data ? url+about.Section5MobileImage.data.attributes.url : certBGMobile})">
-                    <div class="certificate-inner-container">
-                        <h2 class="certificate-title">{about.certTitle ? about.certTitle : ''}</h2>
-                        <div class="certificate-content">
-                            {@html about.certContent ? about.certContent : ''}
-                        </div>
-                    </div>
-                </div> -->
-
                 {#if about.certTitle}
                 <div class="certificate-container" in:fly id="cert-img" gsap-duration="1.5" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
                     <div class="certificate-inner-container">
@@ -158,10 +135,9 @@
                 </div>
                 {/if}
         </Container>
-    <!-- </Animate> -->
 </section>
 <section class="sets-parts" in:slowDownSection id="sp-section1" gsap-start="top">
-    <!-- <Animate> -->
+    
         <Container>
             <Row>
                 <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
@@ -185,10 +161,10 @@
                 </Col>
             </Row>
         </Container>  
-    <!-- </Animate> -->
+    
 </section>
 <section class="sets-parts"  in:slowDownSection id="sp-section2" gsap-start="top"> 
-    <!-- <Animate> -->
+    
         <Container class="mx-10">
             <Row class="sets-parts__row">
                 <Col md="6" style="z-index: 1;">
@@ -209,10 +185,10 @@
                 </Col>
             </Row>
         </Container> 
-    <!-- </Animate> -->
+    
 </section>
 <section class="sets-parts"  in:slowDownSection id="sp-section3" gsap-start="top">
-    <!-- <Animate> -->
+    
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
@@ -233,7 +209,7 @@
                 </Col>
             </Row>
         </Container> 
-    <!-- </Animate> -->
+    
 </section>
 
 <section id="clientSays">
@@ -243,7 +219,7 @@
 </section>
 
 <section class="talktous">
-    <!-- <Animate> -->
+    
         <Container>
             <h2 class="text-animate secondary-font" in:textAnimate id="talktous-heading" gsap-duration="1">{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
             <p in:fly id="talktous-cont" gsap-duration="1.2">{about.talkTous.talkTous_content ? about.talkTous.talkTous_content : ''}</p>
@@ -252,12 +228,12 @@
                 <a href="{about.talkTous.talkTous_btn2Link ? about.talkTous.talkTous_btn2Link  : '#'}" class="btn btn-inverted">{about.talkTous.talkTous_btn2 ? about.talkTous.talkTous_btn2 : 'Button'}</a>
             </div>
         </Container>
-    <!-- </Animate> -->
+    
 </section>
 
-<!-- <Animate> -->
+
 <Contactform/>
-<!-- </Animate> -->
+
 
 
 <style lang="scss">
@@ -433,6 +409,8 @@
     }
     .contractor-details {
         // margin: 5vw 0;
+        margin-top: -15rem;
+        margin-bottom: -15rem;
         :global(.row) {
             justify-content: center;
             gap: 3rem;
