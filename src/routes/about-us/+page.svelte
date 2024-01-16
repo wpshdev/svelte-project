@@ -319,7 +319,7 @@
         background-position: top !important;
     } 
     .about-heading{
-        min-height: 100vh;
+        min-height: 70vh;
 		display: flex;
 		align-items: center;
         // @include media-max(default){
