@@ -77,7 +77,7 @@
     <Container>
         <Row>
                 <h2 class="sfont stc mb-5 text-center text-animate secondary-font" in:textAnimate id="member_heading" gsap-duration="1.5">{ourTeam.title ? ourTeam.title : ''}</h2>
-            <Col md={{ size: 8, offset: 2 }} class="inner-col">
+            <Col md={{ size: 8, offset: 2 }} class="inner-col team-member-part">
                 <Row>
                     {#each ourTeam.team_members.data as member,index}
                         <Col md="6">
@@ -334,7 +334,12 @@
         min-height: 100vh;
     }
 }
-
+:global(.team-member-part){
+    margin-top: 100px;
+}
+:global(.team-member-part .row .col-md-6:nth-child(odd)){
+    margin-top: -100px;
+}
 .memberModal {
     display: flex;
     align-items: flex-start;
