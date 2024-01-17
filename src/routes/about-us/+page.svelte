@@ -390,7 +390,6 @@
                             font-size: 1rem;
                         }
                         @include media-max(md){
-                            width: 14.375rem;
                             line-height: 2rem;
                             :global(br) {
                                 display: none;
@@ -465,9 +464,6 @@
         margin-top: -7.5rem;
     }
     .remodel {
-        // min-height: 80rem;
-		// display: flex;
-		// align-items: center;
         margin-top: unset;
 		@include media-max(ipadmini){
 			min-height: unset;

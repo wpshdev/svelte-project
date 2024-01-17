@@ -161,7 +161,7 @@ let pageData = {
 
 <section class="flex-column-center" id="tnr">
 	<div class="tnr">
-		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" medUrl="{domain}{home.midBanner.background.data.attributes.formats.large.url ? home.midBanner.background.data.attributes.formats.large.url : home.midBanner.background.data.attributes.url}" overlay="1">
+		<ParallaxImage imageHeight="80" imageUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" medUrl="{domain}{home.midBanner.background.data.attributes.formats.large_x2.url ? home.midBanner.background.data.attributes.formats.large_x2.url : home.midBanner.background.data.attributes.url}" overlay="1">
 		</ParallaxImage>
 		<div class="tnr__wrapper">
 			<Container>

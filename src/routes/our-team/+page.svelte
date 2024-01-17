@@ -185,6 +185,9 @@
             @include media-max(ipadmini){
                 min-height: 26vh;
             }
+            p{
+                color: #ACA7A7;
+            }
             &:hover{
                 a{
                     opacity: 1;
@@ -245,7 +248,8 @@
     z-index: 6;
     bottom:2rem;
     background-color: #1E2D39;
-    padding: 1rem 2rem 1.5rem !important;
+    padding: .85rem 2rem 1.25rem !important;
+    width: 90%;
     line-height: .5;
     @include media-max(sm){
         position: relative;
@@ -271,6 +275,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        padding: 3rem;
         @include media-max(sm){
             padding: 2rem 1rem;
         }
