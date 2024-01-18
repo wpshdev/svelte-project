@@ -199,7 +199,7 @@ let pageData = {
 				<Col md="5" class="my-auto containerimg" >
 					<div class="childimg">
 						{#if home.reputation.image.data}
-							<img loading="lazy" width="526" height="500" in:fly2 id="reputation-img" src="{domain}{home.reputation.image.data.attributes.formats.medium.url ? home.reputation.image.data.attributes.formats.medium.url : home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText ? home.reputation.image.data.attributes.alternativeText : "image"}" srcset="{domain}{home.reputation.image.data.attributes.formats.medium.url ? home.reputation.image.data.attributes.formats.medium.url : home.reputation.image.data.attributes.url} 768w" sizes="(max-width: 768px) 1024px">
+							<img loading="lazy" width="526" height="500" in:fly2 id="reputation-img" use:lazyLoad="{domain + home.reputation.image.data.attributes.formats.medium.url || domain + home.reputation.image.data.attributes.url}" alt="{home.reputation.image.data.attributes.alternativeText ? home.reputation.image.data.attributes.alternativeText : "image"}" srcset="{domain}{home.reputation.image.data.attributes.formats.medium.url ? home.reputation.image.data.attributes.formats.medium.url : home.reputation.image.data.attributes.url} 768w" sizes="(max-width: 768px) 1024px">
 						{/if}
 					</div>
 				</Col>
@@ -213,7 +213,7 @@ let pageData = {
 			<Col md="6" class="">
 				<div class="process__top-image childimg2" >
 					{#if home.ourProcessTopImage.data}
-						<img loading="lazy" in:fly2 width="509" height="440" id="process-top-img" gsap-y="-60" src="{domain}{home.ourProcessTopImage.data[0].attributes.formats.medium.url ? home.ourProcessTopImage.data[0].attributes.formats.medium.url : home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText ? home.ourProcessTopImage.data[0].attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessTopImage.data[0].attributes.formats.medium.url ? home.ourProcessTopImage.data[0].attributes.formats.medium.url : home.ourProcessTopImage.data[0].attributes.url} 768w" sizes="(max-width: 768px) 1024px"/>
+						<img loading="lazy" in:fly2 width="509" height="440" id="process-top-img" gsap-y="-60" use:lazyLoad="{domain + home.ourProcessTopImage.data[0].attributes.formats.medium.url || domain + home.ourProcessTopImage.data[0].attributes.url}" alt="{home.ourProcessTopImage.data[0].attributes.alternativeText ? home.ourProcessTopImage.data[0].attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessTopImage.data[0].attributes.formats.medium.url ? home.ourProcessTopImage.data[0].attributes.formats.medium.url : home.ourProcessTopImage.data[0].attributes.url} 768w" sizes="(max-width: 768px) 1024px"/>
 					{/if}
 				</div>
 			</Col>
@@ -234,7 +234,7 @@ let pageData = {
 			<Col md="5" class="my-auto containerimg3">
 				<div class="process__bottom childimg3">
 					{#if home.ourProcessRightImage.data}
-						<img loading="lazy" in:fly2 width="526" height="500" id="process-bottom-img" gsap-y="-150" src="{domain}{home.ourProcessRightImage.data.attributes.formats.medium.url ? home.ourProcessRightImage.data.attributes.formats.medium.url : home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText ? home.ourProcessRightImage.data.attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessRightImage.data.attributes.formats.medium.url ? home.ourProcessRightImage.data.attributes.formats.medium.url : home.ourProcessRightImage.data.attributes.url} 768w" sizes="(max-width: 768px) 1024px">
+						<img loading="lazy" in:fly2 width="526" height="500" id="process-bottom-img" gsap-y="-150" use:lazyLoad="{domain + home.ourProcessRightImage.data.attributes.formats.medium.url || domain + home.ourProcessRightImage.data.attributes.url}" alt="{home.ourProcessRightImage.data.attributes.alternativeText ? home.ourProcessRightImage.data.attributes.alternativeText : "image"}" srcset="{domain}{home.ourProcessRightImage.data.attributes.formats.medium.url ? home.ourProcessRightImage.data.attributes.formats.medium.url : home.ourProcessRightImage.data.attributes.url} 768w" sizes="(max-width: 768px) 1024px">
 					{/if}
 				</div>
 			</Col>
@@ -261,7 +261,7 @@ let pageData = {
 				<Col md="5" class="my-auto containerimg4">
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
-							<img loading="lazy" in:fly2 id="story-img" width="526" height="500" src="{domain}{home.ourStoryRightImage.data.attributes.formats.medium.url ? home.ourStoryRightImage.data.attributes.formats.medium.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText ? home.ourStoryRightImage.data.attributes.alternativeText : "Image"}">
+							<img loading="lazy" in:fly2 id="story-img" width="526" height="500" use:lazyLoad="{domain + home.ourStoryRightImage.data.attributes.formats.medium.url || domain + home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText ? home.ourStoryRightImage.data.attributes.alternativeText : "Image"}">
 						{/if}
 					</div>	
 				</Col>
