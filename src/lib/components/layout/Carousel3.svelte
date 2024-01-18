@@ -1,5 +1,6 @@
 <script>
     import { textAnimate, slide, fly } from '$lib/GsapAnimation.js';
+    import { lazyLoad } from '$lib/components/lazyload.js'
     import leftar from '$lib/img/left-ar.svg';
     import rightar from '$lib/img/right-ar.svg';
     import rightarrow from '$lib/img/right-arrow-sky.svg';
@@ -172,12 +173,12 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
+      <img loading="lazy" draggable="false" src="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
+      <img loading="lazy" use:lazyLoad="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
       sizes="(max-width: 768px) 1024px">
     {/await}
     {/if}
@@ -193,12 +194,12 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
+      <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
+      <img loading="lazy" use:lazyLoad="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
       sizes="(max-width: 768px) 1024px">
     {/await}
     {/if}
@@ -214,12 +215,12 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
+      <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
+      <img loading="lazy" use:lazyLoad="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
       sizes="(max-width: 768px) 1024px">
     {/await}
     {/if}
@@ -235,12 +236,12 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
+      <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
+      <img loading="lazy" use:lazyLoad="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
       sizes="(max-width: 768px) 1024px">
     {/await}
     {/if}
@@ -256,12 +257,12 @@ let clientY = e.touches[0].clientY;
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
     {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain}{project.attributes.featuredImage.data.attributes.formats.large.url ? project.attributes.featuredImage.data.attributes.formats.large.url : project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
+      <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
+      <img loading="lazy" use:lazyLoad="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
       sizes="(max-width: 768px) 1024px">
     {/await}
     {/if}
