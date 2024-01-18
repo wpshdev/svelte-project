@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let data;
+	import { lazyLoad } from '$lib/components/lazyload.js'
 	import { Col, Container, Row } from "sveltestrap";
 	import Seo from "$lib/components/Seo.svelte"
  	import Carousel3 from "$lib/components/layout/Carousel3.svelte";

@@ -1,6 +1,8 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
     import { onMount } from 'svelte';
+    import { lazyLoad } from '$lib/components/lazyload.js'
+
 	// import Animate from '$lib/components/Animate.svelte';
     import { textAnimate, fly, fly2, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
+    import { lazyLoad } from '$lib/components/lazyload.js'
+
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
     import Contactform from "$lib/components/layout/Contactform.svelte";
     import Modal from "$lib/components/layout/Modal.svelte";
@@ -41,8 +43,9 @@
                     <h2 class="stc pb-4 text-center text-animate secondary-font" in:textAnimate id="team_heading" gsap-duration="1.5">{ourTeam.SecondSectionTitle ? ourTeam.SecondSectionTitle : ''}</h2>
                     <p class="two-columns" in:fadeIn id="team_content" gsap-duration="1" gsap-delay="0.5">{@html ourTeam.content ? ourTeam.content : ''}</p>
                     {#if ourTeam.SecondSectionImage.data}
+
                         <div class="heading-image">
-                            <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" src="{domain}{ourTeam.SecondSectionImage.data.attributes.formats.large.url ? ourTeam.SecondSectionImage.data.attributes.formats.large.url : ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
+                            <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" use:lazyLoad="{domain + ourTeam.SecondSectionImage.data.attributes.formats.large.url || domain + ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                         </div>
                     {/if}
                 </Col>
@@ -54,7 +57,7 @@
             <Row noGutters>
                 <Col md=6 class="tm-img">
                     <div>
-                        <img in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" src="{domain}{ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url ? ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url : ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
+                        <img in:fadeIn id="owner_image" gsap-duration="1.5" alt="{ourTeam.team_member_owner.data.attributes.name}" use:lazyLoad="{domain + ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.formats.large.url || domain + ourTeam.team_member_owner.data.attributes.memberPhoto.data.attributes.url}">
                         <div class="tm-box wtc">
                             <h3 class="pfont" in:slide id="owner_name" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.name ? ourTeam.team_member_owner.data.attributes.name : ''}</h3>
                             <h4 class="pfont" in:slide id="owner_title" gsap-duration="1.5" gsap-x="-5">{ourTeam.team_member_owner.data.attributes.position ? ourTeam.team_member_owner.data.attributes.position : ''}</h4>
@@ -87,7 +90,7 @@
                             on:click={() => getMemberIndex(index)}
                             on:click={() => (showModal = true)}
                             >
-                                <img in:fadeIn id="member_image{index}" gsap-start="top bottom" gsap-duration=".5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" src="{domain}{member.attributes.memberPhoto.data.attributes.formats.large.url ? member.attributes.memberPhoto.data.attributes.formats.large.url : member.attributes.memberPhoto.data.attributes.url}" alt="member">
+                                <img in:fadeIn id="member_image{index}" gsap-start="top bottom" gsap-duration=".5" width="{member.attributes.memberPhoto.data.attributes.width}" height="{member.attributes.memberPhoto.data.attributes.height}" use:lazyLoad="{domain + member.attributes.memberPhoto.data.attributes.formats.large.url || domain + member.attributes.memberPhoto.data.attributes.url}" alt="member">
                                 
                                     <div class="tm-box wtc px-5 py-3" style="bottom: 1rem;">
                                         <!-- our-team__member_caption class removed -->
@@ -104,7 +107,7 @@
                         <div class="memberModal">
                             <div class="memberModal__image">
                                 {#if memberImage}
-                                <img src="{domain}{memberImage}" alt="member">
+                                <img use:lazyLoad="{domain + memberImage}" alt="member">
                                 {/if}
                             </div>
                             <div class="memberModal__details">
