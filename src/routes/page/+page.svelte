@@ -1,40 +1,53 @@
+<!-- YourComponent.svelte -->
 <script>
-	import { lazyLoad } from '$lib/components/lazyload.js'
-	
-	// grab some place holder images
-  async function fetchData() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/photos?_start=0&_limit=20");
-    const data = await res.json();
+  import { onMount } from 'svelte';
 
-    if (res.ok) {
-      return data;
-    } else {
-      throw new Error(data);
+  let imageSrc = 'https://api.ulfbuilt.com/uploads/small_home_banner_881ed3e2e1.webp';
+  let imageSize = 'small';
+  let imageLoaded = false;
+
+  function handleImageLoad() {
+    imageLoaded = true;
+
+    // Change the image size based on the loaded image
+    switch (imageSize) {
+      case 'small':
+        imageSize = 'medium';
+        imageSrc = 'https://api.ulfbuilt.com/uploads/medium_home_banner_881ed3e2e1.webp';
+        break;
+      case 'medium':
+        imageSize = 'large';
+        imageSrc = 'https://api.ulfbuilt.com/uploads/large_home_banner_881ed3e2e1.webp';
+        break;
+      // Add more cases if you have additional sizes
     }
+  }
+
+  $: {
+    // Reset imageLoaded when changing image source
+    imageLoaded = false;
   }
 </script>
 
-
-{#await fetchData()}
-  <p>loading</p>
-{:then items}
-	{#each items as image}
-	<figure>
-		<img use:lazyLoad={image.url} alt={image.title} />
-	</figure>
-	{/each}
-{:catch error}
-  <p style="color: red">{error.message}</p>
-{/await}
-
 <style>
-	figure {
-    height: 600px;
-    width: 600px;
-		margin-bottom: 100vh;
-	}
-	img {
-		opacity: 0;
-		transition: all 5s ease;
-	}
+  .image {
+    /* Add any additional styles for your image */
+    width: 100%;
+    height: auto;
+    opacity: 0; /* Initial opacity for fade-in effect */
+    transition: opacity 0.5s ease-in-out; /* Adjust the duration and easing as needed */
+  }
+
+  .image-loaded {
+    opacity: 1;
+  }
 </style>
+
+{#if imageSrc !== ''}
+  <img
+    class="image {imageLoaded ? 'image-loaded' : ''}"
+    src={imageSrc}
+    alt="Your Image Alt Text"
+    on:load={handleImageLoad}
+  />
+{/if}
