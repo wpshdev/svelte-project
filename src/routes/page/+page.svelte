@@ -9,7 +9,6 @@
   function handleImageLoad() {
     imageLoaded = true;
 
-    // Change the image size based on the loaded image
     switch (imageSize) {
       case 'small':
         imageSize = 'medium';
@@ -17,9 +16,8 @@
         break;
       case 'medium':
         imageSize = 'large';
-        imageSrc = 'https://api.ulfbuilt.com/uploads/large_home_banner_881ed3e2e1.webp';
+        imageSrc = 'https://api.ulfbuilt.com/uploads/large_x2_home_banner_881ed3e2e1.webp';
         break;
-      // Add more cases if you have additional sizes
     }
   }
 
