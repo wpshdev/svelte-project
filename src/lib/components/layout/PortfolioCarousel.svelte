@@ -5,7 +5,6 @@
   import { Col } from "sveltestrap";
 	import { browser } from '$app/environment';
   import Animate from '../Animate.svelte';
-  import ImageLoader from '../imageLazy/ImageLoader.svelte';
   // import { fade, fly } from "svelte/transition";
   import { fly, fadeIn } from '$lib/GsapAnimation.js';
 

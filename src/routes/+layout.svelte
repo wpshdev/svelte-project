@@ -2,7 +2,6 @@
     import { onMount } from 'svelte';
     import Headroom from "svelte-headroom";
     const onPin = () => console.log("pin");
-    // const onPin = ();
     import Footer from "./Footer.svelte";
     import Header from "./Header.svelte";
     import {page} from '$app/stores'
@@ -37,8 +36,9 @@
 
     let yaxis: any;
     export let data;
+    let menu = data.data;
 
-
+// Progress bar
     import NProgress from 'nprogress'
   import {navigating} from '$app/stores'
 
@@ -57,11 +57,42 @@
       NProgress.done();
     }
   }
-
-
     </script>
     <svelte:head>
         <link rel="preconnect" href="https://api.ulfbuilt.com/">
+        <!-- Google Analytics Code -->
+  <script>
+    import { onMount } from 'svelte';
+    import { page } from '$stores'; // Assuming you have a reactive store for tracking page views
+
+    onMount(() => {
+        if(data.fallback.data.attributes.Google_Analytics){
+            gtag('config', 'data.fallback.data.attributes.Google_Analytics', { page_path: '/' + $page });
+        }
+    });
+  </script>
+
+  <script context="module">
+    export const page = writable('');
+  </script>
+
+  <!-- Google Tag Manager Code -->
+  <script>
+    // Replace 'GTM-XXXXXXX' with your actual container ID
+    
+    if(data.fallback.data.attributes.Google_Tags){
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', data.fallback.data.attributes.Google_Tags);
+    }
+  </script>
     </svelte:head>
     
     <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">
@@ -69,7 +100,7 @@
             <!-- <header class="d-block" class:changeBG={yaxis >= 250 || isHome($page.url.pathname)} > -->
             <header class="d-block" class:changeBG={yaxis >= 200} bind:this={header}>                
                 <Container>
-                    <Header menu={data} />
+                    <Header menu={menu} />
                 </Container>
             </header>
         </Headroom>

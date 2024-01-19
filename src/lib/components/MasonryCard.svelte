@@ -29,8 +29,6 @@ const cache = new Map();
 export let propCount;
 let currentPage = 1;
 
-// import ImageLoader from './imageLazy/ImageLoader.svelte';
-
 // let items;
 
 let promise = fetchPortfolios();
