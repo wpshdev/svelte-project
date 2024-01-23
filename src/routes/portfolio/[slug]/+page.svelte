@@ -6,7 +6,7 @@
 	import noFeatured from "$lib/img/blog-empty.svg";
 	import { textAnimate, fly, fadeIn, slide, scaleUp } from '$lib/GsapAnimation.js';
 	export let data;
-	console.log(data.portfolios)
+	console.log(data.portfolio)
 	const domain = "https://api.ulfbuilt.com"
 	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	
@@ -101,17 +101,13 @@
 	<!-- </Animate> -->
 </section>
 
-{#if isFeatured && projectHeading}
+<!-- {#if isFeatured && projectHeading} -->
 
 <section class="banners">
 	<!-- <Animate> -->
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
 				<section in:scaleUp id="single-portfolio-bannerOnly{index}" gsap-start="top center" gsap-duration="2" class="fireplace section--bannerOnly image-scale-up" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
-				<!-- <div class="parallax-wrapper">
-					<ParallaxImage imageHeight="100" imageUrl="{domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url}">
-					</ParallaxImage>
-				</div> -->
 				{/if}
 				<Testimonial testimonial="{bannerQuote.quote}" testimonial_id="testimonial{index}" />
 		{/each}
@@ -138,7 +134,7 @@
 		</Container>
 	<!-- </Animate> -->
 </section>
-{/if}
+<!-- {/if} -->
 <section class="related {!projectHeading ? "my-0" : ""}">
 	<!-- <Animate> -->
 		<Container>
