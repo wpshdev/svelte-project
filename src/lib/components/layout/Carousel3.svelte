@@ -115,17 +115,36 @@ function resetInterval(node, condition) {
   }
 }
 
+let startX = null;
+let clientX = null;
 function handleStart(event) {
-  const anchors = document.querySelectorAll('.zoomImg');
-  anchors.forEach(anchor => {
-  });
+    startX = event.clientX;
 }
-
-function preventAnchorClick(event) {
-  event.preventDefault();
+function handleMove(event){
+  if(startX !== null){
+    clientX = event.clientX;
+    if(startX !== clientX){
+      addNewClassToElements('zoomImg', 'disabled'); 
+      event.preventDefault();
+    }
+  }
 }
-
-let startY = null;
+function handleStop(event){
+  startX = null;
+  removeClassFromElements('zoomImg', 'disabled'); 
+}
+function addNewClassToElements(className, newClass) {
+  const elements = document.getElementsByClassName(className);
+  for (const element of elements) {
+    element.classList.add(newClass);
+  }
+}
+function removeClassFromElements(className, classToRemove) {
+  const elements = document.getElementsByClassName(className);
+  for (const element of elements) {
+    element.classList.remove(classToRemove);
+  }
+}
 function touchvertical(e){
   startY = e.touches[0].clientY;
 }
@@ -168,10 +187,10 @@ let clientY = e.touches[0].clientY;
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema}  on:mousedown|passive={handleStart} on:touchstart|passive={touchvertical} on:touchmove|passive={touchmovevertical}>
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema} on:touchstart|passive={touchvertical} on:touchmove|passive={touchmovevertical} on:mouseup={handleStop}>
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
     {#if project.attributes.featuredImage.data != null}
       <img loading="lazy" draggable="false" src="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
@@ -192,7 +211,7 @@ let clientY = e.touches[0].clientY;
 {/each}
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
     {#if project.attributes.featuredImage.data != null}
       <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
@@ -213,7 +232,7 @@ let clientY = e.touches[0].clientY;
 {/each}
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
     {#if project.attributes.featuredImage.data != null}
       <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
@@ -234,7 +253,7 @@ let clientY = e.touches[0].clientY;
 {/each}
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
     {#if project.attributes.featuredImage.data != null}
       <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
@@ -255,7 +274,7 @@ let clientY = e.touches[0].clientY;
 {/each}
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false">
+  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
     {#if project.attributes.featuredImage.data != null}
       <img loading="lazy" draggable="false" use:lazyLoad="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
@@ -319,7 +338,9 @@ let clientY = e.touches[0].clientY;
 
 
 <style lang="scss">
-  
+:global(.disabled){
+  pointer-events: none;
+}
 .right-mobil{
     display: none;
     max-width: 70px;
@@ -528,9 +549,8 @@ white-space: nowrap;
   }      
   img {
     display: block;
-    // width: auto;
     object-fit: cover;
-    height: 100%;
+    min-height: 100%;
   }
 }
 }
