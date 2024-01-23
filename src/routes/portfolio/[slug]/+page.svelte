@@ -107,7 +107,7 @@
 	<!-- <Animate> -->
 		{#each bannerQuotes as bannerQuote, index}
 				{#if bannerQuote.banner.data}
-				<section in:scaleUp id="single-portfolio-bannerOnly{index}" gsap-start="top center" gsap-duration="2" class="fireplace section--bannerOnly image-scale-up" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
+				<section in:scaleUp id="single-portfolio-bannerOnly{index}" gsap-start="top 90%" gsap-duration="2" class="fireplace section--bannerOnly image-scale-up" style="--lrbg: url({domain}{bannerQuote.banner.data.attributes.formats.large.url ? bannerQuote.banner.data.attributes.formats.large.url : bannerQuote.banner.data.attributes.url})"></section>
 				{/if}
 				<Testimonial testimonial="{bannerQuote.quote}" testimonial_id="testimonial{index}" />
 		{/each}
