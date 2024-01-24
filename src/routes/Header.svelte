@@ -1,4 +1,5 @@
 <script>
+	window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
     import 'bootstrap/dist/css/bootstrap.min.css';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
