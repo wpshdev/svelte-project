@@ -24,7 +24,7 @@
 
 	} from 'sveltestrap';
 	export let menu;
-	import axios from 'axios';
+	import axios from '$lib/axios';
 	import { onMount } from 'svelte';
 	import { fly, slide } from 'svelte/transition';
 
