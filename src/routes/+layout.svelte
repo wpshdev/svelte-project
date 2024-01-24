@@ -76,10 +76,8 @@
     export const page = writable('');
   </script>
 
-  <!-- Google Tag Manager Code -->
   <script>
     // Replace 'GTM-XXXXXXX' with your actual container ID
-    
     if(data.fallback.data.attributes.Google_Tags){
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
