@@ -1,11 +1,4 @@
 <script>
-	  import { onMount } from 'svelte';
-
-onMount(() => {
-  if (typeof window !== 'undefined') {
-	window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
-  }
-});
     import 'bootstrap/dist/css/bootstrap.min.css';
     import logo from '$lib/img/logo.svg';  
 	import "../styles/fonts.scss";
@@ -31,7 +24,8 @@ onMount(() => {
 
 	} from 'sveltestrap';
 	export let menu;
-	import axios from '$lib/axios';
+	import axios from 'axios';
+	import { onMount } from 'svelte';
 	import { fly, slide } from 'svelte/transition';
 
 	let promise = fetchSiteSettings();
