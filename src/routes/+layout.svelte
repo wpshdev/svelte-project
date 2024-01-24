@@ -61,7 +61,7 @@
     <svelte:head>
         <link rel="preconnect" href="https://api.ulfbuilt.com/">
         <!-- Google Analytics Code -->
-  <script>
+  <!-- <script>
     import { onMount } from 'svelte';
     import { page } from '$stores'; // Assuming you have a reactive store for tracking page views
 
@@ -92,7 +92,7 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', data.fallback.data.attributes.Google_Tags);
     }
-  </script>
+  </script> -->
     </svelte:head>
     
     <div class="z10 {isPortfolio($page.route.id)} {isArticle($page.route.id)}">
