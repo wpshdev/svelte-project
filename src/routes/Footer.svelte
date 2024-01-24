@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Col, Container, Row } from 'sveltestrap';
 import { onMount } from "svelte";
-import axios from 'axios';
+import axios from '$lib/axios';
 import { fadeIn } from '$lib/GsapAnimation.js';
 const domain = "https://api.ulfbuilt.com"
 import { PUBLIC_STRAPI_API } from '$env/static/public';

@@ -7,7 +7,7 @@
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
-	import axios from 'axios';
+	import axios from '$lib/axios';
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import { textAnimate, fly, slide, fly2, slowDownSection } from '$lib/GsapAnimation.js';
 
