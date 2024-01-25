@@ -30,7 +30,7 @@
                 <Row>
                     <Col class="md-12 text-center">
                         <div class="our-process__heading">
-                            <h2 class="text-animate secondary-font" in:textAnimate id="process_title" gsap-duration="1" gsap-start="top center">{processData.section1heading ? processData.section1heading : ''}</h2>
+                            <h2 class="text-animate secondary-font" in:textAnimate id="process_title" gsap-duration="1" gsap-start="top 95%">{processData.section1heading ? processData.section1heading : ''}</h2>
                             <div in:fadeIn id="process_sub" gsap-duration="1" gsap-delay="0.5" gsap-start="top center">
                                 {@html processData.section1text ? processData.section1text : ''}
                             </div>
@@ -257,11 +257,11 @@
         </div>    
     <!-- </Animate> -->
 </section>
-    <!-- <Animate>
-        <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
-        </div>   
-    </Animate> -->
-    <!-- <Animate>
+    <!-- <Animate> -->
+        <!-- <div class="phase__banner banner2" style="--phs2Banner1: url({domain}{processData.section14image.data.attributes.url})">
+        </div>    -->
+    <!-- </Animate> -->
+    
         <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <span>{processData.section15heading ? processData.section15heading : ''}</span>
@@ -270,8 +270,9 @@
             </div>
             <div class="phase__grid__item">
                 {@html processData.section15righttext ? processData.section15righttext : '' }
-            </div>     
-            <div class="phase__grid__item">
+            </div>
+        </div>
+<!--        <div class="phase__grid__item">
                 <span>{processData.section16heading ? processData.section16heading : ''}</span>
                 <h4>{processData.section16subheading ? processData.section16subheading : ''}</h4>
                 {@html processData.section16text ? processData.section16text : ''}
@@ -501,7 +502,7 @@
         }
         &__grid{
             display: grid;
-            grid-template-columns: repeat(2, 1fr);     
+            grid-template-columns: 1fr 2fr;//repeat(2, 1fr);  
             // margin-top: -10.960rem;
             margin-top: -14.5rem;
             width: 90%;
@@ -555,7 +556,7 @@
 
                 }
                 &:nth-child(even){
-                    padding-top: 18vw;
+                    padding-top: 9vw;
                     background-color: #F2F2F2;
                     display: flex;
                     align-items: flex-end;
@@ -565,7 +566,12 @@
                     :global(p:last-child){
                         margin-bottom: 0;                        
                     }
-
+                    :global(p){
+                        font-size: 1.25rem;
+                    }
+                    :global(div){
+                        padding: 2.5rem 0;
+                    }
                     @include media-max(sm){
                         padding: 6vw;
                         margin-left: calc(50% - 50vw);
