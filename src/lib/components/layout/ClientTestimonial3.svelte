@@ -78,11 +78,13 @@
 </section>
 
 <style lang="scss">
+    :global(#clientSays){
+        background:  linear-gradient(180deg, rgba(255, 255, 255, 0) -40.92%, rgba(239, 239, 240, 0.83) 36.13%, #FFFFFF 76.97%, rgba(255, 255, 255, 0) 137.31%);
+    }
     .siema{
         overflow: visible !important;
     }
     .our_client_say{
-    background:  linear-gradient(180deg, rgba(255, 255, 255, 0) -40.92%, rgba(239, 239, 240, 0.83) 36.13%, #FFFFFF 76.97%, rgba(255, 255, 255, 0) 137.31%); ;
     mix-blend-mode: normal;
     display: flex;
     height: 100vh;

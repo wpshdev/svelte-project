@@ -123,8 +123,26 @@
     </div>  
 </section>
 
-
-<section class="certificate mx-8">
+<section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery" gsap-start="top bottom">
+	<Container>
+		<Row>
+			<Col xs="12" class="pb-4">
+				<!-- <h2>
+					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
+				</h2> -->
+				<div class="loc-gallery__cwrapper" id="build-trust">
+						<div class="h3">
+							{@html about.certTitle ? about.certTitle : ''}
+						</div>
+					<div class="text-justify">
+                        {@html about.certContent ? about.certContent : ''}
+					</div>
+				</div>
+			</Col>
+		</Row>
+	</Container>
+</section>
+<!-- <section class="certificate mx-8">
         <Container>
                 {#if about.certTitle}
                 <div class="certificate-container" in:fly id="cert-img" gsap-duration="1.5" style="--cta-banner: url({certBG}); --cta-banner-mobile: url({certBGMobile})">
@@ -137,7 +155,7 @@
                 </div>
                 {/if}
         </Container>
-</section>
+</section> -->
 <section class="sets-parts" in:slowDownSection id="sp-section1" gsap-start="top">
     
         <Container>
@@ -239,7 +257,73 @@
 
 
 <style lang="scss">
-
+:global(.loc-gallery p){
+		@include media-max(sm){
+			text-align: left;
+			
+		}	
+	}
+	:global(.loc-gallery .h3 span){
+		color: $primary-color;
+	}
+	.loc-gallery{
+		background: $secondary-color;
+		padding: 0;
+		margin: 0;
+	@include media-max(sm){
+		padding: 20vw 0;
+	}
+	.h3{
+		margin-bottom: 1.25rem;
+	}
+		h2{
+			font-family: $secondary-font;
+			margin-bottom: 1rem;
+			color: $white-color;
+			margin-bottom: 3rem;
+			font-size: 3rem;
+			justify-content: center;
+			text-align: center;
+			@include media-max(sm){
+				text-align: center;
+				font-size: 2.813rem;
+			}
+		}		
+		&__cwrapper{
+			max-width: 60rem;
+			margin: auto;
+			padding: 4rem 4rem 5rem 4rem;
+			box-shadow: 0px 0px 10px #444;
+			border-radius: 0.5rem;
+			background: #fff;
+			@include media-max(sm){
+				margin: 1rem;
+			}
+			@include media-max(sm){
+				padding: 1.5rem;
+			}
+			.h3{
+				text-transform: uppercase;
+				font-size: 2.5rem;
+				font-weight: 600;
+				@include media-max(sm){
+					font-size: 2rem;
+				}
+				span{
+					color: $primary-color;
+				}
+			}
+			p{
+				max-width: 36rem;
+				margin: 0 auto;
+				text-align: left;						
+			}
+			:global(a) {
+				color: $primary-color;
+				text-decoration: none;
+			}
+		}
+	}
 	.carousel {
 		position: relative;
 		width: 100%;
@@ -589,7 +673,7 @@
         }
     }
     .talktous{
-        min-height: 100vh;
+        // min-height: 100vh;
 		display: flex;
 		align-items: center;
         justify-content: center;
