@@ -248,12 +248,20 @@
                 <div in:fly id="phase2_sub3" gsap-duration="1" gsap-delay="0.5">
                     {@html processData.section13text ? processData.section13text : ''}
                 </div>
-            </div>  
+            </div>
             <div class="phase__grid__item last-even">
                 <div in:fly id="phase2_cont3" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section13righttext ? processData.section13righttext : ''}
                 </div>
-            </div>                                            
+            </div>       
+            <div class="phase__grid__item">
+                <span>{processData.section15heading ? processData.section15heading : ''}</span>
+                <h4>{processData.section15subheading ? processData.section15subheading : ''}</h4>
+                {@html processData.section15text ? processData.section15text : ''}
+            </div>
+            <div class="phase__grid__item">
+                {@html processData.section15righttext ? processData.section15righttext : '' }
+            </div>                                     
         </div>    
     <!-- </Animate> -->
 </section>
@@ -262,7 +270,7 @@
         </div>    -->
     <!-- </Animate> -->
     
-        <div class="phase__grid scnd-row">
+        <!-- <div class="phase__grid scnd-row">
             <div class="phase__grid__item">
                 <span>{processData.section15heading ? processData.section15heading : ''}</span>
                 <h4>{processData.section15subheading ? processData.section15subheading : ''}</h4>
@@ -271,7 +279,7 @@
             <div class="phase__grid__item">
                 {@html processData.section15righttext ? processData.section15righttext : '' }
             </div>
-        </div>
+        </div> -->
 <!--        <div class="phase__grid__item">
                 <span>{processData.section16heading ? processData.section16heading : ''}</span>
                 <h4>{processData.section16subheading ? processData.section16subheading : ''}</h4>
