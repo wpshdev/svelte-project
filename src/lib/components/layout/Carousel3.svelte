@@ -155,14 +155,14 @@ let clientY = e.touches[0].clientY;
     if(startY > clientY){
       const deltaY = startY - clientY;
       if (Math.abs(deltaY) > 20) {
-        window.scrollBy(0, 50);
+        window.scrollBy(0, 20);
         // startY = null; // Reset startY to allow horizontal swiping
       }
     }
     if(startY < clientY){
       const deltaY = clientY - startY;
       if (Math.abs(deltaY) > 20) {
-        window.scrollBy(0, -50);
+        window.scrollBy(0, -20);
         // startY = null; // Reset startY to allow horizontal swiping
       }
     }
