@@ -22,63 +22,8 @@
         smooth: smoothValue,
         effects: true,
         normalizeScroll: true,
-        smoothTouch: 1.5, 
-        // speed: 0.2, // speed for the whole page scrolling
+        smoothTouch: 1.5,
       });
-
-      // auto scroll
-
-      // setTimeout(() => {
-      //   let sections = gsap.utils.toArray("section");
-        
-      //   sections.forEach((section, i) => {
-
-      //     // Calculate the index of the next section
-      //     const nextSectionIndex = i + 1;
-
-      //     if (nextSectionIndex < sections.length) {  // Check if there is a next section
-
-      //       const nextSection = sections[nextSectionIndex];
-
-      //       if(!section.classList.contains("autoscroll-exception")) { // if section is not exluded on the adding of scroll trigger auto scroll
-             
-      //         ScrollTrigger.create({
-      //           trigger: section,
-      //           start: "top bottom",
-      //           end: "60% 30%",
-      //           markers: true,
-      //           onLeave: () => {
-      //             // smoother.scrollTo("#"+nextSection.id, true, "top 10vw");
-
-      //             // gsap.to(smoother, {
-      //             //   // don't let it go beyond the maximum scrollable area
-      //             //   scrollTop: Math.min(ScrollTrigger.maxScroll(window), smoother.offset("#"+nextSection.id, 'top 10vw')),
-      //             //   duration: 2
-      //             // });
-      //             gsap.to(window, {
-      //               duration: 2, 
-      //               scrollTo: {
-      //                 y: "#"+nextSection.id, 
-      //                 offsetY: 50,
-      //                 autoKill: true
-      //               }
-      //             });
-
-      //             // disable
-      //             // window.addEventListener('wheel', { passive: false });
-
-      //             // setTimeout(() => {
-      //             // },2000)
-      //           },
-      //         });
-
-      //       } 
-
-      //     }
-          
-      //   });
-      // }, 1000);
-
     });
 
   </script>

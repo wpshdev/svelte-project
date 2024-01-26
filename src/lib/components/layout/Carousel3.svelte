@@ -187,7 +187,7 @@ let clientY = e.touches[0].clientY;
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top center" bind:this={siema} on:touchstart|passive={touchvertical} on:touchmove|passive={touchmovevertical} on:mouseup={handleStop}>
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" bind:this={siema} on:touchstart|passive={touchvertical} on:touchmove|passive={touchmovevertical} on:mouseup={handleStop}>
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>

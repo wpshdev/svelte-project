@@ -45,7 +45,7 @@
                     {#if ourTeam.SecondSectionImage.data}
 
                         <div class="heading-image">
-                            <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top center" use:lazyLoad="{domain + ourTeam.SecondSectionImage.data.attributes.formats.large.url || domain + ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
+                            <img in:fadeIn id="team_image" gsap-duration="1.5" gsap-start="top 90%" use:lazyLoad="{domain + ourTeam.SecondSectionImage.data.attributes.formats.large.url || domain + ourTeam.SecondSectionImage.data.attributes.url}" placeholder="{domain}{ourTeam.SecondSectionImage.data.attributes.url}" alt="Team Philosophy" width="{ourTeam.SecondSectionImage.data.attributes.width}" height="{ourTeam.SecondSectionImage.data.attributes.height}"/>
                         </div>
                     {/if}
                 </Col>

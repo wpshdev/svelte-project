@@ -202,7 +202,7 @@ const handleBottomArrowClick = () => {
 									<div class="container masonry_container">       
 										{#each portfolioList as project, index}				
 											{#if index < propCount}
-											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center"> 
+											<div class="masonry-items" in:fly id="masonry-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top 90%"> 
 												<!-- in:fly="{{ y: 0, duration: 1000, delay:index * 1500}}" out:fly="{{y:0, duration:1000 }}       -->
 												<a data-sveltekit-reload href="/portfolio/{project.attributes.slug}" class="zoomImg">      
 													{#if project.attributes.featuredImage.data != null}

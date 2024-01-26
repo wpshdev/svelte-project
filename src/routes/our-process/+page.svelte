@@ -31,7 +31,7 @@
                     <Col class="md-12 text-center">
                         <div class="our-process__heading">
                             <h2 class="text-animate secondary-font" in:textAnimate id="process_title" gsap-duration="1" gsap-start="top 95%">{processData.section1heading ? processData.section1heading : ''}</h2>
-                            <div in:fadeIn id="process_sub" gsap-duration="1" gsap-delay="0.5" gsap-start="top center">
+                            <div in:fadeIn id="process_sub" gsap-duration="1" gsap-delay="0.5" gsap-start="top 90%">
                                 {@html processData.section1text ? processData.section1text : ''}
                             </div>
                         </div>
@@ -556,7 +556,7 @@
                     h4{
                         margin: 2rem 0;
                         font-style: normal;
-                        font-size: 2.813rem;
+                        font-size: 2.5rem;
                     }
                     :global(p) {
                         font-size: 1.25rem;

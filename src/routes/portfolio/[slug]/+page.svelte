@@ -144,7 +144,7 @@
 				</Col>	
 				{#each relatedPortfolios as rPortfolio, index}
 					<Col md="6">
-						<div class="related__article"  in:fly id="related-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top center">
+						<div class="related__article"  in:fly id="related-items{index}" gsap-duration="1" gsap-delay={index/2} gsap-y="30" gsap-start="top 90%">
 							<a href="{rPortfolio.attributes.slug}" data-sveltekit-reload class="zoomImg">
 								{#if rPortfolio.attributes.featuredImage.data != null}
 								<img loading="lazy" src="{domain}{rPortfolio.attributes.featuredImage.data.attributes.formats.large.url ? rPortfolio.attributes.featuredImage.data.attributes.formats.large.url : rPortfolio.attributes.featuredImage.data.attributes.url}" alt="{rPortfolio.attributes.featuredImage.data.attributes.alternativeText}" />

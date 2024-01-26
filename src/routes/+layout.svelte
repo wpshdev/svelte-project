@@ -11,6 +11,13 @@
     import { gsap } from 'gsap';
     import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
+    let isDesktop = false;
+    onMount(() => {
+      isDesktop = window.innerWidth > 768;
+      window.addEventListener('resize', () => {
+        isDesktop = window.innerWidth > 768;
+      });
+    });
     // let isHomePage = false;
     function isHome(url) {
         return url === "/" ? false : true;
@@ -106,6 +113,7 @@
     
     
 {#key $page}
+  {#if isDesktop}
     <ScrollSmoother>
         <Animate>
             <main>
@@ -118,6 +126,18 @@
             </footer>
         </Animate>
     </ScrollSmoother>
+    {:else}
+      <Animate>
+          <main>
+                  <slot>
+              
+                  </slot>
+          </main>
+          <footer>
+              <Footer />
+          </footer>
+      </Animate>
+  {/if}
 {/key}
 <svelte:window bind:scrollY={yaxis} />
 
