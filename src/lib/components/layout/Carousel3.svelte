@@ -295,12 +295,12 @@ let clientY = e.touches[0].clientY;
 {/each}
         </div>
     </div>
-    <button class="left-mobil" name="left-mobil" on:click={left}>
+    <!-- <button class="left-mobil" name="left-mobil" on:click={left}>
         <img loading="lazy" src="{rightarrow}" width="30" height="30" alt="left">
     </button>
     <button class="right-mobil" name="right-mobil" on:click={right}>
         <img loading="lazy" src="{rightarrow}" width="30" height="30" alt="right">
-    </button>
+    </button> -->
 </Col>
 </Row>
   <!-- <div class="slider-caption">
@@ -390,7 +390,7 @@ let clientY = e.touches[0].clientY;
     justify-content: center;
     align-items: center;
     @include media-max(sm){
-      padding-left: 1rem;
+      // padding-left: 1rem;
     }
 }
 .slides{

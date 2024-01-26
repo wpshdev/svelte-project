@@ -685,12 +685,23 @@ align-items: end;
 					}
 					@include media-max(sm){
 						padding: 1rem;
+						position: absolute;
+						bottom: 0;
 					}
 					#tnr-preheading{
 						max-width: 44rem;
 						margin-bottom: 2rem;
 						line-height: 1.75;
 						text-align: justify;
+						@include media-max(sm){
+							margin: .5rem 0;
+						}
+					}
+					#tnr-button{
+						@include media-max(sm){
+							text-align: center;
+							margin-bottom: 1rem;
+						}
 					}
 				}
 				p{
@@ -704,9 +715,11 @@ align-items: end;
 					font-family: $primary-font;
 					margin: 1rem 0 2rem;
 					text-transform: uppercase;
-					font-size: 2.688rem;
+					font-size: 2.5rem;
 					@include media-max(sm){
 						font-size: 2rem;
+						text-align: center;
+						margin: .5rem 0;
 					}
 					opacity: 0;
 				}
