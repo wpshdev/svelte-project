@@ -116,7 +116,9 @@ function resetInterval(node, condition) {
 }
 
 let startX = null;
+let startY = null;
 let clientX = null;
+let clientY = null;
 function handleStart(event) {
     startX = event.clientX;
 }
@@ -153,14 +155,14 @@ let clientY = e.touches[0].clientY;
     if(startY > clientY){
       const deltaY = startY - clientY;
       if (Math.abs(deltaY) > 20) {
-        window.scrollBy(0, 100);
+        window.scrollBy(0, 50);
         // startY = null; // Reset startY to allow horizontal swiping
       }
     }
     if(startY < clientY){
       const deltaY = clientY - startY;
       if (Math.abs(deltaY) > 20) {
-        window.scrollBy(0, -100);
+        window.scrollBy(0, -50);
         // startY = null; // Reset startY to allow horizontal swiping
       }
     }
