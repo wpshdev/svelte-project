@@ -113,7 +113,7 @@
     
     
 {#key $page}
-  {#if isDesktop}
+  <!-- {#if isDesktop} -->
     <ScrollSmoother>
         <Animate>
             <main>
@@ -126,7 +126,7 @@
             </footer>
         </Animate>
     </ScrollSmoother>
-    {:else}
+    <!-- {:else}
       <Animate>
           <main>
                   <slot>
@@ -137,7 +137,7 @@
               <Footer />
           </footer>
       </Animate>
-  {/if}
+  {/if} -->
 {/key}
 <svelte:window bind:scrollY={yaxis} />
 
