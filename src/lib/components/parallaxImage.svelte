@@ -18,10 +18,9 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     // Create a GSAP timeline
     const tl = gsap.timeline();
 
-    // Define the parallax animation
     tl.to(parallaxImage, {
-      y: -300, // Adjust this value for the parallax effect intensity
-      ease: "none", // Linear motion
+      y: -300,
+      ease: "none",
     });
 
     // Initialize ScrollTrigger
@@ -53,8 +52,6 @@ style="--height: {imageHeight}vh">
 
 
 <style lang="scss">
-  /* Add your CSS styles here */
-
   .parallax-with-overlay{
 				.parallax-img {
           @include media-max(sm){
@@ -62,10 +59,6 @@ style="--height: {imageHeight}vh">
           }
 				}
 				&::after {
-          // background: linear-gradient(to left, rgba(0,0,0,0.8) 40%,rgba(255,255,255,0) 100%);
-          @include media-max(sm){
-            // background: rgba(0, 0, 0, 0.5);
-          }
 					content: "";
 					position: absolute;
 					top: 0;
@@ -79,7 +72,6 @@ style="--height: {imageHeight}vh">
     height: var(--height);
     object-fit: cover;
     object-position: center;
-    /* position: relative; */
     @include media-max(default){
       height: 70vh;
     }
@@ -98,7 +90,6 @@ style="--height: {imageHeight}vh">
 
     @include media-max(default){
       width: 100%;
-      // min-height: 100vh;
     }
     @include media-max(sm){
       left: 50%;
