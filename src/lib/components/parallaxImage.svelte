@@ -1,7 +1,7 @@
 <!-- ParallaxImage.svelte -->
 <script>
   // Import Svelte dependencies
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import {gsap}  from "gsap/dist/gsap";        
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";  
 
@@ -20,7 +20,7 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
     // Define the parallax animation
     tl.to(parallaxImage, {
-      y: -350, // Adjust this value for the parallax effect intensity
+      y: -300, // Adjust this value for the parallax effect intensity
       ease: "none", // Linear motion
     });
 
