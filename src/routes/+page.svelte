@@ -117,15 +117,15 @@ let pageData = {
 <svelte:window bind:scrollY={y} />
 <svelte:head>
 	<!-- <title>{home.title ? home.title : 'Home'}</title> -->
-	<Seo metaTitle = {home.title}
-	metaDescription = {home.title}
-	metaImage = {home.title}
-	metaSocial = {home.title}
-	keywords = {home.title}
-	metarobots = {home.title}
-	structuredData = {home.title}
-	metaViewport = {home.title}
-	canonicalURL = {home.title} />
+	<Seo metaTitle = {home.metaTitle}
+	metaDescription = {home.metaDescription}
+	metaImage = {home.metaImage}
+	metaSocial = {home.metaSocial}
+	keywords = {home.keywords}
+	metarobots = {home.metarobots}
+	structuredData = {home.structuredData}
+	metaViewport = {home.metaViewport}
+	canonicalURL = {home.canonicalURL} />
 </svelte:head>
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
