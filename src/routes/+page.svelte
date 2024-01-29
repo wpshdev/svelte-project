@@ -113,14 +113,14 @@ let pageData = {
     metaTitle: 'Page Title',
     metaDescription: 'Page Description'
   };
-  console.log(home);
+//   console.log(home);
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
 	<!-- <title>{home.title ? home.title : 'Home'}</title> -->
 	<Seo metaTitle = {home.seo[0].metaTitle}
 	metaDescription = {home.seo[0].metaDescription}
-	metaImage = {home.seo[0].metaImage}
+	metaImage = {domain}{home.seo[0].metaImage.data.attributes.url}
 	metaSocial = {home.seo[0].metaSocial}
 	keywords = {home.seo[0].keywords}
 	metarobots = {home.seo[0].metarobots}
