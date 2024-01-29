@@ -23,7 +23,8 @@
 
 <style lang="scss">
 	.testimonial{
-		padding: 3rem 0;
+		padding: 0;
+		margin: 2rem 1rem 5rem 1rem;
 		min-height: 10vh;
 
 		p{

@@ -188,9 +188,6 @@
 	:global(.portfolio-page .dropdown.show, .portfolio-page .dropdown-menu) {
 		background-color: rgba(242, 237, 237, 0.20) !important;
 	}
-section{
-	min-height: 50vh;
-}
 .portfolio-gallery{
     padding: 8vw 0 10vw;
     margin-top: 0;
@@ -337,6 +334,7 @@ section{
 }
 	
 .section--bannerOnly{
+	margin: 0;
 	background-image: var(--lrbg);
 	background-size: cover;
 	background-position: center;
@@ -346,12 +344,10 @@ section{
 }
 
 .portfolio-cta{
-	// min-height: 40vw;
-	// min-width: 40vw;        
-	// display: flex;
-	// align-items: center;
-	// justify-content: center;
-	min-height: unset;
+	min-height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: relative;   
 	padding: 3rem 0;   
 	&__content{
