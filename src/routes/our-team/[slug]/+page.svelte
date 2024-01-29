@@ -3,7 +3,6 @@
 	export let data;
 	let domain = "https://api.ulfbuilt.com";
 	let member =  data.data[0].attributes;
-	// console.log(data);
 </script>
 <svelte:head>
 	<title>{member.name}</title>

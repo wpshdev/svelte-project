@@ -73,29 +73,11 @@
 	onMount(() => {
 		loadingCursor();
 	});
-
-// function totop(){
-//     console.log("test");
-//     const sectionElement = document.getElementById('portfolioSection');
-//     if (sectionElement) {
-//         console.log("test2");
-//         console.log('Element:', sectionElement);
-//         console.log('Scroll Position:', window.scrollY);
-//         // console.log('Scroll Target:', sectionElement.clientY);
-//         sectionElement.scrollIntoView({
-//             behavior: 'smooth',
-//             block: 'nearest',
-//             inline: 'nearest',
-//         });
-//     }
-// }
   let portfolioscroll = null;
 
   const scrollToContainer = (container) => {
     const rect = container.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    console.log(topPosition);
-    console.log(window.scrollY);
     if (container) {
       window.scrollTo({
         top: topPosition - 100,

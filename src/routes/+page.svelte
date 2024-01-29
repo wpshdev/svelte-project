@@ -114,7 +114,6 @@ let pageData = {
     metaTitle: 'Page Title',
     metaDescription: 'Page Description'
   };
-//   console.log(home);
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
