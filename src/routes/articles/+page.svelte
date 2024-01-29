@@ -3,6 +3,7 @@
     import { paginate, LightPaginationNav } from 'svelte-paginate';
     import Cta from '$lib/components/layout/Cta.svelte';
     export let data;
+    import Seo from "$lib/components/Seo.svelte";
     import blogempty from "$lib/img/blog-empty.svg";
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
 	import Animate from '$lib/components/Animate.svelte';
@@ -10,13 +11,13 @@
     import axios from 'axios';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     let url = "https://api.ulfbuilt.com";
-    let title = data.page.data.attributes.title;
     let fallback = data.fallback.data.attributes.fallbackImage.data;
   let currentPage = 1;
   let pageSize = 5;
   let articleList = [];
   let categories = data.categories.data;
   let loadingArticle;
+  let seodata = data.page.data.attributes;
   
     // Date on click
     let activeDate = 'DESC'; // made newest/latest default on date filter
@@ -53,15 +54,10 @@
             }
         })();
     }
-    
-    // variable for {#key} to check if has new data in either activeDate or activeCategoryTab, to recreate their contents 
     $: listener = {activeDate, activeCategoryTab};
 
     function scrollToTop() {
         const element = document.getElementById('articleblog');
-        // element.scrollIntoView({
-        //         behavior: 'smooth'
-        // });
         const y = element.offsetTop + 1500;
         window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -71,12 +67,19 @@
 	onMount(() => {
 		loadingCursor();
 	});
-
+console.log(data.page.data.attributes);
 
 </script>
 <svelte:head>
-	<title>{title ? title : 'Articles & Press'}</title>
-	
+    <Seo metaTitle = {seodata.seo[0].metaTitle}
+	metaDescription = {seodata.seo[0].metaDescription}
+	metaImage = {url}{seodata.seo[0].metaImage.data.attributes.url}
+	metaSocial = {seodata.seo[0].metaSocial}
+	keywords = {seodata.seo[0].keywords}
+	metarobots = {seodata.seo[0].metarobots}
+	structuredData = {seodata.seo[0].structuredData}
+	metaViewport = {seodata.seo[0].metaViewport}
+	canonicalURL = {seodata.seo[0].canonicalURL} />
 </svelte:head>
 
 <PageBanner title="{data.page.data.attributes.title ? data.page.data.attributes.title : 'Articles & Press'}" extraClass="articles" subTitle="{data.page.data.attributes.Subheading ? data.page.data.attributes.Subheading : ''}"  banner="{url}{data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url ? data.page.data.attributes.Cover.data[0].attributes.formats.large_x2.url  : data.page.data.attributes.Cover.data[0].attributes.url}"/>

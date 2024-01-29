@@ -2,11 +2,12 @@
 	export let data;
 	import { lazyLoad } from '$lib/components/lazyload.js'
 	import { Col, Container, Row } from "sveltestrap";
-	import Seo from "$lib/components/Seo.svelte"
+	import Seo from "$lib/components/Seo.svelte";
  	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
+	import locbg from "$lib/img/blueBackground.webp";
 	import axios from 'axios';
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	import { textAnimate, fly, slide, fly2, slowDownSection } from '$lib/GsapAnimation.js';
@@ -130,7 +131,7 @@ let pageData = {
 </svelte:head>
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
-<section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery" gsap-start="top bottom">
+<section class="loc-gallery mvw-10" style=" --loc-bg: url({locbg})" in:slowDownSection id="loc-gallery" gsap-start="top bottom">
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -383,9 +384,28 @@ align-items: end;
 		color: $primary-color;
 	}
 	.loc-gallery{
-		background: $secondary-color;
+		// background: $secondary-color;
+		// background-color: rgba(38,58,99,0.5);
+		// background: var(--loc-bg);
+		background-color: rgba(38, 58, 99, 0.5); /* Fallback color */
+		background: var(--loc-bg, rgba(38, 58, 99, 0.5));
 		padding: 0;
 		margin: 0;
+		position: relative;
+		&::after{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(38, 58, 99, 0.5); /* Adjust color and opacity */
+			z-index: 0;
+		}
+		:global(.container){
+			position: relative;
+			z-index: 1;
+		}
 	@include media-max(sm){
 		padding: 20vw 0;
 	}
@@ -412,6 +432,7 @@ align-items: end;
 			box-shadow: 0px 0px 10px #444;
 			border-radius: 0.5rem;
 			background: #fff;
+			z-index: 1;
 			@include media-max(sm){
 				margin: 1rem;
 			}

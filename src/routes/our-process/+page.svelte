@@ -249,7 +249,7 @@
                     {@html processData.section13text ? processData.section13text : ''}
                 </div>
             </div>
-            <div class="phase__grid__item last-even">
+            <div class="phase__grid__item">
                 <div in:fly id="phase2_cont3" gsap-duration="1.5" gsap-delay="0.8">
                     {@html processData.section13righttext ? processData.section13righttext : ''}
                 </div>
@@ -259,7 +259,7 @@
                 <h4>{processData.section15subheading ? processData.section15subheading : ''}</h4>
                 {@html processData.section15text ? processData.section15text : ''}
             </div>
-            <div class="phase__grid__item">
+            <div class="phase__grid__item last-even">
                 {@html processData.section15righttext ? processData.section15righttext : '' }
             </div>                                     
         </div>    

@@ -253,6 +253,7 @@
 }
 
 .banners {
+	min-height:0;
 	@include media-max(ipadmini){
 		padding-right: 0;
 		padding-left: 0;

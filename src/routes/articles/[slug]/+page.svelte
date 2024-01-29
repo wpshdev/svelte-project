@@ -10,7 +10,6 @@
     $: num = data.num;
     $: num2 = data.num+3;
     $: filteredItems = data.blogs.data.slice(num, num2);
-
     
     $: title = data.page.data[0].attributes.title;
     $: content = data.page.data[0].attributes.blogtext;
@@ -23,11 +22,18 @@
 	onMount(() => {
 		loadingCursor();
 	});
-
+console.log(data);
 </script>
 <svelte:head>
-	<title>{title} - Article</title>
-	
+    <!-- <Seo metaTitle = {seodata.seo[0].metaTitle}
+	metaDescription = {seodata.seo[0].metaDescription}
+	metaImage = {url}{seodata.seo[0].metaImage.data.attributes.url}
+	metaSocial = {seodata.seo[0].metaSocial}
+	keywords = {seodata.seo[0].keywords}
+	metarobots = {seodata.seo[0].metarobots}
+	structuredData = {seodata.seo[0].structuredData}
+	metaViewport = {seodata.seo[0].metaViewport}
+	canonicalURL = {seodata.seo[0].canonicalURL} /> -->
 </svelte:head>
 
 <div class="cover" style="background:#1E2D39;">

@@ -95,7 +95,7 @@
 {:then contactSettings} 
 <!-- <Animate> -->
 <section class="contact" in:bgZoom id="form-section-bg">
-	<div class="contact-form-bg bg" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})" ></div>
+	<div class="contact-form-bg bg" style="--contactBG: url({domain}{contactSettings.background.data.attributes.url})"></div>
 	<Container>
 		<Row>
 			<Col md="6">

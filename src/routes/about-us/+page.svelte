@@ -1,15 +1,12 @@
 <script lang="ts">
     import {Container, Row, Col} from 'sveltestrap';
     import { onMount } from 'svelte';
-    import { lazyLoad } from '$lib/components/lazyload.js'
-
-	// import Animate from '$lib/components/Animate.svelte';
-    import { textAnimate, fly, fly2, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
+    import { textAnimate, fly, fly2, fadeIn, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
+    import Seo from "$lib/components/Seo.svelte";
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
     import ClientTestimonial from '$lib/components/layout/ClientTestimonial3.svelte';
-    import certBG from '$lib/img/BlankCertBg.png';
-    import certBGMobile from '$lib/img/CertBGMobileBlank.png';
+    import locbg from "$lib/img/blueBackground.webp";
     import {page} from '$app/stores';
     export let data;
 
@@ -40,12 +37,19 @@
         setTimeout(scrollToDiv, 1000);
         // scrollToDiv();
 		loadingCursor();
-    });	
-
+    });
 </script>
 <svelte:head>
-	<title>{abouttitle ? abouttitle : 'About us'}</title>
-	<meta name="description" content="ULFBUILT" />
+	<!-- <title>{abouttitle ? abouttitle : 'About us'}</title> -->
+    <Seo metaTitle = {about.seo[0].metaTitle}
+	metaDescription = {about.seo[0].metaDescription}
+	metaImage = {url}{about.seo[0].metaImage}
+	metaSocial = {about.seo[0].metaSocial}
+	keywords = {about.seo[0].keywords}
+	metarobots = {about.seo[0].metarobots}
+	structuredData = {about.seo[0].structuredData}
+	metaViewport = {about.seo[0].metaViewport}
+	canonicalURL = {about.seo[0].canonicalURL} />
 </svelte:head>
 <svelte:window bind:scrollY={scroll} />
 
@@ -123,7 +127,7 @@
     </div>  
 </section>
 
-<section class="loc-gallery mvw-10" in:slowDownSection id="loc-gallery" gsap-start="top bottom">
+<section class="loc-gallery mvw-10" style=" --loc-bg: url({locbg})" in:slowDownSection id="loc-gallery" gsap-start="top bottom">
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
@@ -270,6 +274,21 @@
 		background: $secondary-color;
 		padding: 0;
 		margin: 0;
+        position: relative;
+		&::after{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(38, 58, 99, 0.5); /* Adjust color and opacity */
+			z-index: 0;
+		}
+		:global(.container){
+			position: relative;
+			z-index: 1;
+		}
 	@include media-max(sm){
 		padding: 20vw 0;
 	}
@@ -296,6 +315,7 @@
 			box-shadow: 0px 0px 10px #444;
 			border-radius: 0.5rem;
 			background: #fff;
+            z-index: 1;
 			@include media-max(sm){
 				margin: 1rem;
 			}

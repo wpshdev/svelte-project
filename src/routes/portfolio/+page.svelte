@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Col, Container, Row } from "sveltestrap";
 	export let data;
-    console.log(data);
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
+    import Seo from "$lib/components/Seo.svelte";
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import axios from 'axios';
     import noFeatured from "$lib/img/blog-empty.svg"
@@ -109,10 +109,18 @@
     currentPage = e.detail.page;    
       }, 450);
   };
-
+let seodata = portfolio;
 </script>
 <svelte:head>
-	<title>{portfolio.title ? portfolio.title : 'Our Portfolio'}</title>
+    <Seo metaTitle = {seodata.seo[0].metaTitle}
+	metaDescription = {seodata.seo[0].metaDescription}
+	metaImage = {domain}{seodata.seo[0].metaImage}
+	metaSocial = {seodata.seo[0].metaSocial}
+	keywords = {seodata.seo[0].keywords}
+	metarobots = {seodata.seo[0].metarobots}
+	structuredData = {seodata.seo[0].structuredData}
+	metaViewport = {seodata.seo[0].metaViewport}
+	canonicalURL = {seodata.seo[0].canonicalURL} />
 </svelte:head>
 <!-- <button on:click={totop}>top</button> -->
 <PageBanner title="{portfolio.title ? portfolio.title : 'Our Portfolio'}" subTitle="{portfolio.subTitle ? portfolio.subTitle : ''}"  banner="{domain}{portfolio.featuredImage.data.attributes.formats.large.url ? portfolio.featuredImage.data.attributes.formats.large.url : portfolio.featuredImage.data.attributes.url}" bannerMobile="{domain}{portfolio.featuredImage.data.attributes.formats.medium.url}" />
