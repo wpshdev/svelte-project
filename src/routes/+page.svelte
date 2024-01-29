@@ -113,19 +113,20 @@ let pageData = {
     metaTitle: 'Page Title',
     metaDescription: 'Page Description'
   };
+  console.log(home);
 </script>
 <svelte:window bind:scrollY={y} />
 <svelte:head>
 	<!-- <title>{home.title ? home.title : 'Home'}</title> -->
-	<Seo metaTitle = {home.metaTitle}
-	metaDescription = {home.metaDescription}
-	metaImage = {home.metaImage}
-	metaSocial = {home.metaSocial}
-	keywords = {home.keywords}
-	metarobots = {home.metarobots}
-	structuredData = {home.structuredData}
-	metaViewport = {home.metaViewport}
-	canonicalURL = {home.canonicalURL} />
+	<Seo metaTitle = {home.seo[0].metaTitle}
+	metaDescription = {home.seo[0].metaDescription}
+	metaImage = {home.seo[0].metaImage}
+	metaSocial = {home.seo[0].metaSocial}
+	keywords = {home.seo[0].keywords}
+	metarobots = {home.seo[0].metarobots}
+	structuredData = {home.seo[0].structuredData}
+	metaViewport = {home.seo[0].metaViewport}
+	canonicalURL = {home.seo[0].canonicalURL} />
 </svelte:head>
 
 <PageBanner title="{home.topBanner.heading ? home.topBanner.heading : 'Building Excellence'}" subTitle="{home.topBanner.paragraph ? home.topBanner.paragraph : ''}" banner="{domain}{home.topBanner.background.data.attributes.formats.large_x2.url ? home.topBanner.background.data.attributes.formats.large_x2.url : home.topBanner.background.data.attributes.url}" bannerMobile="{domain}{home.topBanner.background.data.attributes.formats.medium.url}" extraClass="homebanner" bannerheight="100" customtop="custom-top" transparent="1" />
