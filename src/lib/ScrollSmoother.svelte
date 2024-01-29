@@ -12,18 +12,14 @@
 
       if(window.innerWidth <= 768) {
         smoothValue = 0;
-        console.log(smoothValue);
       } else {
         smoothValue = 2;
-        console.log(smoothValue);
       }
       window.addEventListener('resize', () => {
         if(window.innerWidth <= 768) {
           smoothValue = 0;
-          console.log(smoothValue);
         } else {
           smoothValue = 2;
-          console.log(smoothValue);
         }
       });
 
