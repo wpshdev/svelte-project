@@ -21,14 +21,15 @@
 
 </script>
 <svelte:head>
-	<Seo metaTitle = {seo.metaTitle || page.title}
-    metaDescription={seo.metaDescription}
-    metaImage={seo.metaImage}
-    metaSocial={seo.metaSocial}
-    keywords={seo.keywords}
-    metarobots={seo.metarobots}
-    structuredData={seo.structuredData}
-    canonicalURL={seo.canonicalURL} />
+	<Seo metaTitle = {seo[0].metaTitle}
+	metaDescription = {seo[0].metaDescription}
+	metaImage = {url}{seo[0].metaImage}
+	metaSocial = {seo[0].metaSocial}
+	keywords = {seo[0].keywords}
+	metarobots = {seo[0].metarobots}
+	structuredData = {seo[0].structuredData}
+	metaViewport = {seo[0].metaViewport}
+	canonicalURL = {seo[0].canonicalURL} />
 </svelte:head>
 <PageBanner title="{page.Title ? page.Title : 'Services'}" extraClass="services" subTitle="{page.Subheading ? page.Subheading : ''}"  banner="{url}{page.Cover.data[0].attributes.formats.large_x2.url ? page.Cover.data[0].attributes.formats.large_x2.url : page.Cover.data[0].attributes.url}"  />
 
