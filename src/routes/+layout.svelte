@@ -64,7 +64,6 @@
       NProgress.done();
     }
   }
-console.log();
   onMount(() => {
         const script = document.createElement('script');
         script.src = `https://www.googletagmanager.com/gtm.js?id=`+ data.fallback.data.attributes.Google_Tag_Manager;

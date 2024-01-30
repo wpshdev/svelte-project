@@ -447,7 +447,7 @@ let seodata = portfolio;
                 // width: 39rem;
             }
             p{
-                color: $primary-color;
+                color: $third-color;
                 font-weight: 500;
                 font-size: 1.5rem;
                 text-transform: uppercase;

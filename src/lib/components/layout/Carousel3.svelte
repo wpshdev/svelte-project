@@ -459,7 +459,7 @@ margin: 40px 0;
     p{
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: $primary-color;
+      color: $third-color;
       font-weight: 500;
     }
     h2{

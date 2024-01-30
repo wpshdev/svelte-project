@@ -67,7 +67,6 @@
 	onMount(() => {
 		loadingCursor();
 	});
-console.log(data.page.data.attributes);
 
 </script>
 <svelte:head>

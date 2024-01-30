@@ -282,7 +282,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: rgba(38, 58, 99, 0.5); /* Adjust color and opacity */
+			background-color: rgba(38, 58, 99, 0.7); /* Adjust color and opacity */
 			z-index: 0;
 		}
 		:global(.container){
@@ -309,7 +309,7 @@
 			}
 		}		
 		&__cwrapper{
-			max-width: 60rem;
+			max-width: 45rem;
 			margin: auto;
 			padding: 4rem 4rem 5rem 4rem;
 			box-shadow: 0px 0px 10px #444;

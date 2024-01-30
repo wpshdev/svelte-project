@@ -471,7 +471,7 @@ align-items: end;
 			}
 		}		
 		&__cwrapper{
-			max-width: 44rem;
+			max-width: 45rem;
 			margin: auto;
 			.h3{
 				text-transform: uppercase;

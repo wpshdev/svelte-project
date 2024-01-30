@@ -22,7 +22,6 @@
 	onMount(() => {
 		loadingCursor();
 	});
-console.log(data);
 </script>
 <svelte:head>
     <!-- <Seo metaTitle = {seodata.seo[0].metaTitle}
