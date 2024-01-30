@@ -435,8 +435,6 @@ export function scaleUp(node) {
     })
 }
 
-
-
 // slowDownSection
 
 export function slowDownSection(node) {
@@ -456,12 +454,6 @@ export function slowDownSection(node) {
     mm.add("(min-width: 769px)", () => { // 769px up
 
         const containerHeight = container.offsetHeight;
-
-        // if(window.innerWidth <= 1024) { // 1024 below
-        //     parentHeight = containerHeight * 2;
-        // } else { // desktop
-        //     parentHeight = containerHeight * 2.3;
-        // }
 
         parentHeight = containerHeight * 2;
 
