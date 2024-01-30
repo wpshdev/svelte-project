@@ -122,12 +122,13 @@ let clientY = null;
 function handleStart(event) {
     startX = event.clientX;
 }
+//HandleMove Handles the movement of X Axis movement and Disables redirects on Image a href.
 function handleMove(event){
   if(startX !== null){
     clientX = event.clientX;
     if(startX !== clientX){
       addNewClassToElements('zoomImg', 'disabled'); 
-      event.preventDefault();
+      // event.preventDefault();
     }
   }
 }
@@ -149,23 +150,23 @@ function removeClassFromElements(className, classToRemove) {
 }
 function touchvertical(e){
   startY = e.touches[0].clientY;
+  console.log(startY);
+  console.log("touch start");
 }
 function touchmovevertical(e){
-let clientY = e.touches[0].clientY;
-    if(startY > clientY){
-      const deltaY = startY - clientY;
-      if (Math.abs(deltaY) > 20) {
-        window.scrollBy(0, 20);
-        // startY = null; // Reset startY to allow horizontal swiping
-      }
-    }
-    if(startY < clientY){
-      const deltaY = clientY - startY;
-      if (Math.abs(deltaY) > 20) {
-        window.scrollBy(0, -20);
-        // startY = null; // Reset startY to allow horizontal swiping
-      }
-    }
+    // const deltaY = e.touches[0].clientY - startY;
+    const deltaY = e.touches[0].clientY - startY; // Calculate the change in Y position
+    window.scrollBy(0, -deltaY); // Adjust the scroll position based on the change in Y position
+    startY = e.touches[0].clientY;
+    // if (Math.abs(deltaY) > 10) {
+    //   addNewClassToElements('slides', 'disabled');
+    //   console.log("moving");
+    // }
+}
+function touchend(e){
+  startY = null;
+  removeClassFromElements('slides', 'disabled');
+  console.log("end"); 
 }
 </script>
 
@@ -189,7 +190,7 @@ let clientY = e.touches[0].clientY;
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" bind:this={siema} on:touchstart|passive={touchvertical} on:touchmove|passive={touchmovevertical} on:mouseup={handleStop}>
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" on:mouseup={handleStop} on:touchstart={touchvertical} on:touchmove={touchmovevertical} on:touchend={touchend} bind:this={siema}>
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
@@ -483,7 +484,6 @@ margin: 40px 0;
   transition-property: transform; /* Specify the property to transition */
   transition-timing-function: ease-in-out;
   position: relative;
-  user-drag: none;
   cursor: grab;
 white-space: nowrap;
 &__carousel-cell {

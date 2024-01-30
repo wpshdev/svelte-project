@@ -23,8 +23,8 @@ function handleScroll() {
     const scrollX = window.scrollX || window.pageXOffset; // Horizontal scroll position
     const scrollY = window.scrollY || window.pageYOffset; // Vertical scroll position
 
-    console.log("Scroll X:", scrollX);
-    console.log("Scroll Y:", scrollY);
+    // console.log("Scroll X:", scrollX);
+    // console.log("Scroll Y:", scrollY);
 }
 
 // Function to handle touch events
@@ -32,8 +32,8 @@ function handleTouchMove(event) {
     const touchX = event.touches[0].clientX; // Horizontal touch position
     const touchY = event.touches[0].clientY; // Vertical touch position
 
-    console.log("Touch X:", touchX);
-    console.log("Touch Y:", touchY);
+    // console.log("Touch X:", touchX);
+    // console.log("Touch Y:", touchY);
 }
 
 // Add event listeners for scroll and touchmove events
