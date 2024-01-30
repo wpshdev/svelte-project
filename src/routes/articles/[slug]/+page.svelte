@@ -1,8 +1,6 @@
 <script lang="ts">
     import { Form, FormGroup, Input, Label, Col, Container, Row } from 'sveltestrap';
     import Cta from '$lib/components/layout/Cta.svelte';
-	// import Animate from '$lib/components/Animate.svelte';
-    // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     export let data;
     const url = 'https://api.ulfbuilt.com';

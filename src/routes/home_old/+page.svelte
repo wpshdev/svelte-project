@@ -1,8 +1,6 @@
 <script lang="ts">
 	export let data;
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	// import Animate from "$lib/components/Animate.svelte";
-	// import Carousel from "$lib/components/layout/Carousel.svelte";
 	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
 	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 

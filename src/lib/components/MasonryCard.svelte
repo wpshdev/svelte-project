@@ -18,7 +18,6 @@ import noFeatured from "$lib/img/blog-empty.svg"
 // const columnSize = 0;
 // const columnSizeRatio = 0;
 import axios from 'axios';
-import Animate from "./Animate.svelte";
 export let id;
 export let addPagination;
 export let pageSize;

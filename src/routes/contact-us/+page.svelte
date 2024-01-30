@@ -3,8 +3,6 @@
     import { Form, FormGroup, Input, Label } from 'sveltestrap';
     import { Button } from 'sveltestrap';
     import PageBanner from '$lib/components/layout/PageBanner.svelte';
-    import Animate from '$lib/components/Animate.svelte';
-    // import { fade, fly } from 'svelte/transition';
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     const color = "darkblue";
     import { Col, Container, Row } from 'sveltestrap';

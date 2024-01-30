@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Animate from "$lib/components/Animate.svelte";
     import Cta from "$lib/components/layout/Cta.svelte";
     import PageBanner from "$lib/components/layout/PageBanner.svelte";
 	import { Col, Container, Row } from "sveltestrap";

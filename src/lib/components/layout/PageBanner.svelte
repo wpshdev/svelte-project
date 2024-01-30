@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Container, Row, Col } from "sveltestrap";
-	import { textAnimate, fly, fadeIn, fadeOut } from '$lib/GsapAnimation.js';
+	import { textAnimate, fly, fadeIn } from '$lib/GsapAnimation.js';
     export let banner;
 	export let customtop;
 	export let transparent;

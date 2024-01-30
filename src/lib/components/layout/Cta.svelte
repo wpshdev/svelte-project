@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { Col, Container, Row,  Accordion, AccordionItem } from "sveltestrap";
-	// import ctabg from "$lib/img/CTA-BG.svg";
 	import { onMount } from "svelte";
 	import axios from 'axios';
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
-	// import { fade, fly } from 'svelte/transition';
-	// import Animate from "$lib/components/Animate.svelte";
 	import { textAnimate, fly, fadeIn, slide, bgZoom } from '$lib/GsapAnimation.js';
 
 	const domain = "https://api.ulfbuilt.com"

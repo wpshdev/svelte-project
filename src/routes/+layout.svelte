@@ -9,7 +9,7 @@
     import Animate from "$lib/components/Animate.svelte";
 	import { afterNavigate, disableScrollHandling } from '$app/navigation'; 
     import { gsap } from 'gsap';
-    import ScrollSmoother from '$lib/ScrollSmoother.svelte';
+    // import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
     let isDesktop = false;
     onMount(() => {
@@ -104,7 +104,7 @@
     
 {#key $page}
   <!-- {#if isDesktop} -->
-    <ScrollSmoother>
+    <!-- <ScrollSmoother> -->
         <Animate>
             <main>
                     <slot>
@@ -115,7 +115,7 @@
                 <Footer />
             </footer>
         </Animate>
-    </ScrollSmoother>
+    <!-- </ScrollSmoother> -->
     <!-- {:else}
       <Animate>
           <main>

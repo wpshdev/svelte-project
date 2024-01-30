@@ -523,7 +523,7 @@ export function slowDownSection(node) {
                 trigger: '#' + parentElementID,
                 start: () => start + ' ' + window.innerHeight * 0.9,
                 end: () => '90% ' + window.innerHeight * 0.1,
-                // scrub: true, // Use scrub to smooth the animation
+                scrub: true, // Use scrub to smooth the animation
                 onEnter: () => {
                     gsap.to('#' + parentElementID, {
                         opacity: 1,

@@ -1,7 +1,5 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    // import { fade, fly } from 'svelte/transition';
-	// import Animate from "$lib/components/Animate.svelte";
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
 
     let flickityInstance;

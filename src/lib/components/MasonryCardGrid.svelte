@@ -4,7 +4,6 @@
     import { PUBLIC_STRAPI_API } from '$env/static/public';
     import { onMount } from 'svelte'
     import noFeatured from "$lib/img/blog-empty.svg"
-    import Animate from "./Animate.svelte";
     // const gap = 5;
     // const defaultDirection = "end";
     // const align = "end";
