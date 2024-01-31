@@ -151,14 +151,14 @@ let pageData = {
 </section>
 
 <section class="featured-projects mvw-10" id="featured-section">	
-	<Container class="featured-container">
+	<!-- <Container class="featured-container">
 		<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
 		heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
 		btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
 		btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 		featuredProjects={home.featuredProjects}>
 		</Carousel3>
-	</Container>
+	</Container> -->
 </section>
 
 <section class="flex-column-center" id="tnr">
