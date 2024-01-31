@@ -41,16 +41,16 @@ window.addEventListener('scroll', handleScroll);
 window.addEventListener('touchmove', handleTouchMove);
 
       if(isMobileDevice() == true) {
-        smoothValue = 0.5;
-        smoothTouchValue = 0.5;
+        smoothValue = 0;
+        smoothTouchValue = 0;
       } else {
         smoothValue = 2;
         smoothTouchValue = 1.5;
       }
       window.addEventListener('resize', () => {
         if(isMobileDevice() == true) {
-          smoothValue = 0.5;
-          smoothTouchValue = 0.5;
+          smoothValue = 0;
+          smoothTouchValue = 0;
         } else {
           smoothValue = 2;
           smoothTouchValue = 1.5;
