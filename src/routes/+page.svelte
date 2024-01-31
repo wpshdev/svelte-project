@@ -784,7 +784,6 @@ align-items: end;
 			padding-top: 20vw;
 		}
 		@include media-max(sm){
-			min-height: 50rem;
 			padding-top: unset;
 		}
 		&__content{
