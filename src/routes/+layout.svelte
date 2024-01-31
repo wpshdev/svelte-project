@@ -11,6 +11,11 @@
     import { gsap } from 'gsap';
     import ScrollSmoother from '$lib/ScrollSmoother.svelte';
 
+    import { isMobileDevice, isTabletDevice, isDesktopDevice } from '$lib/deviceUtils.ts';
+    console.log('Is mobile device:', isMobileDevice());
+    console.log('Is tablet device:', isTabletDevice());
+    console.log('Is desktop device:', isDesktopDevice());
+    
     let isDesktop = false;
     onMount(() => {
       isDesktop = window.innerWidth > 768;
@@ -104,6 +109,7 @@
     
 {#key $page}
   <!-- {#if isDesktop} -->
+  {#if isDesktopDevice()}
     <ScrollSmoother>
         <Animate>
             <main>
@@ -116,8 +122,19 @@
             </footer>
         </Animate>
     </ScrollSmoother>
-    <!-- {:else}
-      <Animate>
+    {:else}
+        <Animate>
+            <main>
+                    <slot>
+                
+                    </slot>
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </Animate>
+    {/if}
+    <!--   <Animate>
           <main>
                   <slot>
               
