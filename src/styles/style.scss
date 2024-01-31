@@ -11,6 +11,17 @@ body{
     font-size: 1.25rem;
     font-family: $secondary-font;
     overflow-x: hidden;
+        // -ms-overflow-style: none;
+        // scrollbar-width: none;
+}
+body::-webkit-scrollbar { 
+    // display: none;
+}
+main{
+    overflow-x: hidden;
+}
+.row{
+    --bs-gutter-x: 0;
 }
 h1,.h1{
     font-size: 5rem;
