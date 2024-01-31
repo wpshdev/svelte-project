@@ -73,9 +73,9 @@
         <Container class="mb-5 contact_inner__content">
             <Row>
                 <Col md="12">
-                    <h2 class="text-center text-animate secondary-font" in:textAnimate id="contact_heading" gsap-duration="1.5" gsap-start="top 90%">{data.contact.data.attributes.section1Title ? data.contact.data.attributes.section1Title : ''}</h2>
+                    <h2 class="text-center text-animate secondary-font" in:textAnimate id="contact_heading" gsap-duration="1" gsap-start="top 90%">{data.contact.data.attributes.section1Title ? data.contact.data.attributes.section1Title : ''}</h2>
                     <h4 class="text-center pfont">{data.contact.data.attributes.Section1SubAuthor ? '-' : ''} <span class="ptc"><i>{data.contact.data.attributes.Section1SubAuthor ? data.data.attributes.Section1SubAuthor : ''}</i></span></h4>
-                    <p class="two-columns pt-3" in:fadeIn id="contact_content" gsap-duration="1.5" gsap-delay="0.5" gsap-start="top 90%">{@html data.contact.data.attributes.Subheading2 ? data.contact.data.attributes.Subheading2 : ''}</p>
+                    <p class="two-columns pt-3" in:fadeIn id="contact_content" gsap-duration="1" gsap-delay="0" gsap-start="top 90%">{@html data.contact.data.attributes.Subheading2 ? data.contact.data.attributes.Subheading2 : ''}</p>
                 </Col>
             </Row>
         </Container>
@@ -86,7 +86,7 @@
             <Row>
                 <Col md="4" class="flex-vcenter">
                     <!-- <Animate> -->
-                    <div in:slide id="contact_detail" gsap-duration="1.5" gsap-x="-5" gsap-start="top 90%">
+                    <div in:slide id="contact_detail" gsap-duration="1" gsap-x="-5" gsap-start="top 90%">
                         <h4 class="ptc pfont">{data.contact.data.attributes.office_address_title ? data.contact.data.attributes.office_address_title : ''}</h4>
                         <h4 class="stc pb-5">{@html office_address ? office_address : ''}</h4>
                         <h4 class="ptc pfont">{data.contact.data.attributes.mailing_address_title ? data.contact.data.attributes.mailing_address_title : ''}</h4>
@@ -98,7 +98,7 @@
                 </Col>
                 <Col md="8">
                     <!-- <Animate> -->
-                        <iframe title="ULF BUILT" gsap-start="top 90%" in:fadeIn id="contact_map" gsap-duration="1.5" src="{data.contact.data.attributes.map_url ? data.contact.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe title="ULF BUILT" gsap-start="top 90%" in:fadeIn id="contact_map" gsap-duration="1" src="{data.contact.data.attributes.map_url ? data.contact.data.attributes.map_url : 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12289.756932100185!2d-106.59873028576666!3d39.63982841472373!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8741d9050f708981%3A0x28a8cd6309f12845!2sULFBUILT!5e0!3m2!1sen!2sin!4v1681880274611!5m2!1sen!2sin'}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <!-- </Animate> -->
                 </Col>
             </Row>
@@ -108,8 +108,8 @@
     <div class="contact-img" style="background-image: url({url}{data.contact.data.attributes.formcover.data.attributes.formats.large.url ? data.contact.data.attributes.formcover.data.attributes.formats.large.url : data.data.attributes.formcover.data.attributes.url});">
     <div class="contact-box container-fluid">
                 <div class="contact-form border-radius">
-                    <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-start="center bottom" gsap-duration="1.5">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
-                    <div in:fadeIn id="form_cont" gsap-start="center bottom" gsap-duration="1.5">
+                    <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-start="center bottom" gsap-duration="1">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
+                    <div in:fadeIn id="form_cont" gsap-start="center bottom" gsap-duration="1">
                         <Form method="post">
                             <FormGroup class="input-icon-box">
                                 <Input class="input-user" placeholder="Full Name" bind:value={name} />

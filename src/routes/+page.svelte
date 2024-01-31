@@ -182,7 +182,7 @@ let pageData = {
 </section>
 
 
-<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 90%">
+<section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 95%">
 		<Container class="reputation_child">
 			<Row>
 				<Col md="7" class="">
@@ -208,7 +208,7 @@ let pageData = {
 		</Container>
 </section>
 
-<section class="process" in:slowDownSection id="process-section" gsap-start="top 90%">
+<section class="process" in:slowDownSection id="process-section" gsap-start="top 95%">
 	<Container>
 		<Row>
 			<Col md="6" class="">
@@ -244,7 +244,7 @@ let pageData = {
 </section>
 
 
-<section class="story" in:slowDownSection id="story-section" gsap-start="top 90%">
+<section class="story" in:slowDownSection id="story-section" gsap-start="top 95%">
 		<Container>
 			<Row>
 				<Col md="7" class="">
@@ -252,7 +252,7 @@ let pageData = {
 						<div class="story__content__wrapper">
 							<p class="pre-head" in:slide id="story-preheading" gsap-duration="1">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
 							<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
-							<div in:fly id="story-cont" class="text-justify" gsap-delay="0" gsap-duration="1.2"  gsap-y="30">
+							<div in:fly id="story-cont" class="text-justify" gsap-delay="0" gsap-duration="1"  gsap-y="30">
 								{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 							</div>
 
