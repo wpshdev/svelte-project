@@ -148,7 +148,7 @@ function touchvertical(e){
 function touchmovevertical(e){
     // const deltaY = e.touches[0].clientY - startY;
     const deltaY = e.touches[0].clientY - startY; // Calculate the change in Y position
-    // window.scrollBy(0, -deltaY); // Adjust the scroll position based on the change in Y position
+    window.scrollBy(0, -deltaY); // Adjust the scroll position based on the change in Y position
     startY = e.touches[0].clientY;
     if (Math.abs(deltaY) > 10) {
       addNewClassToElements('slides', 'disabled');
