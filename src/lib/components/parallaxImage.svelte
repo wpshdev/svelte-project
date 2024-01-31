@@ -24,14 +24,14 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     });
 
     // Initialize ScrollTrigger
-    ScrollTrigger.create({
-      trigger: parallaxImageCont,
-      start: "top bottom",
-      end: "bottom top",
-      // markers: true,
-      scrub: true,
-      animation: tl,
-    });
+    // ScrollTrigger.create({
+    //   trigger: parallaxImageCont,
+    //   start: "top bottom",
+    //   end: "bottom top",
+    //   // markers: true,
+    //   scrub: true,
+    //   animation: tl,
+    // });
 
   });
 </script>
