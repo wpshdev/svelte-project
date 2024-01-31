@@ -168,9 +168,9 @@ let pageData = {
 		<div class="tnr__wrapper">
 			<Container>
 				<div class="tnr__wrapper__captions">
-					<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1.5">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+					<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
 					<p in:slide id="tnr-preheading" gsap-duration="1">{@html home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
-					<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2"  gsap-y="50">
+					<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2" gsap-y="50">
 						<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
 							{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
 						</a>
@@ -223,7 +223,7 @@ let pageData = {
 			<Col md="7" class="">
 					<div class="process__content containerimg2">
 						<div class="process__content__wrapper">
-							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1.5">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
+							<p class="pre-head" in:slide id="process-preheading" gsap-duration="1">{home.ourProcessPreHeading ? home.ourProcessPreHeading : ''}</p>
 							<h2 class="text-animate secondary-font" in:textAnimate gsap-duration="1" id="process-heading">{home.ourProcessHeading ? home.ourProcessHeading : ''}</h2>
 							<div in:fly id="process-cont" class="text-justify" gsap-duration="1.2"  gsap-delay="1" gsap-y="30">
 								{@html home.ourProcessParagraph ? home.ourProcessParagraph : ''}
@@ -250,9 +250,9 @@ let pageData = {
 				<Col md="7" class="">
 					<div class="story__content">
 						<div class="story__content__wrapper">
-							<p class="pre-head" in:slide id="story-preheading" gsap-duration="1.5">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
+							<p class="pre-head" in:slide id="story-preheading" gsap-duration="1">{home.ourStoryPreHeading ? home.ourStoryPreHeading : ''}</p>
 							<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
-							<div in:fly id="story-cont" class="text-justify" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
+							<div in:fly id="story-cont" class="text-justify" gsap-delay="0" gsap-duration="1.2"  gsap-y="30">
 								{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
 							</div>
 
