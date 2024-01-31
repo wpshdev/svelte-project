@@ -37,7 +37,7 @@
 	
 	$: pips = controller ? controller.innerElements : []
 	$: currentPerPage = controller ? controller.perPage : perPage
-	$: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
+	// $: totalDots = controller ? Math.ceil(controller.innerElements.length / currentPerPage) : []
 	
 	onMount(() => {
 		controller = new Siema({
@@ -48,19 +48,11 @@
   			easing,
   			startIndex,
   			draggable,
- 			multipleDrag,
+ 			  multipleDrag,
   			threshold,
   			rtl,
 			onChange: handleChange
 		})
-		
-		// if(autoplay) {
-		// 	timer = setInterval(right, autoplay);
-		// }
-		// return () => {
-		// 	autoplay && clearInterval(timer)
-		// 	controller.destroy()
-		// }
 	})
 	
 	export function isDotActive (currentIndex, dotIndex) {
@@ -158,10 +150,11 @@ function touchmovevertical(e){
     const deltaY = e.touches[0].clientY - startY; // Calculate the change in Y position
     window.scrollBy(0, -deltaY); // Adjust the scroll position based on the change in Y position
     startY = e.touches[0].clientY;
-    // if (Math.abs(deltaY) > 10) {
-    //   addNewClassToElements('slides', 'disabled');
-    //   console.log("moving");
-    // }
+    if (Math.abs(deltaY) > 10) {
+      addNewClassToElements('slides', 'disabled');
+      console.log("moving");
+    }
+      console.log("moving");
 }
 function touchend(e){
   startY = null;
@@ -190,7 +183,7 @@ function touchend(e){
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" on:mouseup={handleStop} on:touchstart={touchvertical} on:touchmove={touchmovevertical} on:touchend={touchend} bind:this={siema}>
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" on:mouseup={handleStop} bind:this={siema} on:touchstart={touchvertical} on:touchmove={touchmovevertical} on:touchend={touchend}>
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
