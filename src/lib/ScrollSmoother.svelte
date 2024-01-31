@@ -40,8 +40,6 @@ function handleTouchMove(event) {
 window.addEventListener('scroll', handleScroll);
 window.addEventListener('touchmove', handleTouchMove);
 
-
-
       if(isMobileDevice() == true) {
         smoothValue = 0.5;
         smoothTouchValue = 0.5;
@@ -68,7 +66,6 @@ window.addEventListener('touchmove', handleTouchMove);
         smoothTouch: smoothTouchValue,
       });
     });
-    
 
   </script>
   
