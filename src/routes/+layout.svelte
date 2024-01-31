@@ -109,7 +109,7 @@
     
 {#key $page}
   <!-- {#if isDesktop} -->
-  {#if isDesktopDevice()}
+  {#if isDesktopDevice() }
     <ScrollSmoother>
         <Animate>
             <main>
