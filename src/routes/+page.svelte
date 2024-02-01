@@ -659,11 +659,13 @@ align-items: end;
 	.tnr__mobile{
 		display: none;
 		@include media-max(ipadmini){
-			padding: 3rem;
 			display:block;
 		}
 		@include media-max(sm){
 			display:block;
+		}
+		#tnr-preheading{
+			text-align: justify;
 		}	
 	}
 	#tnr {
