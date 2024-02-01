@@ -3,7 +3,7 @@
   // Import Svelte dependencies
   import { onMount } from "svelte";
   import {gsap}  from "gsap/dist/gsap";        
-import {ScrollTrigger} from "gsap/dist/ScrollTrigger";  
+  import {ScrollTrigger} from "gsap/dist/ScrollTrigger";  
 
   let parallaxImage;
   let parallaxImageCont;
@@ -24,14 +24,14 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     });
 
     // Initialize ScrollTrigger
-    // ScrollTrigger.create({
-    //   trigger: parallaxImageCont,
-    //   start: "top bottom",
-    //   end: "bottom top",
-    //   // markers: true,
-    //   scrub: true,
-    //   animation: tl,
-    // });
+    ScrollTrigger.create({
+      trigger: parallaxImageCont,
+      start: "top bottom",
+      end: "bottom top",
+      // markers: true,
+      scrub: true,
+      animation: tl,
+    });
 
   });
 </script>
