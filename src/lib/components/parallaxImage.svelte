@@ -55,7 +55,7 @@ style="--height: {imageHeight}vh">
   .parallax-with-overlay{
 				.parallax-img {
           @include media-max(sm){
-            min-width: 1300px;
+            // min-width:00px;
           }
 				}
 				&::after {
@@ -76,13 +76,14 @@ style="--height: {imageHeight}vh">
       height: 70vh;
     }
     @include media-max(sm){
-      height: 80vh;
+      height: 40vh;
     }
   }
 
   .parallax-img {
     width: 100%;
-    height: auto;
+    height: 180%;
+    object-fit: cover;
     min-width: 1000px;
     position: absolute;
     top: 0;
@@ -94,6 +95,10 @@ style="--height: {imageHeight}vh">
     @include media-max(sm){
       left: 50%;
       margin-left: -500px;
+      min-width: 100px;
+      width: auto;
+      height: 180%;
+      object-fit: cover;
     }
   }
 </style>

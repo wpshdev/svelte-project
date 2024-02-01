@@ -180,6 +180,19 @@ let pageData = {
 		</div>
 	</div>
 </section>
+<section class="tnr__mobile">
+		<Container>
+			<div class="tnr__wrapper__captions">
+				<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
+				<p in:slide id="tnr-preheading" gsap-duration="1">{@html home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
+				<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2" gsap-y="50">
+					<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+						{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
+					</a>
+				</div>
+			</div>
+		</Container>
+</section>
 
 
 <section class="reputation" in:slowDownSection id="reputation-section" gsap-start="top 95%">
@@ -643,7 +656,16 @@ align-items: end;
             }
         }
 	}
-
+	.tnr__mobile{
+		display: none;
+		@include media-max(ipadmini){
+			padding: 3rem;
+			display:block;
+		}
+		@include media-max(sm){
+			display:block;
+		}	
+	}
 	#tnr {
 		// display: grid;
 		// align-items: center;
@@ -673,19 +695,8 @@ align-items: end;
     			text-align: right;
 			}
 			@include media-max(sm){
-				// height: 80vh;
 				margin-bottom: 0;
 			}
-			// &::before{
-			// 	content: "";
-			// 	position: absolute;
-			// 	top: 0;
-			// 	left: 0;
-			// 	right: 0;
-			// 	bottom: 0;
-			// 	background-color: rgba(0, 0, 0, 0.5);			
-			// 	z-index: 1;
-			// }
 			.tnr__wrapper{
 				z-index: 2;
 				position: absolute;
@@ -703,11 +714,13 @@ align-items: end;
 					flex-direction: column;
 					@include media-max(ipadmini){
 						padding: 3rem;
+						display:none;
 					}
 					@include media-max(sm){
 						padding: 1rem;
 						position: absolute;
 						bottom: 0;
+						display:none;
 					}
 					#tnr-preheading{
 						max-width: 44rem;
