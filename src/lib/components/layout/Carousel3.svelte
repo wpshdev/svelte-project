@@ -55,10 +55,10 @@
 		})
 	})
 	
-	export function isDotActive (currentIndex, dotIndex) {
-        if (currentIndex < 0) currentIndex = pips.length + currentIndex;
-        return currentIndex >= dotIndex*currentPerPage && currentIndex < (dotIndex*currentPerPage)+currentPerPage
-    }
+	// export function isDotActive (currentIndex, dotIndex) {
+  //       if (currentIndex < 0) currentIndex = pips.length + currentIndex;
+  //       return currentIndex >= dotIndex*currentPerPage && currentIndex < (dotIndex*currentPerPage)+currentPerPage
+  // }
 	
 	export function left () {
 		controller.prev()
@@ -83,6 +83,7 @@
 	}
 	
 	function handleChange (event) {
+    console.log(controller.currentSlide);
 		currentIndex = controller.currentSlide
 		dispatch('change', {
 			currentSlide: controller.currentSlide,
@@ -184,48 +185,6 @@ function touchend(e){
 <Col md=9 class="carousel-section">
     <div class="carousel">
         <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" on:mouseup={handleStop} bind:this={siema}>
-{#each featuredProjects.data as project, index}
-<div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
-    {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
-    sizes="(max-width: 768px) 1024px"/>
-    {:else}
-    {#await promise}
-    {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
-      sizes="(max-width: 768px) 1024px">
-    {/await}
-    {/if}
-    <div class="slider-container__carousel-cell__text">
-      <span>{('0' + (index + 1)).slice(-2)}</span>
-      {project.attributes.title ? project.attributes.title : ''}
-      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-    </div>
-  </a>  
-</div>
-{/each}
-{#each featuredProjects.data as project, index}
-<div class="slider-container__carousel-cell" id="carousel-item">
-  <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
-    {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
-    sizes="(max-width: 768px) 1024px"/>
-    {:else}
-    {#await promise}
-    {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
-      sizes="(max-width: 768px) 1024px">
-    {/await}
-    {/if}
-    <div class="slider-container__carousel-cell__text">
-      <span>{('0' + (index + 1)).slice(-2)}</span>
-      {project.attributes.title ? project.attributes.title : ''}
-      <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29004 12.3459L6.29004 6.84595L1.29004 1.34595" stroke="#00ADEE" stroke-width="2" stroke-linecap="round"/></svg></i>
-    </div>
-  </a>  
-</div>
-{/each}
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
