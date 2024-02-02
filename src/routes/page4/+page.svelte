@@ -34,7 +34,7 @@ on:emblaInit="{onInit}">
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .embla {
     overflow: hidden;
   }
@@ -42,8 +42,14 @@ on:emblaInit="{onInit}">
     display: flex;
   }
   .embla__slide {
-    flex: 0 0 300px;
+    flex: 0 0 40%;
     min-width: 0;
+    @include media-max(ipadmini){
+      flex: 0 0 50%;
+    }
+    @include media-max(sm){
+      flex: 0 0 100%;
+    }
   }
   .embla img{
     height: 300px;
