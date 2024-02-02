@@ -189,12 +189,12 @@ function touchend(e){
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
     {#if project.attributes.featuredImage.data != null}
-      <img loading="lazy" draggable="false" src="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
+      <img loading="eager" draggable="false" src="{domain + project.attributes.featuredImage.data.attributes.formats.large.url || domain + project.attributes.featuredImage.data.attributes.url}" alt="{project.attributes.featuredImage.data.attributes.alternativeText ? project.attributes.featuredImage.data.attributes.alternativeText : "Image"}" srcset="{domain}{project.attributes.featuredImage.data.attributes.formats.medium.url ? project.attributes.featuredImage.data.attributes.formats.medium.url : project.attributes.featuredImage.data.attributes.url} 768w"
     sizes="(max-width: 768px) 1024px"/>
     {:else}
     {#await promise}
     {:then fallback} 
-      <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
+      <img loading="eager" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title ? project.attributes.title : "Image"}" draggable="false" srcset="{fallback ? domain+fallback.attributes.url : noFeatured} 768w"
       sizes="(max-width: 768px) 1024px">
     {/await}
     {/if}
