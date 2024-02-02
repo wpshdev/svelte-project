@@ -305,7 +305,6 @@ white-space: nowrap;
   }   
   @include media-max(sm){
     height: 50vh;
-    margin-right: 1rem;
   }   
   &__text{
         background-color: $secondary-color;
