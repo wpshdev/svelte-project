@@ -209,7 +209,6 @@
 	}
   &__content{
 	padding-top: 4vw;
-	// border-top: 1px solid #ACA7A7;
 	border-top: 1px solid #4e4e4e;
 	
 	z-index: 1;
@@ -228,7 +227,7 @@
 	  font-weight: 500;
     }
     h2{
-	  margin: 1rem 0;
+	  margin: 0 0 1rem 0;
 	  font-size: 4rem;
 	  color: $white-color;
 	  justify-content: center;
@@ -236,19 +235,22 @@
 		font-size: 2.5rem;
 	  }
     }
+	:global(#single-portfolio-cont p){
+		margin-bottom: 1.5rem;
+		line-height: 1.4;
+	}
 	:global(p){
 		line-height: 2;
 		max-width: 800px;
     	margin: 0 auto;	
-		color: $white-color;	
-		margin-bottom: 1.5rem;
+		color: $white-color;
 	}
   }
 }
 
 :global(.portfolio-gallery__slider) {
 	@include media-max(ipadmini){
-		min-height: 500vh;
+		
 	}
 }
 

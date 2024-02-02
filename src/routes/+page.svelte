@@ -181,17 +181,19 @@ let pageData = {
 	</div>
 </section>
 <section class="tnr__mobile">
+	<Row>
 		<Container>
 			<div class="tnr__wrapper__captions">
 				<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
 				<p in:slide id="tnr-preheading" gsap-duration="1">{@html home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
 				<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2" gsap-y="50">
-					<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary">
+					<a href="{home.midBanner.btnUrl ? home.midBanner.btnUrl : '#'}" class="btn btn-secondary text-center">
 						{home.midBanner.btnTitle ? home.midBanner.btnTitle : 'Button'}
 					</a>
 				</div>
 			</div>
 		</Container>
+	</Row>
 </section>
 
 

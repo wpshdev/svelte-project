@@ -162,7 +162,22 @@ function lazy(node, data) {
 body {
     overflow-x: hidden;
 }
-  
+:global(.download){
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        // display: none;
+        opacity: 0;
+        transition: 1s;
+        @include media-max(ipadmini){
+          display: block;
+          opacity: 1;
+        }
+        @include media-max(sm){
+          
+          opacity: 1;
+        }
+      } 
 .slider-container {
   display: flex;
   width: 150vw;
@@ -183,14 +198,7 @@ body {
         min-width: 20rem;
         height: 77vh;
       }
-      .download{
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        // display: none;
-        opacity: 0;
-        transition: 1s;
-      }
+
     }
     @include media-max(ipadmini){
       margin: 1rem 0;

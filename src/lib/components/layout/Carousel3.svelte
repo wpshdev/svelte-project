@@ -23,7 +23,7 @@
 	export let easing = 'ease-out';
 	export let startIndex = 0;
 	export let draggable = true
-	export let multipleDrag = false;	
+	export let multipleDrag = true;	
 	export let dots = false;
 	export let controls = false;
 	export let threshold = 20;
@@ -43,7 +43,7 @@
 		controller = new Siema({
 			selector: siema,
 			perPage: typeof perPage === 'object' ? perPage : Number(perPage),
-			loop,
+			  loop,
   			duration,
   			easing,
   			startIndex,
@@ -83,7 +83,7 @@
 	}
 	
 	function handleChange (event) {
-    console.log(controller.currentSlide);
+    console.log(controller);
 		currentIndex = controller.currentSlide
 		dispatch('change', {
 			currentSlide: controller.currentSlide,
@@ -184,7 +184,7 @@ function touchend(e){
   </Col>
 <Col md=9 class="carousel-section">
     <div class="carousel">
-        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" on:mouseup={handleStop} bind:this={siema}>
+        <div class="slides" in:fly id="carousel-image-container" gsap-duration="1" gsap-y="10" gsap-start="top 90%" on:mouseup={handleStop} on:touchstart|passive={touchvertical}  on:touchmove|passive={touchmovevertical} on:touchend|passive={touchend} bind:this={siema}>
 {#each featuredProjects.data as project, index}
 <div class="slider-container__carousel-cell" id="carousel-item">
   <a href="/portfolio/{project.attributes.slug ? project.attributes.slug : '#'}" data-sveltekit-reload class="zoomImg" draggable="false" on:mousedown={handleStart} on:mousemove={handleMove} on:mouseup={handleStop}>
