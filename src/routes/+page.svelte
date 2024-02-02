@@ -3,7 +3,7 @@
 	import { lazyLoad } from '$lib/components/lazyload.js'
 	import { Col, Container, Row } from "sveltestrap";
 	import Seo from "$lib/components/Seo.svelte";
- 	import Carousel3 from "$lib/components/layout/Carousel3.svelte";
+ 	import Carousel4 from "$lib/components/layout/Carousel4.svelte";
 	import ParallaxImage from "$lib/components/parallaxImage.svelte";
 	import Cta from "$lib/components/layout/Cta.svelte";
 	import PageBanner from "$lib/components/layout/PageBanner.svelte";
@@ -152,12 +152,12 @@ let pageData = {
 
 <section class="featured-projects mvw-10" id="featured-section">	
 	<Container class="featured-container">
-		<Carousel3 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
+		<Carousel4 preHeading={home.featuredProjectsPreHeading ? home.featuredProjectsPreHeading : ''} 
 		heading={home.featuredProjectsHeading ? home.featuredProjectsHeading : ''} 
 		btnTitle={home.featurePropertyBtnTitle ? home.featurePropertyBtnTitle : 'Button'}
 		btnUrl={home.featuredPropertyBtnUrl ? home.featuredPropertyBtnUrl : '#'}
 		featuredProjects={home.featuredProjects}>
-		</Carousel3>
+		</Carousel4>
 	</Container>
 </section>
 
