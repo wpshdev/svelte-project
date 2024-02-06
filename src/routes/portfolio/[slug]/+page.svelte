@@ -388,6 +388,9 @@
 	background-color: #E5EEF2;
 	padding: 5rem 0;
 	margin-bottom: 0;
+	:global(.col-md-6){
+            padding: 0.5rem;
+        }
 	@include media-max(xs){
 		padding: 5rem 1rem;
 	}		

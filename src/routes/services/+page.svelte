@@ -558,6 +558,9 @@
         background-color: #E5EEF2;
         padding: 5rem 1rem;
         margin-bottom: 0;
+        :global(.col-md-6){
+            padding: 0.5rem;
+        }
         @include media-between(xs, md){
             padding-left: 0;
             padding-right: 0;
