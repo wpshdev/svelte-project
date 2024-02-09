@@ -246,7 +246,6 @@ $: {
                 font-size: 1.2rem;
                 margin: 0 0.8rem 0;
                 @include media-max(sm){
-                    margin: 0;
                     // font-size: 0.6rem;
                 }                
             }

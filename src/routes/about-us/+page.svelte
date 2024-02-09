@@ -401,6 +401,8 @@
         background-position: top !important;
     } 
     .about-heading{
+        margin: 5rem 0;
+        // margin-top: 20vw;
         min-height: 70vh;
 		display: flex;
 		align-items: center;
@@ -568,6 +570,9 @@
     }
     #cd-section1{
         margin-top: -7.5rem;
+        @include media-max(xs){
+            margin: 2rem 0;
+        }
     }
     .remodel {
         margin-top: unset;

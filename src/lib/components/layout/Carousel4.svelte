@@ -47,7 +47,6 @@
         <button class="right" on:click={handleNextClick}>
             <img loading="lazy" src="{rightar}" alt="right">
         </button>
-        
     </div>
     </div>
   </Col>
@@ -305,7 +304,7 @@ white-space: nowrap;
               font-size: 1.2rem;
               margin: 0 1.25rem 0 .8rem;
               @include media-max(sm){
-                  margin: 0;
+                  // margin: 0;
                   // font-size: 0.6rem;
               }                
           }

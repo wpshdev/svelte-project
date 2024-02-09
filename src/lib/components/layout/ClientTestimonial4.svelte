@@ -2,7 +2,8 @@
 	import { textAnimate } from '$lib/GsapAnimation';
 	import { onMount } from 'svelte';
 	import { Container } from 'sveltestrap';
-	
+    import leftar from '$lib/img/left-ar.svg';
+    import rightar from '$lib/img/right-ar.svg';
     export let clientTestimonials;
     export let testimonialHeading;
 
@@ -41,14 +42,23 @@
     </div>
     {/each}
     </div>
+    <div class="left-right desktop">
+        <button class="left" on:click={handlePrevClick}>
+            <img loading="lazy" src="{leftar}" alt="left">
+        </button>
+        <button class="right" on:click={handleNextClick}>
+            <img loading="lazy" src="{rightar}" alt="right">
+        </button>
+    </div>
 </div>
 </Container>
 
 </section>
 
 <style lang="scss">
-    .embla {
+.embla {
     overflow: hidden;
+    position: relative;
   }
   .embla__container {
     display: flex;
@@ -62,6 +72,22 @@
     @include media-max(sm){
       flex: 0 0 100%;
     }
+  }
+  .left, .right{
+    max-width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 0;
+  }
+  .left{
+    left: 0;
+  }
+  .right{
+    right: 0;
   }
     :global(#clientSays){
         background:  linear-gradient(180deg, rgba(255, 255, 255, 0) -40.92%, rgba(239, 239, 240, 0.83) 36.13%, #FFFFFF 76.97%, rgba(255, 255, 255, 0) 137.31%);

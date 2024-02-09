@@ -198,10 +198,7 @@ onMount(async () => {
                 span{
                     color: $primary-color;
                     font-size: 1.2rem;
-                    margin: 0 0.8rem 0;
-                    @include media-max(sm){
-                        margin: 0;
-                    }                
+                    margin: 0 0.8rem 0;              
                 }
                 i{
                 position: absolute;
