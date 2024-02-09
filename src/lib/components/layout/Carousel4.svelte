@@ -2,6 +2,7 @@
     import { textAnimate, slide, fly } from '$lib/GsapAnimation.js';
     import leftar from '$lib/img/left-ar.svg';
     import rightar from '$lib/img/right-ar.svg';
+    // import rightarrow from '$lib/img/right-arrow-sky.svg';
     import {Row,Col} from 'sveltestrap';
 	  const domain = "https://api.ulfbuilt.com";
     export let preHeading; 
@@ -14,7 +15,17 @@
   let emblaApi
   let options = { align: 'start', loop: true }
   
+  function handlePrevClick() {
+    if (emblaApi && emblaApi.canScrollPrev()) {
+      emblaApi.scrollPrev();
+    }
+  }
 
+  function handleNextClick() {
+    if (emblaApi && emblaApi.canScrollNext()) {
+      emblaApi.scrollNext();
+    }
+  }
   function onInit(event) {
     emblaApi = event.detail
     console.log(emblaApi.slideNodes()) // Access API
@@ -29,15 +40,15 @@
         <p in:slide id="carousel-preheading" gsap-duration="1.5">{preHeading ? preHeading : ''}</p>
         <h2 class="text-animate secondary-font" in:textAnimate id="carousel-heading">{heading ? heading : ''}</h2>
       </div>
-    <!-- <div class="left-right desktop">
-        <button class="left" on:click={left}>
-            <img loading="lazy" src="{leftar}" alt="left">
+    <div class="left-right desktop">
+        <button class="left">
+            <img loading="lazy" src="{leftar}" alt="left" on:click={handlePrevClick}>
         </button>
-        <button class="right" on:click={right}>
-            <img loading="lazy" src="{rightar}" alt="right">
+        <button class="right">
+            <img loading="lazy" src="{rightar}" alt="right" on:click={handleNextClick}>
         </button>
         
-    </div> -->
+    </div>
     </div>
   </Col>
 <Col md=9 class="carousel-section">
@@ -74,47 +85,8 @@
   </div>
 </div>
 
-
-    <!-- <button class="left-mobil" name="left-mobil" on:click={left}>
-        <img loading="lazy" src="{rightarrow}" width="30" height="30" alt="left">
-    </button>
-    <button class="right-mobil" name="right-mobil" on:click={right}>
-        <img loading="lazy" src="{rightarrow}" width="30" height="30" alt="right">
-    </button> -->
 </Col>
 </Row>
-  <!-- <div class="slider-caption">
-    <div class="left-right mobile">
-        <button class="left" on:click={left}>
-            <img loading="lazy" src="{leftar}">
-        </button>
-        <button class="right" on:click={right}>
-            <img loading="lazy" src="{rightar}">
-        </button>
-    </div>
-  </div> -->
-
-
-    <!-- <div class="carousel">
-	<div class="slides" bind:this={siema}>
-		<slot></slot>
-	</div> -->
-	<!-- {#if controls}
-	  <button class="left" on:click={left} aria-label="left">
-		  <slot name="left-control"></slot>
-	  </button>
-	  <button class="right" on:click={right} aria-label="right">
-		  <slot name="right-control"></slot>
-	  </button>
-	{/if} -->
-    <!-- {#if dots}
-         use:resetInterval={autoplay}
-	<ul>
-		{#each {length: totalDots} as _, i}
-		<li on:click={() => go(i*currentPerPage)} class={isDotActive(currentIndex, i) ? "active" : ""}></li>
-		{/each}
-	</ul>
-    {/if} -->
 
 
 <style lang="scss">
@@ -223,9 +195,10 @@ margin: 40px 0;
 }
 .left, .right{
   border: 0px;
-  padding: 1rem;
   background-color: transparent;
   margin: 0px;
+  height: 60px;
+    width: 60px;
 }
 .left-right img{
   height: 30px;
