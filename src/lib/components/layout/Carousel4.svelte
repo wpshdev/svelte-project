@@ -41,11 +41,11 @@
         <h2 class="text-animate secondary-font" in:textAnimate id="carousel-heading">{heading ? heading : ''}</h2>
       </div>
     <div class="left-right desktop">
-        <button class="left">
-            <img loading="lazy" src="{leftar}" alt="left" on:click={handlePrevClick}>
+        <button class="left" on:click={handlePrevClick}>
+            <img loading="lazy" src="{leftar}" alt="left">
         </button>
-        <button class="right">
-            <img loading="lazy" src="{rightar}" alt="right" on:click={handleNextClick}>
+        <button class="right" on:click={handleNextClick}>
+            <img loading="lazy" src="{rightar}" alt="right">
         </button>
         
     </div>
