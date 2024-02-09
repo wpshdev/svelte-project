@@ -5,7 +5,7 @@
     import Seo from "$lib/components/Seo.svelte";
 	import PageBanner from '$lib/components/layout/PageBanner.svelte';
     import Contactform from '$lib/components/layout/Contactform.svelte';
-    import ClientTestimonial from '$lib/components/layout/ClientTestimonial3.svelte';
+    import ClientTestimonial from '$lib/components/layout/ClientTestimonial4.svelte';
     import locbg from "$lib/img/blueBackground.webp";
     import {page} from '$app/stores';
     export let data;
