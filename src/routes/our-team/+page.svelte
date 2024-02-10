@@ -184,12 +184,14 @@
             position: relative;
             margin-top: 1.5rem;
             cursor: pointer;
-            min-height: 26rem;
+            // min-height: 26rem;
             @include media-max(ipadmini){
                 min-height: 26vh;
             }
             p{
                 color: #ACA7A7;
+                margin:0px;
+                line-height: 1.5rem;
             }
             &:hover{
                 a{
@@ -342,6 +344,9 @@
 }
 :global(.team-member-part .row .col-md-6:nth-child(odd)){
     margin-top: -100px;
+}
+:global(.team-member-part .row){
+    --bs-gutter-x: 1.5rem;
 }
 .memberModal {
     display: flex;
