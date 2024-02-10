@@ -30,7 +30,7 @@
 </script>
 <section class="our_client_say">
     <h2 class="text-animate secondary-font" in:textAnimate id="testimonial-heading" gsap-duration="1" >{testimonialHeading ? testimonialHeading : 'Our Clients say...'}</h2>
-<Container>
+
     <div class="embla"
     use:emblaCarouselSvelte="{{ options }}"
     on:emblaInit="{onInit}">
@@ -43,21 +43,24 @@
     {/each}
     </div>
     <div class="left-right desktop">
-        <button class="left" on:click={handlePrevClick}>
+      <div class="button-left" on:click={handlePrevClick}>
+        <button class="left-arrow">
             <img loading="lazy" src="{leftar}" alt="left">
         </button>
-        <button class="right" on:click={handleNextClick}>
+      </div>
+      <div class="button-right" on:click={handleNextClick}>
+        <button class="right-arrow">
             <img loading="lazy" src="{rightar}" alt="right">
         </button>
+      </div>
     </div>
 </div>
-</Container>
+
 
 </section>
 
 <style lang="scss">
 .embla {
-    overflow: hidden;
     position: relative;
   }
   .embla__container {
@@ -65,6 +68,7 @@
   }
   .embla__slide {
     flex: 0 0 80%;
+    max-width: 80rem;
     min-width: 0;
     @include media-max(ipadmini){
       flex: 0 0 50%;
@@ -73,21 +77,43 @@
       flex: 0 0 100%;
     }
   }
-  .left, .right{
-    max-width: 80px;
-    height: 80px;
+  .button-left, .button-right{
+    width: 30vw;
+    max-width: 30vw;
     position: absolute;
-    top: 50%;
-    margin-top: -50px;
-    background-color: #fff;
+    top: 0;
+    height: 100%;
+    border: 0;
+    display: flex;
+    // background-color: antiquewhite;
+  }
+  .left-arrow,.right-arrow{
+    height: 80px;
+    width: 80px;
+    background: rgba(255,255,255,0.3);
     border-radius: 100%;
     border: 0;
   }
-  .left{
-    left: 0;
+  .left-arrow{
+    padding:1rem 2rem 1rem 0;
   }
-  .right{
+  .right-arrow{
+    padding:1rem 0rem 1rem 2rem;
+  }
+  .left-arrow:hover,.right-arrow:hover{
+    background: rgba(255,255,255,1);
+  }
+  .button-left{
+    left: 0;
+    align-items: center;
+
+    justify-content: left;
+  }
+  .button-right{
     right: 0;
+    align-items: center;
+    
+    justify-content: right;
   }
     :global(#clientSays){
         background:  linear-gradient(180deg, rgba(255, 255, 255, 0) -40.92%, rgba(239, 239, 240, 0.83) 36.13%, #FFFFFF 76.97%, rgba(255, 255, 255, 0) 137.31%);

@@ -843,9 +843,10 @@ align-items: end;
 				max-width: 38rem;
 				z-index: 2;
 				padding-left: 10rem;
+				padding-right: 2rem;
 				@include media-max(lg){
-					padding-left: 5rem;
-				}	
+					padding-left: 4rem;
+				}
 				@include media-max(md){
 					padding-left: 3rem;
 				}	
@@ -984,7 +985,11 @@ align-items: end;
 			&__wrapper{
 				max-width: 40rem;
 				z-index: 2;
-				padding-left: 4rem;
+				padding-left: 10rem;
+				padding-right: 2rem;
+				@include media-max(lg){
+					padding-left: 4rem;
+				}
 				@include media-max(md){
 					padding-left: 3rem;
 				}
@@ -1102,7 +1107,11 @@ align-items: end;
 			&__wrapper{
 				max-width: 43rem;
 				z-index: 2;
-				padding-left: 4rem;
+				padding-left: 10rem;
+				padding-right: 2rem;
+				@include media-max(lg){
+					padding-left: 4rem;
+				}
 				@include media-max(md){
 					padding-left: 3rem;
 				}
