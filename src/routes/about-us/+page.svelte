@@ -167,7 +167,7 @@
                 <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
             </Row>
             <Row class="flex-md-row flex-column-reverse sets-parts__row">  
-                <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
+                <Col md="6" class="align-self-center blue-color-background sets-parts__content">
                     <div >
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="1">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
                         <p class="text-justify" in:fadeIn id="sp-cont1" gsap-delay="0.5" gsap-duration="1">{@html about.Section6text ? about.Section6text : ''}</p>
@@ -201,7 +201,7 @@
                         {/if}
                     </div>
                 </Col>
-                <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30 p-5">
+                <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30">
                     <div>
                         <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="1">{@html about.Section7heading ? about.Section7heading : ''}</h3>
                         <p in:fadeIn id="sp-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
@@ -215,7 +215,7 @@
     
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
-                <Col md="6" class="align-self-center blue-color-background sets-parts__content p-5">
+                <Col md="6" class="align-self-center blue-color-background sets-parts__content">
                     <div>
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="1">{@html about.Section8heading ? about.Section8heading : ''}</h3>
                         <p class="text-justify" in:fadeIn id="sp-cont3" gsap-delay="0.5" gsap-duration="1">{@html about.Section8text ? about.Section8text : ''}</p>
@@ -534,7 +534,8 @@
         }
         h3 {
             color:$secondary-color;
-            font-size: 2.813rem;
+            font-size: 2.75rem;
+            text-align: center;
             // flex-wrap: wrap;
             // &#cd-heading2 {
             //     width: 37rem;
@@ -631,7 +632,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 3rem;
             @include media-max(md) {
+                padding: 2rem 1rem;
                 min-height: auto;
             }
         }
@@ -640,7 +643,10 @@
             font-size: 2.813rem;
             @include media-max(ipadmini){ 
                 font-size: 2.3rem;
-                text-align: left !important;
+                text-align: left;
+            }
+            @include media-max(md) {
+                text-align: center;
             }
         }
         :global(.sets-parts__content h3.text-right) {
@@ -706,6 +712,11 @@
 		@include media-max(ipadmini){
 			min-height: unset;
 		}
+        @include media-max(xs){
+            min-height: 50vh;
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
         h2 {
             color: $secondary-color;
             justify-content: center;
