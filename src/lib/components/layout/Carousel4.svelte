@@ -95,6 +95,7 @@
   .embla__container {
     display: flex;
     margin-left: .5rem;
+    margin-right: .5rem;
   }
   .embla__slide {
     flex: 0 0 25rem;
