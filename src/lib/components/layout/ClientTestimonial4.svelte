@@ -91,17 +91,19 @@
     height: 80px;
     width: 80px;
     background: rgba(255,255,255,0.3);
-    border-radius: 100%;
     border: 0;
+  }
+  .left-arrow img, .right-arrow img{
+    filter: brightness(0) saturate(100%) invert(64%) sepia(18%) saturate(12%) hue-rotate(16deg) brightness(93%) contrast(90%);
+  }
+  .left-arrow img:hover, .right-arrow img:hover{
+    filter: brightness(0) saturate(100%) invert(55%) sepia(44%) saturate(4704%) hue-rotate(163deg) brightness(99%) contrast(101%);
   }
   .left-arrow{
     padding:1rem 2rem 1rem 0;
   }
   .right-arrow{
     padding:1rem 0rem 1rem 2rem;
-  }
-  .left-arrow:hover,.right-arrow:hover{
-    background: rgba(255,255,255,1);
   }
   .button-left{
     left: 0;
@@ -112,7 +114,7 @@
   .button-right{
     right: 0;
     align-items: center;
-    
+
     justify-content: right;
   }
     :global(#clientSays){
@@ -157,7 +159,7 @@
                 line-height: 2.125rem;
                 font-feature-settings: 'pnum' on, 'lnum' on;
                 font-weight: 400;
-                color: $darkergray;
+                color: $darkergray2;
                 margin-bottom: 3rem;
             }
 
