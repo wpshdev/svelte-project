@@ -94,13 +94,12 @@
   }
   .embla__container {
     display: flex;
+    margin-left: .5rem;
   }
   .embla__slide {
     flex: 0 0 25rem;
+    max-width: 25rem;
     min-width: 0;
-    @include media-max(ipadmini){
-      flex: 0 0 50%;
-    }
     @include media-max(sm){
       flex: 0 0 100%;
     }
@@ -277,6 +276,8 @@ white-space: nowrap;
   }   
   @include media-max(sm){
     height: 50vh;
+    margin-right:.5rem;
+    margin-left:.5rem;
   }   
   &__text{
         background-color: $secondary-color;

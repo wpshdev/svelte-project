@@ -755,6 +755,7 @@ header{
 // offset slider
 .featured-projects .row, .portfolio-gallery__slider{
     margin-right: calc(50% - 50vw);
+    padding: 0;
     @include media-max(sm){
         margin-right: 0;
     }

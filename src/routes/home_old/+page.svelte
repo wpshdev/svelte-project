@@ -335,7 +335,7 @@ const handleBottomArrowClick = () => {
 				<Col md="5" class="my-auto containerimg4">
 					<div class="childimg4">
 						{#if home.ourStoryRightImage.data}
-							<img loading="lazy" in:fly2 id="story-img"  src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
+							<img loading="eager" in:fly2 id="story-img"  src="{domain}{home.ourStoryRightImage.data.attributes.formats.large.url ? home.ourStoryRightImage.data.attributes.formats.large.url : home.ourStoryRightImage.data.attributes.url}" alt="{home.ourStoryRightImage.data.attributes.alternativeText}">
 						{/if}
 					</div>	
 				</Col>
