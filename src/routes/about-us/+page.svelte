@@ -271,7 +271,8 @@
 		color: $primary-color;
 	}
 	.loc-gallery{
-		background: $secondary-color;
+        background-color: rgba(38, 58, 99, 0.7); /* Fallback color */
+		background: var(--loc-bg, rgba(38, 58, 99, 0.7));
 		padding: 0;
 		margin: 0;
         position: relative;
@@ -401,7 +402,7 @@
         background-position: top !important;
     } 
     .about-heading{
-        margin: 5rem 0;
+        margin: 5rem auto;
         // margin-top: 20vw;
         min-height: 70vh;
 		display: flex;
