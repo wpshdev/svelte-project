@@ -254,7 +254,7 @@ white-space: nowrap;
 &__carousel-cell {
   max-width: 25rem;
   position: relative;
-  // margin-right: 1.5rem;
+  margin-right: 1.5rem;
   box-sizing: border-box;
   height: 32rem;
   min-height: 32rem;
