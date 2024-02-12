@@ -29,21 +29,21 @@ p{
     --bs-gutter-x: 0;
 }
 h1,.h1{
-    font-size: 5rem;
+    font-size: 4rem;
     @include media-max(lg){
-        font-size: 3.5rem;
+        font-size: 3.25rem;
     }    
     @include media-max(md){
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 }
 h2,.h2{
-    font-size: 4rem;
+    font-size: 3.5rem;
     @include media-max(lg){
-        font-size: 3rem;
+        font-size: 2.75rem;
     }        
     @include media-max(md){
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 }
 h3,.h3{

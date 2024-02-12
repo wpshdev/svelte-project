@@ -228,7 +228,7 @@
     }
     h2{
 	  margin: 0 0 1rem 0;
-	  font-size: 4rem;
+	  font-size: 3.5rem;
 	  color: $white-color;
 	  justify-content: center;
 	  @include media-max(sm){

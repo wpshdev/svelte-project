@@ -366,7 +366,7 @@ align-items: end;
 				h1{
 					color:#fff;
 					font-weight: 400;
-					font-size: 4rem;		
+					font-size: 3.5rem;		
 					margin-bottom: 2rem;	
 					span{
 						font-family: $primary-font;

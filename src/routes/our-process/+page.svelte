@@ -348,7 +348,7 @@
                 color: $third-color;
             }
             h2{
-                font-size: 4rem;
+                font-size: 3.5rem;
                 margin: 3rem 0 2rem;
                 color: $secondary-color;
                 justify-content: center;
