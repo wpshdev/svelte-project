@@ -168,6 +168,9 @@
         @include media-max(sm){
             padding: 1rem 0;
         }
+        p{
+            margin-bottom: 1rem;
+        }
     }
     .sblue {
         color: $secondary-color;
