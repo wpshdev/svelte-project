@@ -21,7 +21,6 @@ main{
     overflow-x: hidden;
 }
 p{
-    margin: 0;
     @include media-max(md){
         margin: 0 .5rem 1rem .5rem;
     }
