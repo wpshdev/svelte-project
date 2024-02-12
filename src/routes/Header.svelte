@@ -145,7 +145,9 @@
 								<DropdownToggle nav caret href="{nav.attributes.url ? nav.attributes.url : '#'}">{nav.attributes.title ? nav.attributes.title : ''}</DropdownToggle>
 								<DropdownMenu end>
 									{#each nav.attributes.children.data as child}
-										<DropdownItem href="{child.attributes.url ? child.attributes.url : '#'}" on:click="{toggleMenu}">{child.attributes.title ? child.attributes.title : ''}</DropdownItem>
+										<div on:click="{toggleMenu}">
+											<DropdownItem href="{child.attributes.url ? child.attributes.url : '#'}">{child.attributes.title ? child.attributes.title : ''}</DropdownItem>
+										</div>
 									{/each}			
 								</DropdownMenu>
 							</Dropdown>						
