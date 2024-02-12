@@ -85,12 +85,11 @@
     height: 100%;
     border: 0;
     display: flex;
-    // background-color: antiquewhite;
   }
   .left-arrow,.right-arrow{
     height: 80px;
     width: 80px;
-    background: rgba(255,255,255,0.3);
+    background: none;
     border: 0;
   }
   .left-arrow img, .right-arrow img{

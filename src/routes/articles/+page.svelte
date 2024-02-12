@@ -162,10 +162,11 @@
                                 <Animate>
                                     <div class="blogsection5">
                                         <div>
-                                            <p class="pre-head" in:slide id="article_detail{i}" gsap-duration="1">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read</p>
+                                            <p class="pre-head" in:slide id="article_detail{i}" gsap-duration="1">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'}</p>
+                                            <!-- | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'minutes' : 'minute'} read -->
                                             <h2 class="text-animate secondary-font" in:textAnimate id="article_title{i}" gsap-duration="1.3">{blog.attributes.title}</h2>
-                                            <p in:slide id="article_text{i}" gsap-duration="1" gsap-delay="1" gsap-y="20">{blog.attributes.shorttext}</p>
-                                            <div in:fly id="article_btn{i}" gsap-duration="1" gsap-delay="1.3" gsap-y="20" >
+                                            <p in:slide class="article_text" id="article_text{i}" gsap-duration="1" gsap-delay="1" gsap-y="20">{blog.attributes.shorttext}</p>
+                                            <div in:fly class="article_btn" id="article_btn{i}" gsap-duration="1" gsap-delay="1.3" gsap-y="20" >
                                              <a class="btn btn-secondary" href="/articles/{blog.attributes.slug}">Read more</a>
                                             </div>
                                         </div>
@@ -316,23 +317,27 @@
             font-weight: 600;
             @include media-max(sm){
                 order: 2;
-                margin: 1.688rem 0;
+                margin: 1rem;
             } 
         }
         h2{
             display: block;
             text-overflow: ellipsis;
             word-wrap: break-word;
-            overflow: hidden;
+            // overflow: hidden;
             max-height: 7.2rem;
             font-size: 2.25rem;
             line-height: 2.5rem;
-            margin-top: 1rem;
             color: $secondary-color;
             margin-bottom: 1.5rem;
             @include media-max(sm){
                 order: 1;
+                margin-bottom: 0.5rem;
+                margin-top: 0rem;
             } 
+        }
+        .article_text{
+            margin-bottom: 2rem;
         }
         p{
             display: block;
@@ -342,19 +347,23 @@
             max-height: 3.1em;
             font-size: 1.25rem;
             line-height: 2.125rem;
-            margin-bottom: 1.5rem;
             @include media-max(sm){
                 order: 3;
             } 
         }
-        .btn {
-           padding: 0.7rem 3rem;
+        .article_btn {
            @include media-max(sm){
                 border-radius: 8px;
                 order: 4;
-                font-size: 1.188rem;
-                padding: 1rem 3rem;
-                margin-top: 1.125rem;
+                font-size: 1.125rem;
+                // padding: 1rem 3rem;
+                margin-top: 0rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+        #article_btn1{
+            @include media-max(sm){
+                order: 4;
             }
         }
     }
@@ -384,6 +393,10 @@
     :global(.article-blog){
         margin-top: 1.5rem;
         position: relative;
+        :global(.container){
+            padding-left: .75rem;
+            padding-right: .75rem;
+        }
         :global(.col-md-5){
             padding: 1.25rem 0px;
             @include media-max(sm){

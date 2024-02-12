@@ -14,7 +14,7 @@
     $: published = new Date(Date.parse(data.page.data[0].attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' });
     $: location = data.page.data[0].attributes.location ? data.page.data[0].attributes.location : 'Vail, Colorado';
     $: minutesRead = data.page.data[0].attributes.minutesRead ? data.page.data[0].attributes.minutesRead : '2';
-
+    
     import { onMount } from "svelte";
 	import { loadingCursor } from '$lib/cursorChange.js';
 	onMount(() => {
@@ -51,7 +51,9 @@
         <Container class="py-4">
             <h2 class="pb-3 sblue text-animate secondary-font" in:textAnimate id="single_article_content_heading" gsap-duration="1.3">{title ? title : ''}</h2>
             <div class="two-columns">
+                <p>
                 {@html content ? content : ''}
+            </p>
             </div>
         </Container>
     <!-- </Animate> -->

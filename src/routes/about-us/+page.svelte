@@ -634,7 +634,7 @@
             justify-content: center;
             padding: 3rem;
             @include media-max(md) {
-                padding: 2rem 1rem;
+                padding: 2rem 1rem 3rem 1rem;
                 min-height: auto;
             }
         }
@@ -713,7 +713,7 @@
 			min-height: unset;
 		}
         @include media-max(xs){
-            min-height: 50vh;
+            min-height: 60vh;
             margin-top: 5rem;
             margin-bottom: 5rem;
         }
