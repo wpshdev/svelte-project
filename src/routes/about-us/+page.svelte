@@ -713,7 +713,7 @@
 			min-height: unset;
 		}
         @include media-max(xs){
-            min-height: 60vh;
+            min-height: 100vh;
             margin-top: 5rem;
             margin-bottom: 5rem;
         }

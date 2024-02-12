@@ -38,7 +38,7 @@
     <div class="cover__covertitle">
         <p class="pfont ptc mb-1 pt-3 article" in:slide id="single_article_pre" gsap-duration="1">Article</p>
         <!-- class="text-animate" in:textAnimate id="single_article_heading" gsap-duration="0.5" -->
-        <h2 class="pfont stc mb-4 text-animate" in:textAnimate id="single_article_title" gsap-duration="1.3">{title ? title : ''}</h2>
+        <h1 class="pfont stc mb-4 text-animate" in:textAnimate id="single_article_title" gsap-duration="1.3">{title ? title : ''}</h1>
         <p class="ptc pb-5" in:fly id="single_article_detail" gsap-duration="1" gsap-delay="1" gsap-y="10">{location} · {published}</p>
         <!-- · {minutesRead} {minutesRead > '1' || !minutesRead ? 'mins' : 'min'}. read -->
     </div>
@@ -78,7 +78,8 @@
                             </div>
                             {/if}
                             <h3 class="pt-3"><a href="/articles/{blog.attributes.slug ? blog.attributes.slug : '#'}">{blog.attributes.title ? blog.attributes.title : ''}</a></h3>
-                            <p class="ptc">{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} | {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })} · {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'mins' : 'min'}. read</p>
+                            <p>{blog.attributes.location ? blog.attributes.location : 'Vail, Colorado'} · {new Date(Date.parse(blog.attributes.publishedAt)).toLocaleString('default', { month: 'long',  day: 'numeric' })}</p>
+                            <!-- {blog.attributes.minutesRead ? blog.attributes.minutesRead : '2'} {blog.attributes.minutesRead > '1' || !blog.attributes.minutesRead ? 'mins' : 'min'}. read -->
                         <!-- </Animate> -->
                     </div>
                 </Col>
@@ -102,7 +103,7 @@
         margin-bottom: 12.5rem;
     }
     @include media-max(xs){
-        height: 33.121rem;
+        height: 33.125rem;
         margin-bottom: 7rem;
     }
     &__covertitle{
@@ -123,12 +124,12 @@
             font-feature-settings: 'pnum' on, 'lnum' on;
             &.article {
                 color: $primary-color;
-                font-size: 1.438rem;
+                font-size: 1.45rem;
                 font-weight: 500;
             }
         }
-        h2 {
-            font-size: 3.438rem;
+        h1 {
+            font-size: 3.45rem;
             font-weight: 400;
             color: $white-color;
             // flex-wrap: wrap;
@@ -140,7 +141,7 @@
     }
     &__coverimg{
         // height: 100vh;
-        height: 39.588rem;
+        height: 39.5rem;
         width: 100%;
         max-width: 80%;
         margin-bottom: -16.25rem;
@@ -153,7 +154,7 @@
             max-width: 100%;
         }
         @include media-max(xs){
-            height: 11.744rem;
+            height: 11.75rem;
             max-width: 95%;
         }
     }
@@ -174,7 +175,7 @@
     }
     .sblue {
         color: $secondary-color;
-        font-size: 2.813rem;
+        font-size: 2.75rem;
         @include media-max(sm){
             text-align: center;
         }
@@ -184,17 +185,22 @@
     background: #e5eef3;
     margin-bottom: 0;
     padding: 4.375rem 3.125rem 3.125rem 3.125rem;
+    :global(.row){
+        --bs-gutter-x: 1rem;
+    }
     @include media-max(sm) {
         padding: 4.375rem 1rem 1.875rem 1rem;
     }
     h2 {
-        font-size: 2.813rem;
+        font-size: 2.875rem;
         justify-content: center;
     }
     h3{
-        margin: 0.5rem 0 1.5rem 0;
-        font-size: 2.25rem;
+        margin: .5rem 0 .5rem 0;
+        font-size: 1.75rem;
         font-weight: 400;
+        text-wrap: nowrap;
+        overflow: hidden;
         @include media-max(sm) {
             margin: 0.5rem 0 1rem 0;
         }
@@ -205,6 +211,7 @@
         font-family: $secondary-font;
     }
     p {
+        color: $third-color;
         font-size: 1.25rem;
         font-weight: 500;
         @include media-max(sm) {
