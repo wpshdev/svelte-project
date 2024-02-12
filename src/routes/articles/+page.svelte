@@ -325,7 +325,7 @@
             text-overflow: ellipsis;
             word-wrap: break-word;
             // overflow: hidden;
-            max-height: 7.2rem;
+            // max-height: 7.2rem;
             font-size: 2.25rem;
             line-height: 2.5rem;
             color: $secondary-color;

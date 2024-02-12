@@ -28,9 +28,9 @@
   }
   function onInit(event) {
     emblaApi = event.detail
-    console.log(emblaApi.slideNodes()) // Access API
+    // console.log(emblaApi.slideNodes()) // Access API
   }
-  console.log(featuredProjects)
+  // console.log(featuredProjects)
 </script>
 
 <Row>
