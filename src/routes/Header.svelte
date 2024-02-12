@@ -48,6 +48,7 @@
 	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
+		console.log(isOpen);
 	}
 
 	function hideDropdownOnScroll() {
