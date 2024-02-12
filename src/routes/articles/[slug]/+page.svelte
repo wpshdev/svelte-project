@@ -145,7 +145,7 @@
         max-width: 80%;
         margin-bottom: -16.25rem;
         background-size: cover;
-        align-self:flex-start;
+        // align-self:flex-start;
         background-position: center;
         @include media-max(sm) {
             margin-bottom: -11.875rem;
