@@ -426,6 +426,7 @@ header{
     nav{
         .navbar-brand{
             width: 4.5rem;
+            min-width: 4.5rem;
             a{
                 img{
                     width: auto;
@@ -641,11 +642,13 @@ header{
         .navbar-collapse{
             width: 100%;
             display: flex;
-            min-height: 100vh;
             padding: 2.5rem 0;
-            max-height: 100vh;
-            align-items: flex-start;
-            overflow: scroll;
+            @include media-max(sm){
+                min-height: 100vh;
+                max-height: 100vh;
+                align-items: flex-start;
+                overflow: scroll;
+            }
         }
         .navbar-toggler{
             display: none;
