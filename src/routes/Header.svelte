@@ -48,7 +48,13 @@
 	let innerWidth;
 	function toggleMenu() {
 		isOpen = !isOpen;
-		console.log(isOpen);
+		if(isOpen ==true){
+			console.log("open");
+			document.body.style.overflow = 'hidden';
+		}else{
+			console.log("close");
+			document.body.style.overflow = 'auto';
+		}
 	}
 
 	function hideDropdownOnScroll() {
@@ -124,7 +130,7 @@
 				duration: 300,
 				x: 400							
 			}}>
-				
+				<div class="mobile-nav-content">
 				<div class="{isOpen ? "hamburger open" : "hamburger" }" on:click={toggleMenu}>
 					<span class="icon"></span> <!-- x icon -->
 				</div>
@@ -142,7 +148,7 @@
 							</NavItem>			
 						{:else}
 							<Dropdown nav inNavbar>
-								<DropdownToggle nav caret href="{nav.attributes.url ? nav.attributes.url : '#'}">{nav.attributes.title ? nav.attributes.title : ''}</DropdownToggle>
+								<DropdownToggle id="sidebar-toggle" nav caret href="{nav.attributes.url ? nav.attributes.url : '#'}">{nav.attributes.title ? nav.attributes.title : ''}</DropdownToggle>
 								<DropdownMenu end>
 									{#each nav.attributes.children.data as child}
 										<div on:click="{toggleMenu}">
@@ -185,6 +191,7 @@
 					<!-- <div class="footer__post-footer__paragraph">
 						<p>{@html siteSettings.SiteDetails.OperatingHours ? siteSettings.SiteDetails.OperatingHours : ''}</p>
 					</div>		 -->
+				</div>
 				</div>	
 			</div>		
 		{/if}

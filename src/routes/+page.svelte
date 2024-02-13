@@ -134,7 +134,7 @@ let pageData = {
 	<Container>
 		<Row>
 			<Col xs="12" class="pb-4">
-				<h2>
+				<h2 class="text-div">
 					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 				</h2>
 				<div class="loc-gallery__cwrapper" id="build-trust">
@@ -167,7 +167,7 @@ let pageData = {
 		</ParallaxImage>
 		<div class="tnr__wrapper">
 			<Container>
-				<div class="tnr__wrapper__captions">
+				<div class="tnr__wrapper__captions text-div">
 					<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
 					<p in:slide id="tnr-preheading" gsap-duration="1">{@html home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
 					<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2" gsap-y="50">
@@ -436,7 +436,7 @@ align-items: end;
 			text-align: center;
 			@include media-max(sm){
 				text-align: center;
-				font-size: 2.813rem;
+				font-size: 2.75rem;
 			}
 		}		
 		&__cwrapper{
@@ -983,7 +983,7 @@ align-items: end;
 				}
 			}
 			&__wrapper{
-				max-width: 40rem;
+				max-width: 38rem;
 				z-index: 2;
 				padding-left: 10rem;
 				padding-right: 2rem;
@@ -1105,7 +1105,7 @@ align-items: end;
 				}  						
 			}
 			&__wrapper{
-				max-width: 43rem;
+				max-width: 38rem;
 				z-index: 2;
 				padding-left: 10rem;
 				padding-right: 2rem;

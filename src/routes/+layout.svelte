@@ -112,7 +112,7 @@
   {#if isDesktopDevice() }
     <ScrollSmoother>
         <Animate>
-            <main>
+            <main id="mainelement">
                     <slot>
                 
                     </slot>
@@ -124,7 +124,7 @@
     </ScrollSmoother>
     {:else}
         <Animate>
-            <main>
+            <main id="mainelement">
                     <slot>
                 
                     </slot>

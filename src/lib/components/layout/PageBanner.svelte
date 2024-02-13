@@ -68,8 +68,8 @@
 		}  
 		&__content{
             position: relative;
-			padding-left: .5rem;
-			padding-right: .5rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
             z-index: 2;
 			&__text{
 				h1{

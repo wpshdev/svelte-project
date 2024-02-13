@@ -57,17 +57,17 @@
 
 <section class="mw-1000 text-center about-heading" id="about-heading">
         <Container>
-                <h2 class="pb-2 text-animate secondary-font" in:textAnimate id="about_heading" gsap-duration="1.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
-                <p in:fly id="about_heading_cont" gsap-duration="2"  gsap-y="80">{@html about.AboutText ? about.AboutText : ''}</p>
+                <h2 class="pb-2 text-animate secondary-font text-div" in:textAnimate id="about_heading" gsap-duration="1.5">{@html about.AboutHeading ? about.AboutHeading : ''}</h2>
+                <div in:fly id="about_heading_cont" class="text-div" gsap-duration="2"  gsap-y="80">{@html about.AboutText ? about.AboutText : ''}</div>
         </Container>
 </section>
 <section class="contractor-details" in:slowDownSection id="cd-section1" gsap-start="top">
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5">
-                    <div>
+                    <div class="text-div">
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading1" gsap-duration="1" >{@html about.Section1heading ? about.Section1heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont1" class="text-justify" gsap-duration="1" gsap-delay="0.5" >{@html about.Section1text ? about.Section1text : ''}</p>
+                        <div in:fadeIn id="cd-cont1" class="text-justify" gsap-duration="1" gsap-delay="0.5" >{@html about.Section1text ? about.Section1text : ''}</div>
                     </div>
                 </Col>
                 <Col md="6">
@@ -91,9 +91,9 @@
                     {/if}
                 </Col>
                 <Col md="5">
-                    <div>
+                    <div class="text-div">
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading2" gsap-duration="1" >{@html about.Section2heading ? about.Section2heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1" >{@html about.Section2text ? about.Section2text : ''}</p>
+                        <div in:fadeIn id="cd-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1" >{@html about.Section2text ? about.Section2text : ''}</div>
                     </div>
                 </Col>
             </Row>
@@ -103,9 +103,9 @@
         <Container>
             <Row class="flex-md-row flex-column-reverse">
                 <Col md="5">
-                    <div>
+                    <div class="text-div">
                         <h3 class="mb-4 mr-t text-animate secondary-font" in:textAnimate id="cd-heading3" gsap-duration="1" >{@html about.Section3heading ? about.Section3heading : ''}</h3>
-                        <p in:fadeIn id="cd-cont3" class="text-justify" gsap-delay="0.5" gsap-duration="1" > {@html about.Section3text ? about.Section3text : ''}</p>
+                        <div in:fadeIn id="cd-cont3" class="text-justify" gsap-delay="0.5" gsap-duration="1" > {@html about.Section3text ? about.Section3text : ''}</div>
                     </div>
                 </Col>
                 <Col md="6">
@@ -164,13 +164,13 @@
     
         <Container>
             <Row>
-                <Col md="12"><h2 class="text-center mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
+                <Col md="12"><h2 class="text-center text-div mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
             </Row>
             <Row class="flex-md-row flex-column-reverse sets-parts__row">  
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content">
-                    <div >
+                    <div class="text-div">
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading1" gsap-duration="1">{@html about.Section6subheading ? about.Section6subheading : ''}</h3>
-                        <p class="text-justify" in:fadeIn id="sp-cont1" gsap-delay="0.5" gsap-duration="1">{@html about.Section6text ? about.Section6text : ''}</p>
+                        <div class="text-justify" in:fadeIn id="sp-cont1" gsap-delay="0.5" gsap-duration="1">{@html about.Section6text ? about.Section6text : ''}</div>
                     </div>
                 </Col>
                 <Col md="6">
@@ -202,9 +202,9 @@
                     </div>
                 </Col>
                 <Col md="6" class="align-self-center silver-color-background sets-parts__content sets-parts__mrl-30">
-                    <div>
+                    <div class="text-div">
                         <h3 class="mb-4 rp-fontsize text-animate secondary-font" in:textAnimate id="sp-heading2" gsap-duration="1">{@html about.Section7heading ? about.Section7heading : ''}</h3>
-                        <p in:fadeIn id="sp-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</p>
+                        <div in:fadeIn id="sp-cont2" class="text-justify" gsap-delay="0.5" gsap-duration="1">{@html about.Section7text ? about.Section7text : ''}</div>
                     </div>
                 </Col>
             </Row>
@@ -216,9 +216,9 @@
         <Container class="mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content">
-                    <div>
+                    <div class="text-div">
                         <h3 class="mb-4 text-right text-animate secondary-font" in:textAnimate id="sp-heading3" gsap-duration="1">{@html about.Section8heading ? about.Section8heading : ''}</h3>
-                        <p class="text-justify" in:fadeIn id="sp-cont3" gsap-delay="0.5" gsap-duration="1">{@html about.Section8text ? about.Section8text : ''}</p>
+                        <div class="text-justify" in:fadeIn id="sp-cont3" gsap-delay="0.5" gsap-duration="1">{@html about.Section8text ? about.Section8text : ''}</div>
                     </div>
                 </Col>
                 <Col md="6">
@@ -243,16 +243,16 @@
 </section>
 
 <section class="talktous">
-    
-        <Container>
+    <Container>
+        <div class="text-div">
             <h2 class="text-animate secondary-font" in:textAnimate id="talktous-heading" gsap-duration="1">{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
             <p in:fly id="talktous-cont" gsap-duration="1.2">{about.talkTous.talkTous_content ? about.talkTous.talkTous_content : ''}</p>
             <div class="talktous__btns" in:fly id="talktous-buttons" gsap-delay="0.5" gsap-duration="1.2">
                 <a href="{about.talkTous.talkTous_btn1Link ? about.talkTous.talkTous_btn1Link : '#'}" class="btn btn-secondary">{about.talkTous.talkTous_btn1 ? about.talkTous.talkTous_btn1 : 'Button'}</a>
                 <a href="{about.talkTous.talkTous_btn2Link ? about.talkTous.talkTous_btn2Link  : '#'}" class="btn btn-inverted">{about.talkTous.talkTous_btn2 ? about.talkTous.talkTous_btn2 : 'Button'}</a>
             </div>
-        </Container>
-    
+        </div>
+    </Container>
 </section>
 
 
@@ -306,7 +306,7 @@
 			text-align: center;
 			@include media-max(sm){
 				text-align: center;
-				font-size: 2.813rem;
+				font-size: 2.75rem;
 			}
 		}		
 		&__cwrapper{
@@ -316,12 +316,12 @@
 			box-shadow: 0px 0px 10px #444;
 			border-radius: 0.5rem;
 			background: #fff;
-            z-index: 1;
+            text-align: center;
 			@include media-max(sm){
 				margin: 1rem;
 			}
 			@include media-max(sm){
-				padding: 1.5rem;
+				padding: 2rem;
 			}
 			.h3{
 				text-transform: uppercase;
@@ -632,9 +632,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 3rem;
             @include media-max(md) {
-                padding: 2rem 1rem 3rem 1rem;
+                padding: 2rem 0rem 3rem 0rem;
                 min-height: auto;
             }
         }

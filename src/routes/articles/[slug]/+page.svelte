@@ -104,7 +104,8 @@
     }
     @include media-max(xs){
         height: 33.125rem;
-        margin-bottom: 7rem;
+        margin-bottom: 10rem;
+        padding-top: 3rem;
     }
     &__covertitle{
         width:100%;
@@ -150,12 +151,10 @@
         background-position: center;
         @include media-max(sm) {
             margin-bottom: -11.875rem;
-            margin-left: -1rem;
             max-width: 100%;
         }
         @include media-max(xs){
             height: 11.75rem;
-            max-width: 95%;
         }
     }
 }
@@ -170,7 +169,11 @@
             padding: 1rem 0;
         }
         p{
-            margin-bottom: 1rem;
+            margin: 0 .75rem 1rem .75rem;
+        }
+        h2{
+            margin-left: .75rem;
+            margin-right: .75rem;
         }
     }
     .sblue {

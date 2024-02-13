@@ -125,7 +125,7 @@
     .our_client_say{
     mix-blend-mode: normal;
     display: flex;
-    height: 100vh;
+    // height: 100vh;
     flex-direction: column;
     justify-content: center;
     padding: 5rem 0;
