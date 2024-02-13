@@ -88,8 +88,8 @@ p:last-child{
     background-color:#1E2D39;
 }
 .text-div{
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.375rem;
+    padding-right: 1.375rem;
 }
 .text-justify{
     text-align: justify;
@@ -915,7 +915,7 @@ header{
             font-weight: 700;
         }
         &__heading{
-            p{
+            h5{
                 padding-bottom: 1rem;
                 // width: 45%;
                 text-transform: uppercase;
@@ -958,6 +958,7 @@ header{
                 color:#ACA7A7;
                 @include media-max(sm){
                     text-align: center;
+                    margin: 0;
                 }
             }
             a{

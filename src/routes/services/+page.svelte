@@ -43,11 +43,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                         <div class="service-b__service-box__service-box-inner__service-icon">
-                                            <img loading="lazy" in:fadeIn gsap-start="center top" id="about_icon1" gsap-duration="2" src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
+                                            <img loading="lazy" in:fadeIn gsap-start="top 90%" id="about_icon1" gsap-duration="2" src="{url}{page.section1item1icon.data.attributes.url}" alt="{page.section1item1heading}" width="{page.section1item1icon.data.attributes.width}" height="{page.section1item1icon.data.attributes.height}">
                                         </div>
-                                    <h4 in:slide gsap-start="center top" id="about_title_icon1" gsap-duration="2">{page.section1item1heading ? page.section1item1heading : ''}</h4>
+                                    <h4 in:slide gsap-start="top 90%" id="about_title_icon1" gsap-duration="2">{page.section1item1heading ? page.section1item1heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="center top" id="about_content_icon1" gsap-duration="2">{page.section1item1text ? page.section1item1text : ''}</p>
+                                <p in:fadeIn gsap-start="top 90%" id="about_content_icon1" gsap-duration="2">{page.section1item1text ? page.section1item1text : ''}</p>
                             </div>
                         
                     </Col>
@@ -56,11 +56,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img loading="lazy" in:fadeIn gsap-start="center top" id="about_icon2" gsap-duration="2" src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
+                                        <img loading="lazy" in:fadeIn gsap-start="top 90%" id="about_icon2" gsap-duration="2" src="{url}{page.section1item2icon.data.attributes.url}" alt="{page.section1item2heading}" width="{page.section1item2icon.data.attributes.width}" height="{page.section1item2icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="center top" id="about_title_icon2" gsap-duration="2">{page.section1item2heading ? page.section1item2heading : ''}</h4>
+                                    <h4 in:slide gsap-start="top 90%" id="about_title_icon2" gsap-duration="2">{page.section1item2heading ? page.section1item2heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="center top" id="about_content_icon2" gsap-duration="2">{page.section1item2text ? page.section1item2text : ''}</p>
+                                <p in:fadeIn gsap-start="top 90%" id="about_content_icon2" gsap-duration="2">{page.section1item2text ? page.section1item2text : ''}</p>
                             </div>
                         
                     </Col>
@@ -69,11 +69,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img loading="lazy" in:fadeIn gsap-start="center top" id="about_icon3" gsap-duration="2" src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
+                                        <img loading="lazy" in:fadeIn gsap-start="top 90%" id="about_icon3" gsap-duration="2" src="{url}{page.section1item3icon.data.attributes.url}" alt="{page.section1item3heading}" width="{page.section1item3icon.data.attributes.width}" height="{page.section1item3icon.data.attributes.height}"> 
                                     </div>
-                                    <h4 in:slide gsap-start="center top" id="about_title_icon3" gsap-duration="2">{page.section1item3heading ? page.section1item3heading : ''}</h4>
+                                    <h4 in:slide gsap-start="top 90%" id="about_title_icon3" gsap-duration="2">{page.section1item3heading ? page.section1item3heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="center top" id="about_content_icon3" gsap-duration="2">{page.section1item3text ? page.section1item3text : ''}</p>
+                                <p in:fadeIn gsap-start="top 90%" id="about_content_icon3" gsap-duration="2">{page.section1item3text ? page.section1item3text : ''}</p>
                             </div>
                         
                     </Col>
@@ -82,11 +82,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img loading="lazy" in:fadeIn gsap-start="center top" id="about_icon4" gsap-duration="2" src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
+                                        <img loading="lazy" in:fadeIn gsap-start="top 90%" id="about_icon4" gsap-duration="2" src="{url}{page.section1item4icon.data.attributes.url}" alt="{page.section1item4heading}" width="{page.section1item4icon.data.attributes.width}" height="{page.section1item4icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="center top" id="about_title_icon4" gsap-duration="2">{page.section1item4heading ? page.section1item4heading : ''}</h4>
+                                    <h4 in:slide gsap-start="top 90%" id="about_title_icon4" gsap-duration="2">{page.section1item4heading ? page.section1item4heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="center top" id="about_content_icon4" gsap-duration="2">{page.section1item4text ? page.section1item4text : ''}</p>
+                                <p in:fadeIn gsap-start="top 90%" id="about_content_icon4" gsap-duration="2">{page.section1item4text ? page.section1item4text : ''}</p>
                             </div>
                         
                     </Col>
@@ -95,11 +95,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img loading="lazy" in:fadeIn gsap-start="center top" id="about_icon5" gsap-duration="2" src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
+                                        <img loading="lazy" in:fadeIn gsap-start="top 90%" id="about_icon5" gsap-duration="2" src="{url}{page.section1item5icon.data.attributes.url}" alt="{page.section1item5heading}" width="{page.section1item5icon.data.attributes.width}" height="{page.section1item5icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="center top" id="about_title_icon5" gsap-duration="2">{page.section1item5heading ? page.section1item5heading : ''}</h4>
+                                    <h4 in:slide gsap-start="top 90%" id="about_title_icon5" gsap-duration="2">{page.section1item5heading ? page.section1item5heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="center top" id="about_content_icon5" gsap-duration="2">{page.section1item5text ? page.section1item5text : ''}</p>
+                                <p in:fadeIn gsap-start="top 90%" id="about_content_icon5" gsap-duration="2">{page.section1item5text ? page.section1item5text : ''}</p>
                             </div>
                         
                     </Col> -->
@@ -107,11 +107,11 @@
                             <div class="service-b__service-box">
                                 <div class="service-b__service-box__service-box-inner">
                                     <div class="service-b__service-box__service-box-inner__service-icon">
-                                        <img loading="lazy" in:fadeIn gsap-start="center top" id="about_icon6" gsap-duration="2" src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
+                                        <img loading="lazy" in:fadeIn gsap-start="top 90%" id="about_icon6" gsap-duration="2" src="{url}{page.section1item6icon.data.attributes.url}" alt="{page.section1item6heading}" width="{page.section1item6icon.data.attributes.width}" height="{page.section1item6icon.data.attributes.height}">
                                     </div>
-                                    <h4 in:slide gsap-start="center top" id="about_title_icon6" gsap-duration="2">{page.section1item6heading ? page.section1item6heading : ''}</h4>
+                                    <h4 in:slide gsap-start="top 90%" id="about_title_icon6" gsap-duration="2">{page.section1item6heading ? page.section1item6heading : ''}</h4>
                                 </div>
-                                <p in:fadeIn gsap-start="center top" id="about_content_icon6" gsap-duration="2">{page.section1item6text ? page.section1item6text : ''}</p>
+                                <p in:fadeIn gsap-start="top 90%" id="about_content_icon6" gsap-duration="2">{page.section1item6text ? page.section1item6text : ''}</p>
                             </div>
                     </Col> -->
                 </Row>
@@ -260,7 +260,7 @@
         // justify-content: center;
         @include media-max(xs){
             // padding-top: 5rem;
-			height: 150rem;
+			// height: 150rem;
 		}
         @include media-between(xs, md){
             padding-left: 0;
@@ -319,20 +319,13 @@
             }
             
             p {
-                font-size: 1.15rem;
-                line-height: 2rem;
-                @include media-max(ipadmini){
-                    font-size: 1rem;
-                    line-height: 1.75rem;
-                }
-                @include media-max(xs){
-                    font-size: 1.15rem;
-                line-height: 2rem;
-                }
+                font-size: 2rem;
+                line-height: 2.5rem;
             }
             &__service-box-inner{
                 display: flex;
                 margin-bottom: 20px;
+                align-items: center;
                 &__service-icon{
                     img{
                         width: 6.202rem;
@@ -350,18 +343,15 @@
                 }
                 h4{
                     align-self: center;
-                    padding-left: 20px;
+                    font-weight: 700;
+                    padding-left: 2rem;
+                    font-size: 2.5rem;
                     @include media-max(md){
                         align-self: center;
-                        padding-left: 9px;
-                        font-size: 1.688rem;
                     }
                     @include media-max(ipadmini){
-                        font-size: 1.5rem;
                     }
                     @include media-max(sm){
-                        padding-left: 2rem;
-                        font-size: 1.688rem;
                     }
                 }
             } 

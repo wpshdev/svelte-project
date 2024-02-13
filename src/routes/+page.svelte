@@ -425,6 +425,9 @@ align-items: end;
 	}
 	.h3{
 		margin-bottom: 1.25rem;
+		@include media-max(sm){
+			text-align: center;
+		}
 	}
 		h2{
 			font-family: $secondary-font;
