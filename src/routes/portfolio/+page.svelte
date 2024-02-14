@@ -109,7 +109,7 @@ let seodata = portfolio;
 <section class="portfolio-masonry" id="portfolio-masonry" bind:this={portfolioscroll}>
     <Container>
         <Row>
-            <Col class="text-center p-2">
+            <Col class="text-center">
                 <h2 class="text-animate secondary-font" in:textAnimate id="portfolio_heading" gsap-duration="1" gsap-start="top 90%">{portfolio.masonryGallery.masonryHeading ? portfolio.masonryGallery.masonryHeading : ''}</h2>
                 <p>{portfolio.masonryGallery.masonrySubheading ? portfolio.masonryGallery.masonrySubheading : ''}</p>
                 <!-- <Masonry items={portfolio.masonryGallery.masonryItems.data} paginate="true" postperpage="6"/> -->
@@ -157,7 +157,7 @@ let seodata = portfolio;
                                                 {:else}
                                                     <img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{project.attributes.title}">
                                                 {/if}
-                                                <div class="masonry-items__text">
+                                                <div class="blue-bar">
                                                     <span>{('0' + (index + 1)).slice(-2)}</span>
                                                     {project.attributes.title ? project.attributes.title : ''}
                                                     <i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -394,37 +394,6 @@ let seodata = portfolio;
                             min-width: unset;
                         }   
                     }   
-                }  
-                &__text{
-                    background-color: $secondary-color;
-                    color: #fff;
-                    padding: 0.5rem 1rem 0.5rem 0.5rem;
-                    position: absolute;
-                    z-index: 2;
-                    bottom: 1rem;
-                    left: 0;
-                    max-width: 90%;
-                    text-align: left;
-                    transition: 1.5s;
-                    display: flex;
-                    align-items: center;
-                    @include media-max(ipadmini){
-                        margin: 0;
-                        // font-size: 0.6rem;
-                        width: 90%;
-                        bottom: 0.5rem
-                    } 
-                    span{
-                        color: $primary-color;
-                        font-size: 1.2rem;
-                        margin: 0 1.25rem 0 0.8rem;
-                        @include media-max(sm){
-                            margin: 0;
-                        }                
-                    }
-                    i{
-                        margin-left:.8rem;
-                    }
                 }
             }
         }

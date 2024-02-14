@@ -183,7 +183,7 @@ let pageData = {
 <section class="tnr__mobile">
 	<Row>
 		<Container>
-			<div class="tnr__wrapper__captions">
+			<div class="tnr__wrapper__captions text-div">
 				<h2 class="text-animate" in:textAnimate id="tnr-heading" gsap-duration="1">{home.midBanner.heading ? home.midBanner.heading : ''}</h2>
 				<p in:slide id="tnr-preheading" gsap-duration="1">{@html home.midBanner.paragraph ? home.midBanner.paragraph : ''}</p>
 				<div in:fly id="tnr-button" gsap-delay="0.5" gsap-duration="1.2" gsap-y="50">
@@ -202,7 +202,7 @@ let pageData = {
 			<Row>
 				<Col md="7" class="">
 						<div class="reputation__content">
-							<div class="reputation__content__wrapper">
+							<div class="reputation__content__wrapper text-div">
 								<p class="pre-head" in:slide id="reputation-preheading" gsap-duration="1.5">{home.reputation.preHeading ? home.reputation.preHeading : ''}</p>
 								<h2 class="text-animate secondary-font" gsap-duration="1" in:textAnimate id="reputation-heading">{home.reputation.heading ? home.reputation.heading : ''}</h2>
 								<div in:fly id="reputation-cont" class="text-justify" gsap-delay="1" gsap-duration="1.2"  gsap-y="30">
@@ -269,6 +269,7 @@ let pageData = {
 							<h2 class="text-animate secondary-font" in:textAnimate id="story-heading" gsap-duration="1">{home.ourStoryHeading ? home.ourStoryHeading : ''}</h2>
 							<div in:fly id="story-cont" class="text-justify" gsap-delay="0" gsap-duration="1"  gsap-y="30">
 								{@html home.ourStoryParagraph ? home.ourStoryParagraph : ''}
+								<a href="{home.ourStoryButtonURL ? home.ourStoryButtonURL : '#'}" class="btn btn-secondary">{ home.ourStoryButtonTitle ? home.ourStoryButtonTitle : 'Button' }</a>
 							</div>
 
 						</div>
@@ -451,10 +452,8 @@ align-items: end;
 			background: #fff;
 			z-index: 1;
 			@include media-max(sm){
-				margin: 1rem;
-			}
-			@include media-max(sm){
-				padding: 1.5rem;
+				margin:1rem;
+				padding: 1.5rem 1.5rem 2.5rem 1.5rem;
 			}
 			.h3{
 				text-transform: uppercase;
@@ -671,7 +670,13 @@ align-items: end;
 		}
 		#tnr-preheading{
 			text-align: justify;
-		}	
+		}
+		h2{
+			text-align:center;
+		}
+		#tnr-button{
+			text-align: center;
+		}
 	}
 	#tnr {
 		// display: grid;
@@ -854,7 +859,8 @@ align-items: end;
 					padding-left: 3rem;
 				}	
 				@include media-max(sm){
-					padding-left: 0;
+					padding-left: 1.375rem;
+					padding-right: 1.375rem;
 					margin-bottom: 2rem;
 				}
 				.pre-head {
@@ -997,7 +1003,8 @@ align-items: end;
 					padding-left: 3rem;
 				}
 				@include media-max(sm){
-					padding-left: 0;
+					padding-left: 1.375rem;
+					padding-right: 1.375rem;
 				}					
 				.pre-head {
 					color: $third-color;

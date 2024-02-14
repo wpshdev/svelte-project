@@ -171,6 +171,9 @@ img{
 .navbar .container-fluid{
     padding: 0;
 }
+.navbar.navbar-expand-md{
+    padding: 0;
+}
 .input-icon-box{
     position: relative;
 }
@@ -310,24 +313,6 @@ header{
       opacity: 1;
     }
 }
-.portfolio-page{
-    // .changeBG{
-    //     nav li.nav-item a.nav-link{
-    //         color: #fff;
-    //     }
-    // }
-    // header nav li a.nav-link{
-    //     color: $secondary-color;
-    // }
-    // .hamburger {
-    //     .dark-hamburger {
-    //         display: block;
-    //     }
-    //     .light-hamburger {
-    //         display: none;
-    //     }
-    // }
-} 
 header{
     display: flex;
     justify-content: space-between;
@@ -339,7 +324,7 @@ header{
     &.changeBG{
         .logo-container {
             background: $newheader;
-            padding: 0.75rem;
+            padding: .25rem .75rem;
             box-shadow: 0 0 10px #333;
             margin-top: -0.75rem;
         }
@@ -427,6 +412,7 @@ header{
         .navbar-brand{
             width: 4.5rem;
             min-width: 4.5rem;
+            padding-top: .75rem;
             a{
                 img{
                     width: auto;
@@ -642,8 +628,8 @@ header{
         .navbar-collapse{
             width: 100%;
             display: flex;
-            padding: 2.5rem 0;
             @include media-max(sm){
+                padding: 2.5rem 0;
                 min-height: 100vh;
                 max-height: 100vh;
                 align-items: flex-start;
@@ -713,7 +699,6 @@ header{
         background-color: #666;
     }      
 }
-
 
 .svelte-1ql6gaa {
     opacity: 1;
@@ -787,6 +772,48 @@ header{
             }
         }	
 
+    }
+}
+.blue-bar{
+    display: flex;
+    align-items: center;
+    background-color: $secondary-color;
+    color: #fff;
+    padding: 0.5rem 1.125rem 0.625rem 0.5rem;
+    position: absolute;
+    z-index: 2;
+    bottom: 1rem;
+    left: 0;
+    max-width: 90%;
+    text-align: left;
+    transition: 1.5s;
+    line-height: 1.375rem;
+    @include media-max(ipadmini){
+        margin: 0;
+        font-size: 1rem;
+        width: 90%;
+        bottom: 0.5rem
+    } 
+    &:hover {
+        background: $primary-color;
+        span {
+        color: $white-color;
+        }
+        path {
+        stroke: $white-color;
+        }
+    }			
+    span{
+        color: $primary-color;
+        font-size: 1.2rem;
+        margin: 0 0.8rem 0;
+        @include media-max(sm){
+            font-size: 1rem;
+        }                
+    }
+    i{
+    padding-left: 1rem;
+    display: flex;
     }
 }
 .cover{

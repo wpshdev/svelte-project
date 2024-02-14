@@ -151,7 +151,7 @@
 								{:else}
 								<img loading="lazy" src="{fallback ? domain+fallback.attributes.url : noFeatured}" alt="{rPortfolio.attributes.title}" >
 								{/if}
-								<div class="related__article__text">
+								<div class="blue-bar">
 									<span>{('0' + (index + 1)).slice(-2)}</span>
 									{rPortfolio.attributes.title ? rPortfolio.attributes.title : ''}
 									<i><svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -389,7 +389,7 @@
 	padding: 5rem 0;
 	margin-bottom: 0;
 	:global(.col-md-6){
-            padding: 0.5rem;
+            padding: 1rem;
         }
 	@include media-max(xs){
 		padding: 5rem 1rem;
@@ -433,48 +433,6 @@
 					stroke: $white-color;
 				}  
 			}  
-        }
-        &__text{
-			display: flex;
-            align-items: center;
-            background-color: $secondary-color;
-			color: #fff;
-			padding: 0.5rem 3rem 0.5rem 0.5rem;
-			position: absolute;
-			z-index: 2;
-			bottom: 1rem;
-			left: 0;
-			max-width: 90%;
-			text-align: left;
-			transition: 1.5s;
-            @include media-max(ipadmini){
-                margin: 0;
-                font-size: 1rem;
-                width: 90%;
-                bottom: 0.5rem
-            } 
-			&:hover {
-              background: $primary-color;
-              span {
-                color: $white-color;
-              }
-              path {
-                stroke: $white-color;
-              }
-            }			
-            span{
-                color: $primary-color;
-                font-size: 1.2rem;
-                margin: 0 0.8rem 0;
-                @include media-max(sm){
-                    font-size: 1rem;
-                }                
-            }
-			i{
-              position: absolute;
-              top: 20%;
-              right: 1rem;
-            }
         }	
 	}
 }
