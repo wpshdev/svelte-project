@@ -153,7 +153,7 @@
 	   padding-right: 3rem;
     }	
 	@include media-max(sm){
-		padding: 10rem 1rem;
+		padding: 5rem 1rem;
 	}
 	&__content{
 		display: flex;

@@ -200,7 +200,7 @@
                 padding: 4rem;
             }
             @include media-max(sm) { 
-                padding: 2.5rem;
+                padding: 2.5rem   1rem;
             }
         }
         :global(.contact-form form) {

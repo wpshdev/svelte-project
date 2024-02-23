@@ -473,7 +473,7 @@ export function slowDownSection(node) {
             },
             scrollTrigger: {
                 trigger: '#' + parentElementID,
-                start: () => start + ' ' + window.innerHeight * 0.9,
+                start: () => start + ' ' + window.innerHeight * 0.5,
                 end: () => '95% ' + window.innerHeight * 0,
                 scrub: true, // Use scrub to smooth the animation
                 // markers: true,

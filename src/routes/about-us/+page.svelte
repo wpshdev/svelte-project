@@ -242,7 +242,7 @@
         {/if}
 </section>
 
-<section class="talktous">
+<section class="talktous mw-1000">
     <Container>
         <div class="text-div">
             <h2 class="text-animate secondary-font" in:textAnimate id="talktous-heading" gsap-duration="1">{about.talkTous.talkTous_title ? about.talkTous.talkTous_title : ''}</h2>
@@ -654,19 +654,20 @@
         :global(.sets-parts__content p) {
             font-size: 1.25rem;
             // text-wrap: balance;
+            word-break: auto-phrase;
             hyphens: auto;
             @include media-max(ipadmini) {
                 text-align: left !important;
             }
         }
         :global(.sets-parts__mrl-30){
-            margin-left: -15px;
+            // margin-left: -15px;
             @include media-max(xs) {
                 margin-left: 0;
             }
         }
         &__mr-l{
-            margin-left: -15px;
+            // margin-left: -15px;
             @include media-max(md) {
                 margin-left: -12px;
             }
@@ -679,9 +680,9 @@
         }
         &__mr-r{
             margin-right: 0;
-            // @include media-max(md) {
-            //     margin-right: 18px;
-            // }
+            @include media-max(md) {
+                margin-right: -12px;
+            }
             @include media-max(sm){
                 margin-right: 0;
             }
@@ -712,7 +713,7 @@
 			min-height: unset;
 		}
         @include media-max(xs){
-            min-height: 100vh;
+            // min-height: 100vh;
             margin-top: 5rem;
             margin-bottom: 5rem;
         }

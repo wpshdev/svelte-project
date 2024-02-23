@@ -617,7 +617,7 @@
         margin-top: 0;
         background-color: #F2F2F2;
         @include media-max(sm){
-            padding: 0 2.75rem;
+            padding: 0 1.75rem;
             margin-left: calc(50% - 50vw);
             margin-right: calc(50% - 50vw);                        
         }   
