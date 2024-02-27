@@ -408,6 +408,9 @@
 			font-weight: 400;
 			padding-bottom: 2rem;
 			line-height: 2.375rem;
+			@include media-max(sm) {
+			line-height: 2.25rem;
+		}
 		}
 	}
 	.ourteam5 {
@@ -518,7 +521,7 @@
 			}
 
 			@include media-max(sm) {
-				padding: 5.5rem 0.5rem 2.5rem 0.5rem;
+				padding: 5.5rem 1.5rem 2.5rem 1.5rem;
 			}
 
 			h5 {

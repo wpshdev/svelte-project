@@ -569,7 +569,9 @@
                     }                    
                 }
                 &.last-even {
+                    @include media-min(sm){
                     padding-bottom: 15vw;
+                    }
                 }
                 
             }  
@@ -619,7 +621,8 @@
         @include media-max(sm){
             padding: 0 1.75rem;
             margin-left: calc(50% - 50vw);
-            margin-right: calc(50% - 50vw);                        
+            margin-right: calc(50% - 50vw);    
+            margin-bottom: 0;                    
         }   
         div{
             padding: 3rem 0;

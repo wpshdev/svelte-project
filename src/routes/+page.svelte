@@ -563,7 +563,8 @@
 	}
 	:global(.loc-gallery p) {
 		@include media-max(sm) {
-			text-align: left;
+			text-align: center;
+			margin: 0 1.375rem 1.375rem;
 		}
 	}
 	:global(.loc-gallery .h3 span) {
@@ -611,7 +612,7 @@
 			text-align: center;
 			@include media-max(sm) {
 				text-align: center;
-				font-size: 2.75rem;
+				font-size: 2.25rem;
 			}
 		}
 		&__cwrapper {
@@ -624,7 +625,7 @@
 			z-index: 1;
 			@include media-max(sm) {
 				margin: 1rem;
-				padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+				padding: 2.5rem 0 2.5rem 0;
 			}
 			.h3 {
 				text-transform: uppercase;
@@ -844,6 +845,9 @@
 		}
 		h2 {
 			text-align: center;
+			@include media-max(sm) {
+				margin-bottom: 1rem;
+			}
 		}
 		#tnr-button {
 			text-align: center;
@@ -1049,6 +1053,11 @@
 						line-height: 3rem;
 						margin: 1rem 0;
 					}
+					@include media-max(sm) {
+						text-align: center;
+						line-height: 1.2;
+						
+					}
 				}
 				:global(p) {
 					line-height: 2rem;
@@ -1060,7 +1069,6 @@
 						display: inherit;
 					}
 				}
-				
 			}
 		}
 		.childimg {
@@ -1194,6 +1202,10 @@
 						line-height: 3rem;
 						margin: 1rem 0;
 					}
+					@include media-max(sm) {
+						text-align: center;
+						line-height: 1.2;
+					}
 				}
 				:global(p) {
 					line-height: 2rem;
@@ -1202,7 +1214,7 @@
 				.btn {
 					@include media-max(sm) {
 						display: inherit;
-						margin: 3rem auto;
+						margin: 0 auto 3rem auto;
 					}
 				}
 			}
@@ -1312,6 +1324,12 @@
 					margin: 1rem 0 2rem;
 					@include media-max(lg) {
 						line-height: 3rem;
+					margin: 1rem 0;
+
+					}
+					@include media-max(sm) {
+						text-align: center;
+						line-height: 1.2;
 					}
 				}
 				:global(p) {
@@ -1337,7 +1355,7 @@
 						margin-right: 1rem;
 					}
 				}
-				.btn{
+				.btn {
 					@include media-max(sm) {
 						margin: 3rem auto;
 						display: inherit;
@@ -1370,7 +1388,7 @@
 			}
 			@include media-max(sm) {
 				height: auto;
-				margin-top: 2rem;
+				margin-top: 0;
 			}
 		}
 	}

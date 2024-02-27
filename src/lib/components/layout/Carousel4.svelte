@@ -293,7 +293,7 @@ white-space: nowrap;
         transition: 1.5s;
         display: flex;
         align-items: center;
-        line-height:1.25;
+        line-height:1.1;
           @include media-max(sm){
               margin: 0;
               // font-size: 0.6rem;
