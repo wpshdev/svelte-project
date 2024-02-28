@@ -52,7 +52,8 @@
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
 				body: JSON.stringify({
-					"to": emailTo ? emailTo : 'dev@netdevs.com',
+					// "to": emailTo ? emailTo : 'dev@netdevs.com',
+					"to": 'contact@ulfbuilt.com',
 					"subject": emailSubject ? emailSubject : 'UlfBuilt Contact Form',
 					"html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+phone+"</p><p>"+message+"</p>",
 				})

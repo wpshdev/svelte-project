@@ -16,6 +16,7 @@
 	let emailSubject = data.contactDetails.data.attributes.contactDetails.emailSubject;
 	let emailResponse = data.contactDetails.data.attributes.contactDetails.emailResponse;
     let name = '', email = '', formPhone = '', message = '', result = ''
+    console.log('email',emailTo);
     async function doContact () {
         const url = 'https://api.ulfbuilt.com/api/contact-forms';
 		const res = await fetch(url, {
@@ -40,7 +41,8 @@
 			method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + PUBLIC_STRAPI_API },
             body: JSON.stringify({
-                "to": emailTo ? emailTo : 'dev@netdevs.com',
+                // "to": emailTo ? emailTo : 'dev@netdevs.com',
+                "to": 'contact@ulfbuilt.com',
                 "subject": emailSubject ? emailSubject : 'UlfBuilt Contact Form',
                 "html": "<h1>"+name+"</h1><p>"+email+"</p><p>"+formPhone+"</p><p>"+message+"</p>",
             })
@@ -110,7 +112,7 @@
                 <div class="contact-form border-radius">
                     <h2 class="text-center pb-4 text-animate secondary-font" in:textAnimate id="contact_form_heading" gsap-start="center bottom" gsap-duration="1">{data.contact.data.attributes.contact_form_title ? data.contact.data.attributes.contact_form_title : ''}</h2>
                     <div in:fadeIn id="form_cont" gsap-start="center bottom" gsap-duration="1">
-                        <Form method="post">
+                        <Form method="post" class="mb-3">
                             <FormGroup class="input-icon-box">
                                 <Input class="input-user" placeholder="Full Name" bind:value={name} />
                                 <div class="input-icon input-icon-user"></div>

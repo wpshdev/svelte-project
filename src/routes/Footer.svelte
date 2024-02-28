@@ -139,6 +139,9 @@ function scrollToTop() {
 </footer>
 <style lang="scss">
     :global(.col.footer__col){
+        &:nth-child(3){
+            display: none;
+        }
         @include media-max(sm){
             flex: 100%;
             margin-bottom: 3rem;
