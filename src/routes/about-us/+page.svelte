@@ -164,7 +164,7 @@
     
         <Container>
             <Row>
-                <Col md="12"><h2 class="text-center text-div mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
+                <Col md="12"><h2 class="text-center text-div mb-4 md:mb-5 text-animate secondary-font" in:textAnimate id="sp-heading" gsap-duration="1" >{@html about.Section6heading ? about.Section6heading : ''}</h2></Col>
             </Row>
             <Row class="flex-md-row flex-column-reverse sets-parts__row">  
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content">
@@ -189,7 +189,7 @@
 </section>
 <section class="sets-parts"  in:slowDownSection id="sp-section2" gsap-start="top"> 
     
-        <Container class="mx-10">
+        <Container class="sm:mx-10">
             <Row class="sets-parts__row">
                 <Col md="6" style="z-index: 1;">
                     <div class="sets-parts__mr-r">
@@ -213,7 +213,7 @@
 </section>
 <section class="sets-parts"  in:slowDownSection id="sp-section3" gsap-start="top">
     
-        <Container class="mx-10">
+        <Container class="sm:mx-10">
             <Row class="flex-md-row flex-column-reverse sets-parts__row">
                 <Col md="6" class="align-self-center blue-color-background sets-parts__content">
                     <div class="text-div">
@@ -291,7 +291,7 @@
 			z-index: 1;
 		}
 	@include media-max(sm){
-		padding: 20vw 0;
+		padding: 3.75rem 0 2.25rem;
 	}
 	.h3{
 		margin-bottom: 1.25rem;
@@ -318,9 +318,7 @@
 			background: #fff;
             text-align: center;
 			@include media-max(sm){
-				margin: 1rem;
-			}
-			@include media-max(sm){
+				margin: 1rem 1rem 0;
 				padding: 2rem;
 			}
 			.h3{
@@ -514,6 +512,9 @@
         display: flex;
     flex-direction: column;
     justify-content: center;
+        @include media-max(sm){
+        margin-bottom: 0;
+        }
     }
     
     .contractor-details {
@@ -530,7 +531,7 @@
             //     max-width: 100%;
             // }
             // margin: unset;
-			margin: 20vw 0;
+			margin: 3.75rem 0;
         }
         h3 {
             color:$secondary-color;
@@ -545,6 +546,9 @@
             // }
             @include media-max(ipadmini){ 
                 font-size: 2.3rem;
+            }
+            @include media-max(sm){ 
+                margin-top: 0.75rem;
             }
         }
         
@@ -573,7 +577,7 @@
     #cd-section1{
         margin-top: -7.5rem;
         @include media-max(xs){
-            margin: 2rem 0;
+            margin: 0 0;
         }
     }
     .remodel {
@@ -613,7 +617,9 @@
         h2{
             color:$darkgrey-color;
             justify-content: center;
+            @include media-min(sm){
             padding-bottom: 2rem;
+            }
         }
         @include media-max(ipadmini){
             :global(.row>*) {
@@ -621,7 +627,7 @@
                 max-width: 100%;
             }
             // margin: unset;
-            margin: 20vw 0;
+            margin: 3.75rem 0;
         }
         :global(.sets-parts__row) {
             justify-content: center;
@@ -633,7 +639,7 @@
             flex-direction: column;
             justify-content: center;
             @include media-max(md) {
-                padding: 2rem 0rem 3rem 0rem;
+                padding: 3rem 0rem 3.75rem 0rem;
                 min-height: auto;
             }
         }

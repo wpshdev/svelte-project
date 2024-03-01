@@ -312,10 +312,10 @@ function touchend(e){
 :global(.carousel-section){
     overflow: hidden;
     position: relative;
-    height: 34rem;
-    @include media-max(sm){
-        height: 34rem;
-    }
+    // height: 34rem;
+    // @include media-max(sm){
+    //     height: 34rem;
+    // }
 }
 .left-right{
   display: inline-flex;
@@ -365,7 +365,7 @@ margin: 40px 0;
     @include media-max(sm){
         text-align: center;
         margin-top: 0;
-        margin-bottom: 3rem;
+        // margin-bottom: 3rem;
     }    
     p{
       font-size: 1.5rem;

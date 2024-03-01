@@ -146,11 +146,17 @@
 		@include media-max(ipadmini) {
 			padding: 0;
 		}
+		@include media-max(sm){
+        margin-bottom: 0;
+        }
 		h2 {
 			color: $secondary-color;
 			text-align: center;
 			justify-content: center;
 			margin-bottom: 5rem;
+			@include media-max(sm){
+        margin-bottom: 2rem;
+        }
 		}
 		&__cards {
 			margin-top: 4rem;
@@ -183,6 +189,9 @@
 			letter-spacing: 0.05em;
 			font-feature-settings: 'pnum' on, 'lnum' on;
 			color: $darkergray;
+			 @include media-max(xs){
+                    text-align: center;
+                }
 			@include media-max(xs) {
 				font-size: 1.438rem;
 			}

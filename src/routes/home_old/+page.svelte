@@ -770,6 +770,7 @@ align-items: end;
 
 	@include media-max(sm){
 		padding: 0rem;
+		margin: 3.75rem 0;
 	}
 }
 

@@ -594,7 +594,7 @@
 			z-index: 1;
 		}
 		@include media-max(sm) {
-			padding: 20vw 0;
+			padding: 5rem 0;
 		}
 		.h3 {
 			margin-bottom: 1.25rem;
@@ -853,7 +853,7 @@
 			text-align: center;
 			@include media-max(sm) {
 				padding-top: 1rem;
-				padding-bottom: 1rem;
+				// padding-bottom: 1rem;
 			}
 		}
 	}
@@ -959,6 +959,7 @@
 
 		@include media-max(sm) {
 			padding: 0rem;
+			margin: 3.75rem 0;
 		}
 	}
 
@@ -982,7 +983,7 @@
 		margin: 0;
 		// margin-top: 15vw;
 		@include media-max(ipadmini) {
-			margin: 35vw 0 5vw;
+			margin: 35vw 0 0;
 			padding-top: 20vw;
 		}
 		@include media-max(sm) {
@@ -1019,7 +1020,7 @@
 				}
 				@include media-max(sm) {
 					width: 100vw;
-					top: -5rem;
+					top: -3.75rem;
 					margin-left: calc(50% - 50vw);
 					height: 160%;
 				}
@@ -1109,8 +1110,8 @@
 			margin: 35vw 0;
 		}
 		@include media-max(sm) {
-			min-height: 50rem;
-			margin-top: 0;
+			// min-height: 50rem;
+			margin: 0 0 3.75rem;
 		}
 		&__top-image {
 			text-align: right;
@@ -1154,8 +1155,7 @@
 			}
 			@include media-max(sm) {
 				height: auto;
-				margin-top: 3rem;
-				margin-bottom: 1rem;
+				margin-top: 3.75rem;
 			}
 			display: flex;
 			align-items: center;
@@ -1214,7 +1214,7 @@
 				.btn {
 					@include media-max(sm) {
 						display: inherit;
-						margin: 0 auto 3rem auto;
+						margin: 0 auto 3.75rem auto;
 					}
 				}
 			}
@@ -1264,7 +1264,7 @@
 		}
 		@include media-max(sm) {
 			min-height: 70vh;
-			padding-top: unset;
+			padding-top: 3.75rem;
 		}
 		&__content {
 			height: 41.875rem;
@@ -1295,7 +1295,7 @@
 					height: 150%;
 				}
 				@include media-max(sm) {
-					top: -10vw;
+					top: -3.75rem;
 					width: 100vw;
 					margin-left: calc(50% - 50vw);
 					height: 200%;
@@ -1357,7 +1357,7 @@
 				}
 				.btn {
 					@include media-max(sm) {
-						margin: 3rem auto;
+						margin: 2rem auto 3.75rem;
 						display: inherit;
 					}
 				}

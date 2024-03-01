@@ -91,6 +91,9 @@
     flex-direction: column;
     justify-content: center;
     padding: 5rem 0;
+    @include media-max(sm){
+        margin-bottom: 0;
+        }
     @include media-max(ipadmini){
         padding: 5rem 0 0;
     }
@@ -131,6 +134,9 @@
                 letter-spacing: 0.05em;
                 font-feature-settings: 'pnum' on, 'lnum' on;
                 color: $darkergray;
+                @include media-max(xs){
+                    text-align: center;
+                }
                 @include media-max(xs){
                     font-size: 1.438rem;
                 }

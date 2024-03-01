@@ -218,6 +218,10 @@ let seodata = portfolio;
     .portfolio-masonry{
         position: relative;
         margin-top: 8rem;
+        @include media-max(sm){
+            margin-top: 5rem;
+        }
+        margin-top: 8rem;
         .list-text-details {
             position: absolute;
             top: 15rem;
@@ -399,6 +403,9 @@ let seodata = portfolio;
         }
         .paginate-section {
             margin-top: 5rem; 
+            @include media-max(sm){
+                margin-top: 2rem;
+            }
         }
     }
     .portfolio-cta{
@@ -429,6 +436,7 @@ let seodata = portfolio;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                margin-bottom: 0;
             }
             .btn-secondary{
                 margin-right: 1.5rem;

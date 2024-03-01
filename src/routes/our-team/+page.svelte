@@ -18,6 +18,7 @@
 	let memberContent = '';
 
 	function getMemberIndex(index) {
+
 		memberName = ourTeam.team_members.data[index].attributes.name.replace(
 			/^\s*\w+/,
 			'<span>$&</span>'
@@ -129,7 +130,7 @@
 		</Row>
 	</Container>
 </section>
-<section class="paragraph1 mvw-10" in:slowDownSection id="paragraph1">
+<section class="paragraph1 mvw-10" in:slowDownSection  id="paragraph1">
 	<Container>
 		<h4>
 			{@html ourTeam.team_member_owner.data.attributes.content
@@ -143,7 +144,7 @@
 	<Container>
 		<Row>
 			<h2
-				class="sfont stc mb-5 text-center text-animate secondary-font"
+				class="sfont stc mb-2 md:mb-5 text-center text-animate secondary-font"
 				in:textAnimate
 				id="member_heading"
 				gsap-duration="1.5"
@@ -204,7 +205,7 @@
 						<div class="memberModal" on:mousewheel={stopScroll}>
 							<div class="memberModal__image">
 								{#if memberImage}
-									<img use:lazyLoad={domain + memberImage} alt="member" />
+									<img src={domain + memberImage} alt="member" />
 								{/if}
 							</div>
 							<div class="memberModal__details">
@@ -221,7 +222,7 @@
 		</Row>
 	</Container>
 </section>
-<section class="ourteam5 mvw-10" in:slowDownSection id="ourteam5">
+<section class="ourteam5 mvw-10" id="ourteam5">
 	<Container>
 		<div>
 			<h4>{ourTeam.para2 ? ourTeam.para2 : ''}</h4>
@@ -266,6 +267,7 @@
 			height: 35.625rem;
 			@include media-max(ipadmini) {
 				height: auto;
+				margin-bottom: 0;
 			}
 			overflow: hidden;
 			img {
@@ -410,6 +412,7 @@
 			line-height: 2.375rem;
 			@include media-max(sm) {
 			line-height: 2.25rem;
+			padding: 0 1.375rem ;
 		}
 		}
 	}
@@ -448,13 +451,19 @@
 	.team-members {
 		h2 {
 			justify-content: center;
+			@include media-max(sm) {
+				margin-bottom: 2rem;
+			}
 		}
 		@include media-max(sm) {
 			min-height: 100vh;
 		}
 	}
 	:global(.team-member-part) {
-		margin-top: 100px;
+		@include media-min(sm) {
+			margin-top: 100px;
+
+		}
 	}
 	:global(.team-member-part .row .col-md-6:nth-child(odd)) {
 		@include media-min(sm) {
@@ -560,7 +569,7 @@
 				line-height: 2.125rem;
 				font-feature-settings: 'pnum' on, 'lnum' on;
 				color: $darkergray;
-				height: 15rem;
+				height: 13rem;
 				overflow-x: hidden;
 				overflow-y: auto;
 
