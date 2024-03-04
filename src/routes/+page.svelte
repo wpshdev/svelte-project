@@ -156,7 +156,7 @@
 >
 	<Container>
 		<Row>
-			<Col xs="12" class="pb-4">
+			<Col xs="12" class="md:pb-4">
 				<h2 class="text-div">
 					{home.homeBuilderHeading ? home.homeBuilderHeading : ''}
 				</h2>
@@ -564,7 +564,7 @@
 	:global(.loc-gallery p) {
 		@include media-max(sm) {
 			text-align: center;
-			margin: 0 1.375rem 1.375rem;
+			margin: 0 2.375rem 1.375rem 2.375rem;
 		}
 	}
 	:global(.loc-gallery .h3 span) {
@@ -625,7 +625,7 @@
 			z-index: 1;
 			@include media-max(sm) {
 				margin: 1rem;
-				padding: 2.5rem 0 2.5rem 0;
+				padding: 3.75rem 0 2rem 0;
 			}
 			.h3 {
 				text-transform: uppercase;

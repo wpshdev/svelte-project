@@ -254,6 +254,9 @@
 		// @include media-max(ipadmini){
 		// 	min-height: unset;
 		// }
+		@include media-max(sm) {
+				padding: 0 1.375rem;
+			}
 		#team_heading {
 			justify-content: center;
 		}
@@ -405,6 +408,9 @@
 		// @include media-max(ipadmini){
 		//     min-height: unset;
 		// }
+		@include media-max(sm){
+			margin: 3.75rem 0;
+		}
 		h4 {
 			font-family: $primary-font;
 			font-weight: 400;
@@ -431,6 +437,7 @@
 		// @include media-max(ipadmini){
 		//     min-height: unset;
 		// }
+		
 		h4 {
 			font-family: $primary-font;
 			font-weight: 400;
@@ -444,7 +451,7 @@
 			}
 		}
 		@include media-max(sm) {
-			margin: 5vw auto;
+			margin: 0 1.375rem 1rem;
 		}
 	}
 

@@ -388,7 +388,7 @@
 			padding: 2rem 3rem 3rem;
 			text-align: justify;
 			@include media-max(sm) {
-				padding: 3.75rem 2.375rem;
+				padding: 3.75rem 1.375rem;
 			}
 			&__heading {
 				margin-bottom: 3rem;
@@ -470,20 +470,28 @@
 			h2 {
 				margin-bottom: 2rem;
 				justify-content: center;
+				@include media-max(sm) {
+					padding: 0 1.375rem;
+				}
 			}
 			p {
 				max-width: 45rem;
 				margin: 0 auto;
 				line-height: 2;
 			}
+			#single-portfolio-cta-cont {
+				@include media-max(sm) {
+					padding: 0 1.375rem;
+				}
+			}
 		}
 		&__btns {
 			margin: 2rem 0;
 			display: flex;
 			justify-content: center;
-				@include media-max(sm) {
+			@include media-max(sm) {
 				margin-bottom: 0;
-				}
+			}
 			.btn-secondary {
 				margin-right: 1.5rem;
 				@include media-max(sm) {
@@ -514,9 +522,12 @@
 			text-align: center;
 			margin-bottom: 2rem;
 			justify-content: center;
+			@include media-max(sm) {
+				padding: 0 1rem;
+			}
 			@include media-max(xs) {
-			margin-bottom: 1rem;
-		}
+				margin-bottom: 1rem;
+			}
 		}
 		&__article {
 			overflow: hidden;

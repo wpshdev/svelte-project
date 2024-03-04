@@ -697,8 +697,8 @@
 			}
 			@include media-max(ipadmini) {
 				&.pfont {
-					padding-left: 3rem;
-					padding-right: 3rem;
+					padding-left: 2.375rem;
+					padding-right: 2.375rem;
 				}
 				text-align: left;
 			}
@@ -733,12 +733,12 @@
 				text-align: left;
 
 				&.text-right {
-					padding-left: 2rem !important;
-					padding-right: 2rem !important;
+					padding-left: 1.375rem !important;
+					padding-right: 1.375rem !important;
 				}
 				&.txt-center {
-					padding-left: 2rem !important;
-					padding-right: 2rem !important;
+					padding-left: 1.375rem !important;
+					padding-right: 1.375rem !important;
 				}
 			}
 			@include media-max(sm) {

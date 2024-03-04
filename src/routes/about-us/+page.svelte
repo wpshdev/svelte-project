@@ -319,7 +319,7 @@
             text-align: center;
 			@include media-max(sm){
 				margin: 1rem 1rem 0;
-				padding: 2rem;
+				padding: 3.75rem  2.375rem;
 			}
 			.h3{
 				text-transform: uppercase;
@@ -726,6 +726,9 @@
         h2 {
             color: $secondary-color;
             justify-content: center;
+            @include media-max(sm){
+                padding:  0 1rem;
+            }
         }
         p {
             font-size: 1.25rem;

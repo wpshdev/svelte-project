@@ -263,6 +263,11 @@
 		@include media-max(sm) {
 			margin: 3.75rem 0;
 		}
+		p {
+			@include media-max(sm) {
+				margin: 0 2.375rem 1rem;
+			}
+		}
 		.contact_inner__content {
 			h2 {
 				font-size: 2.813rem;
@@ -276,6 +281,7 @@
 				line-height: 2.125rem;
 			}
 		}
+
 		.contact_inner__details {
 			.ptc {
 				font-size: 1.438rem;
