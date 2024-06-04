@@ -70,25 +70,30 @@
     }
   }
   onMount(() => {
-        const script = document.createElement('script');
-        script.src = `https://www.googletagmanager.com/gtm.js?id=`+ data.fallback.data.attributes.Google_Tag_Manager;
-        script.async = true;
-        document.head.appendChild(script);
+    // Load GTM script
+    const gtmScript = document.createElement('script');
+    gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=` + data.fallback.data.attributes.Google_Tag_Manager;
+    gtmScript.async = true;
+    document.head.appendChild(gtmScript);
 
-        const noscript = document.createElement('noscript');
-        noscript.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=`+ data.fallback.data.attributes.Google_Tag_Manager +`" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
-        document.body.appendChild(noscript);
-    });
-  onMount(() => {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=`+data.fallback.data.attributes.Google_Analytics_4;
-        document.head.appendChild(script);
+    // GTM noscript fallback
+    const noscript = document.createElement('noscript');
+    noscript.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=` + data.fallback.data.attributes.Google_Tag_Manager + `" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+    document.body.appendChild(noscript);
 
+    // Load GA4 script
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=` + data.fallback.data.attributes.Google_Analytics_4;
+    document.head.appendChild(gaScript);
+
+    // Initialize GA4
+    gaScript.onload = () => {
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', "'" + data.fallback.data.attributes.Google_Analytics_4 + "'");
+      gtag('config', data.fallback.data.attributes.Google_Analytics_4);
+    };
   });
     </script>
     <svelte:head>
