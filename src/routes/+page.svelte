@@ -53,22 +53,22 @@
 
 	import { onMount } from 'svelte';
 	// import { loadingCursor } from '$lib/cursorChange.js';
-	// onMount(() => {
-	// 	loadingCursor();
-	// 	// stopSection();
+	onMount(() => {
+		// loadingCursor();
+		// stopSection();
 
-	// 	let updatedHeight = 0;
-	// 	const screenWidth = window.innerWidth;
+		let updatedHeight = 0;
+		const screenWidth = window.innerWidth;
 
-	// 	if (screenWidth > 768) {
-	// 		const myDiv = document.querySelector('.loc-gallery');
-	// 		const initialHeight = myDiv ? myDiv.clientHeight : 0;
-	// 		updatedHeight = initialHeight + 200;
-	// 		if (myDiv) {
-	// 			myDiv.style.height = updatedHeight + 'px';
-	// 		}
-	// 	}
-	// });
+		if (screenWidth > 768) {
+			const myDiv = document.querySelector('.loc-gallery');
+			const initialHeight = myDiv ? myDiv.clientHeight : 0;
+			updatedHeight = initialHeight + 200;
+			if (myDiv) {
+				myDiv.style.height = updatedHeight + 'px';
+			}
+		}
+	});
 
 	//new slideup and down
 	import arrowtop from '$lib/img/arrow-top.svg';

@@ -40,10 +40,10 @@
 
     let header: gsap.TweenTarget;
     
-	import { loadingCursor } from '$lib/cursorChange.js';
+	// import { loadingCursor } from '$lib/cursorChange.js';
     onMount(() => {
         gsap.from(header, { y: -100, duration: 1, opacity: 0, delay: 2.5, ease: 'power2.out' });
-        loadingCursor();
+    //     loadingCursor();
     });
 
     let yaxis: any;
