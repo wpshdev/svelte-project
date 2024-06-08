@@ -242,7 +242,7 @@ $: {
                 bottom: 0.5rem
             } 
             span{
-                color: $primary-color;
+                color: $white-color;
                 font-size: 1.2rem;
                 margin: 0 0.8rem 0;
                 @include media-max(sm){
