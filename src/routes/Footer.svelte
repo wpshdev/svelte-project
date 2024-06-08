@@ -71,7 +71,7 @@ function scrollToTop() {
                             <div class="footer__widget1 footer--widget" in:fadeIn id="footer-items{index}" gsap-duration="1" gsap-delay={index/2}>
                                 {#if widget.title }
                                     <div class="footer__widget__heading">
-                                        <h5>{widget.title}</h5>
+                                        <h3>{widget.title}</h3>
                                     </div>
                                 {/if}
                                 {#each widget.item as item}
