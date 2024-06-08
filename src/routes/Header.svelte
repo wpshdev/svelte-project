@@ -26,12 +26,12 @@
 	export let menu;
 	import axios from 'axios';
 	import { onMount } from 'svelte';
-	import { fly, slide } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	let promise = fetchSiteSettings();
 	const domain = "https://api.ulfbuilt.com/";
 	async function fetchSiteSettings(){
-		const url = 'https://api.ulfbuilt.com/api/site-setting?populate=deep,3';
+		const url = domain + 'api/site-setting?populate=deep,3';
 		const headers = {
 			Authorization: 'Bearer ' + PUBLIC_STRAPI_API
 		};

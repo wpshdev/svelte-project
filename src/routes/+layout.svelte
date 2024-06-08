@@ -42,7 +42,7 @@
     
 	// import { loadingCursor } from '$lib/cursorChange.js';
     onMount(() => {
-        gsap.from(header, { y: -100, duration: 1, opacity: 0, delay: 2.5, ease: 'power2.out' });
+        gsap.from(header, { y: -100, duration: 1, opacity: 0, delay: 0.5, ease: 'power2.out' });
     //     loadingCursor();
     });
 
