@@ -12,11 +12,12 @@
 	let fallback = data.fallback.data.attributes.fallbackImage.data;
 	import { textAnimate, fly, fadeIn, slide, scaleUp, slowDownSection } from '$lib/GsapAnimation.js';
 
-	import { onMount } from 'svelte';
-	import { loadingCursor } from '$lib/cursorChange.js';
-	onMount(() => {
-		loadingCursor();
-	});
+
+	// import { onMount } from 'svelte';
+	// import { loadingCursor } from '$lib/cursorChange.js';
+	// onMount(() => {
+	// 	loadingCursor();
+	// });
 </script>
 
 

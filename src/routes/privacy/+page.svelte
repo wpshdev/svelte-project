@@ -10,11 +10,11 @@
     import { textAnimate, fly, fadeIn, slide } from '$lib/GsapAnimation.js';
     const url = "https://api.ulfbuilt.com/";
 
-    import { onMount } from "svelte";
-	import { loadingCursor } from '$lib/cursorChange.js';
-	onMount(() => {
-		loadingCursor();
-	});
+    // import { onMount } from "svelte";
+	// import { loadingCursor } from '$lib/cursorChange.js';
+	// onMount(() => {
+	// 	loadingCursor();
+	// });
 
 </script>
 <svelte:head>

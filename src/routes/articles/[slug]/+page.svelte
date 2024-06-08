@@ -15,11 +15,11 @@
     $: location = data.page.data[0].attributes.location ? data.page.data[0].attributes.location : 'Vail, Colorado';
     $: minutesRead = data.page.data[0].attributes.minutesRead ? data.page.data[0].attributes.minutesRead : '2';
     
-    import { onMount } from "svelte";
-	import { loadingCursor } from '$lib/cursorChange.js';
-	onMount(() => {
-		loadingCursor();
-	});
+    // import { onMount } from "svelte";
+	// import { loadingCursor } from '$lib/cursorChange.js';
+	// onMount(() => {
+	// 	loadingCursor();
+	// });
 </script>
 <svelte:head>
     <!-- <Seo metaTitle = {seodata.seo[0].metaTitle}

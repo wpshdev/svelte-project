@@ -49,12 +49,12 @@
         })();
     }
 	
-	import { onMount } from "svelte";
-	import { loadingCursor } from '$lib/cursorChange.js';
-	onMount(() => {
-		loadingCursor();
-		// stopSection();
-	});
+	// import { onMount } from "svelte";
+	// import { loadingCursor } from '$lib/cursorChange.js';
+	// onMount(() => {
+	// 	loadingCursor();
+	// 	// stopSection();
+	// });
 
 
 //new slideup and down

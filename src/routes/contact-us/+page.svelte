@@ -74,11 +74,11 @@
 		}
 	}
 
-	import { onMount } from 'svelte';
-	import { loadingCursor } from '$lib/cursorChange.js';
-	onMount(() => {
-		loadingCursor();
-	});
+	// import { onMount } from 'svelte';
+	// import { loadingCursor } from '$lib/cursorChange.js';
+	// onMount(() => {
+	// 	loadingCursor();
+	// });
 </script>
 
 <svelte:head>
