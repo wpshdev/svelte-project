@@ -1,5 +1,5 @@
-@import 'vars';
-@import 'mixins';
+@use 'vars' as *;
+@use 'mixins' as m;
 
 // *{
 //     font-family: $primary-font;
@@ -612,13 +612,13 @@ header {
 				width: 100%;
 				bottom: 0;
 				background-color: #e5eef2;
+				text-align: center;
+				font-weight: 600;
+
 				@include media-max-height(ehxs) {
 					display: none;
 				}
-				// padding-left: 1.2rem;
-				// margin-top: 20rem;
-				text-align: center;
-				font-weight: 600;
+
 				.mail {
 					color: #3e3636;
 					text-decoration: none;
@@ -628,11 +628,12 @@ header {
 				}
 				&__social {
 					margin: 0.125rem 0 0 0;
-					.icon {
-						margin-right: 1rem;
-					}
 					@include media-max-height(hxs) {
 						display: none;
+					}
+
+					.icon {
+						margin-right: 1rem;
 					}
 				}
 				.footer__post-footer__paragraph {
@@ -742,13 +743,13 @@ header {
 	background: #262626;
 	color: #fff;
 	padding: 3vw 7vw;
+	margin: 0;
 	@include media-max(laptopS) {
 		padding: 3vw 1.5vw;
 	}
 	@include media-max(sm) {
 		padding: 3rem 1rem;
 	}
-	margin: 0;
 	a {
 		color: #fff;
 	}
@@ -893,7 +894,7 @@ p p {
 	}
 }
 h4:empty {
-    display: none;
+	display: none;
 }
 .story {
 	.accordion {
@@ -944,7 +945,7 @@ h4:empty {
 	align-self: center;
 }
 .pre-footer {
-	background-color: #ddd;/* #aca7a7;*/
+	background-color: #ddd; /* #aca7a7;*/
 	margin: 0;
 	padding: 0.5rem 0;
 	min-height: 0;
@@ -1031,6 +1032,10 @@ h4:empty {
 		}
 	}
 	&__post-footer {
+		margin-top: -2.5rem;
+		@include media-max(sm) {
+			margin-top: unset;
+		}
 		&__social {
 			margin: 2rem 0 1rem;
 			@include media-max(sm) {
@@ -1049,10 +1054,6 @@ h4:empty {
 					text-align: center;
 				}
 			}
-		}
-		margin-top: -2.5rem;
-		@include media-max(sm) {
-			margin-top: unset;
 		}
 	}
 }

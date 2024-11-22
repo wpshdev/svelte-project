@@ -9,6 +9,8 @@
 	import { PUBLIC_STRAPI_API } from '$env/static/public';
 	const url = 'https://api.ulfbuilt.com/';
 
+	let contactFormProcess: 'saving' | 'sending' | 'sent' | 'failed' | null = null;
+	let formElement: HTMLFormElement;
 	let phone = data.contact.data.attributes.phone;
 	let office_address = data.contact.data.attributes.office_address;
 	let mailing_address = data.contact.data.attributes.mailing_address;
@@ -20,8 +22,12 @@
 		formPhone = '',
 		message = '',
 		result = '';
-	console.log('email', emailTo);
+
+	$: isContactFormBusy = contactFormProcess === 'saving' || contactFormProcess === 'sending';
+	$: isFormUsed = contactFormProcess !== null;
+
 	async function doContact() {
+		contactFormProcess = 'saving';
 		const url = 'https://api.ulfbuilt.com/api/contact-forms';
 		const res = await fetch(url, {
 			method: 'POST',
@@ -35,38 +41,32 @@
 				}
 			})
 		});
+		result = 'Processing...';
 		const json = await res.json();
 		if (json.error) {
-			result = json.error.message;
+			result =
+				json.error.message ||
+				"Failed to send Result. pleas contact at <a href='mailto:contact@ulfbuilt.com'>contact@ulfbuilt.com<a/>";
+			contactFormProcess = 'failed';
 		} else {
-			result = 'Processing...';
-			const url2 = 'https://api.ulfbuilt.com/api/email/';
-			const res2 = await fetch(url2, {
+			contactFormProcess = 'sending';
+			result = 'Sending your Message...';
+			const res2 = await fetch('/api/send-email', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
-					Authorization: 'bearer ' + PUBLIC_STRAPI_API
+					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({
-					// "to": emailTo ? emailTo : 'dev@netdevs.com',
-					to: 'contact@ulfbuilt.com',
-					subject: emailSubject ? emailSubject : 'UlfBuilt Contact Form',
-					html:
-						'<h1>' +
-						name +
-						'</h1><p>' +
-						email +
-						'</p><p>' +
-						formPhone +
-						'</p><p>' +
-						message +
-						'</p>'
-				})
+				body: JSON.stringify({ emailSubject, name, email, formPhone, message })
 			});
+
 			const json2 = await res2.json();
 			if (json2.error) {
-				result = json2.error.message;
+				contactFormProcess = 'failed';
+				result =
+					json2.error.message ||
+					"Failed to send Result. pleas contact at <a href='mailto:contact@ulfbuilt.com'>contact@ulfbuilt.com<a/>";
 			} else {
+				contactFormProcess = 'sent';
 				result = emailResponse
 					? emailResponse
 					: "We appreciate you taking the time to reach out. We'll respond to you within 1 business day, or sooner.";
@@ -211,30 +211,78 @@
 					: ''}
 			</h2>
 			<div in:fadeIn id="form_cont" gsap-start="center bottom" gsap-duration="1">
-				<Form method="post" class="mb-3">
+				<form method="post" class="mb-3" bind:this={formElement} on:submit|preventDefault>
 					<FormGroup class="input-icon-box">
-						<Input class="input-user" placeholder="Full Name" bind:value={name} />
+						<Input
+							class="input-user"
+							disabled={isFormUsed}
+							placeholder="Full Name"
+							bind:value={name}
+						/>
 						<div class="input-icon input-icon-user" />
 					</FormGroup>
 					<FormGroup class="input-icon-box">
-						<Input class="input-email" placeholder="Email address" bind:value={email} />
+						<Input
+							class="input-email"
+							disabled={isFormUsed}
+							placeholder="Email address"
+							bind:value={email}
+						/>
 						<div class="input-icon input-icon-email" />
 					</FormGroup>
 					<FormGroup class="input-icon-box">
-						<Input class="input-phone" placeholder="Phone Number" bind:value={formPhone} />
+						<Input
+							class="input-phone"
+							placeholder="Phone Number"
+							disabled={isFormUsed}
+							bind:value={formPhone}
+						/>
 						<div class="input-icon input-icon-phone" />
 					</FormGroup>
 					<FormGroup>
 						<Input
+							disabled={isFormUsed}
 							type="textarea"
 							id="yourMessage"
 							placeholder="Tell us about your project..."
 							bind:value={message}
 						/>
 					</FormGroup>
-					<Button type="button" class="btn btn-secondary" on:click={doContact}>Send</Button>
-				</Form>
-				{result}
+					{#if contactFormProcess === 'saving' || contactFormProcess === 'sending'}
+						<Button type="button" disabled={true} class="btn btn-secondary">Sending</Button>
+					{:else if contactFormProcess === 'sent'}
+						<Button
+							type="button"
+							class="btn btn-secondary"
+							on:click={() => {
+								contactFormProcess = null;
+								formElement?.reset?.();
+								result = '';
+							}}>Send Again</Button
+						>
+					{:else if contactFormProcess === 'failed'}
+						<Button
+							type="button"
+							class="btn btn-secondary"
+							on:click={() => {
+								contactFormProcess = null;
+								formElement?.reset?.();
+								result = '';
+							}}
+						>
+							Failed, Try again.
+						</Button>
+					{:else}
+						<Button type="button" class="btn btn-secondary" on:click={doContact}>Send</Button>
+					{/if}
+				</form>
+				{#if isContactFormBusy}
+					<p class="">{@html result}</p>
+				{:else if contactFormProcess === 'sent'}
+					<p class="result-success">{@html result}</p>
+				{:else if contactFormProcess === 'failed'}
+					<p class="result-failed">{@html result}</p>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -257,6 +305,14 @@
 		@include media-max(sm) {
 			text-align: center;
 		}
+	}
+	.result-success {
+		color: green;
+		text-align: center;
+	}
+	.result-failed {
+		color: red;
+		text-align: center;
 	}
 	.contact_inner {
 		margin-top: 10vw;
