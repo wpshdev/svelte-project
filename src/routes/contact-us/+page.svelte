@@ -180,7 +180,7 @@
 					width="100%"
 					height="450"
 					style="border:0;"
-					allowfullscreen=""
+					allowfullscreen={null}
 					loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade"
 				/>
@@ -210,6 +210,74 @@
 					? data.contact.data.attributes.contact_form_title
 					: ''}
 			</h2>
+			<div
+				class="contact-form-status-box"
+				class:appear={contactFormProcess === 'sent' || contactFormProcess === 'failed'}
+			>
+				<div
+					class="status-body"
+					class:success={contactFormProcess === 'sent'}
+					class:failed={contactFormProcess === 'failed'}
+				>
+					{#if contactFormProcess === 'sent'}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="status-icon"
+							width="1em"
+							height="1em"
+							viewBox="0 0 16 16"
+							><g fill="currentColor"
+								><path
+									d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+								/><path
+									d="m10.97 4.97l-.02.022l-3.473 4.425l-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+								/></g
+							></svg
+						>
+
+						<h3 class="status-headline">Successfully Sent</h3>
+					{:else}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+							class="status-icon"
+							><path fill="currentColor" d="M11.001 10h2v5h-2zM11 16h2v2h-2z" /><path
+								fill="currentColor"
+								d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.99 1.99 0 0 0 .054 1.968A1.98 1.98 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.99 1.99 0 0 0 .054-1.968zM4.661 19L12 5.137L19.344 19z"
+							/></svg
+						>
+
+						<h3 class="status-headline">Failed to Send message</h3>
+					{/if}
+
+					<p class="status-text">{@html result}</p>
+				</div>
+				<div class="status-footer">
+					{#if contactFormProcess === 'sent'}
+						<Button
+							type="button"
+							class="btn btn-secondary"
+							on:click={() => {
+								contactFormProcess = null;
+								formElement?.reset?.();
+								result = '';
+							}}>Send Again</Button
+						>
+					{:else if contactFormProcess === 'failed'}
+						<Button
+							type="button"
+							class="btn btn-secondary"
+							on:click={() => {
+								contactFormProcess = null;
+								formElement?.reset?.();
+								result = '';
+							}}
+						/>
+					{/if}
+				</div>
+			</div>
 			<div in:fadeIn id="form_cont" gsap-start="center bottom" gsap-duration="1">
 				<form method="post" class="mb-3" bind:this={formElement} on:submit|preventDefault>
 					<FormGroup class="input-icon-box">
@@ -249,7 +317,12 @@
 						/>
 					</FormGroup>
 					{#if contactFormProcess === 'saving' || contactFormProcess === 'sending'}
-						<Button type="button" disabled={true} class="btn btn-secondary">Sending</Button>
+						<Button type="button" disabled={true} class="btn btn-secondary">
+							<div class="spinner-border text-light spinner-border-sm" role="status">
+								<span class="visually-hidden">Loading...</span>
+							</div>
+							<span class="ms-2">Sending</span></Button
+						>
 					{:else if contactFormProcess === 'sent'}
 						<Button
 							type="button"
@@ -276,13 +349,6 @@
 						<Button type="button" class="btn btn-secondary" on:click={doContact}>Send</Button>
 					{/if}
 				</form>
-				{#if isContactFormBusy}
-					<p class="">{@html result}</p>
-				{:else if contactFormProcess === 'sent'}
-					<p class="result-success">{@html result}</p>
-				{:else if contactFormProcess === 'failed'}
-					<p class="result-failed">{@html result}</p>
-				{/if}
 			</div>
 		</div>
 	</div>
@@ -314,6 +380,7 @@
 		color: red;
 		text-align: center;
 	}
+
 	.contact_inner {
 		margin-top: 10vw;
 		@include media-max(sm) {
@@ -362,16 +429,69 @@
 			font-size: 2.25rem;
 			justify-content: center;
 		}
-		:global(.contact-form) {
+		.contact-form {
 			max-width: 44rem;
 			width: 100%;
 			padding: 4rem 6rem;
+			position: relative;
+			overflow: hidden;
 			@include media-max(ipadmini) {
 				max-width: 45rem;
 				padding: 4rem;
 			}
 			@include media-max(sm) {
 				padding: 2.5rem 1rem;
+			}
+
+			.contact-form-status-box {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0px;
+				left: 0px;
+				padding: inherit;
+				background: inherit;
+				z-index: 10;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				transform: translateY(-30%);
+				opacity: 0;
+				pointer-events: none;
+				transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+				&.appear {
+					transform: translateY(0%);
+					opacity: 1;
+					pointer-events: all;
+				}
+				.status-body {
+					text-align: center;
+					&.success {
+						color: green;
+					}
+					&.failed {
+						color: red;
+					}
+
+					.status-icon {
+						font-size: clamp(60px, 100vmin, 80px);
+						margin-bottom: 10px;
+					}
+					.status-headline {
+						font-weight: 800;
+						font-size: clamp(25px, 5vmin, 50px);
+						margin-bottom: 10px;
+					}
+					.status-text {
+						font-weight: 500;
+						line-height: 1.2;
+						color: black;
+						font-size: 1.4rem;
+					}
+				}
+				.status-footer {
+					text-align: center;
+				}
 			}
 		}
 		:global(.contact-form form) {
